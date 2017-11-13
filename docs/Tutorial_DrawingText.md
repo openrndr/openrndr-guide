@@ -13,7 +13,6 @@ FontVectorMap.fromUrl(String url, int size)
 ## Drawing bitmap based text ##
 
 ```java
-
 public void draw() {
     background(ColorRGBa.BLACK);
     drawer.text(FontImageMap.fromUrl("cp:fonts/SourceCodePro-Medium.ttf", 12, "here is a text", 20, 100);
