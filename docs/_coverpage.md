@@ -4,4 +4,4 @@
 [Get Started](/Tutorial_Start)
 
 <!-- background image -->
-![](_media/bg.jpg)
+![](_media/bg3.jpg)

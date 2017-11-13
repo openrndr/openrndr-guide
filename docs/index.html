@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
 
     <link rel="icon" href="_media/favicon.ico">
+    <style>
+        .cover{
+            background-size: 22%, 22% !important;
+            -webkit-background-size: 22%, 22% !important;
+        }
+    </style>
 </head>
 <body>
 <div id="app"></div>
@@ -33,7 +39,7 @@
 
         plugins: [
             function(hook, vm) {
-                var re = /@(.*?)@/g;
+                var re = /@@(.*?)@@/g;
                 var temp = document.createElement('span');
                 var re2 = /\[([^\[]+)\]\(([^\)]+)\)/g;
 
