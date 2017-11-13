@@ -1,0 +1,7 @@
+{
+  "root": "./docs",
+  "plugins": ["prism"],
+  "styles": {
+    "website": "assets/styles/website.css"
+  }
+}
