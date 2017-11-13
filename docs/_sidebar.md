@@ -1,6 +1,6 @@
 <!-- docs/_sidebar.md -->
 
-- [**Get Started**](/prerequistite)
+- [**Get Started**](/test.md)
 - **Vectors and Matrices**
     -  [basics](/Tutorial_VectorsAndMatrices.md)
 - **Drawing**

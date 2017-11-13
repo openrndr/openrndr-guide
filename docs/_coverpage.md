@@ -1,4 +1,4 @@
-![logo](_media/logo.png)
+![logo](_media/logo2.png)
 
 [GitHub](https://github.com/openrndr)
 [Get Started](/Tutorial_Start)

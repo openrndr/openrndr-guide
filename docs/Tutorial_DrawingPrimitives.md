@@ -4,7 +4,7 @@
 
 ```java
 
-@(Drawer)[http://api.openrndr.com/classes/drawer]@.circle(double x, double y, double radius)
+Drawer.circle(double x, double y, double radius)
 Drawer.rectangle(double x, double y, double width, double height)
 Drawer.line(double x0, double y0, double x1, double y1)
 

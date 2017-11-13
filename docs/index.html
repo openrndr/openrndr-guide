@@ -52,13 +52,33 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 
 <script>
-    Prism.hooks.add('wrap', function(env) {
-        if (env.token === 'entity') {
-            env.attributes['title'] = env.content.replace(/&amp;/, '&');
-        }
-    });
+    Prism.hooks.run('complete', {});
 
-//    Prism.tokenize(text, grammar)
+    window.onload = function () {
+        var selectors = ['*[class*="lang-"]', 'code'];
+        var re = /@(.*?)@/g;
+        var temp = document.createElement('span');
+
+        for(var s = 0; s<selectors.length; s++){
+            console.log(selectors[s], document.querySelectorAll(selectors[s]));
+            var nodes = document.querySelectorAll(selectors[s]);
+            for(var x = 0; x<nodes.length; x++){
+                var node = nodes[x];
+
+                if(node){
+                    node.innerHTML = node.innerHTML.replace(re, function (x) {
+                        temp.innerHTML = x;
+                        var text = temp.innerText.replace(/@/g, '');
+                        return  text.replace(/\[([^\[]+)\]\(([^\)]+)\)/g, '<a target="_blank" href=\'$2\'>$1</a>')
+                    })
+                }
+            }
+
+        }
+
+        console.log(nodes);
+
+    };
 
 
 </script>
