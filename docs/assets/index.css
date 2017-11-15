@@ -1,3 +1,7 @@
+body{
+    font-family: Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;
+}
+
 .cover{
     background-size: 22%, 22% !important;
     -webkit-background-size: 22%, 22% !important;
