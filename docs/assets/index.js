@@ -1,3 +1,8 @@
+const configs = {
+    repoLink: 'https://github.com/openrndr/openrndr-book-docsify'
+};
+
+
 window.$docsify = {
     repo: '/openrndr',
     name: 'openRNDR',
@@ -5,6 +10,7 @@ window.$docsify = {
     loadSidebar: true,
     coverpage: true,
     executeScript: true,
+    formatUpdated: '{MM}/{DD} {HH}:{mm}',
     search: {
         noData: {
             '/': 'No results!'
@@ -15,22 +21,10 @@ window.$docsify = {
         }
     },
     plugins: [
-        (hook, vm) => {
-            const re = /@@(.*?)@@/g;
-            const re2 = /\[([^\[]+)\]\(([^\)]+)\)/g;
-            const atRe = /@/g;
-            let temp = document.createElement('span');
-
-            hook.afterEach((html) => {
-                return html.replace(re, (x) => {
-                    temp.innerHTML = x.replace(atRe, '');
-                    return  temp.innerText.replace(re2, '<a target="_blank" href=\'$2\'>$1</a>');
-                })
-            })
-        }
+        plugins.linkify,
+        plugins.editLink
     ]
 };
-
 
 const invertPage = () => {
     if(document.body.classList.contains('inverted')){
