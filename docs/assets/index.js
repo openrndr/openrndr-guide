@@ -1,5 +1,5 @@
 const configs = {
-    repoLink: 'https://github.com/openrndr/openrndr-book-docsify'
+    repoLink: 'https://github.com/openrndr/openrndr-guide'
 };
 
 
