@@ -11,20 +11,20 @@ window.$docsify = {
         },
         paths: 'auto',
         placeholder: {
-            '/': 'Search'
+            '/': 'Search ...'
         }
     },
     plugins: [
-        function(hook, vm) {
-            var re = /@@(.*?)@@/g;
-            var re2 = /\[([^\[]+)\]\(([^\)]+)\)/g;
-            var atRe = /@/g;
-            var temp = document.createElement('span');
-            hook.afterEach(function (html) {
-                return html.replace(re, function (x) {
+        (hook, vm) => {
+            const re = /@@(.*?)@@/g;
+            const re2 = /\[([^\[]+)\]\(([^\)]+)\)/g;
+            const atRe = /@/g;
+            let temp = document.createElement('span');
+
+            hook.afterEach((html) => {
+                return html.replace(re, (x) => {
                     temp.innerHTML = x.replace(atRe, '');
-                    var text = temp.innerText;
-                    return  text.replace(re2, '<a target="_blank" href=\'$2\'>$1</a>');
+                    return  temp.innerText.replace(re2, '<a target="_blank" href=\'$2\'>$1</a>');
                 })
             })
         }
