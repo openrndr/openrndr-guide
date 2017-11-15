@@ -4,59 +4,17 @@
     <meta charset="UTF-8">
     <title>OPEN RNDR</title>
     <meta name="description" content="open RNDR">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
-
+    <link rel="stylesheet" href="assets/index.css">
     <link rel="icon" href="_media/favicon.ico">
-    <style>
-        .cover{
-            background-size: 22%, 22% !important;
-            -webkit-background-size: 22%, 22% !important;
-        }
-    </style>
 </head>
+
 <body>
-<div id="app"></div>
+    <div id="app"></div>
 </body>
-<script>
-    window.$docsify = {
-        repo: '/openrndr',
-        name: 'openRNDR',
-        auto2top: true,
-        loadSidebar: true,
-        coverpage: true,
-        executeScript: true,
-        search: {
-            noData: {
-                '/': 'No results!'
-            },
-            paths: 'auto',
-            placeholder: {
-                '/': 'Search'
-            }
-        },
 
-        plugins: [
-            function(hook, vm) {
-                var re = /@@(.*?)@@/g;
-                var temp = document.createElement('span');
-                var re2 = /\[([^\[]+)\]\(([^\)]+)\)/g;
-
-                hook.afterEach(function (html) {
-//                    var url = 'https://github.com/QingWei-Li/docsify/blob/master/docs' + vm.route.file
-
-                    return html.replace(re, function (x) {
-                        temp.innerHTML = x.replace(/@/g, '');
-                        var text = temp.innerText;
-                        return  text.replace(re2, '<a target="_blank" href=\'$2\'>$1</a>');
-
-                    })
-                })
-            }
-        ]
-    }
-</script>
+<script src="assets/index.js"></script>
 
 <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
 <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
