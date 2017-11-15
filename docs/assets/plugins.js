@@ -1,4 +1,5 @@
 const plugins = {
+
     linkify:
         (hook, vm) => {
             const re = /@@(.*?)@@/g;
@@ -12,6 +13,7 @@ const plugins = {
                 })
             })
         },
+
     editLink:
         (hook, vm) => {
             hook.beforeEach((html) => {
