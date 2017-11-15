@@ -20,6 +20,7 @@ window.$docsify = {
             '/': 'Search ...'
         }
     },
+    ga: 'UA-109731993-1',
     plugins: [
         plugins.linkify,
         plugins.editLink
