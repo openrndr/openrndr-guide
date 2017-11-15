@@ -30,3 +30,20 @@ window.$docsify = {
         }
     ]
 };
+
+
+const invertPage = () => {
+    if(document.body.classList.contains('inverted')){
+        document.body.classList.remove('inverted');
+    }else{
+        document.body.classList.add('inverted');
+    }
+};
+
+window.onload = ()=>{
+    const invertHandler = document.createElement('span');
+    invertHandler.innerHTML = "invert";
+    invertHandler.className = "invert-handler";
+    invertHandler.onclick = invertPage;
+    document.body.appendChild(invertHandler);
+};
