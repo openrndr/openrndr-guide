@@ -15,7 +15,7 @@ const plugins = {
     editLink:
         (hook, vm) => {
             hook.beforeEach((html) => {
-                let url = `${configs.repoLink}/${vm.route.file}`;
+                let url = `${configs.repoLink}/blob/master/docs/${vm.route.file}`;
                 return html + '\n----\n'
                     + 'Last modified {docsify-updated} '
                     + '[:memo: Edit Document](' + url + ')\n'
