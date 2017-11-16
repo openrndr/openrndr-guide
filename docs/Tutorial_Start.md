@@ -1,10 +1,10 @@
 # Getting Started with OPENRNDR #
 
-OPENRNDR provides an application framework that allows its users to write applications that run on Microsoft Windows, macOS and Linux platforms. For future versions we want to include the Android and Raspberry PI platforms as well.
+OPENRNDR provides an application framework that allows its users to write applications that run on Microsoft Windows, MacOS and Linux platforms. For future versions we want to include the Android and Raspberry PI platforms as well.
 
 ## Requirements ##
  
- * A computer running Windows 7+ or OSX 10.10+
+ * A computer running Windows 7+ or MacOSX 10.10+
  * Java 8 JDK installed
  * [IntelliJ Idea](Tools_IntelliJIdea) Community or Enterprise edition
 
