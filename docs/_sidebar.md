@@ -11,17 +11,20 @@
     - [Drawing with SVG files](/Topic_DrawingSVGFiles.md)
 - **Videos**
     - [Playing videos](Tutorial_VideoPlayer.md)
-
 - **Advanced Topics**
     - [Render targets and Color buffers](/Tutorial_RenderTargets.md)
     - [Writing to SVG files](/Topic_WritingSVGFiles.md)
     - [Writing to video files](/Tutorial_VideoWriter.md)
     - [Shade styles](/Tutorial_ShadeStyles.md)
     - [Custom rendering](/Tutorial_CustomRendering.md)
-
+    - [Creating Java collections](/Tutorial_JavaCollections.md)
+  - **To be placed in the TOC**
+    - [OPENRNDR and Kotlin](/Topic_RNDRKotlin.md)
+    - [Maven](/Tools_Maven.md)
 - **Distribution topics**
     - [Creating distributable programs](/Topic_DistributablePrograms.md)
 
 
 ----
-* [Important and related libraries](important.md.md)
+* [Important libraries](important.md.md)
+* [Roadmap](/Roadmap.md)
