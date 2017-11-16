@@ -1,3 +1,7 @@
+# Render targets and color buffers # 
+
+FIX ME: add intro sentence..
+
 ```java
 
 RenderTarget rt;
@@ -29,7 +33,10 @@ A [RenderTarget](Topic_RenderTarget) defines where drawings takes place. A Rende
 
 ## ColorBuffer
 
+FIX ME: add info..
 
 ## DepthBuffer
 
 A RenderTarget can also have depth attachments. 
+
+NEEDS MORE EXPLANATION??
