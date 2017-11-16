@@ -1,7 +1,8 @@
-Writing to videos has only been tested on OSX thus far, it has been tested with ffmpeg 2.3.2.
+# Writing to video files #
+
+Please note that writing to videos for OPENRNDR has only been tested on OSX thus far, it has been tested with ffmpeg 2.3.2.
 
 Use homebrew too install ffmpeg: `brew install ffmpeg`
-
 
 Be sure that you have read and that you understand the tutorial on render targets and color buffers. A `ColorBuffer` instance is needed to provide the `VideoWriter` with frames.
 
