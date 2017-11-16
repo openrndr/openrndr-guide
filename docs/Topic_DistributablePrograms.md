@@ -1,18 +1,17 @@
-# Distributable Programs
+# Creating Distributable Programs
 
-Creating distributable programs is slightly harder than using e.g. Processing. We can configure maven to produce packages that can be distributed.
+Creating distributable programs in OPENRNDR is slightly harder than using for exampel Processing. We can configure maven to produce packages that can be distributed.
 
-There are two routes to do this
+There are two routes to do this.
 
-## Appassembler
+## Appassembler FIX ME
 
-Appassembler 
 ```xml
 <plugin>
 </plugin>
 ```
 
-## App bundler 
+## App bundler FIX ME
 
 If you plan to distribute for OSX only, it is likely more appealing to use app bundler. App bundler produces .app packages that feel more native to the OSX environment.
 
