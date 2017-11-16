@@ -1,4 +1,4 @@
-## Playing videos ##
+# Playing videos #
 
 The VideoPlayer class is used to play videos. Please note that it is only tested on OSX with ffmpeg 2.8.x. The current version of ffmpeg offered by brew is 3.3 and is not compatible. If you already installed ffmpeg with brew, please do:
 
