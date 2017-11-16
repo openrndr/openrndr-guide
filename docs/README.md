@@ -1,5 +1,5 @@
 # RNDR #
-RNDR is a framework for creative coding for Java 8+. 
+RNDR is a framework for creative coding for Java 8+ that simplifies writing real-time interactive software. 
 
 RNDR is designed and developed for prototyping as well as the development of robust performant visual and interactive applications. 
 
