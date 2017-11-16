@@ -1,9 +1,17 @@
-# Getting Started with RNDR #
+# Getting Started with OPENRNDR #
 
-## Prerequisites ##
+OPENRNDR provides an application framework that allows its users to write applications that run on Microsoft Windows, macOS and Linux platforms. For future versions we want to include the Android and Raspberry PI platforms as well.
+
+OPENRNDR is written with the idea to provide simple, reusable utilities with which creative coders can build robust, fast and reliable (interactive) applications. 
+
+OPENRNDR is written in Java and fully embraces its existing infrastructure of (open source) libraries, editors, debuggers and build tools.
+
+OPENRNDR is not an application, it is a collection of software components that aid the creation of applications.
+
+## Requirements ##
  
  * A computer running Windows 7+ or OSX 10.10+
- * Java 8 JDK
+ * Java 8 JDK installed
  * [IntelliJ Idea](Tools_IntelliJIdea) Community or Enterprise edition
 
 ## Creating a new project
@@ -12,7 +20,7 @@ In Intellij: File -> New Project. Pick Maven project
 
 If you are unfamiliar with Maven take some time to read our notes on [Maven](Tools_Maven)
 
-## Configure RNDR library
+## Configure OPENRNDR library
 
 Edit the `pom.xml` file and add the following:
 
