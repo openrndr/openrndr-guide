@@ -1,5 +1,5 @@
 # Drawing text #
-RNDR comes with two text drawing modes: vector based and image based. The vector based mode is advised for large font sizes while the bitmap based mode is advised for smaller font sizes.
+OPENRNDR comes with two text drawing modes: vector based and image based. The vector based mode is advised for large font sizes while the bitmap based mode is advised for smaller font sizes.
 
 
 ## Relevant APIs ##
@@ -31,7 +31,7 @@ public void draw() {
 
 ## Advanced text drawing ##
 
-RNDR comes with a `Writer` class that allows for basic typesetting. The `Writer` tool is based on the concept of text box and a cursor. 
+OPENRNDR comes with a `Writer` class that allows for basic typesetting. The `Writer` tool is based on the concept of text box and a cursor. 
 
 Its use is easiest demonstrated through an example:
 
