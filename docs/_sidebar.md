@@ -12,7 +12,7 @@
 - **Videos**
     - [Playing videos](Tutorial_VideoPlayer.md)
 
-- **Advance Topics**
+- **Advanced Topics**
     - [Render targets and Color buffers](/Tutorial_RenderTargets.md)
     - [Writing to SVG files](/Topic_WritingSVGFiles.md)
     - [Writing to video files](/Tutorial_VideoWriter.md)
