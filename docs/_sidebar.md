@@ -2,7 +2,7 @@
 
 - [**Get Started**](/test.md)
 - **Vectors and Matrices**
-    -  [basics](/Tutorial_VectorsAndMatrices.md)
+    -  [Basics](/Tutorial_VectorsAndMatrices.md)
 - **Drawing**
     - [Drawing text](/Tutorial_DrawingText.md)
     - [Drawing primitives](/Tutorial_DrawingPrimitives.md)
