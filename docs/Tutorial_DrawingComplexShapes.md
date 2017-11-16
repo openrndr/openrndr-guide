@@ -1,5 +1,7 @@
 # Drawing complex shapes #
 
+FIX ME: Add a little sentence here. Question: should Relevant APIs be on top, or be under the other topics, or explain how to use the APIs??
+
 ## Shape builder ##
 
 The `ShapeBuilder` class offers a simple way of producing complex two dimensional shapes. `ShapeBuilder` employs a vocabulary that is familiar to those who have used SVG.
