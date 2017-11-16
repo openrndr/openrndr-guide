@@ -1,8 +1,8 @@
 # Vectors and Matrices #
 
-RNDR extensively uses vector and matrix classes to pass positions and transforms around.
+OPENRNDR extensively uses vector and matrix classes to pass positions and transforms around.
 
-RNDR's vector and matrix classes are immutable, that means once they are constructed its value cannot be changed. 
+OPENRNDR's vector and matrix classes are immutable, that means once they are constructed its value cannot be changed. 
 
 ## Vectors ##
 
