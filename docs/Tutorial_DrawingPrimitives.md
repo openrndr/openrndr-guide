@@ -1,5 +1,7 @@
 # Drawing Primitives #
 
+FIX ME: Add a little sentence here. Question: should Relevant APIs be on top, or be under the other topics, or explain how to use the APIs?? 
+
 ## Relevant APIs ##
 
 ```java
