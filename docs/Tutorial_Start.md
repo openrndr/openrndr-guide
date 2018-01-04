@@ -4,8 +4,8 @@ OPENRNDR provides an application framework that allows its users to write applic
 
 ## Requirements ##
  
- * A computer running Windows 7+ or MacOSX 10.10+
- * Java 8 JDK installed
+ * A computer running Windows 10 (older versions may work but are untested) or MacOSX 10.10+
+ * Java 8 or 9 JDK installed
  * [IntelliJ Idea](Tools_IntelliJIdea) Community or Enterprise edition
 
 ## Creating a new project
@@ -21,41 +21,36 @@ Edit the `pom.xml` file and add the following:
 ```xml
     <dependencies>
         <dependency>
-            <groupId>net.lustlab.rndr</groupId>
+            <groupId>org.openrndr</groupId>
             <artifactId>rndr</artifactId>
-            <version>0.2.8-SNAPSHOT</version>
+            <version>0.3.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>lustlab</id>
-            <url>http://server.lustlab.net/edwin/maven</url>
-            <name>lustlab</name>
-        </repository>
-    </repositories>
 ```
 
 After saving `pom.xml` IntelliJ Idea will ask you to import the changes made to the pom.xml, import the changes. In the background Maven will download RNDR and the libraries it depends on.
 
 ## Writing your first RNDR program
 
-Add a new Java class to the project, name it `program.FirstProgram`
+Add a new Kotlin class to the project, name it `program.FirstProgram`
 
-```java
+```kotlin
 
-import net.lustlab.rndr.program.Program;
-public class FirstProgram extends Program {
+import org.openrndr.program
+class FirstProgram extends Program {
 
-    public void draw() {
-          background(ColorRGBa.BLACK);
-          drawer.fill(ColorRGBa.WHITE);
-          drawer.circle(width/2, height/2, 100);
+    fun draw() {
+          background(ColorRGBa.BLACK)
+          drawer.fill = ColorRGBa.WHITE
+          drawer.circle(width / 2.0, height / 2.0 , 100.0)
     }   
+}
 
-    public static void main(String[] args) {
-        Application.run(new FirstProgram(), new Configuration().size(600,600));
-    }
+fun main(args:Array<String>) {
+    Application.run(FirstProgram(), new Configuration().apply {
+        width = 1280
+        height = 720
+    })
 }
 
 ```

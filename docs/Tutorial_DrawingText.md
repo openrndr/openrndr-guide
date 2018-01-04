@@ -3,29 +3,31 @@ OPENRNDR comes with two text drawing modes: vector based and image based. The ve
 
 
 ## Relevant APIs ##
-```java
-Drawer.text(FontMap fontMap, String text, double x, double y)
-FontImageMap.fromUrl(String url, int size)
-FontVectorMap.fromUrl(String url, int size)
+```kotlin
+Drawer.fontMap
+Drawer.text(text:String, x:Double, y:Double)
+FontImageMap.fromUrl(url:String, size:Double)
+FontVectorMap.fromUrl(url:String, size:Double)
 ```
 
 
 ## Drawing bitmap based text ##
 
 ```java
-public void draw() {
+fun draw() {
     background(ColorRGBa.BLACK);
-    drawer.text(FontImageMap.fromUrl("cp:fonts/SourceCodePro-Medium.ttf", 12, "here is a text", 20, 100);
+    drawer.fontMap = FontImageMap.fromUrl("file:fonts/SourceCodePro-Medium.ttf")
+    drawer.text("here is a text", 20.0, 100.0)
 }
 ```
 
 ## Drawing vector based text ##
 
-```java
+```kotlin
 
 public void draw() {
    background(ColorRGBa.BLACK);
-   drawer.text(FontVectorMap.fromUrl("cp:fonts/SourceCodePro-Medium.ttf", 40, "here is a text", 20, 100);
+   // currently under development
 }
 ```
 
@@ -36,22 +38,26 @@ OPENRNDR comes with a `Writer` class that allows for basic typesetting. The `Wri
 Its use is easiest demonstrated through an example:
 
 ```java
-public void draw() {
+fun draw() {
+    drawer.background(ColorRGBa.BLACK)
+
     // -- First create a new Writer object. 
     // -- The writer needs a reference to the drawer in order to match style and transforms.
-    Writer writer = new Writer(drawer);
+    val writer = Writer(drawer);
 
     // -- Set a font, this is a required step
-    writer.font(FontImageMap.fromUrl("cp:fonts/SourceCodePro-Medium.ttf", 12));
+    drawer.fontMap = FontImageMap.fromUrl("file:fonts/SourceCodePro-Medium.ttf")
+    drawer.stroke = null
+    drawer.fill = ColorRGBa.WHITE
 
     // -- Setup a 400 by 400 pixel text box at position 100, 100
-    writer.box(100, 100, 400, 400);
+    writer.box(100.0, 100.0, 400.0, 400.0)
 
     // -- Output some text
-    writer.text("Here is the text");
+    writer.text("Here is the text")
 
     // -- Go to the next line and output more text
-    writer.newLine().text("Here is another line of text");
+    writer.newLine().text("Here is another line of text")
 }
 
 ```
