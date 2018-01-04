@@ -10,10 +10,9 @@ FontImageMap.fromUrl(url:String, size:Double)
 FontVectorMap.fromUrl(url:String, size:Double)
 ```
 
-
 ## Drawing bitmap based text ##
 
-```java
+```kotlin
 fun draw() {
     background(ColorRGBa.BLACK);
     drawer.fontMap = FontImageMap.fromUrl("file:fonts/SourceCodePro-Medium.ttf")
@@ -37,13 +36,13 @@ OPENRNDR comes with a `Writer` class that allows for basic typesetting. The `Wri
 
 Its use is easiest demonstrated through an example:
 
-```java
+```kotlin
 fun draw() {
     drawer.background(ColorRGBa.BLACK)
 
     // -- First create a new Writer object. 
     // -- The writer needs a reference to the drawer in order to match style and transforms.
-    val writer = Writer(drawer);
+    val writer = Writer(drawer)
 
     // -- Set a font, this is a required step
     drawer.fontMap = FontImageMap.fromUrl("file:fonts/SourceCodePro-Medium.ttf")
