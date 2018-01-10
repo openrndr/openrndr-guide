@@ -1,6 +1,8 @@
 <!-- docs/_sidebar.md -->
 
 - [**Getting Started with OPENRNDR**](/test.md)
+- **Building and installing**
+    - [Building from source](/Topic_BuildingFromSource.md)
 - **Vectors and Matrices**
     -  [Basics](/Tutorial_VectorsAndMatrices.md)
 - **Drawing**
