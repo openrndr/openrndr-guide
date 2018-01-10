@@ -1,1 +1,0 @@
-## Drawing general text

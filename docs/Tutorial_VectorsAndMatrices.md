@@ -2,40 +2,94 @@
 
 OPENRNDR extensively uses vector and matrix classes to pass positions and transforms around.
 
-OPENRNDR's vector and matrix classes are immutable, that means once they are constructed its value cannot be changed. 
+OPENRNDR's vector and matrix classes are immutable, that means once they are constructed their value cannot be changed.
 
 ## Vectors ##
 
+Relevant APIs
+
+```
+Vector2
+Vector3
+Vector4
+````
+
 The `Vector2`, `Vector3` and `Vector4` classes are used for 2, 3 and 4 dimensional vector representations.
 
-```java
+```kotlin
+val v2 = Vector2(1.0, 10.0)
+val v3 = Vector3(1.0, 1.0, 1.0)
+val v3 = Vector4(1.0, 1.0, 1.0, 1.0)
+```
+
+### Vector Arithmetic
+
+The vector classes have operator overloads for the most essential operations.
+
+```kotlin
+val v2sum = Vector2(1.0, 10.0) + Vector2(1.0, 1.0)
+val v2diff = Vector2(1.0, 10.0) - Vector2(1.0, 1.0)
+val v2scale = Vector2(1.0, 10.0) * 2.0
+```
+
+### Swizzling and sizing
+
+```kotlin
+    val v3 = Vector2(1.0, 2.0).vector3(z=0.0)
+    val v2 = Vector3(1.0, 2.0, 3.0).xy
+```
 
 
-// -- construct a Vector2 instance
-Vector2 v2 = new Vector2(10, 10);
+### Mixing
 
-// -- alternative, shorter notation
-Vector2 v2a = vector2(10, 10);
+```kotlin
+    val m = mix(Vector3(1.0, 2.0, 3.0), Vector3(3.0, 2.0, 1.0), 0.5)
+```
 
-// -- vector algebra
-Vector2 sum = vector2(10, 10).plus(vector2(20, 20));
-Vector2 diff = vector2(10, 10).minus(vector2(20, 20));
-Vector2 scaled = vector2(10, 10).scale(5.0);
 
-// -- vector swizzling
-Vector2 yx = vector2(1, 2).yx();
-Vector2 xx = vector2(1, 2).xx();
+## Transforms
 
-// -- reassigning values
-Vector2 v2b = vector2(10, 10).withX(4).withY(5);
+In OPENRNDR transforms are represented by `Matrix44` instances.
 
-// -- create Vector3 from Vector2 instance
-Vector3 v3 = vector2(10, 10).xy0();
+OPENRNDR offers tools to construct `Matrix44`
+
+### Transform builder
+
+Relevant APIs
+```
+Matrix44
+transform {}
+```
+
+
+In the snippet below a `Matrix44` instance is constructed using the `transform {}` builder. Note that the application order is from bottom to top.
+
+```kotlin
+drawer.view *= transform {
+    rotate(32.0)
+    rotate(43.0, Vector3(1.0, 1.0, 0.0).normalized)
+    translate(4.0, 2.0)
+    scale(2.0)
+}
+```
+
+This is equivalent to the following:
+```kotlin
+drawer.rotate(32.0)
+drawer.rotate(43.0,  Vector3(1.0, 1.0, 0.0).normalized)
+drawer.translate(4.0, 2.0)
+drawer.scale(2.0)
+```
+
+## Applying transforms to vectors ##
+
+```kotlin
+    val x = Vector3(1.0, 2.0, 3.0)
+    val m = transform {
+        rotate(42.0)
+    }
+    val transformed = m * x
+    val transformedTwice = m * m * x
 
 ```
 
-## Transforms ## 
-
-The `Transforms` class contains a set of helpers to construct common transforms
-
- 

@@ -1,17 +1,21 @@
 # Creating Distributable Programs
 
-Creating distributable programs in OPENRNDR is slightly harder than using for exampel Processing. We can configure maven to produce packages that can be distributed.
+Creating distributable programs in OPENRNDR is slightly harder than using for example Processing. We can configure maven to produce packages that can be distributed.
 
-There are two routes to do this.
+## Shaded jar (or "überjar")
 
-## Appassembler FIX ME
+A good starting point for creating distributable versions is to create a single executable .jar file that contains your OPENRNDR based program plus all its dependencies.
 
-```xml
-<plugin>
-</plugin>
+Such a program can then be invoked through the command:
+```sh
+java -jar my-openrndr-program.jar
 ```
 
-## App bundler FIX ME
+## Using Gradle
 
-If you plan to distribute for OSX only, it is likely more appealing to use app bundler. App bundler produces .app packages that feel more native to the OSX environment.
 
+## Using Maven
+
+```
+
+```
