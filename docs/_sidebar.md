@@ -1,6 +1,6 @@
 <!-- docs/_sidebar.md -->
 
-- [**Getting Started with OPENRNDR**]
+- **Getting Started with OPENRNDR**
     - [Setting up your first OPENRNDR program](/Tutorial_Start)
     - [Overview of OPENRNDR modules](/Topic_Modules)
     - [Gradle based projects](/Topic_GradleBasedProjects)
