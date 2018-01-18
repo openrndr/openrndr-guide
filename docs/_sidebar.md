@@ -8,12 +8,13 @@
     - [Using the example repository](/Topic_ExampleRepository)
 - **Building and installing OPENRNDR**
     - [Building from source](/Topic_BuildingFromSource.md)
-- **Drawing**
-    - [Drawing text](/Tutorial_DrawingText.md)
-    - [Drawing primitives](/Tutorial_DrawingPrimitives.md)
-    - [Drawing images](/Tutorial_DrawingImages.md)
-    - [Drawing complex shapes](/Tutorial_DrawingComplexShapes.md)
+- **Drawing basics**
+    - [Primitives](/Tutorial_DrawingPrimitives.md)
+    - [Images](/Tutorial_DrawingImages.md)
+    - [Text](/Tutorial_DrawingText.md)
+    - [Complex shapes](/Tutorial_DrawingComplexShapes.md)
     - [Drawing with SVG files](/Topic_DrawingSVGFiles.md)
+- **Advanced drawing**
     - [Render targets and color buffers](/Tutorial_RenderTargets.md)
     - [Filters and post-processing](/Tutorial_RenderTargets.md)
     - [Shade styles](/Tutorial_ShadeStyles.md)
