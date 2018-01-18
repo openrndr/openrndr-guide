@@ -1,9 +1,12 @@
 <!-- docs/_sidebar.md -->
 
-- [**Getting Started with OPENRNDR**](/test.md)
-    - [Maven based projects](/Topic_MavenBasedProjects)
+- [**Getting Started with OPENRNDR**]
+    - [Setting up your first OPENRNDR program]
+    - [Overview of OPENRNDR modules](/Topic_Modules)
     - [Gradle based projects](/Topic_GradleBasedProjects)
-- **Building and installing**
+    - [Maven based projects](/Topic_MavenBasedProjects)
+    - [Using the example repository](/Topic_ExampleRepository)
+- **Building and installing OPENRNDR**
     - [Building from source](/Topic_BuildingFromSource.md)
 - **Drawing**
     - [Drawing text](/Tutorial_DrawingText.md)
