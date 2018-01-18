@@ -9,10 +9,36 @@ A `ColorBuffer` is a buffer that can hold up to 4 channel color. A `ColorBuffer`
 
 A `DepthBuffer` is a buffer that can hold depth and stencil values.
 
+## Creating a render target
 
-## Drawing on a `RenderTarget`
+The adviced method of creating `RenderTarget` instances is to use the `renderTarget {}` builder
+
+```kotlin
+    val rt = renderTarget(640, 480)
+```
+
+This creates a render target, but the render target does not have attachments that can hold the actual image data.
+In the following snippet a render target with a single color buffer attachment is created using the builder.
+
+```kotlin
+    val rt = renderTarget(640, 480) {
+        colorBuffer()
+    }
+```
+
+One can also create render targets without using the builder as follows:
+
+```kotlin
+    val cb = ColorBuffer.create(640, 480)
+    val rt = RenderTarget.create(640, 480)
+    rt.attach(cb)
+```
+
+## Drawing on a render target
 
 In the following code snippet you will find an example showing how to draw on an off-screen buffer followed by drawing that offscreen buffer on screen.
+
+The example module `render-targets-001` contains the full source code.
 
 ```kotlin
 
@@ -20,7 +46,7 @@ lateinit var RenderTarget rt;
 
 fun setup() {
     // -- build a render target with a single color buffer attachment
-    rt = RenderTarget.build(width, height) {
+    rt = renderTarget(width, height) {
         colorBuffer()
     }
 }
@@ -43,12 +69,13 @@ fun draw() {
 
 ```
 
-## Compositing using `RenderTargets` and alpha channels
+## Compositing using render targets and alpha channels
 
 OPENRNDR allows for compositing using `RenderTargets` through the use of transparency encoded in alpha channels.
 
-
 The following code snippet uses two `RenderTarget` instances and clears them using `ColorRGBa.TRANSPARENT`.
+The example module `render-targets-002` contains the full source code.
+
 ```kotlin
 
 lateinit var RenderTarget rt0;
@@ -84,5 +111,25 @@ fun draw() {
     drawer.draw(rt0.colorBuffer(0))
     drawer.draw(rt1.colorBuffer(1))
 }
-
 ```
+
+## Creating high precision floating point render targets
+
+The default color buffer format is unsigned 8 bit RGBa. There is support for floating point render targets.
+
+```kotlin
+val rt = renderTarget(640.0, 480.0) {
+    colorBuffer(ColorFormat.RGBa, ColorType.FLOAT16)
+    colorBuffer(ColorFormat.RGBa, ColorType.FLOAT32)
+}
+```
+
+## Named attachements
+
+```kotlin
+val rt = renderTarget(640.0, 480.0) {
+    colorBuffer("albedo", ColorFormat.RGBa, ColorType.FLOAT16)
+    colorBuffer("position", ColorFormat.RGBa, ColorType.FLOAT32)
+}
+```
+
