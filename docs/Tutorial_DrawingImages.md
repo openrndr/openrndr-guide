@@ -4,22 +4,30 @@ FIX ME: Add a little sentence here. Question: should Relevant APIs be on top, or
 
 ## Relevant APIs ##
 
-```java
-Drawer.image(double x, double y)
-Drawer.image(double x, double y, double width, double height)
-Drawer.image(double sourceX, double sourceY, double sourceWidth, double sourceHeight, double destX, double destY, double destWidth, double destHeight)
+```kotlin
+fun Drawer.image(image: ColorBuffer, x: Double = 0.0, y: Double = 0.0)
+fun Drawer.image(image: ColorBuffer, x: Double, y: Double, width: Double, height:Double)
+fun Drawer.image(image: ColorBuffer, source: Rectangle, dest: Rectangle)
 ```
 
-```java
-ColorBuffer image;
+## Loading and drawing images
 
-public void setup() {
-    image = ColorBuffer.fromFile("data/myImage.png");
+```kotlin
+lateinit var image: ColorBuffer;
+
+override fun setup() {
+    image = ColorBuffer.fromUrl("file:data/myImage.png");
 }
 
-public void draw() {
-    drawer.tint(new Color(1, 1, 1, Math.cos(seconds()) * 0.5 + 0.5);
-    drawer.image(image, 0, 0);
+override fun draw() {
+    drawer.image(image);
+}
+```
+## Drawing parts of images
+
+```kotlin
+override fun draw() {
+    drawer.image(image, Rectangle(Vector2(0.0, 0.0), 100.0, 200.0), Rectangle(Vector2(0.0, 0.0), 100.0, 200.0))
 }
 ```
 
@@ -27,19 +35,19 @@ public void draw() {
 
 The drawer provides two methods of changing the appearance of images. The simplest one is `tint` which allows for simple image tinting. Tint performs a multiplication of the image color with the provided tint color.
 
-```java
-public void draw() {
-    drawer.tint(new Color(1, 1, 1, Math.cos(seconds()) * 0.5 + 0.5);
-    drawer.draw(image, 0, 0);
+```kotlin
+override fun draw() {
+    drawer.tint(ColorRGBa(1.0, 1.0, 1.0, Math.cos(seconds()) * 0.5 + 0.5)
+    drawer.image(image)
 }
 ```
 
 A more complex, yet more powerful way of changing the appearance is the `colorMatrix` method. Color matrices allow for a wider range of color transformations.
 
-```java
-public void draw() {
+```kotlin
+override fun draw() {
     drawer.colorMatrix(ColorTransforms.GRAYSCALE)
-    drawer.draw(image, 0, 0);
+    drawer.image(image)
 } 
 ```
 
@@ -58,33 +66,16 @@ A number of preset color transforms are available in the `ColorTransforms` class
 
 Custom color matrices can be made by constructing a `Matrix44`.
 
-```java
-public void draw() {
+```kotlin
+override fun draw() {
     // -- construct a color transform that switches the red and blue channel 
-    Matrix44 ct = Matrix44.fromColumnVectors(
+    val ct = Matrix44.fromColumnVectors(
         new Vector4(0, 0, 1, 0),
         new Vector4(0, 1, 0, 0),
         new Vector4(1, 0, 0, 0),
         new Vector4(0, 0, 0, 1)
     );
-    drawer.colorMatrix(ct);
-    drawer.draw(image, 0, 0);
-} 
-```
-
-Color matrices can also be built in a more literal way using the `ColorMatrixBuilder`. Here follows an example that produces the same color matrix as in the previous example.
-
-```java
-public void draw() {
-    // -- construct a color transform that switches the red and blue channel 
-    Matrix44 ct = 
-        new ColorMatrixBuilder().
-            red().plusBlue(1.0).
-            green().plusGreen(1.0).
-            blue().plusRed(1.0).
-            build();
-        
-    drawer.colorMatrix(ct);
-    drawer.draw(image, 0, 0);
+    drawer.colorMatrix = ct;
+    drawer.draw(image, 0, 0)
 } 
 ```
