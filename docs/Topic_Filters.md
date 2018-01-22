@@ -68,7 +68,7 @@ Blending filters
 | `ColorDodge` | implements blending similar to color dodge in Photoshop |
 | `Darken` | implements blending similar to darken Photoshop |
 | `Hardlight` | implements blending similar to hard light in Photoshop |
-| `Lighten` | implements blending similar to color burn in Photoshop |
+| `Lighten` | implements blending similar to lighten in Photoshop |
 | `Multiply` | implements multiply blending |
 | `Normal` | implements normal alpha blending |
 | `Overlay` | implements blending similar to overlay in Photoshop |
