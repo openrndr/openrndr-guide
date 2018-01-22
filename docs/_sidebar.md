@@ -16,7 +16,7 @@
     - [Drawing with SVG files](/Topic_DrawingSVGFiles.md)
 - **Advanced drawing**
     - [Render targets and color buffers](/Tutorial_RenderTargets.md)
-    - [Filters and post-processing](/Tutorial_RenderTargets.md)
+    - [Filters and post-processing](/Topic_Filters.md)
     - [Shade styles](/Tutorial_ShadeStyles.md)
     - [Custom rendering](/Tutorial_CustomRendering.md)
 - **Vectors and Matrices**
