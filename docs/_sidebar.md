@@ -22,7 +22,7 @@
 - **Vectors and Matrices**
     -  [Basics](/Tutorial_VectorsAndMatrices.md)
 - **Videos**
-    - [Playing videos](Tutorial_VideoPlayer.md)
+    - [Playing videos](Topic_VideoPlayer.md)
     - [Writing to video files](/Tutorial_VideoWriter.md)
 - **Advanced Topics**
     - [Writing to SVG files](/Topic_WritingSVGFiles.md)
