@@ -15,12 +15,11 @@
     - [Complex shapes](/Tutorial_DrawingComplexShapes.md)
     - [Drawing with SVG files](/Topic_DrawingSVGFiles.md)
 - **Advanced drawing**
+    - [Transforms](/Topic_Transforms.md)
     - [Render targets and color buffers](/Tutorial_RenderTargets.md)
     - [Filters and post-processing](/Topic_Filters.md)
     - [Shade styles](/Tutorial_ShadeStyles.md)
     - [Custom rendering](/Tutorial_CustomRendering.md)
-- **Vectors and Matrices**
-    -  [Basics](/Tutorial_VectorsAndMatrices.md)
 - **Videos**
     - [Playing videos](Topic_VideoPlayer.md)
     - [Writing to video files](/Tutorial_VideoWriter.md)
