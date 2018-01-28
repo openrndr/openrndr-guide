@@ -36,21 +36,23 @@ Add a new Kotlin class to the project, name it `program.FirstProgram`
 
 ```kotlin
 
-import org.openrndr.program
-class FirstProgram extends Program {
+import org.openrndr.Application
+import org.openrndr.Configuration
+import org.openrndr.Program
+import org.openrndr.color.ColorRGBa
+import org.openrndr.math.Vector2
 
-    fun draw() {
-          background(ColorRGBa.BLACK)
-          drawer.fill = ColorRGBa.WHITE
-          drawer.circle(width / 2.0, height / 2.0 , 100.0)
-    }   
+class FirstProgram: Program(){
+
+    override fun draw() {
+        drawer.background(ColorRGBa.BLACK)
+        drawer.fill = ColorRGBa.WHITE
+        drawer.circle(Vector2( width / 2.0, height / 2.0 ), 100.0)
+    }
 }
 
 fun main(args:Array<String>) {
-    Application.run(FirstProgram(), new Configuration().apply {
-        width = 1280
-        height = 720
-    })
+    Application.run(FirstProgram(), Configuration())
 }
 
 ```
