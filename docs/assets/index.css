@@ -1,7 +1,7 @@
 body{
-    font-family: "IBM Plex Mono", sans-serif;
-    font-size: 14px;
-    line-height: 16px;
+    /*font-family: "IBM Plex Mono", sans-serif;*/
+    /*font-size: 14px;*/
+    /*line-height: 16px;*/
 }
 
 body.inverted,
@@ -24,8 +24,8 @@ body.inverted .content{
 }
 
 .sidebar-nav *{
-    font-size: 0.95em !important;
-    line-height: 2em;
+    /*font-size: 0.95em !important;*/
+    /*line-height: 2em;*/
 }
 
 .invert-handler{
