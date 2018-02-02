@@ -1,5 +1,7 @@
 body{
-    font-family: Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;
+    font-family: "IBM Plex Mono", serif;
+    font-size: 16px;
+    line-height: 24px;
 }
 
 body.inverted,
@@ -19,6 +21,11 @@ body.inverted .content{
 .cover{
     background-size: 22%, 22% !important;
     -webkit-background-size: 22%, 22% !important;
+}
+
+.sidebar-nav *{
+    font-size: 1em !important;
+    line-height: 2em;
 }
 
 .invert-handler{
