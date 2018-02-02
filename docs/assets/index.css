@@ -24,7 +24,7 @@ body.inverted .content{
 }
 
 .sidebar-nav *{
-    font-size: 1em !important;
+    font-size: 0.95em !important;
     line-height: 2em;
 }
 
