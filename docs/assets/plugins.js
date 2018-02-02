@@ -1,5 +1,4 @@
 const plugins = {
-
     linkify:
         (hook, vm) => {
             const re = /@@(.*?)@@/g;

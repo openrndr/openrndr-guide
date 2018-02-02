@@ -23,7 +23,8 @@ window.$docsify = {
     ga: 'UA-109731993-1',
     plugins: [
         plugins.linkify,
-        plugins.editLink
+        plugins.editLink,
+        window.DocsifyCopyCodePlugin.init()
     ]
 };
 
@@ -35,7 +36,7 @@ const invertPage = () => {
     }
 };
 
-window.onload = ()=>{
+window.onload = () => {
     const invertHandler = document.createElement('span');
     invertHandler.innerHTML = "invert";
     invertHandler.className = "invert-handler";
@@ -47,3 +48,5 @@ window.onload = ()=>{
     // const article = document.querySelector('#main');
     // content.style.height = `${article.offsetHeight+200}px`;
 };
+
+
