@@ -108,7 +108,7 @@ override fun draw() {
     drawer.fill = ColorRGBa.WHITE
     drawer.shadeStyle = shadeStyle {
         vertexTransform = """
-            x_viewTransform = x_viewTransform * transform;
+            x_viewTransform = x_viewTransform * i_transform;
             """
         }
     drawer.vertexBufferInstances(listOf(geometry), listOf(transforms), Primitive.TRIANGLES, 1000)

@@ -2,111 +2,122 @@
 
 Shade styles are used to change the drawing behaviour of the drawer.
 
-Shade styles are comprised of transforms that change aspects of the drawing behaviour. 
-
-* position transform
-* fill transform
-* stroke transform
-* tint transform
-
-What can be achieved through shade styles? A lot. Applying gradients, texture mapping, filtering.
-
 ## Basic usage ##
 
+In essence shade styles are fragments of GLSL code that are inserted into OPENRNDRs templated shaders.
 
-```java
+```kotlin
 
-void draw() {
+fun draw() {
     // -- set shade style
-    drawer.shadeStyle(new ShadeStyle().fill("x_fill = vec4(1,0,0,1);"));
+    drawer.shadeStyle = shadeStyle {
+
+        fragmentTransform = """
+            x_fill.rgb = vec3(1.0, 0.0, 0.0);
+        """
+    }
 
     // -- draw rectangle with the shade style applied to it
     drawer.rectangle(10, 10, 100, 100);
 }
-
 ```
 
-## Fill transform ##
+## Standard uniforms
 
-The fill transform adjusts the fill color. The outcome of the transform must be assigned to the `x_fill` variable.
+Uniform name     | GLSL type   | Description
+-----------------|-------------|---------------
+projectionMatrix | `mat44`     | The projection matrix
+viewMatrix       | `mat44`     | The view matrix
+normalMatrix     | `mat44`     | Modified view matrix that should be applied to normals
+fill             | `vec4`      | The fill color
+stroke           | `vec4`      | The stroke color
+colorTransform   | `float[25]` | The 5x5 color transform matrix
 
-```java
+## Standard Attributes
 
-// -- force fill to be red
-shadeStyle.fill("x_fill = vec4(1, 0, 0, 1);");
+Attribute name | GLSL type | Description
+---------------|-----------|------------
+`a_position`   | vec3      | the position
+`a_normal`     | vec3      | the normal
 
-```
+## Transformable values
 
-## Stroke transform ##
+These are values that can be transformed using shade styles.
 
-```java
+### Vertex transform
 
-// -- force stroke to be red
-shadeStyle.fill("x_stroke = vec4(1, 0, 0, 1);");
+Variable name        | GLSL type | Description
+---------------------|-----------|------------
+`x_position`         | `vec3`    | vertex position, initialized with value `a_position`
+`x_normal`           | `vec3`    | vertex normal, intialized with value `a_normal`
+`x_viewMatrix`       | `mat4`    | view matrix
+`x_normalMatrix`     | `mat4`    | normal matrix, initialized with `normalMatrix`
+`x_projectionMatrix` | `mat4`    | pjojection matrix, initialized with `projectionMatrix`
 
-```
 
-## Tint transform ##
+### Fragment transform
 
-The tint transform is used in image based drawing. The result must be written to `x_tint`
+Variable name | GLSL type | Description
+--------------|-----------|------------
+`x_fill`      | `vec4`    | The fill color written to the fragment
+`x_stroke`    | `vec4`    | The stroke color written to the fragment
 
-```java
 
-// -- force tint to be red
-shadeStyle.tint("x_tint = vec4(1, 0, 0, 1);");
+## Constants
 
-```
+Constant name      | Scope               | GLSL type | Description
+-------------------|---------------------|-----------|------------
+`c_boundsPosition` | fragment transform  | vec3      |
+`c_boundsMin`      | fragment transform  | vec3      |
+`c_boundsMax`      | fragment transform  | vec3      |
 
-## Position transform ##
-
-The position transform is used to modify the vertex positions.
-
-## Constants and variables ##
-
-Shade styles expose the following constants and variables.
-
-| variable name    | GLSL type | access | scope | description |
-|------------------|-----------|--------|-------|-------------|
-| `x_tint`         | `vec4`    | write  | tint  | output for the tint transform |
-| `x_fill`         | `vec4`    | write  | fill  | output for the fill transform |
-| `x_stroke`       | `vec4`    | write  | stroke  | output for the stroke transform |
-| `fill`           | `vec4`    | read   | all   | the original fill color |
-| `stroke`         | `vec4`    | read   | all   | the original stroke color |
-| `screenPosition` | `vec2`    | read   | ^position | the position in screen space |
-| `bounds`         | `vec4`    | read   | all | llll |
-| `contourLength`  | `float` | read | stroke | the length of the contour being drawn (where applicable) |
-| `contourOffset`  | `float` | read | stroke | the length of the contour being drawn (where applicable) |
-| `contourFraction` | `float` | read | stroke | |
 
 ## Parameters ##
 
-Parameters can be used to supply external data to transforms.
+Parameters can be used to supply external data to transforms. Parameters are translated to shader uniforms and are exposed
+by uniforms with the `p_` prefix.
 
-```java
+```kotlin
 
-void draw() {
+fun draw() {
     // -- set shade style
-    drawer.shadeStyle(new ShadeStyle().
-                          fill("x_fill = p_userFill");
-                     );
+    drawer.shadeStyle = shadeStyle {
+        fragmentTransform = """
+            x_fill = p_userFill;
+        """
+    }
 
     // -- get active shade style and set parameter value
-    drawer.shadeStyle().parameter("userFill", new Vector4(1, 0, 0, 1));
+    drawer.shadeStyle?.parameter("userFill", Vector4(1, 0, 0, 1));
 
     // -- draw rectangle with the shade style applied to it
-    drawer.rectangle(10, 10, 100, 100);
+    drawer.rectangle(10.0, 10.0, 100.0, 100.0);
 }
 
 ```
 
-Supported parameter types:
+### Supported parameter types:
 
-| Java type | GLSL type |
-|-----------|-----------|
-| `float`   | `float`   |
-| `Vector2` | `vec2`    |
-| `Vector3` | `vec3`    |
-| `Vector4` | `vec4`    |
-| `Matrix44`| `mat4`    |
-| `ColorBuffer` | `sampler2D` |
-| `BufferTexture` | `samplerBuffer` |
+ JVM type        | GLSL type
+-----------------|-------------
+ `float`         | `float`
+ `Vector2`       | `vec2`
+ `Vector3`       | `vec3`
+ `Vector4`       | `vec4`
+ `ColorRGBa`     | `vec4`
+ `Matrix44`      | `mat4`
+ `ColorBuffer`   | `sampler2D`
+ `BufferTexture` | `samplerBuffer`
+
+## Prefix overview
+
+Listed below is an overview of all the prefixes used in the shade style language.
+
+prefix   | Scope               | Description
+---------|--------------------|-----------------
+`a_`     | vertex transform   | vertex attribute
+`va_`    | fragment transform | varying attribute, interpolation passed from vertex to fragment shader
+`i_`     | vertex transform   | instance attribute
+`vi_`    | fragment transform | varying instance attribute
+`x_`     | all                | transformable value
+`p_`     | all                | user provided value
