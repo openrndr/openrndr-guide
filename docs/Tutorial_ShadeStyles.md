@@ -54,14 +54,12 @@ Variable name        | GLSL type | Description
 `x_normalMatrix`     | `mat4`    | normal matrix, initialized with `normalMatrix`
 `x_projectionMatrix` | `mat4`    | pjojection matrix, initialized with `projectionMatrix`
 
-
 ### Fragment transform
 
 Variable name | GLSL type | Description
 --------------|-----------|------------
 `x_fill`      | `vec4`    | The fill color written to the fragment
 `x_stroke`    | `vec4`    | The stroke color written to the fragment
-
 
 ## Constants
 
@@ -70,7 +68,6 @@ Constant name      | Scope               | GLSL type | Description
 `c_boundsPosition` | fragment transform  | vec3      |
 `c_boundsMin`      | fragment transform  | vec3      |
 `c_boundsMax`      | fragment transform  | vec3      |
-
 
 ## Parameters ##
 
@@ -121,3 +118,37 @@ prefix   | Scope               | Description
 `vi_`    | fragment transform | varying instance attribute
 `x_`     | all                | transformable value
 `p_`     | all                | user provided value
+`o_`     | fragment transform | output value
+
+## Outputs
+
+Shade styles allow the output to multiple buffers
+
+```kotlin
+
+lateinit var rt: RenderTarget
+fun setup() {
+    rt = renderTarget(width, height) {
+        colorBuffer("color")
+        colorBuffer("extra")
+    }
+}
+
+fun draw() {
+    drawer.isolatedWithRenderTarget(rt) {
+        shadeStyle = shadeStyle {
+            fragmentTransform = """
+                x_fill = vec4(1.0, 1.0, 1.0, 1.0);
+                o_extra = vec4(1.0, 0.0, 0.0, 1.0);
+            """
+            // -- set the outputs
+            output("color", 0)
+            output("extra", 1)
+        }
+        rectangle(0.0, 0.0, 100.0, 100.0)
+    }
+    drawer.colorBuffer(rt.colorBuffer("color"), 0.0, 0.0, width/2.0, height/2.0)
+    drawer.colorBuffer(rt.colorBuffer("extra"), width/2.0, height/2.0, width/2.0, height/2.0)
+}
+
+```
