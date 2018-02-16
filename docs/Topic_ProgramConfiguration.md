@@ -57,7 +57,8 @@ configuration {
 ## Window Title
 
 Setting the window title is achieved by setting the `title` property in the configuration
-```
+```kotlin
 configuration {
     title = "Lo and behold!"
 }
+```
