@@ -8,6 +8,8 @@
     - [Using the example repository](/Topic_ExampleRepository)
 - **Building and installing OPENRNDR**
     - [Building from source](/Topic_BuildingFromSource.md)
+- **Program basics**
+    - [Program configuration](/Topic_ProgramConfiguration.md)
 - **Drawing basics**
     - [Primitives](/Tutorial_DrawingPrimitives.md)
     - [Images](/Tutorial_DrawingImages.md)

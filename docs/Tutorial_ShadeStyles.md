@@ -11,7 +11,6 @@ In essence shade styles are fragments of GLSL code that are inserted into OPENRN
 fun draw() {
     // -- set shade style
     drawer.shadeStyle = shadeStyle {
-
         fragmentTransform = """
             x_fill.rgb = vec3(1.0, 0.0, 0.0);
         """
@@ -21,6 +20,10 @@ fun draw() {
     drawer.rectangle(10, 10, 100, 100);
 }
 ```
+
+## Built-in shade shade styles
+
+OPENRNDR offers a number of built-in shadestyles to facilitate common use cases.
 
 ## Standard uniforms
 
@@ -90,8 +93,16 @@ fun draw() {
     // -- draw rectangle with the shade style applied to it
     drawer.rectangle(10.0, 10.0, 100.0, 100.0);
 }
-
 ```
+
+### ColorBuffer parameters
+
+Can be used to map images.
+
+
+### BufferTexture parameters
+
+Can be used to map custom values.
 
 ### Supported parameter types:
 
@@ -110,7 +121,7 @@ fun draw() {
 
 Listed below is an overview of all the prefixes used in the shade style language.
 
-prefix   | Scope               | Description
+prefix   | Scope              | Description
 ---------|--------------------|-----------------
 `a_`     | vertex transform   | vertex attribute
 `va_`    | fragment transform | varying attribute, interpolation passed from vertex to fragment shader
@@ -118,7 +129,7 @@ prefix   | Scope               | Description
 `vi_`    | fragment transform | varying instance attribute
 `x_`     | all                | transformable value
 `p_`     | all                | user provided value
-`o_`     | fragment transform | output value
+`o_`     | fragment transform | output value (always `vec4`)
 
 ## Outputs
 
@@ -150,5 +161,4 @@ fun draw() {
     drawer.colorBuffer(rt.colorBuffer("color"), 0.0, 0.0, width/2.0, height/2.0)
     drawer.colorBuffer(rt.colorBuffer("extra"), width/2.0, height/2.0, width/2.0, height/2.0)
 }
-
 ```
