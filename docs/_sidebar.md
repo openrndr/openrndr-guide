@@ -26,6 +26,7 @@
     - [Playing videos](Topic_VideoPlayer.md)
     - [Writing to video files](/Tutorial_VideoWriter.md)
 - **Advanced Topics**
+    - [Application flow][Topic_ApplicationFlow]
     - [Writing to SVG files](/Topic_WritingSVGFiles.md)
 - **Distribution topics**
     - [Creating single .jar file distributions](/Topic_SingleJars.md)
