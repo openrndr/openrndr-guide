@@ -53,12 +53,21 @@ configuration {
 }
 ```
 
-
 ## Window Title
 
 Setting the window title is achieved by setting the `title` property in the configuration
 ```kotlin
 configuration {
     title = "Lo and behold!"
+}
+```
+
+## Window unfocus behaviour
+
+Two window unfocus behaviours are available. In `NORMAL` behaviour the program continues running at full speed, in contrast the `THROTTLE` behaviour throttles the program to 10Hz.
+
+```kotlin
+configuration {
+    unfocusBehaviour = UnfocusBehaviour.THROTTLE
 }
 ```

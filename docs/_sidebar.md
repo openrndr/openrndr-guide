@@ -4,7 +4,6 @@
     - [Setting up your first OPENRNDR program](/Tutorial_Start)
     - [Overview of OPENRNDR modules](/Topic_Modules)
     - [Gradle based projects](/Topic_GradleBasedProjects)
-    - [Maven based projects](/Topic_MavenBasedProjects)
     - [Using the example repository](/Topic_ExampleRepository)
 - **Building and installing OPENRNDR**
     - [Building from source](/Topic_BuildingFromSource.md)
@@ -27,7 +26,7 @@
     - [Writing to video files](/Tutorial_VideoWriter.md)
 - **Advanced Topics**
     - [Application flow](/Topic_ApplicationFlow.md)
-    - [Writing to SVG files](/Topic_WritingSVGFiles.md)
+    - [Writing extensions](/Topic_WritingExtensions.md)
 - **Distribution topics**
     - [Creating single .jar file distributions](/Topic_SingleJars.md)
     - [Creating distributable programs](/Topic_DistributablePrograms.md)
