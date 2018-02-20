@@ -21,6 +21,8 @@
     - [Filters and post-processing](/Topic_Filters.md)
     - [Shade styles](/Tutorial_ShadeStyles.md)
     - [Custom rendering](/Tutorial_CustomRendering.md)
+- **Interaction**
+    - [Mouse and keyboard events](/Topic_MouseKeyboardEvents.md)
 - **Videos**
     - [Playing videos](Topic_VideoPlayer.md)
     - [Writing to video files](/Tutorial_VideoWriter.md)
