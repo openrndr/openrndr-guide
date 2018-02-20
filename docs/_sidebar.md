@@ -2,11 +2,11 @@
 
 - **Getting Started with OPENRNDR**
     - [Setting up your first OPENRNDR program](/Tutorial_Start)
-    - [Overview of OPENRNDR modules](/Topic_Modules)
-    - [Gradle based projects](/Topic_GradleBasedProjects)
     - [Using the example repository](/Topic_ExampleRepository)
+    - [Gradle based projects](/Topic_GradleBasedProjects)
 - **Building and installing OPENRNDR**
     - [Building from source](/Topic_BuildingFromSource.md)
+    - [Overview of OPENRNDR modules](/Topic_Modules)
 - **Program basics**
     - [Program configuration](/Topic_ProgramConfiguration.md)
 - **Drawing basics**
