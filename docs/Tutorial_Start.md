@@ -1,36 +1,37 @@
 # Getting Started with OPENRNDR #
 
-OPENRNDR provides an application framework that allows its users to write applications that run on Microsoft Windows, MacOS and Linux platforms. For future versions we want to include the Android and Raspberry PI platforms as well.
+OPENRNDR provides an application framework that allows its users to write applications that run on Microsoft Windows and MacOS platforms. For future versions we want to include Desktop Linux, Android and Raspberry PI platforms as well.
 
 ## Requirements ##
- 
  * A computer running Windows 10 (older versions may work but are untested) or MacOSX 10.10+
+ * A graphics adapter and drivers that support OpenGL 3.3
  * Java 8 or 9 JDK installed
- * [IntelliJ Idea](Tools_IntelliJIdea) Community or Enterprise edition
+ * [IntelliJ Idea 2017.3](Tools_IntelliJIdea) Community or Enterprise edition
 
-## Creating a new project
+## Getting OPENRNDR
 
-In Intellij: File -> New Project. Pick Maven project
+At this point in time there are no pre-built binaries available. We are in the progress of setting up build and distribution services.
+For the time being follow the [building from source](Topic_BuildingFromSource) instructions to obtain OPENRNDR binaries.
 
-If you are unfamiliar with Maven take some time to read our notes on [Maven](Tools_Maven)
+## Getting the tutorial code
 
-## Configure OPENRNDR library
+A good start for working with OPENRNDR is found in the [tutorial repository](https://github.com/openrndr/openrndr-tutorials).
 
-Edit the `pom.xml` file and add the following:
-
-```xml
-    <dependencies>
-        <dependency>
-            <groupId>org.openrndr</groupId>
-            <artifactId>rndr</artifactId>
-            <version>0.3.0-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
+```sh
+git clone https://github.com/openrndr/openrndr-tutorials.git
 ```
 
-After saving `pom.xml` IntelliJ Idea will ask you to import the changes made to the pom.xml, import the changes. In the background Maven will download RNDR and the libraries it depends on.
+Also check out the section on [using the tutorial repository](Topic_TutorialRepository.md) for further explanations.
 
 ## Writing your first RNDR program
+
+The easiest way to start a new project is to start from the provided template project
+```sh
+git clone --depth 1 https://github.com/openrndr/openrndr-gradle-template.git
+```
+
+This contains everything needed to start, notably the `build.gradle` with the right dependencies and the Gradle wrappers.
+
 
 Add a new Kotlin class to the project, name it `program.FirstProgram`
 

@@ -34,6 +34,8 @@ fun main(args:Array<String>) {
 }
 ```
 
+Tutorial [`start-dialog-001`](https://github.com/openrndr/openrndr-tutorials/blob/master/start-dialog-001/src/main/kotlin/Example.kt) demonstrates how to set up a start dialog.
+
 ## Multiple simultaneous application windows
 
 OPENRNDR comes with the support for using more than one similtaneous application window.
@@ -51,3 +53,5 @@ fun main(args:Array<String>) {
     Application.runAsync(Right(), configuration { [...] })
 }
 ```
+
+Tutorial [`multi-window-001`](https://github.com/openrndr/openrndr-tutorials/blob/master/multi-window-001/src/main/kotlin/Example.kt) demonstrates simultaneous windows.

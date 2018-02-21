@@ -16,6 +16,8 @@ fun setup() {
 }
 ```
 
+Tutorial [`mouse-001`](https://github.com/openrndr/openrndr-tutorials/blob/master/mouse-001/src/main/kotlin/Example.kt) shows how to use the mouse position, [`mouse-002`](https://github.com/openrndr/openrndr-tutorials/blob/master/mouse-002/src/main/kotlin/Example.kt) shows how to use mouse button events.
+
 ### Overview of mouse events
 
 event        | description                                                   | relevant MouseEvent properties

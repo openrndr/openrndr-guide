@@ -2,7 +2,7 @@
 
 - **Getting Started with OPENRNDR**
     - [Setting up your first OPENRNDR program](/Tutorial_Start)
-    - [Using the example repository](/Topic_ExampleRepository)
+    - [Using the tutorial repository](/Topic_TutorialRepository)
     - [Gradle based projects](/Topic_GradleBasedProjects)
 - **Building and installing OPENRNDR**
     - [Building from source](/Topic_BuildingFromSource.md)
@@ -23,6 +23,8 @@
     - [Custom rendering](/Tutorial_CustomRendering.md)
 - **Interaction**
     - [Mouse and keyboard events](/Topic_MouseKeyboardEvents.md)
+- **Animation**
+    - [Interactive animations](/Topic_InteractiveAnimations)
 - **Videos**
     - [Playing videos](Topic_VideoPlayer.md)
     - [Writing to video files](/Tutorial_VideoWriter.md)
@@ -30,7 +32,6 @@
     - [Application flow](/Topic_ApplicationFlow.md)
     - [Writing extensions](/Topic_WritingExtensions.md)
 - **Distribution topics**
-    - [Creating single .jar file distributions](/Topic_SingleJars.md)
     - [Creating distributable programs](/Topic_DistributablePrograms.md)
 - **License**
 ----
