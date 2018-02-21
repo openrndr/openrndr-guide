@@ -14,8 +14,7 @@ Anything that should be animated inherits the Animatable class. The Animatable c
 
 Displayed below is a very simple animation setup.
 
-```
-#!java
+```!java
 
 class MyAnimatable extends Animatable {
     double x;
@@ -42,18 +41,12 @@ public void draw() {
     myAnimatable.updateAnimations();
     drawer.circle(myAnimatable.x, myAnimatable.y);
 }
-
-
 ```
 
 ## Animation concepts
 
 ### Animating
-
-
-```
-#!java
-
+```!java
 Animatable.animate(String variable, double target, long duration);
 Animatable.animate(String variable, double target, long duration, Easing easing);
 
@@ -63,9 +56,7 @@ Animatable.animate() cues a single animation for a single value. An animation co
 
 In cases in which the target value is unknown but the increment is known one can use Animatable.add()
 
-```
-#!java
-
+```java
 Animatable.add(String variable, double increment, long duration);
 Animatable.add(String variable, double increment, long duration, Easing easing);
 
@@ -73,25 +64,20 @@ Animatable.add(String variable, double increment, long duration, Easing easing);
 
 It is also possible to animate elements in an array or List:
 
-```
-#!java
-
+```java
 class MyAnimatable extends Animatable {
     double values[] = new double[4];
 }
 
 MyAnimatable myAnimatable = new MyAnimatable();
 myAnimatable.animate("values[0]", 1.0, 1000);
-
 ```
 
 
 ## Waiting
 
 ### Waiting for a period of time
-```
-#!java
-
+```java
 Animatable.delay(long duration);
 ```
 
@@ -104,9 +90,7 @@ Animatable.waitUntil(long time);
 
 
 ### Waiting for an animation to finish
-```
-#!java
-
+```java
 Animatable.complete();
 Animatable.complete(String variable);
 ```
@@ -117,49 +101,35 @@ Animatable.complete(String variable) instructs the animator to wait until the la
 
 This can be used in cases where two animations with different lengths are queued. For example:
 
-```
-#!java
-
+```!java
 animatable.animate("x", 400, 2000).animate("y",500,1200).complete("x");
-
 ```
 
 ### Waiting for an animation to almost finish
 
-```
-#!java
-
+```!java
 Animatable.beforeComplete(long time);
 // equivalent:
 animatable.complete().delay(-time);
-
 ```
 Instruct the animator to wait until the given amount of time before the previously queued animation ends.
-
 
 ## Stopping
 
 In interactive applications it may be needed to stop animations to accommodate user actions. Animatable has three options to stop animations.
-
-```
-#!java
-
+```!java
 Animatable.cancel();
 ```
 
 Animatable.cancel() cancels all running and queued animations. Animated values remain at their current value. Animatable.cancel() is the most commonly used method for stopping animations.
 
-```
-#!java
-
+```!java
 Animatable.cancelQueued();
 ```
 
 Animatable.cancelQueued() cancels all queued animations. Running animations will continue to run.
 
-```
-#!java
-
+```!java
 Animatable.end();
 ```
 
