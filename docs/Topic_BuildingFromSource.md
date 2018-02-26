@@ -29,7 +29,7 @@ Note that OPENRNDR does not depend on anything that is not on Maven Central, bui
 In order to use the OPENRNDR build from your applications one has to install OPENRNDR's Maven artifacts in the local Maven repository.
 
 ```sh
-./gradlew install
+./gradlew -Prelease.version=0.4.0-SNAPSHOT publishToMavenLocal
 ```
 
 ## Building OPENRNDR from IntelliJ
