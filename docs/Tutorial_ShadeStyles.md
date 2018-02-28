@@ -1,13 +1,22 @@
 # Shade styles #
 
-Shade styles are used to change the drawing behaviour of the drawer.
+Shade styles are used to change the drawing behaviour of the `Drawer`, the appearance of
+all drawing primitives by applying shade styles.
+
+Shade styles are composed of two types of transforms: vertex transforms and fragment transforms. The two transforms are applied in separate stages of the rendering process.
+
+In the vertex transform it is possible to change the geometry of what is drawn.
+
+In the fragment transform it is possible to change the appearance of the geometry.
+
+For those interested in authoring shade styles it is helpful to have some knowledge of shaders and GLSL.
 
 ## Basic usage ##
 
 In essence shade styles are fragments of GLSL code that are inserted into OPENRNDRs templated shaders.
 
+As quick first step we override the output to red in the following snippet.
 ```kotlin
-
 fun draw() {
     // -- set shade style
     drawer.shadeStyle = shadeStyle {
@@ -15,33 +24,97 @@ fun draw() {
             x_fill.rgb = vec3(1.0, 0.0, 0.0);
         """
     }
-
     // -- draw rectangle with the shade style applied to it
-    drawer.rectangle(10, 10, 100, 100);
+    drawer.rectangle(10, 10, 100, 100)
 }
 ```
+
+The idea of shade styles is to allow more complex changes in the appearance. In the next snippet we create a wavy pattern by using cosines and the screen position.
+
+```kotlin
+fun draw() {
+    // -- set shade style
+    drawer.shadeStyle = shadeStyle {
+        fragmentTransform = """
+            float c = cos(c_screenPosition.x * 0.1) * 0.5 + 0.5;
+            x_fill.rgb = vec3(c, c, c);
+        """
+    }
+    // -- draw rectangle with the shade style applied to it
+    drawer.rectangle(10, 10, 100, 100)
+}
+```
+
+Here the fragment transform uses one of the built-in constants `c_screenPosition` as a basis for the wave pattern.
+
+In the next step we introduce animation by adding an external clock signal to the shade style.
+```kotlin
+fun draw() {
+    // -- set shade style
+    drawer.shadeStyle = shadeStyle {
+        fragmentTransform = """
+            float c = cos(c_screenPosition.x * 0.1 + p_time) * 0.5 + 0.5;
+            x_fill.rgb = vec3(c, c, c);
+        """
+        // -- add a time parameter
+        parameter("time", seconds)
+    }
+    // -- draw rectangle with the shade style applied to it
+    drawer.rectangle(10, 10, 100, 100)
+}
+```
+Here an external clock signal is added by introducing a parameter to the shade style and setting its value to `seconds` (which is a property of `Program`)
 
 ## Built-in shade shade styles
 
 OPENRNDR offers a number of built-in shadestyles to facilitate common use cases.
 
+## Prefix overview
+
+Listed below is an overview of all the prefixes used in the shade style language.
+
+prefix   | Scope              | Description
+---------|--------------------|-----------------
+`u_`     | all                | system uniforms passed in from Drawer
+`a_`     | vertex transform   | vertex attribute
+`va_`    | fragment transform | varying attribute, interpolation passed from vertex to fragment shader
+`i_`     | vertex transform   | instance attribute
+`vi_`    | fragment transform | varying instance attribute
+`x_`     | all                | transformable value
+`p_`     | all                | user provided value
+`o_`     | fragment transform | output value (always `vec4`)
+
 ## Standard uniforms
 
-Uniform name     | GLSL type   | Description
------------------|-------------|---------------
-projectionMatrix | `mat44`     | The projection matrix
-viewMatrix       | `mat44`     | The view matrix
-normalMatrix     | `mat44`     | Modified view matrix that should be applied to normals
-fill             | `vec4`      | The fill color
-stroke           | `vec4`      | The stroke color
-colorTransform   | `float[25]` | The 5x5 color transform matrix
+Standard uniforms are variables that are set by `Drawer`. Standard uniforms are constant and accessible from both the
+vertex and fragment transforms.
+
+Uniform name       | GLSL type   | Description
+-------------------|-------------|---------------
+u_projectionMatrix | `mat44`     | The projection matrix
+u_viewMatrix       | `mat44`     | The view matrix
+u_normalMatrix     | `mat44`     | Modified view matrix that should be applied to normals
+u_fill             | `vec4`      | The fill color
+u_stroke           | `vec4`      | The stroke color
+u_strokeWeight     | `vec4`      | The stroke weight
+u_colorTransform   | `float[25]` | The 5x5 color transform matrix
 
 ## Standard Attributes
+
+Attributes are only directly accessible in the vertex transform. However interpolated forms of the
+the attributes are passed to the fragment transform.
 
 Attribute name | GLSL type | Description
 ---------------|-----------|------------
 `a_position`   | vec3      | the position
 `a_normal`     | vec3      | the normal
+
+In this table we see the interpolated versions that are accessible in the fragment transform only.
+
+Attribute name | GLSL type | Description
+---------------|-----------|------------
+`va_position`  | vec3     | the interpolated position
+`va_normal`    | vec3     | the interpolated normal
 
 ## Transformable values
 
@@ -66,11 +139,11 @@ Variable name | GLSL type | Description
 
 ## Constants
 
-Constant name      | Scope               | GLSL type | Description
--------------------|---------------------|-----------|------------
-`c_boundsPosition` | fragment transform  | vec3      |
-`c_boundsMin`      | fragment transform  | vec3      |
-`c_boundsMax`      | fragment transform  | vec3      |
+Constant name       | Scope               | GLSL type | Description
+--------------------|---------------------|-----------|------------
+`c_screenPosition`  | fragment transform  | vec2      | the position on screen
+`c_contourPosition` | fragment transform  | vec3      | the on the contour, only non-zero when drawing line segments and contours
+
 
 ## Parameters ##
 
@@ -78,7 +151,6 @@ Parameters can be used to supply external data to transforms. Parameters are tra
 by uniforms with the `p_` prefix.
 
 ```kotlin
-
 fun draw() {
     // -- set shade style
     drawer.shadeStyle = shadeStyle {
@@ -117,19 +189,6 @@ Can be used to map custom values.
  `ColorBuffer`   | `sampler2D`
  `BufferTexture` | `samplerBuffer`
 
-## Prefix overview
-
-Listed below is an overview of all the prefixes used in the shade style language.
-
-prefix   | Scope              | Description
----------|--------------------|-----------------
-`a_`     | vertex transform   | vertex attribute
-`va_`    | fragment transform | varying attribute, interpolation passed from vertex to fragment shader
-`i_`     | vertex transform   | instance attribute
-`vi_`    | fragment transform | varying instance attribute
-`x_`     | all                | transformable value
-`p_`     | all                | user provided value
-`o_`     | fragment transform | output value (always `vec4`)
 
 ## Outputs
 
