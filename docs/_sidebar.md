@@ -1,6 +1,7 @@
 <!-- docs/_sidebar.md -->
 
 - **Getting Started with OPENRNDR**
+    - [OPENRNDR concepts and conventions](/Tutorial_Concepts)
     - [Setting up your first OPENRNDR program](/Tutorial_Start)
     - [Using the tutorial repository](/Topic_TutorialRepository)
     - [Gradle based projects](/Topic_GradleBasedProjects)
