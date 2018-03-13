@@ -14,7 +14,7 @@ A `DepthBuffer` is a buffer that can hold depth and stencil values.
 The adviced method of creating `RenderTarget` instances is to use the `renderTarget {}` builder
 
 ```kotlin
-    val rt = renderTarget(640, 480)
+    val rt = renderTarget(640, 480) { }
 ```
 
 This creates a render target, but the render target does not have attachments that can hold the actual image data.
@@ -64,10 +64,46 @@ fun draw() {
     rt.unbind()
  
     // draw the backing color buffer to the screen
-    drawer.draw(rt.colorBuffer(0))
+    drawer.image(rt.colorBuffer(0))
+}
+```
+
+## Render targets and projection transforms
+
+Keep in mind that projection transform has to be set to fit the render target, this becomes apparent specifically when the used render target
+has dimensions that differ from those of the window. In case of orthographic (2D) projections one can use the following:
+
+```kotlin
+lateinit var RenderTarget rt;
+
+fun setup() {
+    // -- build a render target with a single color buffer attachment
+    rt = renderTarget(400, 400) {
+        colorBuffer()
+    }
+}
+
+fun draw() {
+    // -- clear the program target
+    drawer.background(ColorRGBa.BLACK)
+
+    drawer.isolatedWithTarget(rt) { // -- pushes matrices and styles
+        // -- bind our render target, clear it, draw on it, unbind it
+        background(ColorRGBa.PINK)
+        // -- set the orthographic transform that matches with the render target
+        ortho(rt)
+        fill = Color.WHITE
+        stroke = null
+        drawer.rectangle(40.0, 40.0, 80.0, 80.0)
+    }
+    // -- matrices and styles are popped back here
+
+    // draw the backing color buffer to the screen
+    drawer.image(rt.colorBuffer(0))
 }
 
 ```
+
 
 ## Compositing using render targets and alpha channels
 
@@ -108,8 +144,8 @@ fun draw() {
     rt1.unbind()
 
     // draw the backing color buffer to the screen
-    drawer.draw(rt0.colorBuffer(0))
-    drawer.draw(rt1.colorBuffer(1))
+    drawer.image(rt0.colorBuffer(0))
+    drawer.image(rt1.colorBuffer(1))
 }
 ```
 
