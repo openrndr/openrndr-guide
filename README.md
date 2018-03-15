@@ -1,8 +1,5 @@
-# RNDR #
+# The OPENRNDR guide
 
-RNDR is a framework for creative coding for Java 8+.
+This is an extensive effort in documenting the [OPENRNDR](https://github.com/openrndr/openrndr) library.
 
-
-[![](docs/_media/logo2.png)](http://book.openrndr.org)
-
-
+Please consult the [human readable version](http://guide.openrndr.org).

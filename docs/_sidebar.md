@@ -1,13 +1,15 @@
 <!-- docs/_sidebar.md -->
 
 - **Getting Started with OPENRNDR**
+    - [OPENRNDR concepts and conventions](/Tutorial_Concepts)
     - [Setting up your first OPENRNDR program](/Tutorial_Start)
-    - [Overview of OPENRNDR modules](/Topic_Modules)
+    - [Using the tutorial repository](/Topic_TutorialRepository)
     - [Gradle based projects](/Topic_GradleBasedProjects)
-    - [Maven based projects](/Topic_MavenBasedProjects)
-    - [Using the example repository](/Topic_ExampleRepository)
 - **Building and installing OPENRNDR**
     - [Building from source](/Topic_BuildingFromSource.md)
+    - [Overview of OPENRNDR modules](/Topic_Modules)
+- **Program basics**
+    - [Program configuration](/Topic_ProgramConfiguration.md)
 - **Drawing basics**
     - [Primitives](/Tutorial_DrawingPrimitives.md)
     - [Images](/Tutorial_DrawingImages.md)
@@ -20,13 +22,17 @@
     - [Filters and post-processing](/Topic_Filters.md)
     - [Shade styles](/Tutorial_ShadeStyles.md)
     - [Custom rendering](/Tutorial_CustomRendering.md)
+- **Interaction**
+    - [Mouse and keyboard events](/Topic_MouseKeyboardEvents.md)
+- **Animation**
+    - [Interactive animations](/Topic_InteractiveAnimations)
 - **Videos**
     - [Playing videos](Topic_VideoPlayer.md)
     - [Writing to video files](/Tutorial_VideoWriter.md)
 - **Advanced Topics**
-    - [Writing to SVG files](/Topic_WritingSVGFiles.md)
+    - [Application flow](/Topic_ApplicationFlow.md)
+    - [Writing extensions](/Topic_WritingExtensions.md)
 - **Distribution topics**
-    - [Creating single .jar file distributions](/Topic_SingleJars.md)
     - [Creating distributable programs](/Topic_DistributablePrograms.md)
 - **License**
 ----

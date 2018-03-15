@@ -1,6 +1,6 @@
 # Using the tutorial repository
 
-The [tutorial repository](https://bitbucket.org/rndrnl/openrndr-tutorials) can be browsed online.
+The [tutorial repository](https://github.com/openrndr/openrndr-tutorials) can be browsed online.
 The repository contains a multi-module Gradle project in which each tutorial is a sub-module. The Gradle project can easily be imported into IntelliJ.
 
 ## List of tutorials
