@@ -4,7 +4,7 @@ const configs = {
 
 
 window.$docsify = {
-    repo: '/openrndr',
+    repo: 'openrndr',
     name: 'openRNDR',
     auto2top: true,
     loadSidebar: true,
@@ -36,6 +36,15 @@ const invertPage = () => {
     }
 };
 
+const setBodyHeight = () => {
+  setTimeout(()=>{
+    const main = document.querySelector('#main');
+    const height = Math.max(main.offsetHeight + 200, window.innerHeight);
+    console.log(`body height is set to ${height}`);
+    document.body.style.height = `${height}px`;
+  }, 200)
+}
+
 window.onload = () => {
     const invertHandler = document.createElement('span');
     invertHandler.innerHTML = "invert";
@@ -43,10 +52,17 @@ window.onload = () => {
     invertHandler.onclick = invertPage;
     document.body.appendChild(invertHandler);
 
+    setBodyHeight();
+
     //to fix content background issue in invert mode
     // const content = document.querySelector('.content');
     // const article = document.querySelector('#main');
     // content.style.height = `${article.offsetHeight+200}px`;
+};
+
+
+window.onhashchange = function(e) {
+  setBodyHeight();
 };
 
 
