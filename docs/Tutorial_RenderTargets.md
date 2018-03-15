@@ -104,7 +104,6 @@ fun draw() {
 
 ```
 
-
 ## Compositing using render targets and alpha channels
 
 OPENRNDR allows for compositing using `RenderTargets` through the use of transparency encoded in alpha channels.

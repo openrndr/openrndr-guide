@@ -10,8 +10,40 @@ OPENRNDR provides an application framework that allows its users to write applic
 
 ## Getting OPENRNDR
 
-At this point in time there are no pre-built binaries available. We are in the progress of setting up build and distribution services.
-For the time being follow the [building from source](Topic_BuildingFromSource) instructions to obtain OPENRNDR binaries.
+OPENRNDR is obtained by adding the OPENRNDR dependencies to your Gradle or Maven project. We offer [ready-to-use artifacts](http://dl.bintray.com/openrndr/openrndr/org/openrndr/) through Bintray.
+
+When using Gradle add this custom repository to your `build.gradle`
+```groovy
+repositories {
+   maven {
+        url="https://dl.bintray.com/openrndr/openrndr/"
+    }
+}
+```
+
+Then add the following dependencies:
+```groovy
+
+project.ext.openrndrVersion = "0.3.3"
+
+switch (org.gradle.internal.os.OperatingSystem.current()) {
+    case org.gradle.internal.os.OperatingSystem.WINDOWS:
+        project.ext.openrndrOS = "windows"
+        break
+    case org.gradle.internal.os.OperatingSystem.LINUX:
+        project.ext.openrndrOS = "linux"
+        break
+    case org.gradle.internal.os.OperatingSystem.MAC_OS:
+        project.ext.openrndrOS = "macos"
+        break
+}
+
+dependencies {
+  runtime "org.openrndr:openrndr-gl3:$openrndrVersion"
+  runtime "org.openrndr:openrndr-gl3-natives-$openrndrOS:$openrndrVersion"
+  compile "org.openrndr:openrndr-core:$openrndrVersion"
+}
+```
 
 ## Getting the tutorial code
 
@@ -57,6 +89,9 @@ fun main(args:Array<String>) {
 }
 
 ```
-### Run the sketch
+### Run your first program
 
-Hover your mouse over the `main()` method, right click and pick the `Run FirstSketch.main()` option in the pop-up menu. The sketch will now start.
+In IntelliJ, hover your mouse over the `main()` method, right click and pick the `Run FirstSketch.main()` option in the pop-up menu. The sketch will now start.
+
+On MacOS you will find that the program exits immediately with an error. To resolve this edit the run configuration (left of the play button in the main toolbar) and add
+`-XstartOnFirstThread` to the VM arguments. The program should now work.

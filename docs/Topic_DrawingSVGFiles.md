@@ -1,10 +1,14 @@
 # Drawing with SVG files # 
 
-FIX ME: add some text here
+Relevant APIs
+```kotlin
+drawer.composition(composition: Composition)
+loadSVG(svg:String) : Composition
+```
 
-======================
+Loading a composition and drawing it can be done as follows:
+```
+var composition = loadSVG(File("data/drawing.svg").readText())
 
-```java
-// -- load the svg from file
-Composition composition = Composition.fromUrl("file:data/composition.svg");
+drawer.composition(composition)
 ```
