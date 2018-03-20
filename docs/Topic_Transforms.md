@@ -1,93 +1,41 @@
-# Transforms. Vectors, Matrices, Quaternions #
+# Transforms
 
-OPENRNDR extensively uses vector and matrix classes to pass positions and transforms around.
+This section covers the topic of placing items on the screen.
 
-OPENRNDR's vector and matrix classes are immutable, that means once they are constructed their value cannot be changed.
+## Transform pipeline
 
-## Vectors ##
+OPENRNDR's `Drawer` is build around model-view-projection transformation pipeline. That means that three different transformations are applied to determine
+the screen position.
 
-Relevant APIs
+matrix property | pipeline stage
+----------------|---------------------
+`model`         | model transform
+`view`          | view transform
+`projection`    | projection transform
 
-```
-Vector2
-Vector3
-Vector4
-````
+Which matrices are affected by which `Drawer` operations?
 
-The `Vector2`, `Vector3` and `Vector4` classes are used for 2, 3 and 4 dimensional vector representations.
+operation            | matrix property
+---------------------|----------------
+`fun rotate(…)`      | `model`
+`fun translate(…)`   | `model`
+`fun scale(…)`       | `model`
+`fun rotate(…)`      | `model`
+`fun lookAt(…)`      | `view`
+`fun ortho(…)`       | `projection`
+`fun perspective(…)` | `projection`
 
-```kotlin
-val v2 = Vector2(1.0, 10.0)
-val v3 = Vector3(1.0, 1.0, 1.0)
-val v3 = Vector4(1.0, 1.0, 1.0, 1.0)
-```
 
-### Vector arithmetic
+## Projection matrix
 
-The vector classes have operator overloads for the most essential operations.
+The default projection transformation is set to an orthographic projection using `ortho()`. The origin is in the upper-left corner; positive y points down, positive x points right on the screen.
 
-```kotlin
-val v2sum = Vector2(1.0, 10.0) + Vector2(1.0, 1.0)
-val v2diff = Vector2(1.0, 10.0) - Vector2(1.0, 1.0)
-val v2scale = Vector2(1.0, 10.0) * 2.0
-```
-
-### Swizzling and sizing
+### Perspective projections
 
 ```kotlin
-    val v3 = Vector2(1.0, 2.0).vector3(z=0.0)
-    val v2 = Vector3(1.0, 2.0, 3.0).xy
-```
-
-### Mixing
-
-Linear interpolation of vectors using `mix()`
-
-```kotlin
-    val m = mix(v0, v1, f)
-```
-
-which is short-hand for
-```
-    val m = v0 * (1.0 - f) + v1 * f
-```
-
-## Quaternions
-
-Quaternions represent rotation through an extension of complex numbers. A full explanation of quaternions and their intrinsics is out of this document's scope, in this section however enough information is provided to use quaternion's effectively as a tool.
-
-In practice quaternions are rarely constructed directly as it is fairly difficult to get an intuition for its argument values.
-```
-    val q = Quaternion(0.4, 0.3, 0.1, 0.1)
-```
-
-Instead quaternions are created from Euler-rotation angles and concatenated in quaternion space. Working in quaternion space warrants consistent rotations and avoids gimbal locks.
-
-```
-    val q0 = fromAngles(pitch0, yaw0, roll0)
-    val q1 = fromAngles(pitch1, yaw1, roll1)
-    val q = q0 * q1
-```
-
-### Slerp
-
-Spherical linear interpolation, or colloquially "slerping" solves the problem of interpolating or blending
-between rotations.
-
-```
-    val q0 = fromAngles(pitch0, yaw0, roll0)
-    val q1 = fromAngles(pitch1, yaw1, roll1)
-    val q = slerp(q0, q1, 0.5)
-```
-
-### Quaternion to matrix
-
-Naturally quaternions can be converted to matrices. Quaternions have a `matrix` property that holds a `Matrix44` representation of the orientation represented by the Quaternion.
-
-```
-    val q = fromAngles(pitch, yaw, roll)
-    val m = q.matrix
-    drawer.view = m
+override fun draw() {
+    drawer.perspective(90.0, width*1.0 / height, 0.1, 100.0)
+}
 ```
 
 ## Transforms
@@ -109,7 +57,7 @@ In the snippet below a `Matrix44` instance is constructed using the `transform {
 ```kotlin
 drawer.view *= transform {
     rotate(32.0)
-    rotate(43.0, Vector3(1.0, 1.0, 0.0).normalized)
+    rotate(Vector3(1.0, 1.0, 0.0).normalized, 43.0)
     translate(4.0, 2.0)
     scale(2.0)
 }
@@ -118,7 +66,7 @@ drawer.view *= transform {
 This is equivalent to the following:
 ```kotlin
 drawer.rotate(32.0)
-drawer.rotate(43.0,  Vector3(1.0, 1.0, 0.0).normalized)
+drawer.rotate(Vector3(1.0, 1.0, 0.0).normalized, 43.0)
 drawer.translate(4.0, 2.0)
 drawer.scale(2.0)
 ```

@@ -1,7 +1,7 @@
 <!-- docs/_sidebar.md -->
 
 - **Getting Started with OPENRNDR**
-    - [OPENRNDR concepts and conventions](/Tutorial_Concepts)
+    <!-- - [OPENRNDR concepts and conventions](/Tutorial_Concepts) -->
     - [Setting up your first OPENRNDR program](/Tutorial_Start)
     - [Using the tutorial repository](/Topic_TutorialRepository)
     - [Gradle based projects](/Topic_GradleBasedProjects)
@@ -16,8 +16,11 @@
     - [Text](/Tutorial_DrawingText.md)
     - [Complex shapes](/Tutorial_DrawingComplexShapes.md)
     - [Drawing with SVG files](/Topic_DrawingSVGFiles.md)
-- **Advanced drawing**
+- **Drawing and transformations**
     - [Transforms](/Topic_Transforms.md)
+    - [Vectors](/Topic_Vectors.md)
+    - [Quaternions](/Topic_Quaternions.md)
+- **Advanced drawing**
     - [Render targets and color buffers](/Tutorial_RenderTargets.md)
     - [Filters and post-processing](/Topic_Filters.md)
     - [Shade styles](/Tutorial_ShadeStyles.md)
