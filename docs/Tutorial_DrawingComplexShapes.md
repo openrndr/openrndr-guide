@@ -16,9 +16,10 @@ The `ContourBuilder` class offers a simple way of producing complex two dimensio
 
 * `moveTo(position)` move the cursor to the given position
 * `lineTo(position)` insert a line contour starting from the cursor, ending at the given position
+* `moveOrLineTo(position)` move the cursor if no cursor was previously set or draw a line
 * `curveTo(control, position)` insert a quadratic bezier curve starting from the cursor, ending at position
 * `curveTo(controlA, controlB, position)` insert a cubic bezier curve starting from the cursor, ending at position
-* `continueTo(position)` inside a quadratic bezier curve starting from the cursor and reflecting the tangent of the last control.
+* `continueTo(position)` inside a quadratic bezier curve starting from the cursor and reflecting the tangent of the last control
 * `continueTo(controlB, position)` insert a cubic spline
 * `arcTo(radiusX, radiusY, largeAngle, sweepFlag, position)`
 * `close()` close the contour
@@ -70,7 +71,7 @@ A linear transform is represented by a `Matrix44`, one can use the `transform {}
 
 ```
 fun draw {
-
+    // -- construct a transform using the transform{} builder
     val t = transform {
         translate(3.0, 4.0)
         rotate(40.0)
@@ -102,3 +103,14 @@ fun draw {
 }
 ```
 
+## Querying shapes and contours
+
+
+##### Shape queries
+ * `Shape.outline` - the outer contour of the shape
+ * `Shape.hole(index: Int)` - the holes in the shape
+
+##### Contour queries
+Contours are parameterized over `t` in `[0, 1]`
+ * `ShapeContour.position(t: Double)` the position at `t` value
+ * `ShapeContour.normal(t: Double)` the contour normal at `t`
