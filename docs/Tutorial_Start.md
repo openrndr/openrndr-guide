@@ -5,9 +5,15 @@ OPENRNDR provides an application framework that allows its users to write applic
 ## Requirements ##
  * A computer running Windows 10 (older versions may work but are untested) or MacOSX 10.10+
  * A graphics adapter and drivers that support OpenGL 3.3
- * Java 8, 9 or 10 JDK installed
+ * Java 8, 9 or 10 JDK installed.
  * [IntelliJ Idea 2017.3](Tools_IntelliJIdea) Community or Enterprise edition
  * Some experience with the [Kotlin programming language](https://kotlinlang.org)
+ * Some experience with [Git](https://git-scm.com/)
+
+## Setting up prerequisites
+Before you start working with OPENRNDR please follow these instructions.
+ * Download [Java Development Kit 9](http://www.oracle.com/technetwork/java/javase/downloads/jdk9-downloads-3848520.html) and install it.
+ * Download [IntelliJ Idea Community Edition](https://www.jetbrains.com/idea/download) and install it.
 
 ## Getting OPENRNDR
 
