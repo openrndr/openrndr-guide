@@ -18,6 +18,7 @@ The formula for applying filters is roughly
     filter.apply(rt.colorBuffer(0), filtered)
     drawer.image(filtered)
 ```
+[Complete tutorial code](https://github.com/openrndr/openrndr-tutorials/blob/master/filters-001/src/main/kotlin/Example.kt)
 
 ## The openrndr-filter library
 
