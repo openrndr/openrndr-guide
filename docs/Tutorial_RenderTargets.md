@@ -38,10 +38,7 @@ One can also create render targets without using the builder as follows:
 
 In the following code snippet you will find an example showing how to draw on an off-screen buffer followed by drawing that offscreen buffer on screen.
 
-The example module `render-targets-001` contains the full source code.
-
 ```kotlin
-
 lateinit var RenderTarget rt;
 
 fun setup() {
@@ -67,6 +64,7 @@ fun draw() {
     drawer.image(rt.colorBuffer(0))
 }
 ```
+[Complete tutorial code](https://github.com/openrndr/openrndr-tutorials/blob/master/render-targets-001/src/main/kotlin/Example.kt)
 
 ## Render targets and projection transforms
 
@@ -101,18 +99,15 @@ fun draw() {
     // draw the backing color buffer to the screen
     drawer.image(rt.colorBuffer(0))
 }
-
 ```
-
+[Complete tutorial code](https://github.com/openrndr/openrndr-tutorials/blob/master/render-targets-001/src/main/kotlin/Example.kt)
 ## Compositing using render targets and alpha channels
 
 OPENRNDR allows for compositing using `RenderTargets` through the use of transparency encoded in alpha channels.
 
 The following code snippet uses two `RenderTarget` instances and clears them using `ColorRGBa.TRANSPARENT`.
-The example module `render-targets-002` contains the full source code.
 
 ```kotlin
-
 lateinit var RenderTarget rt0;
 lateinit var RenderTarget rt1;
 
@@ -147,6 +142,7 @@ fun draw() {
     drawer.image(rt1.colorBuffer(1))
 }
 ```
+[Complete tutorial code](https://github.com/openrndr/openrndr-tutorials/blob/master/render-targets-002/src/main/kotlin/Example.kt)
 
 ## Creating high precision floating point render targets
 
