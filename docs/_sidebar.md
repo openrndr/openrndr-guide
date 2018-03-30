@@ -1,13 +1,13 @@
 <!-- docs/_sidebar.md -->
 
+- **Before you start**
+    - [What is OPENRNDR?](/Topic_WhatIsOPENRNDR.md)
+    - [Should I use OPENRNDR?](/Topic_ShouldIUseOPENRNDR.md)
 - **Getting Started with OPENRNDR**
     <!-- - [OPENRNDR concepts and conventions](/Tutorial_Concepts) -->
     - [Setting up your first OPENRNDR program](/Tutorial_Start)
     - [Using the tutorial repository](/Topic_TutorialRepository)
     - [Gradle based projects](/Topic_GradleBasedProjects)
-- **Building and installing OPENRNDR**
-    - [Building from source](/Topic_BuildingFromSource.md)
-    - [Overview of OPENRNDR modules](/Topic_Modules)
 - **Program basics**
     - [Program configuration](/Topic_ProgramConfiguration.md)
 - **Drawing basics**
@@ -37,6 +37,9 @@
     - [Writing extensions](/Topic_WritingExtensions.md)
 - **Distribution topics**
     - [Creating distributable programs](/Topic_DistributablePrograms.md)
+- **Developers and contributors**
+    - [Building from source](/Topic_BuildingFromSource.md)
+    - [Overview of OPENRNDR modules](/Topic_Modules)
 - **License**
 ----
 * [Library recommendations](Topic_LibraryRecommendations.md)
