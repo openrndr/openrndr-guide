@@ -5,7 +5,7 @@ const configs = {
 
 window.$docsify = {
     repo: 'openrndr',
-    name: 'openRNDR',
+    name: 'OPENRNDR',
     auto2top: true,
     loadSidebar: true,
     coverpage: true,
