@@ -1,11 +1,11 @@
 # Vectors
 
-Relevant APIs:
+#### Relevant APIs:
 ```kotlin
-Vector2
-Vector3
-Vector4
-````
+Vector2(x: Double, y: Double)
+Vector3(x: Double, y: Double, z: Double)
+Vector4(x: Double, y: Double, z: Double, w: Double)
+```
 
 The `Vector2`, `Vector3` and `Vector4` classes are used for 2, 3 and 4 dimensional vector representations. Vector instances are immutable; once a Vector has been instantiated its values cannot be changed.
 
@@ -66,15 +66,7 @@ property     | description
 
 ## Swizzling and sizing
 
-Vector2 swizzles
-
-property |
----------|
-`xx`     |
-`xy`     |
-`yy`     |
-`yx`     |
-
+Vector2 swizzles allow reordering of vector fields, this is a common pattern in GLSL
 
 ```kotlin
     val v3 = Vector2(1.0, 2.0).vector3(z=0.0)
