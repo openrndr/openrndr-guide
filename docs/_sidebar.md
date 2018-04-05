@@ -14,6 +14,7 @@
     - [Primitives](/Tutorial_DrawingPrimitives.md)
     - [Images](/Tutorial_DrawingImages.md)
     - [Text](/Tutorial_DrawingText.md)
+    - [Managing draw style](/Topic_ManagingDrawStyle.md)
     - [Complex shapes](/Tutorial_DrawingComplexShapes.md)
     - [Drawing with SVG files](/Topic_DrawingSVGFiles.md)
 - **Drawing and transformations**
