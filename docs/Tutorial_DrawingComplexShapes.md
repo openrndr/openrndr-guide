@@ -1,10 +1,10 @@
 # Drawing complex shapes #
 
-FIX ME: Add a little sentence here. Question: should Relevant APIs be on top, or be under the other topics, or explain how to use the APIs??
+OPENRNDR offers a lot of tools for the creation and drawing of two dimensional shapes.
 
 ## Shapes
 
-OPENRNDR uses `Shape` to represent planar shapes of which the contours are described using piece wise bezier curves.
+OPENRNDR uses `Shape` to represent planar shapes of which the contours are described using piece-wise bezier curves.
 
 A `Shape` is composed of one or multiple `ShapeContour` instances. A `ShapeContour` is composed of multiple `Segment` instances.
 
@@ -40,6 +40,7 @@ fun draw() {
     drawer.contour(c)
 }
 ```
+[Complete tutorial code](https://github.com/openrndr/openrndr-tutorials/blob/master/complex-shapes-001/src/main/kotlin/Example.kt)
 
 ### Drawing a shape using the shape builder
 
@@ -60,6 +61,29 @@ fun draw() {
     drawer.shape(s)
 }
 ```
+[Complete tutorial code](https://github.com/openrndr/openrndr-tutorials/blob/master/complex-shapes-002/src/main/kotlin/Example.kt)
+
+### Creating contours and shapes using primitives
+
+`Rectangle`, `Circle` and `LineSegment` instances can be used to create shapes and contours easily.
+
+##### Relevant APIs
+```kotlin
+Rectangle.contour
+Rectangle.shape
+
+Circle.contour
+Circle.shape
+
+LineSegment.contour
+Linesegment.shape
+```
+
+```kotlin
+drawer.contour(Circle(Vector2(100.0, 100.0), 100.0).contour)
+drawer.shape(Rectangle(Vector2(200.0, 200.0), 100.0, 100.0).shape)
+```
+[Complete tutorial code](https://github.com/openrndr/openrndr-tutorials/blob/master/complex-shapes-003/src/main/kotlin/Example.kt)
 
 ## Modifying shapes and contours
 
@@ -102,15 +126,34 @@ fun draw {
     })
 }
 ```
+[Complete tutorial code](https://github.com/openrndr/openrndr-tutorials/blob/master/complex-shapes-004/src/main/kotlin/Example.kt)
 
 ## Querying shapes and contours
 
+##### Relevant APIs
+```kotlin
+Shape.outline: Contour                     // the outer contour of the shape
+Shape.hole(index: Int): Contour            // the holes in the shape
+Shape.map(mapper:(ShapeContour)->ShapeContour) : Shape 
+ 
+ShapeContour.position(t: Double): Vector2  // the position at t in [0, 1]
+ShapeContour.normal(t: Double): Vector2    // the normal at t in [0, 1]
+ShapeContour.winding: Window               // the winding of the contour
+ShapeContour.bounds: Rectangle             // the bounds of the contour
+ShapeContour.adaptivePositions(distanceTolerance: Double = 0.5): List<Vector2> 
+ShapeContour.equidistantPositions(pointCount: Int): List<Vector2> 
+ShapeContour.on(point: Vector2): Double?
+ShapeContour.project(point: Vector2): ContourProjection 
+ShapeContour.sub(t0: Double, t1: Double)   // a cut of the shape contour starting at t0 ending at t1
+ShapeContour.reversed                      // reversed copy of the contour
+ShapeContour.map(closed: Boolean=this.closed, mapper:(Segment)->Segment):ShapeContour 
 
-##### Shape queries
- * `Shape.outline` - the outer contour of the shape
- * `Shape.hole(index: Int)` - the holes in the shape
+Segment.position(t: Double): Vector2
+```
+### Getting a single point on a contour
 
-##### Contour queries
-Contours are parameterized over `t` in `[0, 1]`
- * `ShapeContour.position(t: Double)` the position at `t` value
- * `ShapeContour.normal(t: Double)` the contour normal at `t`
+```kotlin
+val position = Circle(Vector2(100.0, 100.0), 100.0).contour.position(Math.cos(seconds) * 0.5 + 0.5)
+drawer.circle(position, 10.0)
+```
+[Complete tutorial code](https://github.com/openrndr/openrndr-tutorials/blob/master/complex-shapes-005/src/main/kotlin/Example.kt)
