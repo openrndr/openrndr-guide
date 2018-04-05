@@ -1,8 +1,42 @@
-# Custom rendering #
+# Custom rendering
 
 OPENRNDR is designed with the idea that users should be able to draw beyond the primitives offered by `Drawer`.
 
 A simple interface is provided with which a very wide spectrum of graphics can be drawn.
+
+## Vertex buffers
+
+A vertex buffer is a (on the GPU residing) amount of memory in which vertices that describe geometry are stored. A single vertex consists of a number of customizable attributes such as position, normal and color. In OPENRNDR the attributes of a vertex are described using a `VertexFormat`.
+
+## Defining a vertex format
+
+A very simple vertex format that just contains a position attribute is defined as follows using the `vertexFormat {}` builder.
+
+```kotlin
+val vf = vertexFormat {
+    position(3)
+}
+```
+
+##### vertexFormat {} attributes
+
+name                                                               | type      | description
+-------------------------------------------------------------------|-----------|-------------------------------
+`position(dimensions: Int)`                                        | `FLOAT32` | position attribute 
+`normal(dimensions: Int)`                                          | `FLOAT32` | normal attribute
+`textureCoordinate(dimensions: Int)`                               | `FLOAT32` | texture coordinate attribute
+`color(dimensions: Int)`                                           | `FLOAT32` | color attribute
+`attribute(name: String, dimensions:Int, type: VertexElementTYpe)` | `type`    | custom attribute
+
+A more complex vertex format would then look like this:
+```kotlin 
+val vf = vertexFormat {
+    position(3)
+    normal(3)
+    color(4)
+    attribute("objectID", 1, FLOAT32)
+}
+```
 
 ## Drawing using VertexBuffer
 
@@ -10,7 +44,8 @@ Relevant APIs:
 ```kotlin
 Drawer.vertexBuffer()
 Drawer.shadeStyle
-RenderTarget
+vertexFormat {}
+vertexBuffer()
 ```
 
 The following snippet shows how to create, populate and draw a `VertexBuffer`. [full source](http://github.com/openrndr/openrndr-examples/custom-rendering-001/src/main/kotlin/main.kt)
