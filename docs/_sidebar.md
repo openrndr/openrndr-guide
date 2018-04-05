@@ -28,6 +28,9 @@
     - [Custom rendering](/Tutorial_CustomRendering.md)
 - **Interaction**
     - [Mouse and keyboard events](/Topic_MouseKeyboardEvents.md)
+    - [Program windows](/Topic_ProgramWindows.md)
+    - [File drops](/Topic_FileDrops.md)
+    - [Clipboard](/Topic_Clipboard.md)
 - **Animation**
     - [Interactive animations](/Topic_InteractiveAnimations)
 - **Videos**
