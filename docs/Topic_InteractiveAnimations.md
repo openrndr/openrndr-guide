@@ -5,7 +5,7 @@ In order to use `Animatable` your project needs to depend on the `rndr-animatabl
 
 ```
 dependencies {
-    compile "org.openrndr:openrndr-animatable:0.3.0-SNAPSHOT"
+    compile "org.openrndr:openrndr-animatable:$openrndr_version"
 }
 ```
 
@@ -14,27 +14,39 @@ Anything that should be animated inherits the Animatable class. The Animatable c
 
 Displayed below is a very simple animation setup.
 
-```!java
-
-class MyAnimatable extends Animatable {
-    double x;
-    double y;
+```kotlin
+class MyAnimatable(): Animatable() {
+    var x: Double = 0.0
+    var y: Double = 0.0
 }
 
-MyAnimatable myAnimatable = new MyAnimatable();
-public void setup() {
+val myAnimatable = MyAnimatable()
+fun setup() {
     // sequence 1: animate x then y
-    myAnimatable.animate("x", 100.0, 1000).complete().animate("y", 100.0, 1000).complete();
+    myAnimatable.apply { 
+        animate("x", 100.0, 1000)
+        complete()
+        animate("y", 100.0, 1000)
+        complete()
+    }
 
     // sequence 2: animate x and y simultaneously
-    myAnimatable.animate("x", 0.0, 1000).animate("y", 0.0, 1000).complete();
+    myAnimatable.apply {
+        animate("x", 0.0, 1000)
+        animate("y", 0.0, 1000)
+        complete()
+    }
 
     // wait 2 seconds
     myAnimatable.delay(2000);
 
     // sequence 3, animate x, then animate y a bit later
-    myAnimatable.animate("x", 100.0, 1000).delay(100).animate("y", 100.0, 1000).complete();
-
+    myAnimatable.apply {
+        animate("x", 100.0, 1000)
+        delay(100)
+        animate("y", 100.0, 1000)
+        complete();
+    }
 }
 
 public void draw() {
@@ -77,38 +89,40 @@ myAnimatable.animate("values[0]", 1.0, 1000);
 ## Waiting
 
 ### Waiting for a period of time
-```java
-Animatable.delay(long duration);
+```kotlin
+Animatable.delay(duration: Long)
 ```
-
 Animatable.delay() instructs the animator to wait for the given amount of time.
-
 
 ### Waiting for a moment in time
 
-Animatable.waitUntil(long time);
+Animatable.waitUntil(time: Long)
 
 
 ### Waiting for an animation to finish
-```java
-Animatable.complete();
-Animatable.complete(String variable);
+```kotlin
+Animatable.complete()
+Animatable.complete(callback: (Animatable)->Unit)
+Animatable.complete(String variable)
 ```
 
 Animatable.complete() instructs the animator to wait until the previously queued animation has completed.
-
 Animatable.complete(String variable) instructs the animator to wait until the last queued animation for the given variable has completed.
 
 This can be used in cases where two animations with different lengths are queued. For example:
 
-```!java
-animatable.animate("x", 400, 2000).animate("y",500,1200).complete("x");
+```kotlin
+animatable.apply {
+    animate("x", 400, 2000)
+    animate("y",500,1200)
+    complete("x")
+}
 ```
 
 ### Waiting for an animation to almost finish
 
-```!java
-Animatable.beforeComplete(long time);
+```kotlin
+Animatable.beforeComplete(time: Long)
 // equivalent:
 animatable.complete().delay(-time);
 ```
@@ -117,20 +131,20 @@ Instruct the animator to wait until the given amount of time before the previous
 ## Stopping
 
 In interactive applications it may be needed to stop animations to accommodate user actions. Animatable has three options to stop animations.
-```!java
-Animatable.cancel();
+```kotlin
+Animatable.cancel()
 ```
 
 Animatable.cancel() cancels all running and queued animations. Animated values remain at their current value. Animatable.cancel() is the most commonly used method for stopping animations.
 
-```!java
-Animatable.cancelQueued();
+```kotlin
+Animatable.cancelQueued()
 ```
 
 Animatable.cancelQueued() cancels all queued animations. Running animations will continue to run.
 
-```!java
-Animatable.end();
+```kotlin
+Animatable.end()
 ```
 
 Animatable.end() cancels all running and queued animations. Animated values of running animations will be set to the target value, this will introduce animation pops.
