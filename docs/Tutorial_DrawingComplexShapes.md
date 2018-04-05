@@ -157,3 +157,18 @@ val position = Circle(Vector2(100.0, 100.0), 100.0).contour.position(Math.cos(se
 drawer.circle(position, 10.0)
 ```
 [Complete tutorial code](https://github.com/openrndr/openrndr-tutorials/blob/master/complex-shapes-005/src/main/kotlin/Example.kt)
+
+### Getting a number of equidistant points on a contour
+
+```kotlin
+val positions = Circle(Vector2(100.0, 100.0), 100.0).contour.equidistantPositions(40)
+drawer.circles(positions, 10.0)
+```
+[Complete tutorial code](https://github.com/openrndr/openrndr-tutorials/blob/master/complex-shapes-005/src/main/kotlin/Example.kt)
+
+### Getting a subsection of a contour
+
+```kotlin
+drawer.contour( Circle(Vector2(100.0, 100.0), 100.0).contour.sub(0.0, 0.5)
+```
+[Complete tutorial code](https://github.com/openrndr/openrndr-tutorials/blob/master/complex-shapes-004/src/main/kotlin/Example.kt)
