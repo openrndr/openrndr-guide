@@ -8,6 +8,8 @@ A simple interface is provided with which a very wide spectrum of graphics can b
 
 A vertex buffer is a (on the GPU residing) amount of memory in which vertices that describe geometry are stored. A single vertex consists of a number of customizable attributes such as position, normal and color. In OPENRNDR the attributes of a vertex are described using a `VertexFormat`.
 
+Vertex buffers allow geometry to be prepared and stored in such a way that graphics hardware can draw it directly. 
+
 ## Defining a vertex format
 
 A very simple vertex format that just contains a position attribute is defined as follows using the `vertexFormat {}` builder.
@@ -19,6 +21,8 @@ val vf = vertexFormat {
 ```
 
 ##### vertexFormat {} attributes
+
+Listed below are the attributes that can be added to the vertex format.
 
 name                                                               | type      | description
 -------------------------------------------------------------------|-----------|-------------------------------
@@ -36,6 +40,30 @@ val vf = vertexFormat {
     color(4)
     attribute("objectID", 1, FLOAT32)
 }
+```
+
+## Creating a vertex buffer
+
+###### Relevant APIs
+```kotlin
+vertexBuffer(vertexFormat: VertexFormat, vertexCount: Int): VertexBuffer
+```
+
+The `vertexBuffer()` function is used to create a `VertexBuffer` instance. For example to create a vertex buffer with our previously defined vertex format `vf` we use the following:
+
+```kotlin
+val geometry = vertexBuffer(vf, 1000)
+```
+
+Often the creation of the vertex buffer and the definition of the vertex format are combined in a single expression:
+
+```kotlin
+val geometry = vertexBuffer(vertexFormat {
+        position(3)
+        normal(3)
+        color(4)
+        attribute("objectID", 1, FLOAT32)
+    }, 1000)
 ```
 
 ## Drawing using VertexBuffer
