@@ -44,7 +44,7 @@ val vf = vertexFormat {
 
 ## Creating a vertex buffer
 
-###### Relevant APIs
+##### Relevant APIs
 ```kotlin
 vertexBuffer(vertexFormat: VertexFormat, vertexCount: Int): VertexBuffer
 ```
@@ -66,14 +66,41 @@ val geometry = vertexBuffer(vertexFormat {
     }, 1000)
 ```
 
+## Placing data in the vertex buffer
+
+##### Relevant APIs
+```kotlin
+fun VertexBuffer.put {}
+fun VertexBuffer.write(data: ByteBuffer, offset:Int = 0)
+
+val VertexBuffer.shadow: VertexBufferShadow
+val VertexBufferShadow.writer
+fun VertexBufferShadow.upload()
+```
+
+Now that a vertex format has been defined and a vertex buffer has been created we can place data in the vertex buffer.
+The data placed in the vertex buffer must closely match the vertex format; any form of mismatch will lead to surprising or undefined behaviour.
+
+The `VertexBuffer.put {}` builder is the easiest and safest way of placing data in the vertex buffer.
+
+In the following example we create a very simple vertex format that holds just a position attribute. After creation we fill the vertex buffer with random data.
+```kotlin
+val geometry = vertexBuffer(vertexFormat {
+        position(3)
+    }, 1000)
+
+geometry.put {
+    for (i in 0 until 1000) {
+        write(Vector3(Math.random()-0.5, Math.random()-0.5, Math.random()-0.5))
+    }
+}
+```
+
 ## Drawing using VertexBuffer
 
-Relevant APIs:
+##### Relevant APIs:
 ```kotlin
-Drawer.vertexBuffer()
-Drawer.shadeStyle
-vertexFormat {}
-vertexBuffer()
+fun Drawer.vertexBuffer(vertexBuffer: VertexBuffer, primitive: DrawPrimitive, vertexOffset: Int = 0, vertexCount: Int = vertexBuffer.vertexCount)
 ```
 
 The following snippet shows how to create, populate and draw a `VertexBuffer`. [full source](http://github.com/openrndr/openrndr-examples/custom-rendering-001/src/main/kotlin/main.kt)
@@ -178,8 +205,3 @@ override fun draw() {
 }
 ```
 
-## Low-level drawing
-
-One can bypass using `Drawer` entirely and use `Driver.instance.drawVertexBuffer`. This is completely safe and intentional but likely more involved to set up.
-
-The `Driver` interface is what is used by the internals of `Drawer`
