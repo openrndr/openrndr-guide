@@ -39,7 +39,7 @@ One can also create render targets without using the builder as follows:
 In the following code snippet you will find an example showing how to draw on an off-screen buffer followed by drawing that offscreen buffer on screen.
 
 ```kotlin
-lateinit var RenderTarget rt;
+lateinit var rt : RenderTarget
 
 fun setup() {
     // -- build a render target with a single color buffer attachment
