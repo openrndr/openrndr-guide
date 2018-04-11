@@ -10,6 +10,9 @@ Loading a composition and drawing it can be done as follows:
 var composition = loadSVG(File("data/drawing.svg").readText())
 drawer.composition(composition)
 ```
+[Complete tutorial code](https://github.com/openrndr/openrndr-tutorials/tree/master/svg-001)
+
+
 When drawing a composition from SVG you will notice that fill and stroke colors from the SVG file are used over the `Drawer` colors.
 
 ## Compositions
