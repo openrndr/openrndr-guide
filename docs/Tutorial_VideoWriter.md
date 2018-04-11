@@ -23,7 +23,7 @@ var frame = 0
 public void draw() {
     videoTarget.bind()
     drawer.background(ColorRGBa.RED)
-    drawer.rectangle(40 + frame, 40, 100,1 00 );
+    drawer.rectangle(40.0 + frame, 40.0, 100.0, 100.0)
     videoTarget.unbind()
     videoWriter.frame(renderTarget.colorBuffer(0))
 
