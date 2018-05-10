@@ -50,8 +50,9 @@ window.onload = () => {
     invertHandler.className = "invert-handler";
     invertHandler.onclick = invertPage;
     document.body.appendChild(invertHandler);
-
     setBodyHeight();
+
+    document.body.classList.add("loaded");
 
     //to fix content background issue in invert mode
     // const content = document.querySelector('.content');
