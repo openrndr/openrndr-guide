@@ -1,10 +1,7 @@
 /*@import '../../node_modules/@ibm/plex/scss/ibm-plex.scss';*/
 
 body{
-    font-family: 'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace;
-    /*font-family: "IBM Plex Mono", sans-serif;*/
-    /*font-size: 14px;*/
-    /*line-height: 16px;*/
+    font-family: 'IBM Plex Mono', serif;
 }
 
 body.inverted,

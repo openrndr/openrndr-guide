@@ -40,10 +40,9 @@ const setBodyHeight = () => {
   setTimeout(()=>{
     const main = document.querySelector('#main');
     const height = Math.max(main.offsetHeight + 200, window.innerHeight);
-    console.log(`body height is set to ${height}`);
     document.body.style.height = `${height}px`;
-  }, 200)
-}
+  }, 200);
+};
 
 window.onload = () => {
     const invertHandler = document.createElement('span');
