@@ -5,58 +5,69 @@ OPENRNDR provides an application framework that allows its users to write applic
 ## Requirements ##
  * A computer running Windows 10 (older versions may work but are untested) or MacOSX 10.10+
  * A graphics adapter and drivers that support OpenGL 3.3
- * Java 8 or 9 JDK installed
+ * Java 8, 9 or 10 JDK installed.
  * [IntelliJ Idea 2017.3](Tools_IntelliJIdea) Community or Enterprise edition
+ * Some experience with the [Kotlin programming language](https://kotlinlang.org)
+ * Some experience with [Git](https://git-scm.com/)
+
+## Setting up prerequisites
+Before you start working with OPENRNDR please follow these instructions.
+ * Download [Java Development Kit 9](http://www.oracle.com/technetwork/java/javase/downloads/jdk9-downloads-3848520.html) and install it.
+ * Download [IntelliJ Idea Community Edition](https://www.jetbrains.com/idea/download) and install it.
 
 ## Getting OPENRNDR
 
-At this point in time there are no pre-built binaries available. We are in the progress of setting up build and distribution services.
-For the time being follow the [building from source](Topic_BuildingFromSource) instructions to obtain OPENRNDR binaries.
+OPENRNDR is obtained by adding the OPENRNDR dependencies to your Gradle project. We offer [ready-to-use artifacts](http://dl.bintray.com/openrndr/openrndr/org/openrndr/) through Bintray.
 
-## Getting the tutorial code
+## Writing your first OPENRNDR program
 
-A good start for working with OPENRNDR is found in the [tutorial repository](https://github.com/openrndr/openrndr-tutorials).
-
-```sh
-git clone https://github.com/openrndr/openrndr-tutorials.git
-```
-
-Also check out the section on [using the tutorial repository](Topic_TutorialRepository.md) for further explanations.
-
-## Writing your first RNDR program
-
-The easiest way to start a new project is to start from the provided template project
+The easiest way to start a new project is to start from the provided [template project](https://github.com/openrndr/openrndr-gradle-template)
 ```sh
 git clone --depth 1 https://github.com/openrndr/openrndr-gradle-template.git
 ```
 
-This contains everything needed to start, notably the `build.gradle` with the right dependencies and the Gradle wrappers.
+This contains everything needed to start, notably the `build.gradle` with the right dependencies, the Gradle wrappers and a very simple OPENRNDR program.
+
+### Importing the template project into IntelliJ Idea
+
+Use VCS -> Checkout from Version Control -> Git to open the "Clone Repository" dialog.
+
+![axis](_media/getting-started-step-01.png)
+
+Fill in the url `https://github.com/openrndr/openrndr-gradle-template.git` and pick a target directory.
+
+![axis](_media/getting-started-step-02.png)
+
+Checkout from version control? Yes.
+
+![axis](_media/getting-started-step-03.png)
+
+In the Import Project dialog pick "Import project form external model" and select the "Gradle" model, click the "Next" button.
+
+![axis](_media/getting-started-step-04.png)
+
+In the "Import Project" dialog the default settings should be OK. Make sure the "Use default gradle wrapper" option is selected and Gradle JVM has been picked. If no JVM options are available then create a new JVM option.
+
+![axis](_media/getting-started-step-05.png)
+
+Click the "New Window" option.
+
+![axis](_media/getting-started-step-06.png)
+
+All done. The Gradle project is now imported in IntelliJ Idea and you are ready to run the program.
 
 
-Add a new Kotlin class to the project, name it `program.FirstProgram`
+### Run your first program
 
-```kotlin
+In IntelliJ, hover your mouse over the green triangle next to the `main()` function, right click and pick the `Run TemplateProgramKt` option in the pop-up menu. The sketch will now start.
 
-import org.openrndr.Application
-import org.openrndr.Configuration
-import org.openrndr.Program
-import org.openrndr.color.ColorRGBa
-import org.openrndr.math.Vector2
+![axis](_media/getting-started-step-07.png)
 
-class FirstProgram: Program(){
 
-    override fun draw() {
-        drawer.background(ColorRGBa.BLACK)
-        drawer.fill = ColorRGBa.WHITE
-        drawer.circle(Vector2( width / 2.0, height / 2.0 ), 100.0)
-    }
-}
+On MacOS you will find that the program exits immediately with an error. To resolve this edit the run configuration (left of the play button in the main toolbar) and add
+`-XstartOnFirstThread` to the VM arguments. The program should now work.
 
-fun main(args:Array<String>) {
-    Application.run(FirstProgram(), Configuration())
-}
+![axis](_media/getting-started-step-08.png)
 
-```
-### Run the sketch
+All set? now you can continue by trying some of the [tutorial code](Topic_TutorialRepository).
 
-Hover your mouse over the `main()` method, right click and pick the `Run FirstSketch.main()` option in the pop-up menu. The sketch will now start.

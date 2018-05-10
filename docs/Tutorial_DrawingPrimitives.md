@@ -1,35 +1,37 @@
 # Drawing Primitives #
 
-FIX ME: Add a little sentence here. Question: should Relevant APIs be on top, or be under the other topics, or explain how to use the APIs?? 
+In this topic we introduce OPENRNDR's basic drawing primitives.
 
-## Relevant APIs ##
+##### Relevant APIs
 
-```java
+```kotlin
 
 Drawer.circle(double x, double y, double radius)
 Drawer.rectangle(double x, double y, double width, double height)
 Drawer.line(double x0, double y0, double x1, double y1)
 
-Drawer.fill(ColorRGBa fillColor)
-Drawer.stroke(ColorRGBa strokeColor)
-Drawer.strokeWeight(double weight)
-
+Drawer.fill
+Drawer.stroke
+Drawer.strokeWeight
 ```
 
-## Drawing lines ##
+## Drawing circles ##
 
-```java
+```kotlin
 void draw() {
-    drawer.background(ColorRGBa.WHITE)
+    background(ColorRGBa.GRAY)
 
-    // -- setup line appearance
-    drawer.stroke(ColorRGBa.BLACK)
-    drawer.strokeWeight(5.0)
+    // -- setup appearance
+    drawer.fill = ColorRGBa.RED
+    drawer.stroke = ColorRGBa.BLACK
+    drawer.strokeWeight = 1.0
 
-    // -- draw a line from (10,10) to (120, 140)
-    drawer.line(10,10, 120, 140)
+    // -- draw a circle with its center at (140,140) with radius 130
+    drawer.circle(Vector2(140.0, 140.0), 130.0)
 }
 ```
+
+The appearance of circles is affected by the properties `fill`, `stroke` and `strokeWeight`.
 
 ## Drawing rectangles ##
 
@@ -43,38 +45,39 @@ void draw() {
     drawer.strokeWeight(1.0);
 
     // -- draw a rectangle at (10,10) with width 120 and height 140
-    drawer.rectangle(10,10, 120, 140)
+    drawer.rectangle(10.0, 10.0, 120.0, 140.0)
 }
 ```
 
-## Drawing circles ##
+The appearance of rectangles is affected by the properties `fill`, `stroke` and `strokeWeight`.
 
-```java
+## Drawing lines
+
+```kotlin
 void draw() {
-    background(ColorRGBa.WHITE);
+    drawer.background(ColorRGBa.WHITE)
 
-    // -- setup rectangle appearance
-    drawer.fill(ColorRGBa.RED);
-    drawer.stroke(ColorRGBa.BLACK);
-    drawer.strokeWeight(1.0);
+    // -- setup line appearance
+    drawer.stroke = ColorRGBa.BLACK
+    drawer.strokeWeight = 5.0
 
-    // -- draw a circle with its center at (140,140) with radius 130
-    drawer.rectangle(140, 140, 130)
+    // -- draw a line from (10,10) to (120, 140)
+    drawer.lineSegment(10,10, 120, 140)
 }
 ```
 
-## Drawing many primitives at once ##
+## Drawing many primitives at once
 
-```java
+```kotlin
 void draw() {
-    background(ColorRGBa.WHITE);
+    background(ColorRGBa.WHITE)
 
     // -- setup rectangle appearance
-    drawer.fill(ColorRGBa.RED);
-    drawer.stroke(ColorRGBa.BLACK);
-    drawer.strokeWeight(1.0);
+    drawer.fill = ColorRGBa.RED
+    drawer.stroke = ColorRGBa.BLACK
+    drawer.strokeWeight = 1.0
 
-    List<Rectangle> rectangles = new ArrayList<>();
+    val rectangles = mutableListOf<Rectangle>()
     for (int i = 0; i < 500; ++i) {
          rectangles.add(new Rectangle(Math.random() * 400, Math.random() * 400, Math.random() * 400, Math.random() * 400);
     }

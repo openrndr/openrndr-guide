@@ -1,29 +1,37 @@
 <!-- docs/_sidebar.md -->
 
+- **Before you start**
+    - [What is OPENRNDR?](/Topic_WhatIsOPENRNDR.md)
+    - [Should I use OPENRNDR?](/Topic_ShouldIUseOPENRNDR.md)
 - **Getting Started with OPENRNDR**
-    - [OPENRNDR concepts and conventions](/Tutorial_Concepts)
+    <!-- - [OPENRNDR concepts and conventions](/Tutorial_Concepts) -->
     - [Setting up your first OPENRNDR program](/Tutorial_Start)
     - [Using the tutorial repository](/Topic_TutorialRepository)
     - [Gradle based projects](/Topic_GradleBasedProjects)
-- **Building and installing OPENRNDR**
-    - [Building from source](/Topic_BuildingFromSource.md)
-    - [Overview of OPENRNDR modules](/Topic_Modules)
 - **Program basics**
     - [Program configuration](/Topic_ProgramConfiguration.md)
 - **Drawing basics**
     - [Primitives](/Tutorial_DrawingPrimitives.md)
     - [Images](/Tutorial_DrawingImages.md)
     - [Text](/Tutorial_DrawingText.md)
+    - [Color](/Topic_Color.md)
+    - [Managing draw style](/Topic_ManagingDrawStyle.md)
     - [Complex shapes](/Tutorial_DrawingComplexShapes.md)
     - [Drawing with SVG files](/Topic_DrawingSVGFiles.md)
-- **Advanced drawing**
+- **Drawing and transformations**
     - [Transforms](/Topic_Transforms.md)
+    - [Vectors](/Topic_Vectors.md)
+    - [Quaternions](/Topic_Quaternions.md)
+- **Advanced drawing**
     - [Render targets and color buffers](/Tutorial_RenderTargets.md)
     - [Filters and post-processing](/Topic_Filters.md)
     - [Shade styles](/Tutorial_ShadeStyles.md)
     - [Custom rendering](/Tutorial_CustomRendering.md)
 - **Interaction**
     - [Mouse and keyboard events](/Topic_MouseKeyboardEvents.md)
+    - [Program windows](/Topic_ProgramWindows.md)
+    - [File drops](/Topic_FileDrops.md)
+    - [Clipboard](/Topic_Clipboard.md)
 - **Animation**
     - [Interactive animations](/Topic_InteractiveAnimations)
 - **Videos**
@@ -34,6 +42,9 @@
     - [Writing extensions](/Topic_WritingExtensions.md)
 - **Distribution topics**
     - [Creating distributable programs](/Topic_DistributablePrograms.md)
+- **Developers and contributors**
+    - [Building from source](/Topic_BuildingFromSource.md)
+    - [Overview of OPENRNDR modules](/Topic_Modules)
 - **License**
 ----
 * [Library recommendations](Topic_LibraryRecommendations.md)

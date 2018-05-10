@@ -9,20 +9,8 @@ ffmpeg binaries (provided by the JavaCPP project). Adding openrndr-ffmpeg to the
 
 Add the openrndr-ffmpeg library to the list of dependencies.
 
-When working with a Maven project add the folowing item to pom.xml:
-```
-<dependencies>
-    […]
-    <dependency>
-        <artifact>openrndr-ffmpeg</artifact>
-        <group>org.openrndr</group>
-        <version>${openrndr_version}</version>
-    </dependency>
-    […]
-</dependencies>
-```
 
-When working with a Gradle project add the following to gradle.build
+Assuming are using a Gradle-based project; add the following to `gradle.build`:
 ```
 dependencies {
     […]

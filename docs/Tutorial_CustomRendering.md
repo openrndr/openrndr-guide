@@ -1,16 +1,106 @@
-# Custom rendering #
+# Custom rendering
 
 OPENRNDR is designed with the idea that users should be able to draw beyond the primitives offered by `Drawer`.
 
 A simple interface is provided with which a very wide spectrum of graphics can be drawn.
 
+## Vertex buffers
+
+A vertex buffer is a (on the GPU residing) amount of memory in which vertices that describe geometry are stored. A single vertex consists of a number of customizable attributes such as position, normal and color. In OPENRNDR the attributes of a vertex are described using a `VertexFormat`.
+
+Vertex buffers allow geometry to be prepared and stored in such a way that graphics hardware can draw it directly. 
+
+## Defining a vertex format
+
+A very simple vertex format that just contains a position attribute is defined as follows using the `vertexFormat {}` builder.
+
+```kotlin
+val vf = vertexFormat {
+    position(3)
+}
+```
+
+##### vertexFormat {} attributes
+
+Listed below are the attributes that can be added to the vertex format.
+
+name                                                               | type      | description
+-------------------------------------------------------------------|-----------|-------------------------------
+`position(dimensions: Int)`                                        | `FLOAT32` | position attribute 
+`normal(dimensions: Int)`                                          | `FLOAT32` | normal attribute
+`textureCoordinate(dimensions: Int)`                               | `FLOAT32` | texture coordinate attribute
+`color(dimensions: Int)`                                           | `FLOAT32` | color attribute
+`attribute(name: String, dimensions:Int, type: VertexElementTYpe)` | `type`    | custom attribute
+
+A more complex vertex format would then look like this:
+```kotlin 
+val vf = vertexFormat {
+    position(3)
+    normal(3)
+    color(4)
+    attribute("objectID", 1, FLOAT32)
+}
+```
+
+## Creating a vertex buffer
+
+##### Relevant APIs
+```kotlin
+vertexBuffer(vertexFormat: VertexFormat, vertexCount: Int): VertexBuffer
+```
+
+The `vertexBuffer()` function is used to create a `VertexBuffer` instance. For example to create a vertex buffer with our previously defined vertex format `vf` we use the following:
+
+```kotlin
+val geometry = vertexBuffer(vf, 1000)
+```
+
+Often the creation of the vertex buffer and the definition of the vertex format are combined in a single expression:
+
+```kotlin
+val geometry = vertexBuffer(vertexFormat {
+        position(3)
+        normal(3)
+        color(4)
+        attribute("objectID", 1, FLOAT32)
+    }, 1000)
+```
+
+## Placing data in the vertex buffer
+
+##### Relevant APIs
+```kotlin
+fun VertexBuffer.put {}
+fun VertexBuffer.write(data: ByteBuffer, offset:Int = 0)
+
+val VertexBuffer.shadow: VertexBufferShadow
+val VertexBufferShadow.writer
+fun VertexBufferShadow.upload()
+```
+
+Now that a vertex format has been defined and a vertex buffer has been created we can place data in the vertex buffer.
+The data placed in the vertex buffer must closely match the vertex format; any form of mismatch will lead to surprising or undefined behaviour.
+
+The `VertexBuffer.put {}` builder is the easiest and safest way of placing data in the vertex buffer.
+
+In the following example we create a very simple vertex format that holds just a position attribute. After creation we fill the vertex buffer with random data.
+```kotlin
+val geometry = vertexBuffer(vertexFormat {
+        position(3)
+    }, 1000)
+
+geometry.put {
+    for (i in 0 until 1000) {
+        write(Vector3(Math.random()-0.5, Math.random()-0.5, Math.random()-0.5))
+    }
+}
+```
+
 ## Drawing using VertexBuffer
 
-Relevant APIs:
+##### Relevant APIs:
 ```kotlin
-Drawer.vertexBuffer()
-Drawer.shadeStyle
-RenderTarget
+fun Drawer.vertexBuffer(vertexBuffer: VertexBuffer, primitive: DrawPrimitive, vertexOffset: Int = 0, vertexCount: Int = vertexBuffer.vertexCount)
 ```
 
 The following snippet shows how to create, populate and draw a `VertexBuffer`. [full source](http://github.com/openrndr/openrndr-examples/custom-rendering-001/src/main/kotlin/main.kt)
@@ -115,8 +205,3 @@ override fun draw() {
 }
 ```
 
-## Low-level drawing
-
-One can bypass using `Drawer` entirely and use `Driver.instance.drawVertexBuffer`. This is completely safe and intentional but likely more involved to set up.
-
-The `Driver` interface is what is used by the internals of `Drawer`

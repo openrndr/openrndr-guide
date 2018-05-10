@@ -10,5 +10,8 @@
     "@ibm/plex": "^1.0.2",
     "@ibm/type": "^0.5.4",
     "docsify": "^4.5.3"
+  },
+  "devDependencies": {
+    "docsify-cli": "^4.2.1"
   }
 }
