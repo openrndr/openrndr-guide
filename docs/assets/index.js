@@ -24,7 +24,7 @@ window.$docsify = {
     plugins: [
         plugins.linkify,
         plugins.editLink,
-        window.DocsifyCopyCodePlugin.init()
+        // window.DocsifyCopyCodePlugin.init()
     ]
 };
 

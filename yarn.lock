@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@ibm/plex@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@ibm/plex/-/plex-1.0.2.tgz#d11bb043619081d5ee332db74f048d8711ca606b"
+
 "@ibm/type@^0.5.4":
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/@ibm/type/-/type-0.5.4.tgz#fad1d196a89127c6cb3b0fbfefce54bc8f7e8212"
