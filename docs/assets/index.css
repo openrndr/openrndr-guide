@@ -38,15 +38,19 @@ body.inverted .content{
     /*line-height: 2em;*/
 }
 
-.invert-handler{
-    /*width: 30px;*/
-    height: 30px;
-    top: 30px;
-    right: 100px;
-    padding: 10px;
-    background: black;
+.invert-handler {
+    width: 20px;
+    height: 20px;
+    bottom: 10px;
+    right: 10px;
     color: white;
     position: fixed;
     z-index: 9999;
     cursor: pointer;
+    display: inline-block;
+}
+
+.invert-handler  svg {
+    width: 100%;
+    height: 100%;
 }
