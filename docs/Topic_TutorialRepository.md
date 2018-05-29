@@ -34,4 +34,4 @@ The repository contains a multi-module Gradle project in which each tutorial is 
  - `video-002` video playback with post-processing example
 
 ## Importing the tutorial repository in IntelliJ
-Follow the instructions for importing the [gradle template project](/Topic_GettingStarted.me) but use `https://github.com/openrndr/openrndr-tutorials` when prompted for the repository address.
+Follow the instructions for importing the [gradle template project](https://github.com/openrndr/openrndr-gradle-template) but use `https://github.com/openrndr/openrndr-tutorials` when prompted for the repository address.
