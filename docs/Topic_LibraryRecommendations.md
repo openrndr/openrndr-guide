@@ -10,11 +10,11 @@ OPENRNDR's functionality is limited to the audiovisual domain. Most applications
 - Tensorflow
 
 ## Light control
-
-- Artnet4j for artnet
+- [Artnet4j](https://github.com/cansik/artnet4j) for artnet
 
 # User Interfaces
 - [Panel](https://github.com/openrndr/openrndr-panel)
 
 ## Parsing
-- Gson for parsing JSON
+- [Gson](https://github.com/google/gson) for parsing JSON
+- [jsoup](https://jsoup.org/) for parsing HTML and XML based documents
