@@ -98,6 +98,7 @@ u_fill             | `vec4`      | The fill color
 u_stroke           | `vec4`      | The stroke color
 u_strokeWeight     | `vec4`      | The stroke weight
 u_colorTransform   | `float[25]` | The 5x5 color transform matrix
+u_contentScale     | `float`     | The content scale factor of the active render target
 
 ## Standard Attributes
 
@@ -141,9 +142,8 @@ Variable name | GLSL type | Description
 
 Constant name       | Scope               | GLSL type | Description
 --------------------|---------------------|-----------|------------
-`c_screenPosition`  | fragment transform  | vec2      | the position on screen
+`c_screenPosition`  | fragment transform  | vec2      | the position on screen in device coordinates
 `c_contourPosition` | fragment transform  | vec3      | the on the contour, only non-zero when drawing line segments and contours
-
 
 ## Parameters ##
 
