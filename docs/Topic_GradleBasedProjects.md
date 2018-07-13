@@ -29,14 +29,14 @@ repositories {
 ### Adding OPENRNDR dependencies
 ```groovy
 
-project.ext.openrndrVersion = "0.3.4"
+project.ext.openrndrVersion = "0.3.19"
 
 switch (org.gradle.internal.os.OperatingSystem.current()) {
     case org.gradle.internal.os.OperatingSystem.WINDOWS:
         project.ext.openrndrOS = "windows"
         break
     case org.gradle.internal.os.OperatingSystem.LINUX:
-        project.ext.openrndrOS = "linux"
+        project.ext.openrndrOS = "linux-x64"
         break
     case org.gradle.internal.os.OperatingSystem.MAC_OS:
         project.ext.openrndrOS = "macos"
