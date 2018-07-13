@@ -25,6 +25,7 @@
 - **Advanced drawing**
     - [Render targets and color buffers](/Tutorial_RenderTargets.md)
     - [Filters and post-processing](/Topic_Filters.md)
+    - [Clipping](/Topic_Clipping.md)
     - [Shade styles](/Tutorial_ShadeStyles.md)
     - [Custom rendering](/Tutorial_CustomRendering.md)
 - **Interaction**
@@ -39,6 +40,7 @@
     - [Writing to video files](/Tutorial_VideoWriter.md)
 - **Advanced Topics**
     - [Application flow](/Topic_ApplicationFlow.md)
+    - [Presentation control](/Topic_PresentationControl.md)
     - [Writing extensions](/Topic_WritingExtensions.md)
 - **Distribution topics**
     - [Creating distributable programs](/Topic_DistributablePrograms.md)
