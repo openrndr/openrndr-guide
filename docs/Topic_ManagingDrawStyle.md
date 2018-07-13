@@ -21,9 +21,9 @@ Property             | Type             | Default            | Description
 `depthTestPass`      | `DepthTestPass`  | `ALWAYS`           | When a fragment should pass the depth test
 `depthWrite`         | `Boolean`        | `false`            | Should the fragment depth be written to the depth buffer?
 `stencil`            | `StencilStyle`   |                    | The stencil style
-`frontStencil`       | `StencilStyle`   |                    | The stencil style for front facing fragments
-`backStencil`        | `StencilStyle`   |                    | The stencil style for back facing fragments
-
+`frontStencil`       | `StencilStyle`   |                    | The stencil style for front-facing fragments
+`backStencil`        | `StencilStyle`   |                    | The stencil style for back-facing fragments
+`clip`               | `Rectangle?`     | `null`             | A rectangle that describes where drawing will take place
 
 ## The active draw style
 
