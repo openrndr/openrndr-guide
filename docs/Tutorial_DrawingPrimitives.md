@@ -76,12 +76,7 @@ void draw() {
     drawer.fill = ColorRGBa.RED
     drawer.stroke = ColorRGBa.BLACK
     drawer.strokeWeight = 1.0
-
-    val rectangles = mutableListOf<Rectangle>()
-    for (int i = 0; i < 500; ++i) {
-         rectangles.add(new Rectangle(Math.random() * 400, Math.random() * 400, Math.random() * 400, Math.random() * 400);
-    }
-
+    drawer.rectangles((0 until 1000).map { Rectangle(Math.random() * width, Math.random() * height, 100.0, 100.0) })
     drawer.rectangles(rectangles);
 }
 ```
