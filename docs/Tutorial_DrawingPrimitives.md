@@ -68,6 +68,8 @@ void draw() {
 
 ## Drawing many primitives at once
 
+If you're having performance issues drawing many primitives simultaneously, try switching to the batch versions of primitive drawing functions (`Drawer.rectangles`, `Drawer.circles`, `Drawer.lines`, etc.). These functions can draw many shapes at once much faster than individual draw calls. Example:
+
 ```kotlin
 void draw() {
     background(ColorRGBa.WHITE)
