@@ -39,6 +39,7 @@
     - [Playing videos](Topic_VideoPlayer.md)
     - [Writing to video files](/Tutorial_VideoWriter.md)
 - **Advanced Topics**
+    - [Logging](/Topic_Logging.md)
     - [Application flow](/Topic_ApplicationFlow.md)
     - [Presentation control](/Topic_PresentationControl.md)
     - [Writing extensions](/Topic_WritingExtensions.md)
