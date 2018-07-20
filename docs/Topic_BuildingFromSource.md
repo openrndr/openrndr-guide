@@ -32,11 +32,19 @@ In order to use the OPENRNDR build from your applications one has to install OPE
 ./gradlew -Prelease.version=0.4.0-SNAPSHOT publishToMavenLocal
 ```
 
+These artefacts can be used in your own gradle projects by adding the `mavenLocal()` repository.
+```
+repositories {
+  [...]
+  mavenLocal()
+  [...]
+}
+```
 ## Building OPENRNDR from IntelliJ
 
 This should be as easy as importing the Gradle project into IntelliJ.
 
-On a MacOS system that has IntelliJ's command line tools installed one can run
+On a macOS system that has IntelliJ's command line tools installed one can run
 
 ```sh
 cd <path-to-checkout>
