@@ -13,7 +13,7 @@ FontImageMap.fromUrl(url:String, size:Double)
 ```kotlin
 fun draw() {
     background(ColorRGBa.BLACK);
-    drawer.fontMap = FontImageMap.fromUrl("file:fonts/SourceCodePro-Medium.ttf")
+    drawer.fontMap = FontImageMap.fromUrl("file:fonts/SourceCodePro-Medium.ttf", 20.0)
     drawer.text("here is a text", 20.0, 100.0)
 }
 ```
@@ -33,7 +33,7 @@ fun draw() {
     val writer = Writer(drawer)
 
     // -- Set a font, this is a required step
-    drawer.fontMap = FontImageMap.fromUrl("file:fonts/SourceCodePro-Medium.ttf")
+    drawer.fontMap = FontImageMap.fromUrl("file:fonts/SourceCodePro-Medium.ttf", 20.0)
     drawer.stroke = null
     drawer.fill = ColorRGBa.WHITE
 
