@@ -37,7 +37,7 @@ Making use of `bounds` and the `Rectangle` class we can scale up an image to fit
 
 ## Changing the appearance ##
 
-A linear color transform can be applied to images by setting `Drawer.colorMatrix`.
+A linear color transform can be applied to images by setting `Drawer.drawStyle.colorMatrix`.
 
 TODO: explain color matrices
 
@@ -46,7 +46,7 @@ TODO: explain color matrices
 Tinting can be achieved by constructing a color matrix using the `tint()` function.
 
 ```kotlin
-    drawer.colorMatrix = tint(ColorRGBa(1.0, 1.0, 1.0, Math.cos(seconds()) * 0.5 + 0.5))
+    drawer.drawStyle.colorMatrix = tint(ColorRGBa(1.0, 1.0, 1.0, Math.cos(seconds) * 0.5 + 0.5))
     drawer.image(image)
 ```
 
@@ -55,14 +55,14 @@ Tinting can be achieved by constructing a color matrix using the `tint()` functi
 Drawing an image with inverted colors can be achieved by using the color matrix `invert`.
 
 ```kotlin
-    drawer.colorMatrix = invert
+    drawer.drawStyle.colorMatrix = invert
     drawer.image(image)
 ```
 
 ##### Grayscale
 
 ```kotlin
-    drawer.colorMatrix = grayscale(0.33, 0.33, 0.33)
+    drawer.drawStyle.colorMatrix = grayscale(0.33, 0.33, 0.33)
     drawer.image(image)
 ```
 
@@ -74,7 +74,7 @@ Custom color matrices can be made by constructing a `Matrix55`.
 ```kotlin
 override fun draw() {
     val ct = Matrix55(c0r0 = 1.0)
-    drawer.colorMatrix = ct;
+    drawer.drawStyle.colorMatrix = ct;
     drawer.draw(image, 0, 0)
 } 
 ```
