@@ -14,7 +14,10 @@ val color = ColorRGBa(1.0, 0.0, 1.0)
 ### Color operations
 
 ```kotlin
+// -- Multiply r, g and b by shade. Use to darken or brighten a color.
 ColorRGBa.shade(shade: Double): ColorRGBa
+
+// -- Multiply alpha by opacity. Use to alter transparency.
 ColorRGBa.opacify(opacity: Double): ColorRGBa
 ```
 ### Predefined RGBa colors
