@@ -7,7 +7,7 @@ This tracks OPENRNDR's revision history in a high-level fashion.
  * Added shade style instance attributes
  * Added Uniform Buffer Blocks
 ##### 0.3.20
- * Improved [logging and debugging][Topic_Logging.md]
+ * Improved [logging and debugging](Topic_Logging.md)
  * Improved Debug3D extension, separated into reusable OrbitalCamera and OrbitalControls parts
 ##### 0.3.19
  * Added [rectangular clipping masks](Topic_Clipping.md)
