@@ -171,7 +171,6 @@ fun draw() {
 
 Can be used to map images.
 
-
 ### BufferTexture parameters
 
 Can be used to map custom values.
@@ -195,7 +194,6 @@ Can be used to map custom values.
 Shade styles allow the output to multiple buffers
 
 ```kotlin
-
 lateinit var rt: RenderTarget
 fun setup() {
     rt = renderTarget(width, height) {

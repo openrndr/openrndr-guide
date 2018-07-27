@@ -1,5 +1,7 @@
 <!-- docs/_sidebar.md -->
 
+- **What's new**
+    - [Revision History](/Topic_RevisionHistory.md)
 - **Before you start**
     - [What is OPENRNDR?](/Topic_WhatIsOPENRNDR.md)
     - [Should I use OPENRNDR?](/Topic_ShouldIUseOPENRNDR.md)
@@ -26,6 +28,7 @@
     - [Render targets and color buffers](/Tutorial_RenderTargets.md)
     - [Filters and post-processing](/Topic_Filters.md)
     - [Clipping](/Topic_Clipping.md)
+    - [Asynchronous Images](/Topic_AsynchronousImages.md)
     - [Shade styles](/Tutorial_ShadeStyles.md)
     - [Custom rendering](/Tutorial_CustomRendering.md)
 - **Interaction**

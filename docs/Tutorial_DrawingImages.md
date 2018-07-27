@@ -1,8 +1,6 @@
 # Drawing images #
 
-FIX ME: Add a little sentence here. Question: should Relevant APIs be on top, or be under the other topics, or explain how to use the APIs??
-
-## Relevant APIs ##
+##### Relevant APIs
 
 ```kotlin
 fun Drawer.image(image: ColorBuffer, x: Double = 0.0, y: Double = 0.0)
@@ -45,8 +43,17 @@ TODO: explain color matrices
 
 Tinting can be achieved by constructing a color matrix using the `tint()` function.
 
+In this example the image opacity is changed.
+
 ```kotlin
     drawer.drawStyle.colorMatrix = tint(ColorRGBa(1.0, 1.0, 1.0, Math.cos(seconds) * 0.5 + 0.5))
+    drawer.image(image)
+```
+
+In this example only the red channel of the image is drawn.
+
+```kotlin
+    drawer.drawStyle.colorMatrix = tint(ColorRGBa.RED)
     drawer.image(image)
 ```
 
@@ -65,7 +72,6 @@ Drawing an image with inverted colors can be achieved by using the color matrix 
     drawer.drawStyle.colorMatrix = grayscale(0.33, 0.33, 0.33)
     drawer.image(image)
 ```
-
 
 ##### Custom color matrices
 
