@@ -9,13 +9,12 @@ In the vertex transform it is possible to change the geometry of what is drawn.
 
 In the fragment transform it is possible to change the appearance of the geometry.
 
-For those interested in authoring shade styles it is helpful to have some knowledge of shaders and GLSL.
+For those interested in authoring shade styles it is helpful to have some based understanding of shaders and GLSL.
 
-## Basic usage ##
-
+## Basic usage
 In essence shade styles are fragments of GLSL code that are inserted into OPENRNDRs templated shaders.
 
-As quick first step we override the output to red in the following snippet.
+As a quick first step we override the output to red in the following snippet.
 ```kotlin
 fun draw() {
     // -- set shade style
@@ -65,11 +64,18 @@ fun draw() {
 ```
 Here an external clock signal is added by introducing a parameter to the shade style and setting its value to `seconds` (which is a property of `Program`)
 
-## Built-in shade shade styles
+## Examples 
 
-OPENRNDR offers a number of built-in shadestyles to facilitate common use cases.
+The tutorials repository holds example use of shade styles
 
-## Prefix overview
+ * [shade-style-001](https://github.com/openrndr/openrndr-tutorials/tree/master/shade-style-001) shows a simple gradient shade-style applied to various drawing primitives
+ * [shade-style-002](https://github.com/openrndr/openrndr-tutorials/tree/master/shade-style-002) shows the use of shade-styles to render circles, rectangles and images with a varying color per instance
+ * [text-003](https://github.com/openrndr/openrndr-tutorials/tree/master/text-003) uses shade styles to achieve per glyph variations
+
+
+## The shade style language
+
+### Prefix overview
 
 Listed below is an overview of all the prefixes used in the shade style language.
 
@@ -83,8 +89,9 @@ prefix   | Scope              | Description
 `x_`     | all                | transformable value
 `p_`     | all                | user provided value
 `o_`     | fragment transform | output value (always `vec4`)
+`d_`     | all                | shader definitions
 
-## Standard uniforms
+### Standard uniforms
 
 Standard uniforms are variables that are set by `Drawer`. Standard uniforms are constant and accessible from both the
 vertex and fragment transforms.
@@ -100,7 +107,7 @@ u_strokeWeight     | `vec4`      | The stroke weight
 u_colorTransform   | `float[25]` | The 5x5 color transform matrix
 u_contentScale     | `float`     | The content scale factor of the active render target
 
-## Standard Attributes
+### Standard Attributes
 
 Attributes are only directly accessible in the vertex transform. However interpolated forms of the
 the attributes are passed to the fragment transform.
@@ -117,11 +124,11 @@ Attribute name | GLSL type | Description
 `va_position`  | vec3     | the interpolated position
 `va_normal`    | vec3     | the interpolated normal
 
-## Transformable values
+### Transformable values
 
 These are values that can be transformed using shade styles.
 
-### Vertex transform
+#### Vertex transform
 
 Variable name        | GLSL type | Description
 ---------------------|-----------|------------
@@ -131,21 +138,23 @@ Variable name        | GLSL type | Description
 `x_normalMatrix`     | `mat4`    | normal matrix, initialized with `normalMatrix`
 `x_projectionMatrix` | `mat4`    | pjojection matrix, initialized with `projectionMatrix`
 
-### Fragment transform
+#### Fragment transform
 
 Variable name | GLSL type | Description
 --------------|-----------|------------
 `x_fill`      | `vec4`    | The fill color written to the fragment
 `x_stroke`    | `vec4`    | The stroke color written to the fragment
 
-## Constants
+### Constants
 
 Constant name       | Scope               | GLSL type | Description
 --------------------|---------------------|-----------|------------
+`c_element`         | all                 | int       | the element index in batched rendering
+`c_instance`        | all                 | int       | the instance index in instanced rendering
 `c_screenPosition`  | fragment transform  | vec2      | the position on screen in device coordinates
 `c_contourPosition` | fragment transform  | vec3      | the on the contour, only non-zero when drawing line segments and contours
 
-## Parameters ##
+### Parameters ##
 
 Parameters can be used to supply external data to transforms. Parameters are translated to shader uniforms and are exposed
 by uniforms with the `p_` prefix.
@@ -167,15 +176,15 @@ fun draw() {
 }
 ```
 
-### ColorBuffer parameters
+#### ColorBuffer parameters
 
 Can be used to map images.
 
-### BufferTexture parameters
+#### BufferTexture parameters
 
 Can be used to map custom values.
 
-### Supported parameter types:
+#### Supported parameter types:
 
  JVM type        | GLSL type
 -----------------|-------------
@@ -189,7 +198,7 @@ Can be used to map custom values.
  `BufferTexture` | `samplerBuffer`
 
 
-## Outputs
+#### Outputs
 
 Shade styles allow the output to multiple buffers
 
