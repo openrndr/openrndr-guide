@@ -36,8 +36,17 @@ Stand-alone executables are produced with a JDK 9.0 tool called `javapackager`.
 First we have to change our überjar task a bit such that `javapackager` can work with the generated jar.
 
 ```groovy
-jar {
+mainClassName = "org.openrndr.example.ExampleKt" // <-- should be the name of your program class + Kt
 
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+    doFirst {
+        from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+        from { configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) } }
+    }
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA', '**/module-info*'
 }
 ```
 
