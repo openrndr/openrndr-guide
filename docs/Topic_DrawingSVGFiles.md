@@ -85,5 +85,5 @@ val c = Composition(root)
 
 -------------------------
 ##### Notes
- * Writing to SVG files is explained in [Writing SVG Files](Topic_DrawingSVGFiles).
+ * Writing to SVG files is explained in [Writing SVG Files](Topic_WritingSVGFiles).
  * All shapes in the composition tree can be queried as explained in [Drawing Complex Shapes](Ttuorial_DrawingComplexShapes)
