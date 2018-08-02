@@ -24,13 +24,13 @@ val vf = vertexFormat {
 
 Listed below are the attributes that can be added to the vertex format.
 
-name                                                               | type      | description
--------------------------------------------------------------------|-----------|-------------------------------
-`position(dimensions: Int)`                                        | `FLOAT32` | position attribute 
-`normal(dimensions: Int)`                                          | `FLOAT32` | normal attribute
-`textureCoordinate(dimensions: Int)`                               | `FLOAT32` | texture coordinate attribute
-`color(dimensions: Int)`                                           | `FLOAT32` | color attribute
-`attribute(name: String, dimensions:Int, type: VertexElementTYpe)` | `type`    | custom attribute
+name                                                                  | type      | description
+----------------------------------------------------------------------|-----------|-------------------------------
+`position(dimensions: Int)`                                           | `FLOAT32  | VECTOR2_FLOAT32 | VECTOR3_FLOAT32 | VECTOR4_FLOAT32 ` | position attribute
+`normal(dimensions: Int)`                                             | `FLOAT32  | VECTOR2_FLOAT32 | VECTOR3_FLOAT32 | VECTOR4_FLOAT32 ` | normal attribute
+`textureCoordinate(dimensions: Int)`                                  | `FLOAT32  | VECTOR2_FLOAT32 | VECTOR3_FLOAT32 | VECTOR4_FLOAT32 ` | texture coordinate attribute
+`color(dimensions: Int)`                                              | `FLOAT32  | VECTOR2_FLOAT32 | VECTOR3_FLOAT32 | VECTOR4_FLOAT32 ` | color attribute
+`attribute(name: String, type: VertexElementType, arraySize:Int = 1)` | `type`    | custom attribute
 
 A more complex vertex format would then look like this:
 ```kotlin 
@@ -38,7 +38,7 @@ val vf = vertexFormat {
     position(3)
     normal(3)
     color(4)
-    attribute("objectID", 1, FLOAT32)
+    attribute("objectID", FLOAT32)
 }
 ```
 
@@ -62,7 +62,7 @@ val geometry = vertexBuffer(vertexFormat {
         position(3)
         normal(3)
         color(4)
-        attribute("objectID", 1, FLOAT32)
+        attribute("objectID", FLOAT32)
     }, 1000)
 ```
 

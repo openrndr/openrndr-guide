@@ -46,6 +46,7 @@
     - [Application flow](/Topic_ApplicationFlow.md)
     - [Presentation control](/Topic_PresentationControl.md)
     - [Writing extensions](/Topic_WritingExtensions.md)
+    - [Headless applications](/Topic_HeadlessApplications.md)
 - **Distribution topics**
     - [Creating distributable programs](/Topic_DistributablePrograms.md)
 - **Developers and contributors**
