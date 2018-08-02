@@ -3,7 +3,7 @@
 This tracks OPENRNDR's revision history in a high-level fashion.
 
 ##### 0.3.22
- * Improved shade styles(Tutorial_ShadeStyles.md)
+ * Improved [shade styles](Tutorial_ShadeStyles.md)
 ##### 0.3.21
  * Improved [asynchronous image loading](Topic_AsynchronousImages.md)
  * Added shade style instance attributes
