@@ -2,6 +2,10 @@
 
 This tracks OPENRNDR's revision history in a high-level fashion.
 
+##### 0.3.23
+ * Improved [VertexFormat](Tutorial_CustomRendering.md)
+ * Added cancelling of queued [asynchronous images](Topic_AsynchronousImages.md)
+ * Added [headless application](Topic_HeadlessApplication.md) mode
 ##### 0.3.22
  * Improved [shade styles](Tutorial_ShadeStyles.md)
 ##### 0.3.21
