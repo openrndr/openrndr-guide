@@ -1,9 +1,8 @@
 # Headless Applications
 
-OPENRNDR can be ran in headless mode on machines that have EGL support. Using the EGL backed headless mode Programs can be ran without active graphical environment. This makes it for example possible
-to use OPENRNDR to create command line utilities that can be run in a SSH session or as a background service.
+OPENRNDR can be ran in headless mode on machines that have EGL support. Using the EGL backed headless mode Programs can be ran without active graphical environment. This makes it for example possible to use OPENRNDR to create command line utilities that can be run in a SSH session or as a background service.
 
-To enable headless mode all that needs to be done is setting the `headless` value in the `Configration` to true.
+To enable headless mode all that needs to be done is setting the `headless` value in the `Configuration` to true.
 
 ```kotlin
 
