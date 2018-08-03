@@ -77,11 +77,8 @@ keyboard.keyDown.listen {
         // -- react to the keypress here
     }
 }
-
-Note that also mouse events come with modifiers and can be queried in a similar way.
-
 ```
-
+Note that also mouse events come with modifiers and can be queried in a similar way.
 
 ### Overview of keyboard events
 
