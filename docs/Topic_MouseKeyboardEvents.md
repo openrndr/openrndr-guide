@@ -66,6 +66,20 @@ fun setup() {
 }
 ```
 
+### Querying keyboard modifiers
+
+Checking for modifiers can be done by checking if the desired modifier key is active in `modifiers`.  In the example below we check
+if both shift and the left arrow key are pressed.
+
+```kotlin
+keyboard.keyDown.listen {
+    if (it.key == KEY_ARROW_LEFT && KeyboardModifiers.SHIFT in it.modifiers) {
+        // -- react to the keypress here
+    }
+}
+```
+Note that also mouse events come with modifiers and can be queried in a similar way.
+
 ### Overview of keyboard events
 
 event       | description                                    | relevant KeyboardEvent properties
