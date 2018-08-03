@@ -26,14 +26,12 @@ fun Drawer.image(image: ColorBuffer, source: Rectangle, dest: Rectangle)
 ## Basic Usage
 
 ```kotlin
-
 fun draw() {
     val proxy = colorBufferLoader.fromUrl("[.. some url ..]")
     if (proxy.colorBuffer != null) {
         drawer.image(proxy.colorBuffer)
     }
 }
-
 ```
 
 Here we see that `fromUrl` can safely be called many times as `ColorBufferLoader` caches these requests.
@@ -43,8 +41,11 @@ Accessing `proxy.colorBuffer` touches its internal timestamp and queues the imag
 ## Handling errors
 
 Sometimes loading fails; for example because the file was not found, or the http connection
-timed out. `ColorBufferLoader` signals such errors by placing `ColorBufferProxy` in `RETRY` state. The proxy can be taken out of this state
-reby calling its `.retry()` function.
+timed out. `ColorBufferLoader` signals such errors by placing `ColorBufferProxy` in `RETRY` state. The proxy can be taken out of this state by calling its `.retry()` function.
 
-Alternatively some errors cannot be retried; these will be signalled by setting the proxy state tot `ERROR`. Such errors should only occur if the loading of the image causes a throw of a non-IOException.
+Alternatively some errors cannot be retried; these will be signalled by setting the proxy state to `ERROR`. Such errors should only occur if the loading of the image causes a non-IOException to be thrown.
+
+## Cancelling a queued image
+
+Cancelling an image which is queued (and is thus in `QUEUED` state) for loading is done by calling `.cancel()` on the `ColorBufferProxy`. This will set the proxy state back to `NOT_LOADED`.
 
