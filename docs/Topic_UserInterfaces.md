@@ -7,7 +7,7 @@ This topic discusses the creation of graphical user interfaces in OPENRNDR appli
 
 The Panel library provides an HTML/CSS like user interface toolkit and is written using OPENRNDR.
 
-To use Panel, Add the panel library to your `build.gradle` configuration.
+To be able to use the Panel library the panel library to your `build.gradle` configuration.
 
 ```groovy
 dependencies {
@@ -17,7 +17,9 @@ dependencies {
 
 ## Basic Usage
 
-To create a very simple user interface that consists of just a single button.
+The easiest way to use Panel is to use it as an Program extension. When used as an extension all mouse and keyboard events are automatically handled and drawing of the user interface will take place after your program's `draw()` has been invoked. 
+
+To create a very simple user interface that consists of just a single button one would the following:
 
 ```kotlin
 var color = ColorRGBa.WHITE
@@ -50,43 +52,14 @@ controlManager {
         styleSheet(has type "button") {
             background = Color.RGBa(ColorRGBa.BLUE)
         }
-
         button {
             label = "click me"
         }
     }
 }
-
 ```
 [Relevant tutorial code](https://github.com/openrndr/openrndr-tutorials/blob/master/ui-002/src/main/kotlin/Example.kt)
 
-
-##### Stylesheet Properties
-
-Property        | Values                                          | Default
-----------------|-------------------------------------------------|---------
-`display`       | Display.INLINE, .BLOCK, .FLEX, .NONE            | Display.BLOCK
-`position`      | Position.ABSOLUTE, .RELATIVE, .FIXED, .STATIC   | Position.STATIC
-`width`         | LinearDimension.PX, .Percent, .Auto             | Auto
-`height`        | LinearDimension.PX, .Percent, .Auto             | Auto
-`top`           | LinearDimension.PX                              | 0.px
-`right`         | LinearDimension.PX                              | 0.px
-`flexDirection` | FlexDirection.COLUMN, FlexDirection.ROW         | FlexDirection.Row
-`flexGrow`      | FlexGrow.Ratio                                  | FlexGrow.Ratio(0.0)
-`paddingTop`    | LinearDimension.PX                              | 0.px
-`paddingBottom` | LinearDimension.PX                              | 0.px
-`paddingLeft`   | LinearDimension.PX                              | 0.p
-`paddingRight`  | LinearDimension.PX                              | 0.px
-`marginTop`     | LinearDimension.PX                              | 0.px
-`marginBottom`  | LinearDimension.PX                              | 0.px
-`marginLeft`    | LinearDimension.PX                              | 0.px
-`marginRight`   | LinearDimension.PX                              | 0.px
-`color`         | Color.RGB, Color.INHERIT                        | WHITE
-`background`    | Color.RGB, Color.INHERIT                        | TRANSPARENT
-`fontSize`      | LinearDimension.PX                              | 14.px
-`fontFamily`    | String                                          | default
-`overflow`      | Overflow.VISIBLE, .HIDDEN, SCROLL               | Overflow.VISIBLE
-`zIndex`        | ZIndex.Auto, .Value                             | ZIndex.Auto
 
 ## Selectors
 
@@ -109,3 +82,80 @@ styleSheet(has class_ "control-bar") {
 }
 ```
 
+## Elements
+
+The Panel library comes with a built-in set of elements with which user interfaces can be composed.
+
+### Element
+`Element` is the bass class from which all other elements derive. `Element` can be used directly but it is adviced to use `Div` instead.
+
+
+### Div
+
+The `Div` represents a rectangular area in which other elements can be placed. The `Div` element is the main ingredient in the creation of layouts. Divs are best created using the `div {}` builder. 
+
+```kotlin
+div("some-class-here", "another-class-here") {
+    // -- children here
+}
+```
+
+### Button
+
+An ordinary labeled button.
+
+```kotlin
+button { 
+    label = "Click me"
+    events.clicked.subscribe {
+        // -- do something with the clicked event
+    }
+}
+```
+The default width of buttons is set to Auto such that the width is determined by the label contents.
+
+
+### Slider 
+
+A horizontal labeled slider control. 
+
+##### Properties
+ * `label : String` - the slider label
+ * `precision : Int` - the number of digits behind the point, set to 0 for an integer slider
+ * `value : Double` - the slider value
+ * `range: Range` - the slider range, default is `Range(0.0, 1.0)`
+
+##### Events
+ * `valueChanged` - emitted when the slider value has changed
+ 
+```kotlin
+slider {
+    label = "Slide me"
+    value = 0.5
+    range = Range(0.0, 1.0)
+    precision = 3
+    events.valueChanged.subscribe {
+        println("the new value is ${it.newValue})
+    }
+}
+```
+
+### ColorPickerButton 
+A button like control that slides out a HSV color picker when clicked
+
+##### Properties
+ * `label : String` - the label on the button
+ * `value : ColorRGBa` - the currently picked color
+
+##### Events
+ * `valueChanged` - emitted when a color is picked
+ 
+```kotlin 
+colorPickerButton {
+    label = "Pick a color"
+    value = ColorRGBa.PINK
+    events.valueChanged.subscribe {
+        println("the new color is ${it.newValue})
+    }
+} 
+```
