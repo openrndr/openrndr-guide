@@ -7,7 +7,7 @@ This topic discusses the creation of graphical user interfaces in OPENRNDR appli
 
 The Panel library provides an HTML/CSS like user interface toolkit and is written using OPENRNDR.
 
-To be able to use the Panel library the panel library to your `build.gradle` configuration.
+To be able to use the Panel library add it to your `build.gradle` configuration.
 
 ```groovy
 dependencies {
@@ -17,9 +17,9 @@ dependencies {
 
 ## Basic Usage
 
-The easiest way to use Panel is to use it as an Program extension. When used as an extension all mouse and keyboard events are automatically handled and drawing of the user interface will take place after your program's `draw()` has been invoked. 
+The easiest way to use Panel is to use it as a Program extension. When used as an extension all mouse and keyboard events are automatically handled and drawing of the user interface will take place after your program's `draw()` has been invoked. 
 
-To create a very simple user interface that consists of just a single button one would the following:
+To create a very simple user interface that consists of just a single button one would do the following:
 
 ```kotlin
 var color = ColorRGBa.WHITE
@@ -87,7 +87,7 @@ styleSheet(has class_ "control-bar") {
 The Panel library comes with a built-in set of elements with which user interfaces can be composed.
 
 ### Element
-`Element` is the bass class from which all other elements derive. `Element` can be used directly but it is adviced to use `Div` instead.
+`Element` is the base class from which all other elements derive. `Element` can be used directly but it is adviced to use `Div` instead.
 
 
 ### Div
