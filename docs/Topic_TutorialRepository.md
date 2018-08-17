@@ -71,3 +71,6 @@ In alphabetical order
 
 ## Importing the tutorial repository in IntelliJ
 Follow the instructions for importing the [gradle template project](https://github.com/openrndr/openrndr-gradle-template) but use `https://github.com/openrndr/openrndr-tutorials` when prompted for the repository address.
+
+## Running tutorials from the command line
+You can run an individual example from the tutorial repository from the command line using `./gradlew :<project-name>:run`
