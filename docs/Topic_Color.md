@@ -65,3 +65,16 @@ fun ColorRGBa.toLUVa(ref: ColorXYZa = ColorXYZa.NEUTRAL):ColorLUVa
 fun ColorRGBa.toLCHABa(ref: ColorXYZa = ColorXYZa.NEUTRAL):ColorLCHABa
 fun ColorRGBa.toLCHUVa(ref: ColorXYZa = ColorXYZa.NEUTRAL):ColorLCHUVa
 ```
+
+##### Example conversion between RGB and HSV
+
+```kotlin
+// -- create red in RGBa
+val rgb = ColorRGBa(1.0, 0.0, 0.0)
+// -- convert to HSVa
+val hsv = rgb.toHSVa()
+
+// -- shift hue and convert back to RGBa
+drawer.fill = hsv.shiftHue(50.0).toRGBa()
+```
+
