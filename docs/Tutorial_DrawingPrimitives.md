@@ -19,7 +19,7 @@ Drawer.strokeWeight
 
 ```kotlin
 void draw() {
-    background(ColorRGBa.GRAY)
+    drawer.background(ColorRGBa.GRAY)
 
     // -- setup appearance
     drawer.fill = ColorRGBa.RED
@@ -37,7 +37,7 @@ The appearance of circles is affected by the properties `fill`, `stroke` and `st
 
 ```java
 void draw() {
-    background(ColorRGBa.WHITE);
+    drawer.background(ColorRGBa.WHITE);
 
     // -- setup rectangle appearance
     drawer.fill(ColorRGBa.RED);
@@ -72,7 +72,7 @@ If you're having performance issues drawing many primitives simultaneously, try 
 
 ```kotlin
 void draw() {
-    background(ColorRGBa.WHITE)
+    drawer.background(ColorRGBa.WHITE)
 
     // -- setup rectangle appearance
     drawer.fill = ColorRGBa.RED
