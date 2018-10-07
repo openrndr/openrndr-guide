@@ -44,7 +44,6 @@ drawer.strokeWeight = 1.0
 
 // -- draw a circle with its center at (140.0, 140.0) with radius 130.0
 drawer.circle(140.0, 140.0, 130.0)
-}
 ```
 
 Now, to draw a circle without fill we should set `Drawer.fill` to `null`:
@@ -92,16 +91,12 @@ Similarly to circles the appearance of rectangles is affected by the properties 
 ## Drawing lines
 
 ```kotlin
-void draw() {
-    drawer.background(ColorRGBa.WHITE)
+// -- setup line appearance
+drawer.stroke = ColorRGBa.WHITE
+drawer.strokeWeight = 5.0
 
-    // -- setup line appearance
-    drawer.stroke = ColorRGBa.BLACK
-    drawer.strokeWeight = 5.0
-
-    // -- draw a line from (10,10) to (120, 140)
-    drawer.lineSegment(10.0, 10.0, 120.0, 140.0)
-}
+// -- draw a line from (10,10) to (120, 140)
+drawer.lineSegment(10.0, 10.0, 120.0, 140.0)
 ```
 
 ## Drawing many primitives at once
@@ -109,14 +104,12 @@ void draw() {
 If you're having performance issues drawing many primitives simultaneously, try switching to the batch versions of primitive drawing functions (`Drawer.rectangles`, `Drawer.circles`, `Drawer.lines`, etc.). These functions can draw many shapes at once much faster than individual draw calls. Example:
 
 ```kotlin
-void draw() {
-    drawer.background(ColorRGBa.WHITE)
+drawer.background(ColorRGBa.WHITE)
 
-    // -- setup rectangle appearance
-    drawer.fill = ColorRGBa.RED
-    drawer.stroke = ColorRGBa.BLACK
-    drawer.strokeWeight = 1.0
-    drawer.rectangles((0 until 1000).map { Rectangle(Math.random() * width, Math.random() * height, 100.0, 100.0) })
-    drawer.rectangles(rectangles);
-}
+// -- setup rectangle appearance
+drawer.fill = ColorRGBa.RED
+drawer.stroke = ColorRGBa.BLACK
+drawer.strokeWeight = 1.0
+drawer.rectangles((0 until 1000).map { Rectangle(Math.random() * width, Math.random() * height, 100.0, 100.0) })
+drawer.rectangles(rectangles);
 ```
