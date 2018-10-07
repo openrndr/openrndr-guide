@@ -72,16 +72,13 @@ drawer.circle(mouse.position, 130.0)
 ## Drawing rectangles ##
 
 ```kotlin
-void draw() {
-    drawer.background(ColorRGBa.WHITE);
+// -- setup rectangle appearance
+drawer.fill = ColorRGBa.RED
+drawer.stroke = ColorRGBa.BLACK
+drawer.strokeWeight = 1.0
 
-    // -- setup rectangle appearance
-    drawer.fill = ColorRGBa.RED
-    drawer.stroke = ColorRGBa.BLACK
-    drawer.strokeWeight = 1.0
-
-    // -- draw a rectangle at (10,10) with width 120 and height 140
-    drawer.rectangle(10.0, 10.0, 120.0, 140.0)
+// -- draw a rectangle at (10,10) with width 120 and height 140
+drawer.rectangle(10.0, 10.0, 120.0, 140.0)
 }
 ```
 
