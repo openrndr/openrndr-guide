@@ -64,7 +64,7 @@ Animatable.animate(String variable, double target, long duration, Easing easing)
 
 ```
 
-Animatable.animate() cues a single animation for a single value. An animation consists of a target value and a duration and optionally a method of easing the animation.
+Animatable.animate() queues a single animation for a single value. An animation consists of a target value and a duration and optionally a method of easing the animation.
 
 In cases in which the target value is unknown but the increment is known one can use Animatable.add()
 
