@@ -102,7 +102,7 @@ class Example: Program {
     lateinit var renderTarget: RenderTarget
 
     override fun setup() {
-        renderTarget = renderTarget(width, height) { colorBuffer(width, height) }
+        renderTarget = renderTarget(width, height) { colorBuffer() }
         videoPlayer = VideoPlayer.fromUrl("file:data/video.mp4")
     }
 
