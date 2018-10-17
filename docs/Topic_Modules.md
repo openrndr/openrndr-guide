@@ -1,9 +1,9 @@
 # Overview of OPENRNDR modules
 
-OPENRNDR is organized in modules. The listing bellow decribes the hierarchy and functionality per module.
+OPENRNDR is organized in modules. The listing below describes the hierarchy and functionality per module.
 
  - `openrndr-core`, the core of OPENRNDR
-   - `openrndr-binpack`, a binpacker, used internally for creating texture atlasses.
+   - `openrndr-binpack`, a binpacker, used internally for creating texture atlases.
    - `openrndr-color`, code related to working with color
    - `openrndr-event`, a simple event library
    - `openrndr-math`, code related to math, mostly computer graphics math

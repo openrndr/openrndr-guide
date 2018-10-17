@@ -114,4 +114,4 @@ constant             |  description
 
 ## Event processing order
 
-Mouse and keyboard events are buffered and processed before `draw()` is called. It is possible but not adviced to perform drawing on event.
+Mouse and keyboard events are buffered and processed before `draw()` is called. It is possible but not advised to perform drawing on event.

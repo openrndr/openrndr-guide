@@ -3,7 +3,7 @@
 OPENRNDR extensively supports drawing in off-screen buffers.
 
 A `RenderTarget` models a place to draw to. A `RenderTarget` has two kind of buffer attachments
-`ColorBuffer` attachments and `DepthBuffer` attachements. At least a single `ColorBuffer` attachment is needed to draw on be able to draw on a `RenderTarget`.
+`ColorBuffer` attachments and `DepthBuffer` attachments. At least a single `ColorBuffer` attachment is needed to draw on be able to draw on a `RenderTarget`.
 
 A `ColorBuffer` is a buffer that can hold up to 4 channel color. A `ColorBuffer` can hold 8 bit integer, 16 bit float or 32 bit float channels.
 
@@ -11,7 +11,7 @@ A `DepthBuffer` is a buffer that can hold depth and stencil values.
 
 ## Creating a render target
 
-The adviced method of creating `RenderTarget` instances is to use the `renderTarget {}` builder
+The advised method of creating `RenderTarget` instances is to use the `renderTarget {}` builder
 
 ```kotlin
     val rt = renderTarget(640, 480) { }
@@ -155,7 +155,7 @@ val rt = renderTarget(640.0, 480.0) {
 }
 ```
 
-## Named attachements
+## Named attachments
 
 ```kotlin
 val rt = renderTarget(640.0, 480.0) {

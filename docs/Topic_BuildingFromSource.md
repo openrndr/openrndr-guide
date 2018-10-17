@@ -1,6 +1,6 @@
 # Building OPENRNDR from source
 
-This topic can be skipped by the novice reader as it explains how to build OPENRNDR from sources which is a fully optional step. Users are adviced to use the publically available builds on Maven Central.
+This topic can be skipped by the novice reader as it explains how to build OPENRNDR from sources which is a fully optional step. Users are advised to use the publicly available builds on Maven Central.
 
 Building OPENRNDR from source should be an easy an straight-forward process.
 

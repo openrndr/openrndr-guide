@@ -87,7 +87,7 @@ styleSheet(has class_ "control-bar") {
 The Panel library comes with a built-in set of elements with which user interfaces can be composed.
 
 ### Element
-`Element` is the base class from which all other elements derive. `Element` can be used directly but it is adviced to use `Div` instead.
+`Element` is the base class from which all other elements derive. `Element` can be used directly but it is advised to use `Div` instead.
 
 
 ### Div
@@ -102,7 +102,7 @@ div("some-class-here", "another-class-here") {
 
 ### Button
 
-An ordinary labeled button.
+An ordinary labelled button.
 
 ```kotlin
 button { 
@@ -117,7 +117,7 @@ The default width of buttons is set to Auto such that the width is determined by
 
 ### Slider 
 
-A horizontal labeled slider control. 
+A horizontal labelled slider control. 
 
 ##### Properties
  * `label : String` - the slider label
