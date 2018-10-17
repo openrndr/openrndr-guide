@@ -38,7 +38,7 @@ Tutorial [`start-dialog-001`](https://github.com/openrndr/openrndr-tutorials/blo
 
 ## Multiple simultaneous application windows
 
-OPENRNDR comes with the support for using more than one similtaneous application window.
+OPENRNDR comes with the support for using more than one simultaneous application window.
 The windows are backed by resource-sharing OpenGL contexts, as such resources can be used in more than one window.
 
 Setting up a multi-window application involves using the `Application.runAsync()` function.
@@ -48,7 +48,7 @@ class Left:Program { [...] }
 class Right:Program { [...] }
 
 fun main(args:Array<String>) {
-    // -- Runs the Left and Right programs asynchroneously
+    // -- Runs the Left and Right programs asynchronously
     Application.runAsync(Left(), configuration { [...] })
     Application.runAsync(Right(), configuration { [...] })
 }

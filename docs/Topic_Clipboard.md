@@ -2,7 +2,7 @@
 
 OPENRNDR programs can access the clipboard. Currently only text snippets can be read from and written to the clipboard.
 
-##### Settting the clipboard content
+##### Setting the clipboard content
 
 ```kotlin
 clipboard.contents = "this is the new clipboard content"

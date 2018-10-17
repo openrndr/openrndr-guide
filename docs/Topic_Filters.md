@@ -1,6 +1,6 @@
 # Filters and Post-processing
 
-Since OPENRNDR has extensive support for rendering to off-screen buffers it is easy to apply effecs and filters
+Since OPENRNDR has extensive support for rendering to off-screen buffers it is easy to apply effects and filters
 to the off-screen buffers.
 
 The formula for applying filters is roughly
