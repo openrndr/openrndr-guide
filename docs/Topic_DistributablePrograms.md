@@ -1,7 +1,7 @@
 # Creating Distributable Programs
 
 Creating distributable programs in OPENRNDR is slightly harder than using for example Processing. However, the ability to create
-easy-to-use distributable progams is one of OPENRNDR's top priorities.
+easy-to-use distributable programs is one of OPENRNDR's top priorities.
 
 ## Shaded jar (or "überjar")
 

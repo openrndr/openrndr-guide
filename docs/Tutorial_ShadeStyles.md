@@ -133,10 +133,10 @@ These are values that can be transformed using shade styles.
 Variable name        | GLSL type | Description
 ---------------------|-----------|------------
 `x_position`         | `vec3`    | vertex position, initialized with value `a_position`
-`x_normal`           | `vec3`    | vertex normal, intialized with value `a_normal`
+`x_normal`           | `vec3`    | vertex normal, initialized with value `a_normal`
 `x_viewMatrix`       | `mat4`    | view matrix
 `x_normalMatrix`     | `mat4`    | normal matrix, initialized with `normalMatrix`
-`x_projectionMatrix` | `mat4`    | pjojection matrix, initialized with `projectionMatrix`
+`x_projectionMatrix` | `mat4`    | projection matrix, initialized with `projectionMatrix`
 
 #### Fragment transform
 
