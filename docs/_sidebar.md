@@ -12,6 +12,7 @@
     - [Gradle based projects](/Topic_GradleBasedProjects)
 - **Program basics**
     - [Program configuration](/Topic_ProgramConfiguration.md)
+    - [Extensions](/Topic_Extensions.md)
 - **Drawing basics**
     - [Primitives](/Tutorial_DrawingPrimitives.md)
     - [Images](/Tutorial_DrawingImages.md)
