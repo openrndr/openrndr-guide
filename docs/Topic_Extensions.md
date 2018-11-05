@@ -7,7 +7,7 @@ mouse bindings and much more.
 
 ```kotlin
 fun Program.extend(extension: Extension) : Extension
-fun <T : Extend> Program.extend(extension: T, configure: T.() -> Unit) : Extension
+fun <T : Extension> Program.extend(extension: T, configure: T.() -> Unit) : Extension
 fun Program.extend(stage: ExtensionStage = ExtensionStage.BEFORE_DRAW, function: () -> Unit)
 ```
 
