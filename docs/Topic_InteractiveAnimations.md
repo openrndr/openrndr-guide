@@ -137,9 +137,11 @@ myAnimatable.apply {
 ### Waiting for an animation to almost finish
 
 ```kotlin
-Animatable.beforeComplete(time: Long)
-// equivalent:
-animatable.complete().delay(-time);
+// equivalent to beforeComplete(time: Long)
+myAnimatable.apply {
+    complete()
+    delay(-1000)
+}
 ```
 Instruct the animator to wait until the given amount of time before the previously queued animation ends.
 
