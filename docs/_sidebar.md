@@ -11,6 +11,7 @@
     - [Using the tutorial repository](/Topic_TutorialRepository)
     - [Gradle based projects](/Topic_GradleBasedProjects)
 - **Program basics**
+    - [Application and Program](/Topic_ApplicationAndProgram.md)
     - [Program configuration](/Topic_ProgramConfiguration.md)
     - [Extensions](/Topic_Extensions.md)
 - **Drawing basics**

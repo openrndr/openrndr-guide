@@ -11,7 +11,7 @@ To be able to use the Panel library add it to your `build.gradle` configuration.
 
 ```groovy
 dependencies {
-    compile('org.openrndr.panel:openrndr-panel:0.3.3')
+    compile('org.openrndr.panel:openrndr-panel:0.3.7')
 }
 ```
 

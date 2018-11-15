@@ -85,9 +85,63 @@ drawer.shape(Rectangle(Vector2(200.0, 200.0), 100.0, 100.0).shape)
 ```
 [Complete tutorial code](https://github.com/openrndr/openrndr-tutorials/blob/master/complex-shapes-003/src/main/kotlin/Example.kt)
 
+
+## Shape Boolean-operations
+Boolean-operations can be performed on shapes using the `compound {}` builder.
+
+A union operation would look like this
+
+```kotlin
+val shapeUnion = compound {
+    union {
+        shape(Circle(Vector2(100.0, 100.0), 100.0).shape)
+        shape(Circle(Vector2(195.0, 100.0), 10.0).shape)
+    }
+}
+drawer.shapes(sum)
+```
+
+And a difference (or subtract) operation like this:
+
+```kotlin
+val shapeDifference = compound {
+    difference {
+        shape(Circle(Vector2(100.0, 100.0), 100.0).shape)
+        shape(Circle(Vector2(195.0, 100.0), 10.0).shape)
+    }
+}
+drawer.shapes(sum)
+```
+
+And finally the intersection like this:
+```kotlin
+val shapeIntersection = compound {
+    intersection {
+        shape(Circle(Vector2(100.0, 100.0), 100.0).shape)
+        shape(Circle(Vector2(195.0, 100.0), 10.0).shape)
+    }
+}
+drawer.shapes(sum)
+```
+
+The `compound {}` builder can be used to create more complex compounds
+in a tree-like fashion:
+
+```kotlin
+val shapeIntersection = compound {
+    intersection {
+        union {
+            shape(Circle(Vector2(100.0, 100.0), 100.0).shape)
+            shape(Circle(Vector2(195.0, 100.0), 10.0).shape)
+        }
+        shape(Circle(Vector2(95.0, 100.0), 10.0).shape)
+    }
+}
+```
+
 ## Modifying shapes and contours
 
-Note that `Shape`, `ShapeContour` and `Segment` are immutable; their state cannot be changed after creation. As such new objects with updated values have to be constructed.
+Note that `Shape`, `ShapeContour` and `Segment` are immutable; their values cannot be changed after creation. As such new objects with updated values have to be constructed.
 
 ### Affine/Linear transforms
 
