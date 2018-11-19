@@ -21,7 +21,7 @@ body.loaded{
     position: fixed;
     right:0px;
     top: 0px;
-    z-index: 10;
+    z-index: 1;
 }
 
 .editpage {
@@ -62,11 +62,19 @@ body.loaded{
 .search input {
     border-radius: 5px;
     background-color:rgb(60, 60, 60);
+    margin-left: 40px;
 }
 
 
 .sidebar-toggle {
     background-color:transparent !important;
+    top:13px;
+    left:13px;
+    height: 25px;
+    width: 25px !important;
+    position: fixed;
+    display: block;
+    padding: 0px !important;
 }
 
 
@@ -77,14 +85,8 @@ body.loaded{
 
 .sidebar {
     background: black;
+    z-index: 2;
 }
-
-@media only screen and (min-width: 1024px) {
-    .sidebar-toggle {
-     display: none;
-    }
-}
-
 
 
 h1,h2,h3,h4  {
