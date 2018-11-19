@@ -1,23 +1,24 @@
 const configs = {
-    repoLink: 'https://github.com/openrndr/openrndr-guide'
+    repoLink: 'https://github.com/openrndr/openrndr-guide',
+
 };
 
 
 window.$docsify = {
-    repo: 'openrndr',
-    name: 'OPENRNDR',
+    name: 'OPENRNDR GUIDE',
     auto2top: true,
     loadSidebar: true,
-    coverpage: true,
+    coverpage: false,
     executeScript: true,
-    formatUpdated: '{MM}/{DD} {HH}:{mm}',
+     autoHeader: true,
+    formatUpdated: '{DD}-{MM}-{YYYY}',
     search: {
         noData: {
-            '/': 'No results!'
+            '/': 'No results'
         },
         paths: 'auto',
         placeholder: {
-            '/': 'Search ...'
+            '/': 'Search'
         }
     },
     ga: 'UA-109731993-1',
@@ -25,16 +26,12 @@ window.$docsify = {
         plugins.linkify,
         plugins.editLink,
         // window.DocsifyCopyCodePlugin.init()
-    ]
+    ],
+    homepage: 'Tutorial_Start.md',
+    themeColor: '#fdd0dd',
 };
 
-const invertPage = () => {
-    if(document.body.classList.contains('inverted')){
-        document.body.classList.remove('inverted');
-    }else{
-        document.body.classList.add('inverted');
-    }
-};
+
 
 const setBodyHeight = () => {
   setTimeout(()=>{
@@ -45,8 +42,8 @@ const setBodyHeight = () => {
 };
 
 window.onload = () => {
-    const invertHandler = document.querySelector('.invert-handler');
-    invertHandler.onclick = invertPage;
+    //const invertHandler = document.querySelector('.invert-handler');
+    //invertHandler.onclick = invertPage;
 
     setBodyHeight();
     document.body.classList.add("loaded");

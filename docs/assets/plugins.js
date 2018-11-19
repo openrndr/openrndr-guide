@@ -18,8 +18,10 @@ const plugins = {
             hook.beforeEach((html) => {
                 let url = `${configs.repoLink}/blob/master/docs/${vm.route.file}`;
                 return html + '\n----\n'
-                    + 'Last modified {docsify-updated} '
-                    + '[:memo: Edit Document](' + url + ')\n'
+                    + '<div class="editpage">'
+                    + 'Last modified {docsify-updated}'
+                    + '<a href=' + url + '> Improve this page</a>'
+                    + '</div>'
             })
         }
 };

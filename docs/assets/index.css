@@ -1,56 +1,209 @@
 /*@import '../../node_modules/@ibm/plex/scss/ibm-plex.scss';*/
 
 body{
-    font-family: 'IBM Plex Mono', serif;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
     opacity: 0;
-    -webkit-transition: opacity 1s ease-in-out;
+/*    -webkit-transition: opacity 1s ease-in-out;
     -moz-transition: opacity 1s ease-in-out;
     -ms-transition: opacity 1s ease-in-out;
     -o-transition: opacity 1s ease-in-out;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;*/
+    background:rgb(60, 60, 60);
+    color:white;
 }
 
 body.loaded{
     opacity: 1;
+
 }
 
-body.inverted,
-body.inverted img
-{
-    -webkit-filter: invert(100%);
-    -moz-filter: invert(100%);
-    -ms-filter: invert(100%);
-    -o-filter: invert(100%);
-    filter: invert(100%);
+.header {
+    position: fixed;
+    right:0px;
+    top: 0px;
+    z-index: 10;
 }
 
-body.inverted .content{
-    background: #eee;
+.editpage {
+    position: fixed;
+    right:0px;
+    bottom: 0px;
+    z-index: 10;
+    padding:5px;
+    font-size: 10px;
+    background-color:rgb(60, 60, 60);
 }
+.editpage a {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.header .linkhoder {
+    padding:5px;
+      background-color:rgb(60, 60, 60);
+}
+
+.header .linkhoder .link {
+    padding:10px;
+    float: right;
+    background-color:rgb(60, 60, 60);
+    //border-radius: 5px;
+    
+}
+
+.header .linkhoder .link  a { 
+    text-decoration: none !important;
+}
+
+.search {
+    border:none !important;
+}
+
+.search input {
+    border-radius: 5px;
+    background-color:rgb(60, 60, 60);
+}
+
+
+.sidebar-toggle {
+    background-color:transparent !important;
+}
+
 
 .cover{
     background-size: 22%, 22% !important;
     -webkit-background-size: 22%, 22% !important;
 }
 
+.sidebar {
+    background: black;
+}
+
+@media only screen and (min-width: 1024px) {
+    .sidebar-toggle {
+     display: none;
+    }
+}
+
+
+
+h1, h2 {
+     font-family: 'IBM Plex Mono', serif !important;
+}
+
 .sidebar-nav *{
-    /*font-size: 0.95em !important;*/
-    /*line-height: 2em;*/
+    font-size: 0.95em !important;
+    line-height: 1.2em;
 }
 
-.invert-handler {
-    width: 20px;
-    height: 20px;
-    bottom: 10px;
-    right: 10px;
-    color: white;
-    position: fixed;
-    z-index: 9999;
-    cursor: pointer;
-    display: inline-block;
+span {
+    color:#fdd0dd !important;
+
 }
 
-.invert-handler  svg {
-    width: 100%;
-    height: 100%;
+p {
+    //line-height: 1.2em !important;
 }
+
+.sidebar span {
+     color:#fdd0dd !important;
+
+}
+
+.sidebar strong {
+    color:white !important;
+    display: block;
+    padding-top: 10px !important;
+}
+
+.active {
+    color:#fdd0dd !important;
+}
+
+.sidebar-nav  a {
+    color:gray;
+}
+
+.sidebar .app-name-link {
+    color:#fdd0dd !important;
+    text-align: left;
+}
+
+.sidebar .app-name {
+    text-align: left;
+    margin-left:10px;
+}
+
+.sidebar-nav .active a {
+    color:#fdd0dd !important;
+    border: none !important;
+    font-weight: 400 !important;
+}
+
+
+hr {
+    display: none;
+}
+
+pre {
+    background-color: rgb(40, 40, 40) !important;
+    border-radius: 5px;
+}
+
+code {
+    background-color: rgb(40, 40, 40) !important;
+    color:white !important;
+    font-family: 'IBM Plex Mono', serif !important;
+}
+
+a {
+    color:gray !important;
+}
+
+td {
+    border: solid 1px rgb(40, 40, 40) !important;
+}
+
+tr {
+     border: solid 1px rgb(40, 40, 40) !important;
+
+}
+
+th {
+     border: solid 1px rgb(40, 40, 40) !important;
+
+}
+
+
+th {background-color: rgb(20, 20, 20) !important; }
+
+tr {background-color: rgb(20, 20, 20) !important;  }
+
+
+/* unvisited link */
+a:link {
+   
+    
+}
+
+/* visited link */
+a:visited {
+}
+
+/* mouse over link */
+a:hover {
+    text-decoration: none !important;
+    color:#fdd0dd !important;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+}
+
+
+
+
+
+
+
