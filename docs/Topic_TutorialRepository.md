@@ -11,7 +11,7 @@ In alphabetical order
  - [`animation-001`](https://github.com/openrndr/openrndr-tutorials/tree/master/animation-001)
 
 ##### Camera tutorials
- - [`camera-001`](https://github.com/openrndr/openrndr-tutorials/tree/master/clip-001) using the orbital camera provided by the Debug3D extension
+ - [`camera-001`](https://github.com/openrndr/openrndr-tutorials/tree/master/camera-001) using the orbital camera provided by the Debug3D extension
 
 ##### Clip tutorials
  - [`clip-001`](https://github.com/openrndr/openrndr-tutorials/tree/master/clip-001) using rectangular clipping masks
