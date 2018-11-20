@@ -57,12 +57,20 @@ body.loaded{
 
 .search {
     border:none !important;
+
+}
+
+.matching-post {
+    border-bottom: 1.0px solid rgb(60, 60, 60) !important;
+
+    border-bottom: none;
 }
 
 .search input {
     border-radius: 5px;
     background-color:rgb(60, 60, 60);
     margin-left: 40px;
+    color: white !important;
 }
 
 
@@ -77,6 +85,18 @@ body.loaded{
     padding: 0px !important;
 }
 
+.clear-button svg circle {
+    fill: #fdd0dd !important;
+
+}
+
+.clear-button svg:hover {
+    cursor: pointer !important;
+}
+
+.clear-button svg path {
+    stroke: black !important;
+}
 
 .cover{
     background-size: 22%, 22% !important;
