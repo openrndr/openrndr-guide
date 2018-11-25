@@ -103,7 +103,7 @@ geometry.put {
 fun Drawer.vertexBuffer(vertexBuffer: VertexBuffer, primitive: DrawPrimitive, vertexOffset: Int = 0, vertexCount: Int = vertexBuffer.vertexCount)
 ```
 
-The following snippet shows how to create, populate and draw a `VertexBuffer`. [full source](http://github.com/openrndr/openrndr-examples/custom-rendering-001/src/main/kotlin/main.kt)
+The following snippet shows how to create, populate and draw a `VertexBuffer`. [full source](https://github.com/openrndr/openrndr-tutorials/tree/master/custom-rendering-001)
 
 ```kotlin
 

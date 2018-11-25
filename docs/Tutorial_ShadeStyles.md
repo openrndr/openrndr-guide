@@ -9,7 +9,7 @@ In the vertex transform it is possible to change the geometry of what is drawn.
 
 In the fragment transform it is possible to change the appearance of the geometry.
 
-For those interested in authoring shade styles it is helpful to have some based understanding of shaders and GLSL.
+For those interested in authoring shade styles it is helpful to have some basic understanding of shaders and GLSL.
 
 ## Basic usage
 In essence shade styles are fragments of GLSL code that are inserted into OPENRNDRs templated shaders.
@@ -68,8 +68,8 @@ Here an external clock signal is added by introducing a parameter to the shade s
 
 The tutorials repository holds example use of shade styles
 
- * [shade-style-001](https://github.com/openrndr/openrndr-tutorials/tree/master/shade-style-001) shows a simple gradient shade-style applied to various drawing primitives
- * [shade-style-002](https://github.com/openrndr/openrndr-tutorials/tree/master/shade-style-002) shows the use of shade-styles to render circles, rectangles and images with a varying color per instance
+ * [shade-style-001](https://github.com/openrndr/openrndr-tutorials/tree/master/shade-styles-001) shows a simple gradient shade-style applied to various drawing primitives
+ * [shade-style-002](https://github.com/openrndr/openrndr-tutorials/tree/master/shade-styles-002) shows the use of shade-styles to render circles, rectangles and images with a varying color per instance
  * [text-003](https://github.com/openrndr/openrndr-tutorials/tree/master/text-003) uses shade styles to achieve per glyph variations
 
 

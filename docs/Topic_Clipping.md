@@ -29,5 +29,5 @@ override fun draw() {
         drawer.circle(Vector2(width / 2.0, height / 2.0), 200.0)
     }
 ```
-[full source](http://github.com/openrndr/openrndr-tutorial/clipping-001/src/main/kotlin/main.kt)
+[full source](https://github.com/openrndr/openrndr-tutorials/blob/master/clip-001/src/main/kotlin/Example.kt)
 

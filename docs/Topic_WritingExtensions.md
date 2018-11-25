@@ -5,10 +5,11 @@
 OPENRNDR provides a simple `Extension` interface with which default `Program` behaviour can be changed.
 
 ```kotlin
-interface Extensions {
-    fun setup(program:Program) {}
-    fun beforeDraw(drawer:Drawer, program:Program) {}
-    fun afterDraw(drawer:Drawer, program:Program) {}
+interface Extension {
+    var enabled: Boolean
+    fun setup(program: Program) {}
+    fun beforeDraw(drawer: Drawer, program: Program) {}
+    fun afterDraw(drawer: Drawer, program: Program) {}
 }
 ```
 
