@@ -1,6 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 
-package docs.drawing
+package docs.`04_Drawing_basics`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
@@ -11,21 +11,21 @@ fun main(args: Array<String>) {
     @Text
     """
     # Drawing Primitives
-    In this topic we introduce OPENRNDR's basic drawing primitives. We show how to draw lines, rectangles and circles.
+    In this topic we introduce OPENRNDR's basic 04_Drawing_basics primitives. We show how to draw lines, rectangles and circles.
 
     ## Relevant apis
     ```kotlin
-    // -- circle drawing
+    // -- circle 04_Drawing_basics
     Drawer.circle(x:Double, y:Double, radius:Double)
     Drawer.circle(center: Vector2, radius:Double)
     Drawer.circle(circle: Circle)
 
-    // -- rectangle drawing
+    // -- rectangle 04_Drawing_basics
     Drawer.rectangle(x:Double, y:Double, width:Double, height:Double)
     Drawer.rectangle(corner: Vector2, width:Double, height:Double)
     Drawer.rectangle(rectangle: Rectangle)
 
-    // -- line segment drawing
+    // -- line segment 04_Drawing_basics
     Drawer.lineSegment(x0: Double, y0: Double, x1: Double, y1: Double)
     Drawer.lineSegment(start:Vector2, end:Vector2)
     Drawer.lineSegment(lineSegment: LineSegment)
@@ -49,7 +49,7 @@ fun main(args: Array<String>) {
         program {
             @Exclude
             extend(SingleScreenshot().apply {
-                outputFile = "media/drawing-circles-001.png"
+                outputFile = "media/04_Drawing_basics-circles-001.png"
             })
 
 
@@ -75,7 +75,7 @@ fun main(args: Array<String>) {
 
     @Media.Image
     """
-    media/drawing-circles-001.png
+    media/04_Drawing_basics-circles-001.png
     """
 }
 

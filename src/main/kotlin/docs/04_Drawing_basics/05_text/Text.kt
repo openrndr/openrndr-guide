@@ -1,6 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 
-package docs.drawing.`01_text`
+package docs.`04_Drawing_basics`.`05_text`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
@@ -16,7 +16,7 @@ fun main(args: Array<String>) {
     @Text
     """
     # Drawing Text
-    OPENRNDR comes with two text drawing modes: vector based and image based.
+    OPENRNDR comes with two text 04_Drawing_basics modes: vector based and image based.
     The vector based mode is advised for large font sizes while the bitmap based mode is advised for smaller font sizes.
 
     ## Relevant apis
@@ -70,7 +70,7 @@ fun main(args: Array<String>) {
             })
 
             @Code("""
-                ## Advanced text drawing
+                ## Advanced text 04_Drawing_basics
                 OPENRNDR comes with a Writer class that allows for basic typesetting. The Writer tool is based on the concept of text box and a cursor.
                 Its use is easiest demonstrated through an example:
             """)
@@ -94,7 +94,7 @@ fun main(args: Array<String>) {
 
                 // -- Go to the next line and output more text
                 writer.newLine()
-                writer.text("Some more text")
+                writer.text("Some more text man2!")
             }
 
 
