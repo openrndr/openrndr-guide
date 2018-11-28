@@ -3,3 +3,4 @@ out
 .idea
 .gradle
 src/main/kotlin/examples
+ffmpegOutput.txt
