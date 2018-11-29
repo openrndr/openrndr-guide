@@ -69,13 +69,13 @@ dependencies {
 
 mainClassName = "TemplateProgramKt"
 if (!System.properties['os.name'].toLowerCase().contains('windows')) {
-    applicationDefaultJvmArgs = ["-XstartOnFirstThread"]
+   // applicationDefaultJvmArgs = ["-XstartOnFirstThread"]
 }
 
 
 dokgen {
     runner {
-        jvmArgs = ["-XstartOnFirstThread"]
+       // jvmArgs = ["-XstartOnFirstThread"]
     }
     examples {
         webRootUrl = "https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin"
