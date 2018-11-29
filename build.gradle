@@ -75,7 +75,9 @@ if (!System.properties['os.name'].toLowerCase().contains('windows')) {
 
 dokgen {
     runner {
-        jvmArgs = ["-XstartOnFirstThread"]
+        if (System.properties['os.name'] == "Mac OS X") {
+            jvmArgs = ["-XstartOnFirstThread"]
+        }
     }
     examples {
         webRootUrl = "https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin"
@@ -105,7 +107,7 @@ task publishExamples { task ->
             from("$projectDir/src/main/kotlin/examples") {
                 into "src/main/kotlin/examples"
             }
-            from ("$projectDir/fonts"){
+            from("$projectDir/fonts") {
                 into "fonts"
             }
         }
