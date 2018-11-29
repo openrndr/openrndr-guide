@@ -17,7 +17,7 @@ fun main(args: Array<String>) {
 Starting your program with a custom configuration looks roughly like this.
 """
 
-    @Code.Block("")
+    @Code.Block
     run {
         fun main(args: Array<String>) = application {
             configure {
@@ -32,7 +32,7 @@ Starting your program with a custom configuration looks roughly like this.
 Setting the window size is done through the `width` and `height` properties.
 """
 
-    @Code.Block("")
+    @Code.Block
     run {
         fun main(args: Array<String>) = application {
             configure {
@@ -48,7 +48,7 @@ Setting the window size is done through the `width` and `height` properties.
 The default value for `position` is `null` for which the default behaviour is to place the window at the center of the primary display
 """
 
-    @Code.Block("")
+    @Code.Block
     run {
         fun main(args: Array<String>) = application {
             configure {
@@ -65,7 +65,7 @@ Setting the window size is done through the `width` and `height` properties.
 
 """
 
-    @Code.Block("")
+    @Code.Block
     run {
         fun main(args: Array<String>) = application {
             configure {
@@ -82,7 +82,7 @@ or if no mode change is desired set `width` and `height` to `-1`
     """.trimIndent()
 
 
-    @Code.Block("")
+    @Code.Block
     run {
         fun main(args: Array<String>) = application {
             configure {
@@ -98,7 +98,7 @@ or if no mode change is desired set `width` and `height` to `-1`
 # Window Title
 """.trimIndent()
 
-    @Code.Block("")
+    @Code.Block
     run {
         fun main(args: Array<String>) = application {
             configure {
@@ -122,7 +122,7 @@ Two window unfocus behaviours are available. In `NORMAL` behaviour the program c
         }
     }
 
-@Code.Block("")
+@Code.Block
 run {
     fun main(args: Array<String>) = application {
         configure {

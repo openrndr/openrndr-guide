@@ -17,7 +17,7 @@ mouse bindings and much more.
     @Text
 """## Basic extension use"""
 
-    @Code.Block("")
+    @Code.Block
     run {
         fun main(args: Array<String>) = application {
             program {
@@ -31,7 +31,7 @@ mouse bindings and much more.
 Some extensions have configurable options. They can be set using the configuring `extend` function as follows:
     """.trimMargin()
 
-    @Code.Block("")
+    @Code.Block
     run {
         fun main(args: Array<String>) = application {
             program {
@@ -47,7 +47,7 @@ Some extensions have configurable options. They can be set using the configuring
 The functional `extend` function allows one to use a single function as an extension.
 """
 
-    @Code.Block("")
+    @Code.Block
     run {
         fun main(args: Array<String>) = application {
             program {

@@ -41,7 +41,9 @@ fun main(args: Array<String>) {
                 outputFile = "media/text-001.mp4"
             })
 
-            @Code("## Drawing bitmap based text")
+            @Text
+            "## Drawing bitmap based text"
+            @Code
             extend {
                 drawer.background(ColorRGBa.PINK)
                 drawer.fill = ColorRGBa.WHITE
@@ -69,11 +71,13 @@ fun main(args: Array<String>) {
                 outputFile = "media/text-002.mp4"
             })
 
-            @Code("""
+            @Text
+            """
                 ## Advanced text 04_Drawing_basics
                 OPENRNDR comes with a Writer class that allows for basic typesetting. The Writer tool is based on the concept of text box and a cursor.
                 Its use is easiest demonstrated through an example:
-            """)
+            """
+            @Code
             extend {
                 drawer.background(ColorRGBa.PINK)
 
@@ -129,23 +133,29 @@ fun main(args: Array<String>) {
             extend {
                 drawer.background(ColorRGBa.RED)
                 val writer = Writer(drawer)
-                @Code.Block("""
+                @Text
+                """
                     The writer has a box property that determines the area in which it can place text.
-                """)
+                """
+                @Code.Block
                 run {
                     writer.box = Rectangle(Vector2(100.0, 100.0), 400.0, 400.0)
                 }
 
-                @Code.Block("""
+                @Text
+                """
                      In some cases you may want to have a an infinitely large box, this avoids line breaks altogether.
-                """)
+                """
+                @Code.Block
                 run {
                     writer.box = Rectangle(Vector2(100.0, 100.0), Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY)
                 }
 
-                @Code.Block("""
+                @Text
+                """
                      A quick way to set the box to equate the bounds of the screen:
-                """)
+                """
+                @Code.Block
                 run {
                     writer.box = drawer.bounds
                     // -- with margins of 50 pixels

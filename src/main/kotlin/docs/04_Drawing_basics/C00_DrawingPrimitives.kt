@@ -34,7 +34,7 @@ media/circle-001.png
         configure {
 
         }
-        @Code("")
+        @Code
         program {
             @Exclude
             extend(SingleScreenshot()) {
@@ -71,7 +71,7 @@ You may have spotted the two other APIs for drawing circles; `Drawer.circle(cent
     run {
         application {
             program {
-                @Code.Block("")
+                @Code.Block
                 run {
                     drawer.circle(mouse.position, 50.0)
                 }
@@ -94,7 +94,7 @@ media/circle-002.png
         configure {
 
         }
-        @Code("")
+        @Code
         program {
             @Exclude
             extend(SingleScreenshot()) {
@@ -131,7 +131,7 @@ media/circle-002.png
         """
 
 
-        @Code("")
+        @Code
         program {
             @Exclude
             extend(SingleScreenshot()) {
@@ -173,21 +173,21 @@ ROUND    | round cap
 SQUARE   | square cap
 """
 
-    run {
-        val a = LineCap.ROUND
-        val b = when (a) {
-            LineCap.ROUND -> TODO()
-            LineCap.BUTT -> TODO()
-            LineCap.SQUARE -> TODO()
-        }
-    }
+//    run {
+//        val a = LineCap.ROUND
+//        val b = when (a) {
+//            LineCap.ROUND -> TODO()
+//            LineCap.BUTT -> TODO()
+//            LineCap.SQUARE -> TODO()
+//        }
+//    }
 
     @Media.Image
     """media/line-001.png"""
 
     @Application
     application {
-        @Code("")
+        @Code
         program {
             @Exclude
             extend(SingleScreenshot()) {
@@ -223,7 +223,7 @@ To draw a line strip one supplies a list of points between which line segments s
 
     @Application
     application {
-        @Code("")
+        @Code
         program {
             @Exclude
             extend(SingleScreenshot()) {
