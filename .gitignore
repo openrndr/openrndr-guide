@@ -4,3 +4,4 @@ out
 .gradle
 src/main/kotlin/examples
 ffmpegOutput.txt
+media
