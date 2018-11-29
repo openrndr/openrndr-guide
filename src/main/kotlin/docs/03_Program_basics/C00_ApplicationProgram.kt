@@ -21,7 +21,7 @@ program logic: `setup()` and `draw()`.
 A simple `Program` implementation looks like this:
 """.trimIndent()
 
-    @Code.Block("")
+    @Code.Block
     run {
         class SimpleProgram : Program() {
             override fun setup() {
@@ -41,7 +41,7 @@ To run the program we have to create an application that hosts it:
 
     run {
         class SimpleProgram:Program()
-        @Code.Block("")
+        @Code.Block
         run {
             fun main(args: Array<String>) {
                 application(SimpleProgram(), Configuration())
@@ -62,7 +62,7 @@ simple as:
 
 """
 
-@Code.Block("")
+@Code.Block
 run {
     fun main() = application {
         configure {

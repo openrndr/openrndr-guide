@@ -28,13 +28,12 @@ fun main(args: Array<String>) {
     """.trimIndent()
 
     @Application
-
+    @Code
     application {
         configure {
             width = 640
             height = 480
         }
-        @Code("")
         program {
 
             extend {
