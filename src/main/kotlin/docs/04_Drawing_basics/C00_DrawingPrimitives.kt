@@ -193,7 +193,6 @@ SQUARE   | square cap
             extend(SingleScreenshot()) {
                 outputFile = "media/line-001.png"
             }
-
             extend {
                 drawer.background(ColorRGBa.PINK)
                 // -- setup line appearance
