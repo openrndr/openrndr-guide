@@ -34,7 +34,6 @@ fun main(args: Array<String>) {
             width = 640
             height = 480
         }
-//        @Code
         program {
 
             extend {

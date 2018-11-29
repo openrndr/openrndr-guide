@@ -1,10 +1,3 @@
-package docs.`01_Before_you_start`
-
-import org.openrndr.dokgen.annotations.Text
-
-fun main(args : Array<String>) {
-@Text
-"""
 # Should I use OPENRNDR ?
 
 ## Target audience
@@ -29,5 +22,3 @@ OPENRNDR is environment agnostic, however all our tutorial and reference materia
 ## Long-term support
 
 We have not reached to the point at which we can make promises regarding API stability . We try not to break things, but at this point it is in cases better to break than to continue with inconsistencies or incompleteness.
-"""
-}
