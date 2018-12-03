@@ -1,10 +1,3 @@
-package docs.`02_Getting_Started_with_OPENRNDR`
-
-import org.openrndr.dokgen.annotations.Text
-
-fun main(args: Array<String>) {
-@Text
-"""
 # Using the tutorial repository
 
 The [tutorial repository](https://github.com/openrndr/openrndr-tutorials) can be browsed online.
@@ -81,5 +74,3 @@ Follow the instructions for importing the [gradle template project](https://gith
 
 ## Running tutorials from the command line
 You can run an individual example from the tutorial repository from the command line using `./gradlew :<project-name>:run`
-"""
-}

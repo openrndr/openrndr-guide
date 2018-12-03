@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_EXPRESSION", "UNREACHABLE_CODE")
+
 package docs.`03_Program_basics`
 
 import org.openrndr.Program
@@ -13,9 +15,9 @@ fun main(args: Array<String>) {
 
     @Text
     """
-# Program Configuration
-Starting your program with a custom configuration looks roughly like this.
-"""
+    # Program Configuration
+    Starting your program with a custom configuration looks roughly like this.
+    """
 
     @Code.Block
     run {
@@ -28,9 +30,9 @@ Starting your program with a custom configuration looks roughly like this.
 
     @Text
     """
-## Window size
-Setting the window size is done through the `width` and `height` properties.
-"""
+    ## Window size
+    Setting the window size is done through the `width` and `height` properties.
+    """
 
     @Code.Block
     run {
@@ -44,9 +46,9 @@ Setting the window size is done through the `width` and `height` properties.
 
     @Text
     """
-## Window position
-The default value for `position` is `null` for which the default behaviour is to place the window at the center of the primary display
-"""
+    ## Window position
+    The default value for `position` is `null` for which the default behaviour is to place the window at the center of the primary display
+    """
 
     @Code.Block
     run {
@@ -59,11 +61,11 @@ The default value for `position` is `null` for which the default behaviour is to
 
     @Text
     """
-## Fullscreen window
+    ## Fullscreen window
 
-Setting the window size is done through the `width` and `height` properties.
+    Setting the window size is done through the `width` and `height` properties.
 
-"""
+    """
 
     @Code.Block
     run {
@@ -78,8 +80,8 @@ Setting the window size is done through the `width` and `height` properties.
 
     @Text
     """
-or if no mode change is desired set `width` and `height` to `-1`
-    """.trimIndent()
+    or if no mode change is desired set `width` and `height` to `-1`
+    """
 
 
     @Code.Block
@@ -94,9 +96,9 @@ or if no mode change is desired set `width` and `height` to `-1`
     }
 
     @Text
-"""
-# Window Title
-""".trimIndent()
+    """
+    # Window Title
+    """
 
     @Code.Block
     run {
@@ -109,25 +111,24 @@ or if no mode change is desired set `width` and `height` to `-1`
 
 
     @Text
-"""
-# Window unfocus behaviour
-Two window unfocus behaviours are available. In `NORMAL` behaviour the program continues running at full speed, in contrast the `THROTTLE` behaviour throttles the program to 10Hz.
-""".trimIndent()
+    """
+    # Window unfocus behaviour
+    Two window unfocus behaviours are available. In `NORMAL` behaviour the program continues running at full speed, in contrast the `THROTTLE` behaviour throttles the program to 10Hz.
+    """
 
     run {
         var b = UnfocusBehaviour.NORMAL
-        val a = when(b) {
+        val a = when (b) {
             UnfocusBehaviour.NORMAL -> TODO()
             UnfocusBehaviour.THROTTLE -> TODO()
         }
     }
 
-@Code.Block
-run {
+    @Code
     fun main(args: Array<String>) = application {
         configure {
             unfocusBehaviour = UnfocusBehaviour.THROTTLE
         }
     }
-}
+
 }

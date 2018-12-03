@@ -1,11 +1,3 @@
-package docs.`02_Getting_Started_with_OPENRNDR`
-
-import org.openrndr.dokgen.annotations.Text
-
-fun main(args: Array<String>) {
-
-@Text
-"""
 # Getting Started with OPENRNDR #
 
 OPENRNDR provides an application framework that allows its users to write applications that run on Microsoft Windows, MacOS platforms and Linux/x64 systems.
@@ -64,5 +56,3 @@ On MacOS you will find that the program exits immediately with an error. To reso
 `-XstartOnFirstThread` to the VM arguments. The program should now work.
 
 ![axis](_media/getting-started-step-08.png)
-"""
-}

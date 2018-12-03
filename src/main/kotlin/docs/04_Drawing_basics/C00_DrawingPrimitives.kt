@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_EXPRESSION")
+
 package docs.`04_Drawing_basics`
 
 import org.openrndr.application
@@ -14,19 +16,21 @@ fun main(args: Array<String>) {
 
 
     @Text
-    """# Drawing Primitives
-In this topic we introduce OPENRNDR's basic drawing primitives. We show how to draw lines, rectangles and circles.
-"""
+    """
+    # Drawing Primitives
+    In this topic we introduce OPENRNDR's basic drawing primitives. We show how to draw lines, rectangles and circles.
+    """
 
     @Text
-    """## Drawing circles
-A circle is drawn around coordinates `x`, `y`, i.e. `x` and `y` specify the center of the circle.
+    """
+    ## Drawing circles
+    A circle is drawn around coordinates `x`, `y`, i.e. `x` and `y` specify the center of the circle.
+    Circles are filled with the color set in `Drawer.fill` and their stroke is set to `Drawer.stroke`. The width of the stroke follows `Drawer.strokeWeight`.
+    """
 
-Circles are filled with the color set in `Drawer.fill` and their stroke is set to `Drawer.stroke`. The width of the stroke follows `Drawer.strokeWeight`.
-"""
     @Media.Image
     """
-media/circle-001.png
+    media/circle-001.png
     """
 
     @Application
@@ -65,8 +69,8 @@ media/circle-001.png
 
     @Text
     """
-You may have spotted the two other APIs for drawing circles; `Drawer.circle(center: Vector2, radius: Double)` and `Drawer.circle(circle: Circle)` and wonder what those are for. They are for drawing the exact same circle, but using arguments that may be more convenient in scenarios in which values are provided by `Vector2` or `Circle` types.
-"""
+    You may have spotted the two other APIs for drawing circles; `Drawer.circle(center: Vector2, radius: Double)` and `Drawer.circle(circle: Circle)` and wonder what those are for. They are for drawing the exact same circle, but using arguments that may be more convenient in scenarios in which values are provided by `Vector2` or `Circle` types.
+    """
 
     run {
         application {
@@ -81,12 +85,13 @@ You may have spotted the two other APIs for drawing circles; `Drawer.circle(cent
 
     @Text
     """
-### Drawing many circles
-OPENRNDR provides special draw APIs for drawing many circles at once. Using these APIs is much faster than calling the `circle` API many times.
-"""
+    ### Drawing many circles
+    OPENRNDR provides special draw APIs for drawing many circles at once. Using these APIs is much faster than calling the `circle` API many times.
+    """
+
     @Media.Image
     """
-media/circle-002.png
+    media/circle-002.png
     """
 
     @Application
@@ -161,17 +166,18 @@ media/circle-002.png
     }
 
     @Text
-    """## Drawing lines
-Single lines are drawn per segment between two pairs of coordinates using `lineSegment`. Line primitives use `Drawer.stroke` to determine the color drawing color and `Drawer.strokeWeight` to determine the width of the line.
+    """
+    ## Drawing lines
+    Single lines are drawn per segment between two pairs of coordinates using `lineSegment`. Line primitives use `Drawer.stroke` to determine the color drawing color and `Drawer.strokeWeight` to determine the width of the line.
 
-Line endings can be drawn in three styles by setting `Drawer.lineCap`
+    Line endings can be drawn in three styles by setting `Drawer.lineCap`
 
-LineCap. | description
----------|------------
-BUTT     | butt cap
-ROUND    | round cap
-SQUARE   | square cap
-"""
+    LineCap. | description
+    ---------|------------
+    BUTT     | butt cap
+    ROUND    | round cap
+    SQUARE   | square cap
+    """
 
 //    run {
 //        val a = LineCap.ROUND
@@ -213,9 +219,11 @@ SQUARE   | square cap
     }
 
     @Text
-    """### Drawing line strips
-A run of connected line segments is called a line strip and is drawn using `lineStrip`.
-To draw a line strip one supplies a list of points between which line segments should be drawn."""
+    """
+    ### Drawing line strips
+    A run of connected line segments is called a line strip and is drawn using `lineStrip`.
+    To draw a line strip one supplies a list of points between which line segments should be drawn.
+    """
 
     @Media.Image
     """media/line-002.png"""
@@ -241,5 +249,4 @@ To draw a line strip one supplies a list of points between which line segments s
             }
         }
     }
-
 }

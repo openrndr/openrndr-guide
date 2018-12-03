@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_EXPRESSION")
+
 package docs.`01_Before_you_start`
 
 import org.openrndr.application
@@ -25,7 +27,7 @@ fun main(args: Array<String>) {
 
     # A simple OPENRNDR program
     Here we show a very simple program written using OPENRNDR.
-    """.trimIndent()
+    """
 
     @Application
     @Code

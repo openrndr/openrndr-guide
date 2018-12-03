@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_EXPRESSION")
+
 package docs.`03_Program_basics`
 
 import org.openrndr.application
@@ -8,14 +10,15 @@ import org.openrndr.extensions.Screenshots
 fun main(args: Array<String>) {
     @Text
     """
-# Extensions
+    # Extensions
 
-Extensions add functionality to a Program. Extensions can be used to control how a program draws, setup keyboard and
-mouse bindings and much more.
+    Extensions add functionality to a Program. Extensions can be used to control how a program draws, setup keyboard and
+    mouse bindings and much more.
 
-"""
+    """
+
     @Text
-"""## Basic extension use"""
+    """## Basic extension use"""
 
     @Code.Block
     run {
@@ -27,9 +30,10 @@ mouse bindings and much more.
     }
 
     @Text
-    """## Extension configuration
-Some extensions have configurable options. They can be set using the configuring `extend` function as follows:
-    """.trimMargin()
+    """
+    ## Extension configuration
+    Some extensions have configurable options. They can be set using the configuring `extend` function as follows:
+    """
 
     @Code.Block
     run {
@@ -43,9 +47,10 @@ Some extensions have configurable options. They can be set using the configuring
     }
 
     @Text
-    """## Extension functions
-The functional `extend` function allows one to use a single function as an extension.
-"""
+    """
+    ## Extension functions
+    The functional `extend` function allows one to use a single function as an extension.
+    """
 
     @Code.Block
     run {

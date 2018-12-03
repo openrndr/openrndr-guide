@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_EXPRESSION")
+
 package docs.`04_Drawing_basics`
 
 import org.openrndr.application
@@ -10,13 +12,16 @@ import org.openrndr.text.Writer
 
 fun main(args: Array<String>) {
 
-    @Text """# Drawing text
-OPENRNDR comes with support for rendering bitmap text.
-"""
+    @Text
+    """
+    # Drawing text
+    OPENRNDR comes with support for rendering bitmap text.
+    """
 
-    @Text """## Simple text rendering
-Here we show how to render simple texts.
-""".trimIndent()
+    @Text """
+    ## Simple text rendering
+    Here we show how to render simple texts.
+    """
 
     @Media.Image """media/text-001.png"""
 
@@ -40,11 +45,13 @@ Here we show how to render simple texts.
     }
 
 
-    @Text """## Advanced text rendering
-OPENRNDR comes with a `Writer` class that allows for basic typesetting. The `Writer` tool is based on the concept of text box and a cursor.
+    @Text
+    """
+    ## Advanced text rendering
+    OPENRNDR comes with a `Writer` class that allows for basic typesetting. The `Writer` tool is based on the concept of text box and a cursor.
 
-Its use is easiest demonstrated through an example:
-""".trimIndent()
+    Its use is easiest demonstrated through an example:
+    """
 
     @Media.Image """media/text-002.png"""
 
@@ -78,13 +85,14 @@ Its use is easiest demonstrated through an example:
         }
     }
 
-    @Text """### Specifying the text area
-The `box` field of `Writer` is used to specify where text should be written. Let's set the text area
-to a 300 by 300 pixel rectangle starting at (40, 40).
+    @Text """
+    ### Specifying the text area
+    The `box` field of `Writer` is used to specify where text should be written. Let's set the text area
+    to a 300 by 300 pixel rectangle starting at (40, 40).
 
-We see that the text is now drawn with margins above and left of the text, and that the second line of
-text is set on two rows.
-    """.trimMargin()
+    We see that the text is now drawn with margins above and left of the text, and that the second line of
+    text is set on two rows.
+    """
 
     @Media.Image """media/text-003.png"""
 
@@ -119,9 +127,10 @@ text is set on two rows.
         }
     }
 
-    @Text """### Text properties
-Text tracking and leading can be
-    """.trimMargin()
+    @Text """
+    ### Text properties
+    Text tracking and leading can be
+    """
 
     @Media.Image """media/text-004.png"""
 

@@ -55,11 +55,11 @@ fun main(args: Array<String>) {
 
             @Text
             """
-                ## Drawing circles
-                In the following example we use `Drawer.circle(x: Double, y: Double, radius: Double)` to draw a single circle.
-                A circle is drawn around coordinates `x`, `y`, i.e. `x` and `y` specify the center of the circle.
-                Circles are filled with the color set in `Drawer.fill` and their stroke is set to `Drawer.stroke`. The width of the stroke follows `Drawer.strokeWeight`.
-                """
+            ## Drawing circles
+            In the following example we use `Drawer.circle(x: Double, y: Double, radius: Double)` to draw a single circle.
+            A circle is drawn around coordinates `x`, `y`, i.e. `x` and `y` specify the center of the circle.
+            Circles are filled with the color set in `Drawer.fill` and their stroke is set to `Drawer.stroke`. The width of the stroke follows `Drawer.strokeWeight`.
+            """
 
             @Code
             extend {

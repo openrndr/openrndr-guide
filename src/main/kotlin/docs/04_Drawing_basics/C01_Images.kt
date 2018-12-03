@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_EXPRESSION")
+
 package docs.`04_Drawing_basics`
 
 import org.openrndr.application
@@ -16,18 +18,20 @@ import java.io.File
 fun main(args: Array<String>) {
 
     @Text
-    """# Images
+    """
+    # Images
 
-Images are stored in `ColorBuffer` instances, the image data resides in GPU memory
+    Images are stored in `ColorBuffer` instances, the image data resides in GPU memory
 
-## Loading and drawing images
+    ## Loading and drawing images
 
-Images are loaded using the `loadImage` function and drawn using `Drawer.image`.
+    Images are loaded using the `loadImage` function and drawn using `Drawer.image`.
 
-"""
+    """
+
     @Media.Image
     """
-media/image-001.png
+    media/image-001.png
     """
     @Application
     application {
@@ -48,7 +52,7 @@ media/image-001.png
 
     @Text
     """To change the location of the image one can use `Drawer.image` with extra coordinates provided.
-    """.trimIndent()
+    """
     run {
         application {
 
@@ -66,7 +70,7 @@ media/image-001.png
 
     @Text
     """Extra `width` and `height` arguments can be provided to draw a scaled version of the image
-    """.trimIndent()
+    """
     run {
         application {
 
@@ -83,14 +87,15 @@ media/image-001.png
     }
 
     @Text
-    """## Drawing parts of images
-It is possible to draw parts of images by specifying _source_ and _target_ rectangles. The source rectangle describes
-  the area that should be taken from the image and presented in the target rectangle.
+    """
+    ## Drawing parts of images
+    It is possible to draw parts of images by specifying _source_ and _target_ rectangles. The source rectangle describes
+    the area that should be taken from the image and presented in the target rectangle.
     """
 
     @Media.Image
     """
-media/image-002.png
+    media/image-002.png
     """
     @Application
     application {
@@ -114,12 +119,11 @@ media/image-002.png
 
     @Text
     """## Drawing many parts of images
-
     """
 
     @Media.Image
     """
-media/image-003.png
+    media/image-003.png
     """
     @Application
     application {
@@ -134,10 +138,10 @@ media/image-003.png
 
             extend {
                 val a = 5
-                val areas = (0..10).flatMap {y ->
+                val areas = (0..10).flatMap { y ->
                     (0..10).map { x ->
-                        val source = Rectangle(x*(width/10.0), y * (height / 10.0), width/5.0, height/5.0)
-                        val target = Rectangle(x*(width/10.0), y * (height / 10.0), width/10.0, height/10.0)
+                        val source = Rectangle(x * (width / 10.0), y * (height / 10.0), width / 5.0, height / 5.0)
+                        val target = Rectangle(x * (width / 10.0), y * (height / 10.0), width / 10.0, height / 10.0)
                         source to target
                     }
                 }
@@ -147,15 +151,16 @@ media/image-003.png
     }
 
     @Text
-    """## Changing the appearance of images
-A linear color transform can be applied to images by setting `Drawer.drawStyle.colorMatrix` to a `Matrix55` value.
-### Tinting
-Tinting multiplies the image color with a _tint color_.
-"""
+    """
+    ## Changing the appearance of images
+    A linear color transform can be applied to images by setting `Drawer.drawStyle.colorMatrix` to a `Matrix55` value.
+    ### Tinting
+    Tinting multiplies the image color with a _tint color_.
+    """
 
     @Media.Image
     """
-media/image-004.png
+    media/image-004.png
     """
     @Application
     application {
@@ -200,13 +205,15 @@ media/image-005.png
         }
     }
 
-    @Text """### Grayscale
-Drawing an image with inverted colors can be achieved by using the `invert` color matrix.
-"""
+    @Text
+    """
+    ### Grayscale
+    Drawing an image with inverted colors can be achieved by using the `invert` color matrix.
+    """
 
     @Media.Image
     """
-media/image-006.png
+    media/image-006.png
     """
     @Application
     application {
@@ -221,7 +228,7 @@ media/image-006.png
 
             extend {
                 // -- the factors below determine the RGB mixing factors
-                drawer.drawStyle.colorMatrix = grayscale(1.0 / 3.0, 1.0/3.0, 1.0/3.0)
+                drawer.drawStyle.colorMatrix = grayscale(1.0 / 3.0, 1.0 / 3.0, 1.0 / 3.0)
                 drawer.image(image, 0.0, 0.0)
             }
         }
