@@ -69,7 +69,7 @@ dependencies {
 
 mainClassName = "TemplateProgramKt"
 if (!System.properties['os.name'].toLowerCase().contains('windows')) {
-    applicationDefaultJvmArgs = ["-XstartOnFirstThread"]
+   // applicationDefaultJvmArgs = ["-XstartOnFirstThread"]
 }
 
 
