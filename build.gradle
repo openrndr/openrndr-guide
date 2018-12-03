@@ -64,12 +64,13 @@ dependencies {
     compile "org.openrndr:openrndr-extensions:$openrndrVersion"
     compile "org.openrndr:openrndr-filter:$openrndrVersion"
     compile "org.openrndr:openrndr-ffmpeg:$openrndrVersion"
+    implementation 'com.github.openrndr:openrndr-panel:v0.3.10'
     compile "org.openrndr:dokgen:1.0-SNAPSHOT"
 }
 
 mainClassName = "TemplateProgramKt"
 if (!System.properties['os.name'].toLowerCase().contains('windows')) {
-   // applicationDefaultJvmArgs = ["-XstartOnFirstThread"]
+    // applicationDefaultJvmArgs = ["-XstartOnFirstThread"]
 }
 
 
