@@ -30,7 +30,7 @@ compileKotlin {
 }
 
 sourceCompatibility = 1.8
-project.ext.openrndrVersion = "0.3.29"
+project.ext.openrndrVersion = "0.3.30"
 
 repositories {
     mavenCentral()

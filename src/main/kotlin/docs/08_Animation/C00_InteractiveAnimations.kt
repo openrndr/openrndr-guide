@@ -10,20 +10,20 @@ import org.openrndr.dokgen.annotations.Text
 
 fun main(args: Array<String>) {
 
-    var openrndr_version = ""
-    @Text
-    """
-    # Interactive Animations
-
-    This section explains how to use OPENRNDR's `Animatable` class as a tool to create interactive animations.
-    In order to use `Animatable` your project needs to depend on the `rndr-animatable`.
-
-    ```gradle
-    dependencies {
-        compile "org.openrndr:openrndr-animatable:$openrndr_version"
-    }
-    ```
-    """
+//    var openrndr_version = ""
+//    @Text
+//    """
+//    # Interactive Animations
+//
+//    This section explains how to use OPENRNDR's `Animatable` class as a tool to create interactive animations.
+//    In order to use `Animatable` your project needs to depend on the `rndr-animatable`.
+//
+//    ```gradle
+//    dependencies {
+//        compile "org.openrndr:openrndr-animatable:$openrndr_version"
+//    }
+//    ```
+//    """
 
     @Text
     """

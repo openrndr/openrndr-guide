@@ -7,6 +7,7 @@ import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.FontImageMap
 import org.openrndr.extensions.SingleScreenshot
+import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.shape.Rectangle
 import org.openrndr.text.Writer
 
@@ -129,10 +130,11 @@ fun main(args: Array<String>) {
 
     @Text """
     ### Text properties
-    Text tracking and leading can be
+    Text tracking -the horizontal space between characters- and leading -the vertical space between lines- can be
+    set using `Writer.style.leading` and `Writer.style.tracking`.
     """
 
-    @Media.Image """media/text-004.png"""
+    @Media.Video """media/text-004.mp4"""
 
     @Application
     application {
@@ -144,8 +146,11 @@ fun main(args: Array<String>) {
         @Code
         program {
             @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/text-004.png"
+            extend(ScreenRecorder()) {
+                outputFile = "media/text-004.mp4"
+                maximumDuration = 15.0
+                quitAfterMaximum = true
+                frameRate = 60
             }
             val font = FontImageMap.fromUrl("file:data/IBMPlexMono-Bold.ttf", 24.0)
             extend {
@@ -154,8 +159,10 @@ fun main(args: Array<String>) {
                 drawer.fill = ColorRGBa.BLACK
 
                 val writer = Writer(drawer)
-                writer.style.leading = Math.cos(seconds) * 20.0 + 0.0
-                writer.style.tracking = Math.sin(seconds) * 20.0
+                // -- animate the text leading
+                writer.style.leading = Math.cos(seconds) * 20.0 +  24.0
+                // -- animate the text tracking
+                writer.style.tracking = Math.sin(seconds) * 20.0 + 24.0
                 writer.apply {
                     writer.box = Rectangle(40.0, 40.0, width - 80.0, height - 80.0)
                     newLine()
@@ -163,11 +170,10 @@ fun main(args: Array<String>) {
                     newLine()
                     text("Here is another line of text..")
                     newLine()
-                    text("Let's even throw another line of text in, for good measure!")
+                    text("Let's even throw another line of text in, for good measure! yay")
                 }
             }
         }
     }
-
 }
 
