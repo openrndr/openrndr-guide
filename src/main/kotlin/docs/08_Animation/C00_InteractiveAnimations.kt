@@ -27,6 +27,8 @@ fun main(args: Array<String>) {
 
     @Text
     """
+    # Interactive animations
+
     ## Animatable
 
     Anything that should be animated inherits the Animatable class. The Animatable class provides animation logic.

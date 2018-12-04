@@ -212,7 +212,7 @@ media/color-004.png
 
         configure {
             width = 770
-            height = 352
+            height = 800
         }
 
         program {

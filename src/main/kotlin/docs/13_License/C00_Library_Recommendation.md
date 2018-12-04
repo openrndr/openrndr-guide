@@ -1,6 +1,6 @@
 # Library recommendations
 
-OPENRNDR's functionality is limited to the audiovisual domain. Most applications require functionality beyond that domain.
+OPENRNDR's functionality is limited to the visual domain. Most applications require functionality beyond that domain.
 
 ## Image Processing
 - [BoofCV](https://boofcv.org), checkout our [small repository with OPENRNDR+BoofCV examples](https://github.com/openrndr/openrndr-x-boofcv)

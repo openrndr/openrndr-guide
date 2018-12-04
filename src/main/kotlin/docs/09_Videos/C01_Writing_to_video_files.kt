@@ -2,7 +2,7 @@
 
 package docs.`09_Videos`
 
-import org.gradle.internal.impldep.org.mozilla.javascript.tools.shell.Global.quit
+
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.Code
