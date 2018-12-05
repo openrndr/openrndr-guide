@@ -1,10 +1,7 @@
 package docs.`04_Drawing_basics`
 
 import org.openrndr.application
-import org.openrndr.color.ColorHSLa
-import org.openrndr.color.ColorHSVa
-import org.openrndr.color.ColorRGBa
-import org.openrndr.color.mix
+import org.openrndr.color.*
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.extensions.SingleScreenshot
 
@@ -196,15 +193,22 @@ Class name    | Color space description
 `ColorATVa`   | Coloroid color space, partial implementation
 """
 
-
-
     @Text """## HSV, HSL, XSV and XSL color"""
 
+    @Text """HSV (hue-saturation-value) and HSL ("hue-saturation-lightness") are cylindrical color spaces.
+
+XSV and XSL (for lack of a better name) are transformed versions of HSV and HSL in which the hue component has been
+stretched and compressed to make the color space better suited for artists. The spaces are better suited for artists
+because it has red-green and blue-yellow primaries. The XSV and XSL spaces are based on (if not
+the same as) the Adobe Kuler color spaces.
+
+Below is an example of plots of color swatches for (from top to bottom) HSV, HSL, XSV and XSL. The adjusted hue of the
+XSV and XSL spaces is clearly visible.
+""".trimMargin()
 
     @Media.Image """
 media/color-004.png
     """
-
 
     @Application
     application {
@@ -212,7 +216,7 @@ media/color-004.png
 
         configure {
             width = 770
-            height = 800
+            height = 672
         }
 
         program {
@@ -228,36 +232,36 @@ media/color-004.png
 
                 // -- draw hsv swatches
                 for (j in 0..7) {
-                    for (i in 0..15) {
-                        drawer.fill = ColorHSVa( 360 * (i/15.0), 0.7, 0.125 + j/8.0).toRGBa()
-                        drawer.rectangle(35.0 + (700 / 16.0) * i, 32.0 + j * 16.0, (700 / 16.0), 16.0)
+                    for (i in 0..31) {
+                        drawer.fill = ColorHSVa( 360 * (i/31.0), 0.7, 0.125 + j/8.0).toRGBa()
+                        drawer.rectangle(35.0 + (700 / 32.0) * i, 32.0 + j * 16.0, (700 / 32.0), 16.0)
                     }
                 }
 
                 // -- draw hsl swatches
                 drawer.translate(0.0, 160.0)
                 for (j in 0..7) {
-                    for (i in 0..15) {
-                        drawer.fill = ColorHSLa( 360 * (i/15.0), 0.7, 0.125 + j/8.0).toRGBa()
-                        drawer.rectangle(35.0 + (700 / 16.0) * i, 32.0 + j * 16.0, (700 / 16.0), 16.0)
+                    for (i in 0..31) {
+                        drawer.fill = ColorHSLa( 360 * (i/31.0), 0.7, 0.125 + j/9.0).toRGBa()
+                        drawer.rectangle(35.0 + (700 / 32.0) * i, 32.0 + j * 16.0, (700 / 32.0), 16.0)
                     }
                 }
 
                 // -- draw xsv (Kuler) swatches
                 drawer.translate(0.0, 160.0)
                 for (j in 0..7) {
-                    for (i in 0..15) {
-                        drawer.fill = ColorHSLa( 360 * (i/15.0), 0.7, 0.125 + j/8.0).toRGBa()
-                        drawer.rectangle(35.0 + (700 / 16.0) * i, 32.0 + j * 16.0, (700 / 16.0), 16.0)
+                    for (i in 0..31) {
+                        drawer.fill = ColorXSVa( 360 * (i/31.0), 0.7, 0.125 + j/8.0).toRGBa()
+                        drawer.rectangle(35.0 + (700 / 32.0) * i, 32.0 + j * 16.0, (700 / 32.0), 16.0)
                     }
                 }
 
                 // -- draw xsl (Kuler) swatches
                 drawer.translate(0.0, 160.0)
                 for (j in 0..7) {
-                    for (i in 0..15) {
-                        drawer.fill = ColorHSLa( 360 * (i/15.0), 0.7, 0.125 + j/8.0).toRGBa()
-                        drawer.rectangle(35.0 + (700 / 16.0) * i, 32.0 + j * 16.0, (700 / 16.0), 16.0)
+                    for (i in 0..31) {
+                        drawer.fill = ColorXSLa( 360 * (i/31.0), 0.7, 0.125 + j/9.0, 1.0).toRGBa()
+                        drawer.rectangle(35.0 + (700 / 32.0) * i, 32.0 + j * 16.0, (700 / 32.0), 16.00)
                     }
                 }
 
