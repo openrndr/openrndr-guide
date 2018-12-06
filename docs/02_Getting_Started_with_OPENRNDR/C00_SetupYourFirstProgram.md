@@ -22,27 +22,28 @@ OPENRNDR is obtained by adding the OPENRNDR dependencies to your Gradle project.
 
 Use VCS -> Checkout from Version Control -> Git to open the "Clone Repository" dialog.
 
-![step](media/getting-started-step-01.png)
+<img src="media/getting-started-step-01.png"/>
 
 Fill in the url `https://github.com/openrndr/openrndr-gradle-template.git` and pick a target directory.
 
-![step](media/getting-started-step-02.png)
+<img src="media/getting-started-step-02.png"/>
 
 Checkout from version control? Yes.
 
-![step](media/getting-started-step-03.png)
+<img src="media/getting-started-step-03.png"/>
 
 In the Import Project dialog pick "Import project form external model" and select the "Gradle" model, click the "Next" button.
 
-![step](media/getting-started-step-04.png)
+<img src="media/getting-started-step-04.png"/>
 
 In the "Import Project" dialog the default settings should be OK. Make sure the "Use default gradle wrapper" option is selected and Gradle JVM has been picked. If no JVM options are available then create a new JVM option.
 
-![step](media/getting-started-step-05.png)
+
+<img src="media/getting-started-step-05.png"/>
 
 Click the "New Window" option.
 
-![step](media/getting-started-step-06.png)
+<img src="media/getting-started-step-06.png"/>
 
 All done. The Gradle project is now imported in IntelliJ Idea and you are ready to run the program.
 
@@ -50,9 +51,9 @@ All done. The Gradle project is now imported in IntelliJ Idea and you are ready 
 
 In IntelliJ, hover your mouse over the green triangle next to the `main()` function, right click and pick the `Run TemplateProgramKt` option in the pop-up menu. The sketch will now start.
 
-![step](media/getting-started-step-07.png)
+<img src="media/getting-started-step-07.png"/>
 
 On MacOS you will find that the program exits immediately with an error. To resolve this edit the run configuration (left of the play button in the main toolbar) and add
 `-XstartOnFirstThread` to the VM arguments. The program should now work.
 
-![step](media/getting-started-step-08.png)
+<img src="media/getting-started-step-08.png"/>
