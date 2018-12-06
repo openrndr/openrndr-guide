@@ -1,60 +1,54 @@
-<!-- docs/_sidebar.md -->
-
-- **What's new**
-    - [Revision History](/Topic_RevisionHistory.md)
-- **Before you start**
-    - [What is OPENRNDR?](/Topic_WhatIsOPENRNDR.md)
-    - [Should I use OPENRNDR?](/Topic_ShouldIUseOPENRNDR.md)
-- **Getting Started with OPENRNDR**
-    <!-- - [OPENRNDR concepts and conventions](/Tutorial_Concepts) -->
-    - [Setting up your first OPENRNDR program](/Tutorial_Start)
-    - [Using the tutorial repository](/Topic_TutorialRepository)
-    - [Gradle based projects](/Topic_GradleBasedProjects)
-- **Program basics**
-    - [Application and Program](/Topic_ApplicationAndProgram.md)
-    - [Program configuration](/Topic_ProgramConfiguration.md)
-    - [Extensions](/Topic_Extensions.md)
-- **Drawing basics**
-    - [Primitives](/Tutorial_DrawingPrimitives.md)
-    - [Images](/Tutorial_DrawingImages.md)
-    - [Text](/Tutorial_DrawingText.md)
-    - [Color](/Topic_Color.md)
-    - [Managing draw style](/Topic_ManagingDrawStyle.md)
-    - [Complex shapes](/Tutorial_DrawingComplexShapes.md)
-    - [Drawing with SVG files](/Topic_DrawingSVGFiles.md)
-- **Drawing and transformations**
-    - [Transforms](/Topic_Transforms.md)
-    - [Vectors](/Topic_Vectors.md)
-    - [Quaternions](/Topic_Quaternions.md)
-- **Advanced drawing**
-    - [Render targets and color buffers](/Tutorial_RenderTargets.md)
-    - [Filters and post-processing](/Topic_Filters.md)
-    - [Clipping](/Topic_Clipping.md)
-    - [Asynchronous Images](/Topic_AsynchronousImages.md)
-    - [Shade styles](/Tutorial_ShadeStyles.md)
-    - [Custom rendering](/Tutorial_CustomRendering.md)
-- **Interaction**
-    - [Mouse and keyboard events](/Topic_MouseKeyboardEvents.md)
-    - [Program windows](/Topic_ProgramWindows.md)
-    - [File drops](/Topic_FileDrops.md)
-    - [Clipboard](/Topic_Clipboard.md)
-    - [User interfaces](/Topic_UserInterfaces.md)
-- **Animation**
-    - [Interactive animations](/Topic_InteractiveAnimations)
-- **Videos**
-    - [Playing videos](Topic_VideoPlayer.md)
-    - [Writing to video files](/Tutorial_VideoWriter.md)
-- **Advanced Topics**
-    - [Logging](/Topic_Logging.md)
-    - [Application flow](/Topic_ApplicationFlow.md)
-    - [Presentation control](/Topic_PresentationControl.md)
-    - [Writing extensions](/Topic_WritingExtensions.md)
-    - [Headless applications](/Topic_HeadlessApplications.md)
-- **Distribution topics**
-    - [Creating distributable programs](/Topic_DistributablePrograms.md)
-- **Developers and contributors**
-    - [Building from source](/Topic_BuildingFromSource.md)
-    - [Overview of OPENRNDR modules](/Topic_Modules)
-- **License**
-----
-* [Library recommendations](Topic_LibraryRecommendations.md)
+- Before you start
+  - [What Is OPENRNDR](01_Before_you_start/C00WhatIsOPENRNDR.md)
+  - [Should I Use OPENRNDR?](01_Before_you_start/C02ShouldIUseOPENRNDR.md)
+- Getting Started with OPENRNDR
+  - [Setup Your First Program](02_Getting_Started_with_OPENRNDR/C00_SetupYourFirstProgram.md)
+  - [Tutorial Repository](02_Getting_Started_with_OPENRNDR/C01_TutorialRepository.md)
+  - [Gradle Project](02_Getting_Started_with_OPENRNDR/C02_GradleProject.md)
+- Program basics
+  - [Application Program](03_Program_basics/C00_ApplicationProgram.md)
+  - [Program Configuration](03_Program_basics/C01_ProgramConfiguration.md)
+  - [Extensions](03_Program_basics/C02_Extensions.md)
+- Drawing basics
+  - [Drawing Primitives](04_Drawing_basics/C00_DrawingPrimitives.md)
+  - [Images](04_Drawing_basics/C01_Images.md)
+  - [Text](04_Drawing_basics/C02_Text.md)
+  - [Color](04_Drawing_basics/C03_Color.md)
+  - [Managing Draw Style](04_Drawing_basics/C04_ManagingDrawStyle.md)
+  - [Complex Shapes](04_Drawing_basics/C05_ComplexShapes.md)
+  - [Drawing Svg](04_Drawing_basics/C06_DrawingSvg.md)
+- Drawing and transformations
+  - [Transformations](05_Drawing_and_transformations/C00_Transformations.md)
+  - [Vectors](05_Drawing_and_transformations/C01_Vectors.md)
+  - [Quaternions](05_Drawing_and_transformations/C02_Quaternions.md)
+- Advanced drawing
+  - [Render targets and color buffers](06_Advanced_drawing/C00_Render_targets_and_color_buffers.md)
+  - [Filters and post-processing](06_Advanced_drawing/C01_Filters_and_post-processing.md)
+  - [Clipping](06_Advanced_drawing/C02_Clipping.md)
+  - [Asynchronous image loading](06_Advanced_drawing/C03_Asynchronous_image_loading.md)
+  - [Shade styles](06_Advanced_drawing/C04_Shade_styles.md)
+  - [Custom rendering](06_Advanced_drawing/C05_Custom_rendering.md)
+- Interaction
+  - [Mouse And Keyboard Events](07_Interaction/C00MouseAndKeyboardEvents.md)
+  - [Program Windows](07_Interaction/C01ProgramWindows.md)
+  - [File Drops](07_Interaction/C02FileDrops.md)
+  - [Clipboard](07_Interaction/C03Clipboard.md)
+  - [User Interfaces](07_Interaction/C04UserInterfaces.md)
+- Animation
+  - [Interactive Animations](08_Animation/C00_InteractiveAnimations.md)
+- Videos
+  - [Playing Videos](09_Videos/C00_Playing_Videos.md)
+  - [Writing to video files](09_Videos/C01_Writing_to_video_files.md)
+- Advanced Topics
+  - [Logging](10_Advanced_Topics/C00_Logging.md)
+  - [Application Flow](10_Advanced_Topics/C01_Application_Flow.md)
+  - [Presentation Control](10_Advanced_Topics/C02_Presentation_Control.md)
+  - [Writing extensions](10_Advanced_Topics/C03_Writing_extensions.md)
+  - [Headless applications](10_Advanced_Topics/C04_Headless_applications.md)
+- Distribution Topics
+  - [Creating distributable programs](11_Distribution_Topics/C00_Creating_distributable_programs.md)
+- Developers & Contributors
+  - [Building from source](12_Developers_&_Contributors/C00_Building_from_source.md)
+  - [Overview of OPENRNDR modules](12_Developers_&_Contributors/C01_Overview_of_OPENRNDR_modules.md)
+- License
+  - [Library Recommendation](13_License/C00_Library_Recommendation.md)

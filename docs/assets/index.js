@@ -8,9 +8,11 @@ window.$docsify = {
     name: 'OPENRNDR GUIDE',
     auto2top: true,
     loadSidebar: true,
+    maxLevel: 2,
+    subMaxLevel: 2,
     coverpage: false,
     executeScript: true,
-     autoHeader: true,
+    autoHeader: true,
     formatUpdated: '{DD}-{MM}-{YYYY}',
     search: {
         noData: {
@@ -27,7 +29,7 @@ window.$docsify = {
         plugins.editLink,
         // window.DocsifyCopyCodePlugin.init()
     ],
-    homepage: 'Tutorial_Start.md',
+    homepage: '01_Before_you_start/C00WhatIsOPENRNDR.md',
     themeColor: '#fdd0dd',
 };
 

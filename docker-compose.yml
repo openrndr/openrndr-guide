@@ -1,0 +1,11 @@
+version: "3"
+services:
+  docsify_server:
+    image: node:8-alpine
+    container_name: dokgen_docsify_server
+    volumes:
+    - ./:/home/node/app
+    working_dir: /home/node/app
+    ports:
+    - 3000:3000
+    command: sh -c "yarn && yarn serve"
