@@ -83,6 +83,12 @@ dokgen {
     examples {
         webRootUrl = "https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin"
     }
+
+    docsify {
+        media = [file("$projectDir/media"), file("$projectDir/static-media")]
+        assets = [file("$projectDir/data/docsify-assets")]
+    }
+
 }
 
 task publishDocs { task ->
@@ -105,7 +111,7 @@ task publishExamples { task ->
         gitPublish.repoDir = file("$buildDir/gitrepo-examples")
         gitPublish.contents {
             from "$projectDir/src/main/resources/examples-repo-template"
-            from("$projectDir/src/main/kotlin/examples") {
+            from("$projectDir/src/generated/examples") {
                 into "src/main/kotlin/examples"
             }
             from("$projectDir/fonts") {
