@@ -83,6 +83,12 @@ dokgen {
     examples {
         webRootUrl = "https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin"
     }
+
+    docsify {
+        media = [file("$projectDir/media"), file("$projectDir/static-media")]
+        assets = [file("$projectDir/data/docsify-assets")]
+    }
+
 }
 
 task publishDocs { task ->
