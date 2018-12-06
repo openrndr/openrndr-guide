@@ -36,6 +36,6 @@ OPENRNDR is environment agnostic, however all our tutorial and reference materia
 
 ## Long-term support
 We have not reached the point at which we can make promises regarding API stability. OPENRNDR is pre-1.0 software, which
-imples we try not to break things, but at times we have to. We break in cases in which it is to break than to continue
+imples we try not to break things, but at times we have to. We break in cases in which it is better to break than to continue
 with inconsistencies in or incompleteness of the API.
 
