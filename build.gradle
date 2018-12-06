@@ -105,7 +105,7 @@ task publishExamples { task ->
         gitPublish.repoDir = file("$buildDir/gitrepo-examples")
         gitPublish.contents {
             from "$projectDir/src/main/resources/examples-repo-template"
-            from("$projectDir/src/main/kotlin/examples") {
+            from("$projectDir/src/generated/examples") {
                 into "src/main/kotlin/examples"
             }
             from("$projectDir/fonts") {
