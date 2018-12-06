@@ -22,7 +22,7 @@ OPENRNDR is obtained by adding the OPENRNDR dependencies to your Gradle project.
 
 Use VCS -> Checkout from Version Control -> Git to open the "Clone Repository" dialog.
 
-<img src="media/getting-started-step-01.png"/>
+<img style="width:auto;" src="media/getting-started-step-01.png"/>
 
 Fill in the url `https://github.com/openrndr/openrndr-gradle-template.git` and pick a target directory.
 
