@@ -14,7 +14,6 @@ fun main(args: Array<String>) {
 
     Extensions add functionality to a Program. Extensions can be used to control how a program draws, setup keyboard and
     mouse bindings and much more.
-
     """
 
     @Text
@@ -62,4 +61,11 @@ fun main(args: Array<String>) {
             }
         }
     }
+
+    @Text """## Built-in and contributed extensions"""
+    @Text """OPENRNDR provides a few built-in extensions to simplify common tasks. One is `Screenshots`, which is used
+to create screenshots of your programs. Another is `ScreenRecorder` which is used to write videos to files.
+
+Next to the built-in extensions there is [ORX](https://github.com/openrndr/orx), an extensive repository of provided and
+contributed OPENRNDR extensions and add-ons."""
 }

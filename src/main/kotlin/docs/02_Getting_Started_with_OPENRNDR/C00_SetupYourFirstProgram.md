@@ -3,7 +3,7 @@
 OPENRNDR provides an application framework that allows its users to write applications that run on Microsoft Windows, MacOS platforms and Linux/x64 systems.
 
 ## Requirements ##
- * A computer running Windows 10 (older versions may work but are untested) or MacOSX 10.10+
+ * A computer running any of our supported platforms.
  * A graphics adapter and drivers that supports OpenGL 3.3
  * JDK 8, 9, 10, or 11 installed. Both OpenJDK and OracleJDK work.
  * [IntelliJ Idea 2018.2](https://www.jetbrains.com/idea/download/) Community or Enterprise edition

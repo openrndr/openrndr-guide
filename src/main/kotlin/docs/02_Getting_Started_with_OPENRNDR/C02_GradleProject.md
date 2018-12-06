@@ -29,7 +29,7 @@ repositories {
 ### Adding OPENRNDR dependencies
 ```groovy
 
-project.ext.openrndrVersion = "0.3.28"
+project.ext.openrndrVersion = "0.3.30"
 
 switch (org.gradle.internal.os.OperatingSystem.current()) {
     case org.gradle.internal.os.OperatingSystem.WINDOWS:
