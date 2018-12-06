@@ -1,6 +1,6 @@
 - Before you start
-  - [What Is OPENRNDR](01_Before_you_start/C00WhatIsOPENRNDR.md)
-  - [Should I Use OPENRNDR?](01_Before_you_start/C02ShouldIUseOPENRNDR.md)
+  - [What is OPENRNDR?](01_Before_you_start/C00WhatIsOPENRNDR.md)
+  - [Should I use OPENRNDR?](01_Before_you_start/C02ShouldIUseOPENRNDR.md)
 - Getting Started with OPENRNDR
   - [Setup Your First Program](02_Getting_Started_with_OPENRNDR/C00_SetupYourFirstProgram.md)
   - [Tutorial Repository](02_Getting_Started_with_OPENRNDR/C01_TutorialRepository.md)

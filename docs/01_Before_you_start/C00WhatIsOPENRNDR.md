@@ -15,18 +15,18 @@ OPENRNDR is an initiative of [RNDR](http://rndr.studio) a studio for interactive
 # A simple OPENRNDR program
 Here we show a very simple program written using OPENRNDR.
 
+<video controls>
+    <source src="media/what-is-001.mp4" type="video/mp4"></source>
+</video>
+
+
 ```kotlin
 application {
-    configure {
-        width = 640
-        height = 480
-    }
     program {
-    
         extend {
             drawer.background(ColorRGBa.PINK)
             drawer.fill = ColorRGBa.WHITE
-            drawer.circle(drawer.bounds.center, Math.abs(Math.cos(seconds)) * 300)
+            drawer.circle(drawer.bounds.center, Math.abs(Math.cos(seconds)) * height * 0.5)
         }
     }
 }
