@@ -27,7 +27,7 @@ nVidia 320M, Intel HD4000 but excludes Intel HD3000 for example.
 OPENRNDR is written in Kotlin and intended to run on the JVM. We believe Kotlin offers a well balanced programming
 language that is both expressive and easy to read.
 
-The library can likely be used from Java 8+ as that's one of the promises of Kotlin's Java-interop, however we the APIs
+The library can likely be used from Java 8+ as that's one of the promises of Kotlin's Java-interop, however the APIs
 that OPENRNDR provides are making extensive use of Kotlin-specific features that may not translate well to Java.
 
 ## Supported development environments
