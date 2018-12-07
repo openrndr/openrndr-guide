@@ -23,7 +23,7 @@
   - [Quaternions](05_Drawing_and_transformations/C02_Quaternions.md)
 - Advanced drawing
   - [Render targets and color buffers](06_Advanced_drawing/C00_Render_targets_and_color_buffers.md)
-  - [Filters and post-processing](06_Advanced_drawing/C01_Filters_and_post-processing.md)
+  - [Filters and post processing](06_Advanced_drawing/C01_Filters_and_post_processing.md)
   - [Clipping](06_Advanced_drawing/C02_Clipping.md)
   - [Asynchronous image loading](06_Advanced_drawing/C03_Asynchronous_image_loading.md)
   - [Shade styles](06_Advanced_drawing/C04_Shade_styles.md)
