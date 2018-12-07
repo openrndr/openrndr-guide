@@ -56,10 +56,7 @@ to do is write a shader.
 What follows is an example of how to create a Filter from a shader whose code is stored as a String. The filter
 we will be making is a simple noise filter.
 
-<video controls>
-    <source src="media/filters-002.mp4" type="video/mp4"></source>
-</video>
-
+<img src="media/filters-002.png"/>
 
 ```kotlin
 application {
@@ -105,25 +102,22 @@ application {
             colorBuffer()
             depthBuffer()
         }
-        val blurred = colorBuffer(width, height)
-        val blur = BoxBlur()
         extend {
             // -- draw to offscreen buffer
             drawer.isolatedWithTarget(offscreen) {
                 background(ColorRGBa.BLACK)
                 fill = ColorRGBa.PINK
                 stroke = null
-                circle(Math.cos(seconds) * 100.0 + width / 2, Math.sin(seconds) * 100.0 + height / 2.0, 100.0 + 100.0 * Math.cos(seconds * 2.0))
+                circle(Math.cos(seconds) * 100.0 + width / 2, Math.sin(seconds) * 100.0 + height / 2.0, 100.0 + 100.0 * Math.cos(seconds * 2.00))
             }
             // apply the noise on and to offscreen.colorBuffer(0),
             // this only works for filters that only read from
             // the current fragment.
             noise.time = seconds
-            noise.gain = Math.cos(seconds) * 0.5 + 0.5
+            noise.gain = 1.0
             noise.apply(offscreen.colorBuffer(0), offscreen.colorBuffer(0))
-            blur.window = 4
-            blur.apply(offscreen.colorBuffer(0), blurred)
-            drawer.image(blurred)
+            
+            drawer.image(offscreen.colorBuffer(0))
         }
     }
 }
