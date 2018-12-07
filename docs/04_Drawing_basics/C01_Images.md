@@ -117,7 +117,7 @@ program {
 [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C01_Images004.kt)
 
 ### Grayscale
-Drawing an image with inverted colors can be achieved by using the `invert` color matrix.
+Drawing an image with inverted colors can be achieved by using the `grayscale` color matrix.
 
 <img src="media/image-006.png"/>
 

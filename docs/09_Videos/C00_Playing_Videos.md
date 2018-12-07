@@ -1,7 +1,7 @@
 
  # Playing videos #
  OPENRNDR comes with preliminary support for video playback. Currently the video playback is not suitable for
- resentation as support for sound, seeking and timing is missing. The video playback is suitable for video processing.
+ presentation as support for sound, seeking and timing is missing. The video playback is suitable for video processing.
  # The openrndr-ffmpeg library
  The openrndr-ffmpeg library holds interfaces to an video player based on ffmpeg, as well as native
  fmpeg binaries (provided by the JavaCPP project). Adding openrndr-ffmpeg to the project is enough for full video support.

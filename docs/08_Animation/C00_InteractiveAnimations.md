@@ -1,4 +1,15 @@
 
+# Interactive Animations
+
+This section explains how to use OPENRNDR's `Animatable` class as a tool to create interactive animations.
+In order to use `Animatable` your project needs to depend on the `rndr-animatable`.
+
+```gradle
+dependencies {
+    compile "org.openrndr:openrndr-animatable:$openrndr_version"
+}
+```
+
 # Interactive animations
 
 ## Animatable
@@ -116,13 +127,20 @@ fun complete(callback: (Animatable) -> Unit)
 This can be used in cases where two animations with different lengths are queued. For example:
 
 ```kotlin
-myAnimatable
+myAnimatable.apply {
+    animate("x", 400.0, 2000)
+    animate("y", 500.0, 1200)
+    complete("x")
+}
 ```
 
 ### Waiting for an animation to almost finish
 
 ```kotlin
-myAnimatable
+myAnimatable.apply {
+    complete()
+    delay(-1000)
+}
 ```
 
 Instruct the animator to wait until the given amount of time before the previously queued animation ends.
