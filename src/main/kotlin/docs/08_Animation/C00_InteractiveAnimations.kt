@@ -10,20 +10,20 @@ import org.openrndr.dokgen.annotations.Text
 
 fun main(args: Array<String>) {
 
-//    var openrndr_version = ""
-//    @Text
-//    """
-//    # Interactive Animations
-//
-//    This section explains how to use OPENRNDR's `Animatable` class as a tool to create interactive animations.
-//    In order to use `Animatable` your project needs to depend on the `rndr-animatable`.
-//
-//    ```gradle
-//    dependencies {
-//        compile "org.openrndr:openrndr-animatable:$openrndr_version"
-//    }
-//    ```
-//    """
+    var openrndr_version = ""
+    @Text
+    """
+    # Interactive Animations
+
+    This section explains how to use OPENRNDR's `Animatable` class as a tool to create interactive animations.
+    In order to use `Animatable` your project needs to depend on the `rndr-animatable`.
+
+    ```gradle
+    dependencies {
+        compile "org.openrndr:openrndr-animatable:$openrndr_version"
+    }
+    ```
+    """
 
     @Text
     """
@@ -119,7 +119,6 @@ fun main(args: Array<String>) {
             val myAnimatable = MyAnimatable()
             myAnimatable.animate("values[0]", 100.0, 1000)
             myAnimatable.animate("values[1]", 200.0, 1000)
-
         }
     }
 
@@ -169,11 +168,13 @@ fun main(args: Array<String>) {
 
         val myAnimatable = MyAnimatable()
         program {
-            @Code
-            myAnimatable.apply {
-                animate("x", 400.0, 2000)
-                animate("y", 500.0, 1200)
-                complete("x")
+            @Code.Block
+            run {
+                myAnimatable.apply {
+                    animate("x", 400.0, 2000)
+                    animate("y", 500.0, 1200)
+                    complete("x")
+                }
             }
 
 
@@ -182,10 +183,12 @@ fun main(args: Array<String>) {
             ### Waiting for an animation to almost finish
             """
 
-            @Code
-            myAnimatable.apply {
-                complete()
-                delay(-1000)
+            @Code.Block
+            run {
+                myAnimatable.apply {
+                    complete()
+                    delay(-1000)
+                }
             }
             @Text
             """

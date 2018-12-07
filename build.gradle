@@ -94,7 +94,7 @@ dokgen {
 task publishDocs { task ->
     doLast {
         gitPublish.repoUri = "git@github.com:openrndr/openrndr-guide.git"
-        gitPublish.branch = "gh-pages"
+        gitPublish.branch = "master"
         gitPublish.repoDir = file("$buildDir/gitrepo-docs")
         gitPublish.contents.from("build/dokgen/docsify") {
             exclude "node_modules"

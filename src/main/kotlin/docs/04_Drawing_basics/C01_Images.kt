@@ -208,7 +208,7 @@ media/image-005.png
     @Text
     """
     ### Grayscale
-    Drawing an image with inverted colors can be achieved by using the `invert` color matrix.
+    Drawing an image with inverted colors can be achieved by using the `grayscale` color matrix.
     """
 
     @Media.Image

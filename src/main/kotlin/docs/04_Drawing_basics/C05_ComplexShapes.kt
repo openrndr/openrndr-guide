@@ -268,7 +268,7 @@ it can actually work with an entire tree of compounds. Demonstrated below is the
             extend {
 
                 drawer.stroke = null
-                drawer.fill = ColorRGBa.YELLOW
+                drawer.fill = ColorRGBa.PINK
 
                 val point = Circle(185.0, height/2.0, 90.0).contour.position((seconds * 0.1) % 1.0)
                 drawer.circle(point, 10.0)
@@ -278,7 +278,7 @@ it can actually work with an entire tree of compounds. Demonstrated below is the
 
 
                 val points1 = Circle(585.0, height/2.0, 90.0).contour.equidistantPositions((Math.cos(seconds)*10.0+30.0).toInt())
-                drawer.circles(points1, 10.00)
+                drawer.circles(points1, 10.0)
 
             }
         }
