@@ -105,6 +105,8 @@ application {
             colorBuffer()
             depthBuffer()
         }
+        val blurred = colorBuffer(width, height)
+        val blur = BoxBlur()
         extend {
             // -- draw to offscreen buffer
             drawer.isolatedWithTarget(offscreen) {
@@ -119,7 +121,9 @@ application {
             noise.time = seconds
             noise.gain = Math.cos(seconds) * 0.5 + 0.5
             noise.apply(offscreen.colorBuffer(0), offscreen.colorBuffer(0))
-            drawer.image(offscreen.colorBuffer(0))
+            blur.window = 4
+            blur.apply(offscreen.colorBuffer(0), blurred)
+            drawer.image(blurred)
         }
     }
 }
