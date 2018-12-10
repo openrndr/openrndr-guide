@@ -1,4 +1,4 @@
-group 'org.openrndr.template'
+group 'org.openrndr.guide'
 version '1.0-SNAPSHOT'
 
 buildscript {
