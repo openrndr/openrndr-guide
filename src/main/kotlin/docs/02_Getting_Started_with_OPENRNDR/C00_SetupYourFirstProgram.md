@@ -6,7 +6,7 @@ OPENRNDR provides an application framework that allows its users to write applic
  * A computer running any of our supported platforms.
  * A graphics adapter and drivers that supports OpenGL 3.3
  * JDK 8, 9, 10, or 11 installed. Both OpenJDK and OracleJDK work.
- * [IntelliJ Idea 2018.2](https://www.jetbrains.com/idea/download/) Community or Enterprise edition
+ * [IntelliJ Idea 2018.3](https://www.jetbrains.com/idea/download/) Community or Enterprise edition
  * A recent version of [Git](https://git-scm.com/)
 
 ## Setting up prerequisites
@@ -37,7 +37,6 @@ In the Import Project dialog pick "Import project form external model" and selec
 <img style="width:auto;" src="media/getting-started-step-04.png"/>
 
 In the "Import Project" dialog the default settings should be OK. Make sure the "Use default gradle wrapper" option is selected and Gradle JVM has been picked. If no JVM options are available then create a new JVM option.
-
 
 <img style="width:auto;" src="media/getting-started-step-05.png"/>
 
