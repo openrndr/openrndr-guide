@@ -20,6 +20,9 @@ OPENRNDR is obtained by adding the OPENRNDR dependencies to your Gradle project.
 
 ### Setting up OPENRNDR in IntelliJ Idea
 
+Note: these instructions do not match with how IntelliJ 2018.3 handles the import from version control. IntelliJ will
+detect the Gradle project automatically and will not prompt to pick an external model.
+
 Use VCS -> Checkout from Version Control -> Git to open the "Clone Repository" dialog.
 
 <img style="width:auto;" src="media/getting-started-step-01.png"/>
