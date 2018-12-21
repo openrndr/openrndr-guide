@@ -89,22 +89,3 @@ extensionA.afterDraw()
 
 As you can see, the afterDraw() calls are applied in reverse order, this order was decided on to help with push/pop order of transforms and styles.
 
-
-# Debug Extensions
-
-By default there are two debug extensions available that will provide view with the camera attached to the mouse. These extensions will help you navigate the render space and inspect objects both in 2D and 3D.
-
-```kotlin
-application {
-    program {
-        val extension = extend(Debug3D(Vector3(10.0, 10.0, 10.0), Vector3.ZERO, 40.0))
-        
-        // toggle the extension with the d-key
-        keyboard.keyDown.filter {
-            it.name == "d"
-        }.listen {
-            extension.enabled = !extension.enabled
-        }
-    }
-}
-```

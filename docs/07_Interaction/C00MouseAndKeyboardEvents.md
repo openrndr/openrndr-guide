@@ -40,7 +40,7 @@ application {
         keyboard.keyDown.listen {
             // -- it refers to a KeyEvent instance here
             // -- compare the key value to a predefined key constant
-            if (it.key == `KEY_ARROW_LEFT`) {}
+            if (it.key == KEY_ARROW_LEFT) {}
         }
     }
 }
@@ -58,7 +58,7 @@ application {
         keyboard.keyDown.listen {
             // -- it refers to a KeyEvent instance here
             // -- compare the key value to a predefined key constant
-            if (it.key == `KEY_BACKSPACE`) {
+            if (it.key == KEY_BACKSPACE) {
                 if (!input.isEmpty()) {
                     input = input.substring(0, input.length - 1)
                 }
@@ -76,7 +76,7 @@ if both shift and the left arrow key are pressed.
 application {
     program {
         keyboard.keyDown.listen {
-            if (it.key == `KEY_ARROW_LEFT` && KeyboardModifier.SHIFT in it.modifiers) {}
+            if (it.key == KEY_ARROW_LEFT && KeyboardModifier.SHIFT in it.modifiers) {}
         }
     }
 }

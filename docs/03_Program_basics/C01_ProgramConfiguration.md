@@ -42,19 +42,17 @@ fun main(args: Array<String>) = application {
     configure {
         width = 1920
         height = 1080
-        fullscreen = true
+        fullscreen = Fullscreen.SET_DISPLAY_MODE
     }
 }
 ```
 
-or if no mode change is desired set `width` and `height` to `-1`
+or if no mode change is desired use `Fullscreen.CURRENT_DISPLAY_MODE`
 
 ```kotlin
 fun main(args: Array<String>) = application {
     configure {
-        width = -1
-        height = -1
-        fullscreen = true
+        fullscreen = Fullscreen.CURRENT_DISPLAY_MODE
     }
 }
 ```
