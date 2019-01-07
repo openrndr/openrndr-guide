@@ -59,3 +59,15 @@ On MacOS you will find that the program exits immediately with an error. To reso
 `-XstartOnFirstThread` to the VM arguments. The program should now work.
 
 <img style="width:auto;" src="media/getting-started-step-08.png"/>
+
+## Troubleshooting
+##### Gradle errors after importing project
+If you see something like `Error:No such property: GradleVersion for class: JetGradlePlugin` when importing the project with the directions above, make sure you're using the 2018 version of IntelliJ IDEA. The kotlin plugin that comes with the 2017 version of the IntelliJ IDEA is old and won't match the kotlin version in the build.gradle file.
+
+#### Could not read from remote repository
+If you believed you've typed the remote repository correct, but are getting a message from IntelliJ stating `Could not read from remote repository`, try cloning it from the command line. If you see `Error accessing media: gradle/wrapper/gradle-wrapper.jar`, you may have issues with git large file storage config settings. You can remove these settings with the following commands:
+```
+git config --global --unset filter.lfs.required
+git config --global --unset filter.lfs.clean
+git config --global --unset filter.lfs.smudge
+```
