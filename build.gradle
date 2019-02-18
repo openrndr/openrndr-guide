@@ -30,7 +30,7 @@ compileKotlin {
 }
 
 sourceCompatibility = 1.8
-project.ext.openrndrVersion = "0.3.30"
+project.ext.openrndrVersion = "0.3.31"
 
 repositories {
     mavenCentral()
@@ -64,7 +64,7 @@ dependencies {
     compile "org.openrndr:openrndr-extensions:$openrndrVersion"
     compile "org.openrndr:openrndr-filter:$openrndrVersion"
     compile "org.openrndr:openrndr-ffmpeg:$openrndrVersion"
-    implementation 'com.github.openrndr:openrndr-panel:v0.3.10'
+    implementation 'com.github.openrndr:openrndr-panel:v0.3.11'
     compile "org.openrndr:dokgen:1.0-SNAPSHOT"
 }
 

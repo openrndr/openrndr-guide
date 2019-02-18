@@ -2,10 +2,7 @@
 
 package docs.`03_Program_basics`
 
-import org.openrndr.Program
-import org.openrndr.UnfocusBehaviour
-import org.openrndr.application
-import org.openrndr.configuration
+import org.openrndr.*
 import org.openrndr.dokgen.annotations.Code
 import org.openrndr.dokgen.annotations.Text
 import org.openrndr.math.IntVector2
@@ -73,14 +70,14 @@ fun main(args: Array<String>) {
             configure {
                 width = 1920
                 height = 1080
-                fullscreen = true
+                fullscreen = Fullscreen.SET_DISPLAY_MODE
             }
         }
     }
 
     @Text
     """
-    or if no mode change is desired set `width` and `height` to `-1`
+    or if no mode change is desired use `Fullscreen.CURRENT_DISPLAY_MODE`
     """
 
 
@@ -88,9 +85,7 @@ fun main(args: Array<String>) {
     run {
         fun main(args: Array<String>) = application {
             configure {
-                width = -1
-                height = -1
-                fullscreen = true
+                fullscreen = Fullscreen.CURRENT_DISPLAY_MODE
             }
         }
     }

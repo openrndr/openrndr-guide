@@ -2,14 +2,17 @@
 
 package docs.`07_Interaction`
 
+
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
-import org.openrndr.dokgen.annotations.Application
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
+import org.openrndr.extensions.SingleScreenshot
+import org.openrndr.panel.ControlManager
 import org.openrndr.panel.controlManager
 import org.openrndr.panel.elements.*
+import org.openrndr.panel.layout
 import org.openrndr.panel.style.*
+import org.openrndr.panel.styleSheet
 
 
 fun main(args: Array<String>) {
@@ -27,8 +30,12 @@ fun main(args: Array<String>) {
     To be able to use the Panel library add it to your `build.gradle` configuration.
 
     ```groovy
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+
     dependencies {
-        compile('org.openrndr.panel:openrndr-panel:0.3.7')
+        compile 'com.github.openrndr:openrndr-panel:v0.3.11'
     }
     ```
 
@@ -39,13 +46,24 @@ fun main(args: Array<String>) {
     To create a very simple user interface that consists of just a single button one would do the following:
     """
 
+    @Media.Image """media/ui-001.png"""
 
     @Application
     @Code
     application {
+        @Exclude
+        configure {
+            width = 770
+            height = 578
+        }
         program {
-            var color = ColorRGBa.WHITE
-            val cm = controlManager {
+            @Exclude
+            extend(SingleScreenshot()) {
+                outputFile = "media/ui-001.png"
+            }
+
+            var color = ColorRGBa.GRAY.shade(0.250)
+            extend(ControlManager()) {
                 layout {
                     button {
                         label = "click me"
@@ -56,7 +74,9 @@ fun main(args: Array<String>) {
                     }
                 }
             }
-            extend(cm) // <- this registers the control manager as a Program Extension
+            extend {
+                drawer.background(color)
+            }
         }
     }
 
@@ -67,17 +87,31 @@ fun main(args: Array<String>) {
 
     The Panel library borrows a lot of ideas from HTML/CSS based layouting systems, one of those ideas is style sheets.
 
-    Style sheets can be used as shown in the following example in which a style sheet is used to color a button blue.
+    Style sheets can be used as shown in the following example in which a style sheet is used to color a button pink.
     """
+    @Media.Image """media/ui-002.png"""
 
+    @Application
     @Code
     application {
+        @Exclude
+        configure {
+            width = 770
+            height = 578
+        }
         program {
-            controlManager {
+            @Exclude
+            extend(SingleScreenshot()) {
+                outputFile = "media/ui-002.png"
+            }
+
+            extend(ControlManager()) {
+                styleSheet(has type "button") {
+                    background = Color.RGBa(ColorRGBa.PINK)
+                    color = Color.RGBa(ColorRGBa.BLACK)
+                }
+
                 layout {
-                    styleSheet(has type "button") {
-                        background = Color.RGBa(ColorRGBa.BLUE)
-                    }
                     button {
                         label = "click me"
                     }
@@ -86,18 +120,21 @@ fun main(args: Array<String>) {
         }
     }
 
-
     @Text
     """
-    ## Selectors
+    ### Selectors
 
     The following example shows how to build and use complex selectors
     """
     application {
+        @Exclude
+        configure {
+            width = 770
+            height = 578
+        }
         program {
             @Code
             styleSheet(has class_ "control-bar") {
-
                 descendant(has type "button") {
                     width = 100.percent
                 }
@@ -151,18 +188,32 @@ fun main(args: Array<String>) {
    An ordinary labelled button.
    The default width of buttons is set to Auto such that the width is determined by the label contents.
    """
+
+    @Media.Image """media/ui-006.png"""
+
+    @Application
     application {
+        configure {
+            width = 770
+            height = 45
+        }
         program {
-            controlManager {
+            extend(SingleScreenshot()) {
+                outputFile = "media/ui-006.png"
+            }
+            extend(ControlManager()) {
                 layout {
                     @Code
                     button {
-                        label = "Click me"
+                        label = "Click me "
                         events.clicked.subscribe {
                             // -- do something with the clicked event
                         }
                     }
                 }
+            }
+            extend {
+                drawer.background(ColorRGBa.GRAY.shade(0.250))
             }
         }
     }
@@ -183,16 +234,26 @@ fun main(args: Array<String>) {
     ##### Events
     * `valueChanged` - emitted when the slider value has changed
    """
+    @Media.Image """media/ui-007.png"""
+
+    @Application
     application {
+        configure {
+            width = 770
+            height = 45
+        }
         program {
-            controlManager {
+            extend(SingleScreenshot()) {
+                outputFile = "media/ui-007.png"
+            }
+            extend(ControlManager()) {
                 layout {
                     @Code
                     slider {
                         label = "Slide me"
-                        value = 0.5
+                        value = 0.50
                         range = Range(0.0, 1.0)
-                        precision = 3
+                        precision = 2
                         events.valueChanged.subscribe {
                             println("the new value is ${it.newValue}")
                         }
@@ -215,10 +276,18 @@ fun main(args: Array<String>) {
     ##### Events
     * `valueChanged` - emitted when a color is picked
     """
-
+    @Media.Image """media/ui-008.png"""
+    @Application
     application {
+        configure {
+            width = 770
+            height = 45
+        }
         program {
-            controlManager {
+            extend(SingleScreenshot()) {
+                outputFile = "media/ui-008.png"
+            }
+            extend(ControlManager()) {
                 layout {
                     @Code
                     colorpickerButton {
@@ -226,6 +295,54 @@ fun main(args: Array<String>) {
                         color = ColorRGBa.PINK
                         events.valueChanged.subscribe {
                             println("the new color is ${it.color}")
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @Text
+    """
+    ### DropdownButton
+    A button like control that slides out a list of items when clicked.
+
+    ##### Properties
+     * `label : String` - the label on the button
+     * `value : Itme` - the currently picked item
+
+    ##### Events
+    * `valueChanged` - emitted when an option is picked
+    """
+    @Media.Image """media/ui-009.png"""
+    @Application
+    application {
+        configure {
+            width = 770
+            height = 45
+        }
+        program {
+            extend(SingleScreenshot()) {
+                outputFile = "media/ui-009.png"
+            }
+            extend(ControlManager()) {
+                layout {
+                    @Code
+                    dropdownButton {
+                        label = "Option"
+
+                        item {
+                            label = "Item 1"
+                            events.picked.subscribe {
+                                println("you picked item 1")
+                            }
+                        }
+
+                        item {
+                            label = "Item 2"
+                            events.picked.subscribe {
+                                println("you picked item 2")
+                            }
                         }
                     }
                 }
