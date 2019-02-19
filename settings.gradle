@@ -19,5 +19,5 @@ pluginManagement {
         }
     }
 }
-rootProject.name = 'openrndr-docgen-sandbox'
+rootProject.name = 'openrndr-guide'
 
