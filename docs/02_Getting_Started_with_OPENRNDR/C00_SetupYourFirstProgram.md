@@ -5,13 +5,13 @@ OPENRNDR provides an application framework that allows its users to write applic
 ## Requirements ##
  * A computer running any of our supported platforms.
  * A graphics adapter and drivers that supports OpenGL 3.3
- * JDK 8, 9, 10, or 11 installed. Both OpenJDK and OracleJDK work.
+ * JDK 8, 9, 10, 11, 12 installed. Latest (12) recommended. Both OpenJDK and OracleJDK work.
  * [IntelliJ Idea 2018.3](https://www.jetbrains.com/idea/download/) Community or Enterprise edition
  * A recent version of [Git](https://git-scm.com/)
 
 ## Setting up prerequisites
 Before you start working with OPENRNDR please follow these instructions.
- * Install a Java Development KIT (JDK) [OracleJDK 10](http://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html), or if you prefer a guaranteed free version [OpenJDK 10](http://jdk.java.net/10/) and install it.
+ * Install a Java Development KIT (JDK): [JDK installer for Windows](https://cdn.azul.com/zulu/bin/zulu12.1.3-ca-jdk12-win_x64.msi) [JDK installer for macOS](https://cdn.azul.com/zulu/bin/zulu12.1.3-ca-jdk12-macosx_x64.dmg)
  * Download [IntelliJ Idea Community Edition](https://www.jetbrains.com/idea/download) and install it.
 
 ## Getting OPENRNDR
