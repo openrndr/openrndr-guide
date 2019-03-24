@@ -115,7 +115,7 @@ program {
         }
         // -- draw the backing color buffer to the screen
         drawer.image(rt0.colorBuffer(0))
-        drawer.image(rt1.colorBuffer(1))
+        drawer.image(rt1.colorBuffer(0))
     }
 }
 ```
