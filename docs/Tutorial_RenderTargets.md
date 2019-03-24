@@ -139,7 +139,7 @@ fun draw() {
 
     // draw the backing color buffer to the screen
     drawer.image(rt0.colorBuffer(0))
-    drawer.image(rt1.colorBuffer(1))
+    drawer.image(rt1.colorBuffer(0))
 }
 ```
 [Complete tutorial code](https://github.com/openrndr/openrndr-tutorials/blob/master/render-targets-002/src/main/kotlin/Example.kt)
