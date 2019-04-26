@@ -106,17 +106,20 @@ prefix   | Scope              | Description
 ### Standard uniforms
 Listed below is an overview of all the prefixes used in the shade style language.
 
-prefix   | Scope              | Description
----------|--------------------|-----------------
-`u_`     | all                | system uniforms passed in from Drawer
-`a_`     | vertex transform   | vertex attribute
-`va_`    | fragment transform | varying attribute, interpolation passed from vertex to fragment shader
-`i_`     | vertex transform   | instance attribute
-`vi_`    | fragment transform | varying instance attribute
-`x_`     | all                | transformable value
-`p_`     | all                | user provided value
-`o_`     | fragment transform | output value (always `vec4`)
-`d_`     | all                | shader definitions
+Uniform name            | GLSL type             | Description
+------------------------|-----------------------|-----------------------------------------------------------
+`u_modelNormalMatrix`   | mat4                  | matrix used to transform vertex normals from object to world space
+`u_modelMatrix`         | mat4                  | matrix used to transform vertices from object to world space
+`u_viewNormalMatrix`    | mat4                  | matrix used to transform vertex normals from world space to view space
+`u_viewMatrix`          | mat4                  | matrix used to transform vertex normals from world space to view space
+`u_viewMatrix`          | mat4                  | matrix used to transform vertices from world space to view space
+`u_projectionMatrix`    | mat4                  | matrix used to transform vertices from view space to clip space
+`u_contentScale`        | float                 | the active content scale
+`u_viewDimensions`      | vec2                  | the dimensions of the target viewport
+`u_fill`                | vec4                  | the Drawer fill color
+`u_stroke`              | vec4                  | the Drawer stroke color
+`u_strokeWeight`        | float                 | the Drawer strokeWeight
+`u_colorMatrix`         | float[25]             | the Drawer color matrix
 
 ### Standard Attributes
 
