@@ -28,6 +28,7 @@
   - [Asynchronous image loading](06_Advanced_drawing/C03_Asynchronous_image_loading.md)
   - [Shade styles](06_Advanced_drawing/C04_Shade_styles.md)
   - [Custom rendering](06_Advanced_drawing/C05_Custom_rendering.md)
+  - [Concurrency and multithreading](06_Advanced_drawing/C06_Concurrency_and_multithreading.md)
 - Interaction
   - [Mouse And Keyboard Events](07_Interaction/C00MouseAndKeyboardEvents.md)
   - [Program Windows](07_Interaction/C01ProgramWindows.md)
