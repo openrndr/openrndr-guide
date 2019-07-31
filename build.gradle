@@ -1,4 +1,4 @@
-group 'org.openrndr.template'
+group 'org.openrndr.guide'
 version '1.0-SNAPSHOT'
 
 buildscript {
@@ -12,7 +12,7 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.openrndr:dokgen:1.0-SNAPSHOT"
+        classpath 'com.github.openrndr:dokgen:bdc8d110d4'
         classpath "org.ajoberstar:gradle-git-publish:2.0.0"
     }
 }
@@ -65,14 +65,10 @@ dependencies {
     compile "org.openrndr:openrndr-filter:$openrndrVersion"
     compile "org.openrndr:openrndr-ffmpeg:$openrndrVersion"
     implementation 'com.github.openrndr:openrndr-panel:v0.3.11'
-    compile "org.openrndr:dokgen:1.0-SNAPSHOT"
+    implementation 'com.github.openrndr:dokgen:bdc8d110d4'
 }
 
 mainClassName = "TemplateProgramKt"
-if (!System.properties['os.name'].toLowerCase().contains('windows')) {
-    // applicationDefaultJvmArgs = ["-XstartOnFirstThread"]
-}
-
 
 dokgen {
     runner {
@@ -80,6 +76,7 @@ dokgen {
             jvmArgs = ["-XstartOnFirstThread"]
         }
     }
+
     examples {
         webRootUrl = "https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin"
     }
