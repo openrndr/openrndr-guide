@@ -69,7 +69,7 @@ Naturally quaternions can be converted to matrices. Quaternions have a `matrix` 
             @Code.Block
             run {
                 val q0 = fromAngles(pitch, yaw, roll)
-                drawer.model *= q0.matrix
+                drawer.model *= q0.matrix.matrix44
             }
         }
     }

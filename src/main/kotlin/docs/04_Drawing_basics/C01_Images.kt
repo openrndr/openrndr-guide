@@ -229,7 +229,38 @@ media/image-005.png
             extend {
                 // -- the factors below determine the RGB mixing factors
                 drawer.drawStyle.colorMatrix = grayscale(1.0 / 3.0, 1.0 / 3.0, 1.0 / 3.0)
-                drawer.image(image, 0.0, 0.0)
+                drawer.image(image)
+            }
+        }
+    }
+
+    @Text
+    """
+    ### Concatenating color transforms
+    Color transforms can be combined using the multiplication operator. This is called transform concatenation.
+    Keep in mind that transform concatenations are read from right to left, and in the following example we first
+    apply the `grayscale` transform and then the `tint` transform.
+    """
+
+    @Media.Image
+    """
+    media/image-007.png
+    """
+    @Application
+    application {
+        @Code
+        program {
+            val image = loadImage("data/cheeta.jpg")
+
+            @Exclude
+            extend(SingleScreenshot()) {
+                outputFile = "media/image-007.png"
+            }
+
+            extend {
+                // -- here we concatenate the transforms using the multiplication operator.
+                drawer.drawStyle.colorMatrix = tint(ColorRGBa.PINK) * grayscale()
+                drawer.image(image)
             }
         }
     }

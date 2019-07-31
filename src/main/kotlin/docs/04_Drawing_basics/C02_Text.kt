@@ -6,6 +6,7 @@ import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.FontImageMap
+import org.openrndr.draw.loadFont
 import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.shape.Rectangle
@@ -34,7 +35,7 @@ fun main(args: Array<String>) {
             extend(SingleScreenshot()) {
                 outputFile = "media/text-001.png"
             }
-            val font = FontImageMap.fromUrl("file:data/IBMPlexMono-Bold.ttf", 48.0)
+            val font = loadFont("data/IBMPlexMono-Bold.ttf", 48.0)
             extend {
                 drawer.background(ColorRGBa.PINK)
                 drawer.fontMap = font
@@ -69,7 +70,7 @@ fun main(args: Array<String>) {
             extend(SingleScreenshot()) {
                 outputFile = "media/text-002.png"
             }
-            val font = FontImageMap.fromUrl("file:data/IBMPlexMono-Bold.ttf", 24.0)
+            val font = loadFont("file:data/IBMPlexMono-Bold.ttf", 24.0)
             extend {
                 drawer.background(ColorRGBa.PINK)
                 drawer.fontMap = font
@@ -110,7 +111,7 @@ fun main(args: Array<String>) {
             extend(SingleScreenshot()) {
                 outputFile = "media/text-003.png"
             }
-            val font = FontImageMap.fromUrl("file:data/IBMPlexMono-Bold.ttf", 24.0)
+            val font = loadFont("file:data/IBMPlexMono-Bold.ttf", 24.0)
             extend {
                 drawer.background(ColorRGBa.PINK)
                 drawer.fontMap = font
@@ -152,7 +153,7 @@ fun main(args: Array<String>) {
                 quitAfterMaximum = true
                 frameRate = 60
             }
-            val font = FontImageMap.fromUrl("file:data/IBMPlexMono-Bold.ttf", 24.0)
+            val font = loadFont("file:data/IBMPlexMono-Bold.ttf", 24.0)
             extend {
                 drawer.background(ColorRGBa.PINK)
                 drawer.fontMap = font

@@ -1,6 +1,5 @@
 package docs.`06_Advanced_drawing`
 
-import org.jetbrains.kotlin.load.kotlin.JvmType
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
@@ -9,8 +8,7 @@ import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.math.Vector3
 import org.openrndr.math.transforms.transform
 
-fun main(args: Array<String>) {
-
+fun main() {
     @Text """# Custom rendering"""
     @Text """OPENRNDR is designed with the idea that users should be able to draw beyond the primitives offered by
 Drawer."""

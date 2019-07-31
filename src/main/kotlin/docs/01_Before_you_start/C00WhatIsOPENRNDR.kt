@@ -8,7 +8,7 @@ import org.openrndr.dokgen.annotations.*
 import org.openrndr.ffmpeg.ScreenRecorder
 
 
-fun main(args: Array<String>) {
+fun main() {
     @Text
     """
     # What is OPENRNDR?
@@ -51,4 +51,6 @@ fun main(args: Array<String>) {
             }
         }
     }
+
+
 }
