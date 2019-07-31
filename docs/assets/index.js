@@ -44,16 +44,8 @@ const setBodyHeight = () => {
 };
 
 window.onload = () => {
-    //const invertHandler = document.querySelector('.invert-handler');
-    //invertHandler.onclick = invertPage;
-
     setBodyHeight();
     document.body.classList.add("loaded");
-
-    //to fix content background issue in invert mode
-    // const content = document.querySelector('.content');
-    // const article = document.querySelector('#main');
-    // content.style.height = `${article.offsetHeight+200}px`;
 };
 
 
