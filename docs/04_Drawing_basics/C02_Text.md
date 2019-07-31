@@ -9,7 +9,7 @@ Here we show how to render simple texts.
 
 ```kotlin
 program {
-    val font = FontImageMap.fromUrl("file:data/IBMPlexMono-Bold.ttf", 48.0)
+    val font = loadFont("data/IBMPlexMono-Bold.ttf", 48.0)
     extend {
         drawer.background(ColorRGBa.PINK)
         drawer.fontMap = font
@@ -30,7 +30,7 @@ Its use is easiest demonstrated through an example:
 
 ```kotlin
 program {
-    val font = FontImageMap.fromUrl("file:data/IBMPlexMono-Bold.ttf", 24.0)
+    val font = loadFont("file:data/IBMPlexMono-Bold.ttf", 24.0)
     extend {
         drawer.background(ColorRGBa.PINK)
         drawer.fontMap = font
@@ -60,7 +60,7 @@ text is set on two rows.
 
 ```kotlin
 program {
-    val font = FontImageMap.fromUrl("file:data/IBMPlexMono-Bold.ttf", 24.0)
+    val font = loadFont("file:data/IBMPlexMono-Bold.ttf", 24.0)
     extend {
         drawer.background(ColorRGBa.PINK)
         drawer.fontMap = font
@@ -91,7 +91,7 @@ set using `Writer.style.leading` and `Writer.style.tracking`.
 
 ```kotlin
 program {
-    val font = FontImageMap.fromUrl("file:data/IBMPlexMono-Bold.ttf", 24.0)
+    val font = loadFont("file:data/IBMPlexMono-Bold.ttf", 24.0)
     extend {
         drawer.background(ColorRGBa.PINK)
         drawer.fontMap = font

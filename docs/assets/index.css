@@ -37,12 +37,12 @@ body.loaded{
     padding-right: 10px;
 }
 
-.header .linkhoder {
+.header .link-wrapper {
     padding:5px;
       background-color:rgb(60, 60, 60);
 }
 
-.header .linkhoder .link {
+.header .link-wrapper .link {
     padding:10px;
     float: right;
     background-color:rgb(60, 60, 60);
@@ -50,7 +50,7 @@ body.loaded{
     
 }
 
-.header .linkhoder .link  a { 
+.header .link-wrapper .link  a {
     text-decoration: none !important;
 }
 

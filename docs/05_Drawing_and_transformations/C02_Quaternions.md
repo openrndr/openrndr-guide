@@ -34,5 +34,5 @@ Naturally quaternions can be converted to matrices. Quaternions have a `matrix` 
 
 ```kotlin
 val q0 = fromAngles(pitch, yaw, roll)
-drawer.model *= q0.matrix
+drawer.model *= q0.matrix.matrix44
 ```

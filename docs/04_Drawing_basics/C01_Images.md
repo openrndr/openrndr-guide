@@ -128,9 +128,30 @@ program {
     extend {
         // -- the factors below determine the RGB mixing factors
         drawer.drawStyle.colorMatrix = grayscale(1.0 / 3.0, 1.0 / 3.0, 1.0 / 3.0)
-        drawer.image(image, 0.0, 0.0)
+        drawer.image(image)
     }
 }
 ```
 
 [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C01_Images005.kt)
+
+### Combining color transforms
+Color transforms can be combined using the multiplication operator. This is called transform concatenation.
+Keep in mind that transform concatenations are read from right to left, and in the following example we first
+apply the `grayscale` transform and then the `tint` transform.
+
+<img src="media/image-006.png"/>
+
+```kotlin
+program {
+    val image = loadImage("data/cheeta.jpg")
+    
+    extend {
+    
+        drawer.drawStyle.colorMatrix = tint(ColorRGBa.PINK) * grayscale()
+        drawer.image(image)
+    }
+}
+```
+
+[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C01_Images006.kt)
