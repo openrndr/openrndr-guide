@@ -6,10 +6,10 @@ In this guide it is assumed the reader works on projects that are build using Gr
 
 By far the easiest way is to clone the template project
 ```sh
-git clone --depth 1 https://github.com/openrndr/openrndr-gradle-template.git
+git clone --depth 1 https://github.com/openrndr/openrndr-template.git
 ```
 
-This contains everything needed to start, notably the `build.gradle` with the right dependencies and the Gradle wrappers.
+This contains everything needed to start, notably the `build.gradle.kts` with the right dependencies and the Gradle wrappers.
 
 ## OPENRNDR project from scratch
 

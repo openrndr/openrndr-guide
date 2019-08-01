@@ -12,7 +12,7 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.github.openrndr:dokgen:bdc8d110d4'
+        classpath 'com.github.openrndr:dokgen:c59a5934ee'
         classpath "org.ajoberstar:gradle-git-publish:2.0.0"
     }
 }
