@@ -6,7 +6,7 @@ OPENRNDR provides an application framework that allows its users to write applic
  * A computer running any of our supported platforms.
  * A graphics adapter and drivers that supports OpenGL 3.3
  * JDK 8, 9, 10, 11, 12 installed. Latest (12) recommended. Both OpenJDK and OracleJDK work.
- * [IntelliJ Idea 2018.3](https://www.jetbrains.com/idea/download/) Community or Enterprise edition
+ * [IntelliJ IDEA 2019.2](https://www.jetbrains.com/idea/download/) Community or Enterprise edition
  * A recent version of [Git](https://git-scm.com/)
 
 ## Setting up prerequisites
@@ -16,46 +16,19 @@ Before you start working with OPENRNDR please follow these instructions.
 
 ## Getting OPENRNDR
 
-OPENRNDR is obtained by adding the OPENRNDR dependencies to your Gradle project. You don't have to download anything manually. We offer [ready-to-use artifacts](http://dl.bintray.com/openrndr/openrndr/org/openrndr/) through Bintray.
+OPENRNDR is obtained by adding the OPENRNDR dependencies to your Gradle project. You don't have to download anything manually.
 
-### Setting up OPENRNDR in IntelliJ Idea
+## Setting up OPENRNDR in IntelliJ IDEA
 
-Note: these instructions do not match with how IntelliJ 2018.3 handles the import from version control. IntelliJ will
-detect the Gradle project automatically and will not prompt to pick an external model.
+The easiest way to get started is to use the [`openrndr-template`](https://github.com/openrndr/openrndr-template) repository.
+This template is based on a gradle build file that includes dependencies on the core OPENRNDR libraries. In the template
+you will also find hints on how to add additional OPENRNDR and ORX libraries.
 
-Use VCS -> Checkout from Version Control -> Git to open the "Clone Repository" dialog.
+After starting IntelliJ IDEA. Find the "New project from version control" item in the "File" menu. Pick the "Git" option.
+Enter `https://github.com/openrndr/openrndr-template` in the url field and validate that the directory is ok.
+When asked where the project should be opened click on the new window button. Make sure to click on the link gradle
+option.
 
-<img style="width:auto;" src="media/getting-started-step-01.png"/>
-
-Fill in the url `https://github.com/openrndr/openrndr-gradle-template.git` and pick a target directory.
-
-<img style="width:auto;" src="media/getting-started-step-02.png"/>
-
-Checkout from version control? Yes.
-
-<img style="width:auto;" src="media/getting-started-step-03.png"/>
-
-In the Import Project dialog pick "Import project form external model" and select the "Gradle" model, click the "Next" button.
-
-<img style="width:auto;" src="media/getting-started-step-04.png"/>
-
-In the "Import Project" dialog the default settings should be OK. Make sure the "Use default gradle wrapper" option is selected and Gradle JVM has been picked. If no JVM options are available then create a new JVM option.
-
-<img style="width:auto;" src="media/getting-started-step-05.png"/>
-
-Click the "New Window" option.
-
-<img style="width:auto;" src="media/getting-started-step-06.png"/>
-
-All done. The Gradle project is now imported in IntelliJ Idea and you are ready to run the program.
-
-### Run your first program
-
-In IntelliJ, hover your mouse over the green triangle next to the `main()` function, right click and pick the `Run TemplateProgramKt` option in the pop-up menu. The sketch will now start.
-
-<img style="width:auto;" src="media/getting-started-step-07.png"/>
-
-On MacOS you will find that the program exits immediately with an error. To resolve this edit the run configuration (left of the play button in the main toolbar) and add
-`-XstartOnFirstThread` to the VM arguments. The program should now work.
-
-<img style="width:auto;" src="media/getting-started-step-08.png"/>
+Once IntelliJ has finished indexing find the `src/main/kotlin/TemplateProgram.kt` file in the project view and open it.
+Once opened a small green triangle should appear next to the line that starts with `fun main()`. Click on the triangle,
+the program should now run.
