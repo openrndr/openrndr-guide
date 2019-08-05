@@ -1,6 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 
-package docs.`10_Advanced_Topics`
+package docs.`11_Advanced_Topics`
 
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.Code

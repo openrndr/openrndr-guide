@@ -1,6 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 
-package docs.`10_Advanced_Topics`
+package docs.`11_Advanced_Topics`
 
 import org.openrndr.Extension
 import org.openrndr.Program
@@ -9,9 +9,7 @@ import org.openrndr.dokgen.annotations.Code
 import org.openrndr.dokgen.annotations.Text
 import org.openrndr.draw.Drawer
 import org.openrndr.draw.isolated
-import org.openrndr.extensions.Debug3D
 import org.openrndr.math.Matrix44
-import org.openrndr.math.Vector3
 
 fun main(args: Array<String>) {
 

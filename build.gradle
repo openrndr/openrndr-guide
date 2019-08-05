@@ -66,6 +66,9 @@ dependencies {
     compile "org.openrndr:openrndr-ffmpeg:$openrndrVersion"
     implementation 'com.github.openrndr:openrndr-panel:v0.3.11'
     implementation 'com.github.openrndr:dokgen:bdc8d110d4'
+
+
+    compile "com.github.openrndr.orx:orx-noise:v0.0.30"
 }
 
 mainClassName = "TemplateProgramKt"
