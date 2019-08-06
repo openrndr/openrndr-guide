@@ -12,6 +12,7 @@ Circles are filled with the color set in `Drawer.fill` and their stroke is set t
 program {
     
     extend {
+    
         drawer.background(ColorRGBa.PINK)
         drawer.fill = ColorRGBa.WHITE
         drawer.stroke = ColorRGBa.BLACK

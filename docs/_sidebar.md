@@ -41,16 +41,19 @@
 - Videos
   - [Playing Videos](09_Videos/C00_Playing_Videos.md)
   - [Writing to video files](09_Videos/C01_Writing_to_video_files.md)
+- OPENRNDR Extras
+  - [Introduction](10_OPENRNDR_Extras/C00_Introduction.md)
+  - [Noise](10_OPENRNDR_Extras/C01_Noise.md)
 - Advanced Topics
-  - [Logging](10_Advanced_Topics/C00_Logging.md)
-  - [Application Flow](10_Advanced_Topics/C01_Application_Flow.md)
-  - [Presentation Control](10_Advanced_Topics/C02_Presentation_Control.md)
-  - [Writing extensions](10_Advanced_Topics/C03_Writing_extensions.md)
-  - [Headless applications](10_Advanced_Topics/C04_Headless_applications.md)
-- Distribution Topics
-  - [Creating distributable programs](11_Distribution_Topics/C00_Creating_distributable_programs.md)
+  - [Logging](11_Advanced_Topics/C00_Logging.md)
+  - [Application Flow](11_Advanced_Topics/C01_Application_Flow.md)
+  - [Presentation Control](11_Advanced_Topics/C02_Presentation_Control.md)
+  - [Writing extensions](11_Advanced_Topics/C03_Writing_extensions.md)
+  - [Headless applications](11_Advanced_Topics/C04_Headless_applications.md)
 - Developers & Contributors
   - [Building from source](12_Developers_&_Contributors/C00_Building_from_source.md)
   - [Overview of OPENRNDR modules](12_Developers_&_Contributors/C01_Overview_of_OPENRNDR_modules.md)
+- Distribution Topics
+  - [Creating distributable programs](13_Distribution_Topics/C00_Creating_distributable_programs.md)
 - License
-  - [Library Recommendation](13_License/C00_Library_Recommendation.md)
+  - [Library Recommendation](14_License/C00_Library_Recommendation.md)
