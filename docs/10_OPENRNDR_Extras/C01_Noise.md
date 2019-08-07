@@ -39,7 +39,6 @@ application {
             drawer.fill = ColorRGBa.PINK
             drawer.stroke = null
             drawer.translate(width / 2.0, height / 2.00)
-            
             for (i in 0 until 1000) {
                 drawer.circle(Vector2.uniformRing(150.0, 250.0), 10.0)
             }
