@@ -91,6 +91,9 @@ Raw kinect depth data might be visualized in several ways, the following filters
 
 An example presenting these filters side by side:
 
+<img style="width:auto;" src="media/kinect-colormaps.png"/>
+
+
 ```kotlin
 fun kinectColorBuffer(camera: KinectCamera): ColorBuffer {
     return colorBuffer(camera.width, camera.height, format = ColorFormat.RGB)
