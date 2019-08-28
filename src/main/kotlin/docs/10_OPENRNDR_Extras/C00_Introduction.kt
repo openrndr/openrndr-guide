@@ -1,4 +1,4 @@
-package docs.`10_OPENRNDR_Extras`
+package docs.`010_OPENRNDR_Extras`
 
 import org.openrndr.dokgen.annotations.Text
 
