@@ -117,13 +117,14 @@ we will be making is a simple noise filter.
                 time = 0.0
             }
         }
-
+        @Exclude
+        configure {
+            width = 770
+            height = 578
+        }
         program {
-            @Exclude
-            configure {
-                width = 770
-                height = 578
-            }
+
+
             // -- create the noise filter
             val noise = Noise()
             val offscreen = renderTarget(width, height) {

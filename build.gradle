@@ -31,7 +31,7 @@ compileKotlin {
 }
 
 sourceCompatibility = 1.8
-project.ext.openrndrVersion = "0.3.35-rc1"
+project.ext.openrndrVersion = "0.3.35"
 
 repositories {
     mavenCentral()
@@ -71,7 +71,8 @@ dependencies {
 
 
     //compile "com.github.openrndr.orx:orx-noise:v0.0.30"
-    compile "org.openrndr.extra:orx-noise:0.3.31-m3"
+    compile "org.openrndr.extra:orx-noise:0.3.32"
+    compile "org.openrndr.extra:orx-kinect-v1:0.3.32"
 }
 
 mainClassName = "TemplateProgramKt"
