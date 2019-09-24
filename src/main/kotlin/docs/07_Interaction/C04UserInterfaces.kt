@@ -133,7 +133,7 @@ fun main(args: Array<String>) {
             height = 578
         }
         program {
-            @Code
+
             styleSheet(has class_ "control-bar") {
                 descendant(has type "button") {
                     width = 100.percent
@@ -192,18 +192,19 @@ fun main(args: Array<String>) {
     @Media.Image """media/ui-006.png"""
 
     @Application
+    @Code
     application {
         configure {
             width = 770
             height = 45
         }
         program {
+            @Exclude
             extend(SingleScreenshot()) {
                 outputFile = "media/ui-006.png"
             }
             extend(ControlManager()) {
                 layout {
-                    @Code
                     button {
                         label = "Click me "
                         events.clicked.subscribe {
@@ -237,6 +238,7 @@ fun main(args: Array<String>) {
     @Media.Image """media/ui-007.png"""
 
     @Application
+    @Code
     application {
         configure {
             width = 770
@@ -248,7 +250,7 @@ fun main(args: Array<String>) {
             }
             extend(ControlManager()) {
                 layout {
-                    @Code
+
                     slider {
                         label = "Slide me"
                         value = 0.50
@@ -278,7 +280,9 @@ fun main(args: Array<String>) {
     """
     @Media.Image """media/ui-008.png"""
     @Application
+    @Code
     application {
+        @Exclude
         configure {
             width = 770
             height = 45
@@ -289,7 +293,7 @@ fun main(args: Array<String>) {
             }
             extend(ControlManager()) {
                 layout {
-                    @Code
+
                     colorpickerButton {
                         label = "Pick a color"
                         color = ColorRGBa.PINK
@@ -316,7 +320,9 @@ fun main(args: Array<String>) {
     """
     @Media.Image """media/ui-009.png"""
     @Application
+    @Code
     application {
+        @Exclude
         configure {
             width = 770
             height = 45
@@ -327,7 +333,7 @@ fun main(args: Array<String>) {
             }
             extend(ControlManager()) {
                 layout {
-                    @Code
+
                     dropdownButton {
                         label = "Option"
 

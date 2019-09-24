@@ -11,9 +11,10 @@ import org.openrndr.ffmpeg.FFMPEGVideoPlayer
 fun main() {
     @Text "# Live coding with orx-olive"
     @Text """By using Kotlin's ability to run script files we can build a live coding environment. The `orx-olive` library 
-simplifies the work to be done to set up a live coding environment.
+simplifies the work to be done to set up a live coding environment. Code and additional documentation for the library
+can be found in the [Github repository](https://github.com/openrndr/orx/tree/master/orx-olive).
 
-Start by adding `orx-live` to the `orxFeatures` set in your gradle build file .
+Start by adding `orx-live` to the `orxFeatures` set in your gradle build file.
 """
 
     @Code.Block

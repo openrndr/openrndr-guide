@@ -71,7 +71,6 @@ dependencies {
     implementation 'org.openrndr:dokgen:1.0-SNAPSHOT'
 
 
-    //compile "com.github.openrndr.orx:orx-noise:v0.0.30"
     compile "org.openrndr.extra:orx-noise:$orxVersion"
     compile "org.openrndr.extra:orx-kinect-v1:$orxVersion"
     compile "org.openrndr.extra:orx-olive:$orxVersion"
@@ -94,7 +93,6 @@ dokgen {
         media = [file("$projectDir/media"), file("$projectDir/static-media")]
         assets = [file("$projectDir/data/docsify-assets")]
     }
-
 }
 
 task publishDocs { task ->
@@ -117,7 +115,7 @@ task publishExamples { task ->
         gitPublish.repoDir = file("$buildDir/gitrepo-examples")
         gitPublish.contents {
             from "$projectDir/src/main/resources/examples-repo-template"
-            from("$projectDir/src/generated/examples") {
+            from("$projectDir/src/generated/examples-export") {
                 into "src/main/kotlin/examples"
             }
             from("$projectDir/fonts") {

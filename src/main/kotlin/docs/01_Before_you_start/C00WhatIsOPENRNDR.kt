@@ -7,7 +7,6 @@ import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.ffmpeg.ScreenRecorder
 
-
 fun main() {
     @Text
     """
