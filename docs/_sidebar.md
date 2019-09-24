@@ -3,8 +3,7 @@
   - [Should I use OPENRNDR?](01_Before_you_start/C02ShouldIUseOPENRNDR.md)
 - Getting Started with OPENRNDR
   - [Setup Your First Program](02_Getting_Started_with_OPENRNDR/C00_SetupYourFirstProgram.md)
-  - [Tutorial Repository](02_Getting_Started_with_OPENRNDR/C01_TutorialRepository.md)
-  - [Gradle Project](02_Getting_Started_with_OPENRNDR/C02_GradleProject.md)
+  - [Gradle Project](02_Getting_Started_with_OPENRNDR/C01_GradleProject.md)
 - Program basics
   - [Application Program](03_Program_basics/C00_ApplicationProgram.md)
   - [Program Configuration](03_Program_basics/C01_ProgramConfiguration.md)
