@@ -1,5 +1,5 @@
-
-# Interactive Animations
+ 
+ # Interactive Animations
 
 This section explains how to use OPENRNDR's `Animatable` class as a tool to create interactive animations.
 In order to use `Animatable` your project needs to depend on the `rndr-animatable`.
@@ -8,17 +8,17 @@ In order to use `Animatable` your project needs to depend on the `rndr-animatabl
 dependencies {
     compile "org.openrndr:openrndr-animatable:$openrndr_version"
 }
-```
-
-# Interactive animations
+``` 
+ 
+ # Interactive animations
 
 ## Animatable
 
 Anything that should be animated inherits the Animatable class. The Animatable class provides animation logic.
 
-Displayed below is a very simple animation setup.
-
-```kotlin
+Displayed below is a very simple animation setup. 
+ 
+ ```kotlin
 application {
     program {
         class MyAnimatable() : Animatable() {
@@ -61,9 +61,9 @@ application {
         }
     }
 }
-```
-
-## Animation concepts
+``` 
+ 
+ ## Animation concepts
 ### Animating
 ```kotlin
 fun animate(variable: String, target: Double, duration: Long)
@@ -78,9 +78,9 @@ In cases in which the target value is unknown but the increment (or decrement) i
 fun add(variable: String, increment: Double, duration: Long)
 fun add(variable: String, increment: Double, duration: Long, easing: Easing)
 ```
-It is also possible to animate elements in an array or List:
-
-```kotlin
+It is also possible to animate elements in an array or List: 
+ 
+ ```kotlin
 application {
     program {
         class MyAnimatable : Animatable() {
@@ -92,9 +92,9 @@ application {
         myAnimatable.animate("values[1]", 200.0, 1000)
     }
 }
-```
-
-## Waiting
+``` 
+ 
+ ## Waiting
 
 ### Waiting for a period of time
 
@@ -124,28 +124,28 @@ fun complete(callback: (Animatable) -> Unit)
 `complete()` instructs the animator to wait until the previously queued animation has completed.
 `complete(String variable)` instructs the animator to wait until the last queued animation for the given variable has completed.
 
-This can be used in cases where two animations with different lengths are queued. For example:
-
-```kotlin
+This can be used in cases where two animations with different lengths are queued. For example: 
+ 
+ ```kotlin
 myAnimatable.apply {
     animate("x", 400.0, 2000)
     animate("y", 500.0, 1200)
     complete("x")
 }
-```
-
-### Waiting for an animation to almost finish
-
-```kotlin
+``` 
+ 
+ ### Waiting for an animation to almost finish 
+ 
+ ```kotlin
 myAnimatable.apply {
     complete()
     delay(-1000)
 }
-```
-
-Instruct the animator to wait until the given amount of time before the previously queued animation ends.
-
-## Stopping
+``` 
+ 
+ Instruct the animator to wait until the given amount of time before the previously queued animation ends. 
+ 
+ ## Stopping
 
 In interactive applications it may be needed to stop animations to accommodate user actions. Animatable has three options to stop animations.
 
@@ -165,4 +165,4 @@ fun cancelQueued()
 fun end()
 ```
 
-`end()` cancels all running and queued animations. Animated values of running animations will be set to the target value, this will introduce animation pops.
+`end()` cancels all running and queued animations. Animated values of running animations will be set to the target value, this will introduce animation pops. 

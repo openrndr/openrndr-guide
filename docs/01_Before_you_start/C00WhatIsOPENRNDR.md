@@ -1,5 +1,5 @@
-
-# What is OPENRNDR?
+ 
+ # What is OPENRNDR?
 
 OPENRNDR is an application framework and a library for creative coding written in [Kotlin](https://kotlinlang.org).
 
@@ -13,14 +13,14 @@ OPENRNDR is an initiative of [RNDR](http://rndr.studio) a studio for interactive
 
 
 # A simple OPENRNDR program
-Here we show a very simple program written using OPENRNDR.
-
-<video controls>
+Here we show a very simple program written using OPENRNDR. 
+ 
+ <video controls>
     <source src="media/what-is-001.mp4" type="video/mp4"></source>
 </video>
-
-
-```kotlin
+ 
+ 
+ ```kotlin
 application {
     program {
         extend {
@@ -30,6 +30,6 @@ application {
         }
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/01_Before_you_start/C00WhatIsOPENRNDR000.kt)
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/01_Before_you_start/C00WhatIsOPENRNDR000.kt) 

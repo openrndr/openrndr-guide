@@ -1,5 +1,5 @@
-
- # Playing videos #
+ 
+  # Playing videos #
  OPENRNDR comes with preliminary support for video playback. Currently the video playback is not suitable for
  presentation as support for sound, seeking and timing is missing. The video playback is suitable for video processing.
  # The openrndr-ffmpeg library
@@ -13,9 +13,9 @@
     […]
 }
  ```
- ## A simple video player
-
-```kotlin
+ ## A simple video player 
+ 
+ ```kotlin
 application {
     program {
         val videoPlayer = FFMPEGVideoPlayer.fromFile("data/video.mp4")
@@ -27,9 +27,9 @@ application {
         }
     }
 }
-```
-
-## Video from camera devices
+``` 
+ 
+ ## Video from camera devices
 
 The `FFMPEGVideoPlayer` class can be used to get and display video data from camera devices. To open a camera device you use the `fromDevice()` method. When this method is called without any arguments it attempts to open the default camera device.
 
@@ -52,9 +52,9 @@ FFMPEGVideoPlayer.defaultFormat()
 ```
 
 
-##### Examples
-
-```kotlin
+##### Examples 
+ 
+ ```kotlin
 application {
     program {
         val videoPlayer = FFMPEGVideoPlayer.fromDevice()
@@ -66,15 +66,15 @@ application {
         }
     }
 }
-```
-
-## Processing video
+``` 
+ 
+ ## Processing video
 
 Video playback can be combined with render targets and filters.
 
-In the following example the video player output is blurred before presenting it on the screen.
-
-```kotlin
+In the following example the video player output is blurred before presenting it on the screen. 
+ 
+ ```kotlin
 application {
     program {
         val videoPlayer = FFMPEGVideoPlayer.fromFile("data/video.mp4")
@@ -97,4 +97,4 @@ application {
         }
     }
 }
-```
+``` 

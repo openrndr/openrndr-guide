@@ -1,13 +1,13 @@
-
-# Complex shapes
-OPENRNDR offers a lot of tools for the creation and drawing of two dimensional shapes.
-
-## Shapes
+ 
+ # Complex shapes
+OPENRNDR offers a lot of tools for the creation and drawing of two dimensional shapes. 
+ 
+ ## Shapes
 OPENRNDR uses `Shape` to represent planar shapes of which the contours are described using piece-wise bezier curves.
 
-A `Shape` is composed of one or multiple `ShapeContour` instances. A `ShapeContour` is composed of multiple `Segment` instances, describing a bezier curve each.
-
-## Shape and ShapeContour builders
+A `Shape` is composed of one or multiple `ShapeContour` instances. A `ShapeContour` is composed of multiple `Segment` instances, describing a bezier curve each. 
+ 
+ ## Shape and ShapeContour builders
 The `ContourBuilder` class offers a simple way of producing complex two dimensional shapes. `ContourBuilder` employs a vocabulary that is familiar to those who have used SVG.
 
 * `moveTo(position)` move the cursor to the given position
@@ -20,14 +20,14 @@ The `ContourBuilder` class offers a simple way of producing complex two dimensio
 * `arcTo(radiusX, radiusY, largeAngle, sweepFlag, position)`
 * `close()` close the contour
 * `cursor` a `Vector2` instance representing the current position
-* `anchor` a `Vector2` instance representing the current anchor
-
-Let's create a simple `Contour` and draw it. The following program shows how to use the contour builder
-        to create a triangular contour.
-
-<img src="media/shapes-001.png"/>
-
-```kotlin
+* `anchor` a `Vector2` instance representing the current anchor 
+ 
+ Let's create a simple `Contour` and draw it. The following program shows how to use the contour builder
+        to create a triangular contour. 
+ 
+ <img src="media/shapes-001.png"/> 
+ 
+ ```kotlin
 program {
     extend {
         val c = contour {
@@ -43,16 +43,16 @@ program {
         drawer.contour(c)
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C05_ComplexShapes000.kt)
-
-Now let's create a `Shape` using the _shape builder_. The shape is created using two contours, one for
-_outline_ of the shape, and one for the _hole_ in the shape
-
-<img src="media/shapes-002.png"/>
-
-```kotlin
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C05_ComplexShapes000.kt) 
+ 
+ Now let's create a `Shape` using the _shape builder_. The shape is created using two contours, one for
+_outline_ of the shape, and one for the _hole_ in the shape 
+ 
+ <img src="media/shapes-002.png"/> 
+ 
+ ```kotlin
 program {
     extend {
         val s = shape {
@@ -76,28 +76,28 @@ program {
         drawer.shape(s)
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C05_ComplexShapes001.kt)
-
-## Shapes and contours from primitives
-
-Not all shapes need to be created using the builders. Some of the OPENRNDR primitives have `.shape` and
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C05_ComplexShapes001.kt) 
+ 
+ ## Shapes and contours from primitives 
+ 
+ Not all shapes need to be created using the builders. Some of the OPENRNDR primitives have `.shape` and
 `.contour` properties that help in creating shapes quickly.
 
  * `LineSegment.contour` and `LineSegment.shape`
  * `Rectangle.contour` and `Rectangle.shape`
- * `Circle.contour` and `Circle.shape`
-
-## Shape Boolean-operations
-
-Boolean-operations can be performed on shapes using the `compound {}` builder. There are three kinds
+ * `Circle.contour` and `Circle.shape` 
+ 
+ ## Shape Boolean-operations 
+ 
+ Boolean-operations can be performed on shapes using the `compound {}` builder. There are three kinds
 of compounds: _union_, _difference_ and _intersection_, all three of them are shown in the example below.
-
-
-<img src="media/shapes-003.png"/>
-
-```kotlin
+ 
+ 
+ <img src="media/shapes-003.png"/> 
+ 
+ ```kotlin
 program {
     extend {
         drawer.fill = ColorRGBa.PINK
@@ -130,16 +130,16 @@ program {
         drawer.shapes(si)
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C05_ComplexShapes002.kt)
-
-The _compound builder_ is actually a bit more clever than what the previous example demonstrated because
-it can actually work with an entire tree of compounds. Demonstrated below is the _union_ of two _intersections_.
-
-<img src="media/shapes-004.png"/>
-
-```kotlin
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C05_ComplexShapes002.kt) 
+ 
+ The _compound builder_ is actually a bit more clever than what the previous example demonstrated because
+it can actually work with an entire tree of compounds. Demonstrated below is the _union_ of two _intersections_. 
+ 
+ <img src="media/shapes-004.png"/> 
+ 
+ ```kotlin
 program {
     extend {
         drawer.fill = ColorRGBa.PINK
@@ -159,20 +159,20 @@ program {
         drawer.shapes(cross)
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C05_ComplexShapes003.kt)
-
-## Cutting contours
-
-A contour be cut into a shorter contour using `ShapeContour.sub()`.
-
-<video controls>
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C05_ComplexShapes003.kt) 
+ 
+ ## Cutting contours 
+ 
+ A contour be cut into a shorter contour using `ShapeContour.sub()`. 
+ 
+ <video controls>
     <source src="media/shapes-005.mp4" type="video/mp4"></source>
 </video>
-
-
-```kotlin
+ 
+ 
+ ```kotlin
 program {
     extend {
         drawer.fill = null
@@ -189,20 +189,20 @@ program {
         drawer.contour(sub2)
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C05_ComplexShapes004.kt)
-
-## Placing points on contours 
-
-A single point on a contour 
-
-<video controls>
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C05_ComplexShapes004.kt) 
+ 
+ ## Placing points on contours  
+ 
+ A single point on a contour  
+ 
+ <video controls>
     <source src="media/shapes-006.mp4" type="video/mp4"></source>
 </video>
-
-
-```kotlin
+ 
+ 
+ ```kotlin
 program {
     extend {
     
@@ -220,6 +220,6 @@ program {
         drawer.circles(points1, 10.0)
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C05_ComplexShapes005.kt)
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C05_ComplexShapes005.kt) 

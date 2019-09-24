@@ -1,19 +1,19 @@
-
-# Filters and Post-processing
+ 
+ # Filters and Post-processing
 
 Since OPENRNDR has extensive support for rendering to off-screen buffers it is easy to apply effects and filters
 to the off-screen buffers.
 
 
 ## Basic usage
-To demonstrate the ease of using filters we show an example of applying a blur filter to a drawing on a render target.
-
-<video controls>
+To demonstrate the ease of using filters we show an example of applying a blur filter to a drawing on a render target. 
+ 
+ <video controls>
     <source src="media/filters-001.mp4" type="video/mp4"></source>
 </video>
-
-
-```kotlin
+ 
+ 
+ ```kotlin
 program {
     // -- create offscreen render target
     val offscreen = renderTarget(width, height) {
@@ -42,23 +42,23 @@ program {
         drawer.image(blurred)
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C01_Filters_and_post_processing000.kt)
-
-## Writing your own filters
-
-You may be wondering how to create your own filters. If so, good news, it is fairly easy to write your own
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C01_Filters_and_post_processing000.kt) 
+ 
+ ## Writing your own filters 
+ 
+ You may be wondering how to create your own filters. If so, good news, it is fairly easy to write your own
 filter if you are familiar with fragment shaders in GLSL. The easiest way to write your own filter is to use the `Filter`
 class by extending it. The `Filter` class takes care of setting up render state, geometry and projections so all you have
 to do is write a shader.
 
 What follows is an example of how to create a Filter from a shader whose code is stored as a String. The filter
-we will be making is a simple noise filter.
-
-<img src="media/filters-002.png"/>
-
-```kotlin
+we will be making is a simple noise filter. 
+ 
+ <img src="media/filters-002.png"/> 
+ 
+ ```kotlin
 application {
     val noiseShader = """
         #version 330
@@ -121,11 +121,11 @@ application {
         }
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C01_Filters_and_post_processing001.kt)
-
-## The openrndr-filter library
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C01_Filters_and_post_processing001.kt) 
+ 
+ ## The openrndr-filter library
 
 The `openrndr-filter` library holds numerous filters that can be applied easily.
 
@@ -174,4 +174,4 @@ Class name   | Description
  Class name | Description
 ------------|-------------------
  `ADither`  | A Dithering filter
-
+ 

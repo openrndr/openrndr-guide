@@ -1,14 +1,14 @@
-
-# Clipping
-
-OPENRNDR's drawer supports a single rectangular clip mask.
-
-<video controls>
+ 
+ # Clipping 
+ 
+ OPENRNDR's drawer supports a single rectangular clip mask. 
+ 
+ <video controls>
     <source src="media/clipping-001.mp4" type="video/mp4"></source>
 </video>
-
-
-```kotlin
+ 
+ 
+ ```kotlin
 program {
     extend {
         drawer.stroke = null
@@ -23,6 +23,6 @@ program {
         drawer.drawStyle.clip = null
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C02_Clipping000.kt)
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C02_Clipping000.kt) 

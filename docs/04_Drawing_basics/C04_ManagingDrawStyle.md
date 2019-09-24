@@ -1,5 +1,5 @@
-
-
+ 
+ 
 # Managing draw style
 
 In the previous section we briefly talked about controlling the appearance of drawing primitives, in this section we draw styles and tools to
@@ -36,25 +36,25 @@ val active = drawer.drawStyle.copy()
 ## The draw style stack
 
 Styles can be pushed on and popped from a stack maintained by `Drawer`.
-
-
-```kotlin
+ 
+ 
+ ```kotlin
 extend {
     drawer.pushStyle()
     drawer.fill = ColorRGBa.PINK
     drawer.rectangle(100.0, 100.0, 100.0, 100.0)
     drawer.popStyle()
 }
-```
-
-The `Drawer` provides a helper function called `isolated {}` that pushes style and transforms on a their respective
-stacks, executes the user code and pops style and transforms back.
-
-```kotlin
+``` 
+ 
+ The `Drawer` provides a helper function called `isolated {}` that pushes style and transforms on a their respective
+stacks, executes the user code and pops style and transforms back. 
+ 
+ ```kotlin
 extend {
     drawer.isolated {
         fill = ColorRGBa.PINK
         rectangle(100.0, 100.0, 100.0, 100.0)
     }
 }
-```
+``` 

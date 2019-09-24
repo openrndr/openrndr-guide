@@ -1,11 +1,11 @@
-
-# Headless Applications
+ 
+ # Headless Applications
 
 OPENRNDR can be ran in headless mode on machines that have EGL support. Using the EGL backed headless mode Programs can be ran without active graphical environment. This makes it for example possible to use OPENRNDR to create command line utilities that can be run in a SSH session or as a background service.
 
-To enable headless mode all that needs to be done is setting the `headless` value in the `Configuration` to true.
-
-```kotlin
+To enable headless mode all that needs to be done is setting the `headless` value in the `Configuration` to true. 
+ 
+ ```kotlin
 application {
     configure {
         headless = true
@@ -13,9 +13,9 @@ application {
     program {// ....
     }
 }
-```
-
-## Limitations
+``` 
+ 
+ ## Limitations
 
 #### Platforms
 
@@ -29,4 +29,4 @@ Headless applications cannot draw on the backbuffer, because there is no backbuf
 Headless applications cannot handle mouse or keyboard input.
 
 #### ColorBufferLoader
-Headless applications (currently) cannot create secondary/shared contexts and as such ColorBufferLoader does not work.
+Headless applications (currently) cannot create secondary/shared contexts and as such ColorBufferLoader does not work. 

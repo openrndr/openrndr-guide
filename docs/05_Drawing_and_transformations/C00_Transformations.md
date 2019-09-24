@@ -1,21 +1,21 @@
+ 
+ # Transformations
 
-# Transformations
-
-This section covers the topic of placing items on the screen.
-
-## Basic transformation use
-
-### Translation
+This section covers the topic of placing items on the screen. 
+ 
+ ## Basic transformation use 
+ 
+ ### Translation
 Translation moves points in space with an offset.
 
-In the following example we use `Drawer.translate` to move a single rectangle over the screen.
-
-<video controls>
+In the following example we use `Drawer.translate` to move a single rectangle over the screen. 
+ 
+ <video controls>
     <source src="media/transformations-001.mp4" type="video/mp4"></source>
 </video>
-
-
-```kotlin
+ 
+ 
+ ```kotlin
 program {
     extend {
         drawer.fill = ColorRGBa.PINK
@@ -25,19 +25,19 @@ program {
         drawer.rectangle(-50.0, -50.0, 100.0, 100.0)
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/05_Drawing_and_transformations/C00_Transformations000.kt)
-
-translations (and transformations in general) can be stacked on top of each-other. For example we can
-express a horizontal and a vertical motion as two separate translations
-
-<video controls>
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/05_Drawing_and_transformations/C00_Transformations000.kt) 
+ 
+ translations (and transformations in general) can be stacked on top of each-other. For example we can
+express a horizontal and a vertical motion as two separate translations 
+ 
+ <video controls>
     <source src="media/transformations-002.mp4" type="video/mp4"></source>
 </video>
-
-
-```kotlin
+ 
+ 
+ ```kotlin
 program {
     extend {
         drawer.fill = ColorRGBa.PINK
@@ -52,25 +52,25 @@ program {
         drawer.rectangle(-50.0, -50.0, 100.0, 100.00)
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/05_Drawing_and_transformations/C00_Transformations001.kt)
-
-### Rotations
-
-Rotating transformations are performed using `Drawer.rotate()`. The rotation is applied by rotating points
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/05_Drawing_and_transformations/C00_Transformations001.kt) 
+ 
+ ### Rotations 
+ 
+ Rotating transformations are performed using `Drawer.rotate()`. The rotation is applied by rotating points
 around the origin of the coordinate system: (0, 0), which lies in the top-left corner of the window.
 
 In the first rotation example we rotate a rectangle that is placed around the origin but later translated to the center
 of the screen. Here we notice something that may be counter-intuitive at first: the transformations are easiest read
-from bottom to top: first `rotate` is applied and only then `translate`.
-
-<video controls>
+from bottom to top: first `rotate` is applied and only then `translate`. 
+ 
+ <video controls>
     <source src="media/transformations-003.mp4" type="video/mp4"></source>
 </video>
-
-
-```kotlin
+ 
+ 
+ ```kotlin
 program {
     extend {
         drawer.fill = ColorRGBa.PINK
@@ -84,21 +84,21 @@ program {
         drawer.rectangle(-50.0, -50.0, 100.0, 100.0)
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/05_Drawing_and_transformations/C00_Transformations002.kt)
-
-### Scaling
-
-Scaling transformations are performed using `Drawer.scale()`. Also scaling is applied around the origin of
-the coordinate system: (0, 0).
-
-<video controls>
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/05_Drawing_and_transformations/C00_Transformations002.kt) 
+ 
+ ### Scaling 
+ 
+ Scaling transformations are performed using `Drawer.scale()`. Also scaling is applied around the origin of
+the coordinate system: (0, 0). 
+ 
+ <video controls>
     <source src="media/transformations-004.mp4" type="video/mp4"></source>
 </video>
-
-
-```kotlin
+ 
+ 
+ ```kotlin
 program {
     extend {
         drawer.fill = ColorRGBa.PINK
@@ -112,20 +112,20 @@ program {
         drawer.rectangle(-50.0, -50.0, 100.0, 100.00)
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/05_Drawing_and_transformations/C00_Transformations003.kt)
-
-### Combining transformations
-
-
-
-<video controls>
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/05_Drawing_and_transformations/C00_Transformations003.kt) 
+ 
+ ### Combining transformations 
+ 
+  
+ 
+ <video controls>
     <source src="media/transformations-005.mp4" type="video/mp4"></source>
 </video>
-
-
-```kotlin
+ 
+ 
+ ```kotlin
 program {
     extend {
         drawer.fill = ColorRGBa.PINK
@@ -144,16 +144,16 @@ program {
         drawer.rectangle(-50.0, -50.0, 100.0, 100.0)
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/05_Drawing_and_transformations/C00_Transformations004.kt)
-
-<video controls>
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/05_Drawing_and_transformations/C00_Transformations004.kt) 
+ 
+ <video controls>
     <source src="media/transformations-006.mp4" type="video/mp4"></source>
 </video>
-
-
-```kotlin
+ 
+ 
+ ```kotlin
 program {
     extend {
         drawer.fill = ColorRGBa.PINK
@@ -172,11 +172,11 @@ program {
         drawer.rectangle(-50.0, -50.0, 100.0, 100.00)
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/05_Drawing_and_transformations/C00_Transformations005.kt)
-
-## Transform pipeline
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/05_Drawing_and_transformations/C00_Transformations005.kt) 
+ 
+ ## Transform pipeline
 
 OPENRNDR's `Drawer` is build around model-view-projection transform pipeline. That means that three different transformations are applied to determine
 the screen position.
@@ -255,4 +255,4 @@ drawer.scale(2.0)
     val transformed = m * x
     val transformedTwice = m * m * x
 ```
-
+ 

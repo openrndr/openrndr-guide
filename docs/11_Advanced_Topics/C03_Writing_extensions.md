@@ -1,5 +1,5 @@
-
-# Writing Program extensions
+ 
+ # Writing Program extensions
 
 ## The extension interface
 
@@ -24,9 +24,9 @@ You can enabled and disable an extension by setting the `enabled` boolean on the
 
 ## A simple extension
 
-Presented here is the outline of a simple extension that overlays the frames per second on top of the program output.
-
-```kotlin
+Presented here is the outline of a simple extension that overlays the frames per second on top of the program output. 
+ 
+ ```kotlin
 class FPSDisplay : Extension {
     override var enabled: Boolean = true
     
@@ -49,19 +49,19 @@ class FPSDisplay : Extension {
         }
     }
 }
-```
-
-Using the `FPSDisplay` extension from your main program would then look like this:
-
-```kotlin
+``` 
+ 
+ Using the `FPSDisplay` extension from your main program would then look like this: 
+ 
+ ```kotlin
 application {
     program {
         extend(FPSDisplay())
     }
 }
-```
-
-## Extension application order
+``` 
+ 
+ ## Extension application order
 
 In the scenario in which a program has 3 extensions installed like in the snippet below.
 
@@ -88,4 +88,4 @@ extensionA.afterDraw()
 ```
 
 As you can see, the afterDraw() calls are applied in reverse order, this order was decided on to help with push/pop order of transforms and styles.
-
+ 

@@ -1,5 +1,5 @@
-
-# Vectors
+ 
+ # Vectors
 The `Vector2`, `Vector3` and `Vector4` classes are used for 2, 3 and 4 dimensional vector representations. Vector instances are immutable; once a Vector has been instantiated its values cannot be changed.
 
 ```kotlin
@@ -95,4 +95,4 @@ which is short-hand for
 ```
     val m = v0 * (1.0 - f) + v1 * f
 ```
-
+ 

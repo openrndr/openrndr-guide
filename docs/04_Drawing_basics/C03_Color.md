@@ -1,15 +1,15 @@
+ 
+ # Color 
+ 
+ In this chapter we discuss and demonstrate OPENRNDR's color functionality. 
+ 
+ ## Basic color
 
-# Color
-
-In this chapter we discuss and demonstrate OPENRNDR's color functionality.
-
-## Basic color
-
-OPENRNDR primarily uses red-green-blue(-alpha) color stored in `ColorRGBa` instances. `ColorRGBa`'s channels store values in the range [0, 1].
-
-### Predefined colors
-
-```kotlin
+OPENRNDR primarily uses red-green-blue(-alpha) color stored in `ColorRGBa` instances. `ColorRGBa`'s channels store values in the range [0, 1]. 
+ 
+ ### Predefined colors 
+ 
+ ```kotlin
 ColorRGBa.BLACK
 ColorRGBa.WHITE
 ColorRGBa.RED
@@ -18,24 +18,24 @@ ColorRGBa.BLUE
 ColorRGBa.YELLOW
 ColorRGBa.GRAY
 ColorRGBa.PINK
-```
-
-### Conversion from hex color
+``` 
+ 
+ ### Conversion from hex color
 RGB color is commonly communicated in hexadecimal codes. `ColorRGBa` provides simple tools to construct color from such
-hexadecimal codes.
-
-```kotlin
+hexadecimal codes. 
+ 
+ ```kotlin
 // -- construct the OPENRNDR pink from hexadecimal code
 val color = ColorRGBa.fromHex(0xffc0cb)
-```
-
-### Color operations
+``` 
+ 
+ ### Color operations
 The `ColorRGBa` class offers a number of tools to create variations of colors. For example `ColorRGBa.shade` can be
-used to create lighter or darker shades of a base color.
-
-<img src="media/color-001.png"/>
-
-```kotlin
+used to create lighter or darker shades of a base color. 
+ 
+ <img src="media/color-001.png"/> 
+ 
+ ```kotlin
 extend {
     drawer.stroke = null
     val baseColor = ColorRGBa.PINK
@@ -50,15 +50,15 @@ extend {
         drawer.rectangle(35.0 + (700 / 16.0) * i, 96.0, (700 / 16.0), 64.0)
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C03_Color000.kt)
-
-Using `ColorRGBa.opacify` colors can be made more or less opaque.
-
-<img src="media/color-002.png"/>
-
-```kotlin
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C03_Color000.kt) 
+ 
+ Using `ColorRGBa.opacify` colors can be made more or less opaque. 
+ 
+ <img src="media/color-002.png"/> 
+ 
+ ```kotlin
 extend {
     drawer.stroke = null
     val baseColor = ColorRGBa.PINK
@@ -72,15 +72,15 @@ extend {
         drawer.rectangle(35.0 + (700 / 16.0) * i, 64.0, (700 / 16.0), 64.0)
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C03_Color001.kt)
-
-Using `mix(ColorRGBa, ColorRGBa, Double)` colors can be mixed.
-
-<img src="media/color-003.png"/>
-
-```kotlin
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C03_Color001.kt) 
+ 
+ Using `mix(ColorRGBa, ColorRGBa, Double)` colors can be mixed. 
+ 
+ <img src="media/color-003.png"/> 
+ 
+ ```kotlin
 extend {
     drawer.stroke = null
     val leftColor = ColorRGBa.PINK
@@ -92,11 +92,11 @@ extend {
         drawer.rectangle(35.0 + (700 / 16.0) * i, 32.0, (700 / 16.0), 64.0)
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C03_Color002.kt)
-
-## Alternative color models
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C03_Color002.kt) 
+ 
+ ## Alternative color models
 OPENRNDR offers a wide range of alternative color models. The alternative models use primaries different from red, green
 and blue.
 
@@ -115,11 +115,11 @@ Class name    | Color space description
 `ColorLUVa`   | LUV colorspace
 `ColorLCHUVa` | LCHuv colorspace, a cylindrical variant of LUV
 `ColorLSHUVa` | LSHuv colorspace, a cylindrical variant of LUV, chroma replaced with normalized saturation
-`ColorATVa`   | Coloroid color space, partial implementation
-
-## HSV, HSL, XSV and XSL color
-
-HSV (hue-saturation-value) and HSL ("hue-saturation-lightness") are cylindrical color spaces.
+`ColorATVa`   | Coloroid color space, partial implementation 
+ 
+ ## HSV, HSL, XSV and XSL color 
+ 
+ HSV (hue-saturation-value) and HSL ("hue-saturation-lightness") are cylindrical color spaces.
 
 XSV and XSL (for lack of a better name) are transformed versions of HSV and HSL in which the hue component has been
 stretched and compressed to make the color space better suited for artists. The spaces are better suited for artists
@@ -127,11 +127,11 @@ because it has red-green and blue-yellow primaries. The XSV and XSL spaces are b
 the same as) the Adobe Kuler color spaces.
 
 Below is an example of plots of color swatches for (from top to bottom) HSV, HSL, XSV and XSL. The adjusted hue of the
-XSV and XSL spaces is clearly visible.
-
-<img src="media/color-004.png"/>
-
-```kotlin
+XSV and XSL spaces is clearly visible. 
+ 
+ <img src="media/color-004.png"/> 
+ 
+ ```kotlin
 extend {
     drawer.stroke = null
     
@@ -170,6 +170,6 @@ extend {
         }
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C03_Color003.kt)
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C03_Color003.kt) 

@@ -1,7 +1,7 @@
-
-# Shade styles
-
-Shade styles are used to change the drawing behaviour of the `Drawer`, the appearance of all drawing primitives by
+ 
+ # Shade styles 
+ 
+ Shade styles are used to change the drawing behaviour of the `Drawer`, the appearance of all drawing primitives by
 applying shade styles.
 
 Shade styles are composed of two types of transforms: vertex transforms and fragment transforms. The two transforms are
@@ -11,17 +11,17 @@ In the vertex transform it is possible to change the geometry of what is drawn.
 
 In the fragment transform it is possible to change the appearance of the geometry.
 
-For those interested in authoring shade styles it is helpful to have some based understanding of shaders and GLSL.
+For those interested in authoring shade styles it is helpful to have some based understanding of shaders and GLSL. 
+ 
+ ## Basic usage 
+ 
+ In essence shade styles are fragments of GLSL code that are inserted into OPENRNDRs templated shaders.
 
-## Basic usage
-
-In essence shade styles are fragments of GLSL code that are inserted into OPENRNDRs templated shaders.
-
-As a quick first step we override the output to red in the following snippet
-
-<img src="media/shadestyles-001.png"/>
-
-```kotlin
+As a quick first step we override the output to red in the following snippet 
+ 
+ <img src="media/shadestyles-001.png"/> 
+ 
+ ```kotlin
 program {
     extend {
         drawer.shadeStyle = shadeStyle {
@@ -32,16 +32,16 @@ program {
         drawer.rectangle(width / 2.0 - 200.0, height / 2.0 - 200.0, 400.0, 400.00)
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C04_Shade_styles000.kt)
-
-The idea of shade styles is to allow more complex changes in the appearance. In the next snippet we create
-a wavy pattern by using cosines and the screen position.
-
-<img src="media/shadestyles-002.png"/>
-
-```kotlin
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C04_Shade_styles000.kt) 
+ 
+ The idea of shade styles is to allow more complex changes in the appearance. In the next snippet we create
+a wavy pattern by using cosines and the screen position. 
+ 
+ <img src="media/shadestyles-002.png"/> 
+ 
+ ```kotlin
 program {
     extend {
         drawer.shadeStyle = shadeStyle {
@@ -55,19 +55,19 @@ program {
         drawer.rectangle(width / 2.0 - 200.0, height / 2.0 - 200.0, 400.0, 400.00)
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C04_Shade_styles001.kt)
-
-In the next step we introduce animation by adding an external clock signal to the shade style. Shade styles
-have _parameters_ that can be used for this.
-
-<video controls>
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C04_Shade_styles001.kt) 
+ 
+ In the next step we introduce animation by adding an external clock signal to the shade style. Shade styles
+have _parameters_ that can be used for this. 
+ 
+ <video controls>
     <source src="media/shadestyles-003.mp4" type="video/mp4"></source>
 </video>
-
-
-```kotlin
+ 
+ 
+ ```kotlin
 program {
     extend {
         drawer.shadeStyle = shadeStyle {
@@ -82,13 +82,13 @@ program {
         drawer.rectangle(width / 2.0 - 200.0, height / 2.0 - 200.0, 400.0, 400.0)
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C04_Shade_styles002.kt)
-
-## The shade style language
-
-### Prefix overview
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C04_Shade_styles002.kt) 
+ 
+ ## The shade style language 
+ 
+ ### Prefix overview
 Listed below is an overview of all the prefixes used in the shade style language.
 
 prefix   | Scope              | Description
@@ -101,9 +101,9 @@ prefix   | Scope              | Description
 `x_`     | all                | transformable value
 `p_`     | all                | user provided value
 `o_`     | fragment transform | output value (always `vec4`)
-`d_`     | all                | shader definitions
-
-### Standard uniforms
+`d_`     | all                | shader definitions 
+ 
+ ### Standard uniforms
 Listed below is an overview of all the prefixes used in the shade style language.
 
 Uniform name            | GLSL type             | Description
@@ -119,9 +119,9 @@ Uniform name            | GLSL type             | Description
 `u_fill`                | vec4                  | the Drawer fill color
 `u_stroke`              | vec4                  | the Drawer stroke color
 `u_strokeWeight`        | float                 | the Drawer strokeWeight
-`u_colorMatrix`         | float[25]             | the Drawer color matrix
-
-### Standard Attributes
+`u_colorMatrix`         | float[25]             | the Drawer color matrix 
+ 
+ ### Standard Attributes
 
 Attributes are only directly accessible in the vertex transform. However interpolated forms of the
 the attributes are passed to the fragment transform.
@@ -136,9 +136,9 @@ In this table we see the interpolated versions that are accessible in the fragme
 Attribute name | GLSL type | Description
 ---------------|-----------|------------
 `va_position`  | vec3     | the interpolated position
-`va_normal`    | vec3     | the interpolated normal
-
-### Transformable values
+`va_normal`    | vec3     | the interpolated normal 
+ 
+ ### Transformable values
 
 These are values that can be transformed using shade styles.
 
@@ -157,9 +157,9 @@ Variable name        | GLSL type | Description
 Variable name | GLSL type | Description
 --------------|-----------|------------
 `x_fill`      | `vec4`    | The fill color written to the fragment
-`x_stroke`    | `vec4`    | The stroke color written to the fragment
-
-### Constants
+`x_stroke`    | `vec4`    | The stroke color written to the fragment 
+ 
+ ### Constants
 
 Constant name       | Scope               | GLSL type | Description
 --------------------|---------------------|-----------|------------
@@ -167,9 +167,9 @@ Constant name       | Scope               | GLSL type | Description
 `c_instance`        | all                 | int       | the instance index in instanced rendering
 `c_screenPosition`  | fragment transform  | vec2      | the position on screen in device coordinates
 `c_contourPosition` | fragment transform  | vec3      | the on the contour, only non-zero when drawing line segments and contours
-
-
-### Parameters
+ 
+ 
+ ### Parameters
 
 Parameters can be used to supply external data to transforms. Parameters are translated to shader uniforms and are exposed
 by uniforms with the `p_` prefix.
@@ -194,4 +194,4 @@ Can be used to map custom values.
  `Matrix44`      | `mat4`
  `DepthBuffer`   | `sampler2D`
  `ColorBuffer`   | `sampler2D`
- `BufferTexture` | `samplerBuffer`
+ `BufferTexture` | `samplerBuffer` 

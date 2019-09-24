@@ -1,7 +1,7 @@
-
-# orx-kinect
-
-Provides Kinect support (only Kinect version 1 at the moment and only depth camera).
+ 
+ # orx-kinect 
+ 
+ Provides Kinect support (only Kinect version 1 at the moment and only depth camera).
 Source and extra documentation can be found in the [orx sourcetree](https://github.com/openrndr/orx/tree/master)
 
 Note: the support is split into several modules:
@@ -11,16 +11,16 @@ Note: the support is split into several modules:
 * [`orx-kinect-v1-demo`](https://github.com/openrndr/orx/tree/master/orx-kinect-v1-demo/src/main/kotlin)
 * `orx-kinect-v1-natives-linux-x64`
 * `orx-kinect-v1-natives-macos`
-* `orx-kinect-v1-natives-windows`
-
-## Adding Kinect support to the project
-
-In case you are using a project based on [`openrndr-template`](https://github.com/openrndr/openrndr-template) 
-        you can add `orx-kinect-v1` to the `orxFeatures` set.
-
-## Using the Kinect depth camera
-
-```kotlin
+* `orx-kinect-v1-natives-windows` 
+ 
+ ## Adding Kinect support to the project 
+ 
+ In case you are using a project based on [`openrndr-template`](https://github.com/openrndr/openrndr-template) 
+        you can add `orx-kinect-v1` to the `orxFeatures` set. 
+ 
+ ## Using the Kinect depth camera 
+ 
+ ```kotlin
 fun main() = application {
     configure {
         // default resolution of the Kinect v1 depth camera
@@ -36,21 +36,21 @@ fun main() = application {
         }
     }
 }
-```
-
-Note: depth values are mapped into `0-1` range and stored on a `ColorBuffer` containing only
-RED color channel.
-
-## Mirroring depth camera image
-
-```kotlin 
-kinect.depthCamera.mirror = true ```
-
-## Using multiple Kinects
-
-The `kinects.startDevice()` can be supplied with device number (`0` by default):
-
-```kotlin
+``` 
+ 
+ Note: depth values are mapped into `0-1` range and stored on a `ColorBuffer` containing only
+RED color channel. 
+ 
+ ## Mirroring depth camera image 
+ 
+ ```kotlin 
+kinect.depthCamera.mirror = true ``` 
+ 
+ ## Using multiple Kinects 
+ 
+ The `kinects.startDevice()` can be supplied with device number (`0` by default): 
+ 
+ ```kotlin
 fun main() = application {
     configure {
         width = 640 * 2
@@ -68,9 +68,9 @@ fun main() = application {
         }
     }
 }
-```
-
-## Reacting only to the latest frame from the Kinect camera
+``` 
+ 
+ ## Reacting only to the latest frame from the Kinect camera
 Kinect is producing 30 frames per second, while screen refresh rates are usually higher.
 Usually, if the data from the depth camera is processed, it is desired to react to the latest
 Kinect frame only once:
@@ -79,9 +79,9 @@ Kinect frame only once:
 kinect.depthCamera.getLatestFrame()?.let { frame ->
     myFilter.apply(frame, outputColorBuffer)
 }
-```
-
-## Using color map filters
+``` 
+ 
+ ## Using color map filters
 
 Raw kinect depth data might be visualized in several ways, the following filters are included:
 
@@ -92,9 +92,9 @@ Raw kinect depth data might be visualized in several ways, the following filters
 An example presenting these filters side by side:
 
 <img style="width:auto;" src="media/kinect-colormaps.png"/>
-
-
-```kotlin
+ 
+ 
+ ```kotlin
 fun kinectColorBuffer(camera: KinectCamera): ColorBuffer {
     return colorBuffer(camera.width, camera.height, format = ColorFormat.RGB)
 }
@@ -128,9 +128,9 @@ fun main() = application {
         }
     }
 }
-```
-
-## Executing native freenect commands
+``` 
+ 
+ ## Executing native freenect commands
 
 This kinect support is built on top of the [freenect](https://github.com/OpenKinect/libfreenect)
 library. Even though the access to freenect is abstracted, it is still possible to execute
@@ -144,4 +144,4 @@ And in the scope of particular device:
 
 ```kotlin
 kinect.execute { ctx -> freenect_set_led(ctx.fnDev, LED_BLINK_RED_YELLOW) }
-```
+``` 

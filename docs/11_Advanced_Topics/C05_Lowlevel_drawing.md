@@ -1,5 +1,5 @@
-
-# Lowlevel Drawing
+ 
+ # Lowlevel Drawing
 
 This text is intended for developers looking to provide drawing functionality that is fully independent of 
 the `Drawer` class. Developers that desire to do so will essentially use the same building blocks that OPENRNDR
@@ -30,15 +30,15 @@ Classes that belong to the lowlevel drawing API:
  * [`RenderTarget`](https://api.openrndr.org/org.openrndr.draw/-render-target/index.html)
 
 We discourage writing code that uses OpenGL directly; even though currently only an OpenGL 3.3 implementation exists 
-for `Driver`, in the future we may add implementations that are not based on OpenGL.      
-
-## Example
+for `Driver`, in the future we may add implementations that are not based on OpenGL.       
+ 
+ ## Example
         
-In the following example we show the minimum steps required for drawing a single triangle.        
-
-<img src="media/lowlevel-drawing-001.png"/>
-
-```kotlin
+In the following example we show the minimum steps required for drawing a single triangle.         
+ 
+ <img src="media/lowlevel-drawing-001.png"/> 
+ 
+ ```kotlin
 program {
     val geometry = vertexBuffer(vertexFormat {
         position(3) // -- this attribute is named "position"
@@ -76,6 +76,6 @@ program {
         shader.end()
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/11_Advanced_Topics/C05_Lowlevel_drawing000.kt)
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/11_Advanced_Topics/C05_Lowlevel_drawing000.kt) 

@@ -1,37 +1,37 @@
-
-# Render targets and color buffers
-
-A `RenderTarget` models a place to draw to. A `RenderTarget` has two kind of buffer attachments
+ 
+ # Render targets and color buffers 
+ 
+ A `RenderTarget` models a place to draw to. A `RenderTarget` has two kind of buffer attachments
 `ColorBuffer` attachments and `DepthBuffer` attachments. At least a single `ColorBuffer` attachment is needed to draw on be able to draw on a `RenderTarget`.
 
 A `ColorBuffer` is a buffer that can hold up to 4 channel color. A `ColorBuffer` can hold 8 bit integer, 16 bit float or 32 bit float channels.
 
-A `DepthBuffer` is a buffer that can hold depth and stencil values.
-
-## Creating a render target
-
-The advised method of creating `RenderTarget` instances is to use the `renderTarget {}` builder
-
-```kotlin
+A `DepthBuffer` is a buffer that can hold depth and stencil values. 
+ 
+ ## Creating a render target 
+ 
+ The advised method of creating `RenderTarget` instances is to use the `renderTarget {}` builder 
+ 
+ ```kotlin
 val rt = renderTarget(640, 480) {}
-```
-
-This creates a render target, but the render target does not have attachments that can hold the actual
+``` 
+ 
+ This creates a render target, but the render target does not have attachments that can hold the actual
 image data. In the following snippet a render target with a single color buffer attachment is created using the
-builder.
-
-```kotlin
+builder. 
+ 
+ ```kotlin
 val rt = renderTarget(640, 480) {
     colorBuffer()
 }
-```
-
-## Drawing on a render target
-
-In the following code snippet you will find an example showing how to draw on an off-screen buffer followed
-by drawing that offscreen buffer on screen. 
-
-```kotlin
+``` 
+ 
+ ## Drawing on a render target 
+ 
+ In the following code snippet you will find an example showing how to draw on an off-screen buffer followed
+by drawing that offscreen buffer on screen.  
+ 
+ ```kotlin
 program {
     // -- build a render target with a single color buffer attachment
     val rt = renderTarget(width, height) {
@@ -50,15 +50,15 @@ program {
         drawer.image(rt.colorBuffer(0))
     }
 }
-```
-
-## Render targets and projection transformations
-
-Keep in mind that projection transform has to be set to fit the render target, this becomes apparent
+``` 
+ 
+ ## Render targets and projection transformations 
+ 
+ Keep in mind that projection transform has to be set to fit the render target, this becomes apparent
 specifically when the used render target has dimensions that differ from those of the window. In case of orthographic
-(2D) projections one can use the following:
-
-```kotlin
+(2D) projections one can use the following: 
+ 
+ ```kotlin
 program {
     // -- build a render target with a single color buffer attachment
     val rt = renderTarget(400, 400) {
@@ -81,14 +81,14 @@ program {
         drawer.image(rt.colorBuffer(0))
     }
 }
-```
-
-## Compositing using render targets and alpha channels 
-
-OPENRNDR allows for compositing using `RenderTargets` through the use of transparency encoded in alpha
-channels. The following code snippet uses two `RenderTarget` instances and clears them using `ColorRGBa.TRANSPARENT`.
-
-```kotlin
+``` 
+ 
+ ## Compositing using render targets and alpha channels  
+ 
+ OPENRNDR allows for compositing using `RenderTargets` through the use of transparency encoded in alpha
+channels. The following code snippet uses two `RenderTarget` instances and clears them using `ColorRGBa.TRANSPARENT`. 
+ 
+ ```kotlin
 program {
     val rt0 = renderTarget(width, height) {
         colorBuffer()
@@ -118,24 +118,24 @@ program {
         drawer.image(rt1.colorBuffer(0))
     }
 }
-```
-
-## Creating high precision floating point render targets
-
-The default color buffer format is unsigned 8 bit RGBa. There is support for floating point render targets.
-
-```kotlin
+``` 
+ 
+ ## Creating high precision floating point render targets 
+ 
+ The default color buffer format is unsigned 8 bit RGBa. There is support for floating point render targets. 
+ 
+ ```kotlin
 val rt = renderTarget(640, 480) {
     colorBuffer(ColorFormat.RGBa, ColorType.FLOAT16)
     colorBuffer(ColorFormat.RGBa, ColorType.FLOAT32)
 }
-```
-
-## Named attachments
-
-```kotlin
+``` 
+ 
+ ## Named attachments 
+ 
+ ```kotlin
 val rt = renderTarget(640, 480) {
     colorBuffer("albedo", ColorFormat.RGBa, ColorType.FLOAT16)
     colorBuffer("position", ColorFormat.RGBa, ColorType.FLOAT32)
 }
-```
+``` 

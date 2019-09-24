@@ -1,5 +1,5 @@
-
-# Drawing SVG
+ 
+ # Drawing SVG
 Loading a composition and drawing it can be done as follows:
 ```
 var composition = loadSVG(File("data/drawing.svg").readText())
@@ -82,4 +82,4 @@ val c = Composition(root)
 ##### Notes
  * Writing to SVG files is explained in [Writing SVG Files](Topic_WritingSVGFiles).
  * All shapes in the composition tree can be queried as explained in [Drawing Complex Shapes](Tutorial_DrawingComplexShapes)
-
+ 

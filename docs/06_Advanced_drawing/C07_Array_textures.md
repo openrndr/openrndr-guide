@@ -1,30 +1,30 @@
-
-# Array textures
-
-Array textures are a special type of texture that make it possible to access 2048 layers of texture data from a single texure sampler.
-
-Array textures are encapsulated by the [`ArrayTexture` interface](https://api.openrndr.org/org.openrndr.draw/-array-texture/index.html)
-
-## Creation
-
-Array textures are created using the [`arrayTexture`](https://api.openrndr.org/org.openrndr.draw/array-texture.html) function.
-
-```kotlin
+ 
+ # Array textures 
+ 
+ Array textures are a special type of texture that make it possible to access 2048 layers of texture data from a single texure sampler. 
+ 
+ Array textures are encapsulated by the [`ArrayTexture` interface](https://api.openrndr.org/org.openrndr.draw/-array-texture/index.html) 
+ 
+ ## Creation 
+ 
+ Array textures are created using the [`arrayTexture`](https://api.openrndr.org/org.openrndr.draw/array-texture.html) function. 
+ 
+ ```kotlin
 application {
     program {
         // -- create an array texture with 100 layers
         val at = arrayTexture(512, 512, 100)
     }
 }
-```
-
-## Writing to array textures
-
-There are several ways to get texture data into array textures. Let's have a look at them.
-
-One can copy from a ColorBuffer using `.copyTo()`
-
-```kotlin
+``` 
+ 
+ ## Writing to array textures 
+ 
+ There are several ways to get texture data into array textures. Let's have a look at them. 
+ 
+ One can copy from a ColorBuffer using `.copyTo()` 
+ 
+ ```kotlin
 application {
     program {
         val at = arrayTexture(512, 512, 100)
@@ -33,11 +33,11 @@ application {
         cb.copyTo(at, 4)
     }
 }
-```
-
-or copy from an array texture layer to another layer
-
-```kotlin
+``` 
+ 
+ or copy from an array texture layer to another layer 
+ 
+ ```kotlin
 application {
     program {
         val at = arrayTexture(512, 512, 100)
@@ -45,11 +45,11 @@ application {
         at.copyTo(2, at, 4)
     }
 }
-```
-
-or write to an array texture layer from a direct ByteBuffer
-
-```kotlin
+``` 
+ 
+ or write to an array texture layer from a direct ByteBuffer 
+ 
+ ```kotlin
 application {
     program {
         val at = arrayTexture(512, 512, 100)
@@ -68,15 +68,15 @@ application {
         at.write(0, buffer)
     }
 }
-```
-
-## Drawing array textures
-
-Array textures can be drawn using the `Drawer.image` functions.
-
-As example we show how to draw the 0th layer of an array texture
-
-```kotlin
+``` 
+ 
+ ## Drawing array textures 
+ 
+ Array textures can be drawn using the `Drawer.image` functions. 
+ 
+ As example we show how to draw the 0th layer of an array texture 
+ 
+ ```kotlin
 application {
     program {
         val at = arrayTexture(512, 512, 100)
@@ -88,11 +88,11 @@ application {
         }
     }
 }
-```
-
-We can also render batches of array textures by passing lists of layer indexes and source-target rectangle pairs.
-
-```kotlin
+``` 
+ 
+ We can also render batches of array textures by passing lists of layer indexes and source-target rectangle pairs. 
+ 
+ ```kotlin
 application {
     program {
         val at = arrayTexture(512, 512, 100)
@@ -113,15 +113,15 @@ application {
         }
     }
 }
-```
-
-## Drawing into array textures
-
-Array textures can be used as attachment for render targets.
-
-Here we show how to use a single layer from an array texture as an attachment for a render target.
-
-```kotlin
+``` 
+ 
+ ## Drawing into array textures 
+ 
+ Array textures can be used as attachment for render targets. 
+ 
+ Here we show how to use a single layer from an array texture as an attachment for a render target. 
+ 
+ ```kotlin
 application {
     program {
         val at = arrayTexture(512, 512, 100)
@@ -141,17 +141,17 @@ application {
         }
     }
 }
-```
-
-Let's conclude this chapter by means of a small slit scanning demonstration. Here we use a single array 
-texture and a list of render targets, all using different layers of the same array texture.
-
-<video controls>
+``` 
+ 
+ Let's conclude this chapter by means of a small slit scanning demonstration. Here we use a single array 
+texture and a list of render targets, all using different layers of the same array texture. 
+ 
+ <video controls>
     <source src="media/array-texture-001.mp4" type="video/mp4"></source>
 </video>
-
-
-```kotlin
+ 
+ 
+ ```kotlin
 application {
     program {
         val at = arrayTexture(770, 576, 116)
@@ -185,6 +185,6 @@ application {
         }
     }
 }
-```
-
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C07_Array_textures000.kt)
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C07_Array_textures000.kt) 
