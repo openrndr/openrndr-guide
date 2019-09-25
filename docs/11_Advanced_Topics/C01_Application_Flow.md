@@ -1,16 +1,45 @@
  
- # Application Flow
-
-This section covers default and alternate application flows.
-
-## Common application flow
-
-The most common application flow is one in which a single window is created in which your program will run until termination. The call to `Application.run()` below is blocking, it will only return when a termination is requested. 
+ # Application Flow 
+ 
+ This section covers default and alternate application flow. 
+ 
+ ## Default application flow 
+ 
+ The default application flow aims at single window application. For clarity we list the skeleton for an OPENRNDR
+program below. 
  
  ```kotlin
-fun main(args: Array<String>) {
+fun main() {
+    // -- define an application
+    application {
+        // -- at this point there is no window or graphical context
+        // -- attempting to work with graphics resources will lead to errors
+        // -- configure application window
+        configure {
+            width = 770
+            height = 578
+        }
+        // -- define the program
+        program {
+            // -- at this point there is a graphical context
+            
+            // -- extend the program with drawing logic
+            extend {}
+        }
+    }
+}
+``` 
+ 
+ ## Applications without application{} builder
+
+There may be scenarios in which a more traditional way of writing applications is preferred.    
+ 
+ ```kotlin
+fun main() {
     class Main : Program() {
         override fun setup() {}
+        
+        override fun draw() {}
     }
     Application.run(Main(), configuration {// ...
     })
@@ -24,39 +53,24 @@ want the user to to configure resolution and fullscreen settings. While OPENRNDR
  
  ```kotlin
 fun main(args: Array<String>) {
-    
-    class Configuration : Program() {
-        override fun setup() {}
+    val settings = object {
+        var width: Int = 640
     }
     
-    class Main : Program() {
-        override fun setup() {}
+    // -- configuration
+    application {
+        program {// -- somehow get values in the settings object
+        }
     }
     
-
-    Application.run(Configuration(), configuration {})
-    Application.run(Main(), configuration {})
-}
-``` 
- 
- ## Multiple simultaneous application windows
-
-OPENRNDR comes with the support for using more than one simultaneous application window.
-The windows are backed by resource-sharing OpenGL contexts, as such resources can be used in more than one window.
-
-Setting up a multi-window application involves using the `Application.runAsync()` function. 
- 
- ```kotlin
-class Left : Program() {
-    override fun setup() {}
-}
-
-class Right : Program() {
-    override fun setup() {}
-}
-
-fun main(args: Array<String>) {
-    Application.runAsync(Left(), configuration {})
-    Application.runAsync(Right(), configuration {})
+    // -- application blocks until window is closed
+    application {
+        // -- configure using the settings object
+        configure {
+            width = settings.width
+        }
+        program {
+        }
+    }
 }
 ``` 

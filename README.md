@@ -1,5 +1,7 @@
-# The OPENRNDR guide
+# OPENRNDR guide
 
-This is an extensive effort in documenting the [OPENRNDR](https://github.com/openrndr/openrndr) library.
+The `master` branch of this repository holds a generated version. The source files are in the [dev branch](https://github.com/openrndr/openrndr-guide/tree/dev). Please don't create PRs on the master branch.
 
-Please consult the [human readable version](http://guide.openrndr.org).
+If you are looking for a readable version of the OPENRNDR guide, we host one the [guide website](https://guide.openrndr.org)
+
+You can find a separate repository with OPENRNDR example programs that accompany the guide in [`openrndr-examples`](https://github.com/openrndr/openrndr-examples)
