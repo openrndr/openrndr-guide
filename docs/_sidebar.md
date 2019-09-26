@@ -45,6 +45,7 @@
   - [Noise](10_OPENRNDR_Extras/C01_Noise.md)
   - [Kinect](10_OPENRNDR_Extras/C02_Kinect.md)
   - [Live coding](10_OPENRNDR_Extras/C03_Live_coding.md)
+  - [Midi controllers](10_OPENRNDR_Extras/C04_Midi_controllers.md)
 - Advanced Topics
   - [Logging](11_Advanced_Topics/C00_Logging.md)
   - [Application Flow](11_Advanced_Topics/C01_Application_Flow.md)
