@@ -53,6 +53,7 @@
   - [Writing extensions](11_Advanced_Topics/C03_Writing_extensions.md)
   - [Headless applications](11_Advanced_Topics/C04_Headless_applications.md)
   - [Lowlevel drawing](11_Advanced_Topics/C05_Lowlevel_drawing.md)
+  - [Compute shaders](11_Advanced_Topics/C06_Compute_shaders.md)
 - Developers & Contributors
   - [Building from source](12_Developers_&_Contributors/C00_Building_from_source.md)
   - [Overview of OPENRNDR modules](12_Developers_&_Contributors/C01_Overview_of_OPENRNDR_modules.md)
