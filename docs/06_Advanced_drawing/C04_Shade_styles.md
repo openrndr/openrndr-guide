@@ -86,6 +86,42 @@ program {
  
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C04_Shade_styles002.kt) 
  
+ ## Usage examples 
+ 
+ Here follow some examples of common problems that are solved using shade styles. 
+ 
+ ### Mapping images on shapes 
+ 
+ <video controls>
+    <source src="media/shadestyles-example-001.mp4" type="video/mp4"></source>
+</video>
+ 
+ 
+ ```kotlin
+program {
+    val image = loadImage("data/images/cheeta.jpg")
+    image.filter(MinifyingFilter.LINEAR_MIPMAP_NEAREST, MagnifyingFilter.LINEAR)
+    extend {
+        drawer.shadeStyle = shadeStyle {
+            fragmentTransform = """
+                        vec2 texCoord = c_boundsPosition.xy;
+                        texCoord.y = 1.0 - texCoord.y;
+                        vec2 size = textureSize(p_image, 0);
+                        texCoord.x /= size.x/size.y;
+                        x_fill = texture(p_image, texCoord);
+                    """
+            parameter("image", image)
+        }
+        
+        val shape = Circle(width / 2.0, height / 2.0, 110.0).shape
+        drawer.translate(cos(seconds) * 100.0, sin(seconds) * 100.0)
+        drawer.shape(shape)
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C04_Shade_styles003.kt) 
+ 
  ## The shade style language 
  
  ### Prefix overview
