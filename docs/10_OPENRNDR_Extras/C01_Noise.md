@@ -286,3 +286,44 @@ application {
 ``` 
  
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise008.kt) 
+ 
+
+ ### Simplex noise 3D
+ 
+ The `SimplexNoise3D` filter is based on Ken Perlin's improvement over Perlin noise, but with fewer directional artifacts and, in higher dimensions, a lower computational overhead.
+ 
+ Parameter           | Default value                 | Description
+---------------------|-------------------------------|-------------------------------------------
+`seed`               | `Vector3(0.0, 0.0, 0.0)`      | Noise seed / offset
+`scale`              | `Vector3(1.0, 1.0, 1.0)`      | The noise scale at the first octave
+`octaves`            | `4`                           | The number of octaves
+`gain`               | `Vector4(0.5, 0.5, 0.5, 0.5)` | Noise gain per channel per octave      
+`decay`              | `Vector4(0.5, 0.5, 0.5, 0.5)` | Noise decay per channel per octave
+`bias`               | `Vector4(0.5, 0.5, 0.5, 0.5)` | Value to add to the generated noise       
+`lacunarity`         | `Vector4(2.0, 2.0, 2.0, 2.0)` | Multiplication of noise scale per octave
+`premultipliedAlpha` | `true`                        | Outputs premultiplied alpha if true                 
+ 
+<video controls>
+    <source src="media/orx-noise-filter-005.mp4" type="video/mp4"></source>
+</video>
+ 
+ ```kotlin
+application {
+    program {
+        val cb = colorBuffer(width, height)
+        val sn = SimplexNoise3D()
+
+        extend {
+            sn.seed = Vector3(0.0, 0.0, seconds * 0.1)
+            sn.scale = Vector3.ONE * 2.0
+            sn.octaves = 8
+            sn.premultipliedAlpha = false
+            sn.apply(emptyArray(), cb)
+
+            drawer.image(cb)
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise008.kt) 

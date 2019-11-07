@@ -156,18 +156,23 @@ Class name                | Description
 
 ##### Blending filters
 
-Class name   | Description
--------------|------------------------------------------------------
-`ColorBurn`  | implements blending similar to color burn in Photoshop
-`ColorDodge` | implements blending similar to color dodge in Photoshop
-`Darken`     | implements blending similar to darken Photoshop
-`Hardlight`  | implements blending similar to hard light in Photoshop
-`Lighten`    | implements blending similar to lighten in Photoshop
-`Multiply`   | implements multiply blending
-`Normal`     | implements normal alpha blending
-`Overlay`    | implements blending similar to overlay in Photoshop
-`Screen`     | implements blending similar to screen in Photoshop
-`Add`        | implements additive blur
+Class name       | Description
+-----------------|------------------------------------------------------
+`ColorBurn`      | implements blending similar to color burn in Photoshop
+`ColorDodge`     | implements blending similar to color dodge in Photoshop
+`Darken`         | implements blending similar to darken Photoshop
+`Hardlight`      | implements blending similar to hard light in Photoshop
+`Lighten`        | implements blending similar to lighten in Photoshop
+`Multiply`       | implements multiply blending
+`Normal`         | implements normal alpha blending
+`Overlay`        | implements blending similar to overlay in Photoshop
+`Screen`         | implements blending similar to screen in Photoshop
+`Add`            | implements additive blur
+`SourceIn`       | Draws the second layer where both layers overlap
+`SourceOut`      | Draws the second layer where the layers do not overlap
+`DestinationIn`  | Draws the first layer where both layers overlap
+`DestinationOut` | Draws the first layer where the layers do not overlap
+`Xor`            | Draws both layers where there is no overlap
 
 ##### Dither filters
 
