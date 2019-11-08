@@ -125,7 +125,7 @@ application {
  ## Fractal/FBM noise 
  
  <video controls>
-    <source src="media/orx-noise-005.mp4" type="video/mp4"></source>
+    <source src="media/orx-noise-005-fbm.mp4" type="video/mp4"></source>
 </video>
  
  
@@ -141,7 +141,7 @@ application {
                 for (x in 4 until width step 8) {
                     val radius = when {
                         t < 3.0 -> abs(fbm(100, x * s, y * s, t, ::perlinLinear)) * 16.0
-                        t < 6.0 -> billow(100, x * s, y * s, t, ::perlinLinear) * 2.0
+                        t < 6.0 -> billow(100, x * s, y * s, t, ::perlinLinear) * 2.00
                         else -> rigid(100, x * s, y * s, t, ::perlinLinear) * 16.0
                     }
                     drawer.circle(x * 1.0, y * 1.0, radius)
@@ -188,6 +188,51 @@ application {
  
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise005.kt) 
  
+ ### 3D Simplex noise filter 
+ 
+ The `SimplexNoise3D` filter is based on Ken Perlin's improvement over Perlin noise, but with fewer directional artifacts and, in higher dimensions, a lower computational overhead.
+
+Parameter           | Default value                 | Description
+---------------------|-------------------------------|-------------------------------------------
+`seed`               | `Vector3(0.0, 0.0, 0.0)`      | Noise seed / offset
+`scale`              | `Vector3(1.0, 1.0, 1.0)`      | The noise scale at the first octave
+`octaves`            | `4`                           | The number of octaves
+`gain`               | `Vector4(0.5, 0.5, 0.5, 0.5)` | Noise gain per channel per octave
+`decay`              | `Vector4(0.5, 0.5, 0.5, 0.5)` | Noise decay per channel per octave
+`bias`               | `Vector4(0.5, 0.5, 0.5, 0.5)` | Value to add to the generated noise
+`lacunarity`         | `Vector4(2.0, 2.0, 2.0, 2.0)` | Multiplication of noise scale per octave
+`premultipliedAlpha` | `true`                        | Outputs premultiplied alpha if true 
+ 
+ <video controls>
+    <source src="media/orx-noise-filter-008.mp4" type="video/mp4"></source>
+</video>
+ 
+ 
+ ```kotlin
+application {
+    program {
+        extend(ScreenRecorder()) {
+            outputFile = "media/orx-noise-filter-008.mp4"
+            quitAfterMaximum = true
+            maximumDuration = 9.0
+        }
+        
+        val cb = colorBuffer(width, height)
+        val sn = SimplexNoise3D()
+        extend {
+            sn.seed = Vector3(0.0, 0.0, seconds * 0.1)
+            sn.scale = Vector3.ONE * 2.0
+            sn.octaves = 8
+            sn.premultipliedAlpha = false
+            sn.apply(emptyArray(), cb)
+            drawer.image(cb)
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise006.kt) 
+ 
  ### Cell noise 
  
  A cell, Worley or Voronoi noise generator 
@@ -219,7 +264,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise006.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise007.kt) 
  
  ### Speckle noise 
  
@@ -249,7 +294,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise007.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise008.kt) 
  
  ### Value noise 
  
@@ -285,4 +330,4 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise008.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise009.kt) 

@@ -168,6 +168,11 @@ Class name   | Description
 `Overlay`    | implements blending similar to overlay in Photoshop
 `Screen`     | implements blending similar to screen in Photoshop
 `Add`        | implements additive blur
+`SourceIn`       | Draws the second layer where both layers overlap
+`SourceOut`      | Draws the second layer where the layers do not overlap
+`DestinationIn`  | Draws the first layer where both layers overlap
+`DestinationOut` | Draws the first layer where the layers do not overlap
+`Xor`            | Draws both layers where there is no overlap
 
 ##### Dither filters
 
