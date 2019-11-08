@@ -31,8 +31,8 @@ compileKotlin {
 }
 
 sourceCompatibility = 1.8
-project.ext.openrndrVersion = "0.3.35"
-project.ext.orxVersion = "0.3.35"
+project.ext.openrndrVersion = "0.3.36-rc3"
+project.ext.orxVersion = "0.3.37"
 
 repositories {
     mavenCentral()
@@ -72,6 +72,7 @@ dependencies {
 
 
     compile "org.openrndr.extra:orx-noise:$orxVersion"
+    compile "org.openrndr.extra:orx-midi:$orxVersion"
     compile "org.openrndr.extra:orx-kinect-v1:$orxVersion"
     compile "org.openrndr.extra:orx-olive:$orxVersion"
 }
@@ -118,8 +119,11 @@ task publishExamples { task ->
             from("$projectDir/src/generated/examples-export") {
                 into "src/main/kotlin/examples"
             }
-            from("$projectDir/fonts") {
-                into "fonts"
+            from("$projectDir/data/images") {
+                into "data/images"
+            }
+            from("$projectDir/data/compute-shaders") {
+                into "data/compute-shaders"
             }
         }
         gitPublish.repoUri = "git@github.com:openrndr/openrndr-examples.git"

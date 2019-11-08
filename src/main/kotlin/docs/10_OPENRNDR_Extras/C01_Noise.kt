@@ -4,13 +4,11 @@ import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.colorBuffer
+import org.openrndr.draw.tint
 
 import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.extra.noise.*
-import org.openrndr.extra.noise.filters.CellNoise
-import org.openrndr.extra.noise.filters.HashNoise
-import org.openrndr.extra.noise.filters.SpeckleNoise
-import org.openrndr.extra.noise.filters.ValueNoise
+import org.openrndr.extra.noise.filters.*
 import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.math.Vector2
 import org.openrndr.math.Vector3
@@ -242,6 +240,51 @@ scalars and vectors with uniformly distributed noise you use the `uniform` exten
             extend {
                 hn.seed = seconds
                 hn.apply(emptyArray(), cb)
+                drawer.image(cb)
+            }
+        }
+    }
+
+    @Text "### 3D Simplex noise filter"
+    @Text """
+    The `SimplexNoise3D` filter is based on Ken Perlin's improvement over Perlin noise, but with fewer directional artifacts and, in higher dimensions, a lower computational overhead.
+
+    Parameter           | Default value                 | Description
+    ---------------------|-------------------------------|-------------------------------------------
+    `seed`               | `Vector3(0.0, 0.0, 0.0)`      | Noise seed / offset
+    `scale`              | `Vector3(1.0, 1.0, 1.0)`      | The noise scale at the first octave
+    `octaves`            | `4`                           | The number of octaves
+    `gain`               | `Vector4(0.5, 0.5, 0.5, 0.5)` | Noise gain per channel per octave
+    `decay`              | `Vector4(0.5, 0.5, 0.5, 0.5)` | Noise decay per channel per octave
+    `bias`               | `Vector4(0.5, 0.5, 0.5, 0.5)` | Value to add to the generated noise
+    `lacunarity`         | `Vector4(2.0, 2.0, 2.0, 2.0)` | Multiplication of noise scale per octave
+    `premultipliedAlpha` | `true`                        | Outputs premultiplied alpha if true
+    """
+
+    @Media.Video """media/orx-noise-filter-008.mp4"""
+    @Application
+    @Code
+    application {
+        @Exclude
+        configure {
+            width = 770
+            height = 578
+        }
+        program {
+            extend(ScreenRecorder()) {
+                outputFile = "media/orx-noise-filter-008.mp4"
+                quitAfterMaximum = true
+                maximumDuration = 9.0
+            }
+
+            val cb = colorBuffer(width, height)
+            val sn = SimplexNoise3D()
+            extend {
+                sn.seed = Vector3(0.0, 0.0, seconds * 0.1)
+                sn.scale = Vector3.ONE * 2.0
+                sn.octaves = 8
+                sn.premultipliedAlpha = false
+                sn.apply(emptyArray(), cb)
                 drawer.image(cb)
             }
         }

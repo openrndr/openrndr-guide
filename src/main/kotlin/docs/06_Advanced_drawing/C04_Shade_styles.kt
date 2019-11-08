@@ -3,9 +3,15 @@ package docs.`06_Advanced_drawing`
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
+import org.openrndr.draw.MagnifyingFilter
+import org.openrndr.draw.MinifyingFilter
+import org.openrndr.draw.loadImage
 import org.openrndr.draw.shadeStyle
 import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.ffmpeg.ScreenRecorder
+import org.openrndr.shape.Circle
+import kotlin.math.cos
+import kotlin.math.sin
 
 fun main(args: Array<String>) {
 
@@ -124,6 +130,47 @@ have _parameters_ that can be used for this.
         }
     }
 
+    @Text """## Usage examples"""
+    @Text """Here follow some examples of common problems that are solved using shade styles."""
+    @Text """### Mapping images on shapes"""
+    @Media.Video """media/shadestyles-example-001.mp4"""
+
+    @Application
+    application {
+        @Exclude
+        configure {
+            width = 770
+            height = 578
+        }
+        @Code
+        program {
+            @Exclude
+            extend(ScreenRecorder()) {
+                quitAfterMaximum = true
+                maximumDuration = 10.0
+                outputFile = "media/shadestyles-example-001.mp4"
+                frameRate = 60
+            }
+            val image = loadImage("data/images/cheeta.jpg")
+            image.filter(MinifyingFilter.LINEAR_MIPMAP_NEAREST, MagnifyingFilter.LINEAR)
+            extend {
+                drawer.shadeStyle = shadeStyle {
+                    fragmentTransform = """
+                        vec2 texCoord = c_boundsPosition.xy;
+                        texCoord.y = 1.0 - texCoord.y;
+                        vec2 size = textureSize(p_image, 0);
+                        texCoord.x /= size.x/size.y;
+                        x_fill = texture(p_image, texCoord);
+                    """
+                    parameter("image", image)
+                }
+
+                val shape = Circle(width/2.0, height/2.0, 110.0).shape
+                drawer.translate(cos(seconds) *100.0, sin(seconds) *100.0)
+                drawer.shape(shape)
+            }
+        }
+    }   
 
     @Text """## The shade style language"""
     @Text """### Prefix overview

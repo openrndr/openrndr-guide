@@ -39,8 +39,6 @@ fun main(args: Array<String>) {
 
     @Code.Block
     run {
-
-
         application {
             program {
                 class MyAnimatable() : Animatable() {

@@ -14,7 +14,7 @@ val applicationMainClass = "TemplateProgramKt"
 val applicationFullLogging = false
 
 val openrndrUseSnapshot = false
-val openrndrVersion = if (openrndrUseSnapshot) "0.4.0-SNAPSHOT" else "0.3.35"
+val openrndrVersion = if (openrndrUseSnapshot) "0.4.0-SNAPSHOT" else "0.3.36-rc1"
 val openrndrOs = when (OperatingSystem.current()) {
     OperatingSystem.WINDOWS -> "windows"
     OperatingSystem.MAC_OS -> "macos"
@@ -35,7 +35,7 @@ val orxVersion = if (orxUseSnapshot) "0.4.0-SNAPSHOT" else "0.3.35"
 // orx-integral-image, orx-interval-tree, orx-jumpflood,orx-kdtree, orx-mesh-generators,orx-midi, orx-no-clear,
 // orx-noise, orx-obj, orx-olive
 
-val orxFeatures = setOf("orx-noise")
+val orxFeatures = setOf("orx-noise", "orx-midi")
 
 repositories {
     mavenCentral()
