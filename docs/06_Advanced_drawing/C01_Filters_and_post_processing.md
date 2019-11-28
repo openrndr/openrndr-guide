@@ -108,7 +108,7 @@ application {
                 background(ColorRGBa.BLACK)
                 fill = ColorRGBa.PINK
                 stroke = null
-                circle(Math.cos(seconds) * 100.0 + width / 2, Math.sin(seconds) * 100.0 + height / 2.0, 100.0 + 100.0 * Math.cos(seconds * 2.00))
+                circle(cos(seconds) * 100.0 + width / 2, sin(seconds) * 100.0 + height / 2.0, 100.0 + 100.0 * cos(seconds * 2.0))
             }
             // apply the noise on and to offscreen.colorBuffer(0),
             // this only works for filters that only read from

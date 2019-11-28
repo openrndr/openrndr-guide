@@ -25,12 +25,12 @@ this file you will see that changes are automatically detected (after save) and 
  ## Interaction with extensions 
  
  The Olive extension works well together with other extensions, but only those which are installed before
-the Olive extension. In the following example we see the use of `Debug3D` in combination with `Olive`. 
+the Olive extension. In the following example we see the use of `Orbital` in combination with `Olive`. 
  
  ```kotlin
 fun main() = application {
     program {
-        extend(Debug3D())
+        extend(Orbital())
         extend(Olive<Program>())
     }
 }
@@ -60,13 +60,13 @@ In the following example we show how you can prepare the host program to contain
  
  ```kotlin
 class PersistentProgram : Program() {
-    lateinit var camera: FFMPEGVideoPlayer
+    lateinit var camera: VideoPlayerFFMPEG
 }
 
 fun main() = application {
     program(PersistentProgram()) {
-        camera = FFMPEGVideoPlayer.fromDevice()
-        camera.start()
+        camera = VideoPlayerFFMPEG.fromDevice()
+        camera.play()
         
         extend(Olive<PersistentProgram>()) {
             script = "src/main/PersistentCamera.Kt"
