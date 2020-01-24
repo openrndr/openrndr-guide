@@ -3,22 +3,9 @@
 
 This topic discusses the creation of graphical user interfaces in OPENRNDR applications.
 
-
 ## The Panel library
 
 The Panel library provides an HTML/CSS like user interface toolkit and is written using OPENRNDR.
-
-To be able to use the Panel library add it to your `build.gradle` configuration.
-
-```groovy
-repositories {
-    maven { url 'https://jitpack.io' }
-}
-
-dependencies {
-    compile 'com.github.openrndr:openrndr-panel:v0.3.11'
-}
-```
 
 ## Basic Usage
 

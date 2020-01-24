@@ -73,7 +73,7 @@ application {
             }
             // -- apply a blur on the render target's color attachment
             blur.apply(renderTarget.colorBuffer(0), renderTarget.colorBuffer(0))
-            // -- draw the blurred color attachement
+            // -- draw the blurred color attachment
             drawer.image(renderTarget.colorBuffer(0))
         }
     }

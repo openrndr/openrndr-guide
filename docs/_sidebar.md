@@ -21,6 +21,7 @@
   - [Vectors](05_Drawing_and_transformations/C01_Vectors.md)
   - [Quaternions](05_Drawing_and_transformations/C02_Quaternions.md)
 - Advanced drawing
+  - [Colorbuffers](06_Advanced_drawing/C0_Colorbuffers.md)
   - [Render targets and color buffers](06_Advanced_drawing/C00_Render_targets_and_color_buffers.md)
   - [Filters and post processing](06_Advanced_drawing/C01_Filters_and_post_processing.md)
   - [Clipping](06_Advanced_drawing/C02_Clipping.md)
