@@ -166,7 +166,7 @@ scalars and vectors with uniformly distributed noise you use the `uniform` exten
 
     @Text "## Fractal/FBM noise"
 
-    @Media.Video """media/orx-noise-005.mp4"""
+    @Media.Video """media/orx-noise-005-fbm.mp4"""
     @Application
     @Code
     application {
@@ -178,7 +178,7 @@ scalars and vectors with uniformly distributed noise you use the `uniform` exten
         program {
             @Exclude
             extend(ScreenRecorder()) {
-                outputFile = "media/orx-noise-005.mp4"
+                outputFile = "media/orx-noise-005-fbm.mp4"
                 quitAfterMaximum = true
                 maximumDuration = 9.0
             }

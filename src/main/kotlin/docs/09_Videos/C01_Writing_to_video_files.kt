@@ -2,7 +2,6 @@
 
 package docs.`09_Videos`
 
-
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.Code
@@ -12,8 +11,7 @@ import org.openrndr.draw.renderTarget
 import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.ffmpeg.VideoWriter
 
-
-fun main(args: Array<String>) {
+fun main() {
 
     @Text
     """
@@ -26,7 +24,6 @@ fun main(args: Array<String>) {
 
     ## Writing to video using render targets
     """
-
 
     @Code
     application {
@@ -68,7 +65,6 @@ fun main(args: Array<String>) {
 
     To setup the screen recorder you do the following:
     """
-
 
     @Code
     application {

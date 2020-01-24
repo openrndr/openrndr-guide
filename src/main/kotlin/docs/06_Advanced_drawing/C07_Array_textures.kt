@@ -1,3 +1,4 @@
+@file:Suppress("PackageName")
 package docs.`06_Advanced_drawing`
 
 import org.openrndr.application

@@ -7,7 +7,7 @@ import org.openrndr.math.Quaternion
 import org.openrndr.math.Quaternion.Companion.fromAngles
 import org.openrndr.math.slerp
 
-fun main(args: Array<String>) {
+fun main() {
     @Text """# Quaternions
 Quaternions represent rotation through an extension of complex numbers. A full explanation of quaternions and their intrinsics is out of this document's scope, in this section however enough information is provided to use quaternion's effectively as a tool.
 

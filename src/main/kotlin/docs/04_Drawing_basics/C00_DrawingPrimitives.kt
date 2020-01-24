@@ -11,10 +11,7 @@ import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.math.Vector2
 import org.openrndr.shape.Circle
 
-
-fun main(args: Array<String>) {
-
-
+fun main() {
     @Text
     """
     # Drawing Primitives

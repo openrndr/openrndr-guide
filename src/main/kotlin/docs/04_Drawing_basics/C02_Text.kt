@@ -5,24 +5,29 @@ package docs.`04_Drawing_basics`
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
-import org.openrndr.draw.FontImageMap
+
 import org.openrndr.draw.loadFont
 import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.shape.Rectangle
-import org.openrndr.text.Writer
+import org.openrndr.text.writer
+import kotlin.math.cos
+import kotlin.math.sin
 
-fun main(args: Array<String>) {
-
+fun main() {
     @Text
     """
     # Drawing text
-    OPENRNDR comes with support for rendering bitmap text.
+    OPENRNDR comes with support for rendering bitmap text. There are two modes of operation for writing text, a direct
+    mode that simply writes a string of text at the requested position, and a more advanced mode that can place texts 
+    in a designated text area.
     """
 
     @Text """
     ## Simple text rendering
-    Here we show how to render simple texts.
+    
+    To render simple texts we first make sure a font is loaded and assigned to `drawer.fontMap`, we then use [`drawer.text`](https://api.openrndr.org/org.openrndr.draw/-drawer/text.html) to
+    draw the text.
     """
 
     @Media.Image """media/text-001.png"""
@@ -41,16 +46,14 @@ fun main(args: Array<String>) {
                 drawer.fontMap = font
                 drawer.fill = ColorRGBa.BLACK
                 drawer.text("HELLO WORLD", width / 2.0 - 100.0, height / 2.0)
-
             }
         }
     }
 
-
     @Text
     """
     ## Advanced text rendering
-    OPENRNDR comes with a `Writer` class that allows for basic typesetting. The `Writer` tool is based on the concept of text box and a cursor.
+    OPENRNDR comes with a [`Writer`](https://api.openrndr.org/org.openrndr.text/-writer/index.html) class that allows for basic typesetting. The `Writer` tool is based on the concept of text box and a cursor.
 
     Its use is easiest demonstrated through an example:
     """
@@ -76,8 +79,7 @@ fun main(args: Array<String>) {
                 drawer.fontMap = font
                 drawer.fill = ColorRGBa.BLACK
 
-                val writer = Writer(drawer)
-                writer.apply {
+                writer {
                     newLine()
                     text("Here is a line of text..")
                     newLine()
@@ -117,9 +119,8 @@ fun main(args: Array<String>) {
                 drawer.fontMap = font
                 drawer.fill = ColorRGBa.BLACK
 
-                val writer = Writer(drawer)
-                writer.apply {
-                    writer.box = Rectangle(40.0, 40.0, 300.0, 300.0)
+                writer {
+                    box = Rectangle(40.0, 40.0, 300.0, 300.0)
                     newLine()
                     text("Here is a line of text..")
                     newLine()
@@ -159,13 +160,12 @@ fun main(args: Array<String>) {
                 drawer.fontMap = font
                 drawer.fill = ColorRGBa.BLACK
 
-                val writer = Writer(drawer)
-                // -- animate the text leading
-                writer.style.leading = Math.cos(seconds) * 20.0 +  24.0
-                // -- animate the text tracking
-                writer.style.tracking = Math.sin(seconds) * 20.0 + 24.0
-                writer.apply {
-                    writer.box = Rectangle(40.0, 40.0, width - 80.0, height - 80.0)
+                writer {
+                    // -- animate the text leading
+                    leading = cos(seconds) * 20.0 + 24.0
+                    // -- animate the text tracking
+                    tracking = sin(seconds) * 20.0 + 24.0
+                    box = Rectangle(40.0, 40.0, width - 80.0, height - 80.0)
                     newLine()
                     text("Here is a line of text..")
                     newLine()
@@ -177,4 +177,3 @@ fun main(args: Array<String>) {
         }
     }
 }
-

@@ -31,8 +31,8 @@ compileKotlin {
 }
 
 sourceCompatibility = 1.8
-project.ext.openrndrVersion = "0.3.36-rc3"
-project.ext.orxVersion = "0.3.37"
+project.ext.openrndrVersion = "0.3.38-rc.5"
+project.ext.orxVersion = "0.3.46-rc.1"
 
 repositories {
     mavenCentral()
@@ -66,15 +66,17 @@ dependencies {
     compile "org.openrndr:openrndr-extensions:$openrndrVersion"
     compile "org.openrndr:openrndr-filter:$openrndrVersion"
     compile "org.openrndr:openrndr-ffmpeg:$openrndrVersion"
-    implementation 'com.github.openrndr:openrndr-panel:v0.3.11'
+    implementation 'org.openrndr.panel:openrndr-panel:0.3.20-rc.1'
     //implementation 'com.github.openrndr:dokgen:96e77e1cbb'
     implementation 'org.openrndr:dokgen:1.0-SNAPSHOT'
 
-
     compile "org.openrndr.extra:orx-noise:$orxVersion"
     compile "org.openrndr.extra:orx-midi:$orxVersion"
+    compile "org.openrndr.extra:orx-osc:$orxVersion"
     compile "org.openrndr.extra:orx-kinect-v1:$orxVersion"
     compile "org.openrndr.extra:orx-olive:$orxVersion"
+    compile "org.openrndr.extra:orx-camera:$orxVersion"
+    compile "org.openrndr.extra:orx-fx:$orxVersion"
 }
 
 mainClassName = "TemplateProgramKt"

@@ -4,9 +4,9 @@ import org.openrndr.Program
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.Code
 import org.openrndr.dokgen.annotations.Text
-import org.openrndr.extensions.Debug3D
 import org.openrndr.extra.olive.Olive
-import org.openrndr.ffmpeg.FFMPEGVideoPlayer
+import org.openrndr.extras.camera.Orbital
+import org.openrndr.ffmpeg.VideoPlayerFFMPEG
 
 fun main() {
     @Text "# Live coding with orx-olive"
@@ -37,13 +37,13 @@ this file you will see that changes are automatically detected (after save) and 
 
     @Text "## Interaction with extensions"
     @Text """The Olive extension works well together with other extensions, but only those which are installed before
-the Olive extension. In the following example we see the use of `Debug3D` in combination with `Olive`."""
+the Olive extension. In the following example we see the use of `Orbital` in combination with `Olive`."""
 
     @Code.Block
     run {
         fun main() = application {
             program {
-                extend(Debug3D());
+                extend(Orbital());
                 extend(Olive<Program>())
             }
         }
@@ -74,13 +74,13 @@ In the following example we show how you can prepare the host program to contain
     @Code.Block
     run {
         class PersistentProgram : Program() {
-            lateinit var camera: FFMPEGVideoPlayer
+            lateinit var camera: VideoPlayerFFMPEG
         }
 
         fun main() = application {
             program(PersistentProgram()) {
-                camera = FFMPEGVideoPlayer.fromDevice()
-                camera.start()
+                camera = VideoPlayerFFMPEG.fromDevice()
+                camera.play()
 
                 extend(Olive<PersistentProgram>()) {
                     script = "src/main/PersistentCamera.Kt"

@@ -14,8 +14,7 @@ import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.shape.Rectangle
 import java.io.File
 
-
-fun main(args: Array<String>) {
+fun main() {
 
     @Text
     """

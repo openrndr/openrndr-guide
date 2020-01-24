@@ -7,89 +7,62 @@ import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.Code
 import org.openrndr.dokgen.annotations.Text
 import org.openrndr.draw.renderTarget
-import org.openrndr.ffmpeg.FFMPEGVideoPlayer
-import org.openrndr.filter.blur.BoxBlur
+import org.openrndr.extra.fx.blur.BoxBlur
+import org.openrndr.ffmpeg.VideoPlayerFFMPEG
 
-
-fun main(args: Array<String>) {
-    val openrndr_version = ""
-
+fun main() {
     @Text
     """
     # Playing videos #
-    OPENRNDR comes with preliminary support for video playback. Currently the video playback is not suitable for
-    presentation as support for sound, seeking and timing is missing. The video playback is suitable for video processing.
-    # The openrndr-ffmpeg library
-    The openrndr-ffmpeg library holds interfaces to an video player based on ffmpeg, as well as native
-    fmpeg binaries (provided by the JavaCPP project). Adding openrndr-ffmpeg to the project is enough for full video support.
-    Add the `openrndr-ffmpeg` library to the list of dependencies in `gradle.build`:
-    ```
-    dependencies {
-       […]
-       compile "org.openrndr:openrndr-ffmpeg:$openrndr_version"
-       […]
-   }
-    ```
+    OPENRNDR comes with FFMPEG-backed video support. 
+    
     ## A simple video player
-       """
 
+    ##### Relevant APIs
+    * [VideoPlayerFFMPEG.fromFile](https://api.openrndr.org/org.openrndr.ffmpeg/-video-player-f-f-m-p-e-g/from-file.html)
+    * [VideoPlayerFFMPEG.play](https://api.openrndr.org/org.openrndr.ffmpeg/-video-player-f-f-m-p-e-g/play.html)
+    * [VideoPlayerFFMPEG.draw](https://api.openrndr.org/org.openrndr.ffmpeg/-video-player-f-f-m-p-e-g/draw.html)
 
+    """
     @Code
     application {
         program {
-            val videoPlayer = FFMPEGVideoPlayer.fromFile("data/video.mp4")
-
+            val videoPlayer = VideoPlayerFFMPEG.fromFile("data/video.mp4")
+            videoPlayer.play()
             extend {
                 drawer.background(ColorRGBa.BLACK)
-                videoPlayer.next()
                 videoPlayer.draw(drawer)
             }
         }
     }
-
 
     @Text
     """
     ## Video from camera devices
 
-    The `FFMPEGVideoPlayer` class can be used to get and display video data from camera devices. To open a camera device you use the `fromDevice()` method. When this method is called without any arguments it attempts to open the default camera device.
+    The `VideoPlayerFFMPEG` class can be used to get and display video data from camera devices. To open a camera device you use the `fromDevice()` method. When this method is called without any arguments it attempts to open the default camera device.
 
-    OPENRNDR is currently not able to enumerate camera devices and relies on the user to supply correct camera device names. The device name schemes are different for Linux, macOS and Windows.
-
-    Platform | Default device name
-    ---------|--------------------
-    macOS    | 0
-    Linux    | /dev/video0
-    Windows  | video=Integrated Webcam
-
+    `VideoPlayerFFMPEG` has minimal device listing capabilities. The device names of available input devices can be listed using [VideoPlayerFFMPEG.listDeviceNames](https://api.openrndr.org/org.openrndr.ffmpeg/-video-player-f-f-m-p-e-g/list-device-names.html).
+    
 
     ##### Relevant APIs
-    ```
-    FFMPEGVideoPlayer.fromDevice(deviceName:String = defaultDevice(),
-                                 width:Int = -1, height:Int = -1, fps:Double = -1.0,
-                                 format:String = defaultFormat())
-    FFMPEGVideoPlayer.defaultDevice()
-    FFMPEGVideoPlayer.defaultFormat()
-    ```
-
-
+    * [VideoPlayerFFMPEG.fromDevice](https://api.openrndr.org/org.openrndr.ffmpeg/-video-player-f-f-m-p-e-g/from-device.html)
+    * [VideoPlayerFFMPEG.defaultDevice](https://api.openrndr.org/org.openrndr.ffmpeg/-video-player-f-f-m-p-e-g/default-device.html)
+    
     ##### Examples
     """
-
 
     @Code
     application {
         program {
-            val videoPlayer = FFMPEGVideoPlayer.fromDevice()
-            videoPlayer.start()
+            val videoPlayer = VideoPlayerFFMPEG.fromDevice()
+            videoPlayer.play()
             extend {
                 drawer.background(ColorRGBa.BLACK)
-                videoPlayer.next()
                 videoPlayer.draw(drawer)
             }
         }
     }
-
 
     @Text
     """
@@ -104,29 +77,26 @@ fun main(args: Array<String>) {
     @Code
     application {
         program {
-            val videoPlayer = FFMPEGVideoPlayer.fromFile("data/video.mp4")
+            val videoPlayer = VideoPlayerFFMPEG.fromFile("data/video.mp4")
             val blur = BoxBlur()
             val renderTarget = renderTarget(width, height) {
                 colorBuffer()
             }
+            videoPlayer.play()
 
             extend {
                 drawer.background(ColorRGBa.BLACK)
                 // -- draw the video on the render target
                 drawer.withTarget(renderTarget) {
-                    videoPlayer.next()
                     videoPlayer.draw(drawer)
                 }
                 // -- apply a blur on the render target's color attachment
                 blur.apply(renderTarget.colorBuffer(0), renderTarget.colorBuffer(0))
-                // -- draw the blurred color attachement
+                // -- draw the blurred color attachment
                 drawer.image(renderTarget.colorBuffer(0))
             }
-
         }
     }
-
-
 }
 
 

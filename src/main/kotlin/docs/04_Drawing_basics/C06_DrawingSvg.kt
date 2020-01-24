@@ -1,15 +1,23 @@
 package docs.`04_Drawing_basics`
 
+import org.openrndr.color.ColorRGBa
+import org.openrndr.dokgen.annotations.Code
 import org.openrndr.dokgen.annotations.Text
+import org.openrndr.extra.noise.Random.Vector2
+import org.openrndr.shape.CompositionDrawer
+import org.openrndr.svg.loadSVG
+import org.openrndr.svg.writeSVG
+import java.io.File
 
 fun main(args: Array<String>) {
     @Text """# Drawing SVG
 Loading a composition and drawing it can be done as follows:
 ```
-var composition = loadSVG(File("data/drawing.svg").readText())
+var composition = loadSVG("data/drawing.svg")
 drawer.composition(composition)
 ```
-[Complete tutorial code](https://github.com/openrndr/openrndr-tutorials/tree/master/svg-001)
+
+Note that OPENRNDR's support for SVG files works best with SVG files that are saved in the Tiny SVG 1.x profile .
 
 
 When drawing a composition from SVG you will notice that fill and stroke colors from the SVG file are used over the `Drawer` colors.
@@ -81,11 +89,44 @@ composition.root.map {
 val root = GroupNode()
 val c = Composition(root)
 ```
+"""
 
--------------------------
-##### Notes
- * Writing to SVG files is explained in [Writing SVG Files](Topic_WritingSVGFiles).
- * All shapes in the composition tree can be queried as explained in [Drawing Complex Shapes](Tutorial_DrawingComplexShapes)
+    @Text """## Drawer interface for compositions"""
+    @Text """Creating Compositions from code may be a bit tedious. [`CompositionDrawer`](https://api.openrndr.org/org.openrndr.shape/-composition-drawer/index.html) simplifies creating compositions by
+using a `Drawer`-like interface.
+    """.trimMargin()
 
-    """.trimIndent()
+    @Code.Block
+    run {
+        // -- create the composition drawer
+        val compositionDrawer = CompositionDrawer()
+
+        // -- set fill/stroke and draw a cicrcle
+        compositionDrawer.fill = ColorRGBa.PINK
+        compositionDrawer.stroke = ColorRGBa.BLACK
+        compositionDrawer.circle(Vector2(100.0, 100.0), 50.0)
+
+        // -- get the composition from the composition drawer
+        val composition = compositionDrawer.composition
+    }
+
+    @Text """## Converting compositions to SVG"""
+    @Text """Compositions can be converted to SVG using the `writeSVG` function.
+
+In the following example we convert a composition to an SVG document and save it to file. 
+    """
+
+    @Code.Block
+    run {
+        // -- load in a composition
+        val composition = loadSVG("data/example.svg")
+
+        // -- convert the composition back to an SVG document as a string
+        // -- note that the svg output will be different from the original svg
+        val svgDoc = writeSVG(composition)
+
+        // -- write the svg string to a file
+        File("output.svg").writeText(svgDoc)
+    }
+
 }

@@ -5,10 +5,11 @@ import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.*
 import org.openrndr.extensions.SingleScreenshot
+import org.openrndr.extra.fx.blur.BoxBlur
 import org.openrndr.ffmpeg.ScreenRecorder
-import org.openrndr.filter.blur.BoxBlur
+import kotlin.math.cos
+import kotlin.math.sin
 
-private val openrndr_version = ""
 fun main() {
     @Text """
 # Filters and Post-processing
@@ -123,8 +124,6 @@ we will be making is a simple noise filter.
             height = 578
         }
         program {
-
-
             // -- create the noise filter
             val noise = Noise()
             val offscreen = renderTarget(width, height) {
@@ -142,7 +141,7 @@ we will be making is a simple noise filter.
                     background(ColorRGBa.BLACK)
                     fill = ColorRGBa.PINK
                     stroke = null
-                    circle(Math.cos(seconds) * 100.0 + width / 2, Math.sin(seconds) * 100.0 + height / 2.0, 100.0 + 100.0 * Math.cos(seconds * 2.00))
+                    circle(cos(seconds) * 100.0 + width / 2, sin(seconds) * 100.0 + height / 2.0, 100.0 + 100.0 * cos(seconds * 2.0))
                 }
                 // apply the noise on and to offscreen.colorBuffer(0),
                 // this only works for filters that only read from
@@ -156,60 +155,9 @@ we will be making is a simple noise filter.
         }
     }
 
-    @Text """## The openrndr-filter library
+    @Text """## The orx-fx library
+    
+A repository of filters for OPENRNDR can be found in the [ORX](https://github.com/openrndr/orx)       
 
-The `openrndr-filter` library holds numerous filters that can be applied easily.
-
-First off: add a dependency to the library to your build.gradle dependencies list.
-```groovy
-compile "org.openrndr:openrndr-filter:$openrndr_version"
-```
-
-The library contains the following filters
-
-##### Blur filters
-
-Class name                | Description
---------------------------|-------------------------------------------------------
-`BoxBlur`                 | Simple box blur, implemented as separable convolutions
-`GaussianBlur`            | Gaussian blur, exact by slow implementation
-`ApproximateGuassianBlur` | Gaussian, approximate but faster implementation
-`HashBlur`                | Fuzzy blur
-
-
-##### Color management filters
-
- Class name          | Description
----------------------|--------------------------------------------------
- `Linearize`         | convert colors from sRGB to linear RGB
- `Delinearize`       | convert colors from linear RGB to sRGB
- `TonemapUncharted2` | convert colors from linear RGB to tonemapped sRGB
-
-##### Blending filters
-
-Class name   | Description
--------------|------------------------------------------------------
-`ColorBurn`  | implements blending similar to color burn in Photoshop
-`ColorDodge` | implements blending similar to color dodge in Photoshop
-`Darken`     | implements blending similar to darken Photoshop
-`Hardlight`  | implements blending similar to hard light in Photoshop
-`Lighten`    | implements blending similar to lighten in Photoshop
-`Multiply`   | implements multiply blending
-`Normal`     | implements normal alpha blending
-`Overlay`    | implements blending similar to overlay in Photoshop
-`Screen`     | implements blending similar to screen in Photoshop
-`Add`        | implements additive blur
-`SourceIn`       | Draws the second layer where both layers overlap
-`SourceOut`      | Draws the second layer where the layers do not overlap
-`DestinationIn`  | Draws the first layer where both layers overlap
-`DestinationOut` | Draws the first layer where the layers do not overlap
-`Xor`            | Draws both layers where there is no overlap
-
-##### Dither filters
-
- Class name | Description
-------------|-------------------
- `ADither`  | A Dithering filter
-
-"""
+    """
 }
