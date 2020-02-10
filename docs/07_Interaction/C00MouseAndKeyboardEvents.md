@@ -76,7 +76,7 @@ if both shift and the left arrow key are pressed.
 application {
     program {
         keyboard.keyDown.listen {
-            if (it.key == KEY_ARROW_LEFT && KeyboardModifier.SHIFT in it.modifiers) {}
+            if (it.key == KEY_ARROW_LEFT && KeyModifier.SHIFT in it.modifiers) {}
         }
     }
 }
