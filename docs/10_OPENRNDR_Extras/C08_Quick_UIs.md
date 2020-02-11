@@ -78,7 +78,7 @@ application {
  
  ## Filter workflow 
  
- Not only can user objects be passed added to the sidebar, also most of the Filters in `orx-fx` have annotations. That means that
+ Not only can user objects added to the sidebar, also most of the Filters in `orx-fx` have `orx-parameters` annotations. That means that
 we can generate quick user interfaces for any of the filters that `orx-fx` provides. 
 
 The guide covers filters in the [Filter and Post-processing chapter](06_Advanced_drawing/C01_Filters_and_post_processing.md) and an index of
