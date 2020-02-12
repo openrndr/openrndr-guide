@@ -395,3 +395,26 @@ application {
 ``` 
  
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C07_Compositor005.kt) 
+ 
+ ## Opacity 
+ 
+ `orx-fx` is made with opacity as a first-class citizen. By default a layer is set to be fully transparent, most blending and post operations are using and preserving opacity. 
+ 
+ ## Blending 
+ 
+ Blending describes how the contents of two layers are combined in a composite. 
+The blend functionality `orx-compositor` can be used with any [filter](C01_Filters_and_post_processing) that performs a blend operation. The `orx-fx` filter collection provides [a selection of ready-made blend filters](https://github.com/openrndr/orx/tree/master/orx-fx#blends).
+
+The following (`orx-fx`) blend filters work well with opacity and have a configurable `clip` option with which the destination layer can be clipped against the source input's opacity:
+      
+ * `ColorBurn`
+ * `ColorDodge`
+ * `Darken`
+ * `HardLight`
+ * `Lighten`
+ * `Multiply`
+ * `Normal`
+ * `Overlay`
+ * `Screen`
+ * `Add`
+ * `Subtract` 
