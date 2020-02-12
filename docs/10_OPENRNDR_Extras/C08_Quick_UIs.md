@@ -296,16 +296,6 @@ val settings = object {
 }
 ```
 
-##### BooleanParameter
-`BooleanParameter` is used in combination with `Boolean` types. It takes an optional order argument. `orx-gui` will generate a checkbox or toggle control for annotated properties.
-
-```kotlin
-val settings = object {
-    @BooleanParameter("option", order = 0)
-    var b = false                   
-}
-```
-
 ##### ActionParameter
 
 `ActionParameter` is a bit of an odd-one-out, it is not used to annotate properties but to annotate 0-argument functions. `orx-gui` will generate a button control that will call the function when clicked.
