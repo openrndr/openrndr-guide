@@ -1,7 +1,8 @@
  
  # Quick UIs 
  
- [orx-gui](https://github.com/openrndr/orx/tree/master/orx-gui) provides a simple mechanism to create near zero-effort user interfaces. 
+ [orx-gui](https://github.com/openrndr/orx/tree/master/orx-gui) provides a simple mechanism to create near zero-effort user interfaces. `orx-gui` is a tool written on top of [OPENRNDR's UI library](07_Interaction/C04UserInterfaces) with the intention
+of taking away most mental and work overhead involved in creating simple user interfaces intended for prototyping and hacking purposes. The core principle of `orx-gui` is to generate user interfaces only from annotated classes and properties.  
  
  ## Prerequisites 
  
@@ -126,7 +127,7 @@ application {
 </video>
  
  
- We now see that the sidebar is populated with a _settings_ and an _Approximate gaussian blur_ compartment, 
+ We now see that the sidebar is populated with a _settings_ and an _Approximate Gaussian blur_ compartment, 
 which contains parameters for the blur filter that we are using. 
  
  ## Compositor workflow 
@@ -203,4 +204,118 @@ This creates composites that are easy to tweak.
  ## Live-coding workflow 
  
  `orx-gui` is built with the `orx-olive` environment in mind. Its use is similar to the workflows described prior, however, in live mode the ui comes with some extra features to make live-coding more fun.
-Compartments can be added and removed from the .kts script. The best part is that `orx-gui` can retain parameter settings between script changes by default, so nothing jumps around.  
+Compartments can be added and removed from the .kts script. The best part is that `orx-gui` can retain parameter settings between script changes by default, so nothing jumps around. 
+
+In the case of using `orx-gui` from an olive script (`live.kts`) it looks like this
+```kotlin
+@file:Suppress("UNUSED_LAMBDA_EXPRESSION")
+import org.openrndr.Program
+import org.openrndr.color.ColorRGBa
+import org.openrndr.draw.*
+import org.openrndr.extra.compositor.compose
+import org.openrndr.extra.compositor.draw
+import org.openrndr.extra.compositor.layer
+import org.openrndr.extra.compositor.post
+import org.openrndr.extra.gui.GUI
+import org.openrndr.extra.parameters.*
+
+{ program: Program ->
+    program.apply {
+        val gui = GUI()
+        val settings = @Description("User settings") object : Reloadable() {
+            @DoubleParameter("x", 0.0, 1000.0)
+            var x = 0.0
+        }
+        val composite = compose {
+            draw {
+                drawer.background(ColorRGBa.PINK)
+                drawer.circle(settings.x, height / 2.0, 100.0)
+            }
+        }
+        extend(gui) {
+            add(settings)
+        }
+        extend() {
+            composite.draw(drawer)
+        }
+    }
+}    
+```     
+ 
+ ## Parameter annotations 
+ 
+ We have seen some of the annotations in the workflow descriptions and we have linked to the  [`orx-parameters` code](https://github.com/openrndr/orx/tree/master/orx-parameters) before. But we haven't really spent time explaining the annotations until now.
+Annotations are a Kotlin language feature that is used to attach metadata to code, if you are unfamiliar with them you are encouraged to read the [annotations chapter](https://kotlinlang.org/docs/reference/annotations.html) in the Kotlin Language Guide. However, to effectively use the `orx-parameters` annotations basically
+  all you have to know is where and when to apply the annotations. The annotations are used in front of mutable class/object properties.
+  
+Currently `orx-parameters` has a small set of parameter annotations:
+   
+##### DoubleParameter
+`DoubleParameter` is used in combination with `Double` types. It takes a label, minimum-value, maximum value, and optional precision and order arguments. `orx-gui` will generate a slider control for annotated properties.
+```kotlin
+val settings = object {
+    @DoubleParameter("x", 0.0, 100.0, precision = 3, order = 0)
+    var x = 0.0                   
+}
+```              
+  
+##### IntParameter
+`IntParameter` is used in combination with `Int` types. It takes a label, minimum-value, maximum value, and an optional order argument. `orx-gui` will generate a slider control for annotated properties.
+```kotlin
+val settings = object {
+    @DoubleParameter("x", 0, 100, order = 0)
+    var x = 0                   
+}
+```              
+
+##### ColorParameter
+`ColorParameter` is used in combination with `Color` types. It takes an optional order argument. `orx-gui` will generate a color picker control for annotated properties.
+```kotlin
+val settings = object {
+    @DoubleParameter("color", order = 0)
+    var color = ColorRGBa.PINK                   
+}
+```
+
+##### TextParameter
+`TextParameter` is used in combination with `String` types. It takes an optional order argument. `orx-gui` will generate a textfield control for annotated properties.
+```kotlin
+val settings = object {
+    @TextParameter("text", order = 0)
+    var text = "default text value"                   
+}
+```
+
+##### BooleanParameter
+`BooleanParameter` is used in combination with `Boolean` types. It takes an optional order argument. `orx-gui` will generate a checkbox or toggle control for annotated properties.
+
+```kotlin
+val settings = object {
+    @BooleanParameter("option", order = 0)
+    var b = false                   
+}
+```
+
+##### BooleanParameter
+`BooleanParameter` is used in combination with `Boolean` types. It takes an optional order argument. `orx-gui` will generate a checkbox or toggle control for annotated properties.
+
+```kotlin
+val settings = object {
+    @BooleanParameter("option", order = 0)
+    var b = false                   
+}
+```
+
+##### ActionParameter
+
+`ActionParameter` is a bit of an odd-one-out, it is not used to annotate properties but to annotate 0-argument functions. `orx-gui` will generate a button control that will call the function when clicked.
+
+```kotlin
+val settings = object {
+    @ActionParameter(order = 0)
+    fun function() {
+        println("you made it")    
+    }
+}```
+
+ 
