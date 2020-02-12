@@ -103,7 +103,7 @@ body.loaded{
 }
 
 .sidebar {
-    background: black;
+    background: #111;
     z-index: 2;
     color: #fff;
 }
@@ -161,6 +161,12 @@ p {
     color:#fdd0dd !important;
     border: none !important;
     font-weight: 400 !important;
+}
+
+.sidebar ul {
+    font-weight: bold;
+    margin: 0 0 16px 15px;
+
 }
 
 
