@@ -1,23 +1,53 @@
  
  # Mouse and keyboard events
-All interaction in OPENRNDR manifests through events. 
+Most user-input interaction in OPENRNDR manifests through events. 
  
- ## Listening to mouse events 
+ # Mouse events
+
+A simple demonstration of a listening for mouse button clicks looks as follows:      
  
  ```kotlin
 application {
     program {
-        mouse.moved.listen {
+        mouse.clicked.listen {
             // -- it refers to a MouseEvent instance here
             println(it.position)
-        }
-        mouse.buttonDown.listen {
         }
     }
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/07_Interaction/C00MouseAndKeyboardEvents000.kt) 
+ Every program has a `mouse` object that exposes events and mouse properties. In the example above we attach a listener to the `clicked` event.
+The `{}` block after `listen` is a short-hand notation for passing a function into `listen`.
+
+There are some limitations to what the listener function can (or should) do. As a rule-of-thumb: don't draw in events. The result of drawing
+in listener functions is that it does not work. You are encouraged to use listener functions to change the state of your program.   
+                    
+Let's provide a commonly used pattern to deal with this limitation. The idea here is that we introduce variables in our program that are used
+to communicate between the listener function and the draw function. 
+ 
+ ```kotlin
+application {
+    program {
+        // -- a variable to keep of where we clicked
+        // -- this is an "optional type" that can be set to null
+        var drawPosition: Vector2? = null
+        
+        mouse.clicked.listen {
+            drawPosition = it.position
+        }
+        
+        extend {
+            // -- check if the drawPosition is not null
+            drawPosition?.let {
+                drawer.circle(it.x, it.y, 100.0)
+                // -- reset the drawPosition to null
+                drawPosition = null
+            }
+        }
+    }
+}
+``` 
  
  ### Overview of mouse events
 event        | description                                                   | relevant MouseEvent properties
@@ -29,7 +59,7 @@ event        | description                                                   | r
 `clicked`    | generated when a button has been pressed and released         | `position`, `button`, `modifiers`
 `dragged`    | generated when mouse has been moved while a button is pressed | `position`, `button`, `modifiers` 
  
- ## Listening to keyboard events
+ # Keyboard events
 OPENRNDR provides two classes of keyboard events. The first are _key_ events, which should be used to respond to the user pressing or releasing buttons on the keyboard. The second class are _character_ events, which should be used for handling text input as they also deal with composed characters.
 
 To use the _key_ events one listens to `keyboard.keyDown` events and compares the `key` value. For example: 
@@ -41,6 +71,18 @@ application {
             // -- it refers to a KeyEvent instance here
             // -- compare the key value to a predefined key constant
             if (it.key == KEY_ARROW_LEFT) {}
+        }
+    }
+}
+``` 
+ 
+ ```kotlin
+application {
+    program {
+        keyboard.keyDown.listen {
+            // -- it refers to a KeyEvent instance here
+            // -- compare the name value against "a"
+            if (it.name == "a") {}
         }
     }
 }
@@ -59,7 +101,7 @@ application {
             // -- it refers to a KeyEvent instance here
             // -- compare the key value to a predefined key constant
             if (it.key == KEY_BACKSPACE) {
-                if (!input.isEmpty()) {
+                if (input.isNotEmpty()) {
                     input = input.substring(0, input.length - 1)
                 }
             }
@@ -68,7 +110,7 @@ application {
 }
 ``` 
  
- ### Querying keyboard modifiers
+ ### Querying key modifiers
 Checking for modifiers can be done by checking if the desired modifier key is active in `modifiers`.  In the example below we check
 if both shift and the left arrow key are pressed. 
  
