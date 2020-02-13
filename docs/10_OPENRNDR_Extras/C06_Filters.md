@@ -64,7 +64,7 @@ application {
  
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters001.kt) 
  
- #### Bloom 
+ #### GaussianBloom 
  
  <video controls>
     <source src="media/filters-003.mp4" type="video/mp4"></source>
@@ -76,11 +76,11 @@ application {
     program {
         val image = loadImage("data/images/cheeta.jpg")
         val blurred = colorBuffer(image.width, image.height)
-        val bloom = Bloom()
+        val bloom = GaussianBloom()
         extend {
-            bloom.blendFactor = cos(seconds * Math.PI / 2) * 0.5 + 0.50
-            bloom.downsamples = 6
-            bloom.brightness = 1.0
+            bloom.window = 5
+            bloom.sigma = 3.0
+            bloom.gain = cos(seconds * 0.5 * PI) * 2.0 + 2.0
             bloom.apply(image, blurred)
             drawer.image(blurred)
         }
@@ -378,6 +378,61 @@ application {
  
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters012.kt) 
  
+ #### Perturb 
+ 
+ <video controls>
+    <source src="media/filters-304.mp4" type="video/mp4"></source>
+</video>
+ 
+ 
+ ```kotlin
+application {
+    program {
+        val image = loadImage("data/images/cheeta.jpg")
+        val filter = Perturb()
+        val filtered = colorBuffer(image.width, image.height)
+        
+        extend {
+            filter.phase = seconds * 0.1
+            filter.decay = 0.168
+            filter.gain = cos(seconds * 0.25 * PI) * 0.5 + 0.5
+            
+            filter.apply(image, filtered)
+            drawer.image(filtered)
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters013.kt) 
+ 
+ #### Tiles 
+ 
+ <video controls>
+    <source src="media/filters-305.mp4" type="video/mp4"></source>
+</video>
+ 
+ 
+ ```kotlin
+application {
+    program {
+        val image = loadImage("data/images/cheeta.jpg")
+        val filter = Tiles()
+        val filtered = colorBuffer(image.width, image.height)
+        
+        extend {
+            filter.rotation = seconds * 45.0
+            filter.xSegments = (10 + cos(seconds * PI) * 5.0).toInt()
+            filter.ySegments = 30
+            filter.apply(image, filtered)
+            drawer.image(filtered)
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters014.kt) 
+ 
  ### Dither 
  
  #### ADither 
@@ -404,7 +459,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters013.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters015.kt) 
  
  #### CMYKHalftone 
  
@@ -433,7 +488,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters014.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters016.kt) 
  
  ### Shadows 
  
@@ -472,4 +527,4 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters015.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters017.kt) 
