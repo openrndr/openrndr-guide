@@ -50,6 +50,7 @@
   - [Filters](10_OPENRNDR_Extras/C06_Filters.md)
   - [Compositor](10_OPENRNDR_Extras/C07_Compositor.md)
   - [Quick UIs](10_OPENRNDR_Extras/C08_Quick_UIs.md)
+  - [Shade style presets](10_OPENRNDR_Extras/C09_Shade_style_presets.md)
 - Advanced Topics
   - [Logging](11_Advanced_Topics/C00_Logging.md)
   - [Application Flow](11_Advanced_Topics/C01_Application_Flow.md)
