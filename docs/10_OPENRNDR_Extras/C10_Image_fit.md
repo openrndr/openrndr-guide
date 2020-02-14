@@ -66,12 +66,16 @@ application {
     program {
         val image = loadImage("data/images/cheeta.jpg")
         extend {
-            val margin = cos(seconds * PI) * 50.0 + 50.0
-            drawer.imageFit(image, 20.0, 20.0 + margin / 2, width - 40.0, height - 40.0 - margin, FitMethod.Cover)
+            // -- calculate dynamic margins
+            val xm = cos(seconds * PI) * 50.0 + 50.0
+            val ym = sin(seconds * PI) * 50.0 + 50.0
+            
+            drawer.imageFit(image, 20.0 + xm / 2.0, 20.0 + ym / 2, width - 40.0 - xm, height - 40.0 - ym, FitMethod.Cover)
+            
             // -- illustrate the placement rectangle
             drawer.fill = null
             drawer.stroke = ColorRGBa.WHITE
-            drawer.rectangle(20.0, 20.0 + margin / 2.0, width - 40.0, height - 40.0 - margin)
+            drawer.rectangle(20.0 + xm / 2.0, 20.0 + ym / 2.0, width - 40.0 - xm, height - 40.0 - ym)
         }
     }
 }
@@ -93,6 +97,7 @@ application {
         extend {
             val margin = 100.0
             drawer.imageFit(image, 20.0, 20.0 + margin / 2, width - 40.0, height - 40.0 - margin, FitMethod.Cover, verticalPosition = cos(seconds) * 1.0)
+            
             // -- illustrate the placement rectangle
             drawer.fill = null
             drawer.stroke = ColorRGBa.WHITE
