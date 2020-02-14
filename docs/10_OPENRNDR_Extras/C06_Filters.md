@@ -261,6 +261,34 @@ application {
  
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters008.kt) 
  
+ #### Contour 
+ 
+ <video controls>
+    <source src="media/filters-201.mp4" type="video/mp4"></source>
+</video>
+ 
+ 
+ ```kotlin
+application {
+    program {
+        val image = loadImage("data/images/cheeta.jpg")
+        val filter = Contour()
+        val filtered = colorBuffer(image.width, image.height)
+        
+        extend {
+            filter.backgroundOpacity = 1.0
+            filter.contourColor = ColorRGBa.BLACK
+            filter.contourWidth = 0.4
+            filter.levels = cos(seconds * PI) * 3.0 + 5.1
+            filter.apply(image, filtered)
+            drawer.image(filtered)
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters009.kt) 
+ 
  ### Distort 
  
  #### BlockRepeat 
@@ -289,7 +317,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters009.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters010.kt) 
  
  #### StackRepeat 
  
@@ -316,7 +344,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters010.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters011.kt) 
  
  #### HorizontalWave 
  
@@ -346,7 +374,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters011.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters012.kt) 
  
  #### VerticalWave 
  
@@ -376,7 +404,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters012.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters013.kt) 
  
  #### Perturb 
  
@@ -404,7 +432,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters013.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters014.kt) 
  
  #### Tiles 
  
@@ -431,7 +459,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters014.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters015.kt) 
  
  ### Dither 
  
@@ -459,7 +487,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters015.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters016.kt) 
  
  #### CMYKHalftone 
  
@@ -488,7 +516,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters016.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters017.kt) 
  
  ### Shadows 
  
@@ -527,4 +555,4 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters017.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters018.kt) 
