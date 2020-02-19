@@ -11,11 +11,11 @@ as it provides a good idea of how all the lowlevel components interact and its i
     
 All lowlevel drawing is performed using OPENRNDR's `Driver` class. This class provides a handful of functions for
 drawing. Below you will find a list of the essential ones.
- * `Drawer.setState()`    
- * `Drawer.drawVertexBuffer()`
- * `Drawer.drawIndexedVertexBuffer()`        
- * `Drawer.drawInstances()`
- * `Drawer.drawIndexedInstances()`
+ * `Driver.setState()`    
+ * `Driver.drawVertexBuffer()`
+ * `Driver.drawIndexedVertexBuffer()`        
+ * `Driver.drawInstances()`
+ * `Driver.drawIndexedInstances()`
  
 Classes that belong to the lowlevel drawing API:
  * [`Shader`](https://api.openrndr.org/org.openrndr.draw/-shader/index.html)
