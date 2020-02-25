@@ -17,7 +17,7 @@ application {
         val image = loadImage("data/images/cheeta.jpg")
         extend {
             val margin = cos(seconds * PI) * 50.0 + 50.0
-            drawer.imageFit(image, 20.0, 20.0 + margin / 2, width - 40.0, height - 40.0 - margin, FitMethod.Contain)
+            drawer.imageFit(image, 20.0, 20.0 + margin / 2, width - 40.0, height - 40.0 - margin, fitMethod = FitMethod.Contain)
             // -- illustrate the placement rectangle
             drawer.fill = null
             drawer.stroke = ColorRGBa.WHITE
@@ -42,7 +42,7 @@ application {
         val image = loadImage("data/images/cheeta.jpg")
         extend {
             val margin = 100.0
-            drawer.imageFit(image, 20.0, 20.0 + margin / 2, width - 40.0, height - 40.0 - margin, FitMethod.Contain, horizontalPosition = cos(seconds) * 1.0)
+            drawer.imageFit(image, 20.0, 20.0 + margin / 2, width - 40.0, height - 40.0 - margin, horizontalPosition = cos(seconds) * 1.0, fitMethod = FitMethod.Contain)
             // -- illustrate the placement rectangle
             drawer.fill = null
             drawer.stroke = ColorRGBa.WHITE
@@ -70,7 +70,7 @@ application {
             val xm = cos(seconds * PI) * 50.0 + 50.0
             val ym = sin(seconds * PI) * 50.0 + 50.0
             
-            drawer.imageFit(image, 20.0 + xm / 2.0, 20.0 + ym / 2, width - 40.0 - xm, height - 40.0 - ym, FitMethod.Cover)
+            drawer.imageFit(image, 20.0 + xm / 2.0, 20.0 + ym / 2, width - 40.0 - xm, height - 40.0 - ym)
             
             // -- illustrate the placement rectangle
             drawer.fill = null
@@ -96,7 +96,7 @@ application {
         val image = loadImage("data/images/cheeta.jpg")
         extend {
             val margin = 100.0
-            drawer.imageFit(image, 20.0, 20.0 + margin / 2, width - 40.0, height - 40.0 - margin, FitMethod.Cover, verticalPosition = cos(seconds) * 1.0)
+            drawer.imageFit(image, 20.0, 20.0 + margin / 2, width - 40.0, height - 40.0 - margin, verticalPosition = cos(seconds) * 1.0)
             
             // -- illustrate the placement rectangle
             drawer.fill = null

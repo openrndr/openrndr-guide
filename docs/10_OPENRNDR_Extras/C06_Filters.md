@@ -148,6 +148,32 @@ application {
  
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters004.kt) 
  
+ #### ZoomBlur 
+ 
+ <video controls>
+    <source src="media/filters-006.mp4" type="video/mp4"></source>
+</video>
+ 
+ 
+ ```kotlin
+application {
+    program {
+        val image = loadImage("data/images/cheeta.jpg")
+        val blurred = colorBuffer(image.width, image.height)
+        val blur = ZoomBlur()
+        
+        extend {
+            blur.center = Vector2(cos(seconds * PI * 0.5) * 0.5 + 0.5, sin(seconds * PI) * 0.5 + 0.5)
+            blur.strength = cos(seconds * PI) * 0.5 + 0.5
+            blur.apply(image, blurred)
+            drawer.image(blurred)
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters005.kt) 
+ 
  ### Color 
  
  #### ChromaticAberration 
@@ -173,7 +199,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters005.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters006.kt) 
  
  #### ColorCorrection 
  
@@ -200,12 +226,37 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters006.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters007.kt) 
+ 
+ #### Sepia 
+ 
+ <video controls>
+    <source src="media/filters-102.mp4" type="video/mp4"></source>
+</video>
+ 
+ 
+ ```kotlin
+application {
+    program {
+        val image = loadImage("data/images/cheeta.jpg")
+        val filter = Sepia()
+        val filtered = colorBuffer(image.width, image.height)
+        
+        extend {
+            filter.amount = cos(seconds) * 0.5 + 0.5
+            filter.apply(image, filtered)
+            drawer.image(filtered)
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters008.kt) 
  
  #### LumaOpacity 
  
  <video controls>
-    <source src="media/filters-102.mp4" type="video/mp4"></source>
+    <source src="media/filters-103.mp4" type="video/mp4"></source>
 </video>
  
  
@@ -231,7 +282,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters007.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters009.kt) 
  
  ### Edges 
  
@@ -259,7 +310,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters008.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters010.kt) 
  
  #### Contour 
  
@@ -287,7 +338,32 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters009.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters011.kt) 
+ 
+ #### EdgesWork 
+ 
+ <video controls>
+    <source src="media/filters-202.mp4" type="video/mp4"></source>
+</video>
+ 
+ 
+ ```kotlin
+application {
+    program {
+        val image = loadImage("data/images/cheeta.jpg")
+        val filter = EdgesWork()
+        val filtered = colorBuffer(image.width, image.height)
+        
+        extend {
+            filter.radius = (cos(seconds * PI) * 5 + 5).toInt()
+            filter.apply(image, filtered)
+            drawer.image(filtered)
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters012.kt) 
  
  ### Distort 
  
@@ -317,7 +393,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters010.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters013.kt) 
  
  #### StackRepeat 
  
@@ -344,7 +420,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters011.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters014.kt) 
  
  #### HorizontalWave 
  
@@ -374,7 +450,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters012.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters015.kt) 
  
  #### VerticalWave 
  
@@ -404,7 +480,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters013.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters016.kt) 
  
  #### Perturb 
  
@@ -432,7 +508,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters014.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters017.kt) 
  
  #### Tiles 
  
@@ -459,7 +535,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters015.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters018.kt) 
  
  ### Dither 
  
@@ -487,7 +563,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters016.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters019.kt) 
  
  #### CMYKHalftone 
  
@@ -516,7 +592,39 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters017.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters020.kt) 
+ 
+ #### Crosshatch 
+ 
+ <video controls>
+    <source src="media/filters-402.mp4" type="video/mp4"></source>
+</video>
+ 
+ 
+ ```kotlin
+application {
+    program {
+        val image = loadImage("data/images/cheeta.jpg")
+        val filter = Crosshatch()
+        val filtered = colorBuffer(image.width, image.height)
+        
+        extend {
+            // -- need a white background because the filter introduces transparent areas
+            drawer.background(ColorRGBa.WHITE)
+            filter.t1 = cos(seconds * PI) * 0.25 + 0.25
+            filter.t2 = filter.t1 + cos(seconds * PI * 0.5) * 0.25 + 0.25
+            filter.t3 = filter.t2 + cos(seconds * PI * 0.25) * 0.25 + 0.25
+            filter.t4 = filter.t3 + cos(seconds * PI * 0.125) * 0.25 + 0.25
+            
+            filter.apply(image, filtered)
+            
+            drawer.image(filtered)
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters021.kt) 
  
  ### Shadows 
  
@@ -555,4 +663,4 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters018.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters022.kt) 
