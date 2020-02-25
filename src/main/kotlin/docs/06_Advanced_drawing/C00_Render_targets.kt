@@ -5,15 +5,12 @@ import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.Application
 import org.openrndr.dokgen.annotations.Code
 import org.openrndr.dokgen.annotations.Text
-import org.openrndr.draw.ColorFormat
-import org.openrndr.draw.ColorType
-import org.openrndr.draw.isolatedWithTarget
-import org.openrndr.draw.renderTarget
+import org.openrndr.draw.*
 
-fun main(args: Array<String>) {
+fun main() {
     @Text """# Render targets and color buffers"""
 
-    @Text """A `RenderTarget` models a place to draw to. A `RenderTarget` has two kind of buffer attachments
+    @Text """A `RenderTarget` specifies a place to draw to. A `RenderTarget` has two kind of buffer attachments:
 `ColorBuffer` attachments and `DepthBuffer` attachments. At least a single `ColorBuffer` attachment is needed to draw on be able to draw on a `RenderTarget`.
 
 A `ColorBuffer` is a buffer that can hold up to 4 channel color. A `ColorBuffer` can hold 8 bit integer, 16 bit float or 32 bit float channels.
@@ -138,6 +135,51 @@ channels. The following code snippet uses two `RenderTarget` instances and clear
         val rt = renderTarget(640, 480) {
             colorBuffer(ColorFormat.RGBa, ColorType.FLOAT16)
             colorBuffer(ColorFormat.RGBa, ColorType.FLOAT32)
+        }
+    }
+
+    @Text """## Multi-sample anti-aliasing"""
+    @Text """Render targets can be configured to use multi-sample anti-aliasing. All color and depth buffers that are added 
+in the `renderTarget {}` builder will be created with the same multi sample configuration.
+    """
+
+    @Code.Block
+    run {
+        // -- here we create a multi-sampled render target
+        val rt = renderTarget(640, 480, multisample = BufferMultisample.SampleCount(8)) {
+            colorBuffer(ColorFormat.RGBa, ColorType.FLOAT16)
+            colorBuffer(ColorFormat.RGBa, ColorType.FLOAT32)
+        }
+    }
+
+    @Text """The color buffers that are attached to a multi-sampled render target cannot be drawn directly. In order to use the color buffer it has to be resolved
+ first.
+"""
+    application {
+        @Code
+        program {
+            // -- build a render target with a single color buffer attachment
+            val rt = renderTarget(width, height, multisample = BufferMultisample.SampleCount(8)) {
+                colorBuffer()
+                depthBuffer()
+            }
+
+            val resolved = colorBuffer(width, height)
+
+            extend {
+                drawer.isolatedWithTarget(rt) {
+                    drawer.background(ColorRGBa.BLACK)
+                    drawer.fill = ColorRGBa.WHITE
+                    drawer.stroke = null
+                    drawer.rectangle(40.0, 40.0, 80.0, 80.0)
+                }
+
+                // -- resolve the render target attachment to `resolved`
+                rt.colorBuffer(0).resolveTo(resolved)
+
+                // draw the backing color buffer to the screen
+                drawer.image(resolved)
+            }
         }
     }
 

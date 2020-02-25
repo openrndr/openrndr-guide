@@ -10,21 +10,6 @@ import org.openrndr.dokgen.annotations.Text
 
 fun main(args: Array<String>) {
 
-    var openrndr_version = ""
-    @Text
-    """
-    # Interactive Animations
-
-    This section explains how to use OPENRNDR's `Animatable` class as a tool to create interactive animations.
-    In order to use `Animatable` your project needs to depend on the `rndr-animatable`.
-
-    ```gradle
-    dependencies {
-        compile "org.openrndr:openrndr-animatable:$openrndr_version"
-    }
-    ```
-    """
-
     @Text
     """
     # Interactive animations
@@ -157,7 +142,7 @@ fun main(args: Array<String>) {
     This can be used in cases where two animations with different lengths are queued. For example:
     """
 
-
+    @Code
     application {
         class MyAnimatable() : Animatable() {
             var x: Double = 50.0
@@ -166,7 +151,7 @@ fun main(args: Array<String>) {
 
         val myAnimatable = MyAnimatable()
         program {
-            @Code.Block
+
             run {
                 myAnimatable.apply {
                     animate("x", 400.0, 2000)
@@ -175,23 +160,6 @@ fun main(args: Array<String>) {
                 }
             }
 
-
-            @Text
-            """
-            ### Waiting for an animation to almost finish
-            """
-
-            @Code.Block
-            run {
-                myAnimatable.apply {
-                    complete()
-                    delay(-1000)
-                }
-            }
-            @Text
-            """
-            Instruct the animator to wait until the given amount of time before the previously queued animation ends.
-            """
         }
     }
 
@@ -220,4 +188,29 @@ fun main(args: Array<String>) {
 
     `end()` cancels all running and queued animations. Animated values of running animations will be set to the target value, this will introduce animation pops.
     """
+
+    @Text "## Looping animations"
+    @Text """While `Animatable` doesn't provide explicit support for looping animations. They can be achieved through the following pattern:"""
+
+    @Code
+    application {
+        class MyAnimatable() : Animatable() {
+            var x: Double = 0.0
+        }
+
+        val myAnimatable = MyAnimatable()
+        program {
+            extend {
+                myAnimatable.updateAnimation()
+
+                if (!myAnimatable.hasAnimations()) {
+                    myAnimatable.animate("x", 500.0, 1000)
+                    myAnimatable.complete()
+                    myAnimatable.animate("x", .0, 1000)
+                    myAnimatable.complete()
+                }
+
+            }
+        }
+    }
 }

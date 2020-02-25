@@ -21,11 +21,10 @@ Shade styles are used to change the drawing behaviour of the `Drawer`, the appea
 applying shade styles.
 
 Shade styles are composed of two types of transforms: vertex transforms and fragment transforms. The two transforms are
-applied in separate stages of the rendering process.
+applied in separate stages of the rendering process. In the vertex transform it is possible to change the geometry of what is drawn, 
+and in the fragment transform it is possible to change the appearance of the geometry.
 
-In the vertex transform it is possible to change the geometry of what is drawn.
-
-In the fragment transform it is possible to change the appearance of the geometry.
+A selection of preset ready-to-use shade styles is provided by [`orx-shade-styles`](10_OPENRNDR_Extras/C09_Shade_style_presets) 
 
 For those interested in authoring shade styles it is helpful to have some based understanding of shaders and GLSL."""
 

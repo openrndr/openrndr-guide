@@ -1,34 +1,52 @@
 # Getting Started with OPENRNDR #
 
-OPENRNDR provides an application framework that allows its users to write applications that run on Microsoft Windows, MacOS platforms and Linux/x64 systems.
+Let's get it started!
 
-## Requirements ##
- * A computer running any of our supported platforms.
- * A graphics adapter and drivers that supports OpenGL 3.3
- * JDK 8, 9, 10, 11, 12 installed. Latest (12) recommended. Both OpenJDK and OracleJDK work.
- * [IntelliJ IDEA 2019.2](https://www.jetbrains.com/idea/download/) Community or Enterprise edition
- * A recent version of [Git](https://git-scm.com/)
 
-## Setting up prerequisites
-Before you start working with OPENRNDR please follow these instructions.
- * Install a Java Development KIT (JDK): [JDK installer for Windows](https://cdn.azul.com/zulu/bin/zulu12.1.3-ca-jdk12-win_x64.msi) [JDK installer for macOS](https://cdn.azul.com/zulu/bin/zulu12.1.3-ca-jdk12-macosx_x64.dmg)
- * Download [IntelliJ Idea Community Edition](https://www.jetbrains.com/idea/download) and install it.
+## Hardware requirements ##
 
-## Getting OPENRNDR
+Before you start check if your computer meets all of the below requirements.
 
-OPENRNDR is obtained by adding the OPENRNDR dependencies to your Gradle project. You don't have to download anything manually.
+ * A computer running any of our supported platforms; Windows 10, macOS 10.8+ or Linux/x64
+ * A graphics adapter with drivers that support at least OpenGL 3.3
 
-## Setting up OPENRNDR in IntelliJ IDEA
+This covers most desktop computers made after 2010. 
 
-The easiest way to get started is to use the [`openrndr-template`](https://github.com/openrndr/openrndr-template) repository.
-This template is based on a gradle build file that includes dependencies on the core OPENRNDR libraries. In the template
-you will also find hints on how to add additional OPENRNDR and ORX libraries.
+## Setting up software prerequisites
 
-After starting IntelliJ IDEA. Find the "New project from version control" item in the "File" menu. Pick the "Git" option.
-Enter `https://github.com/openrndr/openrndr-template` in the url field and validate that the directory is ok.
-When asked where the project should be opened click on the new window button. Make sure to click on the link gradle
-option.
+Now, to be able to edit and run OPENRNDR programs we have to install some software tools. 
 
-Once IntelliJ has finished indexing find the `src/main/kotlin/TemplateProgram.kt` file in the project view and open it.
-Once opened a small green triangle should appear next to the line that starts with `fun main()`. Click on the triangle,
+ * Check if your computer has `git` installed, if it has not install from the [Git website](https://git-scm.com/) 
+
+ * Download [IntelliJ IDEA Community Edition](https://www.jetbrains.com/idea/download) and install it. On the first run 
+ it will offer the option to pick default settings and continue, use the default settings.
+ 
+Installing an additional JDK is no longer required as since version 2019.3 IntelliJ IDEA ships with a built-in version of JDK 11.  
+ 
+## Clone the template
+
+The adviced and time-economic way to start any OPENRNDR-based project is to use the [`openrndr-template`](https://github.com/openrndr/openrndr-template).
+This template contains a ready-to-go project from which you can quickly start running your first programs.
+
+ * Find the "New project from version control" item in the "File" menu. Pick the "Git" option.
+ * Enter or (copy/paste) `https://github.com/openrndr/openrndr-template` in the URL-field and validate that the directory is OK. 
+ * When asked where the project should be opened click on the new window button. Make sure to link to the gradle project when
+prompted.
+
+## Run your first program
+
+After cloning the template you will likely see IntelliJ IDEA indexing your project, this may take some time on the first run. You can see its progress
+in the statusbar at the bottom of the IntelliJ window.
+
+You may have noticed that IntelliJ has opened the `README.md` in the `openrndr-template` project. Likely this file will
+contain some hints to help you navigating the template project. 
+ 
+Once IntelliJ has finished indexing find the `src/main/kotlin/TemplateProgram.kt` file in the project view. The project view is collapsed
+by default, you can open it by clicking on the vertical tab on the left side of the screen. 
+ 
+Once the template program is opened a small green triangle should appear next to the line that starts with `fun main()`. Click on the triangle,
 the program should now run.
+
+*Lo' and behold!*
+
+At this point you are likely interested in how this program is structured. The guide explains more in the [Program basics](03_Program_basics/C00_ApplicationProgram) chapter.  
