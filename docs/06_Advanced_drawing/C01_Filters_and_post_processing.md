@@ -126,6 +126,6 @@ application {
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C01_Filters_and_post_processing001.kt) 
  
  ## The orx-fx library
-    
-A repository of filters for OPENRNDR can be found in the [ORX](https://github.com/openrndr/orx)       
+A repository of ready-to-use filters for OPENRNDR can be found in the [ORX repository](https://github.com/openrndr/orx/tree/master/orx-fx),
+a partial index of the filters can be found in the [orx-fx chapter](10_OPENRNDR_Extras/C06_Filters)
  
