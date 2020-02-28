@@ -53,6 +53,7 @@
   - [Shade style presets](10_OPENRNDR_Extras/C09_Shade_style_presets.md)
   - [Image fit](10_OPENRNDR_Extras/C10_Image_fit.md)
   - [Poisson fills](10_OPENRNDR_Extras/C11_Poisson_fills.md)
+  - [Distance fields](10_OPENRNDR_Extras/C12_Distance_fields.md)
 - Advanced Topics
   - [Logging](11_Advanced_Topics/C00_Logging.md)
   - [Application Flow](11_Advanced_Topics/C01_Application_Flow.md)
