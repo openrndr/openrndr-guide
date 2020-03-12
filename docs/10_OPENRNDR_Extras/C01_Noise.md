@@ -156,7 +156,7 @@ application {
  
  ## Noise gradients 
  
- Noise functions have evaluable gradients, a direction to where the value of the function increases the fastest,  The `gradient1D`, `gradient2D`, `gradient3D` and `gradient4D` functions can be used to estimate the gradients. 
+ Noise functions have evaluable gradients, a direction to where the value of the function increases the fastest. The `gradient1D`, `gradient2D`, `gradient3D` and `gradient4D` functions can be used to estimate gradients for noise functions. 
  
  <video controls>
     <source src="media/orx-noise-300.mp4" type="video/mp4"></source>
@@ -187,7 +187,7 @@ application {
  
  Gradients can also be calculated for the fbm, rigid and billow versions of the noise functions. However, 
 we first have to create a function that can be used by the gradient estimator. For this `fbmFunc3D`, `billowFunc3D`, and 
- `rigidFunc3D` can be used (which work through [partial application](https://en.wikipedia.org/wiki/Partial_application).
+ `rigidFunc3D` can be used (which works through [partial application](https://en.wikipedia.org/wiki/Partial_application)).
   
  
  <video controls>
