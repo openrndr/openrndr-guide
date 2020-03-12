@@ -1,6 +1,6 @@
 # Should I use OPENRNDR ?
 
-Yes!!
+Yes!
 
 .. but—
 

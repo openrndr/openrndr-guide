@@ -3,7 +3,7 @@
  
  A collection of noise generator functions. Source and extra documentation can be found in the [orx-noise sourcetree](https://github.com/openrndr/orx/tree/master/orx-noise). 
  
- ## Uniform noise 
+ ## Uniformly distributed random values 
  
  The library provides extension methods for `Double`, `Vector2`, `Vector3`, `Vector4` to create random vectors easily. To create
 scalars and vectors with uniformly distributed noise you use the `uniform` extension function. 
@@ -154,6 +154,71 @@ application {
  
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise004.kt) 
  
+ ## Noise gradients 
+ 
+ Noise functions have evaluable gradients, a direction to where the value of the function increases the fastest,  The `gradient1D`, `gradient2D`, `gradient3D` and `gradient4D` functions can be used to estimate the gradients. 
+ 
+ <video controls>
+    <source src="media/orx-noise-300.mp4" type="video/mp4"></source>
+</video>
+ 
+ 
+ ```kotlin
+application {
+    program {
+        extend {
+            drawer.fill = null
+            drawer.stroke = ColorRGBa.PINK
+            drawer.lineCap = LineCap.ROUND
+            drawer.strokeWeight = 3.0
+            val t = seconds
+            for (y in 4 until height step 8) {
+                for (x in 4 until width step 8) {
+                    val g = gradient3D(::perlinQuintic, 100, x * 0.005, y * 0.005, t, 0.0005).xy
+                    drawer.lineSegment(Vector2(x * 1.0, y * 1.0) - g * 2.0, Vector2(x * 1.0, y * 1.0) + g * 2.0)
+                }
+            }
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise005.kt) 
+ 
+ Gradients can also be calculated for the fbm, rigid and billow versions of the noise functions. However, 
+we first have to create a function that can be used by the gradient estimator. For this `fbmFunc3D`, `billowFunc3D`, and 
+ `rigidFunc3D` can be used (which work through [partial application](https://en.wikipedia.org/wiki/Partial_application).
+  
+ 
+ <video controls>
+    <source src="media/orx-noise-301.mp4" type="video/mp4"></source>
+</video>
+ 
+ 
+ ```kotlin
+application {
+    program {
+        
+        val noise = fbmFunc3D(::simplex, octaves = 3)
+        extend {
+            drawer.fill = null
+            drawer.stroke = ColorRGBa.PINK
+            drawer.lineCap = LineCap.ROUND
+            drawer.strokeWeight = 1.5
+            val t = seconds
+            for (y in 4 until height step 8) {
+                for (x in 4 until width step 8) {
+                    val g = gradient3D(noise, 100, x * 0.002, y * 0.002, t, 0.002).xy
+                    drawer.lineSegment(Vector2(x * 1.0, y * 1.0) - g * 1.0, Vector2(x * 1.0, y * 1.0) + g * 1.0)
+                }
+            }
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise006.kt) 
+ 
  ## Noise filters 
  
  The library contains a number of Filters with which noise image can be generated efficiently on the GPU. 
@@ -186,7 +251,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise005.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise007.kt) 
  
  ### 3D Simplex noise filter 
  
@@ -231,7 +296,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise006.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise008.kt) 
  
  ### Cell noise 
  
@@ -264,7 +329,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise007.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise009.kt) 
  
  ### Speckle noise 
  
@@ -294,7 +359,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise008.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise010.kt) 
  
  ### Value noise 
  
@@ -330,4 +395,4 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise009.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C01_Noise011.kt) 

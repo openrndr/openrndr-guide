@@ -5,7 +5,7 @@
  
  ## Prerequisites 
  
- Make sure that `orx-poisson-fill` is added to the `orxFeatures` line. 
+ Make sure that `orx-poisson-fills` is added to the `orxFeatures` line. 
  
  # Filling 
  
