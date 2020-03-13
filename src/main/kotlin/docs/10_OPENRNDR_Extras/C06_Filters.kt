@@ -5,13 +5,12 @@ import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.*
 import org.openrndr.extra.fx.blur.*
-import org.openrndr.extra.fx.color.ChromaticAberration
-import org.openrndr.extra.fx.color.ColorCorrection
-import org.openrndr.extra.fx.color.LumaOpacity
-import org.openrndr.extra.fx.color.LumaThreshold
+import org.openrndr.extra.fx.color.*
 import org.openrndr.extra.fx.distort.*
 import org.openrndr.extra.fx.dither.ADither
 import org.openrndr.extra.fx.dither.CMYKHalftone
+import org.openrndr.extra.fx.dither.Crosshatch
+import org.openrndr.extra.fx.edges.EdgesWork
 import org.openrndr.extra.fx.edges.LumaSobel
 import org.openrndr.extra.fx.shadow.DropShadow
 import org.openrndr.extra.vfx.Contour
@@ -197,6 +196,37 @@ A (more-or-less) complete listing of the effects in orx-fx is maintained in the 
         }
     }
 
+    @Text "#### ZoomBlur"
+    @Media.Video """media/filters-006.mp4"""
+
+    @Application
+    @Code
+    application {
+        @Exclude
+        configure {
+            width = 640
+            height = 480
+        }
+        program {
+            @Exclude
+            extend(ScreenRecorder()) {
+                outputFile = "media/filters-006.mp4"
+                maximumDuration = 5.00
+                quitAfterMaximum
+            }
+            val image = loadImage("data/images/cheeta.jpg")
+            val blurred = colorBuffer(image.width, image.height)
+            val blur = ZoomBlur()
+
+            extend {
+                blur.center = Vector2(cos(seconds*PI*0.5)*0.5+0.5, sin(seconds*PI)*0.5+0.5)
+                blur.strength = cos(seconds * PI) * 0.5 + 0.5
+                blur.apply(image, blurred)
+                drawer.image(blurred)
+            }
+        }
+    }
+
     @Text """### Color"""
 
     @Text "#### ChromaticAberration"
@@ -261,7 +291,7 @@ A (more-or-less) complete listing of the effects in orx-fx is maintained in the 
         }
     }
 
-    @Text "#### LumaOpacity"
+    @Text "#### Sepia"
     @Media.Video """media/filters-102.mp4"""
 
     @Application
@@ -277,6 +307,36 @@ A (more-or-less) complete listing of the effects in orx-fx is maintained in the 
             extend(ScreenRecorder()) {
                 outputFile = "media/filters-102.mp4"
                 maximumDuration = 5.00
+                quitAfterMaximum
+            }
+            val image = loadImage("data/images/cheeta.jpg")
+            val filter = Sepia()
+            val filtered = colorBuffer(image.width, image.height)
+
+            extend {
+                filter.amount = cos(seconds) * 0.5 + 0.5
+                filter.apply(image, filtered)
+                drawer.image(filtered)
+            }
+        }
+    }
+
+    @Text "#### LumaOpacity"
+    @Media.Video """media/filters-103.mp4"""
+
+    @Application
+    @Code
+    application {
+        @Exclude
+        configure {
+            width = 640
+            height = 480
+        }
+        program {
+            @Exclude
+            extend(ScreenRecorder()) {
+                outputFile = "media/filters-103.mp4"
+                maximumDuration = 5.0
                 quitAfterMaximum
             }
             val image = loadImage("data/images/cheeta.jpg")
@@ -359,6 +419,37 @@ A (more-or-less) complete listing of the effects in orx-fx is maintained in the 
                 filter.contourColor = ColorRGBa.BLACK
                 filter.contourWidth = 0.4
                 filter.levels = cos(seconds*PI) * 3.0 + 5.1
+                filter.apply(image, filtered)
+                drawer.image(filtered)
+            }
+        }
+    }
+
+
+    @Text "#### EdgesWork"
+    @Media.Video """media/filters-202.mp4"""
+
+    @Application
+    @Code
+    application {
+        @Exclude
+        configure {
+            width = 640
+            height = 480
+        }
+        program {
+            @Exclude
+            extend(ScreenRecorder()) {
+                outputFile = "media/filters-202.mp4"
+                maximumDuration = 5.00
+                quitAfterMaximum
+            }
+            val image = loadImage("data/images/cheeta.jpg")
+            val filter = EdgesWork()
+            val filtered = colorBuffer(image.width, image.height)
+
+            extend {
+                filter.radius = (cos(seconds*PI)*5+5).toInt()
                 filter.apply(image, filtered)
                 drawer.image(filtered)
             }
@@ -634,6 +725,45 @@ A (more-or-less) complete listing of the effects in orx-fx is maintained in the 
             }
         }
     }
+
+    @Text "#### Crosshatch"
+    @Media.Video """media/filters-402.mp4"""
+
+    @Application
+    @Code
+    application {
+        @Exclude
+        configure {
+            width = 640
+            height = 480
+        }
+        program {
+            @Exclude
+            extend(ScreenRecorder()) {
+                outputFile = "media/filters-402.mp4"
+                maximumDuration = 5.00
+                quitAfterMaximum
+            }
+            val image = loadImage("data/images/cheeta.jpg")
+            val filter = Crosshatch()
+            val filtered = colorBuffer(image.width, image.height)
+
+            extend {
+                // -- need a white background because the filter introduces transparent areas
+                drawer.background(ColorRGBa.WHITE)
+                filter.t1 = cos(seconds* PI) * 0.25 + 0.25
+                filter.t2 = filter.t1 + cos(seconds* PI * 0.5) * 0.25 + 0.25
+                filter.t3 = filter.t2 + cos(seconds* PI * 0.25) * 0.25 + 0.25
+                filter.t4 = filter.t3 + cos(seconds* PI * 0.125) * 0.25 + 0.25
+
+                filter.apply(image, filtered)
+
+                drawer.image(filtered)
+            }
+        }
+    }
+
+
 
     @Text "### Shadows"
     @Text "#### DropShadow"

@@ -3,6 +3,7 @@ package docs.`10_OPENRNDR_Extras`
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
+import org.openrndr.draw.LineCap
 import org.openrndr.draw.colorBuffer
 import org.openrndr.draw.tint
 
@@ -20,7 +21,7 @@ fun main() {
 
     @Text """A collection of noise generator functions. Source and extra documentation can be found in the [orx-noise sourcetree](https://github.com/openrndr/orx/tree/master/orx-noise)."""
 
-    @Text "## Uniform noise"
+    @Text "## Uniformly distributed random values"
 
     @Text """The library provides extension methods for `Double`, `Vector2`, `Vector3`, `Vector4` to create random vectors easily. To create
 scalars and vectors with uniformly distributed noise you use the `uniform` extension function.
@@ -72,6 +73,8 @@ scalars and vectors with uniformly distributed noise you use the `uniform` exten
             }
         }
     }
+
+
 
     @Text "## Perlin noise"
 
@@ -200,6 +203,83 @@ scalars and vectors with uniformly distributed noise you use the `uniform` exten
             }
         }
     }
+
+    @Text "## Noise gradients"
+    @Text """
+Noise functions have evaluable gradients, a direction to where the value of the function increases the fastest. The `gradient1D`, `gradient2D`, `gradient3D` and `gradient4D` functions can be used to estimate gradients for noise functions.
+    """
+    @Media.Video """media/orx-noise-300.mp4"""
+    @Application
+    @Code
+    application {
+        @Exclude
+        configure {
+            width = 770
+            height = 578
+        }
+        program {
+            @Exclude
+            extend(ScreenRecorder()) {
+                outputFile = "media/orx-noise-300.mp4"
+                quitAfterMaximum = true
+                maximumDuration = 9.0
+            }
+            extend {
+                drawer.fill = null
+                drawer.stroke = ColorRGBa.PINK
+                drawer.lineCap = LineCap.ROUND
+                drawer.strokeWeight = 3.0
+                val t = seconds
+                for (y in 4 until height step 8) {
+                    for (x in 4 until width step 8) {
+                        val g = gradient3D(::perlinQuintic, 100, x * 0.005, y * 0.005, t, 0.0005).xy
+                        drawer.lineSegment(Vector2(x * 1.0, y * 1.0) - g * 2.0, Vector2(x * 1.0, y * 1.0) + g * 2.0)
+
+                    }
+                }
+            }
+        }
+    }
+    @Text """Gradients can also be calculated for the fbm, rigid and billow versions of the noise functions. However, 
+we first have to create a function that can be used by the gradient estimator. For this `fbmFunc3D`, `billowFunc3D`, and 
+ `rigidFunc3D` can be used (which works through [partial application](https://en.wikipedia.org/wiki/Partial_application)).
+ 
+    """.trimMargin()
+
+    @Media.Video """media/orx-noise-301.mp4"""
+    @Application
+    @Code
+    application {
+        @Exclude
+        configure {
+            width = 770
+            height = 578
+        }
+        program {
+            @Exclude
+            extend(ScreenRecorder()) {
+                outputFile = "media/orx-noise-301.mp4"
+                quitAfterMaximum = true
+                maximumDuration = 9.0
+            }
+
+            val noise = fbmFunc3D(::simplex, octaves = 3)
+            extend {
+                drawer.fill = null
+                drawer.stroke = ColorRGBa.PINK
+                drawer.lineCap = LineCap.ROUND
+                drawer.strokeWeight = 1.5
+                val t = seconds
+                for (y in 4 until height step 8) {
+                    for (x in 4 until width step 8) {
+                        val g = gradient3D(noise, 100, x * 0.002, y * 0.002, t, 0.002).xy
+                        drawer.lineSegment(Vector2(x * 1.0, y * 1.0) - g * 1.0, Vector2(x * 1.0, y * 1.0) + g * 1.0)
+                    }
+                }
+            }
+        }
+    }
+
 
     @Text "## Noise filters"
 

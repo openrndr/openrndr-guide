@@ -81,6 +81,8 @@ dependencies {
     compile "org.openrndr.extra:orx-shade-styles:$orxVersion"
     compile "org.openrndr.extra:orx-gui:$orxVersion"
     compile "org.openrndr.extra:orx-image-fit:$orxVersion"
+    compile "org.openrndr.extra:orx-poisson-fill:$orxVersion"
+    compile "org.openrndr.extra:orx-jumpflood:$orxVersion"
 }
 
 mainClassName = "TemplateProgramKt"
