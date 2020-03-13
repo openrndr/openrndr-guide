@@ -34,6 +34,72 @@ application {
  
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C12_Distance_fields000.kt) 
  
+ # Outer glow 
+ 
+ orx-jumpflood comes with a filter that creates Photoshop-style outer glow effect. 
+ 
+ <video controls>
+    <source src="media/distance-fields-101.mp4" type="video/mp4"></source>
+</video>
+ 
+ 
+ ```kotlin
+application {
+    program {
+        val c = compose {
+            layer {
+                draw {
+                    drawer.fill = ColorRGBa.PINK
+                    drawer.circle(width / 2.0, height / 2.0, 200.0)
+                }
+                post(OuterGlow()) {
+                    this.width = (cos(seconds * PI) * 0.5 + 0.5) * 100.0
+                }
+            }
+        }
+        extend {
+            c.draw(drawer)
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C12_Distance_fields001.kt) 
+ 
+ # Inner glow 
+ 
+ Similar to the outer glow effect, but the glow is placed in the inside of the shape. 
+ 
+ <video controls>
+    <source src="media/distance-fields-102.mp4" type="video/mp4"></source>
+</video>
+ 
+ 
+ ```kotlin
+application {
+    program {
+        val c = compose {
+            layer {
+                draw {
+                    drawer.fill = ColorRGBa.PINK
+                    drawer.circle(width / 2.0, height / 2.0, 200.0)
+                }
+                post(InnerGlow()) {
+                    this.width = (cos(seconds * PI) * 0.5 + 0.5) * 100.0
+                }
+            }
+        }
+        extend {
+            c.draw(drawer)
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C12_Distance_fields002.kt) 
+ 
+ # Sampling distance 
+ 
  <video controls>
     <source src="media/distance-fields-002.mp4" type="video/mp4"></source>
 </video>
@@ -84,4 +150,4 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C12_Distance_fields001.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C12_Distance_fields003.kt) 
