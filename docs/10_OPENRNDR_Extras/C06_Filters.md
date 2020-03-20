@@ -13,7 +13,7 @@ A (more-or-less) complete listing of the effects in orx-fx is maintained in the 
  
  In this index we demonstrate selected filters, this is in no way a complete overview of what orx-fx offers. 
  
- ### Blur  
+ ## Blur effects 
  
  #### BoxBlur 
  
@@ -174,7 +174,7 @@ application {
  
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters005.kt) 
  
- ### Color 
+ ## Color filters 
  
  #### ChromaticAberration 
  
@@ -284,7 +284,7 @@ application {
  
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters009.kt) 
  
- ### Edges 
+ ## Edge-detection filters 
  
  #### LumaSobel 
  
@@ -365,7 +365,7 @@ application {
  
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters012.kt) 
  
- ### Distort 
+ ## Distortion filters 
  
  #### BlockRepeat 
  
@@ -537,7 +537,108 @@ application {
  
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters018.kt) 
  
- ### Dither 
+ #### Fisheye 
+ 
+ <video controls>
+    <source src="media/filters-306.mp4" type="video/mp4"></source>
+</video>
+ 
+ 
+ ```kotlin
+application {
+    program {
+        val image = loadImage("data/images/cheeta.jpg")
+        val filter = Fisheye()
+        val filtered = colorBuffer(image.width, image.height)
+        
+        extend {
+            filter.strength = cos(seconds * PI) * 0.125
+            filter.scale = 1.1
+            filter.apply(image, filtered)
+            drawer.image(filtered)
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters019.kt) 
+ 
+ #### DisplaceBlend 
+ 
+ <video controls>
+    <source src="media/filters-307.mp4" type="video/mp4"></source>
+</video>
+ 
+ 
+ ```kotlin
+application {
+    program {
+        val composite = compose {
+            colorType = ColorType.FLOAT16
+            layer {
+                val image = loadImage("data/images/cheeta.jpg")
+                draw {
+                    drawer.imageFit(image, 0.0, 0.0, width * 1.0, height * 1.0)
+                }
+            }
+            layer {
+                draw {
+                    drawer.shadeStyle = linearGradient(ColorRGBa.BLACK, ColorRGBa.WHITE)
+                    drawer.stroke = null
+                    val size = cos(seconds * PI * 0.5) * 100.0 + 200.0
+                    drawer.rectangle(width / 2.0 - size / 2, height / 2.0 - size / 2, size, size)
+                }
+                blend(DisplaceBlend()) {
+                    gain = cos(seconds * PI * 0.5) * 0.5 + 0.5
+                    rotation = seconds * 45.0
+                }
+            }
+        }
+        
+        extend {
+            composite.draw(drawer)
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters020.kt) 
+ 
+ #### StretchWaves 
+ 
+ <video controls>
+    <source src="media/filters-308.mp4" type="video/mp4"></source>
+</video>
+ 
+ 
+ ```kotlin
+application {
+    program {
+        val composite = compose {
+            colorType = ColorType.FLOAT16
+            layer {
+                val image = loadImage("data/images/cheeta.jpg")
+                draw {
+                    drawer.imageFit(image, 0.0, 0.0, width * 1.0, height * 1.0)
+                }
+                post(StretchWaves()) {
+                    distortion = 0.25
+                    rotation = seconds * 45.0
+                    phase = seconds * 0.25
+                    frequency = 5.0
+                }
+            }
+        }
+        extend {
+            composite.draw(drawer)
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters021.kt) 
+ 
+ ## Dithering filters 
  
  #### ADither 
  
@@ -563,7 +664,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters019.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters022.kt) 
  
  #### CMYKHalftone 
  
@@ -592,7 +693,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters020.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters023.kt) 
  
  #### Crosshatch 
  
@@ -624,9 +725,9 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters021.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters024.kt) 
  
- ### Shadows 
+ ## Shadow filters 
  
  #### DropShadow 
  
@@ -663,4 +764,34 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters022.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters025.kt) 
+ 
+ ## Pattern filters 
+ 
+ #### Checkers 
+ 
+ `Checkers` is a simple checker generator filter. 
+ 
+ <video controls>
+    <source src="media/filters-600.mp4" type="video/mp4"></source>
+</video>
+ 
+ 
+ ```kotlin
+application {
+    program {
+        val composite = compose {
+            layer {
+                post(Checkers()) {
+                    size = cos(seconds * 0.5 * PI) * 0.6 + 0.4
+                }
+            }
+        }
+        extend {
+            composite.draw(drawer)
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters026.kt) 
