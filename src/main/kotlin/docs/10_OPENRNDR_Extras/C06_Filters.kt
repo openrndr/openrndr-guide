@@ -4,6 +4,7 @@ import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.*
+import org.openrndr.extra.compositor.*
 import org.openrndr.extra.fx.blur.*
 import org.openrndr.extra.fx.color.*
 import org.openrndr.extra.fx.distort.*
@@ -12,8 +13,11 @@ import org.openrndr.extra.fx.dither.CMYKHalftone
 import org.openrndr.extra.fx.dither.Crosshatch
 import org.openrndr.extra.fx.edges.EdgesWork
 import org.openrndr.extra.fx.edges.LumaSobel
+import org.openrndr.extra.fx.patterns.Checkers
 import org.openrndr.extra.fx.shadow.DropShadow
+import org.openrndr.extra.shadestyles.linearGradient
 import org.openrndr.extra.vfx.Contour
+import org.openrndr.extras.imageFit.imageFit
 import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.math.Vector2
 import kotlin.math.PI
@@ -36,7 +40,7 @@ A (more-or-less) complete listing of the effects in orx-fx is maintained in the 
     @Text """In this index we demonstrate selected filters, this is in no way a complete overview of what orx-fx offers."""
 
 
-    @Text """### Blur """
+    @Text """## Blur effects"""
 
     @Text "#### BoxBlur"
     @Media.Video """media/filters-001.mp4"""
@@ -219,7 +223,7 @@ A (more-or-less) complete listing of the effects in orx-fx is maintained in the 
             val blur = ZoomBlur()
 
             extend {
-                blur.center = Vector2(cos(seconds*PI*0.5)*0.5+0.5, sin(seconds*PI)*0.5+0.5)
+                blur.center = Vector2(cos(seconds * PI * 0.5) * 0.5 + 0.5, sin(seconds * PI) * 0.5 + 0.5)
                 blur.strength = cos(seconds * PI) * 0.5 + 0.5
                 blur.apply(image, blurred)
                 drawer.image(blurred)
@@ -227,7 +231,7 @@ A (more-or-less) complete listing of the effects in orx-fx is maintained in the 
         }
     }
 
-    @Text """### Color"""
+    @Text """## Color filters"""
 
     @Text "#### ChromaticAberration"
     @Media.Video """media/filters-100.mp4"""
@@ -359,7 +363,7 @@ A (more-or-less) complete listing of the effects in orx-fx is maintained in the 
 
 
 
-    @Text "### Edges"
+    @Text "## Edge-detection filters"
 
     @Text "#### LumaSobel"
     @Media.Video """media/filters-200.mp4"""
@@ -418,7 +422,7 @@ A (more-or-less) complete listing of the effects in orx-fx is maintained in the 
                 filter.backgroundOpacity = 1.0
                 filter.contourColor = ColorRGBa.BLACK
                 filter.contourWidth = 0.4
-                filter.levels = cos(seconds*PI) * 3.0 + 5.1
+                filter.levels = cos(seconds * PI) * 3.0 + 5.1
                 filter.apply(image, filtered)
                 drawer.image(filtered)
             }
@@ -449,14 +453,14 @@ A (more-or-less) complete listing of the effects in orx-fx is maintained in the 
             val filtered = colorBuffer(image.width, image.height)
 
             extend {
-                filter.radius = (cos(seconds*PI)*5+5).toInt()
+                filter.radius = (cos(seconds * PI) * 5 + 5).toInt()
                 filter.apply(image, filtered)
                 drawer.image(filtered)
             }
         }
     }
 
-    @Text "### Distort"
+    @Text "## Distortion filters"
 
     @Text "#### BlockRepeat"
     @Media.Video """media/filters-300.mp4"""
@@ -616,9 +620,9 @@ A (more-or-less) complete listing of the effects in orx-fx is maintained in the 
             val filtered = colorBuffer(image.width, image.height)
 
             extend {
-                filter.phase = seconds*0.1
+                filter.phase = seconds * 0.1
                 filter.decay = 0.168
-                filter.gain = cos(seconds*0.25 * PI)*0.5+0.5
+                filter.gain = cos(seconds * 0.25 * PI) * 0.5 + 0.5
 
                 filter.apply(image, filtered)
                 drawer.image(filtered)
@@ -658,8 +662,124 @@ A (more-or-less) complete listing of the effects in orx-fx is maintained in the 
         }
     }
 
+    @Text "#### Fisheye"
+    @Media.Video """media/filters-306.mp4"""
 
-    @Text "### Dither"
+    @Application
+    @Code
+    application {
+        @Exclude
+        configure {
+            width = 640
+            height = 480
+        }
+        program {
+            @Exclude
+            extend(ScreenRecorder()) {
+                outputFile = "media/filters-306.mp4"
+                maximumDuration = 5.0
+                quitAfterMaximum
+            }
+            val image = loadImage("data/images/cheeta.jpg")
+            val filter = Fisheye()
+            val filtered = colorBuffer(image.width, image.height)
+
+            extend {
+                filter.strength = cos(seconds * PI) * 0.125
+                filter.scale = 1.1
+                filter.apply(image, filtered)
+                drawer.image(filtered)
+            }
+        }
+    }
+
+    @Text "#### DisplaceBlend"
+    @Media.Video """media/filters-307.mp4"""
+
+    @Application
+    @Code
+    application {
+        @Exclude
+        configure {
+            width = 640
+            height = 480
+        }
+        program {
+            @Exclude
+            extend(ScreenRecorder()) {
+                outputFile = "media/filters-307.mp4"
+                maximumDuration = 5.0
+                quitAfterMaximum
+            }
+            val composite = compose {
+                colorType = ColorType.FLOAT16
+                layer {
+                    val image = loadImage("data/images/cheeta.jpg")
+                    draw {
+                        drawer.imageFit(image, 0.0, 0.0, width * 1.0, height * 1.0)
+                    }
+                }
+                layer {
+                    draw {
+                        drawer.shadeStyle = linearGradient(ColorRGBa.BLACK, ColorRGBa.WHITE)
+                        drawer.stroke = null
+                        val size = cos(seconds * PI * 0.5) * 100.0 + 200.0
+                        drawer.rectangle(width / 2.0 - size / 2, height / 2.0 - size / 2, size, size)
+                    }
+                    blend(DisplaceBlend()) {
+                        gain = cos(seconds * PI * 0.5) * 0.5 + 0.5
+                        rotation = seconds * 45.0
+                    }
+                }
+            }
+
+            extend {
+                composite.draw(drawer)
+            }
+        }
+    }
+
+
+    @Text "#### StretchWaves"
+    @Media.Video """media/filters-308.mp4"""
+
+    @Application
+    @Code
+    application {
+        @Exclude
+        configure {
+            width = 640
+            height = 480
+        }
+        program {
+            @Exclude
+            extend(ScreenRecorder()) {
+                outputFile = "media/filters-308.mp4"
+                maximumDuration = 5.0
+                quitAfterMaximum
+            }
+            val composite = compose {
+                colorType = ColorType.FLOAT16
+                layer {
+                    val image = loadImage("data/images/cheeta.jpg")
+                    draw {
+                        drawer.imageFit(image, 0.0, 0.0, width * 1.0, height * 1.0)
+                    }
+                    post(StretchWaves()) {
+                        distortion = 0.25
+                        rotation = seconds * 45.0
+                        phase = seconds * 0.25
+                        frequency = 5.0
+                    }
+                }
+            }
+            extend {
+                composite.draw(drawer)
+            }
+        }
+    }
+
+    @Text "## Dithering filters"
 
     @Text "#### ADither"
     @Media.Video """media/filters-400.mp4"""
@@ -751,10 +871,10 @@ A (more-or-less) complete listing of the effects in orx-fx is maintained in the 
             extend {
                 // -- need a white background because the filter introduces transparent areas
                 drawer.background(ColorRGBa.WHITE)
-                filter.t1 = cos(seconds* PI) * 0.25 + 0.25
-                filter.t2 = filter.t1 + cos(seconds* PI * 0.5) * 0.25 + 0.25
-                filter.t3 = filter.t2 + cos(seconds* PI * 0.25) * 0.25 + 0.25
-                filter.t4 = filter.t3 + cos(seconds* PI * 0.125) * 0.25 + 0.25
+                filter.t1 = cos(seconds * PI) * 0.25 + 0.25
+                filter.t2 = filter.t1 + cos(seconds * PI * 0.5) * 0.25 + 0.25
+                filter.t3 = filter.t2 + cos(seconds * PI * 0.25) * 0.25 + 0.25
+                filter.t4 = filter.t3 + cos(seconds * PI * 0.125) * 0.25 + 0.25
 
                 filter.apply(image, filtered)
 
@@ -764,8 +884,7 @@ A (more-or-less) complete listing of the effects in orx-fx is maintained in the 
     }
 
 
-
-    @Text "### Shadows"
+    @Text "## Shadow filters"
     @Text "#### DropShadow"
     @Media.Video """media/filters-500.mp4"""
 
@@ -808,5 +927,39 @@ A (more-or-less) complete listing of the effects in orx-fx is maintained in the 
         }
     }
 
+    @Text "## Pattern filters"
+    @Text "#### Checkers"
 
+    @Text """`Checkers` is a simple checker generator filter."""
+
+
+    @Media.Video """media/filters-600.mp4"""
+
+    @Application
+    @Code
+    application {
+        @Exclude
+        configure {
+            width = 640
+            height = 480
+        }
+        program {
+            @Exclude
+            extend(ScreenRecorder()) {
+                outputFile = "media/filters-600.mp4"
+                maximumDuration = 5.00
+                quitAfterMaximum
+            }
+            val composite = compose {
+                layer {
+                    post(Checkers()) {
+                        size = cos(seconds * 0.5 * PI) * 0.6 + 0.4
+                    }
+                }
+            }
+            extend {
+                composite.draw(drawer)
+            }
+        }
+    }
 }
