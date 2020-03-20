@@ -638,6 +638,41 @@ application {
  
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters021.kt) 
  
+ #### PerspectivePlane 
+ 
+ <video controls>
+    <source src="media/filters-309.mp4" type="video/mp4"></source>
+</video>
+ 
+ 
+ ```kotlin
+application {
+    program {
+        val composite = compose {
+            layer {
+                post(Checkers())
+            }
+            
+            layer {
+                val image = loadImage("data/images/cheeta.jpg")
+                draw {
+                    drawer.imageFit(image, 0.0, 0.0, width * 1.0, height * 1.0)
+                }
+                post(PerspectivePlane()) {
+                    planePitch = cos(seconds * 0.5 * PI) * 22.5
+                    planeYaw = sin(seconds * 0.5 * PI) * 22.5
+                }
+            }
+        }
+        extend {
+            composite.draw(drawer)
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters022.kt) 
+ 
  ## Dithering filters 
  
  #### ADither 
@@ -664,7 +699,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters022.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters023.kt) 
  
  #### CMYKHalftone 
  
@@ -693,7 +728,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters023.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters024.kt) 
  
  #### Crosshatch 
  
@@ -725,7 +760,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters024.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters025.kt) 
  
  ## Shadow filters 
  
@@ -764,7 +799,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters025.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters026.kt) 
  
  ## Pattern filters 
  
@@ -794,4 +829,4 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters026.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C06_Filters027.kt) 
