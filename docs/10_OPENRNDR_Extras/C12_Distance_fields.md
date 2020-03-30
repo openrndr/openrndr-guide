@@ -1,6 +1,14 @@
  
  # Distance fields using orx-jumpflood  
  
+ ## Prerequisites 
+ 
+ Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+project, all you have to do is add "orx-jumpflood" to the `orxFeatures` set in `build.gradle.kts`. Make sure to 
+reimport the gradle project after adding the feature. 
+ 
+ ## Distance field visualization 
+ 
  <video controls>
     <source src="media/distance-fields-001.mp4" type="video/mp4"></source>
 </video>
@@ -24,7 +32,6 @@ application {
                 }
             }
         }
-        
         extend {
             c.draw(drawer)
         }
@@ -34,7 +41,7 @@ application {
  
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C12_Distance_fields000.kt) 
  
- # Outer glow 
+ ## Outer glow 
  
  orx-jumpflood comes with a filter that creates Photoshop-style outer glow effect. 
  
@@ -66,7 +73,7 @@ application {
  
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C12_Distance_fields001.kt) 
  
- # Inner glow 
+ ## Inner glow 
  
  Similar to the outer glow effect, but the glow is placed in the inside of the shape. 
  
@@ -98,7 +105,7 @@ application {
  
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C12_Distance_fields002.kt) 
  
- # Sampling distance 
+ ## Sampling distance 
  
  <video controls>
     <source src="media/distance-fields-002.mp4" type="video/mp4"></source>

@@ -336,8 +336,6 @@ val settings = object {
 }
 ```
 
-
-
 ##### ActionParameter
 
 `ActionParameter` is a bit of an odd-one-out, it is not used to annotate properties but to annotate 0-argument functions. `orx-gui` will generate a button control that will call the function when clicked.

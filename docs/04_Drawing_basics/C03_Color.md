@@ -20,13 +20,32 @@ ColorRGBa.GRAY
 ColorRGBa.PINK
 ``` 
  
+ ### Custom colors 
+ 
+ Custom colors can be made using either the ColorRGBa constructor, or the `rgb` and `rgba` functions. Both use
+value ranges between 0.0 and 1.0. 
+ 
+ ```kotlin
+// -- using the ColorRGBa constructor
+val red = ColorRGBa(1.0, 0.0, 0.0)
+val green = ColorRGBa(0.0, 1.0, 0.0)
+val blue = ColorRGBa(0.0, 0.0, 1.0)
+val blueOpaque = ColorRGBa(0.0, 0.0, 1.0, 0.5)
+
+// -- using the rgb and rgba functions
+val magenta = rgb(1.0, 0.0, 1.0)
+val magentaOpaque = rgba(1.0, 0.0, 1.0, 0.5)
+``` 
+ 
  ### Conversion from hex color
 RGB color is commonly communicated in hexadecimal codes. `ColorRGBa` provides simple tools to construct color from such
 hexadecimal codes. 
  
  ```kotlin
-// -- construct the OPENRNDR pink from hexadecimal code
-val color = ColorRGBa.fromHex(0xffc0cb)
+// -- construct the OPENRNDR pink from hexadecimal code, using an integer argument
+val color1 = ColorRGBa.fromHex(0xffc0cb)
+// -- construct the OPENRNDR pink from hexidecimal code, using a string argument, the leading # is optional
+val color2 = ColorRGBa.fromHex("#ffc0cb")
 ``` 
  
  ### Color operations
