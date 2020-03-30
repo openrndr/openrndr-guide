@@ -296,6 +296,48 @@ val settings = object {
 }
 ```
 
+
+##### XYParameter
+`XYParameter` is used in combination with `Vector2` types. It takes an optional order argument. `orx-gui` will generate a two dimensional pad control for annotated properties.
+
+```kotlin
+val settings = object {
+    @XYParameter("xy", order = 0)
+    var xy = Vector2.ZERO                   
+}
+```
+##### Vector2Parameter
+`Vector2` is used in combination with `Vector2` types. It takes an optional order argument. `orx-gui` will generate a vertical slider for annotated properties.
+
+```kotlin
+val settings = object {
+    @Vector2("vector2", order = 0)
+    var v2 = Vector2.ZERO                   
+}
+```
+
+##### Vector3Parameter
+`Vector3` is used in combination with `Vector3` types. It takes an optional order argument. `orx-gui` will generate a vertical slider for annotated properties.
+
+```kotlin
+val settings = object {
+    @Vector3("vector3", order = 0)
+    var v3 = Vector3.ZERO                   
+}
+```
+
+##### Vector4Parameter
+`Vector4` is used in combination with `Vector4` types. It takes an optional order argument. `orx-gui` will generate a vertical slider for annotated properties.
+
+```kotlin
+val settings = object {
+    @Vector4("vector4", order = 0)
+    var v4 = Vector4.ZERO                   
+}
+```
+
+
+
 ##### ActionParameter
 
 `ActionParameter` is a bit of an odd-one-out, it is not used to annotate properties but to annotate 0-argument functions. `orx-gui` will generate a button control that will call the function when clicked.
