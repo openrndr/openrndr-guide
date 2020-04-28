@@ -22,8 +22,7 @@ The `ContourBuilder` class offers a simple way of producing complex two dimensio
 * `cursor` a `Vector2` instance representing the current position
 * `anchor` a `Vector2` instance representing the current anchor 
  
- Let's create a simple `Contour` and draw it. The following program shows how to use the contour builder
-        to create a triangular contour. 
+ Let's create a simple `Contour` and draw it. The following program shows how to use the contour builder to create a triangular contour. 
  
  <img src="media/shapes-001.png"/> 
  
@@ -216,10 +215,65 @@ program {
         drawer.circles(points0, 10.0)
         
 
-        val points1 = Circle(585.0, height / 2.0, 90.0).contour.equidistantPositions((Math.cos(seconds) * 10.0 + 30.0).toInt())
+        val points1 = Circle(585.0, height / 2.0, 90.0).contour.equidistantPositions((cos(seconds) * 10.0 + 30.0).toInt())
         drawer.circles(points1, 10.0)
     }
 }
 ``` 
  
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C05_ComplexShapes005.kt) 
+ 
+ ## Offsetting contours  
+ 
+ The function `ShapeContour.offset` can be used to create an offset version of a contour.  
+ 
+ <video controls>
+    <source src="media/shapes-101.mp4" type="video/mp4"></source>
+</video>
+ 
+ 
+ ```kotlin
+program {
+    // -- create a contour from Rectangle object
+    val c = Rectangle(100.0, 100.0, width - 200.0, height - 200.0).contour.reversed
+    
+    extend {
+        drawer.fill = null
+        drawer.stroke = ColorRGBa.PINK
+        drawer.contour(c)
+        for (i in 1 until 10) {
+            val o = c.offset((cos(seconds * 0.5 + 0.5)) * i * 10.0, SegmentJoin.BEVEL)
+            drawer.contour(o)
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C05_ComplexShapes006.kt) 
+ 
+ `ShapeContour.offset` can also be used to offset curved contours. The following demonstration shows a single cubic bezier offset at multiple distances. 
+ 
+ <video controls>
+    <source src="media/shapes-100.mp4" type="video/mp4"></source>
+</video>
+ 
+ 
+ ```kotlin
+program {
+    val c = contour {
+        moveTo(width * (1.0 / 2.0), height * (1.0 / 5.0))
+        curveTo(width * (1.0 / 4.0), height * (2.0 / 5.0), width * (3.0 / 4.0), height * (3.0 / 5.0), width * (2.0 / 4.0), height * (4.0 / 5.0))
+    }
+    extend {
+        drawer.stroke = ColorRGBa.PINK
+        drawer.strokeWeight = 2.0
+        drawer.contour(c)
+        for (i in -8..8) {
+            val o = c.offset(i * 10.0 * (cos(seconds * 0.5 + 0.5)))
+            drawer.contour(o)
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C05_ComplexShapes007.kt) 
