@@ -263,7 +263,7 @@ val settings = object {
 `IntParameter` is used in combination with `Int` types. It takes a label, minimum-value, maximum value, and an optional order argument. `orx-gui` will generate a slider control for annotated properties.
 ```kotlin
 val settings = object {
-    @DoubleParameter("x", 0, 100, order = 0)
+    @IntParameter("x", 0, 100, order = 0)
     var x = 0                   
 }
 ```              
@@ -272,7 +272,7 @@ val settings = object {
 `ColorParameter` is used in combination with `Color` types. It takes an optional order argument. `orx-gui` will generate a color picker control for annotated properties.
 ```kotlin
 val settings = object {
-    @DoubleParameter("color", order = 0)
+    @ColorParameter("color", order = 0)
     var color = ColorRGBa.PINK                   
 }
 ```
@@ -307,33 +307,54 @@ val settings = object {
 }
 ```
 ##### Vector2Parameter
-`Vector2` is used in combination with `Vector2` types. It takes an optional order argument. `orx-gui` will generate a vertical slider for annotated properties.
+`Vector2Parameter` is used in combination with `Vector2` types. It takes an optional order argument. `orx-gui` will generate a vertical slider for annotated properties.
 
 ```kotlin
 val settings = object {
-    @Vector2("vector2", order = 0)
+    @Vector2Parameter("vector2", order = 0)
     var v2 = Vector2.ZERO                   
 }
 ```
 
 ##### Vector3Parameter
-`Vector3` is used in combination with `Vector3` types. It takes an optional order argument. `orx-gui` will generate a vertical slider for annotated properties.
+`Vector3Parameter` is used in combination with `Vector3` types. It takes an optional order argument. `orx-gui` will generate a vertical slider for annotated properties.
 
 ```kotlin
 val settings = object {
-    @Vector3("vector3", order = 0)
+    @Vector3Parameter("vector3", order = 0)
     var v3 = Vector3.ZERO                   
 }
 ```
 
 ##### Vector4Parameter
-`Vector4` is used in combination with `Vector4` types. It takes an optional order argument. `orx-gui` will generate a vertical slider for annotated properties.
+`Vector4Parameter` is used in combination with `Vector4` types. It takes an optional order argument. `orx-gui` will generate a vertical slider for annotated properties.
 
 ```kotlin
 val settings = object {
-    @Vector4("vector4", order = 0)
+    @Vector4Parameter("vector4", order = 0)
     var v4 = Vector4.ZERO                   
 }
+```
+
+
+##### DoubleListParameter
+
+`DoubleListParameter` is used in combination with a list of `Double`. It takes an optional order argument. `orx-gui` will generate a set of vertical sliders.
+
+```kotlin
+@DoubleListParameter("Mixer", order = 0)
+var mixer = MutableList(5) { 0.5 }
+```
+
+##### OptionParameter
+
+`OptionParameter` is used in combination with an `enum`. It takes an optional order argument. `orx-gui` will generate a dropdown including all options in the enum.
+
+```kotlin
+enum class Parity { Odd, Even }
+
+@OptionParameter("Parity", order = 0)
+var parity = Parity.Odd
 ```
 
 ##### ActionParameter
