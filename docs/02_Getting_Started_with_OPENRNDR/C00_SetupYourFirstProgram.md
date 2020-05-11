@@ -43,5 +43,7 @@ the program should now run.
 
 At this point you are likely interested in how this program is structured. The guide explains more in the [Program basics](03_Program_basics/C00_ApplicationProgram) chapter.  
 
+If you are more interested in reading source code you can find the code for the examples in this guide in the [`openrndr-examples` repository](https://github.com/openrndr/openrndr-examples). If you are interested in more advanced examples we recommend checking out the demo programs in the [`orx` repository](https://github.com/openrndr/orx), most `orx` modules have demos in the `src/demo/kotlin` folder.
+
 
 
