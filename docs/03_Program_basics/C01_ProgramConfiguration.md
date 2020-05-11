@@ -6,6 +6,11 @@ Starting your program with a custom configuration looks roughly like this.
 fun main(args: Array<String>) = application {
     configure {// -- settings go here
     }
+    program {
+        // -- one time set up code goes here
+        extend {// -- drwawing code goes here
+        }
+    }
 }
 ``` 
  
