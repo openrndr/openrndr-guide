@@ -113,7 +113,7 @@ SQUARE   | square cap
  ```kotlin
 program {
     extend {
-        drawer.background(ColorRGBa.PINK)
+        drawer.clear(ColorRGBa.PINK)
         // -- setup line appearance
         drawer.stroke = ColorRGBa.BLACK
         drawer.strokeWeight = 5.0
@@ -142,7 +142,7 @@ To draw a line strip one supplies a list of points between which line segments s
 program {
     
     extend {
-        drawer.background(ColorRGBa.PINK)
+        drawer.clear(ColorRGBa.PINK)
         // -- setup line appearance
         drawer.stroke = ColorRGBa.BLACK
         drawer.strokeWeight = 5.0

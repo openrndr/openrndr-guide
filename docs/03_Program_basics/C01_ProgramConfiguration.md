@@ -3,7 +3,7 @@
 Starting your program with a custom configuration looks roughly like this. 
  
  ```kotlin
-fun main(args: Array<String>) = application {
+fun main() = application {
     configure {// -- settings go here
     }
     program {
@@ -30,7 +30,7 @@ fun main(args: Array<String>) = application {
 The default value for `position` is `null` for which the default behaviour is to place the window at the center of the primary display 
  
  ```kotlin
-fun main(args: Array<String>) = application {
+fun main() = application {
     configure {
         position = IntVector2(100, 400)
     }
@@ -43,7 +43,7 @@ Setting the window size is done through the `width` and `height` properties.
  
  
  ```kotlin
-fun main(args: Array<String>) = application {
+fun main() = application {
     configure {
         width = 1920
         height = 1080
@@ -55,7 +55,7 @@ fun main(args: Array<String>) = application {
  or if no mode change is desired use `Fullscreen.CURRENT_DISPLAY_MODE` 
  
  ```kotlin
-fun main(args: Array<String>) = application {
+fun main() = application {
     configure {
         fullscreen = Fullscreen.CURRENT_DISPLAY_MODE
     }
@@ -65,7 +65,7 @@ fun main(args: Array<String>) = application {
  # Window Title 
  
  ```kotlin
-fun main(args: Array<String>) = application {
+fun main() = application {
     configure {
         title = "Lo and behold!"
     }
@@ -76,7 +76,7 @@ fun main(args: Array<String>) = application {
 Two window unfocus behaviours are available. In `NORMAL` behaviour the program continues running at full speed, in contrast the `THROTTLE` behaviour throttles the program to 10Hz. 
  
  ```kotlin
-fun main(args: Array<String>) = application {
+fun main() = application {
     configure {
         unfocusBehaviour = UnfocusBehaviour.THROTTLE
     }
