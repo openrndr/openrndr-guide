@@ -44,7 +44,7 @@ fun main() {
 
             extend {
 
-                drawer.background(ColorRGBa.PINK)
+                drawer.clear(ColorRGBa.PINK)
                 drawer.fill = ColorRGBa.WHITE
                 drawer.stroke = ColorRGBa.BLACK
                 drawer.strokeWeight = 1.0
@@ -105,7 +105,7 @@ fun main() {
             }
 
             extend {
-                drawer.background(ColorRGBa.PINK)
+                drawer.clear(ColorRGBa.PINK)
                 drawer.fill = ColorRGBa.WHITE
                 drawer.stroke = ColorRGBa.BLACK
                 drawer.strokeWeight = 1.0
@@ -142,7 +142,7 @@ fun main() {
             }
 
             extend {
-                drawer.background(ColorRGBa.PINK)
+                drawer.clear(ColorRGBa.PINK)
                 drawer.fill = ColorRGBa.WHITE
                 drawer.stroke = ColorRGBa.BLACK
                 drawer.strokeWeight = 1.0
@@ -198,7 +198,7 @@ fun main() {
                 outputFile = "media/line-001.png"
             }
             extend {
-                drawer.background(ColorRGBa.PINK)
+                drawer.clear(ColorRGBa.PINK)
                 // -- setup line appearance
                 drawer.stroke = ColorRGBa.BLACK
                 drawer.strokeWeight = 5.0
@@ -236,7 +236,7 @@ fun main() {
             }
 
             extend {
-                drawer.background(ColorRGBa.PINK)
+                drawer.clear(ColorRGBa.PINK)
                 // -- setup line appearance
                 drawer.stroke = ColorRGBa.BLACK
                 drawer.strokeWeight = 5.0

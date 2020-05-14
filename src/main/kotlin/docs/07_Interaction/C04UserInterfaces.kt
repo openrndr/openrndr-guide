@@ -62,7 +62,7 @@ fun main(args: Array<String>) {
                 }
             }
             extend {
-                drawer.background(color)
+                drawer.clear(color)
             }
         }
     }
@@ -201,7 +201,7 @@ fun main(args: Array<String>) {
                 }
             }
             extend {
-                drawer.background(ColorRGBa.GRAY.shade(0.250))
+                drawer.clear(ColorRGBa.GRAY.shade(0.250))
             }
         }
     }

@@ -30,7 +30,7 @@ fun main() {
             val videoPlayer = VideoPlayerFFMPEG.fromFile("data/video.mp4")
             videoPlayer.play()
             extend {
-                drawer.background(ColorRGBa.BLACK)
+                drawer.clear(ColorRGBa.BLACK)
                 videoPlayer.draw(drawer)
             }
         }
@@ -58,7 +58,7 @@ fun main() {
             val videoPlayer = VideoPlayerFFMPEG.fromDevice()
             videoPlayer.play()
             extend {
-                drawer.background(ColorRGBa.BLACK)
+                drawer.clear(ColorRGBa.BLACK)
                 videoPlayer.draw(drawer)
             }
         }
@@ -85,7 +85,7 @@ fun main() {
             videoPlayer.play()
 
             extend {
-                drawer.background(ColorRGBa.BLACK)
+                drawer.clear(ColorRGBa.BLACK)
                 // -- draw the video on the render target
                 drawer.withTarget(renderTarget) {
                     videoPlayer.draw(drawer)

@@ -41,7 +41,7 @@ fun main() {
             var frame = 0
             extend {
                 drawer.isolatedWithTarget(videoTarget) {
-                    background(ColorRGBa.BLACK)
+                    clear(ColorRGBa.BLACK)
                     rectangle(40.0 + frame, 40.0, 100.0, 100.0)
                 }
 
