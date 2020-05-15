@@ -44,7 +44,7 @@ fun main() {
                 quitAfterMaximum = true
             }
             extend {
-                drawer.background(ColorRGBa.PINK)
+                drawer.clear(ColorRGBa.PINK)
                 drawer.fill = ColorRGBa.WHITE
                 drawer.circle(drawer.bounds.center, Math.abs(Math.cos(seconds)) * height*0.5)
             }

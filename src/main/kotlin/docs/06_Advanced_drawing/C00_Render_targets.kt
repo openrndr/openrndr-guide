@@ -51,7 +51,7 @@ by drawing that offscreen buffer on screen. """
 
             extend {
                 drawer.isolatedWithTarget(rt) {
-                    drawer.background(ColorRGBa.BLACK)
+                    drawer.clear(ColorRGBa.BLACK)
                     drawer.fill = ColorRGBa.WHITE
                     drawer.stroke = null
                     drawer.rectangle(40.0, 40.0, 80.0, 80.0)
@@ -78,7 +78,7 @@ specifically when the used render target has dimensions that differ from those o
 
             extend {
                 drawer.isolatedWithTarget(rt) {
-                    drawer.background(ColorRGBa.BLACK)
+                    drawer.clear(ColorRGBa.BLACK)
 
                     // -- set the orthographic transform that matches with the render target
                     ortho(rt)
@@ -109,14 +109,14 @@ channels. The following code snippet uses two `RenderTarget` instances and clear
 
                 // -- bind our first render target, clear it, draw on it, unbind it
                 drawer.isolatedWithTarget(rt0) {
-                    drawer.background(ColorRGBa.TRANSPARENT)
+                    drawer.clear(ColorRGBa.TRANSPARENT)
                     drawer.fill = ColorRGBa.WHITE
                     drawer.rectangle(40.0, 40.0, 80.0, 80.0)
                 }
 
                 // -- bind our second render target, clear it, draw on it, unbind it
                 drawer.isolatedWithTarget(rt1) {
-                    drawer.background(ColorRGBa.TRANSPARENT)
+                    drawer.clear(ColorRGBa.TRANSPARENT)
                     drawer.fill = ColorRGBa.PINK
                     drawer.rectangle(140.0, 140.0, 80.0, 80.0)
                 }
@@ -168,7 +168,7 @@ in the `renderTarget {}` builder will be created with the same multi sample conf
 
             extend {
                 drawer.isolatedWithTarget(rt) {
-                    drawer.background(ColorRGBa.BLACK)
+                    drawer.clear(ColorRGBa.BLACK)
                     drawer.fill = ColorRGBa.WHITE
                     drawer.stroke = null
                     drawer.rectangle(40.0, 40.0, 80.0, 80.0)

@@ -270,7 +270,7 @@ by using nested layers and a `Normal` blend with `clip` enabled.
             }
             val composite = compose {
                 draw {
-                    drawer.background(ColorRGBa.PINK)
+                    drawer.clear(ColorRGBa.PINK)
                 }
                 layer {
                     // -- we nest layers to prevent the text layer to be blend with the background
@@ -337,7 +337,7 @@ a drop shadow _post_ effect to draw the text with a bit of a shadow that sets th
 
             val composite = compose {
                 draw {
-                    drawer.background(ColorRGBa.PINK)
+                    drawer.clear(ColorRGBa.PINK)
                 }
                 layer {
                     // -- load the image inside the layer
