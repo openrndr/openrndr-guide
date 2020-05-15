@@ -6,10 +6,8 @@ import org.openrndr.dokgen.annotations.*
 import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.math.Vector2
-import org.openrndr.shape.Circle
-import org.openrndr.shape.compound
-import org.openrndr.shape.contour
-import org.openrndr.shape.shape
+import org.openrndr.shape.*
+import kotlin.math.cos
 
 
 fun main(args: Array<String>) {
@@ -38,8 +36,7 @@ The `ContourBuilder` class offers a simple way of producing complex two dimensio
 * `anchor` a `Vector2` instance representing the current anchor
 """
 
-    @Text """Let's create a simple `Contour` and draw it. The following program shows how to use the contour builder
-        to create a triangular contour."""
+    @Text """Let's create a simple `Contour` and draw it. The following program shows how to use the contour builder to create a triangular contour."""
 
     @Media.Image """media/shapes-001.png"""
 
@@ -238,15 +235,14 @@ it can actually work with an entire tree of compounds. Demonstrated below is the
                 val sub0 = Circle(185.0, height / 2.0, 100.0).contour.sub(0.0, 0.5 + 0.50 * Math.sin(seconds))
                 drawer.contour(sub0)
 
-                val sub1 = Circle(385.0, height / 2.0, 100.0).contour.sub(seconds*0.1, seconds*0.1 + 0.1)
+                val sub1 = Circle(385.0, height / 2.0, 100.0).contour.sub(seconds * 0.1, seconds * 0.1 + 0.1)
                 drawer.contour(sub1)
 
-                val sub2 = Circle(585.0, height / 2.0, 100.0).contour.sub(-seconds*0.05, seconds*0.05 + 0.1)
+                val sub2 = Circle(585.0, height / 2.0, 100.0).contour.sub(-seconds * 0.05, seconds * 0.05 + 0.1)
                 drawer.contour(sub2)
             }
         }
     }
-
 
     @Text """## Placing points on contours """
     @Text """A single point on a contour """.trimMargin()
@@ -270,18 +266,87 @@ it can actually work with an entire tree of compounds. Demonstrated below is the
                 drawer.stroke = null
                 drawer.fill = ColorRGBa.PINK
 
-                val point = Circle(185.0, height/2.0, 90.0).contour.position((seconds * 0.1) % 1.0)
+                val point = Circle(185.0, height / 2.0, 90.0).contour.position((seconds * 0.1) % 1.0)
                 drawer.circle(point, 10.0)
 
-                val points0 = Circle(385.0, height/2.0, 90.0).contour.equidistantPositions(20)
+                val points0 = Circle(385.0, height / 2.0, 90.0).contour.equidistantPositions(20)
                 drawer.circles(points0, 10.0)
 
 
-                val points1 = Circle(585.0, height/2.0, 90.0).contour.equidistantPositions((Math.cos(seconds)*10.0+30.0).toInt())
+                val points1 = Circle(585.0, height / 2.0, 90.0).contour.equidistantPositions((cos(seconds) * 10.0 + 30.0).toInt())
                 drawer.circles(points1, 10.0)
 
             }
         }
     }
 
+    @Text """## Offsetting contours """
+
+    @Text """The function `ShapeContour.offset` can be used to create an offset version of a contour. """
+
+    @Media.Video """media/shapes-101.mp4"""
+    @Application
+    application {
+        configure {
+            width = 770
+            height = 578
+        }
+        @Code
+        program {
+            @Exclude
+            extend(ScreenRecorder()) {
+                outputFile = "media/shapes-101.mp4"
+                quitAfterMaximum = true
+                maximumDuration = 10.0
+            }
+            // -- create a contour from Rectangle object
+            val c = Rectangle(100.0, 100.0, width - 200.0, height - 200.0).contour.reversed
+
+            extend {
+                drawer.fill = null
+                drawer.stroke = ColorRGBa.PINK
+                drawer.contour(c)
+                for (i in 1 until 10) {
+                    val o = c.offset(  (cos(seconds*0.5+0.5)) * i * 10.0, SegmentJoin.BEVEL)
+                    drawer.contour(o)
+                }
+            }
+        }
+    }
+
+
+
+    @Text """`ShapeContour.offset` can also be used to offset curved contours. The following demonstration shows a single cubic bezier offset at multiple distances."""
+
+    @Media.Video """media/shapes-100.mp4"""
+    @Application
+    application {
+        configure {
+            width = 770
+            height = 578
+        }
+        @Code
+        program {
+            @Exclude
+            extend(ScreenRecorder()) {
+                outputFile = "media/shapes-100.mp4"
+                quitAfterMaximum = true
+                maximumDuration = 10.00
+            }
+            val c = contour {
+                moveTo(width * (1.0 / 2.0), height * (1.0 / 5.0))
+                curveTo(width * (1.0 / 4.0), height * (2.0 / 5.0), width * (3.0 / 4.0), height * (3.0 / 5.0), width * (2.0 / 4.0), height * (4.0 / 5.0))
+            }
+            extend {
+                drawer.stroke = ColorRGBa.PINK
+                drawer.strokeWeight = 2.0
+                drawer.contour(c)
+                for (i in -8 .. 8) {
+                    val o = c.offset(i * 10.0*(cos(seconds*0.5+0.5)))
+                    drawer.contour(o)
+
+                }
+            }
+        }
+    }
 }

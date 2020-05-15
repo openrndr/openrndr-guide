@@ -16,8 +16,15 @@ import kotlin.math.cos
 
 
 fun main() {
-
     @Text """# Distance fields using orx-jumpflood """
+
+    @Text "## Prerequisites"
+    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+project, all you have to do is add "orx-jumpflood" to the `orxFeatures` set in `build.gradle.kts`. Make sure to 
+reimport the gradle project after adding the feature."""
+
+
+    @Text "## Distance field visualization"
 
     @Media.Video """media/distance-fields-001.mp4"""
 
@@ -52,14 +59,13 @@ fun main() {
                     }
                 }
             }
-
             extend {
                 c.draw(drawer)
             }
         }
     }
 
-    @Text "# Outer glow"
+    @Text "## Outer glow"
 
     @Text """orx-jumpflood comes with a filter that creates Photoshop-style outer glow effect."""
 
@@ -97,7 +103,7 @@ fun main() {
         }
     }
 
-    @Text "# Inner glow"
+    @Text "## Inner glow"
 
     @Text """Similar to the outer glow effect, but the glow is placed in the inside of the shape."""
 
@@ -135,7 +141,7 @@ fun main() {
         }
     }
 
-    @Text "# Sampling distance"
+    @Text "## Sampling distance"
 
     @Media.Video """media/distance-fields-002.mp4"""
 

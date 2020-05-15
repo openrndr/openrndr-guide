@@ -19,8 +19,13 @@ fun main() {
     
 
     @Text """
-    The `openrndr-template` project makes this simple as the repositories are already set up and one only has to add 
-    the module names to the `orxFeatures` set.    
-    """
+ The [openrndr-template](https://github.com/openrndr/openrndr-template) project makes this simple as 
+ the repositories are already set up and one only has to 
+ 
+ 1. Open the `build.gradle.kts` file
+ 2. Uncomment the desired module names under `orxFeatures`
+ 3. Save
+ 4. Reimport Gradle projects: if using Idea choose Reimport All Gradle Projects from the Gradle panel.
+"""
 
 }

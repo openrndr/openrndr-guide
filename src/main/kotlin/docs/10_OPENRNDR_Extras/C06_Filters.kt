@@ -779,6 +779,47 @@ A (more-or-less) complete listing of the effects in orx-fx is maintained in the 
         }
     }
 
+    @Text "#### PerspectivePlane"
+    @Media.Video """media/filters-309.mp4"""
+
+    @Application
+    @Code
+    application {
+        @Exclude
+        configure {
+            width = 640
+            height = 480
+        }
+        program {
+            @Exclude
+            extend(ScreenRecorder()) {
+                outputFile = "media/filters-309.mp4"
+                maximumDuration = 5.00
+                quitAfterMaximum
+            }
+            val composite = compose {
+                layer {
+                    post(Checkers())
+                }
+
+                layer {
+                    val image = loadImage("data/images/cheeta.jpg")
+                    draw {
+                        drawer.imageFit(image, 0.0, 0.0, width * 1.0, height * 1.0)
+                    }
+                    post(PerspectivePlane()) {
+                        planePitch = cos(seconds * 0.5 * PI) * 22.5
+                        planeYaw = sin(seconds * 0.5 * PI) * 22.5
+                    }
+                }
+            }
+            extend {
+                composite.draw(drawer)
+            }
+        }
+    }
+
+
     @Text "## Dithering filters"
 
     @Text "#### ADither"

@@ -7,8 +7,7 @@ import org.openrndr.dokgen.annotations.Code
 import org.openrndr.dokgen.annotations.Text
 import org.openrndr.math.IntVector2
 
-
-fun main(args: Array<String>) {
+fun main() {
 
     @Text
     """
@@ -18,9 +17,15 @@ fun main(args: Array<String>) {
 
     @Code.Block
     run {
-        fun main(args: Array<String>) = application {
+        fun main() = application {
             configure {
                 // -- settings go here
+            }
+            program {
+                // -- one time set up code goes here
+                extend {
+                    // -- drwawing code goes here
+                }
             }
         }
     }
@@ -49,7 +54,7 @@ fun main(args: Array<String>) {
 
     @Code.Block
     run {
-        fun main(args: Array<String>) = application {
+        fun main() = application {
             configure {
                 position = IntVector2(100, 400)
             }
@@ -66,7 +71,7 @@ fun main(args: Array<String>) {
 
     @Code.Block
     run {
-        fun main(args: Array<String>) = application {
+        fun main() = application {
             configure {
                 width = 1920
                 height = 1080
@@ -83,7 +88,7 @@ fun main(args: Array<String>) {
 
     @Code.Block
     run {
-        fun main(args: Array<String>) = application {
+        fun main() = application {
             configure {
                 fullscreen = Fullscreen.CURRENT_DISPLAY_MODE
             }
@@ -97,7 +102,7 @@ fun main(args: Array<String>) {
 
     @Code.Block
     run {
-        fun main(args: Array<String>) = application {
+        fun main() = application {
             configure {
                 title = "Lo and behold!"
             }
@@ -120,7 +125,7 @@ fun main(args: Array<String>) {
     }
 
     @Code
-    fun main(args: Array<String>) = application {
+    fun main() = application {
         configure {
             unfocusBehaviour = UnfocusBehaviour.THROTTLE
         }

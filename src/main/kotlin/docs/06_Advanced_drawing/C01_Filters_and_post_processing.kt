@@ -109,7 +109,7 @@ we will be making is a simple noise filter.
         }
         """
 
-        class Noise : Filter(filterShaderFromCode(noiseShader)) {
+        class Noise : Filter(filterShaderFromCode(noiseShader, "noise-shader")) {
             // -- note the 'by parameters' here, this is what wires the fields up to the uniforms
             var gain: Double by parameters
             var time: Double by parameters
