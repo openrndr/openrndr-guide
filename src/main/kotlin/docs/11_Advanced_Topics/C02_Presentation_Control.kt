@@ -51,7 +51,7 @@ fun main(args: Array<String>) {
             }
 
             extend {
-                drawer.background(ColorRGBa.PINK.shade(Math.random()))
+                drawer.clear(ColorRGBa.PINK.shade(Math.random()))
             }
         }
     }

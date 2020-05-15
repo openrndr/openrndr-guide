@@ -202,7 +202,7 @@ provided filters can be found in [`orx-filter` index](10_OPENRNDR_Extras/C06_Fil
                     blur.sigma = cos(PI * seconds * 0.5) * 10.0 + 10.1
                 }
                 drawer.isolatedWithTarget(rt) {
-                    drawer.background(ColorRGBa.BLACK)
+                    drawer.clear(ColorRGBa.BLACK)
                     // -- use our settings
                     drawer.circle(settings.x, settings.y, 100.0)
                 }
@@ -259,7 +259,7 @@ we can insert any of the blend and post filters in the sidebar as we please. The
             val composite = compose {
                 layer {
                     draw {
-                        drawer.background(settings.background)
+                        drawer.clear(settings.background)
                     }
                 }
                 layer {
@@ -325,7 +325,7 @@ import org.openrndr.extra.parameters.*
         }
         val composite = compose {
             draw {
-                drawer.background(ColorRGBa.PINK)
+                drawer.clear(ColorRGBa.PINK)
                 drawer.circle(settings.x, height / 2.0, 100.0)
             }
         }
