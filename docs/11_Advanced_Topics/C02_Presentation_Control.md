@@ -33,7 +33,7 @@ application {
         }
         
         extend {
-            drawer.background(ColorRGBa.PINK.shade(Math.random()))
+            drawer.clear(ColorRGBa.PINK.shade(Math.random()))
         }
     }
 }

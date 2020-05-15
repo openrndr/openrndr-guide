@@ -29,7 +29,7 @@ program {
     extend {
         // -- draw to offscreen buffer
         drawer.isolatedWithTarget(offscreen) {
-            background(ColorRGBa.BLACK)
+            clear(ColorRGBa.BLACK)
             fill = ColorRGBa.PINK
             stroke = null
             circle(Math.cos(seconds) * 100.0 + width / 2, Math.sin(seconds) * 100.0 + height / 2.0, 100.0 + 100.0 * Math.cos(seconds * 2.0))
@@ -105,7 +105,7 @@ application {
         extend {
             // -- draw to offscreen buffer
             drawer.isolatedWithTarget(offscreen) {
-                background(ColorRGBa.BLACK)
+                clear(ColorRGBa.BLACK)
                 fill = ColorRGBa.PINK
                 stroke = null
                 circle(cos(seconds) * 100.0 + width / 2, sin(seconds) * 100.0 + height / 2.0, 100.0 + 100.0 * cos(seconds * 2.0))

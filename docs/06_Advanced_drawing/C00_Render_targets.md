@@ -40,7 +40,7 @@ program {
     
     extend {
         drawer.isolatedWithTarget(rt) {
-            drawer.background(ColorRGBa.BLACK)
+            drawer.clear(ColorRGBa.BLACK)
             drawer.fill = ColorRGBa.WHITE
             drawer.stroke = null
             drawer.rectangle(40.0, 40.0, 80.0, 80.0)
@@ -67,7 +67,7 @@ program {
     
     extend {
         drawer.isolatedWithTarget(rt) {
-            drawer.background(ColorRGBa.BLACK)
+            drawer.clear(ColorRGBa.BLACK)
             
             // -- set the orthographic transform that matches with the render target
             ortho(rt)
@@ -102,14 +102,14 @@ program {
         
         // -- bind our first render target, clear it, draw on it, unbind it
         drawer.isolatedWithTarget(rt0) {
-            drawer.background(ColorRGBa.TRANSPARENT)
+            drawer.clear(ColorRGBa.TRANSPARENT)
             drawer.fill = ColorRGBa.WHITE
             drawer.rectangle(40.0, 40.0, 80.0, 80.0)
         }
         
         // -- bind our second render target, clear it, draw on it, unbind it
         drawer.isolatedWithTarget(rt1) {
-            drawer.background(ColorRGBa.TRANSPARENT)
+            drawer.clear(ColorRGBa.TRANSPARENT)
             drawer.fill = ColorRGBa.PINK
             drawer.rectangle(140.0, 140.0, 80.0, 80.0)
         }
@@ -159,7 +159,7 @@ program {
     
     extend {
         drawer.isolatedWithTarget(rt) {
-            drawer.background(ColorRGBa.BLACK)
+            drawer.clear(ColorRGBa.BLACK)
             drawer.fill = ColorRGBa.WHITE
             drawer.stroke = null
             drawer.rectangle(40.0, 40.0, 80.0, 80.0)

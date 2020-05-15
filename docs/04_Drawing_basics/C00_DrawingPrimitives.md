@@ -13,7 +13,7 @@ program {
     
     extend {
     
-        drawer.background(ColorRGBa.PINK)
+        drawer.clear(ColorRGBa.PINK)
         drawer.fill = ColorRGBa.WHITE
         drawer.stroke = ColorRGBa.BLACK
         drawer.strokeWeight = 1.0
@@ -51,7 +51,7 @@ OPENRNDR provides special draw APIs for drawing many circles at once. Using thes
 program {
     
     extend {
-        drawer.background(ColorRGBa.PINK)
+        drawer.clear(ColorRGBa.PINK)
         drawer.fill = ColorRGBa.WHITE
         drawer.stroke = ColorRGBa.BLACK
         drawer.strokeWeight = 1.0
@@ -74,7 +74,7 @@ program {
 program {
     
     extend {
-        drawer.background(ColorRGBa.PINK)
+        drawer.clear(ColorRGBa.PINK)
         drawer.fill = ColorRGBa.WHITE
         drawer.stroke = ColorRGBa.BLACK
         drawer.strokeWeight = 1.0

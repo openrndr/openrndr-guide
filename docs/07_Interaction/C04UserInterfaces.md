@@ -32,7 +32,7 @@ application {
             }
         }
         extend {
-            drawer.background(color)
+            drawer.clear(color)
         }
     }
 }
@@ -127,7 +127,7 @@ application {
             }
         }
         extend {
-            drawer.background(ColorRGBa.GRAY.shade(0.250))
+            drawer.clear(ColorRGBa.GRAY.shade(0.250))
         }
     }
 }

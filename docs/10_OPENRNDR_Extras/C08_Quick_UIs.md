@@ -109,7 +109,7 @@ application {
         extend(gui)
         extend {
             drawer.isolatedWithTarget(rt) {
-                drawer.background(ColorRGBa.BLACK)
+                drawer.clear(ColorRGBa.BLACK)
                 // -- use our settings
                 drawer.circle(settings.x, settings.y, 100.0)
             }
@@ -158,7 +158,7 @@ application {
         val composite = compose {
             layer {
                 draw {
-                    drawer.background(settings.background)
+                    drawer.clear(settings.background)
                 }
             }
             layer {
@@ -228,7 +228,7 @@ import org.openrndr.extra.parameters.*
         }
         val composite = compose {
             draw {
-                drawer.background(ColorRGBa.PINK)
+                drawer.clear(ColorRGBa.PINK)
                 drawer.circle(settings.x, height / 2.0, 100.0)
             }
         }

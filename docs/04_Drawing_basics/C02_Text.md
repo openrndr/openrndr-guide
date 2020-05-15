@@ -15,7 +15,7 @@ draw the text.
 program {
     val font = loadFont("data/IBMPlexMono-Bold.ttf", 48.0)
     extend {
-        drawer.background(ColorRGBa.PINK)
+        drawer.clear(ColorRGBa.PINK)
         drawer.fontMap = font
         drawer.fill = ColorRGBa.BLACK
         drawer.text("HELLO WORLD", width / 2.0 - 100.0, height / 2.0)
@@ -36,7 +36,7 @@ Its use is easiest demonstrated through an example:
 program {
     val font = loadFont("file:data/IBMPlexMono-Bold.ttf", 24.0)
     extend {
-        drawer.background(ColorRGBa.PINK)
+        drawer.clear(ColorRGBa.PINK)
         drawer.fontMap = font
         drawer.fill = ColorRGBa.BLACK
         
@@ -65,7 +65,7 @@ text is set on two rows.
 program {
     val font = loadFont("file:data/IBMPlexMono-Bold.ttf", 24.0)
     extend {
-        drawer.background(ColorRGBa.PINK)
+        drawer.clear(ColorRGBa.PINK)
         drawer.fontMap = font
         drawer.fill = ColorRGBa.BLACK
         
@@ -95,7 +95,7 @@ set using `Writer.style.leading` and `Writer.style.tracking`.
 program {
     val font = loadFont("file:data/IBMPlexMono-Bold.ttf", 24.0)
     extend {
-        drawer.background(ColorRGBa.PINK)
+        drawer.clear(ColorRGBa.PINK)
         drawer.fontMap = font
         drawer.fill = ColorRGBa.BLACK
         

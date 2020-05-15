@@ -220,7 +220,7 @@ application {
     program {
         val composite = compose {
             draw {
-                drawer.background(ColorRGBa.PINK)
+                drawer.clear(ColorRGBa.PINK)
             }
             layer {
                 // -- we nest layers to prevent the text layer to be blend with the background
@@ -283,7 +283,7 @@ application {
         
         val composite = compose {
             draw {
-                drawer.background(ColorRGBa.PINK)
+                drawer.clear(ColorRGBa.PINK)
             }
             layer {
                 // -- load the image inside the layer

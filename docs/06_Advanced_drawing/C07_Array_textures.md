@@ -135,7 +135,7 @@ application {
         extend {
             drawer.isolatedWithTarget(rt) {
                 drawer.ortho(rt)
-                drawer.background(ColorRGBa.PINK)
+                drawer.clear(ColorRGBa.PINK)
             }
             drawer.image(at, 0)
         }
@@ -162,9 +162,9 @@ application {
         }
         var index = 0
         extend {
-            drawer.background(ColorRGBa.BLACK)
+            drawer.clear(ColorRGBa.BLACK)
             drawer.isolatedWithTarget(renderTargets[index % renderTargets.size]) {
-                drawer.background(ColorRGBa.BLACK)
+                drawer.clear(ColorRGBa.BLACK)
                 drawer.fill = ColorRGBa.PINK.opacify(0.5)
                 drawer.stroke = null
                 for (i in 0 until 20) {

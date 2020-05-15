@@ -134,7 +134,7 @@ application {
         
         extend {
             drawer.isolatedWithTarget(rt) {
-                drawer.background(ColorRGBa.BLACK)
+                drawer.clear(ColorRGBa.BLACK)
                 drawer.image(image, cos(seconds * PI) * 40.0, sin(seconds * PI) * 40.0)
             }
             
@@ -269,7 +269,7 @@ application {
         
         extend {
             // -- a pink background to demonstrate the introduced transparencies
-            drawer.background(ColorRGBa.PINK)
+            drawer.clear(ColorRGBa.PINK)
             filter.backgroundOpacity = 0.0
             filter.foregroundOpacity = 1.0
             filter.backgroundLuma = cos(seconds * PI) * 0.25 + 0.25
@@ -717,7 +717,7 @@ application {
         
         extend {
             // -- need a white background because the filter introduces transparent areas
-            drawer.background(ColorRGBa.WHITE)
+            drawer.clear(ColorRGBa.WHITE)
             filter.dotSize = 1.2
             filter.scale = cos(seconds * 0.25 * PI) * 2.0 + 6.0
             filter.apply(image, filtered)
@@ -746,7 +746,7 @@ application {
         
         extend {
             // -- need a white background because the filter introduces transparent areas
-            drawer.background(ColorRGBa.WHITE)
+            drawer.clear(ColorRGBa.WHITE)
             filter.t1 = cos(seconds * PI) * 0.25 + 0.25
             filter.t2 = filter.t1 + cos(seconds * PI * 0.5) * 0.25 + 0.25
             filter.t3 = filter.t2 + cos(seconds * PI * 0.25) * 0.25 + 0.25
@@ -784,11 +784,11 @@ application {
         
         extend {
             drawer.isolatedWithTarget(rt) {
-                drawer.background(ColorRGBa.TRANSPARENT)
+                drawer.clear(ColorRGBa.TRANSPARENT)
                 drawer.image(image, (image.width - image.width * 0.8) / 2, (image.height - image.height * 0.8) / 2, image.width * 0.8, image.height * 0.8)
             }
             // -- need a pink background because the filter introduces transparent areas
-            drawer.background(ColorRGBa.PINK)
+            drawer.clear(ColorRGBa.PINK)
             filter.window = (cos(seconds * 0.5 * PI) * 16 + 16).toInt()
             filter.xShift = cos(seconds * PI) * 16.0
             filter.yShift = sin(seconds * PI) * 16.0
