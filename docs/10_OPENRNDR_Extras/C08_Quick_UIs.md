@@ -173,9 +173,10 @@ application {
                         drawer.fill = ColorRGBa.BLUE
                         drawer.circle(settings.x + settings.separation, settings.y, 200.0)
                     }
-                    // -- add blend to layer and side
-                    blend(gui.add(Multiply(), "Multiply blend"))
-                }
+                    // -- add blend to layer and sidebar
+                    blend(gui.add(Multiply(), "Multiply blend"))// -- add layer to sidebar to toggle it on / off
+                    
+                }.addTo(gui, "Blue layer")
                 // -- add post to layer and sidebar
                 post(gui.add(ApproximateGaussianBlur())) {
                     sigma = sin(seconds * PI) * 10.0 + 10.01
@@ -198,7 +199,8 @@ application {
 </video>
  
  
- We now see that the sidebar is populated with a _settings_, _Multiply blend_, and an _Approximate gaussian blur_ compartment. 
+ We now see that the sidebar is populated with a _settings_, 
+_Multiply blend_, _Blue layer_, and an _Approximate gaussian blur_ compartment. 
 This creates composites that are easy to tweak. 
  
  ## Live-coding workflow 

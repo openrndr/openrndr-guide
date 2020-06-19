@@ -418,3 +418,37 @@ The following (`orx-fx`) blend filters work well with opacity and have a configu
  * `Screen`
  * `Add`
  * `Subtract` 
+ 
+ ## Reusing a layer 
+ 
+ It is possible to use the color buffer of a previously declared
+| layer by calling `use()`. 
+ 
+ ```kotlin
+application {
+    program {
+    
+        val composite = compose {
+            // -- keep a reference to the layer for later use
+            val first = layer {
+                draw {// -- draw something
+                }// post(...) { ... }
+                
+            }
+            
+            layer {
+                use(first) // <-- reuse a previous layer
+                post(ApproximateGaussianBlur())
+                blend(Add())
+            }
+        }
+        extend {
+            composite.draw(drawer)
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C07_Compositor006.kt) 
+ 
+ [https://github.com/openrndr/orx/tree/master/orx-compositor](demo) 
