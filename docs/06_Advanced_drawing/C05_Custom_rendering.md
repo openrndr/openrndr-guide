@@ -56,7 +56,7 @@ buffer holding 1000 vertices in our previously defined vertex format `vf` we use
 val geometry = vertexBuffer(vf, 1000)
 ``` 
  
- "### Placing data in the vertex buffer 
+ ### Placing data in the vertex buffer 
  
  Now that a vertex format has been defined and a vertex buffer has been created we can place data in the
 vertex buffer. The data placed in the vertex buffer must closely match the vertex format; any form of mismatch will lead
