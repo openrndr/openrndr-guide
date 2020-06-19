@@ -3,7 +3,7 @@ package docs.`04_Drawing_basics`
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.Code
 import org.openrndr.dokgen.annotations.Text
-import org.openrndr.extra.noise.Random.Vector2
+import org.openrndr.math.Vector2
 import org.openrndr.shape.CompositionDrawer
 import org.openrndr.svg.loadSVG
 import org.openrndr.svg.writeSVG
