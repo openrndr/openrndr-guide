@@ -275,9 +275,10 @@ we can insert any of the blend and post filters in the sidebar as we please. The
                             drawer.fill = ColorRGBa.BLUE
                             drawer.circle(settings.x + settings.separation, settings.y, 200.0)
                         }
-                        // -- add blend to layer and side
+                        // -- add blend to layer and sidebar
                         blend(gui.add(Multiply(), "Multiply blend"))
-                    }
+                        // -- add layer to sidebar to toggle it on / off
+                    }.addTo(gui, "Blue layer")
                     // -- add post to layer and sidebar
                     post(gui.add(ApproximateGaussianBlur())) {
                         sigma = sin(seconds * PI) * 10.0 + 10.01
@@ -296,7 +297,8 @@ we can insert any of the blend and post filters in the sidebar as we please. The
         }
     }
     @Media.Video """media/quick-ui-005.mp4"""
-    @Text """We now see that the sidebar is populated with a _settings_, _Multiply blend_, and an _Approximate gaussian blur_ compartment. 
+    @Text """We now see that the sidebar is populated with a _settings_, 
+_Multiply blend_, _Blue layer_, and an _Approximate gaussian blur_ compartment. 
 This creates composites that are easy to tweak.""".trimMargin()
 
     @Text """## Live-coding workflow"""

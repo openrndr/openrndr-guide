@@ -474,4 +474,36 @@ The following (`orx-fx`) blend filters work well with opacity and have a configu
  * `Add`
  * `Subtract`
   """.trimMargin()
+
+    @Text """## Reusing a layer"""
+    @Text """It is possible to use the color buffer of a previously declared
+| layer by calling `use()`.""".trimMargin()
+
+    @Application
+    application {
+        program {
+            @Code.Block
+            val composite = compose {
+                // -- keep a reference to the layer for later use
+                val first = layer {
+                    draw {
+                        // -- draw something
+                    }
+                    // post(...) { ... }
+                }
+
+                layer {
+                    use(first) // <-- reuse a previous layer
+                    post(ApproximateGaussianBlur())
+                    blend(Add())
+                }
+            }
+            extend {
+                composite.draw(drawer)
+            }
+        }
+    }
+
+    @Text """[https://github.com/openrndr/orx/tree/master/orx-compositor](demo)""".trimMargin()
+
 }
