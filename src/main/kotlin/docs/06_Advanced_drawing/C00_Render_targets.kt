@@ -171,7 +171,7 @@ in the `renderTarget {}` builder will be created with the same multi sample conf
                     drawer.clear(ColorRGBa.BLACK)
                     drawer.fill = ColorRGBa.WHITE
                     drawer.stroke = null
-                    drawer.rectangle(40.0, 40.0, 80.0, 80.0)
+                    drawer.circle(0.0, 0.0, 400.0)
                 }
 
                 // -- resolve the render target attachment to `resolved`
@@ -179,6 +179,11 @@ in the `renderTarget {}` builder will be created with the same multi sample conf
 
                 // draw the backing color buffer to the screen
                 drawer.image(resolved)
+
+                // draw a second circle with no multisampling to compare
+                drawer.fill = ColorRGBa.WHITE
+                drawer.stroke = null
+                drawer.circle(width * 1.0, height * 1.0, 400.0)
             }
         }
     }
