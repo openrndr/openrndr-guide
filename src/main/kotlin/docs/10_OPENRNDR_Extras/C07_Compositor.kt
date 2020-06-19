@@ -480,9 +480,10 @@ The following (`orx-fx`) blend filters work well with opacity and have a configu
 | layer by calling `use()`.""".trimMargin()
 
     @Application
+    @Code
     application {
         program {
-            @Code.Block
+
             val composite = compose {
                 // -- keep a reference to the layer for later use
                 val first = layer {
