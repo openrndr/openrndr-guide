@@ -89,3 +89,17 @@ application {
     }
 }
 ``` 
+ 
+ ### Window close event
+
+This event is generated when the program window has been closed. 
+ 
+ ```kotlin
+application {
+    program {
+        window.closed.listen {
+            println("the window has been closed")
+        }
+    }
+}
+``` 

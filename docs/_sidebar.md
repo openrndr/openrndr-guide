@@ -31,6 +31,7 @@
   - [Array textures](06_Advanced_drawing/C07_Array_textures.md)
 - Interaction
   - [Mouse And Keyboard Events](07_Interaction/C00MouseAndKeyboardEvents.md)
+  - [Program Events](07_Interaction/C01ProgramEvents.md)
   - [Program Windows](07_Interaction/C01ProgramWindows.md)
   - [File Drops](07_Interaction/C02FileDrops.md)
   - [Clipboard](07_Interaction/C03Clipboard.md)
