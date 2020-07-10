@@ -201,7 +201,7 @@ Constant name       | Scope               | GLSL type | Description
 `c_element`         | all                 | int       | the element index in batched rendering
 `c_instance`        | all                 | int       | the instance index in instanced rendering
 `c_screenPosition`  | fragment transform  | vec2      | the position on screen in device coordinates
-`c_contourPosition` | fragment transform  | vec3      | the on the contour, only non-zero when drawing line segments and contours
+`c_contourPosition` | fragment transform  | float     | the position on the contour, between 0.0 and contour.length. Only non-zero when drawing line segments and contours
  
  
  ### Parameters
