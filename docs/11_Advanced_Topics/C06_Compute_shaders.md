@@ -41,8 +41,8 @@ application {
         
         extend {
             cs.uniform("fill", ColorRGBa.PINK.shade(0.1))
-            cs.image("inputImg", 1, testRGBa, ImageAccess.READ)
-            cs.image("outputImg", 0, result, ImageAccess.WRITE)
+            cs.image("inputImg", 1, testRGBa.imageBinding(0, ImageAccess.READ))
+            cs.image("outputImg", 0, result.imageBinding(0, ImageAccess.WRITE))
             cs.execute(result.width, result.height, 1)
             drawer.image(result)
         }

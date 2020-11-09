@@ -223,13 +223,13 @@ OPENRNDR offers tools to construct `Matrix44`
 Relevant APIs
 ```
 Matrix44
-transform {}
+buildTransform {}
 ```
 
-In the snippet below a `Matrix44` instance is constructed using the `transform {}` builder. Note that the application order is from bottom to top.
+In the snippet below a `Matrix44` instance is constructed using the `buildTransform {}` builder. Note that the application order is from bottom to top.
 
 ```kotlin
-drawer.view *= transform {
+drawer.view *= buildTransform {
     rotate(32.0)
     rotate(Vector3(1.0, 1.0, 0.0).normalized, 43.0)
     translate(4.0, 2.0)
@@ -249,7 +249,7 @@ drawer.scale(2.0)
 
 ```kotlin
     val x = Vector3(1.0, 2.0, 3.0)
-    val m = transform {
+    val m = buildTransform {
         rotate(42.0)
     }
     val transformed = m * x

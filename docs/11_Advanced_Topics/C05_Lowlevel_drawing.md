@@ -68,7 +68,7 @@ program {
             }                                                                
             """
     
-    val shader = Shader.createFromCode(vs, fs, name = "custom-shader")
+    val shader = Shader.createFromCode(vsCode = vs, fsCode = fs, name = "custom-shader")
     
     extend {
         shader.begin()

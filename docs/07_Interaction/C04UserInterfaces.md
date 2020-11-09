@@ -121,7 +121,7 @@ application {
             layout {
                 button {
                     label = "Click me "
-                    events.clicked.subscribe {// -- do something with the clicked event
+                    events.clicked.listen {// -- do something with the clicked event
                     }
                 }
             }
@@ -168,7 +168,7 @@ application {
                     value = 0.50
                     range = Range(0.0, 1.0)
                     precision = 2
-                    events.valueChanged.subscribe {
+                    events.valueChanged.listen {
                         println("the new value is ${it.newValue}")
                     }
                 }
@@ -204,7 +204,7 @@ application {
                 colorpickerButton {
                     label = "Pick a color"
                     color = ColorRGBa.PINK
-                    events.valueChanged.subscribe {
+                    events.valueChanged.listen {
                         println("the new color is ${it.color}")
                     }
                 }
@@ -242,14 +242,14 @@ application {
                     
                     item {
                         label = "Item 1"
-                        events.picked.subscribe {
+                        events.picked.listen {
                             println("you picked item 1")
                         }
                     }
                     
                     item {
                         label = "Item 2"
-                        events.picked.subscribe {
+                        events.picked.listen {
                             println("you picked item 2")
                         }
                     }
