@@ -129,7 +129,7 @@ program {
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C05_ComplexShapes002.kt) 
  
  The _composition drawer_ is actually a bit more clever than what the previous example demonstrated because
-it can actually work with an entire lists of shapes. Demonstrated below is the _union_ of two _intersections_. 
+it can actually work with an entire lists of shapes. Demonstrated below is the combination of several _intersections_. 
  
  <img src="media/shapes-004.png"/> 
  
