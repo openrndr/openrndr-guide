@@ -90,7 +90,7 @@ program {
  
  ## Shape Boolean-operations 
  
- Boolean-operations can be performed on shapes using the `compound {}` builder. There are three kinds
+ Boolean-operations can be performed on shapes using the `drawComposition {}` builder. There are three kinds
 of compounds: _union_, _difference_ and _intersection_, all three of them are shown in the example below.
  
  
@@ -99,69 +99,106 @@ of compounds: _union_, _difference_ and _intersection_, all three of them are sh
  ```kotlin
 program {
     extend {
-        drawer.fill = ColorRGBa.PINK
-        drawer.stroke = null
-        // -- shape union
-        val su = compound {
-            union {
-                shape(Circle(185.0, height / 2.0 - 80.0, 100.0).shape)
-                shape(Circle(185.0, height / 2.0 + 80.0, 100.0).shape)
-            }
+        val composition = drawComposition {
+            fill = ColorRGBa.PINK
+            stroke = null
+            // -- shape union
+            shape(union(
+                Circle(185.0, height / 2.0 - 80.0, 100.0).shape,
+                Circle(185.0, height / 2.0 + 80.0, 100.0).shape
+            ))
+
+            // -- shape difference
+            shape(difference(
+                Circle(385.0, height / 2.0 - 80.0, 100.0).shape,
+                Circle(385.0, height / 2.0 + 80.0, 100.0).shape
+            ))
+
+            // -- shape intersection
+            shape(intersection(
+                Circle(585.0, height / 2.0 - 80.0, 100.0).shape,
+                Circle(585.0, height / 2.0 + 80.0, 100.0).shape
+            ))
         }
-        drawer.shapes(su)
-        
-        // -- shape difference
-        val sd = compound {
-            difference {
-                shape(Circle(385.0, height / 2.0 - 80.0, 100.0).shape)
-                shape(Circle(385.0, height / 2.0 + 80.0, 100.0).shape)
-            }
-        }
-        drawer.shapes(sd)
-        
-        // -- shape intersection
-        val si = compound {
-            intersection {
-                shape(Circle(585.0, height / 2.0 - 80.0, 100.0).shape)
-                shape(Circle(585.0, height / 2.0 + 80.0, 100.0).shape)
-            }
-        }
-        drawer.shapes(si)
+
+        drawer.composition(composition)
     }
 }
 ``` 
  
  [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C05_ComplexShapes002.kt) 
  
- The _compound builder_ is actually a bit more clever than what the previous example demonstrated because
-it can actually work with an entire tree of compounds. Demonstrated below is the _union_ of two _intersections_. 
+ The _composition drawer_ is actually a bit more clever than what the previous example demonstrated because
+it can actually work with an entire lists of shapes. Demonstrated below is the _union_ of two _intersections_. 
  
  <img src="media/shapes-004.png"/> 
  
  ```kotlin
 program {
     extend {
-        drawer.fill = ColorRGBa.PINK
-        drawer.stroke = null
-        val cross = compound {
-            union {
-                intersection {
-                    shape(Circle(width / 2.0 - 160.0, height / 2.0, 200.0).shape)
-                    shape(Circle(width / 2.0 + 160.0, height / 2.0, 200.0).shape)
-                }
-                intersection {
-                    shape(Circle(width / 2.0, height / 2.0 - 160.0, 200.0).shape)
-                    shape(Circle(width / 2.0, height / 2.0 + 160.0, 200.0).shape)
-                }
+        val drawingCenter = Vector2(width * 0.5, height * 0.5)
+        val cross = drawComposition {
+            fill = ColorRGBa.PINK
+            stroke = null
+
+            val flower = (0 until 360 step 45).map { degrees ->
+                val center1 = drawingCenter +
+                        Vector2(cos(toRadians(degrees.toDouble())), sin(toRadians(degrees.toDouble()))) * 70.0
+                val center2 = drawingCenter +
+                        Vector2(cos(toRadians(degrees - 45.0)), sin(toRadians(degrees - 45.0))) * 70.0
+                intersection(
+                        Circle(center1, 65.0).shape,
+                        Circle(center2, 65.0).shape
+                )
             }
+            shapes(flower)
         }
-        drawer.shapes(cross)
+
+        drawer.composition(cross)
     }
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C05_ComplexShapes003.kt) 
+[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C05_ComplexShapes003.kt) 
  
+ 
+ `ShapeContour`s can be used in conjunction with `Shape`s to create complex clipping patterns.
+ Demonstrated below is the _intersection_ of multiple `contours` and a `Circle`. 
+  
+<img src="media/shapes-007.png"/> 
+  
+```kotlin
+program {
+    val center = Vector2(width * 0.5, height * 0.5)
+    val circle = Circle(center, 200.0)
+    val sineWaves = drawComposition {
+        val sine = { x: Double, y: Double -> Vector2(x, y + sin(x / 50.0) * 10.0) }
+        stroke = ColorRGBa.PINK
+        strokeWeight = 4.0
+        for (y in -50..height step 20) {
+            val cs = contours {
+                moveTo(sine(0.0, y.toDouble()))
+                for (x in 0..width step 10) {
+                    if (random() < -0.5) {
+                        moveTo(sine(x.toDouble(), cursor.y))
+                    } else {
+                        lineTo(sine(x.toDouble(), cursor.y))
+                    }
+                }
+            }
+            cs.forEach { shape(intersection(it, circle.shape)) }
+        }
+        shape(circle.shape)
+    }
+    extend {
+        drawer.lineCap = LineCap.ROUND
+        drawer.composition(sineWaves)
+    }
+}
+``` 
+  
+[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C05_ComplexShapes008.kt)
+
  ## Cutting contours 
  
  A contour be cut into a shorter contour using `ShapeContour.sub()`. 
