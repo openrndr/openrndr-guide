@@ -86,12 +86,15 @@ using a `Drawer`-like interface.
  
  ```kotlin
 // -- create the composition drawer
-val composition = drawComposition {
-    // -- set fill/stroke and draw a cicrcle
-    fill = ColorRGBa.PINK
-    stroke = ColorRGBa.BLACK
-    circle(Vector2(100.0, 100.0), 50.0)
-}
+val compositionDrawer = CompositionDrawer()
+
+// -- set fill/stroke and draw a cicrcle
+compositionDrawer.fill = ColorRGBa.PINK
+compositionDrawer.stroke = ColorRGBa.BLACK
+compositionDrawer.circle(Vector2(100.0, 100.0), 50.0)
+
+// -- get the composition from the composition drawer
+val composition = compositionDrawer.composition
 ``` 
  
  ## Converting compositions to SVG 
@@ -106,5 +109,8 @@ val composition = loadSVG("data/example.svg")
 
 // -- convert the composition back to an SVG document as a string
 // -- note that the svg output will be different from the original svg
-composition.saveToFile(File("output.svg"))
+val svgDoc = writeSVG(composition)
+
+// -- write the svg string to a file
+File("output.svg").writeText(svgDoc)
 ``` 
