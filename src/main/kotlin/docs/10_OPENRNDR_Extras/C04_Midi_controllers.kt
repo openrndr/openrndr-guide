@@ -28,7 +28,6 @@ to the operating system. To discover these identifiers it is easiest to list the
 the `MidiDeviceDescription.list()` function."""
 
 
-    @Application
     @Code
     application {
         program {
@@ -45,7 +44,6 @@ the `MidiDeviceDescription.list()` function."""
     @Text """Once you have the controller name and vendor you can use `MidiTransceiver.fromDeviceVendor` to open the
 midi controller. For example to use a Behringer BCR2000 controller on a Ubuntu system we can use the following."""
 
-    @Application
     @Code
     application {
         program {
@@ -57,7 +55,6 @@ midi controller. For example to use a Behringer BCR2000 controller on a Ubuntu s
     @Text """Once connected to a controller we can start listening to the MIDI events it sends out. The orx-midi library
 supports controller change, note on and note off events."""
 
-    @Application
     @Code
     application {
         program {
@@ -69,7 +66,6 @@ supports controller change, note on and note off events."""
             controller.noteOn.listen {
                 println("note on: channel: ${it.channel}, key: ${it.note}, velocity: ${it.velocity}")
             }
-
             controller.noteOff.listen {
                 println("note off:  ${it.channel}, key: ${it.note},")
             }

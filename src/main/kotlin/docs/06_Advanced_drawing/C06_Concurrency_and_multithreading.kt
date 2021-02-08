@@ -36,7 +36,6 @@ draw thread."""
 
     @Text """In the following example we launch a coroutine that slowly counts to 99. Note that the delay inside the 
 coroutine does _not_ block the primary draw thread."""
-    @Application
     @Code.Block
     run {
         application {
@@ -67,7 +66,6 @@ waiting for (off-thread) coroutines to complete and using the results to write t
  we wait for it to complete, waiting is non-blocking (thanks to coroutine magic!). Once the join operation completes 
  we can write the results to a graphics resource on the primary draw thread.
      """
-    @Application
     @Code.Block
     run {
         application {
@@ -112,7 +110,6 @@ drawing is allowed. In those cases you use `drawThread`."""
     @Text """In the next example we create a secondary draw thread and a `ColorBuffer` that is shared between the threads.
 On the secondary draw thread we create a `RenderTarget` with the color buffer attachment. The image is made visible
 on the primary draw thread."""
-    @Application
     @Code.Block
     run {
         application {
@@ -125,7 +122,6 @@ on the primary draw thread."""
                 extend {
                     if (once) {
                         once = false
-
                         // -- launch on the secondary draw thread (SDT)
                         secondary.launch {
                             // -- create a render target on the SDT.
