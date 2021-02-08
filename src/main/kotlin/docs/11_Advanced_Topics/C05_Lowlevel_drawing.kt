@@ -94,7 +94,7 @@ In the following example we show the minimum steps required for drawing a single
             }                                                                
             """
 
-            val shader = Shader.createFromCode(vs, fs, name="custom-shader")
+            val shader = Shader.createFromCode(vsCode = vs, fsCode = fs, name="custom-shader")
 
             extend {
                 shader.begin()
