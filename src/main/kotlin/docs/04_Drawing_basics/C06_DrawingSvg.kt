@@ -1,21 +1,34 @@
 package docs.`04_Drawing_basics`
 
+import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.Code
 import org.openrndr.dokgen.annotations.Text
 import org.openrndr.math.Vector2
-import org.openrndr.shape.CompositionDrawer
+import org.openrndr.shape.*
 import org.openrndr.svg.loadSVG
+import org.openrndr.svg.saveToFile
 import org.openrndr.svg.writeSVG
 import java.io.File
 
 fun main(args: Array<String>) {
     @Text """# Drawing SVG
 Loading a composition and drawing it can be done as follows:
-```
-var composition = loadSVG("data/drawing.svg")
-drawer.composition(composition)
-```
+"""
+
+    @Code.Block
+    run {
+        application {
+            program {
+                val composition = loadSVG("data/drawing.svg")
+                extend {
+                    drawer.composition(composition)
+                }
+            }
+        }
+    }
+
+    @Text """
 
 Note that OPENRNDR's support for SVG files works best with SVG files that are saved in the Tiny SVG 1.x profile .
 
@@ -82,51 +95,67 @@ composition.root.map {
   }
 }
 ```
-
 ## Creating compositions manually
 
-```kotlin
-val root = GroupNode()
-val c = Composition(root)
-```
+Compositions are tree structures that can be constructed manually. Below you find an example of constructing a `Composition` 
+in code.
 """
+    @Code.Block
+    run {
+        val root = GroupNode()
+        val composition = Composition(root)
+        val shape = Circle(200.0, 200.0, 100.0).shape
+        val shapeNode = ShapeNode(shape)
+        shapeNode.fill = Color(ColorRGBa.PINK)
+        shapeNode.stroke = Color(ColorRGBa.BLACK)
+        // -- add shape node to root
+        root.children.add(shapeNode)
+    }
 
-    @Text """## Drawer interface for compositions"""
-    @Text """Creating Compositions from code may be a bit tedious. [`CompositionDrawer`](https://api.openrndr.org/org.openrndr.shape/-composition-drawer/index.html) simplifies creating compositions by
-using a `Drawer`-like interface.
-    """.trimMargin()
+    @Text """
+       ## Composition Drawer
+       OPENRNDR has a much more convenient interface for creating Compositions. The idea behind this
+       interface is that it works in a similar way to `Drawer`. 
+
+       Below we use `drawComposition {}` to reproduce the same composition as in the previous example.
+    """
 
     @Code.Block
     run {
-        // -- create the composition drawer
-        val compositionDrawer = CompositionDrawer()
-
-        // -- set fill/stroke and draw a cicrcle
-        compositionDrawer.fill = ColorRGBa.PINK
-        compositionDrawer.stroke = ColorRGBa.BLACK
-        compositionDrawer.circle(Vector2(100.0, 100.0), 50.0)
-
-        // -- get the composition from the composition drawer
-        val composition = compositionDrawer.composition
+        val composition = drawComposition {
+            fill = ColorRGBa.PINK
+            stroke = ColorRGBa.BLACK
+            circle(Vector2(100.0, 100.0), 50.0)
+        }
     }
 
-    @Text """## Converting compositions to SVG"""
-    @Text """Compositions can be converted to SVG using the `writeSVG` function.
+    @Text """
+        ### Transforms
+        Transforms work in the same way as in `Drawer`
+    """
+    @Code.Block
+    run {
+        val composition = drawComposition {
+            fill = ColorRGBa.PINK
+            stroke = ColorRGBa.BLACK
+            isolated {
+                for (i in 0 until 100) {
+                    circle(Vector2(0.0, 0.0), 50.0)
+                    translate(50.0, 50.0)
+                }
+            }
+        }
+    }
 
-In the following example we convert a composition to an SVG document and save it to file. 
+    @Text """## Saving compositions to SVG"""
+    @Text """Compositions can be saved to SVG using the `saveToFile` function.
     """
 
     @Code.Block
     run {
         // -- load in a composition
         val composition = loadSVG("data/example.svg")
-
-        // -- convert the composition back to an SVG document as a string
-        // -- note that the svg output will be different from the original svg
-        val svgDoc = writeSVG(composition)
-
-        // -- write the svg string to a file
-        File("output.svg").writeText(svgDoc)
+        composition.saveToFile(File("output.svg"))
     }
 
 }
