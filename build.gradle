@@ -72,7 +72,7 @@ dependencies {
     compile "org.openrndr:openrndr-ffmpeg:$openrndrVersion"
 
     //implementation 'com.github.openrndr:dokgen:96e77e1cbb'
-    implementation 'org.openrndr:dokgen:1.0-SNAPSHOT'
+    implementation 'org.openrndr:dokgen:2.0-SNAPSHOT'
 
     compile "org.openrndr.extra:orx-noise:$orxVersion"
     compile "org.openrndr.extra:orx-midi:$orxVersion"

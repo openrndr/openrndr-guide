@@ -110,7 +110,6 @@ Every layer has an isolated draw state to prevent users from leaking draw state.
             @Exclude
             extend(SingleScreenshot()) {
                 outputFile = "media/compositor-001.png"
-                quitAfterScreenshot = false
             }
 
             val composite = compose {
@@ -154,7 +153,6 @@ Let's add a blend and a post to our layer and see what it does:
             @Exclude
             extend(SingleScreenshot()) {
                 outputFile = "media/compositor-002.png"
-                quitAfterScreenshot = false
             }
 
             val composite = compose {

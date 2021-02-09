@@ -58,14 +58,10 @@ That said, it is not a required combination.
             run {
                 extend(SingleScreenshot()) {
                     outputFile = "media/quick-ui-001.png"
-                    quitAfterScreenshot = false
                 }
             }
             val gui = GUI()
             extend(gui)
-
-            extend {
-            }
         }
     }
 
@@ -100,7 +96,6 @@ the F11 button. Compartments can be collapsed by clicking on the compartment hea
             run {
                 extend(SingleScreenshot()) {
                     outputFile = "media/quick-ui-002.png"
-                    quitAfterScreenshot = false
                 }
             }
             val gui = GUI()
@@ -109,7 +104,6 @@ the F11 button. Compartments can be collapsed by clicking on the compartment hea
                 gui.compartmentsCollapsedByDefault = false
                 gui.doubleBind = true
             }
-
 
             val settings = object {
                 @DoubleParameter("x", 0.0, 770.0)
