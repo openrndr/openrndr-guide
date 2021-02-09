@@ -28,8 +28,6 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C04_Midi_controllers000.kt) 
- 
  From what this program outputs you can pick a controller by copying its name and vendor identifiers. 
  
  ## Connecting to a MIDI controller 
@@ -44,8 +42,6 @@ application {
     }
 }
 ``` 
- 
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C04_Midi_controllers001.kt) 
  
  ## Listening to the controller 
  
@@ -63,12 +59,9 @@ application {
         controller.noteOn.listen {
             println("note on: channel: ${it.channel}, key: ${it.note}, velocity: ${it.velocity}")
         }
-        
         controller.noteOff.listen {
             println("note off:  ${it.channel}, key: ${it.note},")
         }
     }
 }
 ``` 
- 
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C04_Midi_controllers002.kt) 

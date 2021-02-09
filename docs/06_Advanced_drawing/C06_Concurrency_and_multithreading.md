@@ -40,8 +40,6 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C06_Concurrency_and_multithreading000.kt) 
- 
  You may be asking, what is the purpose of the `Program` dispatcher if running coroutines blocks the primary
 draw thread. The answer is, blocking coroutines are useful when the work performed is light. Light work includes 
 waiting for (off-thread) coroutines to complete and using the results to write to graphics resources. 
@@ -86,8 +84,6 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C06_Concurrency_and_multithreading001.kt) 
- 
  ## Secondary draw threads 
  
  In some scenarios you may want to have a separate thread on which all graphic resources can be used and
@@ -110,7 +106,6 @@ application {
         extend {
             if (once) {
                 once = false
-                
                 // -- launch on the secondary draw thread (SDT)
                 secondary.launch {
                     // -- create a render target on the SDT.
@@ -140,5 +135,3 @@ application {
     }
 }
 ``` 
- 
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C06_Concurrency_and_multithreading002.kt) 

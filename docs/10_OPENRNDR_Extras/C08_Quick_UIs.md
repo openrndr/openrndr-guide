@@ -24,8 +24,6 @@ application {
     program {
         val gui = GUI()
         extend(gui)
-        
-        extend {}
     }
 }
 ``` 
@@ -44,7 +42,6 @@ application {
     program {
         val gui = GUI()
         
-
         val settings = object {
             @DoubleParameter("x", 0.0, 770.0)
             var x: Double = 385.0

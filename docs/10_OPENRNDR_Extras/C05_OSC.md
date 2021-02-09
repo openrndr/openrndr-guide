@@ -31,8 +31,6 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C05_OSC000.kt) 
- 
  ## Sending OSC messages 
  
  ```kotlin
@@ -46,5 +44,3 @@ application {
     }
 }
 ``` 
- 
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C05_OSC001.kt) 
