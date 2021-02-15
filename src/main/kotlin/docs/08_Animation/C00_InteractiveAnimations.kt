@@ -16,16 +16,16 @@ fun main(args: Array<String>) {
 
     ## Animatable
 
-    Anything that should be animated inherits the Animatable class. The Animatable class provides animation logic.
+    Anything that should be animated inherits the `Animatable` class. The Animatable class provides animation logic.
 
     Displayed below is a very simple animation setup.
     """
-
 
     @Code.Block
     run {
         application {
             program {
+                // animation definition
                 class MyAnimatable() : Animatable() {
                     var x: Double = 50.0
                     var y: Double = 50.0
@@ -35,17 +35,17 @@ fun main(args: Array<String>) {
 
                 // sequence 1: animate x then y
                 myAnimatable.apply {
-                    animate("x", 200.0, 3000)
-                    complete()
-                    animate("y", 200.0, 3000)
-                    complete()
+                    ::x.animate(200.0, 3000)
+                    ::x.complete()
+                    ::y.animate(200.0, 3000)
+                    ::y.complete()
                 }
 
                 // sequence 2: animate x and y simultaneously
                 myAnimatable.apply {
-                    animate("x", 50.0, 3000)
-                    animate("y", 50.0, 3000)
-                    complete()
+                    ::x.animate(50.0, 3000)
+                    ::y.animate(50.0, 3000)
+                    ::y.complete()
                 }
 
                 // wait 2 seconds
@@ -53,59 +53,32 @@ fun main(args: Array<String>) {
 
                 // sequence 3, animate x, then animate y a bit later
                 myAnimatable.apply {
-                    animate("x", 200.0, 3000)
+                    ::x.animate(200.0, 3000)
                     delay(1000)
-                    animate("y", 200.0, 3000)
-                    complete();
+                    ::y.animate(200.0, 3000)
+                    ::y.complete()
                 }
 
-
                 extend {
+                    // -- update the animation
                     myAnimatable.updateAnimation()
                     drawer.circle(myAnimatable.x, myAnimatable.y, 20.0)
                 }
-
             }
         }
-
     }
 
+    @Text """
+    For those wondering where that `::x.animate()` notation comes from, those are Kotlin's [property references](https://kotlinlang.org/docs/reflection.html#property-references).
+    
+    """
 
     @Text
     """
     ## Animation concepts
     ### Animating
-    ```kotlin
-    fun animate(variable: String, target: Double, duration: Long)
-    fun animate(variable: String, target: Double, duration: Long, easing: Easing)
-    ```
-
     `animate()` queues a single animation for a single value. An animation consists of a target value and a duration and optionally a method of easing the animation.
-
-    In cases in which the target value is unknown but the increment (or decrement) is known, one can use `add()`
-
-    ```kotlin
-    fun add(variable: String, increment: Double, duration: Long)
-    fun add(variable: String, increment: Double, duration: Long, easing: Easing)
-    ```
-    It is also possible to animate elements in an array or List:
     """
-
-
-    @Code
-    application {
-        program {
-            class MyAnimatable : Animatable() {
-                val values = DoubleArray(4)
-            }
-
-            val myAnimatable = MyAnimatable()
-            myAnimatable.animate("values[0]", 100.0, 1000)
-            myAnimatable.animate("values[1]", 200.0, 1000)
-        }
-    }
-
-
 
     @Text
     """
@@ -154,40 +127,55 @@ fun main(args: Array<String>) {
 
             run {
                 myAnimatable.apply {
-                    animate("x", 400.0, 2000)
-                    animate("y", 500.0, 1200)
-                    complete("x")
+                    ::x.animate(400.0, 2000)
+                    ::y.animate(500.0, 1200)
+                    ::x.complete()
                 }
             }
-
         }
     }
 
-
     @Text
     """
-    ## Stopping
+    ## Stopping animations
 
-    In interactive applications it may be needed to stop animations to accommodate user actions. Animatable has three options to stop animations.
-
-    ```kotlin
-    fun cancel()
-    ```
-
-    `cancel()` cancels all running and queued animations. Animated values remain at their current value. `cancel()` is the most commonly used method for stopping animations.
-
-    ```kotlin
-    fun cancelQueued()
-    ```
-
-    `cancelQueued()` cancels all queued animations. Running animations will continue to run.
-
-    ```kotlin
-    fun end()
-    ```
-
-    `end()` cancels all running and queued animations. Animated values of running animations will be set to the target value, this will introduce animation pops.
+    In interactive applications it may be needed to stop animations to accommodate user actions. 
     """
+
+    @Code.Block
+    run {
+        val animation = object : Animatable() {
+            var x: Double = 0.0
+            var y: Double = 0.0
+        }
+        // set up an animation
+        animation.apply {
+            ::x.animate(1.0, 1000)
+            ::y.animate(1.0, 1000)
+        }
+
+        // cancel all animations
+        animation.cancel()
+    }
+
+    @Text """In case you just want to cancel animations on a given property:"""
+
+    @Code.Block
+    run {
+        val animation = object : Animatable() {
+            var x: Double = 0.0
+            var y: Double = 0.0
+        }
+        // set up an animation
+        animation.apply {
+            ::x.animate(1.0, 1000)
+        }
+
+        // cancel only the animations on the x property
+        animation.apply {
+            ::x.cancel()
+        }
+    }
 
     @Text "## Looping animations"
     @Text """While `Animatable` doesn't provide explicit support for looping animations. They can be achieved through the following pattern:"""
@@ -202,14 +190,14 @@ fun main(args: Array<String>) {
         program {
             extend {
                 myAnimatable.updateAnimation()
-
                 if (!myAnimatable.hasAnimations()) {
-                    myAnimatable.animate("x", 500.0, 1000)
-                    myAnimatable.complete()
-                    myAnimatable.animate("x", .0, 1000)
-                    myAnimatable.complete()
+                    myAnimatable.apply {
+                        ::x.animate(500.0, 1000)
+                        ::x.complete()
+                        ::x.animate(0.0, 1000)
+                        ::x.complete()
+                    }
                 }
-
             }
         }
     }
