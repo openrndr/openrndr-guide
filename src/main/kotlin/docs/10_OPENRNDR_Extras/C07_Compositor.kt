@@ -477,7 +477,6 @@ The following (`orx-fx`) blend filters work well with opacity and have a configu
     @Text """It is possible to use the color buffer of a previously declared
 | layer by calling `use()`.""".trimMargin()
 
-    @Application
     @Code
     application {
         program {
