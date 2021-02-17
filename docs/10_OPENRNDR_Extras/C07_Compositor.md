@@ -449,6 +449,4 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C07_Compositor006.kt) 
- 
  [https://github.com/openrndr/orx/tree/master/orx-compositor](demo) 
