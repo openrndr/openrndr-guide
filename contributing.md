@@ -17,8 +17,8 @@ is a gradle plugin that takes kotlin source files and turns them into documentat
 
 ## Run the Gradle task called `docsify`
 
-It can take a while. It will run many kotlin programs from the guide
-to produce screenshots. If a program gets stuck running for over
+The first time it will take a while since it will launch dozens of kotlin programs
+to produce the guide's screenshots and videos. If a program gets stuck running for over
 10 seconds it can be closed and the build will continue with the next program.
 
 Once the build is complete the guide will be found at 
