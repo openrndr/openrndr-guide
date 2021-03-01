@@ -3,15 +3,19 @@
 [DokGen](https://github.com/openrndr/dokgen) 
 is a gradle plugin that takes kotlin source files and turns them into documentation.
 
-`$ git clone git@github.com:openrndr/dokgen.git`
-`$ cd dokgen`
-`$ ./gradlew publishToMavenLocal -Prelease.version=2.0-SNAPSHOT`
+```
+$ git clone git@github.com:openrndr/dokgen.git
+$ cd dokgen
+$ ./gradlew publishToMavenLocal -Prelease.version=2.0-SNAPSHOT
+```
 
 ## Clone the guide
 
-`$ git clone git@github.com:openrndr/openrndr-guide.git`
-`$ cd openrndr-guide`
-`$ git checkout dev`
+```
+$ git clone git@github.com:openrndr/openrndr-guide.git
+$ cd openrndr-guide
+$ git checkout dev
+```
 
 ## Open the openrndr-guide project in IntelliJ Idea
 
