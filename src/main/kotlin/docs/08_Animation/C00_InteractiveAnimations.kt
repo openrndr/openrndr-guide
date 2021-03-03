@@ -12,7 +12,7 @@ import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.math.Vector2
 
 
-fun main(args: Array<String>) {
+fun main() {
 
     @Text
     """

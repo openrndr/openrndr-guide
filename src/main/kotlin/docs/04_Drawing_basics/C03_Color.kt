@@ -6,7 +6,7 @@ import org.openrndr.dokgen.annotations.*
 import org.openrndr.extensions.SingleScreenshot
 
 
-fun main(args: Array<String>) {
+fun main() {
 
     @Text """
 # Color

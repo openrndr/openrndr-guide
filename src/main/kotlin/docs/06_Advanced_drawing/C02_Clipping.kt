@@ -4,7 +4,7 @@ import org.openrndr.dokgen.annotations.*
 import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.shape.Rectangle
 
-fun main(args: Array<String>) {
+fun main() {
     @Text """# Clipping"""
     @Text """OPENRNDR's drawer supports a single rectangular clip mask."""
     @Media.Video """media/clipping-001.mp4"""

@@ -11,7 +11,7 @@ import org.openrndr.draw.Drawer
 import org.openrndr.draw.isolated
 import org.openrndr.math.Matrix44
 
-fun main(args: Array<String>) {
+fun main() {
 
     @Text
     """

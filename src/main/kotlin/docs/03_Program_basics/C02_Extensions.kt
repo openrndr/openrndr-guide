@@ -61,7 +61,7 @@ the space bar is pressed will capture the application window's contents and save
 
     @Code.Block
     run {
-        fun main(args: Array<String>) = application {
+        fun main() = application {
             program {
                 extend {
                     drawer.circle(width / 2.0, height / 2.0, 50.0)

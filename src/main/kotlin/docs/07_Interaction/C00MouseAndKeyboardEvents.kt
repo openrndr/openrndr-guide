@@ -12,7 +12,7 @@ import org.openrndr.dokgen.annotations.Text
 import org.openrndr.math.Vector2
 
 
-fun main(args: Array<String>) {
+fun main() {
     @Text
     """
     # Mouse and keyboard events

@@ -38,7 +38,7 @@ fun main() {
 
     @Code.Block
     run {
-        fun main(args: Array<String>) = application {
+        fun main() = application {
             configure {
                 width = 640
                 height = 480
