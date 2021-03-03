@@ -457,9 +457,9 @@ var parity = Parity.Odd
 
 ```kotlin
 val settings = object {
-    @ActionParameter(order = 0)
+    @ActionParameter("save", order = 0)
     fun function() {
-        println("you made it")    
+        println("file saved!")    
     }
 }```
 
