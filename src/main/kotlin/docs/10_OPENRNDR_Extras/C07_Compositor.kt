@@ -27,16 +27,17 @@ fun main() {
     @Text "# Compositing using orx-compositor"
 
     @Text """orx-compositor offers a simple DSL for the creation of layered graphics. The compositor manages blending and
-post-processing of layers for you."""
+post-processing of layers for you.
+"""
+
+    @Text """`orx-compositor` works well together with `orx-fx`, `orx-gui`, and `orx-olive`, although they are not a required 
+combination it is worth checking out what the combination has to offer.
+"""
 
     @Text "## Prerequisites"
     @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-project, all you have to do is add "orx-compositor" to the `orxFeatures` set in `build.gradle.kts`. Make sure to 
-reimport the gradle project after adding the feature.
-        
-`orx-compositor` works well together with `orx-fx`, `orx-gui`, and `orx-olive`, although they are not a required 
-combination it is worth checking out what the combination has to offer.
-"""
+project, all you have to do is enable `orx-compositor` in the `orxFeatures`
+ set in `build.gradle.kts` and reimport the gradle project."""
 
     @Text "## Workflow"
     @Text """Let us now work through the workflow of `orx-compositor`. One usually starts with an OPENRNDR skeleton

@@ -16,6 +16,11 @@ fun main() {
     @Text """`orx-image-fit` provides functionality to making the drawing and placement of images somewhat easier. 
 `orx-image` Fits images in frames with two options, contain and cover, similar to CSS object-fit."""
 
+    @Text "## Prerequisites"
+    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+project, all you have to do is enable `orx-image-fit` in the `orxFeatures`
+ set in `build.gradle.kts` and reimport the gradle project."""
+
     @Text "## Contain mode"
 
     @Media.Video """media/image-fit-001.mp4"""

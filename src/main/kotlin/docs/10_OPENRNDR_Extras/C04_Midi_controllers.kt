@@ -13,15 +13,13 @@ fun main() {
 
     @Text """The [`orx-midi`](https://github.com/openrndr/orx/tree/master/orx-midi) library provides a simple interface
 to interact with MIDI controllers. 
-
-The library is easily added to a [openrndr-template](https://github.com/openrndr/openrndr-template) 
-project by adding `orx-midi` to the `orxFeatures` line in `build.gradle.kts`
-
-```
-orxFeatures = setOf("orx-midi")
-```
-
 """
+
+    @Text "## Prerequisites"
+    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+project, all you have to do is enable `orx-midi` in the `orxFeatures`
+ set in `build.gradle.kts` and reimport the gradle project."""
+
     @Text "## Listing MIDI controllers"
     @Text """To connect to a MIDI controller you will need the exact name and vendor of the controller as they are reported
 to the operating system. To discover these identifiers it is easiest to list the controllers, this can be done using

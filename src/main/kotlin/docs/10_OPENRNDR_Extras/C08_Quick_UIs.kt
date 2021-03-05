@@ -29,17 +29,16 @@ fun main() {
 of taking away most mental and work overhead involved in creating simple user interfaces intended for prototyping and hacking purposes. The core principle of `orx-gui` is to generate user interfaces only from annotated classes and properties. 
     """.trimMargin()
 
-
-    @Text "## Prerequisites"
-    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-project, all you have to do is add "orx-gui" to the `orxFeatures` set in `build.gradle.kts`. Make sure to 
-reimport the gradle project after adding the feature."""
-
     @Text """`orx-gui` relies on annotated classes and properties using the annotations in [`orx-parameters`](https://github.com/openrndr/orx/tree/master/orx-parameters)"""
 
     @Text """`orx-gui` is incredibly powerful in combination with the live coding environment [`orx-olive`](https://github.com/openrndr/orx/tree/master/orx-gui), the guide covers that in the [live coding section](C03_Live_coding). 
 That said, it is not a required combination.
     """
+
+    @Text "## Prerequisites"
+    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+project, all you have to do is enable `orx-gui` in the `orxFeatures`
+ set in `build.gradle.kts` and reimport the gradle project."""
 
     @Text """## Basic workflow"""
     @Text """Using orx-gui starts with the OPENRNDR program skeleton and extension through `Gui`. It is somewhat uncommon, but this time we want to keep a reference to the extension."""

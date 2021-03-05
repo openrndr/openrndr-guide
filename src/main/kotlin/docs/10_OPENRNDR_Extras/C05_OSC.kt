@@ -13,15 +13,13 @@ fun main() {
 
     @Text """The [`orx-osc`](https://github.com/openrndr/orx/tree/master/orx-osc) osc provides a simple interface
 to interact with OSC hosts and clients. 
-
-The library is easily added to a [openrndr-template](https://github.com/openrndr/openrndr-template) 
-project by adding `orx-osc` to the `orxFeatures` line in `build.gradle.kts`
-
-```
-orxFeatures = setOf("orx-osc")
-```
-
 """
+
+    @Text "## Prerequisites"
+    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+project, all you have to do is enable `orx-osc` in the `orxFeatures`
+ set in `build.gradle.kts` and reimport the gradle project."""
+
     @Text "## Listening to OSC messages"
     @Text """To listen to OSC messages we need to start an OSC server and use `listen` function to install listeners"""
 
