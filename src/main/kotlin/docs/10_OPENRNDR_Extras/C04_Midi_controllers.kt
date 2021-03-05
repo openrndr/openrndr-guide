@@ -59,16 +59,42 @@ supports controller change, note on and note off events."""
     application {
         program {
             val controller = MidiTransceiver.fromDeviceVendor("BCR2000 [hw:2,0,0]", "ALSA (http://www.alsa-project.org)")
+
             controller.controlChanged.listen {
                 println("control change: channel: ${it.channel}, control: ${it.control}, value: ${it.value}")
             }
-
             controller.noteOn.listen {
                 println("note on: channel: ${it.channel}, key: ${it.note}, velocity: ${it.velocity}")
             }
             controller.noteOff.listen {
                 println("note off:  ${it.channel}, key: ${it.note},")
             }
+        }
+    }
+
+    @Text """## Talking to the controller"""
+    @Text """MIDI controllers can often react to data received from 
+software. A common use case with MIDI controllers with endless rotary
+encoders is setting up initial values for the encoders when the program 
+launches. Those values are then reflected in LED lights or in a display 
+in the controller.
+"""
+
+    @Code
+    application {
+        program {
+            val controller = MidiTransceiver.fromDeviceVendor("BCR2000 [hw:2,0,0]", "ALSA (http://www.alsa-project.org)")
+
+            // send a control change
+            controller.controlChange(channel = 1, control = 3, value = 42)
+
+            // send a program change
+            controller.programChange(channel = 2, program = 5)
+
+            // send a note event
+            controller.noteOn(channel = 3, key = 60, velocity = 100)
+
+            // note: send velocity 0 to stop a note
         }
     }
 
