@@ -110,6 +110,11 @@ the F11 button. Compartments can be collapsed by clicking on the compartment hea
 
                 @DoubleParameter("y", 0.0, 500.0)
                 var y: Double = 250.0
+
+                // Use `var` for your annotated variables.
+                // `val` will produce no UI element!
+                @DoubleParameter("z", -10.0, 10.0)
+                val z: Double = 0.0
             }
 
             // -- this is why we wanted to keep a reference to gui
