@@ -32,9 +32,12 @@ be readily used. See the chapter [Filters and post-processing](../06_Advanced_dr
 for instructions on using them.
 
 A (more-or-less) complete listing of the effects in orx-fx is maintained in the repository's [README.md](https://github.com/openrndr/orx/blob/master/orx-fx/README.md)
-
-
 """.trimMargin()
+
+    @Text "## Prerequisites"
+    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+project, all you have to do is enable `orx-fx` in the `orxFeatures`
+ set in `build.gradle.kts` and reimport the gradle project."""
 
     @Text """## Effect Index"""
     @Text """In this index we demonstrate selected filters, this is in no way a complete overview of what orx-fx offers."""
