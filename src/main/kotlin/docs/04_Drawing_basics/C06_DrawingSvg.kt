@@ -11,7 +11,7 @@ import org.openrndr.svg.saveToFile
 import org.openrndr.svg.writeSVG
 import java.io.File
 
-fun main(args: Array<String>) {
+fun main() {
     @Text """# Drawing SVG
 Loading a composition and drawing it can be done as follows:
 """

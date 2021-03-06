@@ -3,7 +3,7 @@ package docs.`05_Drawing_and_transformations`
 import org.openrndr.dokgen.annotations.Text
 
 
-fun main(args: Array<String>) {
+fun main() {
     @Text """# Vectors
 The `Vector2`, `Vector3` and `Vector4` classes are used for 2, 3 and 4 dimensional vector representations. Vector instances are immutable; once a Vector has been instantiated its values cannot be changed.
 

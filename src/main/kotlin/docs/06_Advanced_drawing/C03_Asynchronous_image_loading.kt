@@ -5,7 +5,7 @@ import org.openrndr.dokgen.annotations.Code
 import org.openrndr.dokgen.annotations.Text
 import org.openrndr.internal.colorBufferLoader
 
-fun main(args: Array<String>) {
+fun main() {
 
     @Text """# Asynchronous image loading"""
     @Text """In scenarios in which images are required to be loaded without blocking the draw thread you can

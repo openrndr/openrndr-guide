@@ -6,7 +6,7 @@ import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.BufferMultisample
 import org.openrndr.ffmpeg.ScreenRecorder
 
-fun main(args: Array<String>) {
+fun main() {
 
     @Text """# Transformations
 

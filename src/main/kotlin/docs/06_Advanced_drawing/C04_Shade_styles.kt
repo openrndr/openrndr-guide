@@ -13,7 +13,7 @@ import org.openrndr.shape.Circle
 import kotlin.math.cos
 import kotlin.math.sin
 
-fun main(args: Array<String>) {
+fun main() {
 
     @Text """# Shade styles"""
     @Text """
