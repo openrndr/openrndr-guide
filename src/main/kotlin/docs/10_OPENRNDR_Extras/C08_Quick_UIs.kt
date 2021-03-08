@@ -462,7 +462,7 @@ var parity = Parity.Odd
 ```kotlin
 val settings = object {
     @ActionParameter("save", order = 0)
-    fun function() {
+    fun doSave() {
         println("file saved!")    
     }
 }```
