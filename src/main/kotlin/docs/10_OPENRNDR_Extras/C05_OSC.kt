@@ -54,5 +54,21 @@ project, all you have to do is enable `orx-osc` in the `orxFeatures`
             }
         }
     }
+
+    @Text "## Specifying IP address and ports"
+
+    @Text """The default IP address for OSC is `localhost` and the in and out
+        ports are both set to `57110` by default. One can specify different
+        values like this:"""
+
+    @Code.Block
+    run {
+        val osc = OSC(
+            InetAddress.getByName("192.168.0.105"),
+            portIn = 10000,
+            portOut = 12000
+        )
+    }
+
 }
 
