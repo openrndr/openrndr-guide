@@ -107,8 +107,8 @@ Generating random vectors
 
 ```kotlin
 val v2 = Random.vector2(-1.0, 1.0)
-val v3 = Random.vector2(-1.0, 1.0)
-val v4 = Random.vector2(-1.0, 1.0)
+val v3 = Random.vector3(-1.0, 1.0)
+val v4 = Random.vector4(-1.0, 1.0)
 ```
 
 To generate random distributions of vectors see 
