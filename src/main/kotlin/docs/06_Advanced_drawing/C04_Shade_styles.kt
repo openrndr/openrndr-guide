@@ -17,16 +17,16 @@ fun main() {
 
     @Text """# Shade styles"""
     @Text """
-Shade styles are used to change the drawing behaviour of the `Drawer`, the appearance of all drawing primitives by
-applying shade styles.
+Shade styles are used to change the drawing behaviour of the `Drawer` affecting the appearance of all drawing primitives.
 
 Shade styles are composed of two types of transforms: vertex transforms and fragment transforms. The two transforms are
 applied in separate stages of the rendering process. In the vertex transform it is possible to change the geometry of what is drawn, 
-and in the fragment transform it is possible to change the appearance of the geometry.
+and in the fragment transform it is possible to change the appearance of that
+ geometry. A shade style can affect vertices, fragments or both.
 
 A selection of preset ready-to-use shade styles is provided by [`orx-shade-styles`](10_OPENRNDR_Extras/C09_Shade_style_presets) 
 
-For those interested in authoring shade styles it is helpful to have some based understanding of shaders and GLSL."""
+For those interested in authoring shade styles it is helpful to have some basic understanding of shaders and GLSL."""
 
     @Text """## Basic usage"""
     @Text """In essence shade styles are fragments of GLSL code that are inserted into OPENRNDRs templated shaders.
@@ -254,6 +254,8 @@ Constant name       | Scope               | GLSL type | Description
 `c_instance`        | all                 | int       | the instance index in instanced rendering
 `c_screenPosition`  | fragment transform  | vec2      | the position on screen in device coordinates
 `c_contourPosition` | fragment transform  | float     | the position on the contour, between 0.0 and contour.length. Only non-zero when drawing line segments and contours
+`c_boundsPosition`  | fragment transform  | vec3      | the bounding box position of the current shape or contour stored in `.xy`
+`c_boundsSize`      | fragment transform  | vec3      | the bounding box size of the current shape or contour stored in `.xy`
 
 """
 
