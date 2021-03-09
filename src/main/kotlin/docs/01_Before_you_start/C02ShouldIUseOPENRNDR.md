@@ -8,7 +8,9 @@ Yes!
 If you are new to both computer graphics and programming itself we suggest to first get your feet wet in the
 _Processing_ language. Processing is specifically developed for the beginning programmer and offers a likely less steep
 learning curve. That said, we believe OPENRNDR is developed with an aim on simplicity and consistency and should not be
-super hard to learn.
+super hard to learn. If you are experienced in Processing you can find some
+[posts](https://openrndr.discourse.group/search?q=%22Processing%22%20%23openrndr%3Atutorials)
+in the forum comparing programs written in both environments.  
 
 ## Supported platforms
 OPENRNDR currently targets desktop platforms including macOS, Windows and Linux.
