@@ -9,7 +9,6 @@ import org.openrndr.draw.LineCap
 import org.openrndr.draw.LineJoin
 import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.math.Vector2
-import org.openrndr.shape.Circle
 
 fun main() {
     @Text
@@ -77,45 +76,6 @@ fun main() {
             }
         }
     }
-
-    @Text
-    """
-    ### Drawing many circles
-    OPENRNDR provides special draw APIs for drawing many circles at once. Using these APIs is much faster than calling the `circle` API many times.
-    """
-
-    @Media.Image
-    """
-    media/circle-002.png
-    """
-
-    @Application
-    application {
-        configure {
-
-        }
-        @Code
-        program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/circle-002.png"
-            }
-
-            extend {
-                drawer.clear(ColorRGBa.PINK)
-                drawer.fill = ColorRGBa.WHITE
-                drawer.stroke = ColorRGBa.BLACK
-                drawer.strokeWeight = 1.0
-
-                val circles = List(50000) { Circle(Math.random() * width, Math.random() * height, Math.random() * 10.0 + 10.0) }
-                drawer.circles(circles)
-
-
-            }
-        }
-    }
-
-
 
     @Text
     """## Drawing rectangles"""
