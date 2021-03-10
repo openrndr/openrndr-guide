@@ -34,8 +34,8 @@ compileKotlin {
 }
 
 sourceCompatibility = 1.8
-project.ext.openrndrVersion = "0.3.45-rc.9"
-project.ext.orxVersion = "0.3.55-rc.9"
+project.ext.openrndrVersion = "0.3.45"
+project.ext.orxVersion = "0.3.55"
 
 repositories {
     mavenCentral()
