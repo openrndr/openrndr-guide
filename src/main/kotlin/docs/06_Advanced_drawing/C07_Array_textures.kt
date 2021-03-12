@@ -15,7 +15,7 @@ import kotlin.math.sin
 
 fun main() {
     @Text """# Array textures"""
-    @Text """Array textures are a special type of texture that make it possible to access 2048 layers of texture data from a single texure sampler."""
+    @Text """Array textures are a special type of texture that make it possible to access 2048 layers of texture data from a single texture sampler."""
 
     @Text """Array textures are encapsulated by the [`ArrayTexture` interface](https://api.openrndr.org/org.openrndr.draw/-array-texture/index.html)"""
 

@@ -36,8 +36,9 @@ fun main() {
     This example makes use of `Circle` (a class with properties like 
     `center` and `radius` and some useful methods), not to be confused with 
     `drawer.circle()` (a method that draws pixels on the screen). 
-     It is possible to construct a `Circle` using `center` and `radius` but 
-     also with two or three `Vector2` points.
+     It is possible to construct a `Circle` by providing a `center` position 
+     and a `radius` but also with two or three `Vector2` points that are used 
+     for deriving the circumference of a `Circle`.
  
     Calling `drawer.circles()` to draw a list of `Circle` is much faster than 
     calling `drawer.circle()` multiple times.
@@ -79,7 +80,7 @@ fun main() {
     `drawer.circles` has several signatures. One of them accepts a list of 
     `Vector2` for the circle centers and a `Double` to specify the radius for 
     all circles. This example draws 5000 circles on the screen leaving a 100.0 
-    pixel margin around the edges 
+    pixel margin around the edges.
  
     """
 
