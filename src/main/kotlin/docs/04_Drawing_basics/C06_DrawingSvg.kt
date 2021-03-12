@@ -8,7 +8,6 @@ import org.openrndr.math.Vector2
 import org.openrndr.shape.*
 import org.openrndr.svg.loadSVG
 import org.openrndr.svg.saveToFile
-import org.openrndr.svg.writeSVG
 import java.io.File
 
 fun main() {

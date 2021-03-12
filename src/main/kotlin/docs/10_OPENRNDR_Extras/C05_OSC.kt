@@ -1,12 +1,10 @@
 package docs.`10_OPENRNDR_Extras`
 
 import org.openrndr.application
-import org.openrndr.dokgen.annotations.Application
 import org.openrndr.dokgen.annotations.Code
 import org.openrndr.dokgen.annotations.Text
-import org.openrndr.extra.midi.MidiDeviceDescription
-import org.openrndr.extra.midi.MidiTransceiver
 import org.openrndr.extra.osc.OSC
+import java.net.InetAddress
 
 fun main() {
     @Text "# Handling OSC messages with orx-osc"
@@ -29,7 +27,7 @@ project, all you have to do is enable `orx-osc` in the `orxFeatures`
 
             program {
                 val osc = OSC()
-                osc.listen("/live/track/2") { it ->
+                osc.listen("/live/track/2") {
                     // -- get the first value
                     val firstValue = it[0] as Float
                 }

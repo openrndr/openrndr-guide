@@ -3,7 +3,6 @@ package docs.`10_OPENRNDR_Extras`
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
-import org.openrndr.draw.colorBuffer
 import org.openrndr.draw.loadFont
 import org.openrndr.draw.loadImage
 import org.openrndr.extra.shadestyles.angularGradient

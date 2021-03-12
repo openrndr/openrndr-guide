@@ -1,3 +1,5 @@
+@file:Suppress("UNUSED_EXPRESSION")
+
 package docs.`11_Advanced_Topics`
 
 import org.openrndr.application

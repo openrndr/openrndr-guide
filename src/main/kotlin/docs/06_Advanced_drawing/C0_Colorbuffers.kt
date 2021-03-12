@@ -83,7 +83,7 @@ fun main() {
         for (y in 0 until cb.height) {
             for (x in 0 until cb.width) {
                 for (c in 0 until cb.format.componentCount) {
-                    buffer.put((Math.random() * 255).toByte())
+                    buffer.put((Math.random() * 255).toInt().toByte())
                 }
             }
         }

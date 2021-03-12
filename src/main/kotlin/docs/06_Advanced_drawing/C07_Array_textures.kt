@@ -67,7 +67,7 @@ fun main() {
             for (y in 0 until 512) {
                 for (x in 0 until 512) {
                     for (c in 0 until 4) {
-                        buffer.put((Math.random()*255).toByte())
+                        buffer.put((Math.random()*255).toInt().toByte())
                     }
                 }
             }
