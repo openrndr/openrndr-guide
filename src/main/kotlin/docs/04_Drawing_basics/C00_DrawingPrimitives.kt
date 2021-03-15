@@ -9,7 +9,6 @@ import org.openrndr.draw.LineCap
 import org.openrndr.draw.LineJoin
 import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.math.Vector2
-import org.openrndr.shape.Circle
 
 fun main() {
     @Text
@@ -25,10 +24,7 @@ fun main() {
     Circles are filled with the color set in `Drawer.fill` and their stroke is set to `Drawer.stroke`. The width of the stroke follows `Drawer.strokeWeight`.
     """
 
-    @Media.Image
-    """
-    media/circle-001.png
-    """
+    @Media.Image "media/circle-001.png"
 
     @Application
     application {
@@ -82,45 +78,6 @@ fun main() {
     }
 
     @Text
-    """
-    ### Drawing many circles
-    OPENRNDR provides special draw APIs for drawing many circles at once. Using these APIs is much faster than calling the `circle` API many times.
-    """
-
-    @Media.Image
-    """
-    media/circle-002.png
-    """
-
-    @Application
-    application {
-        configure {
-
-        }
-        @Code
-        program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/circle-002.png"
-            }
-
-            extend {
-                drawer.clear(ColorRGBa.PINK)
-                drawer.fill = ColorRGBa.WHITE
-                drawer.stroke = ColorRGBa.BLACK
-                drawer.strokeWeight = 1.0
-
-                val circles = List(50000) { Circle(Math.random() * width, Math.random() * height, Math.random() * 10.0 + 10.0) }
-                drawer.circles(circles)
-
-
-            }
-        }
-    }
-
-
-
-    @Text
     """## Drawing rectangles"""
     @Application
     application {
@@ -128,11 +85,7 @@ fun main() {
 
         }
 
-        @Media.Image
-        """
-        media/rectangle-001.png
-        """
-
+        @Media.Image "media/rectangle-001.png"
 
         @Code
         program {
@@ -148,13 +101,13 @@ fun main() {
                 drawer.strokeWeight = 1.0
                 drawer.rectangle(width / 6.0 - width / 8.0, height / 2.0 - width / 8.0, width / 4.0, width / 4.0)
 
-                // -- draw circle without fill, but with black stroke
+                // -- draw rectangle without fill, but with black stroke
                 drawer.fill = null
                 drawer.stroke = ColorRGBa.BLACK
                 drawer.strokeWeight = 1.0
                 drawer.rectangle(width / 6.0 - width / 8.0 + width / 3.0, height / 2.0 - width / 8.0, width / 4.0, width / 4.0)
 
-                // -- draw circle with white fill, but without stroke
+                // -- draw rectangle with white fill, but without stroke
                 drawer.fill = ColorRGBa.WHITE
                 drawer.stroke = null
                 drawer.strokeWeight = 1.0
@@ -186,8 +139,7 @@ fun main() {
 //        }
 //    }
 
-    @Media.Image
-    """media/line-001.png"""
+    @Media.Image "media/line-001.png"
 
     @Application
     application {
@@ -223,8 +175,7 @@ fun main() {
     To draw a line strip one supplies a list of points between which line segments should be drawn.
     """
 
-    @Media.Image
-    """media/line-002.png"""
+    @Media.Image "media/line-002.png"
 
     @Application
     application {

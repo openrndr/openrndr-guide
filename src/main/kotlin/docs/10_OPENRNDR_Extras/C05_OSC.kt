@@ -1,12 +1,10 @@
 package docs.`10_OPENRNDR_Extras`
 
 import org.openrndr.application
-import org.openrndr.dokgen.annotations.Application
 import org.openrndr.dokgen.annotations.Code
 import org.openrndr.dokgen.annotations.Text
-import org.openrndr.extra.midi.MidiDeviceDescription
-import org.openrndr.extra.midi.MidiTransceiver
 import org.openrndr.extra.osc.OSC
+import java.net.InetAddress
 
 fun main() {
     @Text "# Handling OSC messages with orx-osc"
@@ -29,7 +27,7 @@ project, all you have to do is enable `orx-osc` in the `orxFeatures`
 
             program {
                 val osc = OSC()
-                osc.listen("/live/track/2") { it ->
+                osc.listen("/live/track/2") {
                     // -- get the first value
                     val firstValue = it[0] as Float
                 }
@@ -54,5 +52,21 @@ project, all you have to do is enable `orx-osc` in the `orxFeatures`
             }
         }
     }
+
+    @Text "## Specifying IP address and ports"
+
+    @Text """The default IP address for OSC is `localhost` and the in and out
+        ports are both set to `57110` by default. One can specify different
+        values like this:"""
+
+    @Code.Block
+    run {
+        val osc = OSC(
+            InetAddress.getByName("192.168.0.105"),
+            portIn = 10000,
+            portOut = 12000
+        )
+    }
+
 }
 

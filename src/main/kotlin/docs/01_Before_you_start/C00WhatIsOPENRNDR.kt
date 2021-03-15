@@ -6,6 +6,8 @@ import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.ffmpeg.ScreenRecorder
+import kotlin.math.abs
+import kotlin.math.cos
 
 fun main() {
     @Text
@@ -46,7 +48,7 @@ fun main() {
             extend {
                 drawer.clear(ColorRGBa.PINK)
                 drawer.fill = ColorRGBa.WHITE
-                drawer.circle(drawer.bounds.center, Math.abs(Math.cos(seconds)) * height*0.5)
+                drawer.circle(drawer.bounds.center, abs(cos(seconds)) * height*0.5)
             }
         }
     }

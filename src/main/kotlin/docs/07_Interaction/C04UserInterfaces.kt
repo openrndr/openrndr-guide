@@ -302,7 +302,7 @@ fun main() {
 
     ##### Properties
      * `label : String` - the label on the button
-     * `value : Itme` - the currently picked item
+     * `value : Item` - the currently picked item
 
     ##### Events
     * `valueChanged` - emitted when an option is picked

@@ -5,8 +5,6 @@ import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.LineCap
 import org.openrndr.draw.colorBuffer
-import org.openrndr.draw.tint
-
 import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.extra.noise.*
 import org.openrndr.extra.noise.filters.*

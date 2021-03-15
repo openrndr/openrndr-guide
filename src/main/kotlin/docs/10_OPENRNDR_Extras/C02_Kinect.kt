@@ -1,28 +1,15 @@
 package docs.`10_OPENRNDR_Extras`
 
 import org.openrndr.application
-import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.ColorBuffer
 import org.openrndr.draw.ColorFormat
 import org.openrndr.draw.colorBuffer
-
-import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.extra.kinect.DepthToColorsTurboMapper
 import org.openrndr.extra.kinect.DepthToColorsZucconi6Mapper
 import org.openrndr.extra.kinect.DepthToGrayscaleMapper
 import org.openrndr.extra.kinect.KinectCamera
 import org.openrndr.extra.kinect.v1.getKinectsV1
-import org.openrndr.extra.noise.*
-import org.openrndr.extra.noise.filters.CellNoise
-import org.openrndr.extra.noise.filters.HashNoise
-import org.openrndr.extra.noise.filters.SpeckleNoise
-import org.openrndr.extra.noise.filters.ValueNoise
-import org.openrndr.ffmpeg.ScreenRecorder
-import org.openrndr.math.Vector2
-import org.openrndr.math.Vector3
-import org.openrndr.math.Vector4
-import kotlin.math.abs
 
 fun main() {
     @Text "# orx-kinect"
