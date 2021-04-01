@@ -3,6 +3,12 @@
  
  A collection of noise generator functions. Source and extra documentation can be found in the [orx-noise sourcetree](https://github.com/openrndr/orx/tree/master/orx-noise). 
  
+ ## Prerequisites 
+ 
+ Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+project, all you have to do is enable `orx-noise` in the `orxFeatures`
+ set in `build.gradle.kts` and reimport the gradle project. 
+ 
  ## Uniformly distributed random values 
  
  The library provides extension methods for `Double`, `Vector2`, `Vector3`, `Vector4` to create random vectors easily. To create

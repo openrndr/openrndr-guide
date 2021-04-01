@@ -37,7 +37,7 @@ The functional `extend` function allows one to use a single function as an exten
 create a "draw loop". 
  
  ```kotlin
-fun main(args: Array<String>) = application {
+fun main() = application {
     program {
         extend {
             drawer.circle(width / 2.0, height / 2.0, 50.0)

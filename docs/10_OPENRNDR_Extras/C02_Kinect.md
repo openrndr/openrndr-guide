@@ -11,12 +11,14 @@ Note: the support is split into several modules:
 * [`orx-kinect-v1-demo`](https://github.com/openrndr/orx/tree/master/orx-kinect-v1-demo/src/main/kotlin)
 * `orx-kinect-v1-natives-linux-x64`
 * `orx-kinect-v1-natives-macos`
-* `orx-kinect-v1-natives-windows` 
+* `orx-kinect-v1-natives-windows`
  
- ## Adding Kinect support to the project 
  
- In case you are using a project based on [`openrndr-template`](https://github.com/openrndr/openrndr-template) 
-        you can add `orx-kinect-v1` to the `orxFeatures` set. 
+ ## Prerequisites 
+ 
+ Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+project, all you have to do is enable `orx-kinect-v1` in the `orxFeatures`
+ set in `build.gradle.kts` and reimport the gradle project. 
  
  ## Using the Kinect depth camera 
  

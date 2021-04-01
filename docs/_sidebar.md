@@ -15,6 +15,7 @@
   - [Managing Draw Style](04_Drawing_basics/C04_ManagingDrawStyle.md)
   - [Complex Shapes](04_Drawing_basics/C05_ComplexShapes.md)
   - [Drawing Svg](04_Drawing_basics/C06_DrawingSvg.md)
+  - [Drawing Primitives Batched](04_Drawing_basics/C08_DrawingPrimitivesBatched.md)
 - Drawing and transformations
   - [Transformations](05_Drawing_and_transformations/C00_Transformations.md)
   - [Vectors](05_Drawing_and_transformations/C01_Vectors.md)

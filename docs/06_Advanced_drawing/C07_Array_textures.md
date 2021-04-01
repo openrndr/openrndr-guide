@@ -1,7 +1,7 @@
  
  # Array textures 
  
- Array textures are a special type of texture that make it possible to access 2048 layers of texture data from a single texure sampler. 
+ Array textures are a special type of texture that make it possible to access 2048 layers of texture data from a single texture sampler. 
  
  Array textures are encapsulated by the [`ArrayTexture` interface](https://api.openrndr.org/org.openrndr.draw/-array-texture/index.html) 
  
@@ -59,7 +59,7 @@ application {
         for (y in 0 until 512) {
             for (x in 0 until 512) {
                 for (c in 0 until 4) {
-                    buffer.put((Math.random() * 255).toByte())
+                    buffer.put((Math.random() * 255).toInt().toByte())
                 }
             }
         }

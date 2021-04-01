@@ -32,7 +32,7 @@ program {
             clear(ColorRGBa.BLACK)
             fill = ColorRGBa.PINK
             stroke = null
-            circle(Math.cos(seconds) * 100.0 + width / 2, Math.sin(seconds) * 100.0 + height / 2.0, 100.0 + 100.0 * Math.cos(seconds * 2.0))
+            circle(cos(seconds) * 100.0 + width / 2, sin(seconds) * 100.0 + height / 2.0, 100.0 + 100.0 * cos(seconds * 2.0))
         }
         // -- set blur parameters
         blur.window = 30

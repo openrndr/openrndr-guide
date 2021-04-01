@@ -52,7 +52,7 @@ In some scenarios it is desirable to present a simple dialog before the main pro
 want the user to to configure resolution and fullscreen settings. While OPENRNDR natively doesn't offer the tools to create user interfaces it does offer the functionality to create a window to host a configuration dialog. 
  
  ```kotlin
-fun main(args: Array<String>) {
+fun main() {
     val settings = object {
         var width: Int = 640
     }

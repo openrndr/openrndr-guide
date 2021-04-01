@@ -4,8 +4,8 @@
  ## Prerequisites 
  
  Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-project, all you have to do is add "orx-jumpflood" to the `orxFeatures` set in `build.gradle.kts`. Make sure to 
-reimport the gradle project after adding the feature. 
+project, all you have to do is enable `orx-jumpflood` in the `orxFeatures`
+ set in `build.gradle.kts` and reimport the gradle project. 
  
  ## Distance field visualization 
  

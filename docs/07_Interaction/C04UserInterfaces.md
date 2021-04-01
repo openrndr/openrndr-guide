@@ -18,7 +18,6 @@ To create a very simple user interface that consists of just a single button one
  ```kotlin
 application {
     program {
-        
         var color = ColorRGBa.GRAY.shade(0.250)
         extend(ControlManager()) {
             layout {
@@ -51,7 +50,6 @@ Style sheets can be used as shown in the following example in which a style shee
  ```kotlin
 application {
     program {
-        
         extend(ControlManager()) {
             styleSheet(has type "button") {
                 background = Color.RGBa(ColorRGBa.PINK)
@@ -73,6 +71,28 @@ application {
  ### Selectors
 
 The following example shows how to build and use complex selectors 
+ 
+ ```kotlin
+application {
+    program {
+        styleSheet(has class_ "control-bar") {
+            descendant(has type "button") {
+                width = 100.percent
+            }
+            
+            child(has type "slider") {
+                width = 100.percent
+                
+                and(has state "hover") {
+                    background = Color.RGBa(ColorRGBa.RED)
+                }
+            }
+        }
+    }
+}
+``` 
+ 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/07_Interaction/C04UserInterfaces002.kt) 
  
  ## Elements
 
@@ -99,10 +119,7 @@ application {
 }
 ``` 
  
- ```kotlin
-div("some-class-here", "another-class-here") {// -- children here
-}
-``` 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/07_Interaction/C04UserInterfaces003.kt) 
  
  ### Button
 An ordinary labelled button.
@@ -112,16 +129,12 @@ The default width of buttons is set to Auto such that the width is determined by
  
  ```kotlin
 application {
-    configure {
-        width = 770
-        height = 45
-    }
     program {
         extend(ControlManager()) {
             layout {
                 button {
                     label = "Click me "
-                    events.clicked.subscribe {// -- do something with the clicked event
+                    events.clicked.listen {// -- do something with the clicked event
                     }
                 }
             }
@@ -133,7 +146,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/07_Interaction/C04UserInterfaces002.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/07_Interaction/C04UserInterfaces004.kt) 
  
  ### Slider
 
@@ -152,23 +165,15 @@ A horizontal labelled slider control.
  
  ```kotlin
 application {
-    configure {
-        width = 770
-        height = 45
-    }
     program {
-        extend(SingleScreenshot()) {
-            outputFile = "media/ui-007.png"
-        }
         extend(ControlManager()) {
             layout {
-            
                 slider {
                     label = "Slide me"
                     value = 0.50
                     range = Range(0.0, 1.0)
                     precision = 2
-                    events.valueChanged.subscribe {
+                    events.valueChanged.listen {
                         println("the new value is ${it.newValue}")
                     }
                 }
@@ -178,7 +183,7 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/07_Interaction/C04UserInterfaces003.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/07_Interaction/C04UserInterfaces005.kt) 
  
  ### ColorPickerButton
 A button like control that slides out a HSV color picker when clicked
@@ -195,16 +200,13 @@ A button like control that slides out a HSV color picker when clicked
  ```kotlin
 application {
     program {
-        extend(SingleScreenshot()) {
-            outputFile = "media/ui-008.png"
-        }
         extend(ControlManager()) {
             layout {
             
                 colorpickerButton {
                     label = "Pick a color"
                     color = ColorRGBa.PINK
-                    events.valueChanged.subscribe {
+                    events.valueChanged.listen {
                         println("the new color is ${it.color}")
                     }
                 }
@@ -214,14 +216,14 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/07_Interaction/C04UserInterfaces004.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/07_Interaction/C04UserInterfaces006.kt) 
  
  ### DropdownButton
 A button like control that slides out a list of items when clicked.
 
 ##### Properties
  * `label : String` - the label on the button
- * `value : Itme` - the currently picked item
+ * `value : Item` - the currently picked item
 
 ##### Events
 * `valueChanged` - emitted when an option is picked 
@@ -231,25 +233,21 @@ A button like control that slides out a list of items when clicked.
  ```kotlin
 application {
     program {
-        extend(SingleScreenshot()) {
-            outputFile = "media/ui-009.png"
-        }
         extend(ControlManager()) {
             layout {
-            
                 dropdownButton {
                     label = "Option"
                     
                     item {
                         label = "Item 1"
-                        events.picked.subscribe {
+                        events.picked.listen {
                             println("you picked item 1")
                         }
                     }
                     
                     item {
                         label = "Item 2"
-                        events.picked.subscribe {
+                        events.picked.listen {
                             println("you picked item 2")
                         }
                     }
@@ -260,4 +258,4 @@ application {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/07_Interaction/C04UserInterfaces005.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/07_Interaction/C04UserInterfaces007.kt) 

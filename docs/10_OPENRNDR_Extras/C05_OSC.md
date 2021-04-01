@@ -2,15 +2,13 @@
  # Handling OSC messages with orx-osc 
  
  The [`orx-osc`](https://github.com/openrndr/orx/tree/master/orx-osc) osc provides a simple interface
-to interact with OSC hosts and clients. 
-
-The library is easily added to a [openrndr-template](https://github.com/openrndr/openrndr-template) 
-project by adding `orx-osc` to the `orxFeatures` line in `build.gradle.kts`
-
-```
-orxFeatures = setOf("orx-osc")
-```
+to interact with OSC hosts and clients.  
  
+ ## Prerequisites 
+ 
+ Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+project, all you have to do is enable `orx-osc` in the `orxFeatures`
+ set in `build.gradle.kts` and reimport the gradle project. 
  
  ## Listening to OSC messages 
  
@@ -21,7 +19,7 @@ application {
 
     program {
         val osc = OSC()
-        osc.listen("/live/track/2") { it ->
+        osc.listen("/live/track/2") {
             // -- get the first value
             val firstValue = it[0] as Float
         }
@@ -43,4 +41,14 @@ application {
         }
     }
 }
+``` 
+ 
+ ## Specifying IP address and ports 
+ 
+ The default IP address for OSC is `localhost` and the in and out
+        ports are both set to `57110` by default. One can specify different
+        values like this: 
+ 
+ ```kotlin
+val osc = OSC(InetAddress.getByName("192.168.0.105"), portIn = 10000, portOut = 12000)
 ``` 

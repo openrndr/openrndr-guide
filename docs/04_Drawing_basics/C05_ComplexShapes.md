@@ -178,7 +178,7 @@ program {
         drawer.stroke = ColorRGBa.PINK
         drawer.strokeWeight = 4.0
         
-        val sub0 = Circle(185.0, height / 2.0, 100.0).contour.sub(0.0, 0.5 + 0.50 * Math.sin(seconds))
+        val sub0 = Circle(185.0, height / 2.0, 100.0).contour.sub(0.0, 0.5 + 0.50 * sin(seconds))
         drawer.contour(sub0)
         
         val sub1 = Circle(385.0, height / 2.0, 100.0).contour.sub(seconds * 0.1, seconds * 0.1 + 0.1)
@@ -194,7 +194,9 @@ program {
  
  ## Placing points on contours  
  
- A single point on a contour  
+ Call `ShapeContour.position()` to sample one specific location 
+        or `ShapeContour.equidistantPositions()` to sample multiple equidistant 
+        locations on a contour.   
  
  <video controls>
     <source src="media/shapes-006.mp4" type="video/mp4"></source>
@@ -214,7 +216,6 @@ program {
         val points0 = Circle(385.0, height / 2.0, 90.0).contour.equidistantPositions(20)
         drawer.circles(points0, 10.0)
         
-
         val points1 = Circle(585.0, height / 2.0, 90.0).contour.equidistantPositions((cos(seconds) * 10.0 + 30.0).toInt())
         drawer.circles(points1, 10.0)
     }
@@ -242,7 +243,7 @@ program {
         drawer.stroke = ColorRGBa.PINK
         drawer.contour(c)
         for (i in 1 until 10) {
-            val o = c.offset((cos(seconds * 0.5 + 0.5)) * i * 10.0, SegmentJoin.BEVEL)
+            val o = c.offset(cos(seconds * 0.5 + 0.5) * i * 10.0, SegmentJoin.BEVEL)
             drawer.contour(o)
         }
     }
@@ -267,9 +268,10 @@ program {
     extend {
         drawer.stroke = ColorRGBa.PINK
         drawer.strokeWeight = 2.0
+        drawer.lineJoin = LineJoin.ROUND
         drawer.contour(c)
         for (i in -8..8) {
-            val o = c.offset(i * 10.0 * (cos(seconds * 0.5 + 0.5)))
+            val o = c.offset(i * 10.0 * cos(seconds * 0.5 + 0.5))
             drawer.contour(o)
         }
     }

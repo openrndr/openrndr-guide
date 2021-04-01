@@ -3,9 +3,15 @@
  
  By using Kotlin's ability to run script files we can build a live coding environment. The `orx-olive` library 
 simplifies the work to be done to set up a live coding environment. Code and additional documentation for the library
-can be found in the [Github repository](https://github.com/openrndr/orx/tree/master/orx-olive).
-
-Start by adding `orx-live` to the `orxFeatures` set in your gradle build file. 
+can be found in the [Github repository](https://github.com/openrndr/orx/tree/master/orx-olive). 
+ 
+ ## Prerequisites 
+ 
+ Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+project, all you have to do is enable `orx-olive` in the `orxFeatures`
+ set in `build.gradle.kts` and reimport the gradle project. 
+ 
+ ## Basic example 
  
  ```kotlin
 fun main() = application {

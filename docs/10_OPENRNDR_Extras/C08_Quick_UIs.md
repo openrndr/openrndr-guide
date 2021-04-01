@@ -4,16 +4,16 @@
  [orx-gui](https://github.com/openrndr/orx/tree/master/orx-gui) provides a simple mechanism to create near zero-effort user interfaces. `orx-gui` is a tool written on top of [OPENRNDR's UI library](07_Interaction/C04UserInterfaces) with the intention
 of taking away most mental and work overhead involved in creating simple user interfaces intended for prototyping and hacking purposes. The core principle of `orx-gui` is to generate user interfaces only from annotated classes and properties.  
  
- ## Prerequisites 
- 
- Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-project, all you have to do is add "orx-gui" to the `orxFeatures` set in `build.gradle.kts`. Make sure to 
-reimport the gradle project after adding the feature. 
- 
  `orx-gui` relies on annotated classes and properties using the annotations in [`orx-parameters`](https://github.com/openrndr/orx/tree/master/orx-parameters) 
  
  `orx-gui` is incredibly powerful in combination with the live coding environment [`orx-olive`](https://github.com/openrndr/orx/tree/master/orx-gui), the guide covers that in the [live coding section](C03_Live_coding). 
 That said, it is not a required combination. 
+ 
+ ## Prerequisites 
+ 
+ Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+project, all you have to do is enable `orx-gui` in the `orxFeatures`
+ set in `build.gradle.kts` and reimport the gradle project. 
  
  ## Basic workflow 
  
@@ -48,6 +48,11 @@ application {
             
             @DoubleParameter("y", 0.0, 500.0)
             var y: Double = 250.0
+            
+            // Use `var` for your annotated variables.
+            // `val` will produce no UI element!
+            @DoubleParameter("z", -10.0, 10.0)
+            val z: Double = 0.0
         }
         
         // -- this is why we wanted to keep a reference to gui
@@ -362,9 +367,9 @@ var parity = Parity.Odd
 
 ```kotlin
 val settings = object {
-    @ActionParameter(order = 0)
-    fun function() {
-        println("you made it")    
+    @ActionParameter("save", order = 0)
+    fun doSave() {
+        println("file saved!")    
     }
 }```
 

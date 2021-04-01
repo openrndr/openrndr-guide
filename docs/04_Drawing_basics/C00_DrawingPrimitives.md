@@ -42,30 +42,6 @@ program {
 drawer.circle(mouse.position, 50.0)
 ``` 
  
- ### Drawing many circles
-OPENRNDR provides special draw APIs for drawing many circles at once. Using these APIs is much faster than calling the `circle` API many times. 
- 
- <img src="media/circle-002.png"/> 
- 
- ```kotlin
-program {
-    
-    extend {
-        drawer.clear(ColorRGBa.PINK)
-        drawer.fill = ColorRGBa.WHITE
-        drawer.stroke = ColorRGBa.BLACK
-        drawer.strokeWeight = 1.0
-        
-        val circles = List(50000) {
-            Circle(Math.random() * width, Math.random() * height, Math.random() * 10.0 + 10.0)
-        }
-        drawer.circles(circles)
-    }
-}
-``` 
- 
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C00_DrawingPrimitives001.kt) 
- 
  ## Drawing rectangles 
  
  <img src="media/rectangle-001.png"/> 
@@ -80,13 +56,13 @@ program {
         drawer.strokeWeight = 1.0
         drawer.rectangle(width / 6.0 - width / 8.0, height / 2.0 - width / 8.0, width / 4.0, width / 4.0)
         
-        // -- draw circle without fill, but with black stroke
+        // -- draw rectangle without fill, but with black stroke
         drawer.fill = null
         drawer.stroke = ColorRGBa.BLACK
         drawer.strokeWeight = 1.0
         drawer.rectangle(width / 6.0 - width / 8.0 + width / 3.0, height / 2.0 - width / 8.0, width / 4.0, width / 4.0)
         
-        // -- draw circle with white fill, but without stroke
+        // -- draw rectangle with white fill, but without stroke
         drawer.fill = ColorRGBa.WHITE
         drawer.stroke = null
         drawer.strokeWeight = 1.0
@@ -95,7 +71,7 @@ program {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C00_DrawingPrimitives002.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C00_DrawingPrimitives001.kt) 
  
  ## Drawing lines
 Single lines are drawn per segment between two pairs of coordinates using `lineSegment`. Line primitives use `Drawer.stroke` to determine the color drawing color and `Drawer.strokeWeight` to determine the width of the line.
@@ -130,7 +106,7 @@ program {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C00_DrawingPrimitives003.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C00_DrawingPrimitives002.kt) 
  
  ### Drawing line strips
 A run of connected line segments is called a line strip and is drawn using `lineStrip`.
@@ -154,4 +130,4 @@ program {
 }
 ``` 
  
- [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C00_DrawingPrimitives004.kt) 
+ [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C00_DrawingPrimitives003.kt) 

@@ -5,7 +5,9 @@
  
  ## Prerequisites 
  
- Make sure that `orx-poisson-fills` is added to the `orxFeatures` line. 
+ Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+project, all you have to do is enable `orx-poisson-fills` in the `orxFeatures`
+ set in `build.gradle.kts` and reimport the gradle project. 
  
  # Filling 
  

@@ -8,7 +8,7 @@ fun main() = application {
     }
     program {
         // -- one time set up code goes here
-        extend {// -- drwawing code goes here
+        extend {// -- drawing code goes here
         }
     }
 }
@@ -18,7 +18,7 @@ fun main() = application {
 Setting the window size is done through the `width` and `height` properties. 
  
  ```kotlin
-fun main(args: Array<String>) = application {
+fun main() = application {
     configure {
         width = 640
         height = 480
