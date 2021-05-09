@@ -165,6 +165,7 @@ Attribute name | GLSL type | Description
 ---------------|-----------|------------
 `a_position`   | vec3      | the position
 `a_normal`     | vec3      | the normal
+`a_color`      | vec3      | the color
 
 In this table we see the interpolated versions that are accessible in the fragment transform only.
 
@@ -172,6 +173,7 @@ Attribute name | GLSL type | Description
 ---------------|-----------|------------
 `va_position`  | vec3     | the interpolated position
 `va_normal`    | vec3     | the interpolated normal 
+`va_color `    | vec3     | the interpolated color
  
  ### Transformable values
 
