@@ -173,6 +173,7 @@ fun main(args: Array<String>) {
     @Text """ ## Behavioral animation """
     @Media.Video """media/animations-301.mp4"""
 
+    @Application
     @Code
     application {
         program {
@@ -192,25 +193,26 @@ fun main(args: Array<String>) {
                 fun shrink() {
                     // -- first stop any running animations for the radius property
                     ::radius.cancel()
-                    ::radius.animate(10.0, 200)
+                    ::radius.animate(10.0, 200, Easing.CubicInOut)
                 }
 
                 fun grow() {
                     ::radius.cancel()
-                    ::radius.animate(Double.uniform(100.0, 140.0), 200)
+                    ::radius.animate(Double.uniform(60.0, 90.0), 200, Easing.CubicInOut)
                 }
 
                 fun jump() {
                     ::x.cancel()
                     ::y.cancel()
-                    ::x.animate(Double.uniform(0.0, width.toDouble()), 400)
-                    ::y.animate(Double.uniform(0.0, height.toDouble()), 400)
+                    ::x.animate(Double.uniform(0.0, width.toDouble()), 400, Easing.CubicInOut)
+                    ::y.animate(Double.uniform(0.0, height.toDouble()), 400, Easing.CubicInOut)
                 }
 
                 fun update() {
                     updateAnimation()
                     if (!::latch.hasAnimations) {
-                        ::latch.animate(1.0, 300).completed.listen {
+                        val duration = Double.uniform(100.0, 700.0).toLong()
+                        ::latch.animate(1.0, duration).completed.listen {
                             val action = listOf(::shrink, ::grow, ::jump).random()
                             action()
                         }
@@ -234,6 +236,7 @@ fun main(args: Array<String>) {
     @Text """While `Animatable` doesn't provide explicit support for looping animations. They can be achieved through the following pattern:"""
     @Media.Video """media/animations-401.mp4"""
 
+    @Application
     @Code
     application {
         val animation = object : Animatable() {
@@ -252,12 +255,15 @@ fun main(args: Array<String>) {
                 animation.updateAnimation()
                 if (!animation.hasAnimations()) {
                     animation.apply {
-                        ::x.animate(500.0, 1000)
+                        ::x.animate(width.toDouble(), 1000, Easing.CubicInOut)
                         ::x.complete()
-                        ::x.animate(0.0, 1000)
+                        ::x.animate(0.0, 1000, Easing.CubicInOut)
                         ::x.complete()
                     }
                 }
+                drawer.fill = ColorRGBa.PINK
+                drawer.stroke = null
+                drawer.circle(animation.x, height / 2.0, 100.0)
             }
         }
     }
