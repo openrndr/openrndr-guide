@@ -3,7 +3,7 @@ package docs.`05_Drawing_and_transformations`
 import org.openrndr.dokgen.annotations.Text
 
 
-fun main(args: Array<String>) {
+fun main() {
     @Text """# Vectors
 The `Vector2`, `Vector3` and `Vector4` classes are used for 2, 3 and 4 dimensional vector representations. Vector instances are immutable; once a Vector has been instantiated its values cannot be changed.
 
@@ -67,8 +67,8 @@ property     | description
 Vector2 swizzles allow reordering of vector fields, this is a common pattern in GLSL
 
 ```kotlin
-    val v3 = Vector2(1.0, 2.0).vector3(z=0.0)
-    val v2 = Vector3(1.0, 2.0, 3.0).xy
+val v3 = Vector2(1.0, 2.0).vector3(z=0.0)
+val v2 = Vector3(1.0, 2.0, 3.0).xy
 ```
 
 ## Let/copy pattern
@@ -93,13 +93,26 @@ val v = someFunctionReturningAVector().let { it.copy(x=it.x + it.y) }
 Linear interpolation of vectors using `mix()`
 
 ```kotlin
-    val m = mix(v0, v1, f)
+val m = mix(v0, v1, f)
 ```
 
 which is short-hand for
+```kotlin
+val m = v0 * (1.0 - f) + v1 * f
 ```
-    val m = v0 * (1.0 - f) + v1 * f
+
+## Randomness
+
+Generating random vectors
+
+```kotlin
+val v2 = Random.vector2(-1.0, 1.0)
+val v3 = Random.vector3(-1.0, 1.0)
+val v4 = Random.vector4(-1.0, 1.0)
 ```
+
+To generate random distributions of vectors see 
+[orx-noise](10_OPENRNDR_Extras/C01_Noise).
 
     """.trimIndent()
 }

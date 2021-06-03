@@ -5,8 +5,9 @@ import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.BufferMultisample
 import org.openrndr.ffmpeg.ScreenRecorder
+import kotlin.math.cos
 
-fun main(args: Array<String>) {
+fun main() {
 
     @Text """# Transformations
 
@@ -78,7 +79,7 @@ express a horizontal and a vertical motion as two separate translations"""
                 // set up horizontal translation
                 drawer.translate(seconds * 100.0, 0.0)
                 // set up vertical translation
-                drawer.translate(0.0, Math.cos(seconds * Math.PI * 2.0) * 50.00)
+                drawer.translate(0.0, cos(seconds * Math.PI * 2.0) * 50.00)
 
                 drawer.rectangle(-50.0, -50.0, 100.0, 100.00)
             }
@@ -158,7 +159,7 @@ the coordinate system: (0, 0).
                 // -- translate to center of screen
                 drawer.translate(width / 2.0, height / 2.0)
                 // -- scale around origin
-                drawer.scale(Math.cos(seconds * Math.PI * 2.0) + 2.0)
+                drawer.scale(cos(seconds * Math.PI * 2.0) + 2.0)
                 // -- rectangle around the origin
                 drawer.rectangle(-50.0, -50.0, 100.0, 100.00)
             }

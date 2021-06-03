@@ -2,15 +2,17 @@ package docs.`04_Drawing_basics`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
+import org.openrndr.draw.LineJoin
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.math.Vector2
 import org.openrndr.shape.*
 import kotlin.math.cos
+import kotlin.math.sin
 
 
-fun main(args: Array<String>) {
+fun main() {
     @Text """# Complex shapes
 OPENRNDR offers a lot of tools for the creation and drawing of two dimensional shapes.
 """
@@ -232,7 +234,7 @@ it can actually work with an entire tree of compounds. Demonstrated below is the
                 drawer.stroke = ColorRGBa.PINK
                 drawer.strokeWeight = 4.0
 
-                val sub0 = Circle(185.0, height / 2.0, 100.0).contour.sub(0.0, 0.5 + 0.50 * Math.sin(seconds))
+                val sub0 = Circle(185.0, height / 2.0, 100.0).contour.sub(0.0, 0.5 + 0.50 * sin(seconds))
                 drawer.contour(sub0)
 
                 val sub1 = Circle(385.0, height / 2.0, 100.0).contour.sub(seconds * 0.1, seconds * 0.1 + 0.1)
@@ -245,7 +247,10 @@ it can actually work with an entire tree of compounds. Demonstrated below is the
     }
 
     @Text """## Placing points on contours """
-    @Text """A single point on a contour """.trimMargin()
+    @Text """Call `ShapeContour.position()` to sample one specific location 
+        or `ShapeContour.equidistantPositions()` to sample multiple equidistant 
+        locations on a contour.  
+    """.trimMargin()
     @Media.Video """media/shapes-006.mp4"""
     @Application
     application {
@@ -271,7 +276,6 @@ it can actually work with an entire tree of compounds. Demonstrated below is the
 
                 val points0 = Circle(385.0, height / 2.0, 90.0).contour.equidistantPositions(20)
                 drawer.circles(points0, 10.0)
-
 
                 val points1 = Circle(585.0, height / 2.0, 90.0).contour.equidistantPositions((cos(seconds) * 10.0 + 30.0).toInt())
                 drawer.circles(points1, 10.0)
@@ -307,7 +311,7 @@ it can actually work with an entire tree of compounds. Demonstrated below is the
                 drawer.stroke = ColorRGBa.PINK
                 drawer.contour(c)
                 for (i in 1 until 10) {
-                    val o = c.offset(  (cos(seconds*0.5+0.5)) * i * 10.0, SegmentJoin.BEVEL)
+                    val o = c.offset(cos(seconds * 0.5 + 0.5) * i * 10.0, SegmentJoin.BEVEL)
                     drawer.contour(o)
                 }
             }
@@ -340,9 +344,10 @@ it can actually work with an entire tree of compounds. Demonstrated below is the
             extend {
                 drawer.stroke = ColorRGBa.PINK
                 drawer.strokeWeight = 2.0
+                drawer.lineJoin = LineJoin.ROUND
                 drawer.contour(c)
                 for (i in -8 .. 8) {
-                    val o = c.offset(i * 10.0*(cos(seconds*0.5+0.5)))
+                    val o = c.offset(i * 10.0 * cos(seconds * 0.5 + 0.5))
                     drawer.contour(o)
 
                 }

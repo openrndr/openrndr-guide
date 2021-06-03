@@ -3,7 +3,6 @@ package docs.`10_OPENRNDR_Extras`
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
-import org.openrndr.draw.colorBuffer
 import org.openrndr.draw.loadFont
 import org.openrndr.draw.loadImage
 import org.openrndr.extra.shadestyles.angularGradient
@@ -19,6 +18,11 @@ import kotlin.math.sin
 fun main() {
     @Text "# Shade style presets"
     @Text """The `orx-shade-styles` library provides a number of preset [shade styles](06_Advanced_drawing/C04_Shade_styles)"""
+
+    @Text "## Prerequisites"
+    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+project, all you have to do is enable `orx-shade-styles` in the `orxFeatures`
+ set in `build.gradle.kts` and reimport the gradle project."""
 
     @Text "## linearGradient"
     @Media.Video """media/shade-style-presets-001.mp4"""

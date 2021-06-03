@@ -5,8 +5,6 @@ import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.LineCap
 import org.openrndr.draw.colorBuffer
-import org.openrndr.draw.tint
-
 import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.extra.noise.*
 import org.openrndr.extra.noise.filters.*
@@ -20,6 +18,11 @@ fun main() {
     @Text "# orx-noise"
 
     @Text """A collection of noise generator functions. Source and extra documentation can be found in the [orx-noise sourcetree](https://github.com/openrndr/orx/tree/master/orx-noise)."""
+
+    @Text "## Prerequisites"
+    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+project, all you have to do is enable `orx-noise` in the `orxFeatures`
+ set in `build.gradle.kts` and reimport the gradle project."""
 
     @Text "## Uniformly distributed random values"
 

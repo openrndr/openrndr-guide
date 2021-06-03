@@ -18,11 +18,11 @@ fun main() {
     @Text "orx-poisson-fills offers tool for GPU-based Poisson operations. "
 
     @Text "## Prerequisites"
-    @Text "Make sure that `orx-poisson-fills` is added to the `orxFeatures` line."
-
+    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+project, all you have to do is enable `orx-poisson-fills` in the `orxFeatures`
+ set in `build.gradle.kts` and reimport the gradle project."""
 
     @Text "# Filling"
-
     @Text """The `PoissonFill` filter can be used to fill in transparent parts of an image. In the following example
 we use `orx-compose` to simplify the code a bit. The same results can be achieved using render targets.
     """.trimMargin()

@@ -6,7 +6,8 @@ Let's get it started!
 
 Now, to be able to edit and run OPENRNDR programs we have to install some software tools. 
 
- * Check if your computer has `git` installed, if it has not install from the [Git website](https://git-scm.com/) 
+ * Check if your computer has `git` installed. If it's missing, install it 
+   from the [Git website](https://git-scm.com/) 
 
  * Download [IntelliJ IDEA Community Edition](https://www.jetbrains.com/idea/download) and install it. On the first run 
  it will offer the option to pick default settings and continue, use the default settings.
@@ -18,8 +19,8 @@ This template contains a ready-to-go project from which you can quickly start ru
 
  * Find the "New project from version control" item in the "File" menu. Pick the "Git" option.
  * Enter or (copy/paste) `https://github.com/openrndr/openrndr-template` in the URL-field and validate that the directory is OK. 
- * When asked where the project should be opened click on the new window button. Make sure to link to the gradle project when
-prompted.
+ * When asked where the project should be opened, click on the new window 
+   button. Make sure to link to the gradle project when prompted.
 
 If cloning fails, check if you have Git installed and if the repository url was typed correctly.
 
@@ -29,7 +30,7 @@ After cloning the template you will likely see IntelliJ IDEA download dependenci
 in the status bar at the bottom of the IntelliJ window.
 
 You may have noticed that IntelliJ has opened the `README.md` in the `openrndr-template` project. Likely this file will
-contain some hints to help you navigating the template project. 
+contain some hints to help you navigate the template project. 
  
 Once IntelliJ has finished indexing find the `src/main/kotlin/TemplateProgram.kt` file in the project view. 
 On some versions of IntelliJ the project view is collapsed by default, you can open it by clicking on the vertical tab on the left side of the screen. 

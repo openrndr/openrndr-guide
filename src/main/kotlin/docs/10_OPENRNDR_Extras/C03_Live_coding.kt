@@ -13,9 +13,14 @@ fun main() {
     @Text """By using Kotlin's ability to run script files we can build a live coding environment. The `orx-olive` library 
 simplifies the work to be done to set up a live coding environment. Code and additional documentation for the library
 can be found in the [Github repository](https://github.com/openrndr/orx/tree/master/orx-olive).
-
-Start by adding `orx-live` to the `orxFeatures` set in your gradle build file.
 """
+
+    @Text "## Prerequisites"
+    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+project, all you have to do is enable `orx-olive` in the `orxFeatures`
+ set in `build.gradle.kts` and reimport the gradle project."""
+
+    @Text "## Basic example"
 
     @Code.Block
     run {
@@ -43,7 +48,7 @@ the Olive extension. In the following example we see the use of `Orbital` in com
     run {
         fun main() = application {
             program {
-                extend(Orbital());
+                extend(Orbital())
                 extend(Olive<Program>())
             }
         }

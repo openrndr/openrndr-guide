@@ -1,32 +1,18 @@
 package docs.`10_OPENRNDR_Extras`
 
 import org.openrndr.application
-import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.ColorBuffer
 import org.openrndr.draw.ColorFormat
 import org.openrndr.draw.colorBuffer
-
-import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.extra.kinect.DepthToColorsTurboMapper
 import org.openrndr.extra.kinect.DepthToColorsZucconi6Mapper
 import org.openrndr.extra.kinect.DepthToGrayscaleMapper
 import org.openrndr.extra.kinect.KinectCamera
 import org.openrndr.extra.kinect.v1.getKinectsV1
-import org.openrndr.extra.noise.*
-import org.openrndr.extra.noise.filters.CellNoise
-import org.openrndr.extra.noise.filters.HashNoise
-import org.openrndr.extra.noise.filters.SpeckleNoise
-import org.openrndr.extra.noise.filters.ValueNoise
-import org.openrndr.ffmpeg.ScreenRecorder
-import org.openrndr.math.Vector2
-import org.openrndr.math.Vector3
-import org.openrndr.math.Vector4
-import kotlin.math.abs
 
 fun main() {
     @Text "# orx-kinect"
-
 
     @Text """Provides Kinect support (only Kinect version 1 at the moment and only depth camera).
 Source and extra documentation can be found in the [orx sourcetree](https://github.com/openrndr/orx/tree/master)
@@ -38,11 +24,14 @@ Note: the support is split into several modules:
 * [`orx-kinect-v1-demo`](https://github.com/openrndr/orx/tree/master/orx-kinect-v1-demo/src/main/kotlin)
 * `orx-kinect-v1-natives-linux-x64`
 * `orx-kinect-v1-natives-macos`
-* `orx-kinect-v1-natives-windows`"""
+* `orx-kinect-v1-natives-windows`
 
-    @Text """## Adding Kinect support to the project"""
-    @Text """In case you are using a project based on [`openrndr-template`](https://github.com/openrndr/openrndr-template) 
-        you can add `orx-kinect-v1` to the `orxFeatures` set."""
+"""
+
+    @Text "## Prerequisites"
+    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+project, all you have to do is enable `orx-kinect-v1` in the `orxFeatures`
+ set in `build.gradle.kts` and reimport the gradle project."""
 
     @Text """## Using the Kinect depth camera"""
 

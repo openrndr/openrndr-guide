@@ -6,7 +6,7 @@ import org.openrndr.dokgen.annotations.*
 import org.openrndr.extensions.SingleScreenshot
 
 
-fun main(args: Array<String>) {
+fun main() {
 
     @Text """
 # Color
@@ -61,7 +61,7 @@ hexadecimal codes.
     run {
         // -- construct the OPENRNDR pink from hexadecimal code, using an integer argument
         val color1 = ColorRGBa.fromHex(0xffc0cb)
-        // -- construct the OPENRNDR pink from hexidecimal code, using a string argument, the leading # is optional
+        // -- construct the OPENRNDR pink from hexadecimal code, using a string argument, the leading # is optional
         val color2 = ColorRGBa.fromHex("#ffc0cb")
     }
 

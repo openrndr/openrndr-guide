@@ -2,7 +2,7 @@ group 'org.openrndr.guide'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.4.30'
+    ext.kotlin_version = '1.4.31'
 
     repositories {
         jcenter()
@@ -34,8 +34,8 @@ compileKotlin {
 }
 
 sourceCompatibility = 1.8
-project.ext.openrndrVersion = "0.3.45-rc.10"
-project.ext.orxVersion = "0.3.55-rc.9"
+project.ext.openrndrVersion = "0.3.45"
+project.ext.orxVersion = "0.3.55"
 
 repositories {
     mavenCentral()
@@ -74,20 +74,21 @@ dependencies {
     //implementation 'com.github.openrndr:dokgen:96e77e1cbb'
     implementation 'org.openrndr:dokgen:2.0-SNAPSHOT'
 
-    compile "org.openrndr.extra:orx-noise:$orxVersion"
-    compile "org.openrndr.extra:orx-midi:$orxVersion"
-    compile "org.openrndr.extra:orx-osc:$orxVersion"
-    compile "org.openrndr.extra:orx-kinect-v1:$orxVersion"
-    compile "org.openrndr.extra:orx-olive:$orxVersion"
     compile "org.openrndr.extra:orx-camera:$orxVersion"
-    compile "org.openrndr.extra:orx-fx:$orxVersion"
     compile "org.openrndr.extra:orx-compositor:$orxVersion"
-    compile "org.openrndr.extra:orx-shade-styles:$orxVersion"
+    compile "org.openrndr.extra:orx-fx:$orxVersion"
     compile "org.openrndr.extra:orx-gui:$orxVersion"
     compile "org.openrndr.extra:orx-image-fit:$orxVersion"
-    compile "org.openrndr.extra:orx-poisson-fill:$orxVersion"
     compile "org.openrndr.extra:orx-jumpflood:$orxVersion"
+    compile "org.openrndr.extra:orx-kinect-v1:$orxVersion"
+    compile "org.openrndr.extra:orx-mesh-generators:$orxVersion"
+    compile "org.openrndr.extra:orx-midi:$orxVersion"
+    compile "org.openrndr.extra:orx-noise:$orxVersion"
+    compile "org.openrndr.extra:orx-olive:$orxVersion"
+    compile "org.openrndr.extra:orx-osc:$orxVersion"
     compile "org.openrndr.extra:orx-panel:$orxVersion"
+    compile "org.openrndr.extra:orx-poisson-fill:$orxVersion"
+    compile "org.openrndr.extra:orx-shade-styles:$orxVersion"
 }
 
 mainClassName = "TemplateProgramKt"
@@ -159,4 +160,3 @@ jar {
     exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA', '**/module-info*'
     archiveName 'myjar.jar'
 }
-

@@ -6,13 +6,12 @@ import org.openrndr.KEY_ARROW_LEFT
 import org.openrndr.KEY_BACKSPACE
 import org.openrndr.KeyModifier
 import org.openrndr.application
-import org.openrndr.dokgen.annotations.Application
 import org.openrndr.dokgen.annotations.Code
 import org.openrndr.dokgen.annotations.Text
 import org.openrndr.math.Vector2
 
 
-fun main(args: Array<String>) {
+fun main() {
     @Text
     """
     # Mouse and keyboard events

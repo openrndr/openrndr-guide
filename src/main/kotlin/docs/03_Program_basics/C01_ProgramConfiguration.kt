@@ -24,7 +24,7 @@ fun main() {
             program {
                 // -- one time set up code goes here
                 extend {
-                    // -- drwawing code goes here
+                    // -- drawing code goes here
                 }
             }
         }
@@ -38,7 +38,7 @@ fun main() {
 
     @Code.Block
     run {
-        fun main(args: Array<String>) = application {
+        fun main() = application {
             configure {
                 width = 640
                 height = 480

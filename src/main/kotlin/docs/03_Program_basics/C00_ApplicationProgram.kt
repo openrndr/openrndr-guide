@@ -2,13 +2,11 @@
 
 package docs.`03_Program_basics`
 
-import org.openrndr.Configuration
-import org.openrndr.Program
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.Code
 import org.openrndr.dokgen.annotations.Text
 
-fun main(args: Array<String>) {
+fun main() {
 
     @Text """# Program basics"""
 

@@ -6,7 +6,7 @@ import org.openrndr.dokgen.annotations.Code
 import org.openrndr.dokgen.annotations.Text
 import org.openrndr.draw.isolated
 
-fun main(args: Array<String>) {
+fun main() {
     @Text """
 
 # Managing draw style

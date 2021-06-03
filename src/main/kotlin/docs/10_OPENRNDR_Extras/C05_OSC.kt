@@ -1,27 +1,23 @@
 package docs.`10_OPENRNDR_Extras`
 
 import org.openrndr.application
-import org.openrndr.dokgen.annotations.Application
 import org.openrndr.dokgen.annotations.Code
 import org.openrndr.dokgen.annotations.Text
-import org.openrndr.extra.midi.MidiDeviceDescription
-import org.openrndr.extra.midi.MidiTransceiver
 import org.openrndr.extra.osc.OSC
+import java.net.InetAddress
 
 fun main() {
     @Text "# Handling OSC messages with orx-osc"
 
     @Text """The [`orx-osc`](https://github.com/openrndr/orx/tree/master/orx-osc) osc provides a simple interface
 to interact with OSC hosts and clients. 
-
-The library is easily added to a [openrndr-template](https://github.com/openrndr/openrndr-template) 
-project by adding `orx-osc` to the `orxFeatures` line in `build.gradle.kts`
-
-```
-orxFeatures = setOf("orx-osc")
-```
-
 """
+
+    @Text "## Prerequisites"
+    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+project, all you have to do is enable `orx-osc` in the `orxFeatures`
+ set in `build.gradle.kts` and reimport the gradle project."""
+
     @Text "## Listening to OSC messages"
     @Text """To listen to OSC messages we need to start an OSC server and use `listen` function to install listeners"""
 
@@ -31,7 +27,7 @@ orxFeatures = setOf("orx-osc")
 
             program {
                 val osc = OSC()
-                osc.listen("/live/track/2") { it ->
+                osc.listen("/live/track/2") {
                     // -- get the first value
                     val firstValue = it[0] as Float
                 }
@@ -56,5 +52,21 @@ orxFeatures = setOf("orx-osc")
             }
         }
     }
+
+    @Text "## Specifying IP address and ports"
+
+    @Text """The default IP address for OSC is `localhost` and the in and out
+        ports are both set to `57110` by default. One can specify different
+        values like this:"""
+
+    @Code.Block
+    run {
+        val osc = OSC(
+            InetAddress.getByName("192.168.0.105"),
+            portIn = 10000,
+            portOut = 12000
+        )
+    }
+
 }
 

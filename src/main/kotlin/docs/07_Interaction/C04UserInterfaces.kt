@@ -15,7 +15,7 @@ import org.openrndr.panel.style.*
 import org.openrndr.panel.styleSheet
 
 
-fun main(args: Array<String>) {
+fun main() {
     @Text
     """
     # User Interfaces
@@ -48,7 +48,6 @@ fun main(args: Array<String>) {
             extend(SingleScreenshot()) {
                 outputFile = "media/ui-001.png"
             }
-
             var color = ColorRGBa.GRAY.shade(0.250)
             extend(ControlManager()) {
                 layout {
@@ -91,7 +90,6 @@ fun main(args: Array<String>) {
             extend(SingleScreenshot()) {
                 outputFile = "media/ui-002.png"
             }
-
             extend(ControlManager()) {
                 styleSheet(has type "button") {
                     background = Color.RGBa(ColorRGBa.PINK)
@@ -113,6 +111,8 @@ fun main(args: Array<String>) {
 
     The following example shows how to build and use complex selectors
     """
+    @Application
+    @Code
     application {
         @Exclude
         configure {
@@ -120,7 +120,6 @@ fun main(args: Array<String>) {
             height = 578
         }
         program {
-
             styleSheet(has class_ "control-bar") {
                 descendant(has type "button") {
                     width = 100.percent
@@ -154,12 +153,12 @@ fun main(args: Array<String>) {
     """
 
 
+    @Application
     @Code
     application {
         program {
             controlManager {
                 layout {
-                    @Code
                     div("some-class-here", "another-class-here") {
                         // -- children here
                     }
@@ -181,6 +180,7 @@ fun main(args: Array<String>) {
     @Application
     @Code
     application {
+        @Exclude
         configure {
             width = 770
             height = 45
@@ -194,7 +194,7 @@ fun main(args: Array<String>) {
                 layout {
                     button {
                         label = "Click me "
-                        events.clicked.subscribe {
+                        events.clicked.listen {
                             // -- do something with the clicked event
                         }
                     }
@@ -227,23 +227,24 @@ fun main(args: Array<String>) {
     @Application
     @Code
     application {
+        @Exclude
         configure {
             width = 770
             height = 45
         }
         program {
+            @Exclude
             extend(SingleScreenshot()) {
                 outputFile = "media/ui-007.png"
             }
             extend(ControlManager()) {
                 layout {
-
                     slider {
                         label = "Slide me"
                         value = 0.50
                         range = Range(0.0, 1.0)
                         precision = 2
-                        events.valueChanged.subscribe {
+                        events.valueChanged.listen {
                             println("the new value is ${it.newValue}")
                         }
                     }
@@ -275,6 +276,7 @@ fun main(args: Array<String>) {
             height = 45
         }
         program {
+            @Exclude
             extend(SingleScreenshot()) {
                 outputFile = "media/ui-008.png"
             }
@@ -284,7 +286,7 @@ fun main(args: Array<String>) {
                     colorpickerButton {
                         label = "Pick a color"
                         color = ColorRGBa.PINK
-                        events.valueChanged.subscribe {
+                        events.valueChanged.listen {
                             println("the new color is ${it.color}")
                         }
                     }
@@ -300,7 +302,7 @@ fun main(args: Array<String>) {
 
     ##### Properties
      * `label : String` - the label on the button
-     * `value : Itme` - the currently picked item
+     * `value : Item` - the currently picked item
 
     ##### Events
     * `valueChanged` - emitted when an option is picked
@@ -315,25 +317,25 @@ fun main(args: Array<String>) {
             height = 45
         }
         program {
+            @Exclude
             extend(SingleScreenshot()) {
                 outputFile = "media/ui-009.png"
             }
             extend(ControlManager()) {
                 layout {
-
                     dropdownButton {
                         label = "Option"
 
                         item {
                             label = "Item 1"
-                            events.picked.subscribe {
+                            events.picked.listen {
                                 println("you picked item 1")
                             }
                         }
 
                         item {
                             label = "Item 2"
-                            events.picked.subscribe {
+                            events.picked.listen {
                                 println("you picked item 2")
                             }
                         }

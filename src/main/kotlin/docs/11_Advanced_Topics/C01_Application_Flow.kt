@@ -9,7 +9,7 @@ import org.openrndr.configuration
 import org.openrndr.dokgen.annotations.Code
 import org.openrndr.dokgen.annotations.Text
 
-fun main(args: Array<String>) {
+fun main() {
 
     @Text """# Application Flow"""
     @Text """This section covers default and alternate application flow."""
@@ -78,7 +78,7 @@ program below."""
 
     @Code.Block
     run {
-        fun main(args: Array<String>) {
+        fun main() {
             val settings = object {
                 var width: Int = 640
             }
