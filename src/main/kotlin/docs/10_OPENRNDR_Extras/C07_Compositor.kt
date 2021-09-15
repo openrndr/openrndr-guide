@@ -14,6 +14,7 @@ import org.openrndr.extra.fx.distort.VerticalWave
 import org.openrndr.extra.fx.shadow.DropShadow
 import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.shape.Rectangle
+import org.openrndr.writer
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
@@ -277,7 +278,7 @@ by using nested layers and a `Normal` blend with `clip` enabled.
                             drawer.fill = ColorRGBa.WHITE
                             drawer.fontMap = font
                             val message = "HELLO WORLD"
-                            drawer.writer {
+                            writer {
                                 val w = textWidth(message)
                                 cursor = Cursor((width - w) / 2.0, height / 2.0 + cos(seconds * PI * 0.2) * 200.0)
                                 text(message)
@@ -350,7 +351,7 @@ a drop shadow _post_ effect to draw the text with a bit of a shadow that sets th
                         drawer.fill = ColorRGBa.WHITE
                         drawer.fontMap = font
                         val message = "HELLO WORLD"
-                        drawer.writer {
+                        writer {
                             box = Rectangle(0.0, 0.0, width * 1.0, height * 1.0)
                             val w = textWidth(message)
                             cursor = Cursor((width - w) / 2.0, height / 2.0 + cos(seconds * PI * 0.2) * 200.0)
@@ -413,7 +414,7 @@ two distortion effects followed by a blur filter.
                         drawer.fill = ColorRGBa.BLACK
                         drawer.fontMap = font
                         val message = "HELLO WORLD"
-                        drawer.writer {
+                        writer {
                             box = Rectangle(0.0, 0.0, width * 1.0, height * 1.0)
                             val w = textWidth(message)
                             cursor = Cursor((width - w) / 2.0, height / 2.0)

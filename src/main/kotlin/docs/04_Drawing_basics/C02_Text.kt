@@ -10,7 +10,7 @@ import org.openrndr.draw.loadFont
 import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.shape.Rectangle
-import org.openrndr.draw.writer
+import org.openrndr.writer
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -79,7 +79,7 @@ fun main() {
                 drawer.fontMap = font
                 drawer.fill = ColorRGBa.BLACK
 
-                drawer.writer {
+                writer {
                     newLine()
                     text("Here is a line of text..")
                     newLine()
@@ -119,7 +119,7 @@ fun main() {
                 drawer.fontMap = font
                 drawer.fill = ColorRGBa.BLACK
 
-                drawer.writer {
+                writer {
                     box = Rectangle(40.0, 40.0, 300.0, 300.0)
                     newLine()
                     text("Here is a line of text..")
@@ -160,7 +160,7 @@ fun main() {
                 drawer.fontMap = font
                 drawer.fill = ColorRGBa.BLACK
 
-                drawer.writer {
+                writer {
                     // -- animate the text leading
                     leading = cos(seconds) * 20.0 + 24.0
                     // -- animate the text tracking
