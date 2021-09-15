@@ -28,9 +28,7 @@ apply plugin: 'org.openrndr.dokgen-gradle'
 apply plugin: 'org.ajoberstar.git-publish'
 
 compileKotlin {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
+    kotlinOptions.jvmTarget = "1.8"
 }
 
 sourceCompatibility = 1.8
@@ -59,17 +57,18 @@ switch (org.gradle.internal.os.OperatingSystem.current()) {
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    runtime "org.openrndr:openrndr-gl3:$openrndrVersion"
-    runtime "org.openrndr:openrndr-gl3-natives-$openrndrOS:$openrndrVersion"
-    compile "org.openrndr:openrndr-core:$openrndrVersion"
-    compile "org.openrndr:openrndr-svg:$openrndrVersion"
-    compile "org.openrndr:openrndr-animatable:$openrndrVersion"
-    compile "org.openrndr:openrndr-extensions:$openrndrVersion"
-    compile "org.openrndr:openrndr-filter:$openrndrVersion"
-    compile "org.openrndr:openrndr-ffmpeg:$openrndrVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt'
+    testImplementation 'junit:junit:4.13.2'
+
+    implementation "org.openrndr:openrndr-gl3:$openrndrVersion"
+    implementation "org.openrndr:openrndr-gl3-natives-$openrndrOS:$openrndrVersion"
+    implementation "org.openrndr:openrndr-core:$openrndrVersion"
+    implementation "org.openrndr:openrndr-svg:$openrndrVersion"
+    implementation "org.openrndr:openrndr-animatable:$openrndrVersion"
+    implementation "org.openrndr:openrndr-extensions:$openrndrVersion"
+    implementation "org.openrndr:openrndr-filter:$openrndrVersion"
+    implementation "org.openrndr:openrndr-ffmpeg:$openrndrVersion"
 
     //implementation 'com.github.openrndr:dokgen:96e77e1cbb'
     implementation 'org.openrndr:dokgen:2.0-SNAPSHOT'

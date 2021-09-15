@@ -120,6 +120,10 @@ fun main() {
             height = 578
         }
         program {
+            @Exclude
+            extend(SingleScreenshot()) {
+                outputFile = "media/ui-003.png"
+            }
             styleSheet(has class_ "control-bar") {
                 descendant(has type "button") {
                     width = 100.percent
@@ -157,6 +161,10 @@ fun main() {
     @Code
     application {
         program {
+            @Exclude
+            extend(SingleScreenshot()) {
+                outputFile = "media/ui-004.png"
+            }
             controlManager {
                 layout {
                     div("some-class-here", "another-class-here") {
