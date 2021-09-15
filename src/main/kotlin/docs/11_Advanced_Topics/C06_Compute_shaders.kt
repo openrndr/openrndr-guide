@@ -73,7 +73,8 @@ the time changes on every frame.
     @Code
     application {
         program {
-            val cs = ComputeShader.fromFile(File("data/compute-shaders/fill.cs"))
+            val cs = ComputeShader.fromFile(
+                File("data/compute-shaders/fill.cs"), "cs1")
 
             val tempBuffer = loadImage("data/images/cheeta.jpg")
             val inputBuffer = colorBuffer(width, height)
