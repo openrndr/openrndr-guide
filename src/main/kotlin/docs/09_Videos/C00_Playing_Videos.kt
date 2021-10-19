@@ -38,6 +38,29 @@ fun main() {
 
     @Text
     """
+        
+    ## Looping a video
+    
+    """
+    @Code
+    application {
+        program {
+            val videoPlayer = VideoPlayerFFMPEG.fromFile("data/video.mp4")
+            videoPlayer.play()
+
+            // Loop: restart when reaching the end
+            videoPlayer.ended.listen {
+                videoPlayer.restart()
+            }
+
+            extend {
+                videoPlayer.draw(drawer)
+            }
+        }
+    }
+
+    @Text
+    """
     ## Video from camera devices
 
     The `VideoPlayerFFMPEG` class can be used to get and display video data from camera devices. To open a camera device you use the `fromDevice()` method. When this method is called without any arguments it attempts to open the default camera device.
