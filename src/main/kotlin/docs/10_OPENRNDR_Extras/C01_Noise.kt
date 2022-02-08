@@ -7,7 +7,6 @@ import org.openrndr.draw.LineCap
 import org.openrndr.draw.colorBuffer
 import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.extra.noise.*
-import org.openrndr.extra.noise.filters.*
 import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.math.Vector2
 import org.openrndr.math.Vector3
@@ -283,7 +282,11 @@ we first have to create a function that can be used by the gradient estimator. F
         }
     }
 
+    // The following are commented out until
+    // https://github.com/openrndr/orx/blob/master/orx-noise/src/commonMain/kotlin/filters/NoiseFilters.kt
+    // is available again.
 
+    /*
     @Text "## Noise filters"
 
     @Text "The library contains a number of Filters with which noise image can be generated efficiently on the GPU."
@@ -501,4 +504,5 @@ we first have to create a function that can be used by the gradient estimator. F
             }
         }
     }
+     */
 }

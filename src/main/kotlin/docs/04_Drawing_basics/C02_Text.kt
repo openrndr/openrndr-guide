@@ -10,7 +10,7 @@ import org.openrndr.draw.loadFont
 import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.shape.Rectangle
-import org.openrndr.text.writer
+import org.openrndr.writer
 import kotlin.math.cos
 import kotlin.math.sin
 

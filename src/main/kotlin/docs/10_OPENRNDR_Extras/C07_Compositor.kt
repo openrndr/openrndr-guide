@@ -3,9 +3,7 @@ package docs.`10_OPENRNDR_Extras`
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
-import org.openrndr.draw.loadFont
-import org.openrndr.draw.loadImage
-import org.openrndr.draw.tint
+import org.openrndr.draw.*
 import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.extra.compositor.*
 import org.openrndr.extra.fx.blend.Add
@@ -16,8 +14,7 @@ import org.openrndr.extra.fx.distort.VerticalWave
 import org.openrndr.extra.fx.shadow.DropShadow
 import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.shape.Rectangle
-import org.openrndr.text.Cursor
-import org.openrndr.text.writer
+import org.openrndr.writer
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
