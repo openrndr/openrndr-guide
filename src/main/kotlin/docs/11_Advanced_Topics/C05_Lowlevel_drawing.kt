@@ -15,7 +15,7 @@ This text is intended for developers looking to provide drawing functionality th
 the `Drawer` class. Developers that desire to do so will essentially use the same building blocks that OPENRNDR
 uses internally.
     
-A good reference for lowlevel drawing is the `Filter` class and it is encouraged to look at its [source code](https://github.com/openrndr/openrndr/blob/master/openrndr-core/src/main/kotlin/org/openrndr/draw/Filter.kt)
+A good reference for lowlevel drawing is the `Filter` class and it is encouraged to look at its [source code](https://github.com/openrndr/openrndr/blob/master/openrndr-draw/src/commonMain/kotlin/org/openrndr/draw/Filter.kt)
 as it provides a good idea of how all the lowlevel components interact and its implementation is fully independent from
 `Drawer`.
     
