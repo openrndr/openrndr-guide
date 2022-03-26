@@ -6,7 +6,9 @@
 
 package docs.`03_Program_basics`
 
-import org.openrndr.*
+import org.openrndr.Fullscreen
+import org.openrndr.UnfocusBehaviour
+import org.openrndr.application
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.math.IntVector2
 
@@ -113,7 +115,7 @@ fun main() {
     }
 
 
-    @Text
+    @Text 
     """
     # Window unfocus behaviour
     Two window unfocus behaviours are available. In `NORMAL` behaviour the program continues running at full speed, in contrast the `THROTTLE` behaviour throttles the program to 10Hz.

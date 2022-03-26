@@ -20,20 +20,28 @@ import org.openrndr.math.Vector4
 import kotlin.math.abs
 
 fun main() {
-    @Text "# orx-noise"
+    @Text """
+    # orx-noise
+    
+    A collection of noise generator functions. Source and extra 
+    documentation can be found in the 
+    [orx-noise sourcetree](https://github.com/openrndr/orx/tree/master/orx-noise).
+    
+    ## Prerequisites
+    
+    Assuming you are working on an 
+    [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+    project, all you have to do is enable `orx-noise` in the `orxFeatures`
+    set in `build.gradle.kts` and reimport the gradle project.
+    
+    ## Uniformly distributed random values
 
-    @Text """A collection of noise generator functions. Source and extra documentation can be found in the [orx-noise sourcetree](https://github.com/openrndr/orx/tree/master/orx-noise)."""
+    The library provides extension methods for `Double`, `Vector2`, `Vector3`, 
+    `Vector4` to create random vectors easily. To create
+    scalars and vectors with uniformly distributed noise you use the 
+    `uniform` extension function.
+    """
 
-    @Text "## Prerequisites"
-    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-project, all you have to do is enable `orx-noise` in the `orxFeatures`
- set in `build.gradle.kts` and reimport the gradle project."""
-
-    @Text "## Uniformly distributed random values"
-
-    @Text """The library provides extension methods for `Double`, `Vector2`, `Vector3`, `Vector4` to create random vectors easily. To create
-scalars and vectors with uniformly distributed noise you use the `uniform` extension function.
-    """.trimMargin()
     @Code.Block
     run {
         val d1 = Double.uniform(0.0, 640.0)
@@ -42,14 +50,21 @@ scalars and vectors with uniformly distributed noise you use the `uniform` exten
         val v4 = Vector4.uniform(0.0, 640.0)
     }
 
-    @Text """To create multiple samples of noise one uses the `uniforms` function."""
+    @Text 
+    """
+    To create multiple samples of noise one uses the `uniforms` function.
+    """
+
     @Code.Block
     run {
         val v2 = Vector2.uniforms(100, Vector2(0.0, 0.0), Vector2(640.0, 640.0))
         val v3 = Vector3.uniforms(100, Vector3(0.0, 0.0, 0.0), Vector3(640.0, 640.0, 640.0))
     }
 
-    @Text "## Uniform ring noise"
+    @Text """
+    ## Uniform ring noise
+    """
+
     @Code.Block
     run {
         val v2 = Vector2.uniformRing(0.0, 300.0)
@@ -57,7 +72,8 @@ scalars and vectors with uniformly distributed noise you use the `uniform` exten
         val v4 = Vector4.uniformRing(0.0, 300.0)
     }
 
-    @Media.Image """media/orx-noise-001.png"""
+    @Media.Image "media/orx-noise-001.png"
+
     @Application
     @Code
     application {
@@ -84,9 +100,12 @@ scalars and vectors with uniformly distributed noise you use the `uniform` exten
 
 
 
-    @Text "## Perlin noise"
+    @Text """
+    ## Perlin noise
+    """
 
-    @Media.Image """media/orx-noise-002.png"""
+    @Media.Image "media/orx-noise-002.png"
+
     @Application
     @Code
     application {
@@ -115,9 +134,12 @@ scalars and vectors with uniformly distributed noise you use the `uniform` exten
         }
     }
 
-    @Text "## Value noise"
+    @Text """
+    ## Value noise
+    """
 
-    @Media.Image """media/orx-noise-003.png"""
+    @Media.Image "media/orx-noise-003.png"
+
     @Application
     @Code
     application {
@@ -145,9 +167,12 @@ scalars and vectors with uniformly distributed noise you use the `uniform` exten
         }
     }
 
-    @Text "## Simplex noise"
+    @Text """
+    ## Simplex noise
+    """
 
-    @Media.Image """media/orx-noise-004.png"""
+    @Media.Image "media/orx-noise-004.png"
+
     @Application
     @Code
     application {
@@ -175,9 +200,12 @@ scalars and vectors with uniformly distributed noise you use the `uniform` exten
         }
     }
 
-    @Text "## Fractal/FBM noise"
+    @Text """
+    ## Fractal/FBM noise
+    """
 
-    @Media.Video """media/orx-noise-005-fbm.mp4"""
+    @Media.Video "media/orx-noise-005-fbm.mp4"
+
     @Application
     @Code
     application {
@@ -212,11 +240,17 @@ scalars and vectors with uniformly distributed noise you use the `uniform` exten
         }
     }
 
-    @Text "## Noise gradients"
     @Text """
-Noise functions have evaluable gradients, a direction to where the value of the function increases the fastest. The `gradient1D`, `gradient2D`, `gradient3D` and `gradient4D` functions can be used to estimate gradients for noise functions.
+    ## Noise gradients
+    
+    Noise functions have evaluable gradients, a direction to where the 
+    value of the function increases the fastest. The `gradient1D`, 
+    `gradient2D`, `gradient3D` and `gradient4D` functions can be used 
+    to estimate gradients for noise functions.
     """
-    @Media.Video """media/orx-noise-300.mp4"""
+
+    @Media.Video "media/orx-noise-300.mp4"
+
     @Application
     @Code
     application {
@@ -248,13 +282,19 @@ Noise functions have evaluable gradients, a direction to where the value of the 
             }
         }
     }
-    @Text """Gradients can also be calculated for the fbm, rigid and billow versions of the noise functions. However, 
-we first have to create a function that can be used by the gradient estimator. For this `fbmFunc3D`, `billowFunc3D`, and 
- `rigidFunc3D` can be used (which works through [partial application](https://en.wikipedia.org/wiki/Partial_application)).
- 
-    """.trimMargin()
 
-    @Media.Video """media/orx-noise-301.mp4"""
+    @Text 
+    """
+    Gradients can also be calculated for the fbm, rigid and billow versions 
+    of the noise functions. However, 
+    we first have to create a function that can be used by the gradient 
+    estimator. For this `fbmFunc3D`, `billowFunc3D`, and 
+    `rigidFunc3D` can be used (which works through 
+    [partial application](https://en.wikipedia.org/wiki/Partial_application)).
+    """
+
+    @Media.Video "media/orx-noise-301.mp4"
+
     @Application
     @Code
     application {
@@ -293,17 +333,16 @@ we first have to create a function that can be used by the gradient estimator. F
     // is available again.
 
     /*
-    @Text "## Noise filters"
+    @Text """
+    ## Noise filters
 
-    @Text "The library contains a number of Filters with which noise image can be generated efficiently on the GPU."
+    The library contains a number of Filters with which noise image
+    can be generated efficiently on the GPU.
 
+    ### Hash noise
 
-    @Text "### Hash noise"
+    A white-noise-like noise generator.
 
-    @Text """A white-noise-like noise generator."""
-
-    @Text
-    """
     Parameter            | Default value                 | Description
     ---------------------|-------------------------------|-------------------------------------------
     `seed`               | `0.0`                         | Noise seed
@@ -313,7 +352,8 @@ we first have to create a function that can be used by the gradient estimator. F
     `premultipliedAlpha` | `true`                        | Outputs premultiplied alpha if true                
     """
 
-    @Media.Image """media/orx-noise-filter-001.png"""
+    @Media.Image "media/orx-noise-filter-001.png"
+
     @Application
     @Code
     application {
@@ -337,9 +377,12 @@ we first have to create a function that can be used by the gradient estimator. F
         }
     }
 
-    @Text "### 3D Simplex noise filter"
     @Text """
-    The `SimplexNoise3D` filter is based on Ken Perlin's improvement over Perlin noise, but with fewer directional artifacts and, in higher dimensions, a lower computational overhead.
+    ### 3D Simplex noise filter
+
+    The `SimplexNoise3D` filter is based on Ken Perlin's improvement
+    over Perlin noise, but with fewer directional artifacts and, in
+    higher dimensions, a lower computational overhead.
 
     Parameter           | Default value                 | Description
     ---------------------|-------------------------------|-------------------------------------------
@@ -353,7 +396,8 @@ we first have to create a function that can be used by the gradient estimator. F
     `premultipliedAlpha` | `true`                        | Outputs premultiplied alpha if true
     """
 
-    @Media.Video """media/orx-noise-filter-008.mp4"""
+    @Media.Video "media/orx-noise-filter-008.mp4"
+
     @Application
     @Code
     application {
@@ -382,12 +426,11 @@ we first have to create a function that can be used by the gradient estimator. F
         }
     }
 
-    @Text "### Cell noise"
+    @Text """
+    ### Cell noise
 
-    @Text """A cell, Worley or Voronoi noise generator"""
+    A cell, Worley or Voronoi noise generator
 
-    @Text
-    """
     Parameter            | Default value                 | Description
     ---------------------|-------------------------------|-------------------------------------------
     `seed`               | `Vector2(0.0, 0.0)`           | Noise seed / offset
@@ -400,7 +443,8 @@ we first have to create a function that can be used by the gradient estimator. F
     `premultipliedAlpha` | `true`                        | Outputs premultiplied alpha if true                
     """
 
-    @Media.Image """media/orx-noise-filter-002.png"""
+    @Media.Image "media/orx-noise-filter-002.png"
+
     @Application
     @Code
     application {
@@ -425,12 +469,11 @@ we first have to create a function that can be used by the gradient estimator. F
 
     }
 
-    @Text "### Speckle noise"
+    @Text """
+    ### Speckle noise
 
-    @Text """A speckle noise generator."""
+    A speckle noise generator.
 
-    @Text
-    """
     Parameter            | Default value                 | Description
     ---------------------|-------------------------------|-------------------------------------------
     `color`              | `ColorRGBa.WHITE`             | Speckle color
@@ -440,7 +483,8 @@ we first have to create a function that can be used by the gradient estimator. F
     `premultipliedAlpha` | `true`                        | Outputs premultiplied alpha if true                
     """
 
-    @Media.Image """media/orx-noise-filter-003.png"""
+    @Media.Image "media/orx-noise-filter-003.png"
+
     @Application
     @Code
     application {
@@ -464,15 +508,13 @@ we first have to create a function that can be used by the gradient estimator. F
         }
     }
 
-    @Text "### Value noise"
+    @Text """
+    ### Value noise
 
-    @Text
-    """The `ValueNoise` filter generates a simple fractal noise. Value noise is a computationally cheap form of creating
-        'smooth noise' by interpolating random values on a lattice.
-    """
+    The `ValueNoise` filter generates a simple fractal noise. Value
+    noise is a computationally cheap form of creating
+    'smooth noise' by interpolating random values on a lattice.
 
-    @Text
-    """
     Parameter            | Default value                 | Description
     ---------------------|-------------------------------|-------------------------------------------
     `seed`               | `Vector2(0.0, 0.0)`           | Noise seed / offset
@@ -485,7 +527,8 @@ we first have to create a function that can be used by the gradient estimator. F
     `premultipliedAlpha` | `true`                        | Outputs premultiplied alpha if true                
     """
 
-    @Media.Image """media/orx-noise-filter-004.png"""
+    @Media.Image "media/orx-noise-filter-004.png"
+
     @Application
     @Code
     application {

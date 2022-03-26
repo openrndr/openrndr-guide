@@ -19,15 +19,22 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 fun main() {
-    @Text """# Array textures"""
-    @Text """Array textures are a special type of texture that make it possible to access 2048 layers of texture data from a single texture sampler."""
+    @Text 
+    """
+    # Array textures
+    
+    Array textures are a special type of texture that make it possible to 
+    access 2048 layers of texture data from a single texture sampler.
+    
+    Array textures are encapsulated by the 
+    [`ArrayTexture` interface](https://api.openrndr.org/org.openrndr.draw/-array-texture/index.html)
 
-    @Text """Array textures are encapsulated by the [`ArrayTexture` interface](https://api.openrndr.org/org.openrndr.draw/-array-texture/index.html)"""
-
-
-    @Text """## Creation"""
-
-    @Text """Array textures are created using the [`arrayTexture`](https://api.openrndr.org/org.openrndr.draw/array-texture.html) function."""
+    ## Creation
+    
+    Array textures are created using the 
+    [`arrayTexture`](https://api.openrndr.org/org.openrndr.draw/array-texture.html) 
+    function.
+    """
 
     @Code
     application {
@@ -37,10 +44,16 @@ fun main() {
         }
     }
 
-    @Text """## Writing to array textures"""
-    @Text """There are several ways to get texture data into array textures. Let's have a look at them."""
+    @Text 
+    """
+    ## Writing to array textures
+    
+    There are several ways to get texture data into array textures. 
+    Let's have a look at them.
+    
+    One can copy from a ColorBuffer using `.copyTo()`
+    """
 
-    @Text """One can copy from a ColorBuffer using `.copyTo()`"""
     @Code
     application {
         program {
@@ -51,7 +64,11 @@ fun main() {
         }
     }
 
-    @Text """or copy from an array texture layer to another layer"""
+    @Text 
+    """
+    or copy from an array texture layer to another layer
+    """
+
     @Code
     application {
         program {
@@ -61,7 +78,11 @@ fun main() {
         }
     }
 
-    @Text """or write to an array texture layer from a direct ByteBuffer"""
+    @Text 
+    """
+    or write to an array texture layer from a direct ByteBuffer
+    """
+
     @Code
     application {
         program {
@@ -82,11 +103,14 @@ fun main() {
         }
     }
 
-    @Text """## Drawing array textures"""
-    @Text """Array textures can be drawn using the `Drawer.image` functions."""
-
-
-    @Text """As example we show how to draw the 0th layer of an array texture"""
+    @Text 
+    """
+    ## Drawing array textures
+    
+    Array textures can be drawn using the `Drawer.image` functions.
+    
+    As example we show how to draw the 0th layer of an array texture
+    """
 
     @Code
     application {
@@ -101,7 +125,12 @@ fun main() {
         }
     }
 
-    @Text """We can also render batches of array textures by passing lists of layer indexes and source-target rectangle pairs."""
+    @Text 
+    """
+    We can also render batches of array textures by passing lists of layer 
+    indexes and source-target rectangle pairs.
+    """
+
     @Code
     application {
         program {
@@ -124,11 +153,17 @@ fun main() {
             }
         }
     }
-    @Text """## Drawing into array textures"""
-    @Text """Array textures can be used as attachment for render targets."""
 
+    @Text 
+    """
+    ## Drawing into array textures
+    
+    Array textures can be used as attachment for render targets.
+    
+    Here we show how to use a single layer from an array texture as an 
+    attachment for a render target.
+    """
 
-    @Text """Here we show how to use a single layer from an array texture as an attachment for a render target."""
     @Code
     application {
         program {
@@ -150,9 +185,15 @@ fun main() {
         }
     }
 
-    @Text """Let's conclude this chapter by means of a small slit scanning demonstration. Here we use a single array 
-texture and a list of render targets, all using different layers of the same array texture."""
-    @Media.Video """media/array-texture-001.mp4"""
+    @Text 
+    """
+    Let's conclude this chapter by means of a small slit scanning demonstration. 
+    Here we use a single array texture and a list of render targets, all using 
+    different layers of the same array texture.
+    """
+
+    @Media.Video "media/array-texture-001.mp4"
+
     @Application
     @Code.Block
     run {

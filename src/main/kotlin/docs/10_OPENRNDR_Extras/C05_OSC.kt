@@ -12,19 +12,24 @@ import org.openrndr.extra.osc.OSC
 import java.net.InetAddress
 
 fun main() {
-    @Text "# Handling OSC messages with orx-osc"
+    @Text """
+    # Handling OSC messages with orx-osc
+    
+    The [`orx-osc`](https://github.com/openrndr/orx/tree/master/orx-osc) 
+    osc provides a simple interface to interact with OSC hosts and clients. 
 
-    @Text """The [`orx-osc`](https://github.com/openrndr/orx/tree/master/orx-osc) osc provides a simple interface
-to interact with OSC hosts and clients. 
-"""
-
-    @Text "## Prerequisites"
-    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-project, all you have to do is enable `orx-osc` in the `orxFeatures`
- set in `build.gradle.kts` and reimport the gradle project."""
-
-    @Text "## Listening to OSC messages"
-    @Text """To listen to OSC messages we need to start an OSC server and use `listen` function to install listeners"""
+    ## Prerequisites
+    
+    Assuming you are working on an 
+    [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+    project, all you have to do is enable `orx-osc` in the `orxFeatures`
+    set in `build.gradle.kts` and reimport the gradle project.
+    
+    ## Listening to OSC messages
+    
+    To listen to OSC messages we need to start an OSC server and use `listen` 
+    function to install listeners
+    """
 
     @Code.Block
     run {
@@ -43,7 +48,9 @@ project, all you have to do is enable `orx-osc` in the `orxFeatures`
         }
     }
 
-    @Text "## Sending OSC messages"
+    @Text """
+    ## Sending OSC messages
+    """
 
     @Code.Block
     run {
@@ -58,11 +65,13 @@ project, all you have to do is enable `orx-osc` in the `orxFeatures`
         }
     }
 
-    @Text "## Specifying IP address and ports"
+    @Text """
+    ## Specifying IP address and ports
 
-    @Text """The default IP address for OSC is `localhost` and the in and out
-        ports are both set to `57110` by default. One can specify different
-        values like this:"""
+    The default IP address for OSC is `localhost` and the in and out
+    ports are both set to `57110` by default. One can specify different
+    values like this:
+    """
 
     @Code.Block
     run {
@@ -72,6 +81,5 @@ project, all you have to do is enable `orx-osc` in the `orxFeatures`
             portOut = 12000
         )
     }
-
 }
 

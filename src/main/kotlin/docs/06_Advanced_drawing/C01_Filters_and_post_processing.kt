@@ -15,18 +15,20 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 fun main() {
-    @Text """
-# Filters and Post-processing
+    @Text 
+    """
+    # Filters and Post-processing
+    
+    Since OPENRNDR has extensive support for rendering to off-screen buffers it is easy to apply effects and filters
+    to the off-screen buffers.
+    
+    ## Basic usage
+    
+    To demonstrate the ease of using filters we show an example of applying a blur filter to a drawing on a render target.
+    """
 
-Since OPENRNDR has extensive support for rendering to off-screen buffers it is easy to apply effects and filters
-to the off-screen buffers.
+    @Media.Video "media/filters-001.mp4"
 
-
-## Basic usage
-To demonstrate the ease of using filters we show an example of applying a blur filter to a drawing on a render target.
-"""
-
-    @Media.Video """media/filters-001.mp4"""
     @Application
     application {
         configure {
@@ -72,18 +74,24 @@ To demonstrate the ease of using filters we show an example of applying a blur f
             }
         }
     }
-    @Text """## Writing your own filters"""
+    @Text 
+    """
+    ## Writing your own filters
+    
+    You may be wondering how to create your own filters. If so, good news, 
+    it is fairly easy to write your own filter if you are familiar with 
+    fragment shaders in GLSL. The easiest way to write your own filter is 
+    to use the `Filter` class by extending it. The `Filter` class takes care 
+    of setting up render state, geometry and projections so all you have
+    to do is write a shader.
 
-    @Text """You may be wondering how to create your own filters. If so, good news, it is fairly easy to write your own
-filter if you are familiar with fragment shaders in GLSL. The easiest way to write your own filter is to use the `Filter`
-class by extending it. The `Filter` class takes care of setting up render state, geometry and projections so all you have
-to do is write a shader.
+    What follows is an example of how to create a Filter from a shader whose 
+    code is stored as a String. The filter we will be making is a simple
+    noise filter.
+    """
 
-What follows is an example of how to create a Filter from a shader whose code is stored as a String. The filter
-we will be making is a simple noise filter.
-"""
+    @Media.Image "media/filters-002.png"
 
-    @Media.Image """media/filters-002.png"""
     @Application
     @Code
     application {
@@ -159,9 +167,13 @@ we will be making is a simple noise filter.
         }
     }
 
-    @Text """## The orx-fx library
-A repository of ready-to-use filters for OPENRNDR can be found in the [ORX repository](https://github.com/openrndr/orx/tree/master/orx-fx),
-a partial index of the filters can be found in the [orx-fx chapter](10_OPENRNDR_Extras/C06_Filters)
-
+    @Text 
+    """
+    ## The orx-fx library
+    
+    A repository of ready-to-use filters for OPENRNDR can be found in 
+    the [ORX repository](https://github.com/openrndr/orx/tree/master/orx-fx),
+    a partial index of the filters can be found in the 
+    [orx-fx chapter](10_OPENRNDR_Extras/C06_Filters)
     """
 }

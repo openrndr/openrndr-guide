@@ -13,18 +13,26 @@ import org.openrndr.math.Quaternion.Companion.fromAngles
 import org.openrndr.math.slerp
 
 fun main() {
-    @Text """# Quaternions
-Quaternions represent rotation through an extension of complex numbers. A full explanation of quaternions and their intrinsics is out of this document's scope, in this section however enough information is provided to use quaternion's effectively as a tool.
+    @Text 
+    """
+    # Quaternions
+    
+    Quaternions represent rotation through an extension of complex numbers. A full explanation of quaternions and their intrinsics is out of this document's scope, in this section however enough information is provided to use quaternion's effectively as a tool.
+    
+    In practice quaternions are rarely constructed directly as it is fairly difficult to get an intuition for its argument values.
+    """
 
-In practice quaternions are rarely constructed directly as it is fairly difficult to get an intuition for its argument values.
-"""
     @Code.Block
     run {
         val q = Quaternion(0.4, 0.3, 0.1, 0.1)
     }
 
-@Text """Instead quaternions are created from Euler-rotation angles and concatenated in quaternion space. Working in
-    quaternion domains warrants consistent rotations and avoids gimbal locks."""
+    @Text
+    """
+    Instead quaternions are created from Euler-rotation angles and concatenated 
+    in quaternion space. Working in quaternion domains warrants consistent 
+    rotations and avoids gimbal locks.
+    """
 
     run {
         val pitch0 = 0.0
@@ -41,12 +49,14 @@ In practice quaternions are rarely constructed directly as it is fairly difficul
         }
     }
 
-@Text """
-## Slerp
+    @Text
+    """
+    ## Slerp
 
-Spherical linear interpolation, or colloquially "slerping" solves the problem of interpolating or blending
-between rotations.
-"""
+    Spherical linear interpolation, or colloquially "slerping" solves the problem of interpolating or blending
+    between rotations.
+    """
+
     run {
         val pitch0 = 0.0
         val yaw0 = 0.0
@@ -61,11 +71,16 @@ between rotations.
             val q = slerp(q0, q1 , 0.5)
         }
     }
-@Text """
-## Quaternion to matrix
 
-Naturally quaternions can be converted to matrices. Quaternions have a `matrix` property that holds a `Matrix44` representation of the orientation represented by the Quaternion.
-"""
+    @Text
+    """
+    ## Quaternion to matrix
+
+    Naturally quaternions can be converted to matrices. 
+    Quaternions have a `matrix` property that holds a `Matrix44` representation 
+    of the orientation represented by the Quaternion.
+    """
+
     application {
         program {
             val pitch = 0.0

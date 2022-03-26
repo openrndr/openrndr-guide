@@ -16,9 +16,12 @@ import org.openrndr.svg.saveToFile
 import java.io.File
 
 fun main() {
-    @Text """# Drawing SVG
-Loading a composition and drawing it can be done as follows:
-"""
+    @Text 
+    """
+    # Drawing SVG
+    
+    Loading a composition and drawing it can be done as follows:
+    """
 
     @Code.Block
     run {
@@ -32,78 +35,79 @@ Loading a composition and drawing it can be done as follows:
         }
     }
 
-    @Text """
+    @Text 
+    """
+    Note that OPENRNDR's support for SVG files works best with SVG files that are saved in the Tiny SVG 1.x profile .
+    
+    
+    When drawing a composition from SVG you will notice that fill and stroke colors from the SVG file are used over the `Drawer` colors.
+    
+    ## Compositions
+    
+    Here a `Composition` is a tree structure with `Composition.root` as its root node.
+    
+    ##### CompositionNode types
+    
+    Node Type         | Function
+    ------------------|-----------------------------------------
+    `GroupNode`       | Holds multiple child nodes in `children`
+    `ShapeNode`       | Holds a a single shape in `shape`
+    `TextNode`        | Holds text (currently not implemented)
+    `ImageNode`       | Holds an image (currently not implemented)
+    `CompositionNode` | The base class for composition node
+    
+    ##### CompositionNode properties
+    
+    Property name                | Property type      | Description
+    -----------------------------|--------------------|------------
+    `transform`                  | `Matrix44`         | local transformation
+    `fill`                       | `CompositionColor` | fill color
+    `stroke`                     | `CompositionColor` | stroke color
+    `id`                         | `String?`          | node id
+    `parent`                     | `CompositionNode?` | node parent
+    `effectiveFill` (read-only)  | `ColorRGBa?`       | the effective fill color, potentially inherited from ancestor
+    `effectiveStroke`(read-only) | `ColorRGBa?`       | the effective stroke color, potentially inherited from ancestor
+    
+    ##### GroupNode properties
+    
+    Property name   | Property type                   | Description
+    ----------------|---------------------------------|---------------
+    `children`      | `MutableList<CompositionNode>`  | child nodes
+    
+    ##### ShapeNode properties
+    
+    Property name   | Property type  | Description
+    ----------------|----------------|---------------
+    `shape`         | `Shape`        | a single shape
+    
+    ## Querying the composition
+    
+    ### Finding all shapes in the composition
+    
+    ```kotlin
+    val shapeNodes = composition.findShapes()
+    ```
+    
+    ## Modifying the composition
+    
+    Since a `Composition` contains many immutable parts it is easier to (partially) replace parts of the composition.
+    
+    ```kotlin
+    val m = translate(1.0, 0.0, 0.0);
+    composition.root.map {
+      if (it is ShapeNode) {
+        it.copy(shape=it.shape.transform(m))
+      } else {
+        it
+      }
+    }
+    ```
+    ## Creating compositions manually
+    
+    Compositions are tree structures that can be constructed manually. Below you find an example of constructing a `Composition` 
+    in code.
+    """
 
-Note that OPENRNDR's support for SVG files works best with SVG files that are saved in the Tiny SVG 1.x profile .
-
-
-When drawing a composition from SVG you will notice that fill and stroke colors from the SVG file are used over the `Drawer` colors.
-
-## Compositions
-
-Here a `Composition` is a tree structure with `Composition.root` as its root node.
-
-##### CompositionNode types
-
-Node Type         | Function
-------------------|-----------------------------------------
-`GroupNode`       | Holds multiple child nodes in `children`
-`ShapeNode`       | Holds a a single shape in `shape`
-`TextNode`        | Holds text (currently not implemented)
-`ImageNode`       | Holds an image (currently not implemented)
-`CompositionNode` | The base class for composition node
-
-##### CompositionNode properties
-
-Property name                | Property type      | Description
------------------------------|--------------------|------------
-`transform`                  | `Matrix44`         | local transformation
-`fill`                       | `CompositionColor` | fill color
-`stroke`                     | `CompositionColor` | stroke color
-`id`                         | `String?`          | node id
-`parent`                     | `CompositionNode?` | node parent
-`effectiveFill` (read-only)  | `ColorRGBa?`       | the effective fill color, potentially inherited from ancestor
-`effectiveStroke`(read-only) | `ColorRGBa?`       | the effective stroke color, potentially inherited from ancestor
-
-##### GroupNode properties
-
-Property name   | Property type                   | Description
-----------------|---------------------------------|---------------
-`children`      | `MutableList<CompositionNode>`  | child nodes
-
-##### ShapeNode properties
-
-Property name   | Property type  | Description
-----------------|----------------|---------------
-`shape`         | `Shape`        | a single shape
-
-## Querying the composition
-
-### Finding all shapes in the composition
-
-```kotlin
-val shapeNodes = composition.findShapes()
-```
-
-## Modifying the composition
-
-Since a `Composition` contains many immutable parts it is easier to (partially) replace parts of the composition.
-
-```kotlin
-val m = translate(1.0, 0.0, 0.0);
-composition.root.map {
-  if (it is ShapeNode) {
-    it.copy(shape=it.shape.transform(m))
-  } else {
-    it
-  }
-}
-```
-## Creating compositions manually
-
-Compositions are tree structures that can be constructed manually. Below you find an example of constructing a `Composition` 
-in code.
-"""
     @Code.Block
     run {
         val root = GroupNode()
@@ -116,8 +120,10 @@ in code.
         root.children.add(shapeNode)
     }
 
-    @Text """
+    @Text 
+    """
        ## Composition Drawer
+       
        OPENRNDR has a much more convenient interface for creating Compositions. The idea behind this
        interface is that it works in a similar way to `Drawer`. 
 
@@ -133,9 +139,11 @@ in code.
         }
     }
 
-    @Text """
-        ### Transforms
-        Transforms work in the same way as in `Drawer`
+    @Text 
+    """
+    ### Transforms
+        
+    Transforms work in the same way as in `Drawer`
     """
     @Code.Block
     run {
@@ -151,8 +159,11 @@ in code.
         }
     }
 
-    @Text """## Saving compositions to SVG"""
-    @Text """Compositions can be saved to SVG using the `saveToFile` function.
+    @Text 
+    """
+    Saving compositions to SVG
+    
+    Compositions can be saved to SVG using the `saveToFile` function.
     """
 
     @Code.Block

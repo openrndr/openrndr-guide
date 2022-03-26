@@ -14,22 +14,19 @@ import org.openrndr.extensions.SingleScreenshot
 
 fun main() {
 
-    @Text """
-# Color
-    """.trimIndent()
+    @Text 
+    """
+    # Color
 
-    @Text """
-In this chapter we discuss and demonstrate OPENRNDR's color functionality.
-    """.trimIndent()
+    In this chapter we discuss and demonstrate OPENRNDR's color functionality.
 
+    ## Basic color
 
-    @Text """
-## Basic color
+    OPENRNDR primarily uses red-green-blue(-alpha) color stored in 
+    `ColorRGBa` instances. `ColorRGBa`'s channels store values in the range [0, 1].
 
-OPENRNDR primarily uses red-green-blue(-alpha) color stored in `ColorRGBa` instances. `ColorRGBa`'s channels store values in the range [0, 1].
-"""
-
-    @Text """### Predefined colors"""
+    ### Predefined colors
+    """
 
     @Code.Block
     run {
@@ -43,26 +40,35 @@ OPENRNDR primarily uses red-green-blue(-alpha) color stored in `ColorRGBa` insta
         ColorRGBa.PINK
     }
 
-    @Text "### Custom colors"
-    @Text """Custom colors can be made using either the ColorRGBa constructor, or the `rgb` and `rgba` functions. Both use
-value ranges between 0.0 and 1.0."""
-        @Code.Block
-        run {
-            // -- using the ColorRGBa constructor
-            val red = ColorRGBa(1.0, 0.0, 0.0)
-            val green = ColorRGBa(0.0, 1.0, 0.0)
-            val blue = ColorRGBa(0.0, 0.0, 1.0)
-            val blueOpaque = ColorRGBa(0.0, 0.0, 1.0, 0.5)
+    @Text """
+    ### Custom colors
 
-            // -- using the rgb and rgba functions
-            val magenta = rgb(1.0, 0.0, 1.0)
-            val magentaOpaque = rgba(1.0, 0.0, 1.0, 0.5)
-        }
+    Custom colors can be made using either the 
+    ColorRGBa constructor, or the `rgb` and `rgba` 
+    functions. Both use value ranges between 0.0 and 1.0.
+    """
 
-    @Text """### Conversion from hex color
-RGB color is commonly communicated in hexadecimal codes. `ColorRGBa` provides simple tools to construct color from such
-hexadecimal codes.
-    """.trimMargin()
+    @Code.Block
+    run {
+        // -- using the ColorRGBa constructor
+        val red = ColorRGBa(1.0, 0.0, 0.0)
+        val green = ColorRGBa(0.0, 1.0, 0.0)
+        val blue = ColorRGBa(0.0, 0.0, 1.0)
+        val blueOpaque = ColorRGBa(0.0, 0.0, 1.0, 0.5)
+
+        // -- using the rgb and rgba functions
+        val magenta = rgb(1.0, 0.0, 1.0)
+        val magentaOpaque = rgba(1.0, 0.0, 1.0, 0.5)
+    }
+
+    @Text 
+    """
+    ### Conversion from hex color
+    
+    RGB color is commonly communicated in hexadecimal 
+    codes. `ColorRGBa` provides simple tools to construct 
+    color from such hexadecimal codes.
+    """
     @Code.Block
     run {
         // -- construct the OPENRNDR pink from hexadecimal code, using an integer argument
@@ -71,15 +77,17 @@ hexadecimal codes.
         val color2 = ColorRGBa.fromHex("#ffc0cb")
     }
 
-    @Text """### Color operations
-The `ColorRGBa` class offers a number of tools to create variations of colors. For example `ColorRGBa.shade` can be
-used to create lighter or darker shades of a base color.
-""".trimMargin()
-
-
-    @Media.Image """
-media/color-001.png
+    @Text 
     """
+    ### Color operations
+
+    The `ColorRGBa` class offers a number of tools to 
+    create variations of colors. For example `ColorRGBa.shade` can be
+    used to create lighter or darker shades of a base color.
+    """
+
+
+    @Media.Image "media/color-001.png"
 
     @Application
 
@@ -114,17 +122,14 @@ media/color-001.png
         }
     }
 
-    @Text """
-Using `ColorRGBa.opacify` colors can be made more or less opaque.
-    """.trimIndent()
-
-
-    @Media.Image """
-media/color-002.png
+    @Text 
+    """
+    Using `ColorRGBa.opacify` colors can be made more or less opaque.
     """
 
-    @Application
+    @Media.Image "media/color-002.png"
 
+    @Application
     application {
         @Exclude
         configure {
@@ -133,7 +138,6 @@ media/color-002.png
         }
 
         program {
-
             @Exclude
             extend(SingleScreenshot()) {
                 outputFile = "media/color-002.png"
@@ -156,17 +160,15 @@ media/color-002.png
         }
     }
 
-    @Text """
-Using `mix(ColorRGBa, ColorRGBa, Double)` colors can be mixed.
-    """.trimIndent()
-
-
-    @Media.Image """
-media/color-003.png
+    @Text 
+    """
+    Using `mix(ColorRGBa, ColorRGBa, Double)` colors can be mixed.
     """
 
-    @Application
 
+    @Media.Image "media/color-003.png"
+
+    @Application
     application {
         @Exclude
         configure {
@@ -195,44 +197,44 @@ media/color-003.png
         }
     }
 
-    @Text """## Alternative color models
-OPENRNDR offers a wide range of alternative color models. The alternative models use primaries different from red, green
-and blue.
-
-Class name    | Color space description
---------------|---------------------------------------
-`ColorRGBa`   | sRGB and linear RGB
-`ColorHSVa`   | Hue, saturation, value
-`ColorHSLa`   | Hue, saturation, lightness
-`ColorXSVa`   | Xue, saturation, value, _Kuler_-like colorspace
-`ColorXSLa`   | Xue, saturation, lightness, _Kuler_-like colorspace
-`ColorXYZa`   | CIE XYZ colorspace
-`ColorYxya`   | CIE Yxy colorspace
-`ColorLABa`   | LAB colorspace
-`ColorLCHABa` | LCHab colorspace, a cylindrical variant of LAB
-`ColorLSHABa` | LSHab colorspace, a cylindrical variant of LAB, chroma replaced with normalized saturation
-`ColorLUVa`   | LUV colorspace
-`ColorLCHUVa` | LCHuv colorspace, a cylindrical variant of LUV
-`ColorLSHUVa` | LSHuv colorspace, a cylindrical variant of LUV, chroma replaced with normalized saturation
-`ColorATVa`   | Coloroid color space, partial implementation
-"""
-
-    @Text """## HSV, HSL, XSV and XSL color"""
-
-    @Text """HSV (hue-saturation-value) and HSL ("hue-saturation-lightness") are cylindrical color spaces.
-
-XSV and XSL (for lack of a better name) are transformed versions of HSV and HSL in which the hue component has been
-stretched and compressed to make the color space better suited for artists. The spaces are better suited for artists
-because it has red-green and blue-yellow primaries. The XSV and XSL spaces are based on (if not
-the same as) the Adobe Kuler color spaces.
-
-Below is an example of plots of color swatches for (from top to bottom) HSV, HSL, XSV and XSL. The adjusted hue of the
-XSV and XSL spaces is clearly visible.
-""".trimMargin()
-
-    @Media.Image """
-media/color-004.png
+    @Text 
     """
+    ## Alternative color models
+    
+    OPENRNDR offers a wide range of alternative color models. The alternative models use primaries different from red, green
+    and blue.
+    
+    Class name    | Color space description
+    --------------|---------------------------------------
+    `ColorRGBa`   | sRGB and linear RGB
+    `ColorHSVa`   | Hue, saturation, value
+    `ColorHSLa`   | Hue, saturation, lightness
+    `ColorXSVa`   | Xue, saturation, value, _Kuler_-like colorspace
+    `ColorXSLa`   | Xue, saturation, lightness, _Kuler_-like colorspace
+    `ColorXYZa`   | CIE XYZ colorspace
+    `ColorYxya`   | CIE Yxy colorspace
+    `ColorLABa`   | LAB colorspace
+    `ColorLCHABa` | LCHab colorspace, a cylindrical variant of LAB
+    `ColorLSHABa` | LSHab colorspace, a cylindrical variant of LAB, chroma replaced with normalized saturation
+    `ColorLUVa`   | LUV colorspace
+    `ColorLCHUVa` | LCHuv colorspace, a cylindrical variant of LUV
+    `ColorLSHUVa` | LSHuv colorspace, a cylindrical variant of LUV, chroma replaced with normalized saturation
+    `ColorATVa`   | Coloroid color space, partial implementation
+    
+    ## HSV, HSL, XSV and XSL color
+    
+    HSV (hue-saturation-value) and HSL ("hue-saturation-lightness") are cylindrical color spaces.
+    
+    XSV and XSL (for lack of a better name) are transformed versions of HSV and HSL in which the hue component has been
+    stretched and compressed to make the color space better suited for artists. The spaces are better suited for artists
+    because it has red-green and blue-yellow primaries. The XSV and XSL spaces are based on (if not
+    the same as) the Adobe Kuler color spaces.
+    
+    Below is an example of plots of color swatches for (from top to bottom) HSV, HSL, XSV and XSL. The adjusted hue of the
+    XSV and XSL spaces is clearly visible.
+    """
+
+    @Media.Image "media/color-004.png"
 
     @Application
     application {

@@ -14,15 +14,14 @@ import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.math.Vector2
 
 fun main() {
-    @Text
+    @Text 
     """
     # Drawing Primitives
+    
     In this topic we introduce OPENRNDR's basic drawing primitives. We show how to draw lines, rectangles and circles.
-    """
 
-    @Text
-    """
     ## Drawing circles
+    
     A circle is drawn around coordinates `x`, `y`, i.e. `x` and `y` specify the center of the circle.
     Circles are filled with the color set in `Drawer.fill` and their stroke is set to `Drawer.stroke`. The width of the stroke follows `Drawer.strokeWeight`.
     """
@@ -71,7 +70,7 @@ fun main() {
         }
     }
 
-    @Text
+    @Text 
     """
     You may have spotted the two other APIs for drawing circles; `Drawer.circle(center: Vector2, radius: Double)` and `Drawer.circle(circle: Circle)` and wonder what those are for. They are for drawing the exact same circle, but using arguments that may be more convenient in scenarios in which values are provided by `Vector2` or `Circle` types.
     """
@@ -89,6 +88,7 @@ fun main() {
 
     @Text
     """## Drawing rectangles"""
+
     @Application
     application {
         configure {

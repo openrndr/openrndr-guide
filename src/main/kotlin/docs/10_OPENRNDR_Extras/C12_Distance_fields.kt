@@ -22,18 +22,21 @@ import kotlin.math.cos
 
 
 fun main() {
-    @Text """# Distance fields using orx-jumpflood """
+    @Text 
+    """
+    # Distance fields using orx-jumpflood
+    
+    ## Prerequisites
+    
+    Assuming you are working on an 
+    [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+    project, all you have to do is enable `orx-jumpflood` in the `orxFeatures`
+    set in `build.gradle.kts` and reimport the gradle project.
+    
+    ## Distance field visualization
+    """
 
-    @Text "## Prerequisites"
-    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-project, all you have to do is enable `orx-jumpflood` in the `orxFeatures`
- set in `build.gradle.kts` and reimport the gradle project."""
-
-
-
-    @Text "## Distance field visualization"
-
-    @Media.Video """media/distance-fields-001.mp4"""
+    @Media.Video "media/distance-fields-001.mp4"
 
     @Application
     @Code
@@ -72,11 +75,13 @@ project, all you have to do is enable `orx-jumpflood` in the `orxFeatures`
         }
     }
 
-    @Text "## Outer glow"
+    @Text """
+    ## Outer glow
+    
+    orx-jumpflood comes with a filter that creates Photoshop-style outer glow effect.
+    """
 
-    @Text """orx-jumpflood comes with a filter that creates Photoshop-style outer glow effect."""
-
-    @Media.Video """media/distance-fields-101.mp4"""
+    @Media.Video "media/distance-fields-101.mp4"
 
     @Application
     @Code
@@ -110,11 +115,14 @@ project, all you have to do is enable `orx-jumpflood` in the `orxFeatures`
         }
     }
 
-    @Text "## Inner glow"
+    @Text """
+    ## Inner glow
+    
+    Similar to the outer glow effect, but the glow is placed in the inside 
+    of the shape.
+    """
 
-    @Text """Similar to the outer glow effect, but the glow is placed in the inside of the shape."""
-
-    @Media.Video """media/distance-fields-102.mp4"""
+    @Media.Video "media/distance-fields-102.mp4"
 
     @Application
     @Code
@@ -148,9 +156,11 @@ project, all you have to do is enable `orx-jumpflood` in the `orxFeatures`
         }
     }
 
-    @Text "## Sampling distance"
+    @Text """
+    ## Sampling distance
+    """
 
-    @Media.Video """media/distance-fields-002.mp4"""
+    @Media.Video "media/distance-fields-002.mp4"
 
     @Application
     @Code
@@ -208,6 +218,4 @@ project, all you have to do is enable `orx-jumpflood` in the `orxFeatures`
             }
         }
     }
-
-
 }

@@ -19,34 +19,37 @@ import kotlin.math.sin
 
 
 fun main() {
-    @Text """# Complex shapes
-OPENRNDR offers a lot of tools for the creation and drawing of two dimensional shapes.
-"""
+    @Text 
+    """
+    # Complex shapes
+    
+    OPENRNDR offers a lot of tools for the creation and drawing of two dimensional shapes.
 
-    @Text """## Shapes
-OPENRNDR uses `Shape` to represent planar shapes of which the contours are described using piece-wise bezier curves.
+    ## Shapes
+    
+    OPENRNDR uses `Shape` to represent planar shapes of which the contours are described using piece-wise bezier curves.
+    
+    A `Shape` is composed of one or multiple `ShapeContour` instances. A `ShapeContour` is composed of multiple `Segment` instances, describing a bezier curve each.
 
-A `Shape` is composed of one or multiple `ShapeContour` instances. A `ShapeContour` is composed of multiple `Segment` instances, describing a bezier curve each.
-"""
-    @Text """## Shape and ShapeContour builders
-The `ContourBuilder` class offers a simple way of producing complex two dimensional shapes. `ContourBuilder` employs a vocabulary that is familiar to those who have used SVG.
+    ## Shape and ShapeContour builders
+    
+    The `ContourBuilder` class offers a simple way of producing complex two dimensional shapes. `ContourBuilder` employs a vocabulary that is familiar to those who have used SVG.
+    
+    * `moveTo(position)` move the cursor to the given position
+    * `lineTo(position)` insert a line contour starting from the cursor, ending at the given position
+    * `moveOrLineTo(position)` move the cursor if no cursor was previously set or draw a line
+    * `curveTo(control, position)` insert a quadratic bezier curve starting from the cursor, ending at position
+    * `curveTo(controlA, controlB, position)` insert a cubic bezier curve starting from the cursor, ending at position
+    * `continueTo(position)` inside a quadratic bezier curve starting from the cursor and reflecting the tangent of the last control
+    * `continueTo(controlB, position)` insert a cubic spline
+    * `arcTo(radiusX, radiusY, largeAngle, sweepFlag, position)`
+    * `close()` close the contour
+    * `cursor` a `Vector2` instance representing the current position
+    * `anchor` a `Vector2` instance representing the current anchor
+    
+    Let's create a simple `Contour` and draw it. The following program shows how to use the contour builder to create a triangular contour."""
 
-* `moveTo(position)` move the cursor to the given position
-* `lineTo(position)` insert a line contour starting from the cursor, ending at the given position
-* `moveOrLineTo(position)` move the cursor if no cursor was previously set or draw a line
-* `curveTo(control, position)` insert a quadratic bezier curve starting from the cursor, ending at position
-* `curveTo(controlA, controlB, position)` insert a cubic bezier curve starting from the cursor, ending at position
-* `continueTo(position)` inside a quadratic bezier curve starting from the cursor and reflecting the tangent of the last control
-* `continueTo(controlB, position)` insert a cubic spline
-* `arcTo(radiusX, radiusY, largeAngle, sweepFlag, position)`
-* `close()` close the contour
-* `cursor` a `Vector2` instance representing the current position
-* `anchor` a `Vector2` instance representing the current anchor
-"""
-
-    @Text """Let's create a simple `Contour` and draw it. The following program shows how to use the contour builder to create a triangular contour."""
-
-    @Media.Image """media/shapes-001.png"""
+    @Media.Image "media/shapes-001.png"
 
     @Application
     application {
@@ -77,11 +80,13 @@ The `ContourBuilder` class offers a simple way of producing complex two dimensio
         }
     }
 
-    @Text """Now let's create a `Shape` using the _shape builder_. The shape is created using two contours, one for
-_outline_ of the shape, and one for the _hole_ in the shape
-"""
+    @Text 
+    """
+    Now let's create a `Shape` using the _shape builder_. The shape is created using two contours, one for
+    _outline_ of the shape, and one for the _hole_ in the shape
+    """
 
-    @Media.Image """media/shapes-002.png"""
+    @Media.Image "media/shapes-002.png"
 
     @Application
     application {
@@ -120,21 +125,26 @@ _outline_ of the shape, and one for the _hole_ in the shape
         }
     }
 
-    @Text """## Shapes and contours from primitives"""
-    @Text """Not all shapes need to be created using the builders. Some of the OPENRNDR primitives have `.shape` and
-`.contour` properties that help in creating shapes quickly.
+    @Text 
+    """
+    ## Shapes and contours from primitives
+    
+    Not all shapes need to be created using the builders. 
+    Some of the OPENRNDR primitives have `.shape` and
+    `.contour` properties that help in creating shapes quickly.
 
- * `LineSegment.contour` and `LineSegment.shape`
- * `Rectangle.contour` and `Rectangle.shape`
- * `Circle.contour` and `Circle.shape`
-"""
-
-    @Text """## Shape Boolean-operations"""
-    @Text """Boolean-operations can be performed on shapes using the `compound {}` builder. There are three kinds
+     * `LineSegment.contour` and `LineSegment.shape`
+     * `Rectangle.contour` and `Rectangle.shape`
+     * `Circle.contour` and `Circle.shape`
+    
+    ## Shape Boolean-operations
+    
+    Boolean-operations can be performed on shapes using the `compound {}` builder. There are three kinds
 of compounds: _union_, _difference_ and _intersection_, all three of them are shown in the example below.
 
-    """.trimMargin()
-    @Media.Image """media/shapes-003.png"""
+    """
+
+    @Media.Image "media/shapes-003.png"
 
     @Application
     application {
@@ -180,11 +190,16 @@ of compounds: _union_, _difference_ and _intersection_, all three of them are sh
             }
         }
     }
-    @Text """The _compound builder_ is actually a bit more clever than what the previous example demonstrated because
-it can actually work with an entire tree of compounds. Demonstrated below is the _union_ of two _intersections_.
-"""
 
-    @Media.Image """media/shapes-004.png"""
+    @Text 
+    """
+    The _compound builder_ is actually a bit more clever than what the 
+    previous example demonstrated because it can actually work with an 
+    entire tree of compounds. Demonstrated below is the _union_ of 
+    two _intersections_.
+    """
+
+    @Media.Image "media/shapes-004.png"
 
     @Application
     application {
@@ -217,10 +232,15 @@ it can actually work with an entire tree of compounds. Demonstrated below is the
             }
         }
     }
-    @Text """## Cutting contours"""
-    @Text """A contour be cut into a shorter contour using `ShapeContour.sub()`.""".trimMargin()
+    @Text 
+    """
+    ## Cutting contours
+    
+    A contour be cut into a shorter contour using `ShapeContour.sub()`.
+    """
 
-    @Media.Video """media/shapes-005.mp4"""
+    @Media.Video "media/shapes-005.mp4"
+
     @Application
     application {
         configure {
@@ -252,12 +272,17 @@ it can actually work with an entire tree of compounds. Demonstrated below is the
         }
     }
 
-    @Text """## Placing points on contours """
-    @Text """Call `ShapeContour.position()` to sample one specific location 
-        or `ShapeContour.equidistantPositions()` to sample multiple equidistant 
-        locations on a contour.  
-    """.trimMargin()
-    @Media.Video """media/shapes-006.mp4"""
+    @Text 
+    """
+    ## Placing points on contours
+    
+    Call `ShapeContour.position()` to sample one specific location 
+    or `ShapeContour.equidistantPositions()` to sample multiple equidistant 
+    locations on a contour.  
+    """
+
+    @Media.Video "media/shapes-006.mp4"
+
     @Application
     application {
         configure {
@@ -290,11 +315,15 @@ it can actually work with an entire tree of compounds. Demonstrated below is the
         }
     }
 
-    @Text """## Offsetting contours """
+    @Text 
+    """
+    ## Offsetting contours
+    
+    The function `ShapeContour.offset` can be used to create an offset version 
+    of a contour. """
 
-    @Text """The function `ShapeContour.offset` can be used to create an offset version of a contour. """
+    @Media.Video "media/shapes-101.mp4"
 
-    @Media.Video """media/shapes-101.mp4"""
     @Application
     application {
         configure {
@@ -326,9 +355,15 @@ it can actually work with an entire tree of compounds. Demonstrated below is the
 
 
 
-    @Text """`ShapeContour.offset` can also be used to offset curved contours. The following demonstration shows a single cubic bezier offset at multiple distances."""
+    @Text 
+    """
+    `ShapeContour.offset` can also be used to offset curved contours. 
+    The following demonstration shows a single cubic bezier offset at multiple 
+    distances.
+    """
 
-    @Media.Video """media/shapes-100.mp4"""
+    @Media.Video "media/shapes-100.mp4"
+
     @Application
     application {
         configure {

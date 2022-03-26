@@ -13,22 +13,27 @@ import org.openrndr.extra.midi.MidiTransceiver
 
 fun main() {
 
-    @Text "# Midi controllers with orx-midi"
+    @Text """
+    # Midi controllers with orx-midi
+    
+    The [`orx-midi`](https://github.com/openrndr/orx/tree/master/orx-midi) 
+    library provides a simple interface to interact with MIDI controllers. 
 
-    @Text """The [`orx-midi`](https://github.com/openrndr/orx/tree/master/orx-midi) library provides a simple interface
-to interact with MIDI controllers. 
-"""
-
-    @Text "## Prerequisites"
-    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-project, all you have to do is enable `orx-midi` in the `orxFeatures`
- set in `build.gradle.kts` and reimport the gradle project."""
-
-    @Text "## Listing MIDI controllers"
-    @Text """To connect to a MIDI controller you will need the exact name and vendor of the controller as they are reported
-to the operating system. To discover these identifiers it is easiest to list the controllers, this can be done using
-the `MidiDeviceDescription.list()` function."""
-
+    ## Prerequisites
+    
+    Assuming you are working on an 
+    [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+    project, all you have to do is enable `orx-midi` in the `orxFeatures`
+    set in `build.gradle.kts` and reimport the gradle project.
+    
+    ## Listing MIDI controllers
+    
+    To connect to a MIDI controller you will need the exact name and vendor 
+    of the controller as they are reported
+    to the operating system. To discover these identifiers it is easiest to 
+    list the controllers, this can be done using
+    the `MidiDeviceDescription.list()` function.
+    """
 
     @Code
     application {
@@ -39,12 +44,18 @@ the `MidiDeviceDescription.list()` function."""
         }
     }
 
-    @Text """From what this program outputs you can pick a controller by copying its name and vendor identifiers."""
-
-    @Text "## Connecting to a MIDI controller"
-
-    @Text """Once you have the controller name and vendor you can use `MidiTransceiver.fromDeviceVendor` to open the
-midi controller. For example to use a Behringer BCR2000 controller on a Ubuntu system we can use the following."""
+    @Text 
+    """
+    From what this program outputs you can pick a controller by copying its 
+    name and vendor identifiers.
+    
+    ## Connecting to a MIDI controller
+    
+    Once you have the controller name and vendor you can use 
+    `MidiTransceiver.fromDeviceVendor` to open the midi controller. For 
+    example to use a Behringer BCR2000 controller on a Ubuntu system we 
+    can use the following.
+    """
 
     @Code
     application {
@@ -53,9 +64,14 @@ midi controller. For example to use a Behringer BCR2000 controller on a Ubuntu s
         }
     }
 
-    @Text """## Listening to the controller"""
-    @Text """Once connected to a controller we can start listening to the MIDI events it sends out. The orx-midi library
-supports controller change, note on and note off events."""
+    @Text 
+    """
+    ## Listening to the controller
+    
+    Once connected to a controller we can start listening to the MIDI events 
+    it sends out. The orx-midi library supports controller change, note on 
+    and note off events.
+    """
 
     @Code
     application {
@@ -74,13 +90,16 @@ supports controller change, note on and note off events."""
         }
     }
 
-    @Text """## Talking to the controller"""
-    @Text """MIDI controllers can often react to data received from 
-software. A common use case with MIDI controllers with endless rotary
-encoders is setting up initial values for the encoders when the program 
-launches. Those values are then reflected in LED lights or in a display 
-in the controller.
-"""
+    @Text 
+    """
+    ## Talking to the controller
+    
+    MIDI controllers can often react to data received from 
+    software. A common use case with MIDI controllers with endless rotary
+    encoders is setting up initial values for the encoders when the program 
+    launches. Those values are then reflected in LED lights or in a display 
+    in the controller.
+    """
 
     @Code
     application {

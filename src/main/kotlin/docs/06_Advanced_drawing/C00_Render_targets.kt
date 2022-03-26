@@ -12,27 +12,39 @@ import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.*
 
 fun main() {
-    @Text """# Render targets and color buffers"""
+    @Text 
+    """
+    # Render targets and color buffers
+    
+    A `RenderTarget` specifies a place to draw to. A `RenderTarget` has two 
+    kind of buffer attachments:
+    `ColorBuffer` attachments and `DepthBuffer` attachments. 
+    At least a single `ColorBuffer` attachment is needed to be able to draw 
+    on a `RenderTarget`.
 
-    @Text """A `RenderTarget` specifies a place to draw to. A `RenderTarget` has two kind of buffer attachments:
-`ColorBuffer` attachments and `DepthBuffer` attachments. At least a single `ColorBuffer` attachment is needed to be able to draw on a `RenderTarget`.
+    A `ColorBuffer` is a buffer that can hold up to 4 channel color. 
+    A `ColorBuffer` can hold 8 bit integer, 16 bit float or 32 bit float channels.
 
-A `ColorBuffer` is a buffer that can hold up to 4 channel color. A `ColorBuffer` can hold 8 bit integer, 16 bit float or 32 bit float channels.
-
-A `DepthBuffer` is a buffer that can hold depth and stencil values.
-"""
-
-    @Text """## Creating a render target"""
-    @Text """The advised method of creating `RenderTarget` instances is to use the `renderTarget {}` builder"""
+    A `DepthBuffer` is a buffer that can hold depth and stencil values.
+    
+    ## Creating a render target
+    
+    The advised method of creating `RenderTarget` instances is to use the 
+    `renderTarget {}` builder.
+    """
 
     @Code.Block
     run {
         val rt = renderTarget(640, 480) { }
     }
 
-    @Text """This creates a render target, but the render target does not have attachments that can hold the actual
-image data. In the following snippet a render target with a single color buffer attachment is created using the
-builder."""
+    @Text 
+    """
+    This creates a render target, but the render target does not have 
+    attachments that can hold the actual
+    image data. In the following snippet a render target with a single color 
+    buffer attachment is created using the builder.
+    """
 
     @Code.Block
     run {
@@ -41,9 +53,14 @@ builder."""
         }
     }
 
-    @Text """## Drawing on a render target"""
-    @Text """In the following code snippet you will find an example showing how to draw on an off-screen buffer followed
-by drawing that offscreen buffer on screen. """
+    @Text 
+    """
+    ## Drawing on a render target
+    
+    In the following code snippet you will find an example showing how to 
+    draw on an off-screen buffer followed by drawing that offscreen buffer 
+    on screen.
+    """
 
     application {
         @Code
@@ -67,10 +84,15 @@ by drawing that offscreen buffer on screen. """
         }
     }
 
-    @Text """## Render targets and projection transformations"""
-    @Text """Keep in mind that projection transform has to be set to fit the render target, this becomes apparent
-specifically when the used render target has dimensions that differ from those of the window. In case of orthographic
-(2D) projections one can use the following:"""
+    @Text 
+    """
+    ## Render targets and projection transformations
+    
+    Keep in mind that projection transform has to be set to fit the render 
+    target, this becomes apparent specifically when the used render target 
+    has dimensions that differ from those of the window. In case of orthographic
+    (2D) projections one can use the following:
+    """
 
     application {
         @Code
@@ -98,10 +120,15 @@ specifically when the used render target has dimensions that differ from those o
         }
     }
 
-    @Text """## Compositing using render targets and alpha channels """
-    @Text """OPENRNDR allows for compositing using `RenderTargets` through the use of transparency encoded in alpha
-channels. The following code snippet uses two `RenderTarget` instances and clears them using `ColorRGBa.TRANSPARENT`.
-"""
+    @Text 
+    """
+    ## Compositing using render targets and alpha channels 
+    
+    OPENRNDR allows for compositing using `RenderTargets` through the use of 
+    transparency encoded in alpha channels. The following code snippet uses 
+    two `RenderTarget` instances and clears them using `ColorRGBa.TRANSPARENT`.
+    """
+
     application {
         @Code
         program {
@@ -131,9 +158,14 @@ channels. The following code snippet uses two `RenderTarget` instances and clear
         }
     }
 
-    @Text """## Creating high precision floating point render targets"""
-    @Text """The default color buffer format is unsigned 8 bit RGBa. There is support for floating point render targets.
-"""
+    @Text 
+    """
+    ## Creating high precision floating point render targets
+    
+    The default color buffer format is unsigned 8 bit RGBa. There is support 
+    for floating point render targets.
+    """
+
     @Code.Block
     run {
         val rt = renderTarget(640, 480) {
@@ -142,9 +174,14 @@ channels. The following code snippet uses two `RenderTarget` instances and clear
         }
     }
 
-    @Text """## Multi-sample anti-aliasing"""
-    @Text """Render targets can be configured to use multi-sample anti-aliasing. All color and depth buffers that are added 
-in the `renderTarget {}` builder will be created with the same multi sample configuration.
+    @Text 
+    """
+    ## Multi-sample anti-aliasing
+    
+    Render targets can be configured to use multi-sample anti-aliasing. 
+    All color and depth buffers that are added 
+    in the `renderTarget {}` builder will be created with the same multi 
+    sample configuration.
     """
 
     @Code.Block
@@ -156,9 +193,13 @@ in the `renderTarget {}` builder will be created with the same multi sample conf
         }
     }
 
-    @Text """The color buffers that are attached to a multi-sampled render target cannot be drawn directly. In order to use the color buffer it has to be resolved
- first.
-"""
+    @Text 
+    """
+    The color buffers that are attached to a multi-sampled render target 
+    cannot be drawn directly. In order to use the color buffer it has 
+    to be resolved first.
+    """
+
     application {
         @Code
         program {
@@ -192,7 +233,11 @@ in the `renderTarget {}` builder will be created with the same multi sample conf
         }
     }
 
-    @Text """## Named attachments"""
+    @Text 
+    """
+    ## Named attachments
+    """
+
     @Code.Block
     run {
         val rt = renderTarget(640, 480) {

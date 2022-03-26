@@ -14,13 +14,17 @@ import org.openrndr.dokgen.annotations.*
 
 fun main() {
 
-    @Text """# Application Flow"""
-    @Text """This section covers default and alternate application flow."""
-
-    @Text """## Default application flow"""
-    @Text """The default application flow aims at single window application. For clarity we list the skeleton for an OPENRNDR
-program below."""
+    @Text 
+    """
+    # Application Flow
     
+    This section covers default and alternate application flow.
+    
+    ## Default application flow
+    
+    The default application flow aims at single window application. 
+    For clarity we list the skeleton for an OPENRNDR program below.
+    """
 
     @Code.Block
     run {
@@ -50,7 +54,8 @@ program below."""
     """
     ## Applications without application{} builder
     
-    There may be scenarios in which a more traditional way of writing applications is preferred.   
+    There may be scenarios in which a more traditional way of writing 
+    applications is preferred.   
     """
 
     @Code.Block
@@ -75,8 +80,12 @@ program below."""
     """
     ## Start-up or configuration dialogs
 
-    In some scenarios it is desirable to present a simple dialog before the main program commences, for example in the case you
-    want the user to to configure resolution and fullscreen settings. While OPENRNDR natively doesn't offer the tools to create user interfaces it does offer the functionality to create a window to host a configuration dialog.
+    In some scenarios it is desirable to present a simple dialog before 
+    the main program commences, for example in the case you
+    want the user to to configure resolution and fullscreen settings. 
+    While OPENRNDR natively doesn't offer the tools to create user interfaces 
+    it does offer the functionality to create a window to host a 
+    configuration dialog.
     """
 
     @Code.Block

@@ -11,12 +11,10 @@ import org.openrndr.dokgen.annotations.*
 
 fun main() {
 
-    @Text """
+    @Text 
+    """
     # Program basics
-    """
 
-    @Text
-    """
     Let's have a look at how an OPENRNDR program is structured. Most programs will share a structure like the one
     below.
     """
@@ -66,23 +64,18 @@ fun main() {
     }
 
     @Text
-    """## The program block"""
-
-    @Text """
+    """
+    ## The program block
+        
     The program block houses the actual programming logic. Note that `program {}` has a 
-    [`Program`](https://api.openrndr.org/org.openrndr/-program/index.html) receiver."""
-
-    @Text """
+    [`Program`](https://api.openrndr.org/org.openrndr/-program/index.html) receiver.
+    
     The code inside the `program` block is only executed after a window has been created and a graphical context has
     been set up. This code is only executed once.
-    """
-
-    @Text """
+    
     From the code block one can install extensions using `extend`. Extensions are by default executed as often as 
     possible. The most important type of extension is the one that holds user code.
-    """
-
-    @Text """
+    
     A minimal application-program-extend setup would then look like this:
     """
 

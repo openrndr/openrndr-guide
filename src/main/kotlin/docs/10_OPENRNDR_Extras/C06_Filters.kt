@@ -32,27 +32,37 @@ import kotlin.math.sin
 
 
 fun main() {
-    @Text """# orx-fx Filters"""
-    @Text """The [orx-fx](https://github.com/openrndr/orx/tree/master/orx-fx) library contains many filters that can 
-be readily used. See the chapter [Filters and post-processing](../06_Advanced_drawing/C01_Filters_and_post_processing) 
-for instructions on using them.
+    @Text 
+    """
+    # orx-fx Filters
+    
+    The [orx-fx](https://github.com/openrndr/orx/tree/master/orx-fx) library 
+    contains many filters that can be readily used. See the chapter 
+    [Filters and post-processing](../06_Advanced_drawing/C01_Filters_and_post_processing) 
+    for instructions on using them.
 
-A (more-or-less) complete listing of the effects in orx-fx is maintained in the repository's [README.md](https://github.com/openrndr/orx/blob/master/orx-fx/README.md)
-""".trimMargin()
+    A (more-or-less) complete listing of the effects in orx-fx is maintained 
+    in the repository's 
+    [README.md](https://github.com/openrndr/orx/blob/master/orx-fx/README.md)
 
-    @Text "## Prerequisites"
-    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-project, all you have to do is enable `orx-fx` in the `orxFeatures`
- set in `build.gradle.kts` and reimport the gradle project."""
+    ## Prerequisites
+    
+    Assuming you are working on an 
+    [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+    project, all you have to do is enable `orx-fx` in the `orxFeatures`
+    set in `build.gradle.kts` and reimport the gradle project.
+    
+    ## Effect Index
+    
+    In this index we demonstrate selected filters, this is in no way a 
+    complete overview of what orx-fx offers.
+    
+    ## Blur effects
+    
+    #### BoxBlur
+    """
 
-    @Text """## Effect Index"""
-    @Text """In this index we demonstrate selected filters, this is in no way a complete overview of what orx-fx offers."""
-
-
-    @Text """## Blur effects"""
-
-    @Text "#### BoxBlur"
-    @Media.Video """media/filters-001.mp4"""
+    @Media.Video "media/filters-001.mp4"
 
     @Application
     @Code
@@ -80,8 +90,11 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text "#### ApproximateGaussianBlur"
-    @Media.Video """media/filters-002.mp4"""
+    @Text """
+    #### ApproximateGaussianBlur
+    """
+
+    @Media.Video "media/filters-002.mp4"
 
     @Application
     @Code
@@ -110,8 +123,11 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text "#### GaussianBloom"
-    @Media.Video """media/filters-003.mp4"""
+    @Text """
+    #### GaussianBloom
+    """
+
+    @Media.Video "media/filters-003.mp4"
 
     @Application
     @Code
@@ -141,8 +157,11 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text "#### HashBlur"
-    @Media.Video """media/filters-004.mp4"""
+    @Text """
+    #### HashBlur
+    """
+
+    @Media.Video "media/filters-004.mp4"
 
     @Application
     @Code
@@ -171,8 +190,11 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text "#### FrameBlur"
-    @Media.Video """media/filters-005.mp4"""
+    @Text """
+    #### FrameBlur
+    """
+
+    @Media.Video "media/filters-005.mp4"
 
     @Application
     @Code
@@ -209,8 +231,11 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text "#### ZoomBlur"
-    @Media.Video """media/filters-006.mp4"""
+    @Text """
+    #### ZoomBlur
+    """
+
+    @Media.Video "media/filters-006.mp4"
 
     @Application
     @Code
@@ -240,10 +265,14 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text """## Color filters"""
+    @Text 
+    """
+    ## Color filters
 
-    @Text "#### ChromaticAberration"
-    @Media.Video """media/filters-100.mp4"""
+    #### ChromaticAberration
+    """
+
+    @Media.Video "media/filters-100.mp4"
 
     @Application
     @Code
@@ -272,8 +301,11 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text "#### ColorCorrection"
-    @Media.Video """media/filters-101.mp4"""
+    @Text """
+    #### ColorCorrection
+    """
+
+    @Media.Video "media/filters-101.mp4"
 
     @Application
     @Code
@@ -304,8 +336,11 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text "#### Sepia"
-    @Media.Video """media/filters-102.mp4"""
+    @Text """
+    #### Sepia
+    """
+
+    @Media.Video "media/filters-102.mp4"
 
     @Application
     @Code
@@ -334,8 +369,11 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text "#### LumaOpacity"
-    @Media.Video """media/filters-103.mp4"""
+    @Text """
+    #### LumaOpacity
+    """
+
+    @Media.Video "media/filters-103.mp4"
 
     @Application
     @Code
@@ -372,10 +410,12 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
 
 
 
-    @Text "## Edge-detection filters"
+    @Text """
+    ## Edge-detection filters
 
-    @Text "#### LumaSobel"
-    @Media.Video """media/filters-200.mp4"""
+    #### LumaSobel
+    """
+    @Media.Video "media/filters-200.mp4"
 
     @Application
     @Code
@@ -405,8 +445,11 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text "#### Contour"
-    @Media.Video """media/filters-201.mp4"""
+    @Text """
+    #### Contour
+    """
+
+    @Media.Video "media/filters-201.mp4"
 
     @Application
     @Code
@@ -439,8 +482,11 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
     }
 
 
-    @Text "#### EdgesWork"
-    @Media.Video """media/filters-202.mp4"""
+    @Text """
+    #### EdgesWork
+    """
+
+    @Media.Video "media/filters-202.mp4"
 
     @Application
     @Code
@@ -469,10 +515,13 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text "## Distortion filters"
+    @Text """
+    ## Distortion filters
 
-    @Text "#### BlockRepeat"
-    @Media.Video """media/filters-300.mp4"""
+    #### BlockRepeat
+    """
+
+    @Media.Video "media/filters-300.mp4"
 
     @Application
     @Code
@@ -504,8 +553,11 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text "#### StackRepeat"
-    @Media.Video """media/filters-301.mp4"""
+    @Text """
+    #### StackRepeat
+    """
+
+    @Media.Video "media/filters-301.mp4"
 
     @Application
     @Code
@@ -536,8 +588,11 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text "#### HorizontalWave"
-    @Media.Video """media/filters-302.mp4"""
+    @Text """
+    #### HorizontalWave
+    """
+
+    @Media.Video "media/filters-302.mp4"
 
     @Application
     @Code
@@ -571,8 +626,11 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text "#### VerticalWave"
-    @Media.Video """media/filters-303.mp4"""
+    @Text """
+    #### VerticalWave
+    """
+
+    @Media.Video "media/filters-303.mp4"
 
     @Application
     @Code
@@ -606,8 +664,11 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text "#### Perturb"
-    @Media.Video """media/filters-304.mp4"""
+    @Text """
+    #### Perturb
+    """
+
+    @Media.Video "media/filters-304.mp4"
 
     @Application
     @Code
@@ -639,8 +700,11 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text "#### Tiles"
-    @Media.Video """media/filters-305.mp4"""
+    @Text """
+    #### Tiles
+    """
+
+    @Media.Video "media/filters-305.mp4"
 
     @Application
     @Code
@@ -671,8 +735,11 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text "#### Fisheye"
-    @Media.Video """media/filters-306.mp4"""
+    @Text """
+    #### Fisheye
+    """
+
+    @Media.Video "media/filters-306.mp4"
 
     @Application
     @Code
@@ -702,8 +769,11 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text "#### DisplaceBlend"
-    @Media.Video """media/filters-307.mp4"""
+    @Text """
+    #### DisplaceBlend
+    """
+
+    @Media.Video "media/filters-307.mp4"
 
     @Application
     @Code
@@ -749,8 +819,11 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
     }
 
 
-    @Text "#### StretchWaves"
-    @Media.Video """media/filters-308.mp4"""
+    @Text """
+    #### StretchWaves
+    """
+
+    @Media.Video "media/filters-308.mp4"
 
     @Application
     @Code
@@ -788,8 +861,11 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text "#### PerspectivePlane"
-    @Media.Video """media/filters-309.mp4"""
+    @Text """
+    #### PerspectivePlane
+    """
+
+    @Media.Video "media/filters-309.mp4"
 
     @Application
     @Code
@@ -829,10 +905,12 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
     }
 
 
-    @Text "## Dithering filters"
+    @Text """
+    ## Dithering filters
 
-    @Text "#### ADither"
-    @Media.Video """media/filters-400.mp4"""
+    #### ADither
+    """
+    @Media.Video "media/filters-400.mp4"
 
     @Application
     @Code
@@ -862,8 +940,11 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text "#### CMYKHalftone"
-    @Media.Video """media/filters-401.mp4"""
+    @Text """
+    #### CMYKHalftone
+    """
+
+    @Media.Video "media/filters-401.mp4"
 
     @Application
     @Code
@@ -896,8 +977,11 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text "#### Crosshatch"
-    @Media.Video """media/filters-402.mp4"""
+    @Text """
+    #### Crosshatch
+    """
+
+    @Media.Video "media/filters-402.mp4"
 
     @Application
     @Code
@@ -934,9 +1018,12 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
     }
 
 
-    @Text "## Shadow filters"
-    @Text "#### DropShadow"
-    @Media.Video """media/filters-500.mp4"""
+    @Text """
+    ## Shadow filters
+
+    #### DropShadow
+    """
+    @Media.Video "media/filters-500.mp4"
 
     @Application
     @Code
@@ -977,13 +1064,15 @@ project, all you have to do is enable `orx-fx` in the `orxFeatures`
         }
     }
 
-    @Text "## Pattern filters"
-    @Text "#### Checkers"
+    @Text """
+    ## Pattern filters
 
-    @Text """`Checkers` is a simple checker generator filter."""
+    #### Checkers
+    
+    `Checkers` is a simple checker generator filter.
+    """
 
-
-    @Media.Video """media/filters-600.mp4"""
+    @Media.Video "media/filters-600.mp4"
 
     @Application
     @Code

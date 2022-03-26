@@ -22,19 +22,21 @@ fun main() {
     @Text
     """
     # Drawing text
+    
     OPENRNDR comes with support for rendering bitmap text. There are two modes of operation for writing text, a direct
     mode that simply writes a string of text at the requested position, and a more advanced mode that can place texts 
     in a designated text area.
     """
 
-    @Text """
+    @Text 
+    """
     ## Simple text rendering
     
     To render simple texts we first make sure a font is loaded and assigned to `drawer.fontMap`, we then use [`drawer.text`](https://api.openrndr.org/org.openrndr.draw/-drawer/text.html) to
     draw the text.
     """
 
-    @Media.Image """media/text-001.png"""
+    @Media.Image "media/text-001.png"
 
     @Application
     application {
@@ -57,12 +59,13 @@ fun main() {
     @Text
     """
     ## Advanced text rendering
+    
     OPENRNDR comes with a [`Writer`](https://api.openrndr.org/org.openrndr.text/-writer/index.html) class that allows for basic typesetting. The `Writer` tool is based on the concept of text box and a cursor.
 
     Its use is easiest demonstrated through an example:
     """
 
-    @Media.Image """media/text-002.png"""
+    @Media.Image "media/text-002.png"
 
     @Application
     application {
@@ -93,8 +96,10 @@ fun main() {
         }
     }
 
-    @Text """
+    @Text 
+    """
     ### Specifying the text area
+    
     The `box` field of `Writer` is used to specify where text should be written. Let's set the text area
     to a 300 by 300 pixel rectangle starting at (40, 40).
 
@@ -102,7 +107,7 @@ fun main() {
     text is set on two rows.
     """
 
-    @Media.Image """media/text-003.png"""
+    @Media.Image "media/text-003.png"
 
     @Application
     application {
@@ -134,13 +139,15 @@ fun main() {
         }
     }
 
-    @Text """
+    @Text 
+    """
     ### Text properties
+    
     Text tracking -the horizontal space between characters- and leading -the vertical space between lines- can be
     set using `Writer.style.leading` and `Writer.style.tracking`.
     """
 
-    @Media.Video """media/text-004.mp4"""
+    @Media.Video "media/text-004.mp4"
 
     @Application
     application {

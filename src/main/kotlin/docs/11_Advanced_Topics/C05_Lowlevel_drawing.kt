@@ -12,48 +12,58 @@ import org.openrndr.internal.Driver
 import org.openrndr.math.Vector3
 
 fun main() {
-    @Text """
-# Lowlevel Drawing
-
-This text is intended for developers looking to provide drawing functionality that is fully independent of 
-the `Drawer` class. Developers that desire to do so will essentially use the same building blocks that OPENRNDR
-uses internally.
+    @Text 
+    """
+    # Lowlevel Drawing
     
-A good reference for lowlevel drawing is the `Filter` class and it is encouraged to look at its [source code](https://github.com/openrndr/openrndr/blob/master/openrndr-draw/src/commonMain/kotlin/org/openrndr/draw/Filter.kt)
-as it provides a good idea of how all the lowlevel components interact and its implementation is fully independent from
-`Drawer`.
-    
-All lowlevel drawing is performed using OPENRNDR's `Driver` class. This class provides a handful of functions for
-drawing. Below you will find a list of the essential ones.
- * `Driver.setState()`    
- * `Driver.drawVertexBuffer()`
- * `Driver.drawIndexedVertexBuffer()`        
- * `Driver.drawInstances()`
- * `Driver.drawIndexedInstances()`
- 
-Classes that belong to the lowlevel drawing API:
- * [`Shader`](https://api.openrndr.org/org.openrndr.draw/-shader/index.html)
- * [`IndexBuffer`](https://api.openrndr.org/org.openrndr.draw/-index-buffer/index.html)
- * [`VertexBuffer`](https://api.openrndr.org/org.openrndr.draw/-vertex-buffer/index.html)
- * [`VertexFormat`](https://api.openrndr.org/org.openrndr.draw/-vertex-format/index.html)
- * [`ColorBuffer`](https://api.openrndr.org/org.openrndr.draw/-color-buffer/index.html)
- * [`DepthBuffer`](https://api.openrndr.org/org.openrndr.draw/-depth-buffer/index.html)
- * [`ArrayTexture`](https://api.openrndr.org/org.openrndr.draw/-array-texture/index.html)
- * [`CubeMap`](https://api.openrndr.org/org.openrndr.draw/-cubemap/index.html)
- * [`DrawStyle`](https://api.openrndr.org/org.openrndr.draw/-draw-style/index.html)
- * [`RenderTarget`](https://api.openrndr.org/org.openrndr.draw/-render-target/index.html)
-
-We discourage writing code that uses OpenGL directly; even though currently only an OpenGL 3.3 implementation exists 
-for `Driver`, in the future we may add implementations that are not based on OpenGL.      
- """
-
-    @Text """
-## Example
+    This text is intended for developers looking to provide drawing 
+    functionality that is fully independent of 
+    the `Drawer` class. Developers that desire to do so will essentially 
+    use the same building blocks that OPENRNDR
+    uses internally.
         
-In the following example we show the minimum steps required for drawing a single triangle.        
+    A good reference for lowlevel drawing is the `Filter` class and it is 
+    encouraged to look at its 
+    [source code](https://github.com/openrndr/openrndr/blob/master/openrndr-draw/src/commonMain/kotlin/org/openrndr/draw/Filter.kt)
+    as it provides a good idea of how all the lowlevel components interact 
+    and its implementation is fully independent from `Drawer`.
+        
+    All lowlevel drawing is performed using OPENRNDR's `Driver` class. 
+    This class provides a handful of functions for
+    drawing. Below you will find a list of the essential ones.
+     * `Driver.setState()`    
+     * `Driver.drawVertexBuffer()`
+     * `Driver.drawIndexedVertexBuffer()`        
+     * `Driver.drawInstances()`
+     * `Driver.drawIndexedInstances()`
+     
+    Classes that belong to the lowlevel drawing API:
+     * [`Shader`](https://api.openrndr.org/org.openrndr.draw/-shader/index.html)
+     * [`IndexBuffer`](https://api.openrndr.org/org.openrndr.draw/-index-buffer/index.html)
+     * [`VertexBuffer`](https://api.openrndr.org/org.openrndr.draw/-vertex-buffer/index.html)
+     * [`VertexFormat`](https://api.openrndr.org/org.openrndr.draw/-vertex-format/index.html)
+     * [`ColorBuffer`](https://api.openrndr.org/org.openrndr.draw/-color-buffer/index.html)
+     * [`DepthBuffer`](https://api.openrndr.org/org.openrndr.draw/-depth-buffer/index.html)
+     * [`ArrayTexture`](https://api.openrndr.org/org.openrndr.draw/-array-texture/index.html)
+     * [`CubeMap`](https://api.openrndr.org/org.openrndr.draw/-cubemap/index.html)
+     * [`DrawStyle`](https://api.openrndr.org/org.openrndr.draw/-draw-style/index.html)
+     * [`RenderTarget`](https://api.openrndr.org/org.openrndr.draw/-render-target/index.html)
+    
+    We discourage writing code that uses OpenGL directly; even though currently 
+    only an OpenGL 3.3 implementation exists 
+    for `Driver`, in the future we may add implementations that 
+    are not based on OpenGL.      
     """
 
-    @Media.Image """media/lowlevel-drawing-001.png"""
+    @Text 
+    """
+    ## Example
+        
+    In the following example we show the minimum steps required for drawing 
+    a single triangle.        
+    """
+
+    @Media.Image "media/lowlevel-drawing-001.png"
 
     @Application
     application {
@@ -108,6 +118,4 @@ In the following example we show the minimum steps required for drawing a single
             }
         }
     }
-
-
 }

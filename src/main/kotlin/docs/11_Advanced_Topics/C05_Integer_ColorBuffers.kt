@@ -18,20 +18,22 @@ fun main(args: Array<String>) {
     """
     # ColorBuffers sampled as integer numbers
 
-    Default `ColorBuffer`s created by OPENRNDR store values for each color channel as byte,
-    however when used in shaders they are provided by `sampler2D` as floating point values
-    in the range `0..1`. In rare cases it is desired to access these integer values directly,
-    either as signed or unsigned integers, without conversion to floating point numbers.
-    Special types of `isampler2D` and `usampler2D` come to the rescue, but color buffers
-    have to be configured correctly for such a use.
+    Default `ColorBuffer`s created by OPENRNDR store values for each color 
+    channel as byte, however when used in shaders they are provided by 
+    `sampler2D` as floating point values in the range `0..1`. 
+    In rare cases it is desired to access these integer values directly,
+    either as signed or unsigned integers, without conversion to floating 
+    point numbers.
+    Special types of `isampler2D` and `usampler2D` come to the rescue, 
+    but color buffers have to be configured correctly for such a use.
     
     Note: this mechanism is used internally in
-    [`orx-kinect`](https://guide.openrndr.org/#/10_OPENRNDR_Extras/C02_Kinect) to process raw
-    kinect data directly on GPU, as the depth readings are provided as integer numbers in the range
+    [`orx-kinect`](https://guide.openrndr.org/#/10_OPENRNDR_Extras/C02_Kinect) 
+    to process raw kinect data directly on GPU, as the depth readings are 
+    provided as integer numbers in the range
     of `0-2047` or `0-4096` depending on the kinect version.
  
     ## Example use
-
     """
 
     @Code
@@ -102,5 +104,4 @@ fun main(args: Array<String>) {
             }
         }
     }
-
 }

@@ -16,17 +16,20 @@ import org.openrndr.ffmpeg.VideoPlayerFFMPEG
 fun main() {
     @Text
     """
-    # Playing videos #
+    # Playing videos
+    
     OPENRNDR comes with FFMPEG-backed video support. 
     
     ## A simple video player
 
     ##### Relevant APIs
+    
     * [VideoPlayerFFMPEG.fromFile](https://api.openrndr.org/org.openrndr.ffmpeg/-video-player-f-f-m-p-e-g/from-file.html)
     * [VideoPlayerFFMPEG.play](https://api.openrndr.org/org.openrndr.ffmpeg/-video-player-f-f-m-p-e-g/play.html)
     * [VideoPlayerFFMPEG.draw](https://api.openrndr.org/org.openrndr.ffmpeg/-video-player-f-f-m-p-e-g/draw.html)
 
     """
+
     @Code
     application {
         program {
@@ -43,12 +46,17 @@ fun main() {
     """
     ## Video from camera devices
 
-    The `VideoPlayerFFMPEG` class can be used to get and display video data from camera devices. To open a camera device you use the `fromDevice()` method. When this method is called without any arguments it attempts to open the default camera device.
+    The `VideoPlayerFFMPEG` class can be used to get and display video data 
+    from camera devices. To open a camera device you use the `fromDevice()` 
+    method. When this method is called without any arguments it attempts to 
+    open the default camera device.
 
-    `VideoPlayerFFMPEG` has minimal device listing capabilities. The device names of available input devices can be listed using [VideoPlayerFFMPEG.listDeviceNames](https://api.openrndr.org/org.openrndr.ffmpeg/-video-player-f-f-m-p-e-g/list-device-names.html).
+    `VideoPlayerFFMPEG` has minimal device listing capabilities. The device 
+    names of available input devices can be listed using 
+    [VideoPlayerFFMPEG.listDeviceNames](https://api.openrndr.org/org.openrndr.ffmpeg/-video-player-f-f-m-p-e-g/list-device-names.html).
     
-
     ##### Relevant APIs
+    
     * [VideoPlayerFFMPEG.fromDevice](https://api.openrndr.org/org.openrndr.ffmpeg/-video-player-f-f-m-p-e-g/from-device.html)
     * [VideoPlayerFFMPEG.defaultDevice](https://api.openrndr.org/org.openrndr.ffmpeg/-video-player-f-f-m-p-e-g/default-device.html)
     
@@ -69,13 +77,13 @@ fun main() {
 
     @Text
     """
-     ## Processing video
+    ## Processing video
 
-     Video playback can be combined with render targets and filters.
+    Video playback can be combined with render targets and filters.
 
-     In the following example the video player output is blurred before presenting it on the screen.
+    In the following example the video player output is blurred before 
+    presenting it on the screen.
     """
-
 
     @Code
     application {

@@ -20,7 +20,8 @@ import org.openrndr.math.Vector2
 import org.openrndr.shape.Rectangle
 
 fun main() {
-    @Text """
+    @Text 
+    """
     # Drawing primitives batched
 
     OPENRNDR provides special draw APIs for drawing many circles, rectangles or 
@@ -32,9 +33,6 @@ fun main() {
     small pieces. Using this approach can be beneficial when drawing hundreds
     or thousands of elements.
     
-    """
-
-    @Text """
     ## Batched circles
 
     This example makes use of `Circle` (a class with properties like 
@@ -46,7 +44,6 @@ fun main() {
  
     Calling `drawer.circles()` to draw a list of `Circle` is much faster than 
     calling `drawer.circle()` multiple times.
-
     """
 
     @Media.Image "media/batching-circles-001.png"
@@ -80,12 +77,12 @@ fun main() {
         }
     }
 
-    @Text """
+    @Text 
+    """
     `drawer.circles` has several signatures. One of them accepts a list of 
     `Vector2` for the circle centers and a `Double` to specify the radius for 
     all circles. This example draws 5000 circles on the screen leaving a 100.0 
     pixel margin around the edges.
- 
     """
 
     run {
@@ -101,10 +98,10 @@ fun main() {
         }
     }
 
-    @Text """
+    @Text 
+    """
     To have a unique radius per circle we can provide a list of Double as a
-    second argument:
-         
+    second argument:  
     """
 
     @Media.Image "media/batching-circles-002.png"
@@ -129,11 +126,11 @@ fun main() {
         }
     }
 
-    @Text """
+    @Text 
+    """
     What about unique colors and `strokeWeight`s per circle? 
     Creating static or dynamic batches makes it possible, 
-    both shown in the next example.
-                    
+    both shown in the next example.          
     """
 
     @Media.Image "media/batching-circles-003.png"
@@ -177,7 +174,8 @@ fun main() {
         }
     }
 
-    @Text """
+    @Text 
+    """
     ## Batched rectangles
 
     This example calls the `.rectangle()` method of 
@@ -193,7 +191,6 @@ fun main() {
       
     Calling `drawer.rectangles()` to draw a rectangle batch is much faster 
     than calling `drawer.rectangle()` multiple times.
-    
     """
 
     @Media.Image "media/batching-rectangles-001.png"
@@ -240,14 +237,14 @@ fun main() {
         }
     }
 
-    @Text """
+    @Text 
+    """
     ## Batched points
     
     Drawing batched points is similar to drawing batched circles 
     and rectangles. In this case we use a `PointBatchBuilder` and its 
     `.point()` method. Note that we can specify the color of each point by 
     using `.fill`.
-     
     """
 
     @Media.Image "media/batching-points-001.png"

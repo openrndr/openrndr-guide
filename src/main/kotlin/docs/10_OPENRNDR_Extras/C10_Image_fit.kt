@@ -18,18 +18,26 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 fun main() {
-    @Text "# Image fit"
-    @Text """`orx-image-fit` provides functionality to making the drawing and placement of images somewhat easier. 
-`orx-image` Fits images in frames with two options, contain and cover, similar to CSS object-fit."""
+    @Text """
+    # Image fit
+    
+    `orx-image-fit` provides functionality to making the drawing and 
+    placement of images somewhat easier. 
+    `orx-image` Fits images in frames with two options, contain and cover, 
+    similar to CSS object-fit.
+    
+    ## Prerequisites
+    
+    Assuming you are working on an 
+    [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+    project, all you have to do is enable `orx-image-fit` in the `orxFeatures`
+    set in `build.gradle.kts` and reimport the gradle project.
+    
+    ## Contain mode
+    """
 
-    @Text "## Prerequisites"
-    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-project, all you have to do is enable `orx-image-fit` in the `orxFeatures`
- set in `build.gradle.kts` and reimport the gradle project."""
+    @Media.Video "media/image-fit-001.mp4"
 
-    @Text "## Contain mode"
-
-    @Media.Video """media/image-fit-001.mp4"""
     @Application
     @Code
     application {
@@ -52,9 +60,12 @@ project, all you have to do is enable `orx-image-fit` in the `orxFeatures`
         }
     }
 
-    @Text """Additionally the placement of the image in the rectangle can be adjusted"""
+    @Text 
+    """
+    Additionally the placement of the image in the rectangle can be adjusted
+    """
 
-    @Media.Video """media/image-fit-002.mp4"""
+    @Media.Video "media/image-fit-002.mp4"
 
     @Application
     @Code
@@ -79,8 +90,12 @@ project, all you have to do is enable `orx-image-fit` in the `orxFeatures`
     }
 
 
-    @Text "## Cover mode"
-    @Media.Video """media/image-fit-101.mp4"""
+    @Text """
+    ## Cover mode
+    """
+
+    @Media.Video "media/image-fit-101.mp4"
+
     @Application
     @Code
     application {
@@ -107,9 +122,14 @@ project, all you have to do is enable `orx-image-fit` in the `orxFeatures`
             }
         }
     }
-    @Media.Video """media/image-fit-102.mp4"""
 
-    @Text """Additionally the placement of the image in the rectangle can be adjusted"""
+    @Media.Video "media/image-fit-102.mp4"
+
+    @Text 
+    """
+    Additionally the placement of the image in the rectangle can be adjusted
+    """
+
     @Application
     @Code
     application {

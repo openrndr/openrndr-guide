@@ -14,5 +14,5 @@ fun main() {
     @Text
     """
     Section intro text goes here
-    """.trimIndent()
+    """
 }

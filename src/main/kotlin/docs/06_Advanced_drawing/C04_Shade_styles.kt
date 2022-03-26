@@ -21,25 +21,36 @@ import kotlin.math.sin
 
 fun main() {
 
-    @Text """# Shade styles"""
-    @Text """
-Shade styles are used to change the drawing behaviour of the `Drawer` affecting the appearance of all drawing primitives.
+    @Text 
+    """
+    # Shade styles
+    
+    Shade styles are used to change the drawing behaviour of the `Drawer` 
+    affecting the appearance of all drawing primitives.
+    
+    Shade styles are composed of two types of transforms: vertex transforms 
+    and fragment transforms. The two transforms are
+    applied in separate stages of the rendering process. In the vertex 
+    transform it is possible to change the geometry of what is drawn, 
+    and in the fragment transform it is possible to change the appearance of that
+    geometry. A shade style can affect vertices, fragments or both.
+    
+    A selection of preset ready-to-use shade styles is provided by 
+    [`orx-shade-styles`](10_OPENRNDR_Extras/C09_Shade_style_presets) 
+    
+    For those interested in authoring shade styles it is helpful to have 
+    some basic understanding of shaders and GLSL.
 
-Shade styles are composed of two types of transforms: vertex transforms and fragment transforms. The two transforms are
-applied in separate stages of the rendering process. In the vertex transform it is possible to change the geometry of what is drawn, 
-and in the fragment transform it is possible to change the appearance of that
- geometry. A shade style can affect vertices, fragments or both.
+    ## Basic usage
+    
+    In essence shade styles are fragments of GLSL code that are inserted into 
+    OPENRNDRs templated shaders.
 
-A selection of preset ready-to-use shade styles is provided by [`orx-shade-styles`](10_OPENRNDR_Extras/C09_Shade_style_presets) 
+    As a quick first step we override the output to red in the following snippet
+    """
 
-For those interested in authoring shade styles it is helpful to have some basic understanding of shaders and GLSL."""
+    @Media.Image "media/shadestyles-001.png"
 
-    @Text """## Basic usage"""
-    @Text """In essence shade styles are fragments of GLSL code that are inserted into OPENRNDRs templated shaders.
-
-As a quick first step we override the output to red in the following snippet"""
-
-    @Media.Image """media/shadestyles-001.png"""
     @Application
     application {
         @Exclude
@@ -66,10 +77,15 @@ As a quick first step we override the output to red in the following snippet"""
     }
 
 
-    @Text """The idea of shade styles is to allow more complex changes in the appearance. In the next snippet we create
-a wavy pattern by using cosines and the screen position."""
+    @Text 
+    """
+    The idea of shade styles is to allow more complex changes in the appearance. 
+    In the next snippet we create
+    a wavy pattern by using cosines and the screen position.
+    """
 
-    @Media.Image """media/shadestyles-002.png"""
+    @Media.Image "media/shadestyles-002.png"
+
     @Application
     application {
         @Exclude
@@ -98,11 +114,14 @@ a wavy pattern by using cosines and the screen position."""
         }
     }
 
-    @Text """In the next step we introduce animation by adding an external clock signal to the shade style. Shade styles
-have _parameters_ that can be used for this.
-    """.trimMargin()
+    @Text 
+    """
+    In the next step we introduce animation by adding an external clock signal 
+    to the shade style. Shade styles have _parameters_ that can be used for this.
+    """
 
-    @Media.Video """media/shadestyles-003.mp4"""
+    @Media.Video "media/shadestyles-003.mp4"
+
     @Application
     application {
         @Exclude
@@ -135,10 +154,17 @@ have _parameters_ that can be used for this.
         }
     }
 
-    @Text """## Usage examples"""
-    @Text """Here follow some examples of common problems that are solved using shade styles."""
-    @Text """### Mapping images on shapes"""
-    @Media.Video """media/shadestyles-example-001.mp4"""
+    @Text 
+    """
+    ## Usage examples
+    
+    Here follow some examples of common problems that are solved using 
+    shade styles.
+    
+    ### Mapping images on shapes
+    """
+
+    @Media.Video "media/shadestyles-example-001.mp4"
 
     @Application
     application {
@@ -177,120 +203,119 @@ have _parameters_ that can be used for this.
         }
     }   
 
-    @Text """## The shade style language"""
-    @Text """### Prefix overview
-Listed below is an overview of all the prefixes used in the shade style language.
+    @Text 
+    """
+    ## The shade style language
+    
+    ### Prefix overview
+    
+    Listed below is an overview of all the prefixes used in the shade style language.
 
-prefix   | Scope              | Description
----------|--------------------|-----------------
-`u_`     | all                | system uniforms passed in from Drawer
-`a_`     | vertex transform   | vertex attribute
-`va_`    | fragment transform | varying attribute, interpolation passed from vertex to fragment shader
-`i_`     | vertex transform   | instance attribute
-`vi_`    | fragment transform | varying instance attribute
-`x_`     | all                | transformable value
-`p_`     | all                | user provided value
-`o_`     | fragment transform | output value (always `vec4`)
-`d_`     | all                | shader definitions
-"""
+    prefix   | Scope              | Description
+    ---------|--------------------|-----------------
+    `u_`     | all                | system uniforms passed in from Drawer
+    `a_`     | vertex transform   | vertex attribute
+    `va_`    | fragment transform | varying attribute, interpolation passed from vertex to fragment shader
+    `i_`     | vertex transform   | instance attribute
+    `vi_`    | fragment transform | varying instance attribute
+    `x_`     | all                | transformable value
+    `p_`     | all                | user provided value
+    `o_`     | fragment transform | output value (always `vec4`)
+    `d_`     | all                | shader definitions
 
-    @Text """### Standard uniforms
-Listed below is an overview of all the prefixes used in the shade style language.
+    ### Standard uniforms
+    
+    Listed below is an overview of all the prefixes used in the shade style language.
+    
+    Uniform name            | GLSL type             | Description
+    ------------------------|-----------------------|-----------------------------------------------------------
+    `u_modelNormalMatrix`   | mat4                  | matrix used to transform vertex normals from object to world space
+    `u_modelMatrix`         | mat4                  | matrix used to transform vertices from object to world space
+    `u_viewNormalMatrix`    | mat4                  | matrix used to transform vertex normals from world space to view space
+    `u_viewMatrix`          | mat4                  | matrix used to transform vertex normals from world space to view space
+    `u_viewMatrix`          | mat4                  | matrix used to transform vertices from world space to view space
+    `u_projectionMatrix`    | mat4                  | matrix used to transform vertices from view space to clip space
+    `u_contentScale`        | float                 | the active content scale
+    `u_viewDimensions`      | vec2                  | the dimensions of the target viewport
+    `u_fill`                | vec4                  | the Drawer fill color
+    `u_stroke`              | vec4                  | the Drawer stroke color
+    `u_strokeWeight`        | float                 | the Drawer strokeWeight
+    `u_colorMatrix`         | float[25]             | the Drawer color matrix
+    
+    ### Standard Attributes
 
-Uniform name            | GLSL type             | Description
-------------------------|-----------------------|-----------------------------------------------------------
-`u_modelNormalMatrix`   | mat4                  | matrix used to transform vertex normals from object to world space
-`u_modelMatrix`         | mat4                  | matrix used to transform vertices from object to world space
-`u_viewNormalMatrix`    | mat4                  | matrix used to transform vertex normals from world space to view space
-`u_viewMatrix`          | mat4                  | matrix used to transform vertex normals from world space to view space
-`u_viewMatrix`          | mat4                  | matrix used to transform vertices from world space to view space
-`u_projectionMatrix`    | mat4                  | matrix used to transform vertices from view space to clip space
-`u_contentScale`        | float                 | the active content scale
-`u_viewDimensions`      | vec2                  | the dimensions of the target viewport
-`u_fill`                | vec4                  | the Drawer fill color
-`u_stroke`              | vec4                  | the Drawer stroke color
-`u_strokeWeight`        | float                 | the Drawer strokeWeight
-`u_colorMatrix`         | float[25]             | the Drawer color matrix
-"""
+    Attributes are only directly accessible in the vertex transform. However interpolated forms of the
+    the attributes are passed to the fragment transform.
+    
+    Attribute name | GLSL type | Description
+    ---------------|-----------|------------
+    `a_position`   | vec3      | the position
+    `a_normal`     | vec3      | the normal
+    
+    In this table we see the interpolated versions that are accessible in the fragment transform only.
+    
+    Attribute name | GLSL type | Description
+    ---------------|-----------|------------
+    `va_position`  | vec3     | the interpolated position
+    `va_normal`    | vec3     | the interpolated normal
 
-    @Text """### Standard Attributes
+    ### Transformable values
 
-Attributes are only directly accessible in the vertex transform. However interpolated forms of the
-the attributes are passed to the fragment transform.
+    These are values that can be transformed using shade styles.
 
-Attribute name | GLSL type | Description
----------------|-----------|------------
-`a_position`   | vec3      | the position
-`a_normal`     | vec3      | the normal
+    #### Vertex transform
+    
+    Variable name        | GLSL type | Description
+    ---------------------|-----------|------------
+    `x_position`         | `vec3`    | vertex position, initialized with value `a_position`
+    `x_normal`           | `vec3`    | vertex normal, initialized with value `a_normal`
+    `x_viewMatrix`       | `mat4`    | view matrix
+    `x_normalMatrix`     | `mat4`    | normal matrix, initialized with `normalMatrix`
+    `x_projectionMatrix` | `mat4`    | projection matrix, initialized with `projectionMatrix`
+    
+    #### Fragment transform
+    
+    Variable name | GLSL type | Description
+    --------------|-----------|------------
+    `x_fill`      | `vec4`    | The fill color written to the fragment
+    `x_stroke`    | `vec4`    | The stroke color written to the fragment
 
-In this table we see the interpolated versions that are accessible in the fragment transform only.
+    ### Constants
 
-Attribute name | GLSL type | Description
----------------|-----------|------------
-`va_position`  | vec3     | the interpolated position
-`va_normal`    | vec3     | the interpolated normal
-"""
-    @Text """### Transformable values
+    Constant name       | Scope               | GLSL type | Description
+    --------------------|---------------------|-----------|------------
+    `c_element`         | all                 | int       | the element index in batched rendering
+    `c_instance`        | all                 | int       | the instance index in instanced rendering
+    `c_screenPosition`  | fragment transform  | vec2      | the position on screen in device coordinates
+    `c_contourPosition` | fragment transform  | float     | the position on the contour, between 0.0 and contour.length. Only non-zero when drawing line segments and contours
+    `c_boundsPosition`  | fragment transform  | vec3      | the bounding box position of the current shape or contour stored in `.xy`
+    `c_boundsSize`      | fragment transform  | vec3      | the bounding box size of the current shape or contour stored in `.xy`
 
-These are values that can be transformed using shade styles.
+    ### Parameters
 
-#### Vertex transform
+    Parameters can be used to supply external data to transforms. Parameters are translated to shader uniforms and are exposed
+    by uniforms with the `p_` prefix.
+    
+    #### ColorBuffer parameters
+    
+    Can be used to map images.
+    
+    #### BufferTexture parameters
+    
+    Can be used to map custom values.
 
-Variable name        | GLSL type | Description
----------------------|-----------|------------
-`x_position`         | `vec3`    | vertex position, initialized with value `a_position`
-`x_normal`           | `vec3`    | vertex normal, initialized with value `a_normal`
-`x_viewMatrix`       | `mat4`    | view matrix
-`x_normalMatrix`     | `mat4`    | normal matrix, initialized with `normalMatrix`
-`x_projectionMatrix` | `mat4`    | projection matrix, initialized with `projectionMatrix`
-
-#### Fragment transform
-
-Variable name | GLSL type | Description
---------------|-----------|------------
-`x_fill`      | `vec4`    | The fill color written to the fragment
-`x_stroke`    | `vec4`    | The stroke color written to the fragment
-"""
-
-    @Text """### Constants
-
-Constant name       | Scope               | GLSL type | Description
---------------------|---------------------|-----------|------------
-`c_element`         | all                 | int       | the element index in batched rendering
-`c_instance`        | all                 | int       | the instance index in instanced rendering
-`c_screenPosition`  | fragment transform  | vec2      | the position on screen in device coordinates
-`c_contourPosition` | fragment transform  | float     | the position on the contour, between 0.0 and contour.length. Only non-zero when drawing line segments and contours
-`c_boundsPosition`  | fragment transform  | vec3      | the bounding box position of the current shape or contour stored in `.xy`
-`c_boundsSize`      | fragment transform  | vec3      | the bounding box size of the current shape or contour stored in `.xy`
-
-"""
-
-    @Text """### Parameters
-
-Parameters can be used to supply external data to transforms. Parameters are translated to shader uniforms and are exposed
-by uniforms with the `p_` prefix.
-
-#### ColorBuffer parameters
-
-Can be used to map images.
-
-#### BufferTexture parameters
-
-Can be used to map custom values.
-
-#### Supported parameter types:
-
- JVM type        | GLSL type
------------------|-------------
- `float`         | `float`
- `Vector2`       | `vec2`
- `Vector3`       | `vec3`
- `Vector4`       | `vec4`
- `ColorRGBa`     | `vec4`
- `Matrix44`      | `mat4`
- `DepthBuffer`   | `sampler2D`
- `ColorBuffer`   | `sampler2D`
- `BufferTexture` | `samplerBuffer`
-"""
-
+    #### Supported parameter types:
+    
+     JVM type        | GLSL type
+    -----------------|-------------
+     `float`         | `float`
+     `Vector2`       | `vec2`
+     `Vector3`       | `vec3`
+     `Vector4`       | `vec4`
+     `ColorRGBa`     | `vec4`
+     `Matrix44`      | `mat4`
+     `DepthBuffer`   | `sampler2D`
+     `ColorBuffer`   | `sampler2D`
+     `BufferTexture` | `samplerBuffer`
+    """
 }

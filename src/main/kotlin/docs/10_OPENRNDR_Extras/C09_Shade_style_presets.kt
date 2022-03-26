@@ -22,16 +22,23 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 fun main() {
-    @Text "# Shade style presets"
-    @Text """The `orx-shade-styles` library provides a number of preset [shade styles](06_Advanced_drawing/C04_Shade_styles)"""
+    @Text """
+    # Shade style presets
 
-    @Text "## Prerequisites"
-    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-project, all you have to do is enable `orx-shade-styles` in the `orxFeatures`
- set in `build.gradle.kts` and reimport the gradle project."""
+    The `orx-shade-styles` library provides a number of preset 
+    [shade styles](06_Advanced_drawing/C04_Shade_styles)
+    
+    ## Prerequisites
+    
+    Assuming you are working on an 
+    [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+    project, all you have to do is enable `orx-shade-styles` in the `orxFeatures`
+    set in `build.gradle.kts` and reimport the gradle project.
+    
+    ## linearGradient
+    """
 
-    @Text "## linearGradient"
-    @Media.Video """media/shade-style-presets-001.mp4"""
+    @Media.Video "media/shade-style-presets-001.mp4"
 
     @Application
     @Code
@@ -62,8 +69,11 @@ project, all you have to do is enable `orx-shade-styles` in the `orxFeatures`
         }
     }
 
-    @Text "## radialGradient"
-    @Media.Video """media/shade-style-presets-002.mp4"""
+    @Text """
+    ## radialGradient
+    """
+
+    @Media.Video "media/shade-style-presets-002.mp4"
 
     @Application
     @Code
@@ -94,8 +104,11 @@ project, all you have to do is enable `orx-shade-styles` in the `orxFeatures`
         }
     }
 
-    @Text "## angularGradient"
-    @Media.Video """media/shade-style-presets-003.mp4"""
+    @Text """
+    ## angularGradient
+    """
+
+    @Media.Video "media/shade-style-presets-003.mp4"
 
     @Application
     @Code
@@ -126,8 +139,11 @@ project, all you have to do is enable `orx-shade-styles` in the `orxFeatures`
         }
     }
 
-    @Text "## halfAngularGradient"
-    @Media.Video """media/shade-style-presets-004.mp4"""
+    @Text """
+    ## halfAngularGradient
+    """
+
+    @Media.Video "media/shade-style-presets-004.mp4"
 
     @Application
     @Code
@@ -157,5 +173,4 @@ project, all you have to do is enable `orx-shade-styles` in the `orxFeatures`
             }
         }
     }
-
 }

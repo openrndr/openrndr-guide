@@ -24,14 +24,16 @@ fun main() {
 
     ## Animatable
 
-    Anything that should be animated inherits the [`Animatable`](https://api.openrndr.org/org.openrndr.animatable/-animatable/index.html) class. 
-    The Animatable class provides animation logic.
+    Anything that should be animated inherits the 
+    [`Animatable`](https://api.openrndr.org/org.openrndr.animatable/-animatable/index.html) 
+    class. The Animatable class provides animation logic.
 
-    Displayed below is a very simple animation setup in which we animate a circle from left to right. We do this by
+    Displayed below is a very simple animation setup in which we animate a 
+    circle from left to right. We do this by
     animating the `x` property of our animation object.
     """
 
-    @Media.Video """media/animations-001.mp4"""
+    @Media.Video "media/animations-001.mp4"
 
     @Application
     @Code
@@ -63,10 +65,12 @@ fun main() {
     }
 
 
-    @Text """
+    @Text 
+    """
     By using `.complete()` we can create sequences of property animations.
     """
-    @Media.Video """media/animations-002.mp4"""
+
+    @Media.Video "media/animations-002.mp4"
 
     @Application
     @Code
@@ -98,10 +102,13 @@ fun main() {
         }
     }
 
-    @Text """
-    If we leave out that `::x.complete()` line we will see that animations for `x` and `y` run simultaneously. 
+    @Text 
     """
-    @Media.Video """media/animations-003.mp4"""
+    If we leave out that `::x.complete()` line we will see that 
+    animations for `x` and `y` run simultaneously. 
+    """
+
+    @Media.Video "media/animations-003.mp4"
 
     @Application
     @Code
@@ -133,18 +140,22 @@ fun main() {
     }
 
 
-    @Text """
-    For those wondering where that `::x.animate()` notation comes from, those are Kotlin's [property references](https://kotlinlang.org/docs/reflection.html#property-references).
+    @Text 
     """
+    For those wondering where that `::x.animate()` notation comes from, 
+    those are Kotlin's [property references](https://kotlinlang.org/docs/reflection.html#property-references).
 
-    @Text """ ## Easing
+    ## Easing
+    
     A simple trick for making animations less stiff is to specify an easing. 
 
     To demonstrate we take one of the previously shown animations and add easings.
     
     Available [Easings](https://api.openrndr.org/org.openrndr.animatable.easing/-easing/index.html) 
     """
-    @Media.Video """media/animations-101.mp4"""
+
+    @Media.Video "media/animations-101.mp4"
+
     @Application
     @Code
     application {
@@ -174,8 +185,12 @@ fun main() {
         }
     }
 
-    @Text """ ## Behavioral animation """
-    @Media.Video """media/animations-301.mp4"""
+    @Text 
+    """
+    ## Behavioral animation
+    """
+
+    @Media.Video "media/animations-301.mp4"
 
     @Application
     @Code
@@ -236,9 +251,14 @@ fun main() {
         }
     }
 
-    @Text "## Looping animations"
-    @Text """While `Animatable` doesn't provide explicit support for looping animations. They can be achieved through the following pattern:"""
-    @Media.Video """media/animations-401.mp4"""
+    @Text """
+    ## Looping animations
+    
+    While `Animatable` doesn't provide explicit support for looping animations. 
+    They can be achieved through the following pattern:
+    """
+
+    @Media.Video "media/animations-401.mp4"
 
     @Application
     @Code
@@ -272,14 +292,17 @@ fun main() {
         }
     }
 
-    @Text "## Animatable properties"
     @Text """
-        Thus far we have only worked with `Double` properties in our animations. However, animation is not limited to 
-        Doubles.
+    ## Animatable properties
+    
+    Thus far we have only worked with `Double` properties in our animations. 
+    However, animation is not limited to Doubles.
         
-        Any property that is a [`LinearType`](https://api.openrndr.org/org.openrndr.math/-linear-type/index.html) can be
-        animated through Animatable.
+    Any property that is a 
+    [`LinearType`](https://api.openrndr.org/org.openrndr.math/-linear-type/index.html) 
+    can be animated through Animatable.
     """
+
     @Code
     application {
         program {

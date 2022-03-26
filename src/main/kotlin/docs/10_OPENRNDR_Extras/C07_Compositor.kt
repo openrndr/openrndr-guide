@@ -26,24 +26,28 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 fun main() {
-    @Text "# Compositing using orx-compositor"
+    @Text """
+    # Compositing using orx-compositor
 
-    @Text """orx-compositor offers a simple DSL for the creation of layered graphics. The compositor manages blending and
-post-processing of layers for you.
-"""
+    orx-compositor offers a simple DSL for the creation of layered graphics.
+    The compositor manages blending and post-processing of layers for you.
 
-    @Text """`orx-compositor` works well together with `orx-fx`, `orx-gui`, and `orx-olive`, although they are not a required 
-combination it is worth checking out what the combination has to offer.
-"""
-
-    @Text "## Prerequisites"
-    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-project, all you have to do is enable `orx-compositor` in the `orxFeatures`
- set in `build.gradle.kts` and reimport the gradle project."""
-
-    @Text "## Workflow"
-    @Text """Let us now work through the workflow of `orx-compositor`. One usually starts with an OPENRNDR skeleton
-program:"""
+    `orx-compositor` works well together with `orx-fx`, `orx-gui`, and 
+    `orx-olive`, although they are not a required 
+    combination it is worth checking out what the combination has to offer.
+    
+    ## Prerequisites
+    
+    Assuming you are working on an 
+    [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+    project, all you have to do is enable `orx-compositor` in the `orxFeatures`
+    set in `build.gradle.kts` and reimport the gradle project.
+    
+    ## Workflow
+    
+    Let us now work through the workflow of `orx-compositor`. 
+    One usually starts with an OPENRNDR skeleton program:
+    """
 
     @Code
     application {
@@ -54,12 +58,16 @@ program:"""
         }
     }
 
-    @Text """Which by itself, of course, does nothing. Let's extend this skeleton a bit and add the basics for layered
-graphics. We add a `composite` using `compose {}` and we make sure that our OPENRNDR program draws it on refresh.
+    @Text 
+    """
+    Which by itself, of course, does nothing. Let's extend this skeleton 
+    a bit and add the basics for layered
+    graphics. We add a `composite` using `compose {}` and we make sure that 
+    our OPENRNDR program draws it on refresh.
 
-Note, if this fails you can fix it by adding `import org.openrndr.extra.compositor.draw`.
-
-"""
+    Note, if this fails you can fix it by adding 
+    `import org.openrndr.extra.compositor.draw`.
+    """
 
     @Code
     application {
@@ -74,11 +82,15 @@ Note, if this fails you can fix it by adding `import org.openrndr.extra.composit
         }
     }
 
-    @Text """Now let's draw something. We do this by adding a `draw {}` inside the `compose {}`. Here we see
-we use `drawer` like we would use it normally (it is captured in the closure). We also added a `println` to demonstrate that
-the code inside `compose {}` is executed once, however, code inside `draw {}` is executed every time the composite is
-drawn.
-"""
+    @Text 
+    """
+    Now let's draw something. We do this by adding a `draw {}` inside 
+    the `compose {}`. Here we see we use `drawer` like we would use it 
+    normally (it is captured in the closure). We also added a `println` 
+    to demonstrate that the code inside `compose {}` is executed once, 
+    however, code inside `draw {}` is executed every time the composite is
+    drawn.
+    """
 
     @Code
     application {
@@ -99,11 +111,14 @@ drawn.
         }
     }
 
-    @Text """Let's get to what `orx-compositor` promises: layered graphics. We do this by adding a `layer {}` 
-inside our composite, and inside this layer we add another `draw`. 
+    @Text 
+    """
+    Let's get to what `orx-compositor` promises: layered graphics. 
+    We do this by adding a `layer {}` 
+    inside our composite, and inside this layer we add another `draw`. 
  
-Every layer has an isolated draw state to prevent users from leaking draw state. 
-"""
+    Every layer has an isolated draw state to prevent users from leaking draw state. 
+    """
 
     @Application
     @Code
@@ -136,17 +151,28 @@ Every layer has an isolated draw state to prevent users from leaking draw state.
             }
         }
     }
-    @Text """This produces:"""
-    @Media.Image """media/compositor-001.png"""
+
+    @Text 
+    """
+    This produces:
+    """
+
+    @Media.Image "media/compositor-001.png"
 
 
-    @Text """You may be thinking: "yeah great, we added all that extra structure to the code, but it doesn't do a 
-single thing that could not be achieved by drawing two circles consecutively". And you're right. However, there are now
-two things we can add with ease: _blends_ and _posts_. Here a _blend_ describes how a layer's contents should be combined with
-the layer it covers, and a _post_ a filter that is applied after the contents have been drawn.
+    @Text 
+    """
+    You may be thinking: "yeah great, we added all that extra structure 
+    to the code, but it doesn't do a single thing that could not be achieved 
+    by drawing two circles consecutively". 
+    And you're right. However, there are now
+    two things we can add with ease: _blends_ and _posts_. Here a _blend_ describes 
+    how a layer's contents should be combined with
+    the layer it covers, and a _post_ a filter that is applied after the 
+    contents have been drawn.
 
-Let's add a blend and a post to our layer and see what it does:   
-"""
+    Let's add a blend and a post to our layer and see what it does:   
+    """
 
     @Application
     @Code
@@ -186,16 +212,24 @@ Let's add a blend and a post to our layer and see what it does:
         }
     }
 
-    @Text """The output:"""
-    @Media.Image """media/compositor-002.png"""
+    @Text 
+    """
+    The output:
+    """
 
-    @Text """We now see a couple of differences. The smaller circle is blurred while the larger circle is not; The area where the two circles overlap 
-is brighter; The smaller circle is clipped against the larger circle.
+    @Media.Image "media/compositor-002.png"
 
-These are a results that are not as easily replicated without `orx-compositor`.
-"""
+    @Text 
+    """
+    We now see a couple of differences. The smaller circle is blurred while 
+    the larger circle is not; The area where the two circles overlap 
+    is brighter; The smaller circle is clipped against the larger circle.
 
-    @Text """Note that the parameters for the _post_ filters (and _blend_) can be animated, just as the layers contents can be animated:"""
+    These are a results that are not as easily replicated without `orx-compositor`.
+    
+    Note that the parameters for the _post_ filters (and _blend_) can be 
+    animated, just as the layers contents can be animated:
+    """
 
     @Application
     @Code
@@ -246,17 +280,20 @@ These are a results that are not as easily replicated without `orx-compositor`.
             }
         }
     }
-    @Media.Video """media/compositor-003.mp4"""
 
-    @Text "## Common use-cases"
+    @Media.Video "media/compositor-003.mp4"
 
-    @Text "### Masking"
+    @Text """
+    ## Common use-cases
 
-    @Text """In this case we have a text and an image that we only want to draw where there is text. This can be achieved
-by using nested layers and a `Normal` blend with `clip` enabled.
-    """.trimMargin()
+    ### Masking
 
-    @Media.Video """media/compositor-004.mp4"""
+    In this case we have a text and an image that we only want to draw 
+    where there is text. This can be achieved
+    by using nested layers and a `Normal` blend with `clip` enabled.
+    """
+
+    @Media.Video "media/compositor-004.mp4"
 
     @Application
     @Code
@@ -315,13 +352,15 @@ by using nested layers and a `Normal` blend with `clip` enabled.
         }
     }
 
-    @Text "### Drop shadows"
+    @Text """
+    ### Drop shadows
+    
+    In case you want to place text over an image and want to guarantee 
+    the text is readable. You can use a drop shadow _post_ effect to draw 
+    the text with a bit of a shadow that sets the text apart from the image.  
+    """
 
-    @Text """In case you want to place text over an image and want to guarantee the text is readable. You can use
-a drop shadow _post_ effect to draw the text with a bit of a shadow that sets the text apart from the image.  
-    """.trimMargin()
-
-    @Media.Video """media/compositor-005.mp4"""
+    @Media.Video "media/compositor-005.mp4"
 
     @Application
     @Code
@@ -380,14 +419,17 @@ a drop shadow _post_ effect to draw the text with a bit of a shadow that sets th
         }
     }
 
-    @Text "### Multiple effects per layer"
+    @Text """
+    ### Multiple effects per layer
+    
+    Post effects are not limited to one per layer. One can create a chain 
+    of post-processing filters by just
+    calling `post() {}` multiple times per layer. In the following example 
+    we create a text layer that uses 3 post effects:
+    two distortion effects followed by a blur filter.  
+    """
 
-    @Text """Post effects are not limited to one per layer. One can create a chain of post-processing filters by just
-calling `post() {}` multiple times per layer. In the following example we create a text layer that uses 3 post effects:
-two distortion effects followed by a blur filter.  
-    """.trimMargin()
-
-    @Media.Video """media/compositor-006.mp4"""
+    @Media.Video "media/compositor-006.mp4"
 
     @Application
     @Code
@@ -454,31 +496,43 @@ two distortion effects followed by a blur filter.
         }
     }
 
-    @Text """## Opacity"""
-    @Text """`orx-fx` is made with opacity as a first-class citizen. By default a layer is set to be fully transparent, most blending and post operations are using and preserving opacity."""
+    @Text 
+    """
+    ## Opacity
+    
+    `orx-fx` is made with opacity as a first-class citizen. By default a 
+    layer is set to be fully transparent, most blending and post operations 
+    are using and preserving opacity.
+    
+    ## Blending
+    
+    Blending describes how the contents of two layers are combined in a composite. 
+    The blend functionality `orx-compositor` can be used with any 
+    [filter](C01_Filters_and_post_processing) that performs a blend 
+    operation. The `orx-fx` filter collection provides 
+    [a selection of ready-made blend filters](https://github.com/openrndr/orx/tree/master/orx-fx#blends).
 
-    @Text """## Blending"""
-    @Text """Blending describes how the contents of two layers are combined in a composite. 
-The blend functionality `orx-compositor` can be used with any [filter](C01_Filters_and_post_processing) that performs a blend operation. The `orx-fx` filter collection provides [a selection of ready-made blend filters](https://github.com/openrndr/orx/tree/master/orx-fx#blends).
-
-The following (`orx-fx`) blend filters work well with opacity and have a configurable `clip` option with which the destination layer can be clipped against the source input's opacity:
+    The following (`orx-fx`) blend filters work well with opacity and have 
+    a configurable `clip` option with which the destination layer can be 
+    clipped against the source input's opacity:
       
- * `ColorBurn`
- * `ColorDodge`
- * `Darken`
- * `HardLight`
- * `Lighten`
- * `Multiply`
- * `Normal`
- * `Overlay`
- * `Screen`
- * `Add`
- * `Subtract`
-  """.trimMargin()
+    * `ColorBurn`
+    * `ColorDodge`
+    * `Darken`
+    * `HardLight`
+    * `Lighten`
+    * `Multiply`
+    * `Normal`
+    * `Overlay`
+    * `Screen`
+    * `Add`
+    * `Subtract`
 
-    @Text """## Reusing a layer"""
-    @Text """It is possible to use the color buffer of a previously declared
-| layer by calling `use()`.""".trimMargin()
+    ## Reusing a layer
+    
+    It is possible to use the color buffer of a previously declared
+    layer by calling `use()`.
+    """
 
     @Code
     application {
@@ -505,6 +559,9 @@ The following (`orx-fx`) blend filters work well with opacity and have a configu
         }
     }
 
-    @Text """[https://github.com/openrndr/orx/tree/master/orx-compositor](demo)""".trimMargin()
+    @Text 
+    """
+    [https://github.com/openrndr/orx/tree/master/orx-compositor](demo)
+    """
 
 }

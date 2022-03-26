@@ -20,21 +20,26 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 fun main() {
-    @Text "# Poisson fills"
-    @Text "orx-poisson-fills offers tool for GPU-based Poisson operations. "
+    @Text """
+    # Poisson fills
+    
+    orx-poisson-fills offers tool for GPU-based Poisson operations. 
+    
+    ## Prerequisites
+    
+    Assuming you are working on an 
+    [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+    project, all you have to do is enable `orx-poisson-fills` in the `orxFeatures`
+    set in `build.gradle.kts` and reimport the gradle project.
+    
+    # Filling
+    
+    The `PoissonFill` filter can be used to fill in transparent parts of 
+    an image. In the following example we use `orx-compose` to simplify the 
+    code a bit. The same results can be achieved using render targets.
+    """
 
-    @Text "## Prerequisites"
-    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-project, all you have to do is enable `orx-poisson-fills` in the `orxFeatures`
- set in `build.gradle.kts` and reimport the gradle project."""
-
-    @Text "# Filling"
-    @Text """The `PoissonFill` filter can be used to fill in transparent parts of an image. In the following example
-we use `orx-compose` to simplify the code a bit. The same results can be achieved using render targets.
-    """.trimMargin()
-
-
-    @Media.Video """media/poisson-fills-001.mp4"""
+    @Media.Video "media/poisson-fills-001.mp4"
 
     @Application
     @Code
@@ -86,7 +91,7 @@ we use `orx-compose` to simplify the code a bit. The same results can be achieve
         }
     }
 
-    @Media.Video """media/poisson-fills-002.mp4"""
+    @Media.Video "media/poisson-fills-002.mp4"
 
     @Application
     @Code
@@ -120,8 +125,11 @@ we use `orx-compose` to simplify the code a bit. The same results can be achieve
             }
         }
     }
-    @Text "# Blending"
-    @Media.Video """media/poisson-fills-101.mp4"""
+    @Text """
+    # Blending
+    """
+
+    @Media.Video "media/poisson-fills-101.mp4"
 
     @Application
     @Code
@@ -160,7 +168,7 @@ we use `orx-compose` to simplify the code a bit. The same results can be achieve
         }
     }
 
-    @Media.Video """media/poisson-fills-102.mp4"""
+    @Media.Video "media/poisson-fills-102.mp4"
 
     @Application
     @Code

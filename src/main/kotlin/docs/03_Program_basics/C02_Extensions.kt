@@ -11,19 +11,17 @@ import org.openrndr.dokgen.annotations.*
 import org.openrndr.extensions.Screenshots
 
 fun main() {
-    @Text
+    @Text 
     """
     # Extensions
 
     Extensions add functionality to a Program. Extensions can be used to control how a program draws, setup keyboard and
     mouse bindings and much more.
-    """
 
-    @Text
-    """
-## Basic extension use
-Here we demonstrate how to use an OPENRNDR extension. The extension that we use is the `Screenshots` extension, which, when 
-the space bar is pressed will capture the application window's contents and save it to a timestamped file.
+    ## Basic extension use
+    
+    Here we demonstrate how to use an OPENRNDR extension. The extension that we use is the `Screenshots` extension, which, when 
+    the space bar is pressed will capture the application window's contents and save it to a timestamped file.
     """
 
     @Code.Block
@@ -39,9 +37,10 @@ the space bar is pressed will capture the application window's contents and save
         }
     }
 
-    @Text
+    @Text 
     """
     ## Extension configuration
+    
     Some extensions have configurable options. They can be set using the configuring `extend` function as follows:
     """
 
@@ -56,9 +55,10 @@ the space bar is pressed will capture the application window's contents and save
         }
     }
 
-    @Text
+    @Text 
     """
     ## Extension functions
+    
     The functional `extend` function allows one to use a single function as an extension. This is commonly used to
     create a "draw loop".
     """
@@ -74,14 +74,15 @@ the space bar is pressed will capture the application window's contents and save
         }
     }
 
-    @Text """
-    ## Built-in and contributed extensions
+    @Text 
     """
-    @Text """OPENRNDR provides a few built-in extensions to simplify common tasks. One is `Screenshots`, which is used
-to create screenshots of your programs. Another is `ScreenRecorder` which is used to write videos to files.
+    ## Built-in and contributed extensions
+    
+    OPENRNDR provides a few built-in extensions to simplify common tasks. One is `Screenshots`, which is used
+    to create screenshots of your programs. Another is `ScreenRecorder` which is used to write videos to files.
 
-Next to the built-in extensions there is [ORX](https://github.com/openrndr/orx), an extensive repository of provided and
-contributed OPENRNDR extensions and add-ons. If you work from `openrndr-template` you can easily add and remove extensions 
-from your project by editing the `orxFeatures` property in `build.gradle.kts`.
-"""
+    Next to the built-in extensions there is [ORX](https://github.com/openrndr/orx), an extensive repository of provided and
+    contributed OPENRNDR extensions and add-ons. If you work from `openrndr-template` you can easily add and remove extensions 
+    from your project by editing the `orxFeatures` property in `build.gradle.kts`.
+    """
 }

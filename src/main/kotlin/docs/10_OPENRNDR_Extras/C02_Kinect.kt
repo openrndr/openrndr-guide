@@ -18,28 +18,32 @@ import org.openrndr.extra.kinect.KinectCamera
 import org.openrndr.extra.kinect.v1.getKinectsV1
 
 fun main() {
-    @Text "# orx-kinect"
+    @Text """
+    # orx-kinect
+    
+    Provides Kinect support (only Kinect version 1 at the moment and 
+    only depth camera).
+    Source and extra documentation can be found in the 
+    [orx sourcetree](https://github.com/openrndr/orx/tree/master)
 
-    @Text """Provides Kinect support (only Kinect version 1 at the moment and only depth camera).
-Source and extra documentation can be found in the [orx sourcetree](https://github.com/openrndr/orx/tree/master)
+    Note: the support is split into several modules:
 
-Note: the support is split into several modules:
-
-* `orx-kinect-common`
-* `orx-kinect-v1`
-* [`orx-kinect-v1-demo`](https://github.com/openrndr/orx/tree/master/orx-kinect-v1-demo/src/main/kotlin)
-* `orx-kinect-v1-natives-linux-x64`
-* `orx-kinect-v1-natives-macos`
-* `orx-kinect-v1-natives-windows`
-
-"""
-
-    @Text "## Prerequisites"
-    @Text """Assuming you are working on an [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-project, all you have to do is enable `orx-kinect-v1` in the `orxFeatures`
- set in `build.gradle.kts` and reimport the gradle project."""
-
-    @Text """## Using the Kinect depth camera"""
+    * `orx-kinect-common`
+    * `orx-kinect-v1`
+    * [`orx-kinect-v1-demo`](https://github.com/openrndr/orx/tree/master/orx-kinect-v1-demo/src/main/kotlin)
+    * `orx-kinect-v1-natives-linux-x64`
+    * `orx-kinect-v1-natives-macos`
+    * `orx-kinect-v1-natives-windows`
+    
+    ## Prerequisites
+    
+    Assuming you are working on an 
+    [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
+    project, all you have to do is enable `orx-kinect-v1` in the `orxFeatures`
+    set in `build.gradle.kts` and reimport the gradle project.
+    
+    ## Using the Kinect depth camera
+    """
 
     @Code.Block
     run {
@@ -60,16 +64,22 @@ project, all you have to do is enable `orx-kinect-v1` in the `orxFeatures`
         }
     }
 
-    @Text """Note: depth values are mapped into `0-1` range and stored on a `ColorBuffer` containing only
-RED color channel."""
-
-    @Text """## Mirroring depth camera image"""
-
-    @Text """```kotlin 
-kinect.depthCamera.mirror = true ```"""
-
-    @Text """## Using multiple Kinects"""
-    @Text """The `kinects.startDevice()` can be supplied with device number (`0` by default):"""
+    @Text 
+    """
+    Note: depth values are mapped into `0-1` range and stored on a 
+    `ColorBuffer` containing only RED color channel.
+    
+    ## Mirroring depth camera image
+    
+    ```kotlin 
+    kinect.depthCamera.mirror = true 
+    ```
+    
+    ## Using multiple Kinects
+    
+    The `kinects.startDevice()` can be supplied with device number 
+    (`0` by default):
+    """
 
     @Code.Block
     run {
@@ -92,30 +102,34 @@ kinect.depthCamera.mirror = true ```"""
         }
     }
 
-    @Text """## Reacting only to the latest frame from the Kinect camera
-Kinect is producing 30 frames per second, while screen refresh rates are usually higher.
-Usually, if the data from the depth camera is processed, it is desired to react to the latest
-Kinect frame only once:
+    @Text 
+    """
+    ## Reacting only to the latest frame from the Kinect camera
+    
+    Kinect is producing 30 frames per second, while screen refresh rates 
+    are usually higher.
+    Usually, if the data from the depth camera is processed, it is desired 
+    to react to the latest Kinect frame only once:
 
-```kotlin
-kinect.depthCamera.getLatestFrame()?.let { frame ->
-    myFilter.apply(frame, outputColorBuffer)
-}
-```"""
+    ```kotlin
+    kinect.depthCamera.getLatestFrame()?.let { frame ->
+        myFilter.apply(frame, outputColorBuffer)
+    }
+    ```
+    
+    ## Using color map filters
 
-    @Text """## Using color map filters
+    Raw kinect depth data might be visualized in several ways, the following 
+    filters are included:
 
-Raw kinect depth data might be visualized in several ways, the following filters are included:
+    * `DepthToGrayscaleMapper`
+    * `DepthToColorsZucconi6Mapper` - [Colors of natural light dispersion](https://www.alanzucconi.com/2017/07/15/improving-the-rainbow/) by Alan Zucconi
+    * `DepthToColorsTurboMapper` - [Turbo, An Improved Rainbow Colormap for Visualization](https://ai.googleblog.com/2019/08/turbo-improved-rainbow-colormap-for.html) by Google
 
-* `DepthToGrayscaleMapper`
-* `DepthToColorsZucconi6Mapper` - [Colors of natural light dispersion](https://www.alanzucconi.com/2017/07/15/improving-the-rainbow/) by Alan Zucconi
-* `DepthToColorsTurboMapper` - [Turbo, An Improved Rainbow Colormap for Visualization](https://ai.googleblog.com/2019/08/turbo-improved-rainbow-colormap-for.html) by Google
+    An example presenting these filters side by side:
 
-An example presenting these filters side by side:
-
-<img style="width:auto;" src="media/kinect-colormaps.png"/>
-
-"""
+    ![kinect-colormaps](/media/kinect-colormaps.png)
+    """
 
     @Code.Block
     run {
@@ -153,20 +167,23 @@ An example presenting these filters side by side:
             }
         }
     }
-    @Text """## Executing native freenect commands
 
-This kinect support is built on top of the [freenect](https://github.com/OpenKinect/libfreenect)
-library. Even though the access to freenect is abstracted, it is still possible to execute
-low level freenect commands in the native API:
+    @Text 
+    """
+    ## Executing native freenect commands
 
-```kotlin
-kinects.execute { ctx -> freenect_set_log_level(ctx.fnCtx, freenect.FREENECT_LOG_FLOOD) }
-```
+    This kinect support is built on top of the [freenect](https://github.com/OpenKinect/libfreenect)
+    library. Even though the access to freenect is abstracted, it is still possible to execute
+    low level freenect commands in the native API:
 
-And in the scope of particular device:
+    ```kotlin
+    kinects.execute { ctx -> freenect_set_log_level(ctx.fnCtx, freenect.FREENECT_LOG_FLOOD) }
+    ```
 
-```kotlin
-kinect.execute { ctx -> freenect_set_led(ctx.fnDev, LED_BLINK_RED_YELLOW) }
-```"""
-   
+    And in the scope of particular device:
+
+    ```kotlin
+    kinect.execute { ctx -> freenect_set_led(ctx.fnDev, LED_BLINK_RED_YELLOW) }
+    ```
+    """
 }

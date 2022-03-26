@@ -20,7 +20,9 @@ import org.openrndr.math.Vector3
 import org.openrndr.shape.*
 
 fun main() {
-    @Text "# 3D graphics"
+    @Text """
+    # 3D graphics
+    """
 
     @Code.Block
     run {
@@ -52,16 +54,11 @@ fun main() {
         }
     }
 
-    @Text """
-
-orx-camera
-orx-dnk3
-orx-mesh-generators
-
-## Bla
-
-Bla
-
+    @Text 
+    """
+    Describe: orx-camera
+    Describe: orx-dnk3
+    Describe: orx-mesh-generators
     """
 
     @Code.Block
@@ -114,6 +111,4 @@ Bla
             }
         }
     }
-
-
 }

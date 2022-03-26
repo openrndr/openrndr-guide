@@ -18,11 +18,9 @@ fun main() {
     @Text
     """
     # Mouse and keyboard events
+    
     Most user-input interaction in OPENRNDR manifests through events.
-    """
 
-    @Text
-    """
     # Mouse events
     
     A simple demonstration of a listening for mouse button clicks looks as follows:     
@@ -36,16 +34,22 @@ fun main() {
             }
         }
     }
-    @Text """
-Every program has a `mouse` object that exposes events and mouse properties. In the example above we attach a listener to the `clicked` event.
-The `{}` block after `listen` is a short-hand notation for passing a function into `listen`.
-
-There are some limitations to what the listener function can (or should) do. As a rule-of-thumb: don't draw in events. The result of drawing
-in listener functions is that it does not work. You are encouraged to use listener functions to change the state of your program.   
-                    
-Let's provide a commonly used pattern to deal with this limitation. The idea here is that we introduce variables in our program that are used
-to communicate between the listener function and the draw function.
-""".trimIndent()
+    @Text 
+    """
+    Every program has a `mouse` object that exposes events and mouse properties. 
+    In the example above we attach a listener to the `clicked` event.
+    The `{}` block after `listen` is a short-hand notation for passing a 
+    function into `listen`.
+    
+    There are some limitations to what the listener function can (or should) 
+    do. As a rule-of-thumb: don't draw in events. The result of drawing
+    in listener functions is that it does not work. You are encouraged to 
+    use listener functions to change the state of your program.   
+                        
+    Let's provide a commonly used pattern to deal with this limitation. 
+    The idea here is that we introduce variables in our program that are used
+    to communicate between the listener function and the draw function.
+    """
 
     @Code
     application {
@@ -72,6 +76,7 @@ to communicate between the listener function and the draw function.
     @Text
     """
     ### Overview of mouse events
+    
     event        | description                                                   | relevant MouseEvent properties
     -------------|---------------------------------------------------------------|---------------------------------
     `moved`      | generated when mouse has been moved                           | `position`, `modifiers`
@@ -80,15 +85,17 @@ to communicate between the listener function and the draw function.
     `scrolled`   | generated when mouse wheel is used                            | `position`, `rotation`
     `clicked`    | generated when a button has been pressed and released         | `position`, `button`, `modifiers`
     `dragged`    | generated when mouse has been moved while a button is pressed | `position`, `button`, `modifiers`
-    """
 
-
-    @Text
-    """
     # Keyboard events
-    OPENRNDR provides two classes of keyboard events. The first are _key_ events, which should be used to respond to the user pressing or releasing buttons on the keyboard. The second class are _character_ events, which should be used for handling text input as they also deal with composed characters.
+    
+    OPENRNDR provides two classes of keyboard events. The first are _key_ 
+    events, which should be used to respond to the user pressing or releasing 
+    buttons on the keyboard. The second class are _character_ events, which 
+    should be used for handling text input as they also deal with composed 
+    characters.
 
-    To use the _key_ events one listens to `keyboard.keyDown` events and compares the `key` value. For example:
+    To use the _key_ events one listens to `keyboard.keyDown` events and 
+    compares the `key` value. For example:
     """
 
     @Code
@@ -105,9 +112,12 @@ to communicate between the listener function and the draw function.
     }
 
     """
-    Note that the `key` property should *not* be used to check for alpha-numeric keys. The `key` property returns a
-     key identifier that is relative to a US keyboard layout. Instead, alpha-numeric key comparisons should be made through
-     the `name` property. Note that the `name` property is not affected by pressing the shift-key.
+    Note that the `key` property should *not* be used to check for 
+    alpha-numeric keys. The `key` property returns a
+     key identifier that is relative to a US keyboard layout. Instead, 
+     alpha-numeric key comparisons should be made through
+     the `name` property. Note that the `name` property is not affected 
+     by pressing the shift-key.
     """
 
     @Code
@@ -126,7 +136,8 @@ to communicate between the listener function and the draw function.
 
     @Text
     """
-    To use the _character_ events one listens to `keyboard.character` events which provide `character` values. For example:
+    To use the _character_ events one listens to `keyboard.character` 
+    events which provide `character` values. For example:
     """
 
     @Code
@@ -152,7 +163,9 @@ to communicate between the listener function and the draw function.
     @Text
     """
     ### Querying key modifiers
-    Checking for modifiers can be done by checking if the desired modifier key is active in `modifiers`.  In the example below we check
+    
+    Checking for modifiers can be done by checking if the desired modifier 
+    key is active in `modifiers`.  In the example below we check
     if both shift and the left arrow key are pressed.
     """
 
@@ -169,12 +182,9 @@ to communicate between the listener function and the draw function.
 
     @Text
     """
-    Note that also mouse events come with modifiers and can be queried in a similar way.
-    """
+    Note that also mouse events come with modifiers and can be queried in 
+    a similar way.
 
-
-    @Text
-    """
     ### Overview of keyboard events
 
     event       | description                                    | relevant KeyboardEvent properties
@@ -183,8 +193,6 @@ to communicate between the listener function and the draw function.
     `keyUp`     | generated when a key is released               | `key`, `modifiers`
     `keyRepeat` | generated when a key is pressed and held       | `key`, `modifiers`
     `character` | generated when an input character is generated | `character`, `modifiers`
-
-
 
     ### Overview of key constants
 
@@ -211,7 +219,7 @@ to communicate between the listener function and the draw function.
 
     ## Event processing order
 
-    Mouse and keyboard events are buffered and processed before `draw()` is called. It is possible but not advised to perform drawing on event.
+    Mouse and keyboard events are buffered and processed before `draw()` 
+    is called. It is possible but not advised to perform drawing on event.
     """
-
 }

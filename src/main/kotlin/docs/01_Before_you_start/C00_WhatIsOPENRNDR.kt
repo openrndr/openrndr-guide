@@ -32,7 +32,7 @@ fun main() {
     # A simple OPENRNDR program
     Here we show a very simple program written using OPENRNDR.
     """
-    @Media.Video """media/what-is-001.mp4"""
+    @Media.Video "media/what-is-001.mp4"
 
     @Application
     @Code
@@ -56,6 +56,4 @@ fun main() {
             }
         }
     }
-
-
 }

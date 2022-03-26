@@ -13,47 +13,70 @@ import java.io.File
 import java.nio.ByteBuffer
 
 fun main() {
-    @Text """# Color buffers"""
-
-    @Text """A color buffer is an image stored in GPU memory."""
-
-    @Text """## Creating a color buffer"""
-    @Text """Color buffers are created using the `colorBuffer()` function. """
+    @Text 
+    """
+    # Color buffers
+    
+    A color buffer is an image stored in GPU memory.
+    
+    ## Creating a color buffer
+    
+    Color buffers are created using the `colorBuffer()` function. 
+    """
 
     @Code.Block
     run {
         val cb = colorBuffer(640, 480)
     }
 
-    @Text """### Specifying buffer format"""
-    @Text """Color buffers can be created in different formats. The buffer format specifies the number and order of channels in the image. Color buffers can have 1 to 4 channels.
-        The `format` argument can be any [`ColorFormat`](https://api.openrndr.org/org.openrndr.draw/-color-format/index.html) value.  
+    @Text 
     """
+    ### Specifying buffer format
+    
+    Color buffers can be created in different formats. The buffer format 
+    specifies the number and order of channels in the image. Color buffers 
+    can have 1 to 4 channels. The `format` argument can be any 
+    [`ColorFormat`](https://api.openrndr.org/org.openrndr.draw/-color-format/index.html) value.  
+    """
+
     @Code.Block
     run {
         val cb = colorBuffer(640, 480, format = ColorFormat.R)
     }
 
-    @Text """### Specifying buffer type"""
-    @Text """The buffer type specifies which data type is used for storing colors in the buffer. The `type` argument can be any [`ColorType`](https://api.openrndr.org/org.openrndr.draw/-color-type/index.html) value."""
+    @Text 
+    """
+    ### Specifying buffer type
+    
+    The buffer type specifies which data type is used for storing colors 
+    in the buffer. The `type` argument can be any 
+    [`ColorType`](https://api.openrndr.org/org.openrndr.draw/-color-type/index.html) value.
+    """
 
     @Code.Block
     run {
         val cb = colorBuffer(640, 480, type = ColorType.FLOAT16)
     }
 
-    @Text """## Loading color buffers"""
-    @Text """Color buffers can be loaded from an image stored on disk. Supported file types are png, jpg
-        and exr (OpenEXR).
+    @Text 
     """
+    ## Loading color buffers
+    
+    Color buffers can be loaded from an image stored on disk. 
+    Supported file types are png, jpg and exr (OpenEXR).
+    """
+
     @Code.Block
     run {
         val cb = loadImage("data/images/pm5544.png")
     }
 
-    @Text """## Saving color buffers"""
-    @Text """Color buffers can be saved to disk using the `saveToFile` member function. Supported file types are png, jpg
-        and exr (OpenEXR). 
+    @Text 
+    """
+    ## Saving color buffers
+    
+    Color buffers can be saved to disk using the `saveToFile` member function. 
+    Supported file types are png, jpg and exr (OpenEXR). 
     """
 
     @Code.Block
@@ -62,9 +85,14 @@ fun main() {
         cb.saveToFile(File("output.png"))
     }
 
-    @Text """## Copying between color buffers"""
-    @Text """Color buffer contents can be copied using the `copyTo` member function. Copying works between color buffers of different formats and types.
+    @Text 
     """
+    ## Copying between color buffers
+    
+    Color buffer contents can be copied using the `copyTo` member function. 
+    Copying works between color buffers of different formats and types.
+    """
+
     @Code.Block
     run {
         // -- create color buffers
@@ -74,8 +102,13 @@ fun main() {
         cb0.copyTo(cb1)
     }
 
-    @Text """## Writing into color buffers """
-    @Text """To upload data into the color buffer one uses the `write` member function."""
+    @Text 
+    """
+    ## Writing into color buffers 
+    
+    To upload data into the color buffer one uses the `write` member function.
+    """
+
     @Code.Block
     run {
         // -- create a color buffer that uses 8 bits per channel (the default)
@@ -99,8 +132,13 @@ fun main() {
         cb.write(buffer)
     }
 
-    @Text """## Reading from color buffers """
-    @Text """To download data from a color buffer one uses the `read` member function."""
+    @Text 
+    """
+    ## Reading from color buffers 
+    
+    To download data from a color buffer one uses the `read` member function.
+    """
+
     @Code.Block
     run {
         // -- create a color buffer that uses 8 bits per channel (the default)
@@ -113,12 +151,18 @@ fun main() {
         cb.read(buffer)
     }
 
-    @Text """## Color buffer shadows"""
-    @Text """To simplify the process of reading and writing from and to color buffers we added a shadow buffer to
-`ColorBuffer`. A shadow buffer offers a simple interface to access the color buffer's contents.
+    @Text 
+    """
+    ## Color buffer shadows
+    
+    To simplify the process of reading and writing from and to color buffers 
+    we added a shadow buffer to
+    `ColorBuffer`. A shadow buffer offers a simple interface to access the 
+    color buffer's contents.
 
-Note that shadow buffers have more overhead than using `read()` and `write()`.
-"""
+    Note that shadow buffers have more overhead than using `read()` and `write()`.
+    """
+
     @Code.Block
     run {
         // -- create a color buffer that uses 8 bits per channel (the default)
@@ -138,7 +182,6 @@ Note that shadow buffers have more overhead than using `read()` and `write()`.
         // -- upload shadow to cb
         shadow.upload()
     }
-
 }
 
 

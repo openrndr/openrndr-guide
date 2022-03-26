@@ -13,9 +13,14 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 fun main() {
-    @Text """# Clipping"""
-    @Text """OPENRNDR's drawer supports a single rectangular clip mask."""
-    @Media.Video """media/clipping-001.mp4"""
+    @Text 
+    """
+    # Clipping
+    
+    OPENRNDR's drawer supports a single rectangular clip mask.
+    """
+
+    @Media.Video "media/clipping-001.mp4"
 
     @Application
     application {
