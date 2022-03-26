@@ -2,7 +2,7 @@ group 'org.openrndr.guide'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.5.30'
+    ext.kotlin_version = '1.6.10'
 
     repositories {
         mavenCentral()
@@ -53,10 +53,10 @@ switch (org.gradle.internal.os.OperatingSystem.current()) {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt'
 
     testImplementation 'junit:junit:4.13.2'
-    implementation 'org.slf4j:slf4j-simple:1.7.32'
+    implementation 'org.slf4j:slf4j-simple:1.7.36'
 
     implementation "org.openrndr:openrndr-gl3:$openrndrVersion"
     implementation "org.openrndr:openrndr-gl3-natives-$openrndrOS:$openrndrVersion"
@@ -100,18 +100,19 @@ dokgen {
         webRootUrl = "https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin"
     }
 
-    docsify {
+    jekyll {
         media = [file("$projectDir/media"), file("$projectDir/static-media")]
-        assets = [file("$projectDir/data/docsify-assets")]
+        assets = [file("$projectDir/data/jekyll-assets")]
     }
 }
 
 task publishDocs { task ->
+    description "Publish website to github.com/openrndr/openrndr-guide"
     doLast {
         gitPublish.repoUri = "git@github.com:openrndr/openrndr-guide.git"
         gitPublish.branch = "master"
         gitPublish.repoDir = file("$buildDir/gitrepo-docs")
-        gitPublish.contents.from("build/dokgen/docsify") {
+        gitPublish.contents.from("build/dokgen/jekyll") {
             exclude "node_modules"
         }
         gitPublish.commitMessage = "Update docs"
@@ -122,6 +123,7 @@ task publishDocs { task ->
 }
 
 task publishExamples { task ->
+    description "Publish examples to github.com/openrndr/openrndr-examples"
     doLast {
         gitPublish.repoDir = file("$buildDir/gitrepo-examples")
         gitPublish.contents {
