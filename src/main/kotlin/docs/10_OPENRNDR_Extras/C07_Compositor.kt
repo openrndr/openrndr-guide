@@ -1,3 +1,9 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Compositor")
+@file:ParentTitle("OPENRNDR Extras")
+@file:Order("170")
+@file:URL("OPENRNDRExtras/compositor")
+
 package docs.`10_OPENRNDR_Extras`
 
 import org.openrndr.application

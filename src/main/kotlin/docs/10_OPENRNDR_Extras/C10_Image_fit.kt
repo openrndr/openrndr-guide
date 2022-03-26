@@ -1,3 +1,9 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Image fit")
+@file:ParentTitle("OPENRNDR Extras")
+@file:Order("200")
+@file:URL("OPENRNDRExtras/imageFit")
+
 package docs.`10_OPENRNDR_Extras`
 
 import org.openrndr.application

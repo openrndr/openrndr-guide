@@ -1,10 +1,13 @@
 @file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Extensions")
+@file:ParentTitle("Program basics")
+@file:Order("120")
+@file:URL("programBasics/extensions")
 
 package docs.`03_Program_basics`
 
 import org.openrndr.application
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 import org.openrndr.extensions.Screenshots
 
 fun main() {
@@ -17,7 +20,8 @@ fun main() {
     """
 
     @Text
-    """## Basic extension use
+    """
+## Basic extension use
 Here we demonstrate how to use an OPENRNDR extension. The extension that we use is the `Screenshots` extension, which, when 
 the space bar is pressed will capture the application window's contents and save it to a timestamped file.
     """
@@ -70,7 +74,9 @@ the space bar is pressed will capture the application window's contents and save
         }
     }
 
-    @Text """## Built-in and contributed extensions"""
+    @Text """
+    ## Built-in and contributed extensions
+    """
     @Text """OPENRNDR provides a few built-in extensions to simplify common tasks. One is `Screenshots`, which is used
 to create screenshots of your programs. Another is `ScreenRecorder` which is used to write videos to files.
 

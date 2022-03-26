@@ -1,10 +1,13 @@
 @file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Headless applications")
+@file:ParentTitle("Advanced topics")
+@file:Order("140")
+@file:URL("advancedTopics/headlessApplications")
 
 package docs.`11_Advanced_Topics`
 
 import org.openrndr.application
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 
 
 fun main() {

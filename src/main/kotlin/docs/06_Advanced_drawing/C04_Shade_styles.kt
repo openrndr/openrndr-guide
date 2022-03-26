@@ -1,3 +1,9 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Shade styles")
+@file:ParentTitle("Advanced drawing")
+@file:Order("140")
+@file:URL("advancedDrawing/shadeStyles")
+
 package docs.`06_Advanced_drawing`
 
 import org.openrndr.application

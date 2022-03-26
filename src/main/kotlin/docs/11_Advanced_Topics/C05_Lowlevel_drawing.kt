@@ -1,4 +1,8 @@
-package docs.`11_Advanced_Topics`
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Low-level drawing")
+@file:ParentTitle("Advanced topics")
+@file:Order("150")
+@file:URL("advancedTopics/lowLevelDrawing")
 
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*

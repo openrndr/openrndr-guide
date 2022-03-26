@@ -1,4 +1,8 @@
 @file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Application Flow")
+@file:ParentTitle("Advanced topics")
+@file:Order("110")
+@file:URL("advancedTopics/applicationFlow")
 
 package docs.`11_Advanced_Topics`
 
@@ -6,8 +10,7 @@ import org.openrndr.Application
 import org.openrndr.Program
 import org.openrndr.application
 import org.openrndr.configuration
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 
 fun main() {
 
@@ -54,7 +57,7 @@ program below."""
     run {
         fun main() {
             class Main : Program() {
-                override fun setup() {
+                override suspend fun setup() {
                     // -- setup program here
                 }
 

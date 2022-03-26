@@ -1,10 +1,13 @@
 @file:Suppress("UNUSED_EXPRESSION", "UNREACHABLE_CODE")
+@file:Title("Program configuration")
+@file:ParentTitle("Program basics")
+@file:Order("110")
+@file:URL("programBasics/programConfiguration")
 
 package docs.`03_Program_basics`
 
 import org.openrndr.*
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 import org.openrndr.math.IntVector2
 
 fun main() {

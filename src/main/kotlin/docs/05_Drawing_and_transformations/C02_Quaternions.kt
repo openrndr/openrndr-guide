@@ -1,8 +1,13 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Quaternions")
+@file:ParentTitle("Drawing and transformations")
+@file:Order("120")
+@file:URL("drawingAndTransformations/quaternions")
+
 package docs.`05_Drawing_and_transformations`
 
 import org.openrndr.application
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 import org.openrndr.math.Quaternion
 import org.openrndr.math.Quaternion.Companion.fromAngles
 import org.openrndr.math.slerp

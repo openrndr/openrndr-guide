@@ -1,4 +1,8 @@
 @file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Images")
+@file:ParentTitle("Drawing basics")
+@file:Order("110")
+@file:URL("drawingBasics/images")
 
 package docs.`04_Drawing_basics`
 

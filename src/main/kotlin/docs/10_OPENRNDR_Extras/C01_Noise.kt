@@ -1,3 +1,9 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Noise")
+@file:ParentTitle("OPENRNDR Extras")
+@file:Order("110")
+@file:URL("OPENRNDRExtras/noise")
+
 package docs.`10_OPENRNDR_Extras`
 
 import org.openrndr.application

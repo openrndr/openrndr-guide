@@ -1,3 +1,9 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Quick UIs")
+@file:ParentTitle("OPENRNDR Extras")
+@file:Order("180")
+@file:URL("OPENRNDRExtras/quickUIs")
+
 package docs.`10_OPENRNDR_Extras`
 
 import org.openrndr.application
@@ -465,7 +471,8 @@ val settings = object {
     fun doSave() {
         println("file saved!")    
     }
-}```
+}
+```
 
 
 """.trimMargin()

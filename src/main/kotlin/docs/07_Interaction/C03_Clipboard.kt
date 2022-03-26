@@ -1,10 +1,13 @@
 @file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Clipboard")
+@file:ParentTitle("Interaction")
+@file:Order("130")
+@file:URL("interaction/clipboard")
 
 package docs.`07_Interaction`
 
 import org.openrndr.application
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 
 
 fun main() {

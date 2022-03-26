@@ -1,3 +1,9 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Distance fields")
+@file:ParentTitle("OPENRNDR Extras")
+@file:Order("220")
+@file:URL("OPENRNDRExtras/distanceFields")
+
 package docs.`10_OPENRNDR_Extras`
 
 

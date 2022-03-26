@@ -1,11 +1,14 @@
 @file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Writing to video files")
+@file:ParentTitle("Videos")
+@file:Order("110")
+@file:URL("videos/writingToVideoFiles")
 
 package docs.`09_Videos`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.isolatedWithTarget
 import org.openrndr.draw.renderTarget
 import org.openrndr.ffmpeg.ScreenRecorder

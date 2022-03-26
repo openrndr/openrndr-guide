@@ -1,4 +1,9 @@
-@file:Suppress("PackageName")
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Array textures")
+@file:ParentTitle("Advanced drawing")
+@file:Order("170")
+@file:URL("advancedDrawing/arrayTextures")
+
 package docs.`06_Advanced_drawing`
 
 import org.openrndr.application

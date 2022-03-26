@@ -1,9 +1,14 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Drawing SVG")
+@file:ParentTitle("Drawing basics")
+@file:Order("160")
+@file:URL("drawingBasics/drawingSVG")
+
 package docs.`04_Drawing_basics`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 import org.openrndr.math.Vector2
 import org.openrndr.shape.*
 import org.openrndr.svg.loadSVG
@@ -105,8 +110,8 @@ in code.
         val composition = Composition(root)
         val shape = Circle(200.0, 200.0, 100.0).shape
         val shapeNode = ShapeNode(shape)
-        shapeNode.fill = Color(ColorRGBa.PINK)
-        shapeNode.stroke = Color(ColorRGBa.BLACK)
+        shapeNode.fill = ColorRGBa.PINK
+        shapeNode.stroke = ColorRGBa.BLACK
         // -- add shape node to root
         root.children.add(shapeNode)
     }

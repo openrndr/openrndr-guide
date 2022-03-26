@@ -1,12 +1,15 @@
 @file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Presentation Control")
+@file:ParentTitle("Advanced topics")
+@file:Order("120")
+@file:URL("advancedTopics/presentationControl")
 
 package docs.`11_Advanced_Topics`
 
 import org.openrndr.PresentationMode
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 
 
 fun main() {

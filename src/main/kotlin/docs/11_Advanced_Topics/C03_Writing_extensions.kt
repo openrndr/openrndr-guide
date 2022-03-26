@@ -1,12 +1,15 @@
 @file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Writing extensions")
+@file:ParentTitle("Advanced topics")
+@file:Order("130")
+@file:URL("advancedTopics/writingExtensions")
 
 package docs.`11_Advanced_Topics`
 
 import org.openrndr.Extension
 import org.openrndr.Program
 import org.openrndr.application
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.Drawer
 import org.openrndr.draw.isolated
 import org.openrndr.math.Matrix44

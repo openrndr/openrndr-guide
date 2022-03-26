@@ -1,11 +1,14 @@
 @file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Playing videos")
+@file:ParentTitle("Videos")
+@file:Order("100")
+@file:URL("videos/playingVideos")
 
 package docs.`09_Videos`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.renderTarget
 import org.openrndr.extra.fx.blur.BoxBlur
 import org.openrndr.ffmpeg.VideoPlayerFFMPEG

@@ -1,3 +1,9 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Transformations")
+@file:ParentTitle("Drawing and transformations")
+@file:Order("100")
+@file:URL("drawingAndTransformations/transformations")
+
 package docs.`05_Drawing_and_transformations`
 
 import org.openrndr.application

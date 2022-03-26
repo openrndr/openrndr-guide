@@ -1,6 +1,12 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Introduction to ORX")
+@file:ParentTitle("OPENRNDR Extras")
+@file:Order("100")
+@file:URL("OPENRNDRExtras/introductionToORX")
+
 package docs.`10_OPENRNDR_Extras`
 
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 
 fun main() {
 

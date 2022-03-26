@@ -1,4 +1,8 @@
-package docs.`06_Advanced_drawing`
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Clipping")
+@file:ParentTitle("Advanced drawing")
+@file:Order("120")
+@file:URL("advancedDrawing/clipping")
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa

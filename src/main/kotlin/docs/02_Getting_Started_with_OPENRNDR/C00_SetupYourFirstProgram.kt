@@ -1,3 +1,16 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Set up your first program")
+@file:ParentTitle("Getting started with OPENRNDR")
+@file:Order("100")
+@file:URL("gettingStartedWithOPENRNDR/setUpYourFirstProgram")
+
+package docs.`02_Getting_Started_with_OPENRNDR`
+
+import org.openrndr.dokgen.annotations.*
+
+fun main() {
+    @Text
+    """
 # Getting Started with OPENRNDR
 
 Let's get it started!
@@ -46,5 +59,5 @@ At this point you are likely interested in how this program is structured. The g
 
 If you are more interested in reading source code you can find the code for the examples in this guide in the [`openrndr-examples` repository](https://github.com/openrndr/openrndr-examples). If you are interested in more advanced examples we recommend checking out the demo programs in the [`orx` repository](https://github.com/openrndr/orx), most `orx` modules have demos in the `src/demo/kotlin` folder.
 
-
-
+    """.trimIndent()
+}

@@ -1,8 +1,11 @@
-package docs.`06_Advanced_drawing`
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Asynchronous image loading")
+@file:ParentTitle("Advanced drawing")
+@file:Order("130")
+@file:URL("advancedDrawing/asynchronousImageLoading")
 
 import org.openrndr.application
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 import org.openrndr.internal.colorBufferLoader
 
 fun main() {

@@ -1,10 +1,13 @@
 @file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Program Windows")
+@file:ParentTitle("Interaction")
+@file:Order("110")
+@file:URL("interaction/programWindows")
 
 package docs.`07_Interaction`
 
 import org.openrndr.application
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 import org.openrndr.math.IntVector2
 
 

@@ -1,8 +1,13 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("OSC")
+@file:ParentTitle("OPENRNDR Extras")
+@file:Order("150")
+@file:URL("OPENRNDRExtras/osc")
+
 package docs.`10_OPENRNDR_Extras`
 
 import org.openrndr.application
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 import org.openrndr.extra.osc.OSC
 import java.net.InetAddress
 
@@ -27,7 +32,7 @@ project, all you have to do is enable `orx-osc` in the `orxFeatures`
 
             program {
                 val osc = OSC()
-                osc.listen("/live/track/2") {
+                osc.listen("/live/track/2") { addr, it ->
                     // -- get the first value
                     val firstValue = it[0] as Float
                 }

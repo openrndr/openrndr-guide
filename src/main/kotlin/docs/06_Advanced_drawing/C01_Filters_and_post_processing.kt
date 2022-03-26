@@ -1,4 +1,8 @@
-package docs.`06_Advanced_drawing`
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Filters and post processing")
+@file:ParentTitle("Advanced drawing")
+@file:Order("110")
+@file:URL("advancedDrawing/filtersAndPostProcessing")
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa

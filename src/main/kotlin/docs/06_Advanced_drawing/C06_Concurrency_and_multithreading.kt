@@ -1,12 +1,15 @@
-package docs.`06_Advanced_drawing`
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Concurrency and multithreading")
+@file:ParentTitle("Advanced drawing")
+@file:Order("160")
+@file:URL("advancedDrawing/concurrencyAndMultithreading")
 
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.*
 import org.openrndr.draw.colorBuffer
 

@@ -1,8 +1,13 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Color buffers")
+@file:ParentTitle("Advanced drawing")
+@file:Order("100")
+@file:URL("advancedDrawing/colorbuffers")
+
 package docs.`06_Advanced_drawing`
 
 import org.openrndr.color.ColorRGBa
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.*
 import java.io.File
 import java.nio.ByteBuffer

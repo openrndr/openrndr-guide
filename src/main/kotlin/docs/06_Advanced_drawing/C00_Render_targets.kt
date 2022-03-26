@@ -1,16 +1,21 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Render targets")
+@file:ParentTitle("Advanced drawing")
+@file:Order("105")
+@file:URL("advancedDrawing/renderTargets")
+
 package docs.`06_Advanced_drawing`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.*
 
 fun main() {
     @Text """# Render targets and color buffers"""
 
     @Text """A `RenderTarget` specifies a place to draw to. A `RenderTarget` has two kind of buffer attachments:
-`ColorBuffer` attachments and `DepthBuffer` attachments. At least a single `ColorBuffer` attachment is needed to draw on be able to draw on a `RenderTarget`.
+`ColorBuffer` attachments and `DepthBuffer` attachments. At least a single `ColorBuffer` attachment is needed to be able to draw on a `RenderTarget`.
 
 A `ColorBuffer` is a buffer that can hold up to 4 channel color. A `ColorBuffer` can hold 8 bit integer, 16 bit float or 32 bit float channels.
 
@@ -174,7 +179,7 @@ in the `renderTarget {}` builder will be created with the same multi sample conf
                 }
 
                 // -- resolve the render target attachment to `resolved`
-                rt.colorBuffer(0).resolveTo(resolved)
+                rt.colorBuffer(0).copyTo(resolved)
 
                 // draw the backing color buffer to the screen
                 drawer.image(resolved)

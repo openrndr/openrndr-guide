@@ -1,3 +1,9 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Poisson fills")
+@file:ParentTitle("OPENRNDR Extras")
+@file:Order("210")
+@file:URL("OPENRNDRExtras/poissonFills")
+
 package docs.`10_OPENRNDR_Extras`
 
 import org.openrndr.application

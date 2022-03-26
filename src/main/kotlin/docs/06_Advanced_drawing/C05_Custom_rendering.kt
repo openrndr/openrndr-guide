@@ -1,4 +1,8 @@
-package docs.`06_Advanced_drawing`
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Custom rendering")
+@file:ParentTitle("Advanced drawing")
+@file:Order("150")
+@file:URL("advancedDrawing/customRendering")
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa

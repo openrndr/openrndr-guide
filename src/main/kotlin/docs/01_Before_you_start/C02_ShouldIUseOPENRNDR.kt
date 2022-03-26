@@ -1,3 +1,21 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Should I use OPENRNDR?")
+@file:ParentTitle("Before you start")
+@file:Order("120")
+@file:URL("beforeYouStart/shouldIUseOPENRNDR")
+
+package docs.`01_Before_you_start`
+
+import org.openrndr.application
+import org.openrndr.color.ColorRGBa
+import org.openrndr.dokgen.annotations.*
+import org.openrndr.ffmpeg.ScreenRecorder
+import kotlin.math.abs
+import kotlin.math.cos
+
+fun main() {
+    @Text
+    """
 # Should I use OPENRNDR ?
 
 Yes!
@@ -41,3 +59,5 @@ We have not reached the point at which we can make promises regarding API stabil
 implies we try not to break things, but at times we have to. We break in cases in which it is better to break than to continue
 with inconsistencies in or incompleteness of the API.
 
+"""
+}

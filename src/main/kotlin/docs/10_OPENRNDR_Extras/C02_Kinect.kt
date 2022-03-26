@@ -1,3 +1,9 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Kinect")
+@file:ParentTitle("OPENRNDR Extras")
+@file:Order("120")
+@file:URL("OPENRNDRExtras/kinect")
+
 package docs.`10_OPENRNDR_Extras`
 
 import org.openrndr.application

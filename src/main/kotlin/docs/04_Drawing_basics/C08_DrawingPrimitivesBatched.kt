@@ -1,4 +1,8 @@
 @file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Drawing primitives batched")
+@file:ParentTitle("Drawing basics")
+@file:Order("180")
+@file:URL("drawingBasics/drawingPrimitivesBatched")
 
 package docs.`04_Drawing_basics`
 

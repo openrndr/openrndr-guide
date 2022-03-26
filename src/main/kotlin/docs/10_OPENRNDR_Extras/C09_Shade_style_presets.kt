@@ -1,3 +1,9 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Shade style presets")
+@file:ParentTitle("OPENRNDR Extras")
+@file:Order("190")
+@file:URL("OPENRNDRExtras/shadeStylePresets")
+
 package docs.`10_OPENRNDR_Extras`
 
 import org.openrndr.application

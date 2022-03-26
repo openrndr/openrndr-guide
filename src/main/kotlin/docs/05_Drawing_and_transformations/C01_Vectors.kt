@@ -1,6 +1,12 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Vectors")
+@file:ParentTitle("Drawing and transformations")
+@file:Order("110")
+@file:URL("drawingAndTransformations/vectors")
+
 package docs.`05_Drawing_and_transformations`
 
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 
 
 fun main() {

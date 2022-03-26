@@ -1,9 +1,14 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Managing draw style")
+@file:ParentTitle("Drawing basics")
+@file:Order("140")
+@file:URL("drawingBasics/managingDrawStyle")
+
 package docs.`04_Drawing_basics`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.isolated
 
 fun main() {

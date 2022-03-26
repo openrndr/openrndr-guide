@@ -1,4 +1,8 @@
 @file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Mouse And Keyboard Events")
+@file:ParentTitle("Interaction")
+@file:Order("100")
+@file:URL("interaction/mouseAndKeyboardEvents")
 
 package docs.`07_Interaction`
 
@@ -6,8 +10,7 @@ import org.openrndr.KEY_ARROW_LEFT
 import org.openrndr.KEY_BACKSPACE
 import org.openrndr.KeyModifier
 import org.openrndr.application
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 import org.openrndr.math.Vector2
 
 

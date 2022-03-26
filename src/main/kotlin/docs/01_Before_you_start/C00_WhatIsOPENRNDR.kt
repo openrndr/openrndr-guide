@@ -1,4 +1,8 @@
 @file:Suppress("UNUSED_EXPRESSION")
+@file:Title("What is OPENRNDR?")
+@file:ParentTitle("Before you start")
+@file:Order("100")
+@file:URL("beforeYouStart/whatIsOPENRNDR")
 
 package docs.`01_Before_you_start`
 
@@ -16,13 +20,13 @@ fun main() {
 
     OPENRNDR is an application framework and a library for creative coding written in [Kotlin](https://kotlinlang.org).
 
-    OPENRNDR offers APIs with which hardware accelerated graphics can be programmed flexibly and easily.
+    OPENRNDR offers APIs for easy and flexible programming of accelerated graphics.
 
     OPENRNDR is intended for prototyping as well as building production quality software.
 
     OPENRNDR is free and open source software. The source code can be found on [Github](https://github.com/openrndr/openrndr).
 
-    OPENRNDR is an initiative of [RNDR](http://rndr.studio) a studio for interactive and interaction design based in The Netherlands.
+    OPENRNDR is an initiative of the [RNDR](http://rndr.studio) studio for interactive and interaction design based in The Netherlands.
 
 
     # A simple OPENRNDR program

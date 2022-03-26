@@ -1,12 +1,21 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Live coding")
+@file:ParentTitle("OPENRNDR Extras")
+@file:Order("130")
+@file:URL("OPENRNDRExtras/liveCoding")
+
 package docs.`10_OPENRNDR_Extras`
 
 import org.openrndr.Program
 import org.openrndr.application
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
+import org.openrndr.draw.persistent
 import org.openrndr.extra.olive.Olive
+import org.openrndr.extra.olive.Once
+import org.openrndr.extra.olive.oliveProgram
 import org.openrndr.extras.camera.Orbital
 import org.openrndr.ffmpeg.VideoPlayerFFMPEG
+import org.openrndr.math.Vector2
 
 fun main() {
     @Text "# Live coding with orx-olive"
@@ -65,7 +74,7 @@ file drop support. With this enabled one can drag a .kts file onto the window an
             program {
                 extend(Olive<Program>()) {
                     this@program.window.drop.listen {
-                        this.script = it.files.first().absolutePath
+                        this.script = it.files.first()
                     }
                 }
             }
@@ -78,17 +87,18 @@ In the following example we show how you can prepare the host program to contain
 
     @Code.Block
     run {
-        class PersistentProgram : Program() {
-            lateinit var camera: VideoPlayerFFMPEG
-        }
-
         fun main() = application {
-            program(PersistentProgram()) {
-                camera = VideoPlayerFFMPEG.fromDevice()
+            oliveProgram {
+                val camera by Once {
+                    persistent {
+                        VideoPlayerFFMPEG.fromDevice()
+                    }
+                }
                 camera.play()
-
-                extend(Olive<PersistentProgram>()) {
-                    script = "src/main/PersistentCamera.Kt"
+                extend {
+                    camera.colorBuffer?.let {
+                        drawer.image(it,0.0, 0.0, 128.0, 96.0)
+                    }
                 }
             }
         }

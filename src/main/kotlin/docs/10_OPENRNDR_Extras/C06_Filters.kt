@@ -1,3 +1,9 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Image post-processing with filters")
+@file:ParentTitle("OPENRNDR Extras")
+@file:Order("160")
+@file:URL("OPENRNDRExtras/imageFilters")
+
 package docs.`10_OPENRNDR_Extras`
 
 import org.openrndr.application

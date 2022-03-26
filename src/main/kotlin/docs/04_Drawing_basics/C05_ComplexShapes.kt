@@ -1,3 +1,9 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("Complex shapes")
+@file:ParentTitle("Drawing basics")
+@file:Order("150")
+@file:URL("drawingBasics/complexShapes")
+
 package docs.`04_Drawing_basics`
 
 import org.openrndr.application

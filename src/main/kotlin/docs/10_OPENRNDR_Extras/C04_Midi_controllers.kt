@@ -1,8 +1,13 @@
+@file:Suppress("UNUSED_EXPRESSION")
+@file:Title("MIDI controllers")
+@file:ParentTitle("OPENRNDR Extras")
+@file:Order("140")
+@file:URL("OPENRNDRExtras/midiControllers")
+
 package docs.`10_OPENRNDR_Extras`
 
 import org.openrndr.application
-import org.openrndr.dokgen.annotations.Code
-import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.*
 import org.openrndr.extra.midi.MidiDeviceDescription
 import org.openrndr.extra.midi.MidiTransceiver
 
