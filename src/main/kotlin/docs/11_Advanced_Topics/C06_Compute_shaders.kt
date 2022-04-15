@@ -10,9 +10,7 @@ import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.*
-import org.openrndr.extensions.SingleScreenshot
 import java.io.File
-
 
 fun main() {
     @Text """
@@ -56,7 +54,7 @@ fun main() {
 
     @Media.Image "media/compute-shaders-001.png"
 
-    @Text 
+    @Text
     """
     The second code block is an OPENRNDR program making use of the compute shader:
     1. It creates a compute shader program from a file. 
@@ -72,21 +70,18 @@ fun main() {
 
 
     @Application
+    @ProduceScreenshot("media/compute-shaders-001.png")
     @Code
     application {
         program {
             val cs = ComputeShader.fromCode(
-                File("data/compute-shaders/fill.cs").readText(), "cs1")
+                File("data/compute-shaders/fill.cs").readText(), "cs1"
+            )
 
             val tempBuffer = loadImage("data/images/cheeta.jpg")
             val inputBuffer = colorBuffer(width, height)
             tempBuffer.copyTo(inputBuffer)
             val outputBuffer = colorBuffer(width, height)
-
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/compute-shaders-001.png"
-            }
 
             extend {
                 cs.uniform("fillColor", ColorRGBa.PINK.shade(0.1))

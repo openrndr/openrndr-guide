@@ -20,14 +20,12 @@ fun main() {
     ##### Setting the clipboard content
     """
 
-
     @Code
     application {
         program {
             clipboard.contents = "this is the new clipboard content"
         }
     }
-
 
     @Text
     """

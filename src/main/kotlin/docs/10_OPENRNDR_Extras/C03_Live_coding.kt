@@ -15,7 +15,6 @@ import org.openrndr.extra.olive.Once
 import org.openrndr.extra.olive.oliveProgram
 import org.openrndr.extras.camera.Orbital
 import org.openrndr.ffmpeg.VideoPlayerFFMPEG
-import org.openrndr.math.Vector2
 
 fun main() {
     @Text """
@@ -37,16 +36,14 @@ fun main() {
     ## Basic example
     """
 
-    @Code.Block
-    run {
-        fun main() = application {
-            configure {
-                width = 768
-                height = 576
-            }
-            program {
-                extend(Olive<Program>())
-            }
+    @Code
+    application {
+        configure {
+            width = 768
+            height = 576
+        }
+        program {
+            extend(Olive<Program>())
         }
     }
 
@@ -64,13 +61,11 @@ fun main() {
     example we see the use of `Orbital` in combination with `Olive`.
     """
 
-    @Code.Block
-    run {
-        fun main() = application {
-            program {
-                extend(Orbital())
-                extend(Olive<Program>())
-            }
+    @Code
+    application {
+        program {
+            extend(Orbital())
+            extend(Olive<Program>())
         }
     }
 
@@ -83,14 +78,12 @@ fun main() {
     one can drag a .kts file onto the window and drop it to load the script file.
     """
 
-    @Code.Block
-    run {
-        fun main() = application {
-            program {
-                extend(Olive<Program>()) {
-                    this@program.window.drop.listen {
-                        this.script = it.files.first()
-                    }
+    @Code
+    application {
+        program {
+            extend(Olive<Program>()) {
+                this@program.window.drop.listen {
+                    this.script = it.files.first()
                 }
             }
         }
@@ -105,20 +98,18 @@ fun main() {
     to contain a persistent camera device.
     """
 
-    @Code.Block
-    run {
-        fun main() = application {
-            oliveProgram {
-                val camera by Once {
-                    persistent {
-                        VideoPlayerFFMPEG.fromDevice()
-                    }
+    @Code
+    application {
+        oliveProgram {
+            val camera by Once {
+                persistent {
+                    VideoPlayerFFMPEG.fromDevice()
                 }
-                camera.play()
-                extend {
-                    camera.colorBuffer?.let {
-                        drawer.image(it,0.0, 0.0, 128.0, 96.0)
-                    }
+            }
+            camera.play()
+            extend {
+                camera.colorBuffer?.let {
+                    drawer.image(it,0.0, 0.0, 128.0, 96.0)
                 }
             }
         }

@@ -12,7 +12,7 @@ import org.openrndr.draw.*
 import java.nio.ByteBuffer
 
 
-fun main(args: Array<String>) {
+fun main() {
 
     @Text
     """

@@ -9,7 +9,6 @@ package docs.`04_Drawing_basics`
 import org.openrndr.application
 import org.openrndr.color.*
 import org.openrndr.dokgen.annotations.*
-import org.openrndr.extensions.SingleScreenshot
 
 
 fun main() {
@@ -90,21 +89,15 @@ fun main() {
     @Media.Image "media/color-001.png"
 
     @Application
-
+    @ProduceScreenshot("media/color-001.png")
+    @Code
     application {
         @Exclude
         configure {
             width = 770
             height = 196
         }
-
         program {
-
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/color-001.png"
-            }
-            @Code
             extend {
                 drawer.stroke = null
                 val baseColor = ColorRGBa.PINK
@@ -130,19 +123,15 @@ fun main() {
     @Media.Image "media/color-002.png"
 
     @Application
+    @ProduceScreenshot("media/color-002.png")
+    @Code
     application {
         @Exclude
         configure {
             width = 770
             height = 160
         }
-
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/color-002.png"
-            }
-            @Code
             extend {
                 drawer.stroke = null
                 val baseColor = ColorRGBa.PINK
@@ -153,9 +142,8 @@ fun main() {
                 // -- draw 16 darker shades of pink
                 for (i in 0..15) {
                     drawer.fill = baseColor.opacify(i / 15.0)
-                    drawer.rectangle(35.0 + (700 / 16.0) * i, 64.0, (700 / 16.0), 64.0)
+                    drawer.rectangle( 35.0 + (700 / 16.0) * i, 64.0, (700 / 16.0), 64.0 )
                 }
-
             }
         }
     }
@@ -169,20 +157,15 @@ fun main() {
     @Media.Image "media/color-003.png"
 
     @Application
+    @ProduceScreenshot("media/color-003.png")
+    @Code
     application {
         @Exclude
         configure {
             width = 770
             height = 128
         }
-
         program {
-
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/color-003.png"
-            }
-            @Code
             extend {
                 drawer.stroke = null
                 val leftColor = ColorRGBa.PINK
@@ -191,7 +174,7 @@ fun main() {
                 // -- draw 16 color mixes
                 for (i in 0..15) {
                     drawer.fill = mix(leftColor, rightColor, i / 15.0)
-                    drawer.rectangle(35.0 + (700 / 16.0) * i, 32.0, (700 / 16.0), 64.0)
+                    drawer.rectangle(35.0 + (700 / 16.0) * i,32.0, (700 / 16.0), 64.0)
                 }
             }
         }
@@ -237,29 +220,21 @@ fun main() {
     @Media.Image "media/color-004.png"
 
     @Application
+    @ProduceScreenshot("media/color-004.png")
+    @Code
     application {
-
-
         configure {
             width = 770
             height = 672
         }
-
         program {
-
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/color-004.png"
-            }
-
-            @Code
             extend {
                 drawer.stroke = null
 
                 // -- draw hsv swatches
                 for (j in 0..7) {
                     for (i in 0..31) {
-                        drawer.fill = ColorHSVa( 360 * (i/31.0), 0.7, 0.125 + j/8.0).toRGBa()
+                        drawer.fill = ColorHSVa(360 * (i / 31.0), 0.7, 0.125 + j / 8.0).toRGBa()
                         drawer.rectangle(35.0 + (700 / 32.0) * i, 32.0 + j * 16.0, (700 / 32.0), 16.0)
                     }
                 }
@@ -268,7 +243,7 @@ fun main() {
                 drawer.translate(0.0, 160.0)
                 for (j in 0..7) {
                     for (i in 0..31) {
-                        drawer.fill = ColorHSLa( 360 * (i/31.0), 0.7, 0.125 + j/9.0).toRGBa()
+                        drawer.fill = ColorHSLa(360 * (i / 31.0), 0.7, 0.125 + j / 9.0).toRGBa()
                         drawer.rectangle(35.0 + (700 / 32.0) * i, 32.0 + j * 16.0, (700 / 32.0), 16.0)
                     }
                 }
@@ -277,7 +252,7 @@ fun main() {
                 drawer.translate(0.0, 160.0)
                 for (j in 0..7) {
                     for (i in 0..31) {
-                        drawer.fill = ColorXSVa( 360 * (i/31.0), 0.7, 0.125 + j/8.0).toRGBa()
+                        drawer.fill = ColorXSVa(360 * (i / 31.0), 0.7, 0.125 + j / 8.0).toRGBa()
                         drawer.rectangle(35.0 + (700 / 32.0) * i, 32.0 + j * 16.0, (700 / 32.0), 16.0)
                     }
                 }
@@ -286,7 +261,7 @@ fun main() {
                 drawer.translate(0.0, 160.0)
                 for (j in 0..7) {
                     for (i in 0..31) {
-                        drawer.fill = ColorXSLa( 360 * (i/31.0), 0.7, 0.125 + j/9.0, 1.0).toRGBa()
+                        drawer.fill = ColorXSLa(360 * (i / 31.0), 0.7, 0.125 + j / 9.0, 1.0).toRGBa()
                         drawer.rectangle(35.0 + (700 / 32.0) * i, 32.0 + j * 16.0, (700 / 32.0), 16.00)
                     }
                 }

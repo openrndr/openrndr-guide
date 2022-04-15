@@ -10,13 +10,10 @@ import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.draw.LineJoin
 import org.openrndr.dokgen.annotations.*
-import org.openrndr.extensions.SingleScreenshot
-import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.math.Vector2
 import org.openrndr.shape.*
 import kotlin.math.cos
 import kotlin.math.sin
-
 
 fun main() {
     @Text 
@@ -52,18 +49,14 @@ fun main() {
     @Media.Image "media/shapes-001.png"
 
     @Application
+    @ProduceScreenshot("media/shapes-001.png")
+    @Code
     application {
         configure {
             width = 770
             height = 578
         }
-
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/shapes-001.png"
-            }
             extend {
                 val c = contour {
                     moveTo(Vector2(width / 2.0 - 150.0, height / 2.0 - 150.00))
@@ -89,18 +82,14 @@ fun main() {
     @Media.Image "media/shapes-002.png"
 
     @Application
+    @ProduceScreenshot("media/shapes-002.png")
+    @Code
     application {
         configure {
             width = 770
             height = 578
         }
-
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/shapes-002.png"
-            }
             extend {
                 val s = shape {
                     contour {
@@ -147,17 +136,14 @@ of compounds: _union_, _difference_ and _intersection_, all three of them are sh
     @Media.Image "media/shapes-003.png"
 
     @Application
+    @ProduceScreenshot("media/shapes-003.png")
+    @Code
     application {
         configure {
             width = 770
             height = 578
         }
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/shapes-003.png"
-            }
             extend {
                 drawer.fill = ColorRGBa.PINK
                 drawer.stroke = null
@@ -202,17 +188,14 @@ of compounds: _union_, _difference_ and _intersection_, all three of them are sh
     @Media.Image "media/shapes-004.png"
 
     @Application
+    @ProduceScreenshot("media/shapes-004.png")
+    @Code
     application {
         configure {
             width = 770
             height = 578
         }
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/shapes-004.png"
-            }
             extend {
                 drawer.fill = ColorRGBa.PINK
                 drawer.stroke = null
@@ -232,6 +215,7 @@ of compounds: _union_, _difference_ and _intersection_, all three of them are sh
             }
         }
     }
+
     @Text 
     """
     ## Cutting contours
@@ -242,19 +226,14 @@ of compounds: _union_, _difference_ and _intersection_, all three of them are sh
     @Media.Video "media/shapes-005.mp4"
 
     @Application
+    @ProduceVideo("media/shapes-005.mp4", 10.0)
+    @Code
     application {
         configure {
             width = 770
             height = 578
         }
-        @Code
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/shapes-005.mp4"
-                quitAfterMaximum = true
-                maximumDuration = 10.0
-            }
             extend {
                 drawer.fill = null
                 drawer.stroke = ColorRGBa.PINK
@@ -284,19 +263,14 @@ of compounds: _union_, _difference_ and _intersection_, all three of them are sh
     @Media.Video "media/shapes-006.mp4"
 
     @Application
+    @ProduceVideo("media/shapes-006.mp4", 10.0)
+    @Code
     application {
         configure {
             width = 770
             height = 578
         }
-        @Code
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/shapes-006.mp4"
-                quitAfterMaximum = true
-                maximumDuration = 10.0
-            }
             extend {
 
                 drawer.stroke = null
@@ -325,19 +299,14 @@ of compounds: _union_, _difference_ and _intersection_, all three of them are sh
     @Media.Video "media/shapes-101.mp4"
 
     @Application
+    @ProduceVideo("media/shapes-101.mp4", 10.0)
+    @Code
     application {
         configure {
             width = 770
             height = 578
         }
-        @Code
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/shapes-101.mp4"
-                quitAfterMaximum = true
-                maximumDuration = 10.0
-            }
             // -- create a contour from Rectangle object
             val c = Rectangle(100.0, 100.0, width - 200.0, height - 200.0).contour.reversed
 
@@ -353,8 +322,6 @@ of compounds: _union_, _difference_ and _intersection_, all three of them are sh
         }
     }
 
-
-
     @Text 
     """
     `ShapeContour.offset` can also be used to offset curved contours. 
@@ -365,19 +332,14 @@ of compounds: _union_, _difference_ and _intersection_, all three of them are sh
     @Media.Video "media/shapes-100.mp4"
 
     @Application
+    @ProduceVideo("media/shapes-100.mp4", 10.00)
+    @Code
     application {
         configure {
             width = 770
             height = 578
         }
-        @Code
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/shapes-100.mp4"
-                quitAfterMaximum = true
-                maximumDuration = 10.00
-            }
             val c = contour {
                 moveTo(width * (1.0 / 2.0), height * (1.0 / 5.0))
                 curveTo(width * (1.0 / 4.0), height * (2.0 / 5.0), width * (3.0 / 4.0), height * (3.0 / 5.0), width * (2.0 / 4.0), height * (4.0 / 5.0))
@@ -390,7 +352,6 @@ of compounds: _union_, _difference_ and _intersection_, all three of them are sh
                 for (i in -8 .. 8) {
                     val o = c.offset(i * 10.0 * cos(seconds * 0.5 + 0.5))
                     drawer.contour(o)
-
                 }
             }
         }

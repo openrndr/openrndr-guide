@@ -13,8 +13,6 @@ import org.openrndr.draw.MagnifyingFilter
 import org.openrndr.draw.MinifyingFilter
 import org.openrndr.draw.loadImage
 import org.openrndr.draw.shadeStyle
-import org.openrndr.extensions.SingleScreenshot
-import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.shape.Circle
 import kotlin.math.cos
 import kotlin.math.sin
@@ -52,19 +50,15 @@ fun main() {
     @Media.Image "media/shadestyles-001.png"
 
     @Application
+    @ProduceScreenshot("media/shadestyles-001.png")
+    @Code
     application {
         @Exclude
         configure {
             width = 770
             height = 578
         }
-
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/shadestyles-001.png"
-            }
             extend {
                 drawer.shadeStyle = shadeStyle {
                     fragmentTransform = "x_fill.rgb = vec3(1.0, 0.0, 0.0);"
@@ -87,19 +81,15 @@ fun main() {
     @Media.Image "media/shadestyles-002.png"
 
     @Application
+    @ProduceScreenshot("media/shadestyles-002.png")
+    @Code
     application {
         @Exclude
         configure {
             width = 770
             height = 578
         }
-
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/shadestyles-002.png"
-            }
             extend {
                 drawer.shadeStyle = shadeStyle {
                     fragmentTransform = """
@@ -123,22 +113,15 @@ fun main() {
     @Media.Video "media/shadestyles-003.mp4"
 
     @Application
+    @ProduceVideo("media/shadestyles-003.mp4", 10.0, 60)
+    @Code
     application {
         @Exclude
         configure {
             width = 770
             height = 578
         }
-
-        @Code
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                quitAfterMaximum = true
-                maximumDuration = 10.0
-                outputFile = "media/shadestyles-003.mp4"
-                frameRate = 60
-            }
             extend {
                 drawer.shadeStyle = shadeStyle {
                     fragmentTransform = """
@@ -167,21 +150,15 @@ fun main() {
     @Media.Video "media/shadestyles-example-001.mp4"
 
     @Application
+    @ProduceVideo("media/shadestyles-example-001.mp4", 10.0, 60)
+    @Code
     application {
         @Exclude
         configure {
             width = 770
             height = 578
         }
-        @Code
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                quitAfterMaximum = true
-                maximumDuration = 10.0
-                outputFile = "media/shadestyles-example-001.mp4"
-                frameRate = 60
-            }
             val image = loadImage("data/images/cheeta.jpg")
             image.filter(MinifyingFilter.LINEAR_MIPMAP_NEAREST, MagnifyingFilter.LINEAR)
             extend {
@@ -196,12 +173,12 @@ fun main() {
                     parameter("image", image)
                 }
 
-                val shape = Circle(width/2.0, height/2.0, 110.0).shape
-                drawer.translate(cos(seconds) *100.0, sin(seconds) *100.0)
+                val shape = Circle(width / 2.0, height / 2.0, 110.0).shape
+                drawer.translate(cos(seconds) * 100.0, sin(seconds) * 100.0)
                 drawer.shape(shape)
             }
         }
-    }   
+    }
 
     @Text 
     """
@@ -258,6 +235,7 @@ fun main() {
     ---------------|-----------|------------
     `va_position`  | vec3     | the interpolated position
     `va_normal`    | vec3     | the interpolated normal
+    `va_color`     | vec3     | the interpolated color
 
     ### Transformable values
 

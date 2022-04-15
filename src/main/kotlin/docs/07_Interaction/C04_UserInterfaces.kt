@@ -6,18 +6,15 @@
 
 package docs.`07_Interaction`
 
-
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
-import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.panel.ControlManager
 import org.openrndr.panel.controlManager
 import org.openrndr.panel.elements.*
 import org.openrndr.panel.layout
 import org.openrndr.panel.style.*
 import org.openrndr.panel.styleSheet
-
 
 fun main() {
     @Text
@@ -46,6 +43,7 @@ fun main() {
     @Media.Image "media/ui-001.png"
 
     @Application
+    @ProduceScreenshot("media/ui-001.png")
     @Code
     application {
         @Exclude
@@ -54,10 +52,6 @@ fun main() {
             height = 578
         }
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/ui-001.png"
-            }
             var color = ColorRGBa.GRAY.shade(0.250)
             extend(ControlManager()) {
                 layout {
@@ -76,7 +70,6 @@ fun main() {
         }
     }
 
-
     @Text
     """
     ## Style sheets
@@ -91,6 +84,7 @@ fun main() {
     @Media.Image "media/ui-002.png"
 
     @Application
+    @ProduceScreenshot("media/ui-002.png")
     @Code
     application {
         @Exclude
@@ -99,10 +93,6 @@ fun main() {
             height = 578
         }
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/ui-002.png"
-            }
             extend(ControlManager()) {
                 styleSheet(has type "button") {
                     background = Color.RGBa(ColorRGBa.PINK)
@@ -124,7 +114,7 @@ fun main() {
 
     The following example shows how to build and use complex selectors
     """
-    @Application
+
     @Code
     application {
         @Exclude
@@ -133,10 +123,6 @@ fun main() {
             height = 578
         }
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/ui-003.png"
-            }
             styleSheet(has class_ "control-bar") {
                 descendant(has type "button") {
                     width = 100.percent
@@ -152,7 +138,6 @@ fun main() {
             }
         }
     }
-
 
     @Text
     """
@@ -174,14 +159,9 @@ fun main() {
     """
 
 
-    @Application
     @Code
     application {
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/ui-004.png"
-            }
             controlManager {
                 layout {
                     div("some-class-here", "another-class-here") {
@@ -192,19 +172,19 @@ fun main() {
         }
     }
 
-
     @Text
     """
-   ### Button
-   
-   An ordinary labelled button.
-   The default width of buttons is set to Auto such that the width is 
-   determined by the label contents.
-   """
+    ### Button
+    
+    An ordinary labelled button.
+    The default width of buttons is set to Auto such that the width is 
+    determined by the label contents.
+    """
 
     @Media.Image "media/ui-006.png"
 
     @Application
+    @ProduceScreenshot("media/ui-006.png")
     @Code
     application {
         @Exclude
@@ -213,10 +193,6 @@ fun main() {
             height = 45
         }
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/ui-006.png"
-            }
             extend(ControlManager()) {
                 layout {
                     button {
@@ -232,7 +208,6 @@ fun main() {
             }
         }
     }
-
 
     @Text
     """
@@ -255,6 +230,7 @@ fun main() {
     @Media.Image "media/ui-007.png"
 
     @Application
+    @ProduceScreenshot("media/ui-007.png")
     @Code
     application {
         @Exclude
@@ -263,10 +239,6 @@ fun main() {
             height = 45
         }
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/ui-007.png"
-            }
             extend(ControlManager()) {
                 layout {
                     slider {
@@ -282,7 +254,6 @@ fun main() {
             }
         }
     }
-
 
     @Text
     """
@@ -303,6 +274,7 @@ fun main() {
     @Media.Image "media/ui-008.png"
 
     @Application
+    @ProduceScreenshot("media/ui-008.png")
     @Code
     application {
         @Exclude
@@ -311,10 +283,6 @@ fun main() {
             height = 45
         }
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/ui-008.png"
-            }
             extend(ControlManager()) {
                 layout {
 
@@ -349,6 +317,7 @@ fun main() {
     @Media.Image "media/ui-009.png"
 
     @Application
+    @ProduceScreenshot("media/ui-009.png")
     @Code
     application {
         @Exclude
@@ -357,10 +326,6 @@ fun main() {
             height = 45
         }
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/ui-009.png"
-            }
             extend(ControlManager()) {
                 layout {
                     dropdownButton {

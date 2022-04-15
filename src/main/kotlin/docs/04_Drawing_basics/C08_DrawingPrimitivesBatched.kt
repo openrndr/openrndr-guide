@@ -12,7 +12,6 @@ import org.openrndr.color.rgb
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.circleBatch
 import org.openrndr.draw.rectangleBatch
-import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.shape.Circle
 import org.openrndr.extra.noise.Random
 import org.openrndr.math.Polar
@@ -49,16 +48,10 @@ fun main() {
     @Media.Image "media/batching-circles-001.png"
 
     @Application
+    @ProduceScreenshot("media/batching-circles-001.png")
+    @Code
     application {
-        configure {
-        }
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/batching-circles-001.png"
-            }
-
             extend {
                 drawer.clear(ColorRGBa.PINK)
                 drawer.fill = ColorRGBa.WHITE
@@ -85,15 +78,13 @@ fun main() {
     pixel margin around the edges.
     """
 
-    run {
-        application {
-            program {
-                @Code.Block
-                run {
-                    val area = drawer.bounds.offsetEdges(-100.0)
-                    val positions = List(5000) { Random.point(area) }
-                    drawer.circles(positions, 20.0)
-                }
+    application {
+        program {
+            @Code.Block
+            run {
+                val area = drawer.bounds.offsetEdges(-100.0)
+                val positions = List(5000) { Random.point(area) }
+                drawer.circles(positions, 20.0)
             }
         }
     }
@@ -107,20 +98,14 @@ fun main() {
     @Media.Image "media/batching-circles-002.png"
 
     @Application
+    @ProduceScreenshot("media/batching-circles-002.png")
+    @Code
     application {
-        configure {
-        }
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/batching-circles-002.png"
-            }
-
             extend {
                 val area = drawer.bounds.offsetEdges(-100.0)
                 val positions = List(400) { Random.point(area) }
-                val radii = List(400) { Random.double(5.0, 50.0)}
+                val radii = List(400) { Random.double(5.0, 50.0) }
                 drawer.circles(positions, radii)
             }
         }
@@ -136,23 +121,20 @@ fun main() {
     @Media.Image "media/batching-circles-003.png"
 
     @Application
+    @ProduceScreenshot("media/batching-circles-003.png")
+    @Code
     application {
-        configure {
-        }
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/batching-circles-003.png"
-            }
-
             val staticBatch = drawer.circleBatch {
                 for (i in 0 until 2000) {
                     fill = ColorRGBa.GRAY.shade(Math.random())
                     stroke = ColorRGBa.WHITE.shade(Math.random())
                     strokeWeight = 1 + Math.random() * 5
                     val pos = Random.ring2d(100.0, 200.0) as Vector2
-                    circle(pos + drawer.bounds.center, 5 + Math.random() * 20)
+                    circle(
+                        pos + drawer.bounds.center,
+                        5 + Math.random() * 20
+                    )
                 }
             }
 
@@ -165,7 +147,8 @@ fun main() {
                     repeat(100) {
                         fill = ColorRGBa.PINK.shade(Math.random())
                         stroke = null
-                        val pos = Vector2((it * 160.0) % width, height * 1.0)
+                        val pos =
+                            Vector2((it * 160.0) % width, height * 1.0)
                         val radius = Random.double(2.5, 110.0 - it) * 2
                         circle(pos, radius)
                     }
@@ -196,16 +179,10 @@ fun main() {
     @Media.Image "media/batching-rectangles-001.png"
 
     @Application
+    @ProduceScreenshot("media/batching-rectangles-001.png")
+    @Code
     application {
-        configure {
-        }
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/batching-rectangles-001.png"
-            }
-
             val staticBatch = drawer.rectangleBatch {
                 for (i in 0 until 1000) {
                     fill = ColorRGBa.GRAY.shade(Math.random())
@@ -237,6 +214,7 @@ fun main() {
         }
     }
 
+
     @Text 
     """
     ## Batched points
@@ -250,16 +228,10 @@ fun main() {
     @Media.Image "media/batching-points-001.png"
 
     @Application
+    @ProduceScreenshot("media/batching-points-001.png")
+    @Code
     application {
-        configure {
-        }
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/batching-points-001.png"
-            }
-
             extend {
                 drawer.clear(ColorRGBa.BLACK)
                 drawer.points {

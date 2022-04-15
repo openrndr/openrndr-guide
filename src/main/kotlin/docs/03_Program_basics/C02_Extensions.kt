@@ -24,15 +24,13 @@ fun main() {
     the space bar is pressed will capture the application window's contents and save it to a timestamped file.
     """
 
-    @Code.Block
-    run {
-        fun main() = application {
-            program {
-                // -- one time setup code goes here
-                extend(Screenshots())
-                extend {
-                    // -- drawing code goes here
-                }
+    @Code
+    application {
+        program {
+            // -- one time setup code goes here
+            extend(Screenshots())
+            extend {
+                // -- drawing code goes here
             }
         }
     }
@@ -44,13 +42,11 @@ fun main() {
     Some extensions have configurable options. They can be set using the configuring `extend` function as follows:
     """
 
-    @Code.Block
-    run {
-        fun main() = application {
-            program {
-                extend(Screenshots()) {
-                    scale = 4.0
-                }
+    @Code
+    application {
+        program {
+            extend(Screenshots()) {
+                scale = 4.0
             }
         }
     }
@@ -63,13 +59,11 @@ fun main() {
     create a "draw loop".
     """
 
-    @Code.Block
-    run {
-        fun main() = application {
-            program {
-                extend {
-                    drawer.circle(width / 2.0, height / 2.0, 50.0)
-                }
+    @Code
+    application {
+        program {
+            extend {
+                drawer.circle(width / 2.0, height / 2.0, 50.0)
             }
         }
     }

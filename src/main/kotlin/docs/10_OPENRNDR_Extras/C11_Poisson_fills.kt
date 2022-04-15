@@ -12,7 +12,7 @@ import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.loadImage
 import org.openrndr.extra.compositor.*
 import org.openrndr.extra.fx.color.LumaOpacity
-import org.openrndr.ffmpeg.ScreenRecorder
+
 import org.openrndr.poissonfill.PoissonBlend
 import org.openrndr.poissonfill.PoissonFill
 import org.openrndr.shape.Rectangle
@@ -42,6 +42,7 @@ fun main() {
     @Media.Video "media/poisson-fills-001.mp4"
 
     @Application
+    @ProduceVideo("media/poisson-fills-001.mp4")
     @Code
     application {
         @Exclude
@@ -50,23 +51,29 @@ fun main() {
             height = 770
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                quitAfterMaximum = true
-                maximumDuration = 10.00
-                outputFile = "media/poisson-fills-001.mp4"
-            }
             val c = compose {
                 layer {
                     draw {
                         drawer.stroke = null
                         drawer.fill = ColorRGBa.RED
-                        drawer.circle((cos(seconds)*0.5+0.5)*width, (sin(seconds*0.5)*0.5+0.5)*height, 20.0)
+                        drawer.circle(
+                            (cos(seconds) * 0.5 + 0.5) * width,
+                            (sin(seconds * 0.5) * 0.5 + 0.5) * height,
+                            20.0
+                        )
                         drawer.fill = ColorRGBa.PINK
-                        drawer.circle((sin(seconds*2.0)*0.5+0.5)*width, (cos(seconds)*0.5+0.5)*height, 20.0)
+                        drawer.circle(
+                            (sin(seconds * 2.0) * 0.5 + 0.5) * width,
+                            (cos(seconds) * 0.5 + 0.5) * height,
+                            20.0
+                        )
 
                         drawer.fill = ColorRGBa.BLACK
-                        drawer.circle((sin(seconds*1.0)*0.5+0.5)*width, (cos(seconds*2.0)*0.5+0.5)*height, 20.0)
+                        drawer.circle(
+                            (sin(seconds * 1.0) * 0.5 + 0.5) * width,
+                            (cos(seconds * 2.0) * 0.5 + 0.5) * height,
+                            20.0
+                        )
                     }
                     post(PoissonFill())
                 }
@@ -76,12 +83,24 @@ fun main() {
                         drawer.stroke = ColorRGBa.WHITE
                         drawer.strokeWeight = 5.0
                         drawer.fill = ColorRGBa.RED
-                        drawer.circle((cos(seconds)*0.5+0.5)*width, (sin(seconds*0.5)*0.5+0.5)*height, 20.0)
+                        drawer.circle(
+                            (cos(seconds) * 0.5 + 0.5) * width,
+                            (sin(seconds * 0.5) * 0.5 + 0.5) * height,
+                            20.0
+                        )
                         drawer.fill = ColorRGBa.PINK
-                        drawer.circle((sin(seconds*2.0)*0.5+0.5)*width, (cos(seconds)*0.5+0.5)*height, 20.0)
+                        drawer.circle(
+                            (sin(seconds * 2.0) * 0.5 + 0.5) * width,
+                            (cos(seconds) * 0.5 + 0.5) * height,
+                            20.0
+                        )
 
                         drawer.fill = ColorRGBa.BLACK
-                        drawer.circle((sin(seconds*1.0)*0.5+0.5)*width, (cos(seconds*2.0)*0.5+0.5)*height, 20.0)
+                        drawer.circle(
+                            (sin(seconds * 1.0) * 0.5 + 0.5) * width,
+                            (cos(seconds * 2.0) * 0.5 + 0.5) * height,
+                            20.0
+                        )
                     }
                 }
             }
@@ -94,6 +113,7 @@ fun main() {
     @Media.Video "media/poisson-fills-002.mp4"
 
     @Application
+    @ProduceVideo("media/poisson-fills-002.mp4")
     @Code
     application {
         @Exclude
@@ -102,18 +122,25 @@ fun main() {
             height = 770
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                quitAfterMaximum = true
-                maximumDuration = 10.0
-                outputFile = "media/poisson-fills-002.mp4"
-            }
             val c = compose {
                 layer {
                     val image = loadImage("data/images/cheeta.jpg")
                     draw {
-                        drawer.image(image, Rectangle((cos(seconds)*0.5+0.5)*100.0,
-                                (sin(seconds)*0.5+0.5)*100.0, 200.0, 200.0 ), Rectangle(width/2-100.0, height/2.0-100.0, 200.0, 200.0))
+                        drawer.image(
+                            image,
+                            Rectangle(
+                                (cos(seconds) * 0.5 + 0.5) * 100.0,
+                                (sin(seconds) * 0.5 + 0.5) * 100.0,
+                                200.0,
+                                200.0
+                            ),
+                            Rectangle(
+                                width / 2 - 100.0,
+                                height / 2.0 - 100.0,
+                                200.0,
+                                200.0
+                            )
+                        )
 
                     }
                     post(PoissonFill())
@@ -125,6 +152,7 @@ fun main() {
             }
         }
     }
+
     @Text """
     # Blending
     """
@@ -132,6 +160,7 @@ fun main() {
     @Media.Video "media/poisson-fills-101.mp4"
 
     @Application
+    @ProduceVideo("media/poisson-fills-101.mp4")
     @Code
     application {
         @Exclude
@@ -140,12 +169,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                quitAfterMaximum = true
-                maximumDuration = 10.00
-                outputFile = "media/poisson-fills-101.mp4"
-            }
             val c = compose {
                 layer {
                     val image = loadImage("data/images/cheeta.jpg")
@@ -157,7 +180,11 @@ fun main() {
                     draw {
                         drawer.stroke = null
                         drawer.fill = ColorRGBa.BLACK
-                        drawer.circle((cos(seconds)*0.5+0.5)*width, (sin(seconds*0.5)*0.5+0.5)*height, 120.0)
+                        drawer.circle(
+                            (cos(seconds) * 0.5 + 0.5) * width,
+                            (sin(seconds * 0.5) * 0.5 + 0.5) * height,
+                            120.0
+                        )
                     }
                     blend(PoissonBlend())
                 }
@@ -171,6 +198,7 @@ fun main() {
     @Media.Video "media/poisson-fills-102.mp4"
 
     @Application
+    @ProduceVideo("media/poisson-fills-102.mp4")
     @Code
     application {
         @Exclude
@@ -179,12 +207,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                quitAfterMaximum = true
-                maximumDuration = 10.0
-                outputFile = "media/poisson-fills-102.mp4"
-            }
             val image = loadImage("data/images/cheeta.jpg")
 
             val c = compose {
@@ -198,7 +220,11 @@ fun main() {
                         drawer.stroke = ColorRGBa.GRAY
                         drawer.fill = null
                         drawer.strokeWeight = 40.0
-                        drawer.circle((cos(seconds)*0.5+0.5)*width, (sin(seconds*0.5)*0.5+0.5)*height, 120.0)
+                        drawer.circle(
+                            (cos(seconds) * 0.5 + 0.5) * width,
+                            (sin(seconds * 0.5) * 0.5 + 0.5) * height,
+                            120.0
+                        )
 
                     }
                     post(LumaOpacity()) {

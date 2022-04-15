@@ -48,19 +48,17 @@ fun main() {
     coroutine does _not_ block the primary draw thread.
     """
 
-    @Code.Block
-    run {
-        application {
-            program {
-                var once = true
-                extend {
-                    if (once) {
-                        once = false
-                        launch {
-                            for (i in 0 until 100) {
-                                println("Hello from coroutine world ($i)")
-                                delay(100)
-                            }
+    @Code
+    application {
+        program {
+            var once = true
+            extend {
+                if (once) {
+                    once = false
+                    launch {
+                        for (i in 0 until 100) {
+                            println("Hello from coroutine world ($i)")
+                            delay(100)
                         }
                     }
                 }
@@ -88,35 +86,33 @@ fun main() {
     we can write the results to a graphics resource on the primary draw thread.
      """
 
-    @Code.Block
-    run {
-        application {
-            program {
-                val colorBuffer = colorBuffer(512, 512)
-                val data = ByteBuffer.allocateDirect(512 * 512 * 4)
-                var once = true
-                extend {
-                    if (once) {
-                        once = false
-                        launch {
-                            // -- launch on GlobalScope
-                            // -- this will cause the coroutine to be executed off-thread.
-                            GlobalScope.launch {
-                                // -- perform some faux-heavy calculations
-                                val r = Random(100)
-                                for (y in 0 until 512) {
-                                    for (x in 0 until 512) {
-                                        for (c in 0 until 4) {
-                                            data.put(r.nextBytes(1)[0])
-                                        }
+    @Code
+    application {
+        program {
+            val colorBuffer = colorBuffer(512, 512)
+            val data = ByteBuffer.allocateDirect(512 * 512 * 4)
+            var once = true
+            extend {
+                if (once) {
+                    once = false
+                    launch {
+                        // -- launch on GlobalScope
+                        // -- this will cause the coroutine to be executed off-thread.
+                        GlobalScope.launch {
+                            // -- perform some faux-heavy calculations
+                            val r = Random(100)
+                            for (y in 0 until 512) {
+                                for (x in 0 until 512) {
+                                    for (c in 0 until 4) {
+                                        data.put(r.nextBytes(1)[0])
                                     }
                                 }
-                            }.join() // -- wait for coroutine to complete
+                            }
+                        }.join() // -- wait for coroutine to complete
 
-                            // -- write data to graphics resources
-                            data.rewind()
-                            colorBuffer.write(data)
-                        }
+                        // -- write data to graphics resources
+                        data.rewind()
+                        colorBuffer.write(data)
                     }
                 }
             }
@@ -140,43 +136,41 @@ fun main() {
     buffer attachment. The image is made visible on the primary draw thread.
     """
 
-    @Code.Block
-    run {
-        application {
-            program {
-                val result = colorBuffer(512, 512)
-                var once = true
-                var done = false
-                val secondary = drawThread()
+    @Code
+    application {
+        program {
+            val result = colorBuffer(512, 512)
+            var once = true
+            var done = false
+            val secondary = drawThread()
 
-                extend {
-                    if (once) {
-                        once = false
-                        // -- launch on the secondary draw thread (SDT)
-                        secondary.launch {
-                            // -- create a render target on the SDT.
-                            val rt = renderTarget(512,512) {
-                                colorBuffer(result)
-                            }
-
-                            // -- make sure we use the draw thread's drawer
-                            val drawer= secondary.drawer
-                            drawer.withTarget(rt) {
-                                drawer.ortho(rt)
-                                drawer.clear(ColorRGBa.PINK)
-                            }
-
-                            // -- destroy the render target
-                            rt.destroy()
-                            finish()
-                            // -- tell main thread the work is done
-                            done = true
+            extend {
+                if (once) {
+                    once = false
+                    // -- launch on the secondary draw thread (SDT)
+                    secondary.launch {
+                        // -- create a render target on the SDT.
+                        val rt = renderTarget(512,512) {
+                            colorBuffer(result)
                         }
+
+                        // -- make sure we use the draw thread's drawer
+                        val drawer= secondary.drawer
+                        drawer.withTarget(rt) {
+                            drawer.ortho(rt)
+                            drawer.clear(ColorRGBa.PINK)
+                        }
+
+                        // -- destroy the render target
+                        rt.destroy()
+                        finish()
+                        // -- tell main thread the work is done
+                        done = true
                     }
-                    // -- draw the result when the work is done
-                    if (done) {
-                        drawer.image(result)
-                    }
+                }
+                // -- draw the result when the work is done
+                if (done) {
+                    drawer.image(result)
                 }
             }
         }

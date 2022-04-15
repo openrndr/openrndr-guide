@@ -25,15 +25,17 @@ fun main() {
     
     A simple demonstration of a listening for mouse button clicks looks as follows:     
     """
+
     @Code
     application {
         program {
-            mouse.clicked.listen {
+            mouse.buttonDown.listen {
                 // -- it refers to a MouseEvent instance here
                 println(it.position)
             }
         }
     }
+
     @Text 
     """
     Every program has a `mouse` object that exposes events and mouse properties. 
@@ -58,7 +60,7 @@ fun main() {
             // -- this is an "optional type" that can be set to null
             var drawPosition : Vector2? = null
 
-            mouse.clicked.listen {
+            mouse.buttonDown.listen {
                 drawPosition = it.position
             }
 

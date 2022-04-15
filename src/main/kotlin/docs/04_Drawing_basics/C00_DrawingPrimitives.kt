@@ -10,7 +10,6 @@ import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.LineCap
-import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.math.Vector2
 
 fun main() {
@@ -29,17 +28,12 @@ fun main() {
     @Media.Image "media/circle-001.png"
 
     @Application
+    @ProduceScreenshot("media/circle-001.png")
+    @Code
     application {
         configure {
-
         }
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/circle-001.png"
-            }
-
             extend {
                 drawer.clear(ColorRGBa.PINK)
                 drawer.fill = ColorRGBa.WHITE
@@ -89,20 +83,13 @@ fun main() {
     @Text
     """## Drawing rectangles"""
 
+    @Media.Image "media/rectangle-001.png"
+
     @Application
+    @ProduceScreenshot("media/rectangle-001.png")
+    @Code
     application {
-        configure {
-        }
-
-        @Media.Image "media/rectangle-001.png"
-
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/rectangle-001.png"
-            }
-
             extend {
                 drawer.clear(ColorRGBa.PINK)
                 drawer.fill = ColorRGBa.WHITE
@@ -166,13 +153,10 @@ fun main() {
     @Media.Image "media/line-001.png"
 
     @Application
+    @ProduceScreenshot("media/line-001.png")
+    @Code
     application {
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/line-001.png"
-            }
             extend {
                 drawer.clear(ColorRGBa.PINK)
                 // -- setup line appearance
@@ -203,7 +187,6 @@ fun main() {
                     height / 2.0 + 20.0
                 )
             }
-
         }
     }
 
@@ -217,14 +200,10 @@ fun main() {
     @Media.Image "media/line-002.png"
 
     @Application
+    @ProduceScreenshot("media/line-002.png")
+    @Code
     application {
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/line-002.png"
-            }
-
             extend {
                 drawer.clear(ColorRGBa.PINK)
                 // -- setup line appearance

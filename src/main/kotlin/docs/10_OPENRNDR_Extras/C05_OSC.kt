@@ -31,19 +31,16 @@ fun main() {
     function to install listeners
     """
 
-    @Code.Block
-    run {
-        application {
+    @Code
+    application {
+        program {
+            val osc = OSC()
+            osc.listen("/live/track/2") { addr, it ->
+                // -- get the first value
+                val firstValue = it[0] as Float
+            }
+            extend {
 
-            program {
-                val osc = OSC()
-                osc.listen("/live/track/2") { addr, it ->
-                    // -- get the first value
-                    val firstValue = it[0] as Float
-                }
-                extend {
-
-                }
             }
         }
     }
@@ -52,15 +49,13 @@ fun main() {
     ## Sending OSC messages
     """
 
-    @Code.Block
-    run {
-        application {
-            program {
-                val osc = OSC()
+    @Code
+    application {
+        program {
+            val osc = OSC()
 
-                extend {
-                    osc.send("/some/address", listOf(1.0f, 2.0f))
-                }
+            extend {
+                osc.send("/some/address", listOf(1.0f, 2.0f))
             }
         }
     }

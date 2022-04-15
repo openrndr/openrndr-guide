@@ -10,7 +10,6 @@ import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.*
-import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.extra.compositor.blend
 import org.openrndr.extra.compositor.compose
 import org.openrndr.extra.compositor.layer
@@ -20,7 +19,7 @@ import org.openrndr.extra.fx.blur.ApproximateGaussianBlur
 import org.openrndr.extra.gui.GUI
 import org.openrndr.extra.parameters.ColorParameter
 import org.openrndr.extra.parameters.DoubleParameter
-import org.openrndr.ffmpeg.ScreenRecorder
+
 import org.openrndr.extra.compositor.draw
 import org.openrndr.extra.gui.addTo
 import kotlin.math.PI
@@ -64,6 +63,7 @@ fun main() {
     """
 
     @Application
+    @ProduceScreenshot("media/quick-ui-001.png")
     @Code
     application {
         @Exclude
@@ -73,12 +73,6 @@ fun main() {
         }
 
         program {
-            @Exclude
-            run {
-                extend(SingleScreenshot()) {
-                    outputFile = "media/quick-ui-001.png"
-                }
-            }
             val gui = GUI()
             extend(gui)
         }
@@ -102,6 +96,7 @@ fun main() {
     """
 
     @Application
+    @ProduceVideo("media/quick-ui-003.mp4", 10.0, 60, 8)
     @Code
     application {
         @Exclude
@@ -111,22 +106,6 @@ fun main() {
         }
 
         program {
-
-            @Exclude
-            extend(ScreenRecorder()) {
-                multisample = BufferMultisample.SampleCount(8)
-                frameRate = 60
-                quitAfterMaximum = true
-                maximumDuration = 10.00
-                outputFile = "media/quick-ui-003.mp4"
-            }
-
-            @Exclude
-            run {
-                extend(SingleScreenshot()) {
-                    outputFile = "media/quick-ui-002.png"
-                }
-            }
             val gui = GUI()
             @Exclude
             run {
@@ -191,6 +170,7 @@ fun main() {
     """
 
     @Application
+    @ProduceVideo("media/quick-ui-004.mp4", 10.0, 60, 8)
     @Code
     application {
         @Exclude
@@ -200,14 +180,6 @@ fun main() {
         }
 
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                multisample = BufferMultisample.SampleCount(8)
-                frameRate = 60
-                quitAfterMaximum = true
-                maximumDuration = 10.0
-                outputFile = "media/quick-ui-004.mp4"
-            }
             val gui = GUI()
             @Exclude
             run {
@@ -269,6 +241,7 @@ fun main() {
     """
 
     @Application
+    @ProduceVideo("media/quick-ui-005.mp4")
     @Code
     application {
         @Exclude
@@ -277,12 +250,6 @@ fun main() {
             height = 770
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                quitAfterMaximum = true
-                maximumDuration = 10.00
-                outputFile = "media/quick-ui-005.mp4"
-            }
             val gui = GUI()
             @Exclude
             run {
@@ -315,13 +282,21 @@ fun main() {
                     layer {
                         draw {
                             drawer.fill = ColorRGBa.RED
-                            drawer.circle(settings.x - settings.separation, settings.y, 200.0)
+                            drawer.circle(
+                                settings.x - settings.separation,
+                                settings.y,
+                                200.0
+                            )
                         }
                     }
                     layer {
                         draw {
                             drawer.fill = ColorRGBa.BLUE
-                            drawer.circle(settings.x + settings.separation, settings.y, 200.0)
+                            drawer.circle(
+                                settings.x + settings.separation,
+                                settings.y,
+                                200.0
+                            )
                         }
                         // -- add blend to layer and sidebar
                         blend(gui.add(Multiply(), "Multiply blend"))
@@ -543,4 +518,5 @@ fun main() {
     ```
     """
 }
+
 

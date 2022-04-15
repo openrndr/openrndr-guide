@@ -10,7 +10,6 @@ import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.*
-import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.extra.compositor.*
 import org.openrndr.extra.fx.blend.Add
 import org.openrndr.extra.fx.blend.Normal
@@ -18,7 +17,6 @@ import org.openrndr.extra.fx.blur.ApproximateGaussianBlur
 import org.openrndr.extra.fx.distort.HorizontalWave
 import org.openrndr.extra.fx.distort.VerticalWave
 import org.openrndr.extra.fx.shadow.DropShadow
-import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.shape.Rectangle
 import org.openrndr.writer
 import kotlin.math.PI
@@ -58,7 +56,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     Which by itself, of course, does nothing. Let's extend this skeleton 
     a bit and add the basics for layered
@@ -82,7 +80,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     Now let's draw something. We do this by adding a `draw {}` inside 
     the `compose {}`. Here we see we use `drawer` like we would use it 
@@ -111,7 +109,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     Let's get to what `orx-compositor` promises: layered graphics. 
     We do this by adding a `layer {}` 
@@ -121,15 +119,10 @@ fun main() {
     """
 
     @Application
+    @ProduceScreenshot("media/compositor-001.png")
     @Code
     application {
         program {
-
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/compositor-001.png"
-            }
-
             val composite = compose {
                 draw {
                     drawer.fill = ColorRGBa.PINK
@@ -152,7 +145,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     This produces:
     """
@@ -160,7 +153,7 @@ fun main() {
     @Media.Image "media/compositor-001.png"
 
 
-    @Text 
+    @Text
     """
     You may be thinking: "yeah great, we added all that extra structure 
     to the code, but it doesn't do a single thing that could not be achieved 
@@ -175,15 +168,10 @@ fun main() {
     """
 
     @Application
+    @ProduceScreenshot("media/compositor-002.png")
     @Code
     application {
         program {
-
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/compositor-002.png"
-            }
-
             val composite = compose {
                 draw {
                     drawer.fill = ColorRGBa.PINK
@@ -212,14 +200,14 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     The output:
     """
 
     @Media.Image "media/compositor-002.png"
 
-    @Text 
+    @Text
     """
     We now see a couple of differences. The smaller circle is blurred while 
     the larger circle is not; The area where the two circles overlap 
@@ -232,26 +220,18 @@ fun main() {
     """
 
     @Application
+    @ProduceVideo("media/compositor-003.mp4")
     @Code
     application {
         program {
-
-            @Exclude
-            extend(ScreenRecorder()) {
-                maximumDuration = 10.0
-                quitAfterMaximum = true
-                frameRate = 30
-                outputFile = "media/compositor-003.mp4"
-            }
-
             val composite = compose {
                 draw {
                     drawer.fill = ColorRGBa.PINK
                     drawer.stroke = null
                     drawer.circle(
-                            width / 2.0 + sin(seconds * PI * 0.5) * 100.0,
-                            height / 2.0,
-                            175.0
+                        width / 2.0 + sin(seconds * PI * 0.5) * 100.0,
+                        height / 2.0,
+                        175.0
                     )
                 }
 
@@ -263,9 +243,9 @@ fun main() {
                         drawer.fill = ColorRGBa.PINK
                         drawer.stroke = null
                         drawer.circle(
-                                width / 2.0,
-                                height / 2.0 + cos(seconds * PI * 0.5) * 100.0,
-                                100.0
+                            width / 2.0,
+                            height / 2.0 + cos(seconds * PI * 0.5) * 100.0,
+                            100.0
                         )
                     }
                     post(ApproximateGaussianBlur()) {
@@ -296,16 +276,10 @@ fun main() {
     @Media.Video "media/compositor-004.mp4"
 
     @Application
+    @ProduceVideo("media/compositor-004.mp4")
     @Code
     application {
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                maximumDuration = 10.00
-                quitAfterMaximum = true
-                frameRate = 30
-                outputFile = "media/compositor-004.mp4"
-            }
             val composite = compose {
                 draw {
                     drawer.clear(ColorRGBa.PINK)
@@ -363,18 +337,10 @@ fun main() {
     @Media.Video "media/compositor-005.mp4"
 
     @Application
+    @ProduceVideo("media/compositor-005.mp4")
     @Code
     application {
         program {
-
-            @Exclude
-            extend(ScreenRecorder()) {
-                maximumDuration = 10.0
-                quitAfterMaximum = true
-                frameRate = 30
-                outputFile = "media/compositor-005.mp4"
-            }
-
             val composite = compose {
                 draw {
                     drawer.clear(ColorRGBa.PINK)
@@ -409,8 +375,6 @@ fun main() {
                         yShift = -sin(seconds * PI * 0.2) * 8.0
                     }
                 }
-
-
             }
 
             extend {
@@ -432,18 +396,10 @@ fun main() {
     @Media.Video "media/compositor-006.mp4"
 
     @Application
+    @ProduceVideo("media/compositor-006.mp4")
     @Code
     application {
         program {
-
-            @Exclude
-            extend(ScreenRecorder()) {
-                maximumDuration = 10.0
-                quitAfterMaximum = true
-                frameRate = 30
-                outputFile = "media/compositor-006.mp4"
-            }
-
             val composite = compose {
                 layer {
                     // -- load the image inside the layer
@@ -563,5 +519,4 @@ fun main() {
     """
     [https://github.com/openrndr/orx/tree/master/orx-compositor](demo)
     """
-
 }

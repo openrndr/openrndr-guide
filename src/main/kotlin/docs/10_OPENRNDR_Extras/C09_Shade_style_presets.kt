@@ -15,7 +15,7 @@ import org.openrndr.extra.shadestyles.angularGradient
 import org.openrndr.extra.shadestyles.halfAngularGradient
 import org.openrndr.extra.shadestyles.linearGradient
 import org.openrndr.extra.shadestyles.radialGradient
-import org.openrndr.ffmpeg.ScreenRecorder
+
 import org.openrndr.math.Vector2
 import kotlin.math.PI
 import kotlin.math.cos
@@ -41,6 +41,7 @@ fun main() {
     @Media.Video "media/shade-style-presets-001.mp4"
 
     @Application
+    @ProduceVideo("media/shade-style-presets-001.mp4", 10.0)
     @Code
     application {
         @Exclude
@@ -49,19 +50,13 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/shade-style-presets-001.mp4"
-                maximumDuration = 10.0
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val font = loadFont("data/IBMPlexMono-Bold.ttf", 144.0)
             extend {
                 drawer.shadeStyle = linearGradient(ColorRGBa.PINK, ColorRGBa.RED, rotation = seconds * 18.0)
                 drawer.rectangle(80.0, 40.0, 200.0, 200.0)
-                drawer.circle(180.0, 340.0,90.0)
-                drawer.image(image, 300.0, 40.0, 640 * (200/480.0), 200.0)
+                drawer.circle(180.0, 340.0, 90.0)
+                drawer.image(image, 300.0, 40.0, 640 * (200 / 480.0), 200.0)
                 drawer.fontMap = font
                 drawer.text("OPEN", 300.0, 340.0)
                 drawer.text("RNDR", 300.0, 420.0)
@@ -76,6 +71,7 @@ fun main() {
     @Media.Video "media/shade-style-presets-002.mp4"
 
     @Application
+    @ProduceVideo("media/shade-style-presets-002.mp4", 10.0)
     @Code
     application {
         @Exclude
@@ -84,19 +80,13 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/shade-style-presets-002.mp4"
-                maximumDuration = 10.0
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val font = loadFont("data/IBMPlexMono-Bold.ttf", 144.0)
             extend {
                 drawer.shadeStyle = radialGradient(ColorRGBa.RED, ColorRGBa.PINK, length = 0.5, offset = Vector2(cos(seconds*PI), sin(seconds*PI*0.5)))
                 drawer.rectangle(80.0, 40.0, 200.0, 200.0)
-                drawer.circle(180.0, 340.0,90.0)
-                drawer.image(image, 300.0, 40.0, 640 * (200/480.0), 200.0)
+                drawer.circle(180.0, 340.0, 90.0)
+                drawer.image(image, 300.0, 40.0, 640 * (200 / 480.0), 200.0)
                 drawer.fontMap = font
                 drawer.text("OPEN", 300.0, 340.0)
                 drawer.text("RNDR", 300.0, 420.0)
@@ -111,6 +101,7 @@ fun main() {
     @Media.Video "media/shade-style-presets-003.mp4"
 
     @Application
+    @ProduceVideo("media/shade-style-presets-003.mp4", 10.0)
     @Code
     application {
         @Exclude
@@ -119,19 +110,13 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/shade-style-presets-003.mp4"
-                maximumDuration = 10.0
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val font = loadFont("data/IBMPlexMono-Bold.ttf", 144.0)
             extend {
                 drawer.shadeStyle = angularGradient(ColorRGBa.RED, ColorRGBa.PINK, rotation = seconds * 18.0)
                 drawer.rectangle(80.0, 40.0, 200.0, 200.0)
-                drawer.circle(180.0, 340.0,90.0)
-                drawer.image(image, 300.0, 40.0, 640 * (200/480.0), 200.0)
+                drawer.circle(180.0, 340.0, 90.0)
+                drawer.image(image, 300.0, 40.0, 640 * (200 / 480.0), 200.0)
                 drawer.fontMap = font
                 drawer.text("OPEN", 300.0, 340.0)
                 drawer.text("RNDR", 300.0, 420.0)
@@ -146,6 +131,7 @@ fun main() {
     @Media.Video "media/shade-style-presets-004.mp4"
 
     @Application
+    @ProduceVideo("media/shade-style-presets-004.mp4", 10.0)
     @Code
     application {
         @Exclude
@@ -154,19 +140,13 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/shade-style-presets-004.mp4"
-                maximumDuration = 10.0
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val font = loadFont("data/IBMPlexMono-Bold.ttf", 144.0)
             extend {
                 drawer.shadeStyle = halfAngularGradient(ColorRGBa.RED, ColorRGBa.PINK, rotation = seconds * 18.0)
                 drawer.rectangle(80.0, 40.0, 200.0, 200.0)
-                drawer.circle(180.0, 340.0,90.0)
-                drawer.image(image, 300.0, 40.0, 640 * (200/480.0), 200.0)
+                drawer.circle(180.0, 340.0, 90.0)
+                drawer.image(image, 300.0, 40.0, 640 * (200 / 480.0), 200.0)
                 drawer.fontMap = font
                 drawer.text("OPEN", 300.0, 340.0)
                 drawer.text("RNDR", 300.0, 420.0)

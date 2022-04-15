@@ -24,7 +24,7 @@ import org.openrndr.extra.fx.patterns.Checkers
 import org.openrndr.extra.fx.shadow.DropShadow
 import org.openrndr.extra.shadestyles.linearGradient
 import org.openrndr.extras.imageFit.imageFit
-import org.openrndr.ffmpeg.ScreenRecorder
+
 import org.openrndr.math.Vector2
 import kotlin.math.PI
 import kotlin.math.cos
@@ -65,6 +65,7 @@ fun main() {
     @Media.Video "media/filters-001.mp4"
 
     @Application
+    @ProduceVideo("media/filters-001.mp4", 5.00)
     @Code
     application {
         @Exclude
@@ -73,12 +74,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-001.mp4"
-                maximumDuration = 5.00
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val blurred = colorBuffer(image.width, image.height)
             val blur = BoxBlur()
@@ -97,6 +92,7 @@ fun main() {
     @Media.Video "media/filters-002.mp4"
 
     @Application
+    @ProduceVideo("media/filters-002.mp4", 5.0)
     @Code
     application {
         @Exclude
@@ -105,12 +101,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-002.mp4"
-                maximumDuration = 5.0
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val blurred = colorBuffer(image.width, image.height)
             val blur = ApproximateGaussianBlur()
@@ -130,6 +120,7 @@ fun main() {
     @Media.Video "media/filters-003.mp4"
 
     @Application
+    @ProduceVideo("media/filters-003.mp4", 5.00)
     @Code
     application {
         @Exclude
@@ -138,12 +129,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-003.mp4"
-                maximumDuration = 5.00
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val blurred = colorBuffer(image.width, image.height)
             val bloom = GaussianBloom()
@@ -164,6 +149,7 @@ fun main() {
     @Media.Video "media/filters-004.mp4"
 
     @Application
+    @ProduceVideo("media/filters-004.mp4", 5.00)
     @Code
     application {
         @Exclude
@@ -172,12 +158,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-004.mp4"
-                maximumDuration = 5.00
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val blurred = colorBuffer(image.width, image.height)
             val blur = HashBlur()
@@ -197,6 +177,7 @@ fun main() {
     @Media.Video "media/filters-005.mp4"
 
     @Application
+    @ProduceVideo("media/filters-005.mp4", 5.00)
     @Code
     application {
         @Exclude
@@ -205,12 +186,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-005.mp4"
-                maximumDuration = 5.00
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val blurred = colorBuffer(image.width, image.height)
             val blur = FrameBlur()
@@ -238,6 +213,7 @@ fun main() {
     @Media.Video "media/filters-006.mp4"
 
     @Application
+    @ProduceVideo("media/filters-006.mp4", 5.00)
     @Code
     application {
         @Exclude
@@ -246,18 +222,15 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-006.mp4"
-                maximumDuration = 5.00
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val blurred = colorBuffer(image.width, image.height)
             val blur = ZoomBlur()
 
             extend {
-                blur.center = Vector2(cos(seconds * PI * 0.5) * 0.5 + 0.5, sin(seconds * PI) * 0.5 + 0.5)
+                blur.center = Vector2(
+                    cos(seconds * PI * 0.5) * 0.5 + 0.5,
+                    sin(seconds * PI) * 0.5 + 0.5
+                )
                 blur.strength = cos(seconds * PI) * 0.5 + 0.5
                 blur.apply(image, blurred)
                 drawer.image(blurred)
@@ -275,6 +248,7 @@ fun main() {
     @Media.Video "media/filters-100.mp4"
 
     @Application
+    @ProduceVideo("media/filters-100.mp4", 5.0)
     @Code
     application {
         @Exclude
@@ -283,12 +257,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-100.mp4"
-                maximumDuration = 5.0
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val filter = ChromaticAberration()
             val filtered = colorBuffer(image.width, image.height)
@@ -308,6 +276,7 @@ fun main() {
     @Media.Video "media/filters-101.mp4"
 
     @Application
+    @ProduceVideo("media/filters-101.mp4", 5.00)
     @Code
     application {
         @Exclude
@@ -316,12 +285,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-101.mp4"
-                maximumDuration = 5.00
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val filter = ColorCorrection()
             val filtered = colorBuffer(image.width, image.height)
@@ -343,6 +306,7 @@ fun main() {
     @Media.Video "media/filters-102.mp4"
 
     @Application
+    @ProduceVideo("media/filters-102.mp4", 5.00)
     @Code
     application {
         @Exclude
@@ -351,12 +315,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-102.mp4"
-                maximumDuration = 5.00
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val filter = Sepia()
             val filtered = colorBuffer(image.width, image.height)
@@ -376,6 +334,7 @@ fun main() {
     @Media.Video "media/filters-103.mp4"
 
     @Application
+    @ProduceVideo("media/filters-103.mp4", 5.0)
     @Code
     application {
         @Exclude
@@ -384,12 +343,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-103.mp4"
-                maximumDuration = 5.0
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val filter = LumaOpacity()
             val filtered = colorBuffer(image.width, image.height)
@@ -408,8 +361,6 @@ fun main() {
         }
     }
 
-
-
     @Text """
     ## Edge-detection filters
 
@@ -418,6 +369,7 @@ fun main() {
     @Media.Video "media/filters-200.mp4"
 
     @Application
+    @ProduceVideo("media/filters-200.mp4", 5.0)
     @Code
     application {
         @Exclude
@@ -426,18 +378,14 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-200.mp4"
-                maximumDuration = 5.0
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val filter = LumaSobel()
             val filtered = colorBuffer(image.width, image.height)
 
             extend {
-                filter.backgroundColor = ColorRGBa.PINK.toHSVa().shiftHue(cos(seconds * 0.5 * PI) * 180).toRGBa().shade(0.25)
+                filter.backgroundColor = ColorRGBa.PINK.toHSVa()
+                    .shiftHue(cos(seconds * 0.5 * PI) * 180).toRGBa()
+                    .shade(0.25)
                 filter.edgeColor = ColorRGBa.PINK
                 filter.apply(image, filtered)
                 drawer.image(filtered)
@@ -452,6 +400,7 @@ fun main() {
     @Media.Video "media/filters-201.mp4"
 
     @Application
+    @ProduceVideo("media/filters-201.mp4", 5.0)
     @Code
     application {
         @Exclude
@@ -460,12 +409,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-201.mp4"
-                maximumDuration = 5.0
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val filter = Contour()
             val filtered = colorBuffer(image.width, image.height)
@@ -489,6 +432,7 @@ fun main() {
     @Media.Video "media/filters-202.mp4"
 
     @Application
+    @ProduceVideo("media/filters-202.mp4", 5.00)
     @Code
     application {
         @Exclude
@@ -497,12 +441,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-202.mp4"
-                maximumDuration = 5.00
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val filter = EdgesWork()
             val filtered = colorBuffer(image.width, image.height)
@@ -524,6 +462,7 @@ fun main() {
     @Media.Video "media/filters-300.mp4"
 
     @Application
+    @ProduceVideo("media/filters-300.mp4", 5.0)
     @Code
     application {
         @Exclude
@@ -532,12 +471,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-300.mp4"
-                maximumDuration = 5.0
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val filter = BlockRepeat()
             val filtered = colorBuffer(image.width, image.height)
@@ -560,6 +493,7 @@ fun main() {
     @Media.Video "media/filters-301.mp4"
 
     @Application
+    @ProduceVideo("media/filters-301.mp4", 5.0)
     @Code
     application {
         @Exclude
@@ -568,12 +502,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-301.mp4"
-                maximumDuration = 5.0
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val filter = StackRepeat()
             val filtered = colorBuffer(image.width, image.height)
@@ -595,6 +523,7 @@ fun main() {
     @Media.Video "media/filters-302.mp4"
 
     @Application
+    @ProduceVideo("media/filters-302.mp4", 5.0)
     @Code
     application {
         @Exclude
@@ -603,12 +532,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-302.mp4"
-                maximumDuration = 5.0
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val filter = HorizontalWave()
             val filtered = colorBuffer(image.width, image.height)
@@ -633,6 +556,7 @@ fun main() {
     @Media.Video "media/filters-303.mp4"
 
     @Application
+    @ProduceVideo("media/filters-303.mp4", 5.0)
     @Code
     application {
         @Exclude
@@ -641,12 +565,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-303.mp4"
-                maximumDuration = 5.0
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val filter = VerticalWave()
             val filtered = colorBuffer(image.width, image.height)
@@ -671,6 +589,7 @@ fun main() {
     @Media.Video "media/filters-304.mp4"
 
     @Application
+    @ProduceVideo("media/filters-304.mp4", 5.0)
     @Code
     application {
         @Exclude
@@ -679,12 +598,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-304.mp4"
-                maximumDuration = 5.0
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val filter = Perturb()
             val filtered = colorBuffer(image.width, image.height)
@@ -707,6 +620,7 @@ fun main() {
     @Media.Video "media/filters-305.mp4"
 
     @Application
+    @ProduceVideo("media/filters-305.mp4", 5.0)
     @Code
     application {
         @Exclude
@@ -715,12 +629,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-305.mp4"
-                maximumDuration = 5.0
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val filter = Tiles()
             val filtered = colorBuffer(image.width, image.height)
@@ -742,6 +650,7 @@ fun main() {
     @Media.Video "media/filters-306.mp4"
 
     @Application
+    @ProduceVideo("media/filters-306.mp4", 5.0)
     @Code
     application {
         @Exclude
@@ -750,12 +659,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-306.mp4"
-                maximumDuration = 5.0
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val filter = Fisheye()
             val filtered = colorBuffer(image.width, image.height)
@@ -776,6 +679,7 @@ fun main() {
     @Media.Video "media/filters-307.mp4"
 
     @Application
+    @ProduceVideo("media/filters-307.mp4", 5.0)
     @Code
     application {
         @Exclude
@@ -784,12 +688,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-307.mp4"
-                maximumDuration = 5.0
-                quitAfterMaximum
-            }
             val composite = compose {
                 colorType = ColorType.FLOAT16
                 layer {
@@ -826,6 +724,7 @@ fun main() {
     @Media.Video "media/filters-308.mp4"
 
     @Application
+    @ProduceVideo("media/filters-308.mp4", 5.0)
     @Code
     application {
         @Exclude
@@ -834,12 +733,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-308.mp4"
-                maximumDuration = 5.0
-                quitAfterMaximum
-            }
             val composite = compose {
                 colorType = ColorType.FLOAT16
                 layer {
@@ -868,6 +761,7 @@ fun main() {
     @Media.Video "media/filters-309.mp4"
 
     @Application
+    @ProduceVideo("media/filters-309.mp4", 5.00)
     @Code
     application {
         @Exclude
@@ -876,12 +770,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-309.mp4"
-                maximumDuration = 5.00
-                quitAfterMaximum
-            }
             val composite = compose {
                 layer {
                     post(Checkers())
@@ -904,7 +792,6 @@ fun main() {
         }
     }
 
-
     @Text """
     ## Dithering filters
 
@@ -913,6 +800,7 @@ fun main() {
     @Media.Video "media/filters-400.mp4"
 
     @Application
+    @ProduceVideo("media/filters-400.mp4", 5.0)
     @Code
     application {
         @Exclude
@@ -921,12 +809,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-400.mp4"
-                maximumDuration = 5.0
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val filter = ADither()
             val filtered = colorBuffer(image.width, image.height)
@@ -947,6 +829,7 @@ fun main() {
     @Media.Video "media/filters-401.mp4"
 
     @Application
+    @ProduceVideo("media/filters-401.mp4", 5.0)
     @Code
     application {
         @Exclude
@@ -955,12 +838,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-401.mp4"
-                maximumDuration = 5.0
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val filter = CMYKHalftone()
             val filtered = colorBuffer(image.width, image.height)
@@ -984,6 +861,7 @@ fun main() {
     @Media.Video "media/filters-402.mp4"
 
     @Application
+    @ProduceVideo("media/filters-402.mp4", 5.00)
     @Code
     application {
         @Exclude
@@ -992,12 +870,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-402.mp4"
-                maximumDuration = 5.00
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val filter = Crosshatch()
             val filtered = colorBuffer(image.width, image.height)
@@ -1017,7 +889,6 @@ fun main() {
         }
     }
 
-
     @Text """
     ## Shadow filters
 
@@ -1026,6 +897,7 @@ fun main() {
     @Media.Video "media/filters-500.mp4"
 
     @Application
+    @ProduceVideo("media/filters-500.mp4", 5.0)
     @Code
     application {
         @Exclude
@@ -1034,12 +906,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-500.mp4"
-                maximumDuration = 5.0
-                quitAfterMaximum
-            }
             val image = loadImage("data/images/cheeta.jpg")
             val filter = DropShadow()
             val filtered = colorBuffer(image.width, image.height)
@@ -1075,6 +941,7 @@ fun main() {
     @Media.Video "media/filters-600.mp4"
 
     @Application
+    @ProduceVideo("media/filters-600.mp4", 5.00)
     @Code
     application {
         @Exclude
@@ -1083,12 +950,6 @@ fun main() {
             height = 480
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/filters-600.mp4"
-                maximumDuration = 5.00
-                quitAfterMaximum
-            }
             val composite = compose {
                 layer {
                     post(Checkers()) {

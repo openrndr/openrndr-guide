@@ -7,7 +7,6 @@
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.*
-import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.internal.Driver
 import org.openrndr.math.Vector3
 
@@ -66,54 +65,62 @@ fun main() {
     @Media.Image "media/lowlevel-drawing-001.png"
 
     @Application
+    @ProduceScreenshot("media/lowlevel-drawing-001.png", 8)
+    @Code
     application {
         @Exclude
         configure {
             width = 770
             height = 578
         }
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/lowlevel-drawing-001.png"
-                multisample = BufferMultisample.SampleCount(8)
-            }
             val geometry = vertexBuffer(
-                    vertexFormat {
-                        position(3) // -- this attribute is named "position"
-                    }, 3)
+                vertexFormat {
+                    position(3) // -- this attribute is named "position"
+                }, 3
+            )
 
             geometry.put {
                 for (i in 0 until geometry.vertexCount) {
-                    write(Vector3(2.0*Math.random()-1.0,2.0*Math.random()-1.0, 0.0))
+                    write(
+                        Vector3(
+                            2.0 * Math.random() - 1.0,
+                            2.0 * Math.random() - 1.0,
+                            0.0
+                        )
+                    )
                 }
             }
 
             // -- code for the vertex shader
             val vs = """
-            #version 330                
-            in vec3 a_position;  // -- driver adds a_ prefix (a for attribute)
-            void main() {
-                gl_Position = vec4(a_position, 1.0);                
-            }
-            """
+        #version 330                
+        in vec3 a_position;  // -- driver adds a_ prefix (a for attribute)
+        void main() {
+            gl_Position = vec4(a_position, 1.0);                
+        }
+        """
 
             // -- code for the fragment shader
             val fs = """
-            #version 330
-            out vec4 o_output;
-            void main() {
-                o_output = vec4(1.0);                                                                                                                
-            }                                                                
-            """
+        #version 330
+        out vec4 o_output;
+        void main() {
+            o_output = vec4(1.0);                                                                                                                
+        }                                                                
+        """
 
-            val shader = Shader.createFromCode(vsCode = vs, fsCode = fs, name="custom-shader")
+            val shader = Shader.createFromCode(
+                vsCode = vs,
+                fsCode = fs,
+                name = "custom-shader"
+            )
 
             extend {
                 shader.begin()
                 Driver.instance.drawVertexBuffer(
-                        shader, listOf(geometry), DrawPrimitive.TRIANGLES, 0, 3)
+                    shader, listOf(geometry), DrawPrimitive.TRIANGLES, 0, 3
+                )
                 shader.end()
             }
         }

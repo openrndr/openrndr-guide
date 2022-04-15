@@ -10,7 +10,7 @@ import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.*
-import org.openrndr.ffmpeg.ScreenRecorder
+
 import org.openrndr.math.mod
 import org.openrndr.shape.Rectangle
 
@@ -19,7 +19,7 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 fun main() {
-    @Text 
+    @Text
     """
     # Array textures
     
@@ -44,7 +44,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     ## Writing to array textures
     
@@ -64,7 +64,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     or copy from an array texture layer to another layer
     """
@@ -78,7 +78,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     or write to an array texture layer from a direct ByteBuffer
     """
@@ -93,7 +93,7 @@ fun main() {
             for (y in 0 until 512) {
                 for (x in 0 until 512) {
                     for (c in 0 until 4) {
-                        buffer.put((Math.random()*255).toInt().toByte())
+                        buffer.put((Math.random() * 255).toInt().toByte())
                     }
                 }
             }
@@ -103,7 +103,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     ## Drawing array textures
     
@@ -125,7 +125,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     We can also render batches of array textures by passing lists of layer 
     indexes and source-target rectangle pairs.
@@ -140,12 +140,22 @@ fun main() {
                 drawer.image(at, 0)
 
                 val layers = mutableListOf<Int>()
-                val rectangles = mutableListOf<Pair<Rectangle,Rectangle>>()
+                val rectangles = mutableListOf<Pair<Rectangle, Rectangle>>()
 
                 for (i in 0 until 100) {
-                    layers.add((Math.random()*100).toInt())
-                    val source = Rectangle(Math.random()*512.0, Math.random()*512.0, Math.random()*512.0, Math.random()*512.0)
-                    val target = Rectangle(Math.random()*512.0, Math.random()*512.0, Math.random()*512.0, Math.random()*512.0)
+                    layers.add((Math.random() * 100).toInt())
+                    val source = Rectangle(
+                        Math.random() * 512.0,
+                        Math.random() * 512.0,
+                        Math.random() * 512.0,
+                        Math.random() * 512.0
+                    )
+                    val target = Rectangle(
+                        Math.random() * 512.0,
+                        Math.random() * 512.0,
+                        Math.random() * 512.0,
+                        Math.random() * 512.0
+                    )
                     rectangles.add(source to target)
                 }
                 drawer.image(at, layers, rectangles)
@@ -154,7 +164,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     ## Drawing into array textures
     
@@ -185,7 +195,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     Let's conclude this chapter by means of a small slit scanning demonstration. 
     Here we use a single array texture and a list of render targets, all using 
@@ -195,50 +205,46 @@ fun main() {
     @Media.Video "media/array-texture-001.mp4"
 
     @Application
-    @Code.Block
-    run {
-        application {
+    @ProduceVideo("media/array-texture-001.mp4", 10.0)
+    @Code
+    application {
+        @Exclude
+        configure {
+            width = 770
+            height = 576
+        }
 
-            @Exclude
-            configure {
-                width = 770
-                height = 576
+        program {
+            val at = arrayTexture(770, 576, 116)
+            val renderTargets = List(at.layers) {
+                renderTarget(at.width, at.height) {
+                    arrayTexture(at, it)
+                }
             }
-
-            program {
-                val at = arrayTexture(770, 576, 116)
-                val renderTargets = List(at.layers) {
-                    renderTarget(at.width, at.height) {
-                        arrayTexture(at, it)
-                    }
-                }
-                var index = 0
-                @Exclude
-                extend(ScreenRecorder()) {
-                    outputFile = "media/array-texture-001.mp4"
-                    quitAfterMaximum = true
-                    maximumDuration = 10.0
-                }
-                extend {
+            var index = 0
+            extend {
+                drawer.clear(ColorRGBa.BLACK)
+                drawer.isolatedWithTarget(renderTargets[index % renderTargets.size]) {
                     drawer.clear(ColorRGBa.BLACK)
-                    drawer.isolatedWithTarget(renderTargets[index % renderTargets.size]) {
-                        drawer.clear(ColorRGBa.BLACK)
-                        drawer.fill = ColorRGBa.PINK.opacify(0.5)
-                        drawer.stroke = null
-                        for (i in 0 until 20) {
-                            drawer.circle(cos(seconds*5.0+i) * 256 + width / 2.0, sin(i + seconds * 6.32) * 256 + height / 2.0, 100.0)
-                        }
+                    drawer.fill = ColorRGBa.PINK.opacify(0.5)
+                    drawer.stroke = null
+                    for (i in 0 until 20) {
+                        drawer.circle(
+                            cos(seconds * 5.0 + i) * 256 + width / 2.0,
+                            sin(i + seconds * 6.32) * 256 + height / 2.0,
+                            100.0
+                        )
                     }
-
-                    val layers = (0 until at.layers).map { mod(index - it, at.layers) }
-                    val rectangles = (0 until at.layers).map {
-                        val span = Rectangle(0.0, it * 5.0, at.width * 1.0, 5.0)
-                        span to span
-                    }
-
-                    drawer.image(at, layers, rectangles)
-                    index++
                 }
+
+                val layers = (0 until at.layers).map { mod(index - it, at.layers) }
+                val rectangles = (0 until at.layers).map {
+                    val span = Rectangle(0.0, it * 5.0, at.width * 1.0, 5.0)
+                    span to span
+                }
+
+                drawer.image(at, layers, rectangles)
+                index++
             }
         }
     }

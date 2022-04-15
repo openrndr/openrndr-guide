@@ -9,7 +9,6 @@ package docs.`01_Before_you_start`
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
-import org.openrndr.ffmpeg.ScreenRecorder
 import kotlin.math.abs
 import kotlin.math.cos
 
@@ -32,9 +31,11 @@ fun main() {
     # A simple OPENRNDR program
     Here we show a very simple program written using OPENRNDR.
     """
+
     @Media.Video "media/what-is-001.mp4"
 
     @Application
+    @ProduceVideo("media/what-is-001.mp4",10.0)
     @Code
     application {
         @Exclude
@@ -43,16 +44,13 @@ fun main() {
             height = 568
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/what-is-001.mp4"
-                maximumDuration = 10.0
-                quitAfterMaximum = true
-            }
             extend {
                 drawer.clear(ColorRGBa.PINK)
                 drawer.fill = ColorRGBa.WHITE
-                drawer.circle(drawer.bounds.center, abs(cos(seconds)) * height*0.5)
+                drawer.circle(
+                    drawer.bounds.center,
+                    abs(cos(seconds)) * height * 0.5
+                )
             }
         }
     }

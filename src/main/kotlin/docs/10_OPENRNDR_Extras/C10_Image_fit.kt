@@ -12,7 +12,7 @@ import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.loadImage
 import org.openrndr.extras.imageFit.FitMethod
 import org.openrndr.extras.imageFit.imageFit
-import org.openrndr.ffmpeg.ScreenRecorder
+
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
@@ -39,15 +39,10 @@ fun main() {
     @Media.Video "media/image-fit-001.mp4"
 
     @Application
+    @ProduceVideo("media/image-fit-001.mp4")
     @Code
     application {
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                quitAfterMaximum = true
-                maximumDuration = 10.0
-                outputFile = "media/image-fit-001.mp4"
-            }
             val image = loadImage("data/images/cheeta.jpg")
             extend {
                 val margin = cos(seconds * PI) * 50.0 + 50.0
@@ -68,15 +63,10 @@ fun main() {
     @Media.Video "media/image-fit-002.mp4"
 
     @Application
+    @ProduceVideo("media/image-fit-002.mp4")
     @Code
     application {
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                quitAfterMaximum = true
-                maximumDuration = 10.00
-                outputFile = "media/image-fit-002.mp4"
-            }
             val image = loadImage("data/images/cheeta.jpg")
             extend {
                 val margin = 100.0
@@ -97,16 +87,10 @@ fun main() {
     @Media.Video "media/image-fit-101.mp4"
 
     @Application
+    @ProduceVideo("media/image-fit-101.mp4")
     @Code
     application {
         program {
-
-            @Exclude
-            extend(ScreenRecorder()) {
-                quitAfterMaximum = true
-                maximumDuration = 10.0
-                outputFile = "media/image-fit-101.mp4"
-            }
             val image = loadImage("data/images/cheeta.jpg")
             extend {
                 // -- calculate dynamic margins
@@ -131,15 +115,10 @@ fun main() {
     """
 
     @Application
+    @ProduceVideo("media/image-fit-102.mp4")
     @Code
     application {
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                quitAfterMaximum = true
-                maximumDuration = 10.00
-                outputFile = "media/image-fit-102.mp4"
-            }
             val image = loadImage("data/images/cheeta.jpg")
             extend {
                 val margin = 100.0

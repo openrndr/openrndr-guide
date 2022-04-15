@@ -23,14 +23,12 @@ fun main() {
     Loading a composition and drawing it can be done as follows:
     """
 
-    @Code.Block
-    run {
-        application {
-            program {
-                val composition = loadSVG("data/drawing.svg")
-                extend {
-                    drawer.composition(composition)
-                }
+    @Code
+    application {
+        program {
+            val composition = loadSVG("data/drawing.svg")
+            extend {
+                drawer.composition(composition)
             }
         }
     }

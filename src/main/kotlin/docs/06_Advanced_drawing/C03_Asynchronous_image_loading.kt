@@ -29,8 +29,8 @@ fun main() {
     and http/https.
     """
 
+    @Code
     application {
-        @Code
         program {
             extend {
                 val proxy = colorBufferLoader.loadFromUrl("https://avatars3.githubusercontent.com/u/31103334?s=200&v=4")

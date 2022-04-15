@@ -20,17 +20,15 @@ fun main() {
     Starting your program with a custom configuration looks roughly like this.
     """
 
-    @Code.Block
-    run {
-        fun main() = application {
-            configure {
-                // -- settings go here
-            }
-            program {
-                // -- one time set up code goes here
-                extend {
-                    // -- drawing code goes here
-                }
+    @Code
+    application {
+        configure {
+            // -- settings go here
+        }
+        program {
+            // -- one time set up code goes here
+            extend {
+                // -- drawing code goes here
             }
         }
     }
@@ -41,28 +39,25 @@ fun main() {
     Setting the window size is done through the `width` and `height` properties.
     """
 
-    @Code.Block
-    run {
-        fun main() = application {
-            configure {
-                width = 640
-                height = 480
-            }
+    @Code
+    application {
+        configure {
+            width = 640
+            height = 480
         }
     }
 
     @Text
     """
     ## Window position
-    The default value for `position` is `null` for which the default behaviour is to place the window at the center of the primary display
+    The default value for `position` is `null` for which the default behaviour 
+    is to place the window at the center of the primary display
     """
 
-    @Code.Block
-    run {
-        fun main() = application {
-            configure {
-                position = IntVector2(100, 400)
-            }
+    @Code
+    application {
+        configure {
+            position = IntVector2(100, 400)
         }
     }
 
@@ -74,14 +69,12 @@ fun main() {
 
     """
 
-    @Code.Block
-    run {
-        fun main() = application {
-            configure {
-                width = 1920
-                height = 1080
-                fullscreen = Fullscreen.SET_DISPLAY_MODE
-            }
+    @Code
+    application {
+        configure {
+            width = 1920
+            height = 1080
+            fullscreen = Fullscreen.SET_DISPLAY_MODE
         }
     }
 
@@ -91,12 +84,10 @@ fun main() {
     """
 
 
-    @Code.Block
-    run {
-        fun main() = application {
-            configure {
-                fullscreen = Fullscreen.CURRENT_DISPLAY_MODE
-            }
+    @Code
+    application {
+        configure {
+            fullscreen = Fullscreen.CURRENT_DISPLAY_MODE
         }
     }
 
@@ -105,35 +96,26 @@ fun main() {
     # Window Title
     """
 
-    @Code.Block
-    run {
-        fun main() = application {
-            configure {
-                title = "Lo and behold!"
-            }
+    @Code
+    application {
+        configure {
+            title = "Lo and behold!"
         }
     }
-
 
     @Text 
     """
     # Window unfocus behaviour
-    Two window unfocus behaviours are available. In `NORMAL` behaviour the program continues running at full speed, in contrast the `THROTTLE` behaviour throttles the program to 10Hz.
+    
+    Two window unfocus behaviours are available. In `NORMAL` behaviour the 
+    program continues running at full speed, in contrast the `THROTTLE` 
+    behaviour throttles the program to 10Hz.
     """
 
-    run {
-        var b = UnfocusBehaviour.NORMAL
-        val a = when (b) {
-            UnfocusBehaviour.NORMAL -> TODO()
-            UnfocusBehaviour.THROTTLE -> TODO()
-        }
-    }
-
     @Code
-    fun main() = application {
+    application {
         configure {
             unfocusBehaviour = UnfocusBehaviour.THROTTLE
         }
     }
-
 }

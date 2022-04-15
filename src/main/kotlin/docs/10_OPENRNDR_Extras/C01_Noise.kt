@@ -10,10 +10,7 @@ import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.LineCap
-import org.openrndr.draw.colorBuffer
-import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.extra.noise.*
-import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.math.Vector2
 import org.openrndr.math.Vector3
 import org.openrndr.math.Vector4
@@ -50,7 +47,7 @@ fun main() {
         val v4 = Vector4.uniform(0.0, 640.0)
     }
 
-    @Text 
+    @Text
     """
     To create multiple samples of noise one uses the `uniforms` function.
     """
@@ -75,6 +72,7 @@ fun main() {
     @Media.Image "media/orx-noise-001.png"
 
     @Application
+    @ProduceScreenshot("media/orx-noise-001.png")
     @Code
     application {
         @Exclude
@@ -83,10 +81,6 @@ fun main() {
             height = 578
         }
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/orx-noise-001.png"
-            }
             extend {
                 drawer.fill = ColorRGBa.PINK
                 drawer.stroke = null
@@ -98,8 +92,6 @@ fun main() {
         }
     }
 
-
-
     @Text """
     ## Perlin noise
     """
@@ -107,6 +99,7 @@ fun main() {
     @Media.Image "media/orx-noise-002.png"
 
     @Application
+    @ProduceScreenshot("media/orx-noise-002.png")
     @Code
     application {
         @Exclude
@@ -115,11 +108,6 @@ fun main() {
             height = 578
         }
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/orx-noise-002.png"
-            }
-
             extend {
                 drawer.fill = ColorRGBa.PINK
                 drawer.stroke = null
@@ -141,6 +129,7 @@ fun main() {
     @Media.Image "media/orx-noise-003.png"
 
     @Application
+    @ProduceScreenshot("media/orx-noise-003.png")
     @Code
     application {
         @Exclude
@@ -149,10 +138,6 @@ fun main() {
             height = 578
         }
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/orx-noise-003.png"
-            }
             extend {
                 drawer.fill = ColorRGBa.PINK
                 drawer.stroke = null
@@ -174,6 +159,7 @@ fun main() {
     @Media.Image "media/orx-noise-004.png"
 
     @Application
+    @ProduceScreenshot("media/orx-noise-004.png")
     @Code
     application {
         @Exclude
@@ -182,10 +168,6 @@ fun main() {
             height = 578
         }
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/orx-noise-004.png"
-            }
             extend {
                 drawer.fill = ColorRGBa.PINK
                 drawer.stroke = null
@@ -207,6 +189,7 @@ fun main() {
     @Media.Video "media/orx-noise-005-fbm.mp4"
 
     @Application
+    @ProduceVideo("media/orx-noise-005-fbm.mp4", 9.0)
     @Code
     application {
         @Exclude
@@ -215,12 +198,6 @@ fun main() {
             height = 578
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/orx-noise-005-fbm.mp4"
-                quitAfterMaximum = true
-                maximumDuration = 9.0
-            }
             extend {
                 drawer.fill = ColorRGBa.PINK
                 drawer.stroke = null
@@ -252,6 +229,7 @@ fun main() {
     @Media.Video "media/orx-noise-300.mp4"
 
     @Application
+    @ProduceVideo("media/orx-noise-300.mp4", 9.0)
     @Code
     application {
         @Exclude
@@ -260,12 +238,6 @@ fun main() {
             height = 578
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/orx-noise-300.mp4"
-                quitAfterMaximum = true
-                maximumDuration = 9.0
-            }
             extend {
                 drawer.fill = null
                 drawer.stroke = ColorRGBa.PINK
@@ -283,7 +255,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     Gradients can also be calculated for the fbm, rigid and billow versions 
     of the noise functions. However, 
@@ -296,6 +268,7 @@ fun main() {
     @Media.Video "media/orx-noise-301.mp4"
 
     @Application
+    @ProduceVideo("media/orx-noise-301.mp4", 9.0)
     @Code
     application {
         @Exclude
@@ -304,13 +277,6 @@ fun main() {
             height = 578
         }
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/orx-noise-301.mp4"
-                quitAfterMaximum = true
-                maximumDuration = 9.0
-            }
-
             val noise = fbmFunc3D(::simplex, octaves = 3)
             extend {
                 drawer.fill = null
@@ -355,6 +321,7 @@ fun main() {
     @Media.Image "media/orx-noise-filter-001.png"
 
     @Application
+    @ProduceScreenshot("media/orx-noise-filter-001.png")
     @Code
     application {
         @Exclude
@@ -363,10 +330,6 @@ fun main() {
             height = 578
         }
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/orx-noise-filter-001.png"
-            }
             val cb = colorBuffer(width, height)
             val hn = HashNoise()
             extend {
@@ -399,6 +362,7 @@ fun main() {
     @Media.Video "media/orx-noise-filter-008.mp4"
 
     @Application
+    @ProduceVideo("media/orx-noise-filter-008.mp4", 9.0)
     @Code
     application {
         @Exclude
@@ -407,12 +371,6 @@ fun main() {
             height = 578
         }
         program {
-            extend(ScreenRecorder()) {
-                outputFile = "media/orx-noise-filter-008.mp4"
-                quitAfterMaximum = true
-                maximumDuration = 9.0
-            }
-
             val cb = colorBuffer(width, height)
             val sn = SimplexNoise3D()
             extend {
@@ -446,6 +404,7 @@ fun main() {
     @Media.Image "media/orx-noise-filter-002.png"
 
     @Application
+    @ProduceScreenshot("media/orx-noise-filter-002.png")
     @Code
     application {
         @Exclude
@@ -454,10 +413,6 @@ fun main() {
             height = 578
         }
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/orx-noise-filter-002.png"
-            }
             val cb = colorBuffer(width, height)
             val cn = CellNoise()
             extend {
@@ -466,7 +421,6 @@ fun main() {
                 drawer.image(cb)
             }
         }
-
     }
 
     @Text """
@@ -486,6 +440,7 @@ fun main() {
     @Media.Image "media/orx-noise-filter-003.png"
 
     @Application
+    @ProduceScreenshot("media/orx-noise-filter-003.png")
     @Code
     application {
         @Exclude
@@ -494,10 +449,6 @@ fun main() {
             height = 578
         }
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/orx-noise-filter-003.png"
-            }
             val cb = colorBuffer(width, height)
             val sn = SpeckleNoise()
             extend {
@@ -530,6 +481,7 @@ fun main() {
     @Media.Image "media/orx-noise-filter-004.png"
 
     @Application
+    @ProduceScreenshot("media/orx-noise-filter-004.png")
     @Code
     application {
         @Exclude
@@ -538,10 +490,6 @@ fun main() {
             height = 578
         }
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/orx-noise-filter-004.png"
-            }
             val cb = colorBuffer(width, height)
             val vn = ValueNoise()
             extend {
@@ -553,5 +501,5 @@ fun main() {
             }
         }
     }
-     */
+    */
 }

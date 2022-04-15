@@ -49,7 +49,7 @@ fun main() {
     application {
         program {
             window.presentationMode = PresentationMode.MANUAL
-            mouse.clicked.listen {
+            mouse.buttonDown.listen {
                 window.requestDraw()
             }
 

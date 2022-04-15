@@ -62,8 +62,8 @@ fun main() {
     on screen.
     """
 
+    @Code
     application {
-        @Code
         program {
             // -- build a render target with a single color buffer attachment
             val rt = renderTarget(width, height) {
@@ -94,8 +94,8 @@ fun main() {
     (2D) projections one can use the following:
     """
 
+    @Code
     application {
-        @Code
         program {
             // -- build a render target with a single color buffer attachment
             val rt = renderTarget(400, 400) {
@@ -129,8 +129,8 @@ fun main() {
     two `RenderTarget` instances and clears them using `ColorRGBa.TRANSPARENT`.
     """
 
+    @Code
     application {
-        @Code
         program {
             val rt0 = renderTarget(width, height) { colorBuffer() }
             val rt1 = renderTarget(width, height) { colorBuffer() }
@@ -200,8 +200,8 @@ fun main() {
     to be resolved first.
     """
 
+    @Code
     application {
-        @Code
         program {
             // -- build a render target with a single color buffer attachment
             val rt = renderTarget(width, height, multisample = BufferMultisample.SampleCount(8)) {

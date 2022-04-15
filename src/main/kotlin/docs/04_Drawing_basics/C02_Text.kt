@@ -9,10 +9,8 @@ package docs.`04_Drawing_basics`
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
-
 import org.openrndr.draw.loadFont
-import org.openrndr.extensions.SingleScreenshot
-import org.openrndr.ffmpeg.ScreenRecorder
+
 import org.openrndr.shape.Rectangle
 import org.openrndr.writer
 import kotlin.math.cos
@@ -39,19 +37,20 @@ fun main() {
     @Media.Image "media/text-001.png"
 
     @Application
+    @ProduceScreenshot("media/text-001.png")
+    @Code
     application {
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/text-001.png"
-            }
             val font = loadFont("data/IBMPlexMono-Bold.ttf", 48.0)
             extend {
                 drawer.clear(ColorRGBa.PINK)
                 drawer.fontMap = font
                 drawer.fill = ColorRGBa.BLACK
-                drawer.text("HELLO WORLD", width / 2.0 - 100.0, height / 2.0)
+                drawer.text(
+                    "HELLO WORLD",
+                    width / 2.0 - 100.0,
+                    height / 2.0
+                )
             }
         }
     }
@@ -68,18 +67,14 @@ fun main() {
     @Media.Image "media/text-002.png"
 
     @Application
+    @ProduceScreenshot("media/text-002.png")
+    @Code
     application {
         configure {
             width = 770
             height = 578
         }
-
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/text-002.png"
-            }
             val font = loadFont("file:data/IBMPlexMono-Bold.ttf", 24.0)
             extend {
                 drawer.clear(ColorRGBa.PINK)
@@ -96,6 +91,7 @@ fun main() {
         }
     }
 
+
     @Text 
     """
     ### Specifying the text area
@@ -110,18 +106,14 @@ fun main() {
     @Media.Image "media/text-003.png"
 
     @Application
+    @ProduceScreenshot("media/text-003.png")
+    @Code
     application {
         configure {
             width = 770
             height = 578
         }
-
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/text-003.png"
-            }
             val font = loadFont("file:data/IBMPlexMono-Bold.ttf", 24.0)
             extend {
                 drawer.clear(ColorRGBa.PINK)
@@ -150,21 +142,14 @@ fun main() {
     @Media.Video "media/text-004.mp4"
 
     @Application
+    @ProduceVideo("media/text-004.mp4", 15.0, 60)
+    @Code
     application {
         configure {
             width = 770
             height = 578
         }
-
-        @Code
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                outputFile = "media/text-004.mp4"
-                maximumDuration = 15.0
-                quitAfterMaximum = true
-                frameRate = 60
-            }
             val font = loadFont("file:data/IBMPlexMono-Bold.ttf", 24.0)
             extend {
                 drawer.clear(ColorRGBa.PINK)

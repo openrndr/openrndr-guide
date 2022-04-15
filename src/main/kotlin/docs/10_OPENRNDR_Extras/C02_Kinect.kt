@@ -45,21 +45,19 @@ fun main() {
     ## Using the Kinect depth camera
     """
 
-    @Code.Block
-    run {
-        fun main() = application {
-            configure {
-                // default resolution of the Kinect v1 depth camera
-                width = 640
-                height = 480
-            }
-            program {
-                val kinects = getKinectsV1(this)
-                val kinect = kinects.startDevice()
-                kinect.depthCamera.enabled = true
-                extend {
-                    drawer.image(kinect.depthCamera.currentFrame)
-                }
+    @Code
+    application {
+        configure {
+            // default resolution of the Kinect v1 depth camera
+            width = 640
+            height = 480
+        }
+        program {
+            val kinects = getKinectsV1(this)
+            val kinect = kinects.startDevice()
+            kinect.depthCamera.enabled = true
+            extend {
+                drawer.image(kinect.depthCamera.currentFrame)
             }
         }
     }
@@ -81,23 +79,21 @@ fun main() {
     (`0` by default):
     """
 
-    @Code.Block
-    run {
-        fun main() = application {
-            configure {
-                width = 640 * 2
-                height = 480
-            }
-            program {
-                val kinects = getKinectsV1(this)
-                val depthCamera1 = kinects.startDevice(0).depthCamera
-                val depthCamera2 = kinects.startDevice(1).depthCamera
-                depthCamera1.enabled = true
-                depthCamera2.enabled = true
-                extend {
-                    drawer.image(depthCamera1.currentFrame)
-                    drawer.image(depthCamera2.currentFrame, depthCamera1.width.toDouble(), 0.0)
-                }
+    @Code
+    application {
+        configure {
+            width = 640 * 2
+            height = 480
+        }
+        program {
+            val kinects = getKinectsV1(this)
+            val depthCamera1 = kinects.startDevice(0).depthCamera
+            val depthCamera2 = kinects.startDevice(1).depthCamera
+            depthCamera1.enabled = true
+            depthCamera2.enabled = true
+            extend {
+                drawer.image(depthCamera1.currentFrame)
+                drawer.image(depthCamera2.currentFrame, depthCamera1.width.toDouble(), 0.0)
             }
         }
     }

@@ -16,7 +16,7 @@ import org.openrndr.extra.compositor.*
 import org.openrndr.extra.jumpfill.DistanceField
 import org.openrndr.extra.jumpfill.fx.InnerGlow
 import org.openrndr.extra.jumpfill.fx.OuterGlow
-import org.openrndr.ffmpeg.ScreenRecorder
+
 import kotlin.math.PI
 import kotlin.math.cos
 
@@ -39,6 +39,7 @@ fun main() {
     @Media.Video "media/distance-fields-001.mp4"
 
     @Application
+    @ProduceVideo("media/distance-fields-001.mp4", 10.0)
     @Code
     application {
         program {
@@ -48,12 +49,6 @@ fun main() {
                 height = 480
             }
 
-            @Exclude
-            extend(ScreenRecorder()) {
-                quitAfterMaximum = true
-                maximumDuration = 10.00
-                outputFile = "media/distance-fields-001.mp4"
-            }
             val image = loadImage("data/images/cheeta.jpg")
 
             val c = compose {
@@ -84,6 +79,7 @@ fun main() {
     @Media.Video "media/distance-fields-101.mp4"
 
     @Application
+    @ProduceVideo("media/distance-fields-101.mp4")
     @Code
     application {
         program {
@@ -91,12 +87,6 @@ fun main() {
             configure {
                 width = 640
                 height = 480
-            }
-            @Exclude
-            extend(ScreenRecorder()) {
-                quitAfterMaximum = true
-                maximumDuration = 10.0
-                outputFile = "media/distance-fields-101.mp4"
             }
             val c = compose {
                 layer {
@@ -125,6 +115,7 @@ fun main() {
     @Media.Video "media/distance-fields-102.mp4"
 
     @Application
+    @ProduceVideo("media/distance-fields-102.mp4")
     @Code
     application {
         program {
@@ -132,12 +123,6 @@ fun main() {
             configure {
                 width = 640
                 height = 480
-            }
-            @Exclude
-            extend(ScreenRecorder()) {
-                quitAfterMaximum = true
-                maximumDuration = 10.00
-                outputFile = "media/distance-fields-102.mp4"
             }
             val c = compose {
                 layer {
@@ -163,6 +148,7 @@ fun main() {
     @Media.Video "media/distance-fields-002.mp4"
 
     @Application
+    @ProduceVideo("media/distance-fields-002.mp4")
     @Code
     application {
         program {
@@ -172,12 +158,6 @@ fun main() {
                 height = 480
             }
 
-            @Exclude
-            extend(ScreenRecorder()) {
-                quitAfterMaximum = true
-                maximumDuration = 10.0
-                outputFile = "media/distance-fields-002.mp4"
-            }
             val image = loadImage("data/images/cheeta.jpg")
 
             val c = compose {

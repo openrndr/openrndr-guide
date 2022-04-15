@@ -9,8 +9,6 @@ package docs.`05_Drawing_and_transformations`
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
-import org.openrndr.draw.BufferMultisample
-import org.openrndr.ffmpeg.ScreenRecorder
 import kotlin.math.cos
 
 fun main() {
@@ -33,23 +31,14 @@ fun main() {
     @Media.Video "media/transformations-001.mp4"
 
     @Application
+    @ProduceVideo("media/transformations-001.mp4", 7.7, 60, 8)
+    @Code
     application {
-
         configure {
             width = 770
             height = 578
         }
-
-        @Code
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                multisample = BufferMultisample.SampleCount(8)
-                frameRate = 60
-                quitAfterMaximum = true
-                maximumDuration = 7.7
-                outputFile = "media/transformations-001.mp4"
-            }
             extend {
                 drawer.fill = ColorRGBa.PINK
                 drawer.stroke = null
@@ -70,23 +59,14 @@ fun main() {
     @Media.Video "media/transformations-002.mp4"
 
     @Application
+    @ProduceVideo("media/transformations-002.mp4", 7.7, 60, 8)
+    @Code
     application {
-
         configure {
             width = 770
             height = 578
         }
-
-        @Code
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                multisample = BufferMultisample.SampleCount(8)
-                frameRate = 60
-                quitAfterMaximum = true
-                maximumDuration = 7.7
-                outputFile = "media/transformations-002.mp4"
-            }
             extend {
                 drawer.fill = ColorRGBa.PINK
                 drawer.stroke = null
@@ -118,23 +98,14 @@ fun main() {
     @Media.Video "media/transformations-003.mp4"
 
     @Application
+    @ProduceVideo("media/transformations-003.mp4", 7.7, 60, 8)
+    @Code
     application {
-
         configure {
             width = 770
             height = 578
         }
-
-        @Code
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                multisample = BufferMultisample.SampleCount(8)
-                frameRate = 60
-                quitAfterMaximum = true
-                maximumDuration = 7.7
-                outputFile = "media/transformations-003.mp4"
-            }
             extend {
                 drawer.fill = ColorRGBa.PINK
                 drawer.stroke = null
@@ -161,23 +132,14 @@ fun main() {
     @Media.Video "media/transformations-004.mp4"
 
     @Application
+    @ProduceVideo("media/transformations-004.mp4", 7.7, 60, 8)
+    @Code
     application {
-
         configure {
             width = 770
             height = 578
         }
-
-        @Code
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                multisample = BufferMultisample.SampleCount(8)
-                frameRate = 60
-                quitAfterMaximum = true
-                maximumDuration = 7.7
-                outputFile = "media/transformations-004.mp4"
-            }
             extend {
                 drawer.fill = ColorRGBa.PINK
                 drawer.stroke = null
@@ -200,23 +162,14 @@ fun main() {
     @Media.Video "media/transformations-005.mp4"
 
     @Application
+    @ProduceVideo("media/transformations-005.mp4", 7.7, 60, 8)
+    @Code
     application {
-
         configure {
             width = 770
             height = 578
         }
-
-        @Code
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                multisample = BufferMultisample.SampleCount(8)
-                frameRate = 60
-                quitAfterMaximum = true
-                maximumDuration = 7.7
-                outputFile = "media/transformations-005.mp4"
-            }
             extend {
                 drawer.fill = ColorRGBa.PINK
                 drawer.stroke = null
@@ -228,7 +181,6 @@ fun main() {
                 // -- rectangle around the origin
                 drawer.rectangle(-50.0, -50.0, 100.0, 100.0)
 
-
                 // -- draw a second rectangle, sharing the rotation of the first rectangle but with an offset
                 drawer.translate(150.0, 0.0)
                 drawer.rectangle(-50.0, -50.0, 100.0, 100.0)
@@ -239,23 +191,14 @@ fun main() {
     @Media.Video "media/transformations-006.mp4"
 
     @Application
+    @ProduceVideo("media/transformations-006.mp4", 7.7, 60, 8)
+    @Code
     application {
-
         configure {
             width = 770
             height = 578
         }
-
-        @Code
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                multisample = BufferMultisample.SampleCount(8)
-                frameRate = 60
-                quitAfterMaximum = true
-                maximumDuration = 7.7
-                outputFile = "media/transformations-006.mp4"
-            }
             extend {
                 drawer.fill = ColorRGBa.PINK
                 drawer.stroke = null
@@ -263,7 +206,7 @@ fun main() {
                 // -- translate to center of screen
                 drawer.translate(width / 2.0, height / 2.0)
 
-                drawer.rotate(seconds*10.0)
+                drawer.rotate(seconds * 10.0)
                 // -- rectangle around the origin
                 drawer.rectangle(-50.0, -50.0, 100.0, 100.0)
 
@@ -274,8 +217,6 @@ fun main() {
             }
         }
     }
-
-
 
     @Text 
     """
@@ -351,9 +292,9 @@ fun main() {
     ## Applying transforms to vectors
     
     ```kotlin
-        val x = Vector3(1.0, 2.0, 3.0)
+        val x = Vector3(1.0, 2.0, 3.0, 1.0)
         val m = transform {
-            rotate(42.0)
+            rotate(Vector3.UNIT_Y, 42.0)
         }
         val transformed = m * x
         val transformedTwice = m * m * x

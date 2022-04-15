@@ -12,7 +12,6 @@ import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.extra.noise.uniform
-import org.openrndr.ffmpeg.ScreenRecorder
 import org.openrndr.math.Vector2
 
 
@@ -36,15 +35,10 @@ fun main() {
     @Media.Video "media/animations-001.mp4"
 
     @Application
+    @ProduceVideo("media/animations-001.mp4", 5.0)
     @Code
     application {
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                quitAfterMaximum = true
-                maximumDuration = 5.0
-                outputFile = "media/animations-001.mp4"
-            }
             // -- create an animation object
             val animation = object : Animatable() {
                 var x = 0.0
@@ -64,8 +58,7 @@ fun main() {
         }
     }
 
-
-    @Text 
+    @Text
     """
     By using `.complete()` we can create sequences of property animations.
     """
@@ -73,15 +66,10 @@ fun main() {
     @Media.Video "media/animations-002.mp4"
 
     @Application
+    @ProduceVideo("media/animations-002.mp4", 10.0)
     @Code
     application {
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                quitAfterMaximum = true
-                maximumDuration = 10.0
-                outputFile = "media/animations-002.mp4"
-            }
             val animation = object : Animatable() {
                 var x = 0.0
                 var y = 0.0
@@ -102,7 +90,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     If we leave out that `::x.complete()` line we will see that 
     animations for `x` and `y` run simultaneously. 
@@ -111,15 +99,10 @@ fun main() {
     @Media.Video "media/animations-003.mp4"
 
     @Application
+    @ProduceVideo("media/animations-003.mp4", 10.0)
     @Code
     application {
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                quitAfterMaximum = true
-                maximumDuration = 10.0
-                outputFile = "media/animations-003.mp4"
-            }
             val animation = object : Animatable() {
                 var x = 0.0
                 var y = 0.0
@@ -139,8 +122,7 @@ fun main() {
         }
     }
 
-
-    @Text 
+    @Text
     """
     For those wondering where that `::x.animate()` notation comes from, 
     those are Kotlin's [property references](https://kotlinlang.org/docs/reflection.html#property-references).
@@ -157,15 +139,10 @@ fun main() {
     @Media.Video "media/animations-101.mp4"
 
     @Application
+    @ProduceVideo("media/animations-101.mp4", 10.0)
     @Code
     application {
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                quitAfterMaximum = true
-                maximumDuration = 10.0
-                outputFile = "media/animations-101.mp4"
-            }
             val animation = object : Animatable() {
                 var x = 0.0
                 var y = 0.0
@@ -185,7 +162,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     ## Behavioral animation
     """
@@ -193,16 +170,10 @@ fun main() {
     @Media.Video "media/animations-301.mp4"
 
     @Application
+    @ProduceVideo("media/animations-301.mp4", 10.0)
     @Code
     application {
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                quitAfterMaximum = true
-                maximumDuration = 10.0
-                outputFile = "media/animations-301.mp4"
-            }
-
             class AnimatedCircle : Animatable() {
                 var x = 0.0
                 var y = 0.0
@@ -261,6 +232,7 @@ fun main() {
     @Media.Video "media/animations-401.mp4"
 
     @Application
+    @ProduceVideo("media/animations-401.mp4", 10.0)
     @Code
     application {
         val animation = object : Animatable() {
@@ -268,13 +240,6 @@ fun main() {
         }
 
         program {
-            @Exclude
-            extend(ScreenRecorder()) {
-                quitAfterMaximum = true
-                maximumDuration = 10.0
-                outputFile = "media/animations-401.mp4"
-            }
-
             extend {
                 animation.updateAnimation()
                 if (!animation.hasAnimations()) {

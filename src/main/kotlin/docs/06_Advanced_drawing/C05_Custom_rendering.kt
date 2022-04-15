@@ -8,7 +8,6 @@ import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.*
-import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.math.Vector3
 import org.openrndr.math.transforms.transform
 
@@ -132,23 +131,20 @@ fun main() {
     @Media.Image "media/custom-rendering-001.png"
 
     @Application
+    @ProduceScreenshot("media/custom-rendering-001.png", 8)
+    @Code
     application {
         @Exclude
         configure {
             width = 770
             height = 578
         }
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/custom-rendering-001.png"
-                multisample = BufferMultisample.SampleCount(8)
-            }
             val geometry = vertexBuffer(
-                    vertexFormat {
-                        position(3)
-                    }, 3 * 100)
+                vertexFormat {
+                    position(3)
+                }, 3 * 100
+            )
 
             geometry.put {
                 for (i in 0 until geometry.vertexCount) {
@@ -178,23 +174,20 @@ fun main() {
     @Media.Image "media/custom-rendering-002.png"
 
     @Application
+    @ProduceScreenshot("media/custom-rendering-002.png", 8)
+    @Code
     application {
         @Exclude
         configure {
             width = 770
             height = 578
         }
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/custom-rendering-002.png"
-                multisample = BufferMultisample.SampleCount(8)
-            }
             val geometry = vertexBuffer(
-                    vertexFormat {
-                        position(3)
-                    }, 3 * 100)
+                vertexFormat {
+                    position(3)
+                }, 3 * 100
+            )
 
             geometry.put {
                 for (i in 0 until geometry.vertexCount) {
@@ -226,19 +219,14 @@ fun main() {
     @Media.Image "media/custom-rendering-003.png"
 
     @Application
+    @ProduceScreenshot("media/custom-rendering-003.png", 8)
+    @Code
     application {
         configure {
             width = 770
             height = 578
         }
-
-        @Code
         program {
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/custom-rendering-003.png"
-                multisample = BufferMultisample.SampleCount(8)
-            }
             // -- create the vertex buffer
             val geometry = vertexBuffer(vertexFormat {
                 position(3)
@@ -246,10 +234,10 @@ fun main() {
 
             // -- fill the vertex buffer with vertices for a unit quad
             geometry.put {
-                write( Vector3(-1.0, -1.0, 0.0))
-                write( Vector3(-1.0, 1.0, 0.0))
-                write( Vector3(1.0, -1.0, 0.0))
-                write( Vector3(1.0, 1.0, 0.0))
+                write(Vector3(-1.0, -1.0, 0.0))
+                write(Vector3(-1.0, 1.0, 0.0))
+                write(Vector3(1.0, -1.0, 0.0))
+                write(Vector3(1.0, 1.0, 0.0))
             }
 
             // -- create the secondary vertex buffer, which will hold transformations

@@ -8,9 +8,7 @@ import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.*
-import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.extra.fx.blur.BoxBlur
-import org.openrndr.ffmpeg.ScreenRecorder
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -30,13 +28,13 @@ fun main() {
     @Media.Video "media/filters-001.mp4"
 
     @Application
+    @ProduceVideo("media/filters-001.mp4", 10.00, 60)
+    @Code
     application {
         configure {
             width = 770
             height = 578
         }
-
-        @Code
         program {
             // -- create offscreen render target
             val offscreen = renderTarget(width, height) {
@@ -49,13 +47,6 @@ fun main() {
             // -- create colorbuffer to hold blur results
             val blurred = colorBuffer(width, height)
 
-            @Exclude
-            extend(ScreenRecorder()) {
-                frameRate = 60
-                maximumDuration = 10.00
-                quitAfterMaximum = true
-                outputFile = "media/filters-001.mp4"
-            }
 
             extend {
                 // -- draw to offscreen buffer
@@ -63,7 +54,11 @@ fun main() {
                     clear(ColorRGBa.BLACK)
                     fill = ColorRGBa.PINK
                     stroke = null
-                    circle(cos(seconds) * 100.0 + width / 2, sin(seconds) * 100.0 + height / 2.0, 100.0 + 100.0 * cos(seconds * 2.0))
+                    circle(
+                        cos(seconds) * 100.0 + width / 2,
+                        sin(seconds) * 100.0 + height / 2.0,
+                        100.0 + 100.0 * cos(seconds * 2.0)
+                    )
                 }
                 // -- set blur parameters
                 blur.window = 30
@@ -74,6 +69,7 @@ fun main() {
             }
         }
     }
+
     @Text 
     """
     ## Writing your own filters
@@ -93,6 +89,7 @@ fun main() {
     @Media.Image "media/filters-002.png"
 
     @Application
+    @ProduceScreenshot("media/filters-002.png")
     @Code
     application {
         val noiseShader = """
@@ -125,6 +122,7 @@ fun main() {
             // -- note the 'by parameters' here, this is what wires the fields up to the uniforms
             var gain: Double by parameters
             var time: Double by parameters
+
             init {
                 gain = 1.0
                 time = 0.0
@@ -143,24 +141,27 @@ fun main() {
                 depthBuffer()
             }
 
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/filters-002.png"
-            }
             extend {
                 // -- draw to offscreen buffer
                 drawer.isolatedWithTarget(offscreen) {
                     clear(ColorRGBa.BLACK)
                     fill = ColorRGBa.PINK
                     stroke = null
-                    circle(cos(seconds) * 100.0 + width / 2, sin(seconds) * 100.0 + height / 2.0, 100.0 + 100.0 * cos(seconds * 2.0))
+                    circle(
+                        cos(seconds) * 100.0 + width / 2,
+                        sin(seconds) * 100.0 + height / 2.0,
+                        100.0 + 100.0 * cos(seconds * 2.0)
+                    )
                 }
                 // apply the noise on and to offscreen.colorBuffer(0),
                 // this only works for filters that only read from
                 // the current fragment.
                 noise.time = seconds
                 noise.gain = 1.0
-                noise.apply(offscreen.colorBuffer(0), offscreen.colorBuffer(0))
+                noise.apply(
+                    offscreen.colorBuffer(0),
+                    offscreen.colorBuffer(0)
+                )
 
                 drawer.image(offscreen.colorBuffer(0))
             }

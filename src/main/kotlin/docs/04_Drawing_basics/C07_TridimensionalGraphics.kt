@@ -24,32 +24,30 @@ fun main() {
     # 3D graphics
     """
 
-    @Code.Block
-    run {
-        application {
-            configure {
-                multisample = WindowMultisample.SampleCount(4)
-            }
-            program {
-                val cube = boxMesh(140.0, 70.0, 10.0)
+    @Code
+    application {
+        configure {
+            multisample = WindowMultisample.SampleCount(4)
+        }
+        program {
+            val cube = boxMesh(140.0, 70.0, 10.0)
 
-                extend {
-                    drawer.perspective(60.0, width * 1.0 / height, 0.01, 1000.0)
-                    drawer.fill = ColorRGBa.PINK
-                    drawer.shadeStyle = shadeStyle {
-                        fragmentTransform = """
-                            vec3 lightDir = normalize(vec3(0.3, 1.0, 0.5));
-                            float l = dot(va_normal, lightDir) * 0.4 + 0.5;
-                            x_fill.rgb *= l; 
-                        """.trimIndent()
-                    }
-                    drawer.depthWrite = true
-                    drawer.depthTestPass = DepthTestPass.LESS_OR_EQUAL
-                    drawer.translate(0.0, 0.0, -150.0)
-                    drawer.rotate(Vector3.UNIT_X, seconds * 15 + 30)
-                    drawer.rotate(Vector3.UNIT_Y, seconds * 5 + 60)
-                    drawer.vertexBuffer(cube, DrawPrimitive.TRIANGLES)
+            extend {
+                drawer.perspective(60.0, width * 1.0 / height, 0.01, 1000.0)
+                drawer.fill = ColorRGBa.PINK
+                drawer.shadeStyle = shadeStyle {
+                    fragmentTransform = """
+                        vec3 lightDir = normalize(vec3(0.3, 1.0, 0.5));
+                        float l = dot(va_normal, lightDir) * 0.4 + 0.5;
+                        x_fill.rgb *= l; 
+                    """.trimIndent()
                 }
+                drawer.depthWrite = true
+                drawer.depthTestPass = DepthTestPass.LESS_OR_EQUAL
+                drawer.translate(0.0, 0.0, -150.0)
+                drawer.rotate(Vector3.UNIT_X, seconds * 15 + 30)
+                drawer.rotate(Vector3.UNIT_Y, seconds * 5 + 60)
+                drawer.vertexBuffer(cube, DrawPrimitive.TRIANGLES)
             }
         }
     }
@@ -61,52 +59,48 @@ fun main() {
     Describe: orx-mesh-generators
     """
 
-    @Code.Block
-    run {
-        application {
-            configure {
-                multisample = WindowMultisample.SampleCount(4)
-            }
-            program {
-                val cube = boxMesh(140.0, 70.0, 10.0)
-                val cam = Orbital()
-                cam.eye = -Vector3.UNIT_Z * 150.0
+    @Code
+    application {
+        configure {
+            multisample = WindowMultisample.SampleCount(4)
+        }
+        program {
+            val cube = boxMesh(140.0, 70.0, 10.0)
+            val cam = Orbital()
+            cam.eye = -Vector3.UNIT_Z * 150.0
 
-                extend(cam)
-                extend {
-                    drawer.fill = ColorRGBa.PINK
-                    drawer.shadeStyle = shadeStyle {
-                        fragmentTransform = """
-                    vec3 lightDir = normalize(vec3(0.3, 1.0, 0.5));
-                    float l = dot(va_normal, lightDir) * 0.4 + 0.5;
-                    x_fill.rgb *= l; 
-                """.trimIndent()
-                    }
-                    drawer.vertexBuffer(cube, DrawPrimitive.TRIANGLES)
+            extend(cam)
+            extend {
+                drawer.fill = ColorRGBa.PINK
+                drawer.shadeStyle = shadeStyle {
+                    fragmentTransform = """
+                        vec3 lightDir = normalize(vec3(0.3, 1.0, 0.5));
+                        float l = dot(va_normal, lightDir) * 0.4 + 0.5;
+                        x_fill.rgb *= l; 
+                    """.trimIndent()
                 }
+                drawer.vertexBuffer(cube, DrawPrimitive.TRIANGLES)
             }
         }
     }
 
-    @Code.Block
-    run {
-        application {
-            configure {
-                multisample = WindowMultisample.SampleCount(4)
-            }
-            program {
-                val cam = Orbital()
-                cam.eye = Vector3.UNIT_Z * 150.0
-                cam.camera.depthTest = false
+    @Code
+    application {
+        configure {
+            multisample = WindowMultisample.SampleCount(4)
+        }
+        program {
+            val cam = Orbital()
+            cam.eye = Vector3.UNIT_Z * 150.0
+            cam.camera.depthTest = false
 
-                extend(cam)
-                extend {
-                    drawer.fill = null
-                    drawer.stroke = ColorRGBa.PINK
-                    repeat(10) {
-                        drawer.rectangle(Rectangle.fromCenter(Vector2.ZERO, 150.0))
-                        drawer.translate(Vector3.UNIT_Z * 10.0)
-                    }
+            extend(cam)
+            extend {
+                drawer.fill = null
+                drawer.stroke = ColorRGBa.PINK
+                repeat(10) {
+                    drawer.rectangle(Rectangle.fromCenter(Vector2.ZERO, 150.0))
+                    drawer.translate(Vector3.UNIT_Z * 10.0)
                 }
             }
         }

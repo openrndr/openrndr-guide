@@ -13,7 +13,6 @@ import org.openrndr.draw.grayscale
 import org.openrndr.draw.invert
 import org.openrndr.draw.loadImage
 import org.openrndr.draw.tint
-import org.openrndr.extensions.SingleScreenshot
 import org.openrndr.shape.Rectangle
 
 fun main() {
@@ -27,23 +26,17 @@ fun main() {
     ## Loading and drawing images
 
     Images are loaded using the `loadImage` function and drawn using `Drawer.image`.
-
     """
 
-    @Media.Image
-    """
-    media/image-001.png
-    """
+    @Media.Image "media/image-001.png"
+
     @Application
+    @ProduceScreenshot("media/image-001.png")
+    @Code
     application {
-        @Code
+        configure {}
         program {
-            val image = loadImage("data/cheeta.jpg")
-
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/image-001.png"
-            }
+            val image = loadImage("data/images/cheeta.jpg")
 
             extend {
                 drawer.image(image)
@@ -55,11 +48,11 @@ fun main() {
     """
     To change the location of the image one can use `Drawer.image` with extra coordinates provided.
     """
+
     run {
         application {
-
             program {
-                val image = loadImage("data/cheeta.jpg")
+                val image = loadImage("data/images/cheeta.jpg")
                 extend {
                     @Code.Block
                     run {
@@ -74,11 +67,11 @@ fun main() {
     """
     Extra `width` and `height` arguments can be provided to draw a scaled version of the image
     """
+
     run {
         application {
-
             program {
-                val image = loadImage("data/cheeta.jpg")
+                val image = loadImage("data/images/cheeta.jpg")
                 extend {
                     @Code.Block
                     run {
@@ -97,20 +90,14 @@ fun main() {
     the area that should be taken from the image and presented in the target rectangle.
     """
 
-    @Media.Image
-    """
-    media/image-002.png
-    """
-    @Application
-    application {
-        @Code
-        program {
-            val image = loadImage("data/cheeta.jpg")
+    @Media.Image "media/image-002.png"
 
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/image-002.png"
-            }
+    @Application
+    @ProduceScreenshot("media/image-002.png")
+    @Code
+    application {
+        program {
+            val image = loadImage("data/images/cheeta.jpg")
 
             extend {
                 val source = Rectangle(0.0, 0.0, 320.0, 240.0)
@@ -126,26 +113,30 @@ fun main() {
     ## Drawing many parts of images
     """
 
-    @Media.Image
-    """
-    media/image-003.png
-    """
-    @Application
-    application {
-        @Code
-        program {
-            val image = loadImage("data/cheeta.jpg")
+    @Media.Image "media/image-003.png"
 
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/image-003.png"
-            }
+    @Application
+    @ProduceScreenshot("media/image-003.png")
+    @Code
+    application {
+        program {
+            val image = loadImage("data/images/cheeta.jpg")
 
             extend {
                 val areas = (0..10).flatMap { y ->
                     (0..10).map { x ->
-                        val source = Rectangle(x * (width / 10.0), y * (height / 10.0), width / 5.0, height / 5.0)
-                        val target = Rectangle(x * (width / 10.0), y * (height / 10.0), width / 10.0, height / 10.0)
+                        val source = Rectangle(
+                            x * (width / 10.0),
+                            y * (height / 10.0),
+                            width / 5.0,
+                            height / 5.0
+                        )
+                        val target = Rectangle(
+                            x * (width / 10.0),
+                            y * (height / 10.0),
+                            width / 10.0,
+                            height / 10.0
+                        )
                         source to target
                     }
                 }
@@ -165,20 +156,14 @@ fun main() {
     Tinting multiplies the image color with a _tint color_.
     """
 
-    @Media.Image
-    """
-    media/image-004.png
-    """
-    @Application
-    application {
-        @Code
-        program {
-            val image = loadImage("data/cheeta.jpg")
+    @Media.Image "media/image-004.png"
 
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/image-004.png"
-            }
+    @Application
+    @ProduceScreenshot("media/image-004.png")
+    @Code
+    application {
+        program {
+            val image = loadImage("data/images/cheeta.jpg")
 
             extend {
                 drawer.drawStyle.colorMatrix = tint(ColorRGBa.RED)
@@ -186,6 +171,7 @@ fun main() {
             }
         }
     }
+
     @Text 
     """
     ### Inverting
@@ -193,20 +179,14 @@ fun main() {
     Drawing an image with inverted colors can be achieved by using the `invert` color matrix.
     """
 
-    @Media.Image
-    """
-    media/image-005.png
-    """
-    @Application
-    application {
-        @Code
-        program {
-            val image = loadImage("data/cheeta.jpg")
+    @Media.Image "media/image-005.png"
 
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/image-005.png"
-            }
+    @Application
+    @ProduceScreenshot("media/image-005.png")
+    @Code
+    application {
+        program {
+            val image = loadImage("data/images/cheeta.jpg")
 
             extend {
                 drawer.drawStyle.colorMatrix = invert
@@ -222,24 +202,19 @@ fun main() {
     Drawing an image with inverted colors can be achieved by using the `grayscale` color matrix.
     """
 
-    @Media.Image
-    """
-    media/image-006.png
-    """
-    @Application
-    application {
-        @Code
-        program {
-            val image = loadImage("data/cheeta.jpg")
+    @Media.Image "media/image-006.png"
 
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/image-006.png"
-            }
+    @Application
+    @ProduceScreenshot("media/image-006.png")
+    @Code
+    application {
+        program {
+            val image = loadImage("data/images/cheeta.jpg")
 
             extend {
                 // -- the factors below determine the RGB mixing factors
-                drawer.drawStyle.colorMatrix = grayscale(1.0 / 3.0, 1.0 / 3.0, 1.0 / 3.0)
+                drawer.drawStyle.colorMatrix =
+                    grayscale(1.0 / 3.0, 1.0 / 3.0, 1.0 / 3.0)
                 drawer.image(image)
             }
         }
@@ -254,24 +229,19 @@ fun main() {
     apply the `grayscale` transform and then the `tint` transform.
     """
 
-    @Media.Image
-    """
-    media/image-007.png
-    """
-    @Application
-    application {
-        @Code
-        program {
-            val image = loadImage("data/cheeta.jpg")
+    @Media.Image "media/image-007.png"
 
-            @Exclude
-            extend(SingleScreenshot()) {
-                outputFile = "media/image-007.png"
-            }
+    @Application
+    @ProduceScreenshot("media/image-007.png")
+    @Code
+    application {
+        program {
+            val image = loadImage("data/images/cheeta.jpg")
 
             extend {
                 // -- here we concatenate the transforms using the multiplication operator.
-                drawer.drawStyle.colorMatrix = tint(ColorRGBa.PINK) * grayscale()
+                drawer.drawStyle.colorMatrix =
+                    tint(ColorRGBa.PINK) * grayscale()
                 drawer.image(image)
             }
         }
