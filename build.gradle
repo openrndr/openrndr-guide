@@ -2,7 +2,7 @@ group 'org.openrndr.guide'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.6.10'
+    ext.kotlin_version = '1.6.20'
 
     repositories {
         mavenCentral()
@@ -53,7 +53,7 @@ switch (org.gradle.internal.os.OperatingSystem.current()) {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1-native-mt'
 
     testImplementation 'junit:junit:4.13.2'
     implementation 'org.slf4j:slf4j-simple:1.7.36'
