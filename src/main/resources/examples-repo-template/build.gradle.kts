@@ -28,7 +28,7 @@ val openrndrFeatures = setOf("video", "panel")
 
 
 val orxUseSnapshot = false
-val orxVersion = if (orxUseSnapshot) "0.5.1-SNAPSHOT" else "0.4.0-rc.8"
+val orxVersion = if (orxUseSnapshot) "0.5.1-SNAPSHOT" else "@orxVersion@"
 
 // supported features are: orx-camera, orx-compositor,orx-easing, orx-filter-extension,orx-file-watcher, orx-kinect-v1
 // orx-integral-image, orx-interval-tree, orx-jumpflood,orx-kdtree, orx-mesh-generators,orx-midi, orx-no-clear,

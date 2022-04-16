@@ -140,6 +140,7 @@ static String getRepoLastVersion(String repo) {
 task publishExamples { task ->
     description "Publish examples to github.com/openrndr/openrndr-examples"
     def openrndrVersion = getRepoLastVersion("https://github.com/openrndr/openrndr")
+    def orxVersion = getRepoLastVersion("https://github.com/openrndr/orx")
     doLast {
         gitPublish.repoDir = file("$buildDir/gitrepo-examples")
         gitPublish.contents {
@@ -148,7 +149,10 @@ task publishExamples { task ->
             }
             from("$projectDir/src/main/resources/examples-repo-template") {
                 include '**.*.kts'
-                filter(ReplaceTokens, tokens: [ openrndrVersion: openrndrVersion ])
+                filter(ReplaceTokens, tokens: [
+                        openrndrVersion: openrndrVersion,
+                        orxVersion: orxVersion
+                ])
             }
             from("$projectDir/build/dokgen/generated/examples-export") {
                 into "src/main/kotlin/examples"
