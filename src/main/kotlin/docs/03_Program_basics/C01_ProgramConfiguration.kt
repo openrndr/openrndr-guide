@@ -17,17 +17,20 @@ fun main() {
     @Text
     """
     # Program Configuration
+    
     Starting your program with a custom configuration looks roughly like this.
     """
 
     @Code
     application {
         configure {
-            // -- settings go here
+
+            // settings go here
         }
         program {
             // -- one time set up code goes here
             extend {
+
                 // -- drawing code goes here
             }
         }
@@ -36,6 +39,7 @@ fun main() {
     @Text
     """
     ## Window size
+    
     Setting the window size is done through the `width` and `height` properties.
     """
 
@@ -50,6 +54,7 @@ fun main() {
     @Text
     """
     ## Window position
+    
     The default value for `position` is `null` for which the default behaviour 
     is to place the window at the center of the primary display
     """

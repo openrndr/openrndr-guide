@@ -10,6 +10,6 @@ import org.openrndr.dokgen.annotations.*
 fun main() {
     @Text
     """
-Section intro text goes here
+    # Getting started with OPENRNDR
     """.trimIndent()
 }

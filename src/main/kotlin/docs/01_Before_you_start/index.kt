@@ -13,6 +13,6 @@ import org.openrndr.dokgen.annotations.URL
 fun main() {
     @Text
     """
-    Section intro text goes here
+    # Before you start
     """
 }

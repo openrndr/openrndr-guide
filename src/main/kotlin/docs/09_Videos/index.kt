@@ -10,6 +10,6 @@ import org.openrndr.dokgen.annotations.*
 fun main() {
     @Text
     """
-Coming soon...
+    # Videos
     """.trimIndent()
 }

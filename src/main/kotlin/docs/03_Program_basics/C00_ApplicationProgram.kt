@@ -22,12 +22,14 @@ fun main() {
     @Code
     application {
         configure {
+
             // set Configuration options here
         }
 
         program {
             // -- what is here is executed once
             extend {
+
                 // -- what is here is executed 'as often as possible'
             }
         }

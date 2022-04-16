@@ -10,7 +10,7 @@ import org.openrndr.dokgen.annotations.*
 fun main() {
     @Text
     """
-Coming soon...
+    # Drawing basics
     """.trimIndent()
 }
 
