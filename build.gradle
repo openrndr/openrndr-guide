@@ -1,6 +1,8 @@
 group 'org.openrndr.guide'
 version '1.0-SNAPSHOT'
 
+import org.apache.tools.ant.filters.ReplaceTokens
+
 buildscript {
     ext.kotlin_version = '1.6.20'
 
@@ -122,12 +124,32 @@ task publishDocs { task ->
     task.finalizedBy(gitPublishPush)
 }
 
+static String exec(String cmd) {
+    return ["/bin/bash", "-c", cmd].execute().text
+}
+
+static String getRepoLastVersion(String repo) {
+    return exec("git ls-remote --refs --tags $repo " +
+            "| sed -e 's/^.*refs\\/tags\\/v\\(.*\\)/\\1/g' " +
+            "| sort --version-sort " +
+            "| tail --lines=1 " +
+            "| tr -d '\n'"
+    )
+}
+
 task publishExamples { task ->
     description "Publish examples to github.com/openrndr/openrndr-examples"
+    def openrndrVersion = getRepoLastVersion("https://github.com/openrndr/openrndr")
     doLast {
         gitPublish.repoDir = file("$buildDir/gitrepo-examples")
         gitPublish.contents {
-            from "$projectDir/src/main/resources/examples-repo-template"
+            from("$projectDir/src/main/resources/examples-repo-template") {
+                exclude '**.*.kts'
+            }
+            from("$projectDir/src/main/resources/examples-repo-template") {
+                include '**.*.kts'
+                filter(ReplaceTokens, tokens: [ openrndrVersion: openrndrVersion ])
+            }
             from("$projectDir/build/dokgen/generated/examples-export") {
                 into "src/main/kotlin/examples"
             }
@@ -138,7 +160,7 @@ task publishExamples { task ->
                 into "data/compute-shaders"
             }
         }
-        gitPublish.repoUri = "git@github.com:openrndr/openrndr-examples.git"
+        gitPublish.repoUri = "git@github.com:hamoid/openrndr-examples.git"
         gitPublish.branch = "master"
         gitPublish.commitMessage = "Update examples"
     }

@@ -14,7 +14,8 @@ val applicationMainClass = "TemplateProgramKt"
 val applicationFullLogging = false
 
 val openrndrUseSnapshot = false
-val openrndrVersion = if (openrndrUseSnapshot) "0.5.1-SNAPSHOT" else "0.4.0-rc.7"
+val openrndrVersion = if (openrndrUseSnapshot) "0.5.1-SNAPSHOT" else "@openrndrVersion@"
+
 val openrndrOs = when (OperatingSystem.current()) {
     OperatingSystem.WINDOWS -> "windows"
     OperatingSystem.MAC_OS -> "macos"
