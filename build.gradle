@@ -112,10 +112,10 @@ task publishDocs { task ->
     description "Publish website to github.com/openrndr/openrndr-guide"
     doLast {
         gitPublish.repoUri = "git@github.com:openrndr/openrndr-guide.git"
-        gitPublish.branch = "master"
+        gitPublish.branch = "generated"
         gitPublish.repoDir = file("$buildDir/gitrepo-docs")
         gitPublish.contents.from("build/dokgen/jekyll") {
-            exclude "node_modules"
+            exclude "docs/.jekyll*", "docs/_site", "docs/*-cache", "docs/*.sh"
         }
         gitPublish.commitMessage = "Update docs"
     }

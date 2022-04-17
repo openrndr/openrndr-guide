@@ -14,14 +14,13 @@ $ ./gradlew publishToMavenLocal -Prelease.version=2.0-SNAPSHOT
 ```
 $ git clone git@github.com:openrndr/openrndr-guide.git
 $ cd openrndr-guide
-$ git checkout dev
 ```
 
 ## Open the openrndr-guide project in IntelliJ Idea
 
-## Run the Gradle task called `jekyll`
+## Run the `jekyll` Gradle task
 
-The first time it will take a while since it will launch dozens of kotlin programs
+The first time it will take a while since it will run over 100 kotlin programs
 to produce the guide's screenshots and videos. If a program gets stuck running for over
 10 seconds it can be closed and the build will continue with the next program.
 
@@ -30,11 +29,9 @@ Once the build is complete the guide will be found at
 
 ## Workflow
 
-1. View the website in a web browser
-   - Open a terminal
-   - `cd build/dokgen/jekyll/docs`
-   - Type `./run.sh` to build and serve the website using Docker.
-   - Open [http://127.0.0.1:4000](http://127.0.0.1:4000) in a browser.
+1. View the website in a web browser:
+   - Run the `dokgen/webServerStart` gradle task (takes a minute to run).
+   - Open [http://0.0.0.0:4000](http://0.0.0.0:4000) in a browser.
 2. Make changes to the markdown files under `src/main/kotlin/docs/`
 3. Run the `jekyll` task (either in the command line `./gradlew jekyll` or in
    the Gradle pane on the right edge of the IDE).
