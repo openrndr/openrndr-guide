@@ -51,7 +51,7 @@ fun main() {
         }
         program {
             val image = loadImage("data/images/cheeta.jpg")
-            val font = loadFont("data/IBMPlexMono-Bold.ttf", 144.0)
+            val font = loadFont("data/fonts/default.otf", 144.0)
             extend {
                 drawer.shadeStyle = linearGradient(ColorRGBa.PINK, ColorRGBa.RED, rotation = seconds * 18.0)
                 drawer.rectangle(80.0, 40.0, 200.0, 200.0)
@@ -81,7 +81,7 @@ fun main() {
         }
         program {
             val image = loadImage("data/images/cheeta.jpg")
-            val font = loadFont("data/IBMPlexMono-Bold.ttf", 144.0)
+            val font = loadFont("data/fonts/default.otf", 144.0)
             extend {
                 drawer.shadeStyle = radialGradient(ColorRGBa.RED, ColorRGBa.PINK, length = 0.5, offset = Vector2(cos(seconds*PI), sin(seconds*PI*0.5)))
                 drawer.rectangle(80.0, 40.0, 200.0, 200.0)
@@ -111,7 +111,7 @@ fun main() {
         }
         program {
             val image = loadImage("data/images/cheeta.jpg")
-            val font = loadFont("data/IBMPlexMono-Bold.ttf", 144.0)
+            val font = loadFont("data/fonts/default.otf", 144.0)
             extend {
                 drawer.shadeStyle = angularGradient(ColorRGBa.RED, ColorRGBa.PINK, rotation = seconds * 18.0)
                 drawer.rectangle(80.0, 40.0, 200.0, 200.0)
@@ -141,7 +141,7 @@ fun main() {
         }
         program {
             val image = loadImage("data/images/cheeta.jpg")
-            val font = loadFont("data/IBMPlexMono-Bold.ttf", 144.0)
+            val font = loadFont("data/fonts/default.otf", 144.0)
             extend {
                 drawer.shadeStyle = halfAngularGradient(ColorRGBa.RED, ColorRGBa.PINK, rotation = seconds * 18.0)
                 drawer.rectangle(80.0, 40.0, 200.0, 200.0)

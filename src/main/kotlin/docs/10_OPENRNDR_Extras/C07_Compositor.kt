@@ -290,7 +290,7 @@ fun main() {
                     layer {
                         // -- notice how we load the font inside the layer
                         // -- this only happens once
-                        val font = loadFont("data/IBMPlexMono-Bold.ttf", 112.0)
+                        val font = loadFont("data/fonts/default.otf", 112.0)
                         draw {
                             drawer.fill = ColorRGBa.WHITE
                             drawer.fontMap = font
@@ -356,7 +356,7 @@ fun main() {
                 layer {
                     // -- notice how we load the font inside the layer
                     // -- this only happens once
-                    val font = loadFont("data/IBMPlexMono-Bold.ttf", 112.0)
+                    val font = loadFont("data/fonts/default.otf", 112.0)
 
                     draw {
                         drawer.fill = ColorRGBa.WHITE
@@ -413,7 +413,7 @@ fun main() {
                 layer {
                     // -- notice how we load the font inside the layer
                     // -- this only happens once
-                    val font = loadFont("data/IBMPlexMono-Bold.ttf", 112.0)
+                    val font = loadFont("data/fonts/default.otf", 112.0)
                     draw {
                         drawer.fill = ColorRGBa.BLACK
                         drawer.fontMap = font

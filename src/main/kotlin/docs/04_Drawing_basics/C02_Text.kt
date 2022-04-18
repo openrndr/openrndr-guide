@@ -41,7 +41,7 @@ fun main() {
     @Code
     application {
         program {
-            val font = loadFont("data/IBMPlexMono-Bold.ttf", 48.0)
+            val font = loadFont("data/fonts/default.otf", 48.0)
             extend {
                 drawer.clear(ColorRGBa.PINK)
                 drawer.fontMap = font
@@ -75,7 +75,7 @@ fun main() {
             height = 578
         }
         program {
-            val font = loadFont("file:data/IBMPlexMono-Bold.ttf", 24.0)
+            val font = loadFont("data/fonts/default.otf", 24.0)
             extend {
                 drawer.clear(ColorRGBa.PINK)
                 drawer.fontMap = font
@@ -114,7 +114,7 @@ fun main() {
             height = 578
         }
         program {
-            val font = loadFont("file:data/IBMPlexMono-Bold.ttf", 24.0)
+            val font = loadFont("data/fonts/default.otf", 24.0)
             extend {
                 drawer.clear(ColorRGBa.PINK)
                 drawer.fontMap = font
@@ -150,7 +150,7 @@ fun main() {
             height = 578
         }
         program {
-            val font = loadFont("file:data/IBMPlexMono-Bold.ttf", 24.0)
+            val font = loadFont("data/fonts/default.otf", 24.0)
             extend {
                 drawer.clear(ColorRGBa.PINK)
                 drawer.fontMap = font
