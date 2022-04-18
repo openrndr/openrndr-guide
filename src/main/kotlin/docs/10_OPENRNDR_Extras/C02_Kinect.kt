@@ -124,7 +124,7 @@ fun main() {
 
     An example presenting these filters side by side:
 
-    ![kinect-colormaps](/media/kinect-colormaps.png)
+    ![kinect-colormaps](media/kinect-colormaps.png)
     """
 
     @Code.Block

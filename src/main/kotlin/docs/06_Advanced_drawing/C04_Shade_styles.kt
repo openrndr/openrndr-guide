@@ -228,6 +228,7 @@ fun main() {
     ---------------|-----------|------------
     `a_position`   | vec3      | the position
     `a_normal`     | vec3      | the normal
+    `a_color`      | vec3      | the color
     
     In this table we see the interpolated versions that are accessible in the fragment transform only.
     

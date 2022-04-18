@@ -44,6 +44,31 @@ fun main() {
 
     @Text
     """
+    ## Looping a video
+    
+    """
+
+    application {
+        program {
+            val videoPlayer = VideoPlayerFFMPEG.fromFile("data/video.mp4")
+            videoPlayer.play()
+
+            @Code.Block
+            run {
+                // Loop: restart when reaching the end
+                videoPlayer.ended.listen {
+                    videoPlayer.restart()
+                }
+
+                extend {
+                    videoPlayer.draw(drawer)
+                }
+            }
+        }
+    }
+
+    @Text
+    """
     ## Video from camera devices
 
     The `VideoPlayerFFMPEG` class can be used to get and display video data 
