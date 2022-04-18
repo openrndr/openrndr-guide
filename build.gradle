@@ -124,17 +124,12 @@ task publishDocs { task ->
     task.finalizedBy(gitPublishPush)
 }
 
-static String exec(String cmd) {
-    return ["/bin/bash", "-c", cmd].execute().text
-}
-
 static String getRepoLastVersion(String repo) {
-    return exec("git ls-remote --refs --tags $repo " +
-            "| sed -e 's/^.*refs\\/tags\\/v\\(.*\\)/\\1/g' " +
-            "| sort --version-sort " +
-            "| tail --lines=1 " +
-            "| tr -d '\n'"
-    )
+    def response = ["git", "ls-remote", "--refs", "--tags", repo].execute().text
+    return response.split("\n").collect {
+        def parts = it.split("refs/tags/v")
+        if(parts.length == 2) parts[1] else ""
+    }.findAll { it != "" }.last()
 }
 
 task publishExamples { task ->
