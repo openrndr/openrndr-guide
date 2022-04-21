@@ -34,8 +34,11 @@ val orxVersion = if (orxUseSnapshot) "0.5.1-SNAPSHOT" else "@orxVersion@"
 // orx-integral-image, orx-interval-tree, orx-jumpflood,orx-kdtree, orx-mesh-generators,orx-midi, orx-no-clear,
 // orx-noise, orx-obj, orx-olive
 
-val orxFeatures = setOf("orx-noise", "orx-midi", "orx-fx", "orx-compositor", "orx-panel", "orx-osc", "orx-shade-styles", "orx-image-fit", "orx-panel",
-        "orx-gui", "orx-poisson-fill", "orx-jumpflood")
+val orxFeatures = setOf(
+    "orx-noise", "orx-midi", "orx-fx", "orx-compositor",
+    "orx-panel", "orx-osc", "orx-shade-styles", "orx-image-fit", "orx-panel",
+    "orx-gui", "orx-poisson-fill", "orx-jumpflood"
+)
 
 repositories {
     mavenCentral()

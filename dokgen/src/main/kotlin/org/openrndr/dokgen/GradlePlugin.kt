@@ -135,7 +135,7 @@ open class RunExamplesTask @Inject constructor(
     }
 
 
-    // TODO: delete or explain why this is needed.
+    // TODO: Why this is needed?
     // Paths of exported media is specified in the .kt src files themselves
     @OutputDirectory
     val outputDirectory = File("media")
@@ -288,6 +288,9 @@ class GradlePlugin : Plugin<Project> {
             val sourceSets = project.property("sourceSets") as SourceSetContainer
             val mss = sourceSets.getByName("main")
 
+            // I think this line creates tasks
+            // `compileGeneratedExamplesKotlin` and
+            // `compileGeneratedExamplesJava`
             val gess = sourceSets.create("GeneratedExamples")
             gess.compileClasspath += mss.compileClasspath
             gess.runtimeClasspath += mss.runtimeClasspath
@@ -297,6 +300,12 @@ class GradlePlugin : Plugin<Project> {
             dokGenTask.group = PLUGIN_NAME
             dokGenTask.description = "Main task which runs other tasks"
 
+            // Next line produces this error:
+            // kotlin scripting plugin: applied in the non-supported environment
+            // (error received: Cannot query the value of task
+            // ':compileGeneratedExamplesKotlin' property
+            // 'sourceSetName$kotlin_gradle_plugin' because it has no value available.)
+            // More info at https://github.com/google/ksp/pull/693
             val compileKotlinTask = project.tasks.getByPath("compileGeneratedExamplesKotlin")
 
             (compileKotlinTask as KotlinCompile).apply {
