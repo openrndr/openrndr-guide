@@ -4,8 +4,6 @@ version '1.0-SNAPSHOT'
 import org.apache.tools.ant.filters.ReplaceTokens
 
 buildscript {
-    ext.kotlin_version = '1.6.20'
-
     repositories {
         mavenCentral()
         mavenLocal()
@@ -13,10 +11,9 @@ buildscript {
         maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        //classpath 'com.github.openrndr:dokgen:96e77e1cbb'
-        classpath 'org.openrndr:dokgen:2.0-SNAPSHOT'
-        classpath "org.ajoberstar:gradle-git-publish:3.0.0"
+        classpath libs.kotlin.gradle.plugin
+        classpath libs.gradle.git.publish
+        classpath libs.dokgen
     }
 }
 
@@ -31,8 +28,8 @@ compileKotlin {
 }
 
 sourceCompatibility = 1.8
-project.ext.openrndrVersion = "0.5.1-SNAPSHOT"
-project.ext.orxVersion = "0.5.1-SNAPSHOT"
+project.ext.openrndrVersion = libs.versions.openrndr.get()
+project.ext.orxVersion = libs.versions.orx.get()
 
 repositories {
     mavenCentral()
@@ -54,39 +51,15 @@ switch (org.gradle.internal.os.OperatingSystem.current()) {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1-native-mt'
-
-    testImplementation 'junit:junit:4.13.2'
-    implementation 'org.slf4j:slf4j-simple:1.7.36'
-
-    implementation "org.openrndr:openrndr-gl3:$openrndrVersion"
+    implementation libs.kotlin.stdlib
+    implementation libs.kotlinx.coroutines
+    testImplementation libs.junit
+    implementation libs.slf4j.simple
+    implementation libs.bundles.openrndr.core
+    implementation libs.bundles.openrndr.rest
     implementation "org.openrndr:openrndr-gl3-natives-$openrndrOS:$openrndrVersion"
-    implementation "org.openrndr:openrndr-core:$openrndrVersion"
-    implementation "org.openrndr:openrndr-svg:$openrndrVersion"
-    implementation "org.openrndr:openrndr-animatable:$openrndrVersion"
-    implementation "org.openrndr:openrndr-extensions:$openrndrVersion"
-    implementation "org.openrndr:openrndr-filter:$openrndrVersion"
-    implementation "org.openrndr:openrndr-ffmpeg:$openrndrVersion"
-
-    //implementation 'com.github.openrndr:dokgen:96e77e1cbb'
-    implementation 'org.openrndr:dokgen:2.0-SNAPSHOT'
-
-    implementation "org.openrndr.extra:orx-camera:$orxVersion"
-    implementation "org.openrndr.extra:orx-compositor:$orxVersion"
-    implementation "org.openrndr.extra:orx-fx:$orxVersion"
-    implementation "org.openrndr.extra:orx-gui:$orxVersion"
-    implementation "org.openrndr.extra:orx-image-fit:$orxVersion"
-    implementation "org.openrndr.extra:orx-jumpflood:$orxVersion"
-    implementation "org.openrndr.extra:orx-kinect-v1:$orxVersion"
-    implementation "org.openrndr.extra:orx-mesh-generators:$orxVersion"
-    implementation "org.openrndr.extra:orx-midi:$orxVersion"
-    implementation "org.openrndr.extra:orx-noise:$orxVersion"
-    implementation "org.openrndr.extra:orx-olive:$orxVersion"
-    implementation "org.openrndr.extra:orx-osc:$orxVersion"
-    implementation "org.openrndr.extra:orx-panel:$orxVersion"
-    implementation "org.openrndr.extra:orx-poisson-fill:$orxVersion"
-    implementation "org.openrndr.extra:orx-shade-styles:$orxVersion"
+    implementation libs.bundles.orx
+    implementation libs.dokgen
 }
 
 mainClassName = "TemplateProgramKt"
