@@ -1,0 +1,62 @@
+buildscript {
+    ext.openrndr_version = libs.versions.openrndr.get()
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath libs.kotlin.gradle.plugin
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'maven-publish'
+
+group 'org.openrndr'
+version '2.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    implementation libs.kotlin.stdlib
+    implementation libs.kotlin.compiler.embeddable
+    implementation gradleApi()
+    implementation libs.kotlin.gradle.plugin
+
+    compileOnly libs.bundles.openrndr.core
+
+    // assertion
+    testImplementation libs.kotlin.test
+    testImplementation libs.spek.dsl
+    testRuntimeOnly libs.spek.runner
+    testRuntimeOnly libs.kotlin.reflect
+}
+
+gradlePlugin {
+    plugins {
+        simplePlugin {
+            id = 'org.openrndr.dokgen-gradle'
+            implementationClass = 'org.openrndr.dokgen.GradlePlugin'
+        }
+    }
+}
+
+test {
+    useJUnitPlatform {
+        includeEngines 'spek2'
+    }
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
