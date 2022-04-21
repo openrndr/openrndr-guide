@@ -25,10 +25,10 @@ fun main() {
     Circles are filled with the color set in `Drawer.fill` and their stroke is set to `Drawer.stroke`. The width of the stroke follows `Drawer.strokeWeight`.
     """
 
-    @Media.Image "media/circle-001.png"
+    @Media.Image "media/circle-001.jpg"
 
     @Application
-    @ProduceScreenshot("media/circle-001.png")
+    @ProduceScreenshot("media/circle-001.jpg")
     @Code
     application {
         configure {
@@ -83,10 +83,10 @@ fun main() {
     @Text
     """## Drawing rectangles"""
 
-    @Media.Image "media/rectangle-001.png"
+    @Media.Image "media/rectangle-001.jpg"
 
     @Application
-    @ProduceScreenshot("media/rectangle-001.png")
+    @ProduceScreenshot("media/rectangle-001.jpg")
     @Code
     application {
         program {
@@ -150,10 +150,10 @@ fun main() {
 //        }
 //    }
 
-    @Media.Image "media/line-001.png"
+    @Media.Image "media/line-001.jpg"
 
     @Application
-    @ProduceScreenshot("media/line-001.png")
+    @ProduceScreenshot("media/line-001.jpg")
     @Code
     application {
         program {
@@ -197,10 +197,10 @@ fun main() {
     To draw a line strip one supplies a list of points between which line segments should be drawn.
     """
 
-    @Media.Image "media/line-002.png"
+    @Media.Image "media/line-002.jpg"
 
     @Application
-    @ProduceScreenshot("media/line-002.png")
+    @ProduceScreenshot("media/line-002.jpg")
     @Code
     application {
         program {

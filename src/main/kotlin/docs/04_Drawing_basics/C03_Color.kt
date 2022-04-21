@@ -86,10 +86,10 @@ fun main() {
     """
 
 
-    @Media.Image "media/color-001.png"
+    @Media.Image "media/color-001.jpg"
 
     @Application
-    @ProduceScreenshot("media/color-001.png")
+    @ProduceScreenshot("media/color-001.jpg")
     @Code
     application {
         @Exclude
@@ -120,10 +120,10 @@ fun main() {
     Using `ColorRGBa.opacify` colors can be made more or less opaque.
     """
 
-    @Media.Image "media/color-002.png"
+    @Media.Image "media/color-002.jpg"
 
     @Application
-    @ProduceScreenshot("media/color-002.png")
+    @ProduceScreenshot("media/color-002.jpg")
     @Code
     application {
         @Exclude
@@ -154,10 +154,10 @@ fun main() {
     """
 
 
-    @Media.Image "media/color-003.png"
+    @Media.Image "media/color-003.jpg"
 
     @Application
-    @ProduceScreenshot("media/color-003.png")
+    @ProduceScreenshot("media/color-003.jpg")
     @Code
     application {
         @Exclude
@@ -217,10 +217,10 @@ fun main() {
     XSV and XSL spaces is clearly visible.
     """
 
-    @Media.Image "media/color-004.png"
+    @Media.Image "media/color-004.jpg"
 
     @Application
-    @ProduceScreenshot("media/color-004.png")
+    @ProduceScreenshot("media/color-004.jpg")
     @Code
     application {
         configure {

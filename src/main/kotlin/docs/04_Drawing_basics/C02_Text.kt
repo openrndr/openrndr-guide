@@ -34,10 +34,10 @@ fun main() {
     draw the text.
     """
 
-    @Media.Image "media/text-001.png"
+    @Media.Image "media/text-001.jpg"
 
     @Application
-    @ProduceScreenshot("media/text-001.png")
+    @ProduceScreenshot("media/text-001.jpg")
     @Code
     application {
         program {
@@ -64,10 +64,10 @@ fun main() {
     Its use is easiest demonstrated through an example:
     """
 
-    @Media.Image "media/text-002.png"
+    @Media.Image "media/text-002.jpg"
 
     @Application
-    @ProduceScreenshot("media/text-002.png")
+    @ProduceScreenshot("media/text-002.jpg")
     @Code
     application {
         configure {
@@ -103,10 +103,10 @@ fun main() {
     text is set on two rows.
     """
 
-    @Media.Image "media/text-003.png"
+    @Media.Image "media/text-003.jpg"
 
     @Application
-    @ProduceScreenshot("media/text-003.png")
+    @ProduceScreenshot("media/text-003.jpg")
     @Code
     application {
         configure {
@@ -142,7 +142,7 @@ fun main() {
     @Media.Video "media/text-004.mp4"
 
     @Application
-    @ProduceVideo("media/text-004.mp4", 15.0, 60)
+    @ProduceVideo("media/text-004.mp4", 6.28318, 60)
     @Code
     application {
         configure {

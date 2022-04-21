@@ -47,10 +47,10 @@ fun main() {
     As a quick first step we override the output to red in the following snippet
     """
 
-    @Media.Image "media/shadestyles-001.png"
+    @Media.Image "media/shadestyles-001.jpg"
 
     @Application
-    @ProduceScreenshot("media/shadestyles-001.png")
+    @ProduceScreenshot("media/shadestyles-001.jpg")
     @Code
     application {
         @Exclude
@@ -78,10 +78,10 @@ fun main() {
     a wavy pattern by using cosines and the screen position.
     """
 
-    @Media.Image "media/shadestyles-002.png"
+    @Media.Image "media/shadestyles-002.jpg"
 
     @Application
-    @ProduceScreenshot("media/shadestyles-002.png")
+    @ProduceScreenshot("media/shadestyles-002.jpg")
     @Code
     application {
         @Exclude
@@ -113,7 +113,7 @@ fun main() {
     @Media.Video "media/shadestyles-003.mp4"
 
     @Application
-    @ProduceVideo("media/shadestyles-003.mp4", 10.0, 60)
+    @ProduceVideo("media/shadestyles-003.mp4", 6.28318, 60)
     @Code
     application {
         @Exclude
@@ -150,7 +150,7 @@ fun main() {
     @Media.Video "media/shadestyles-example-001.mp4"
 
     @Application
-    @ProduceVideo("media/shadestyles-example-001.mp4", 10.0, 60)
+    @ProduceVideo("media/shadestyles-example-001.mp4", 6.28318, 60)
     @Code
     application {
         @Exclude

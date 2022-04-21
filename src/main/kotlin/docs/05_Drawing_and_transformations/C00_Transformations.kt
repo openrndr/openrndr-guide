@@ -98,7 +98,7 @@ fun main() {
     @Media.Video "media/transformations-003.mp4"
 
     @Application
-    @ProduceVideo("media/transformations-003.mp4", 7.7, 60, 8)
+    @ProduceVideo("media/transformations-003.mp4", 3.0, 60, 8)
     @Code
     application {
         configure {
@@ -113,7 +113,7 @@ fun main() {
                 // -- translate
                 drawer.translate(width / 2.0, height / 2.0)
                 // -- rotate
-                drawer.rotate(seconds * 10.0)
+                drawer.rotate(seconds * 30.0)
                 // -- rectangle around the origin
                 drawer.rectangle(-50.0, -50.0, 100.0, 100.0)
             }
@@ -132,7 +132,7 @@ fun main() {
     @Media.Video "media/transformations-004.mp4"
 
     @Application
-    @ProduceVideo("media/transformations-004.mp4", 7.7, 60, 8)
+    @ProduceVideo("media/transformations-004.mp4", 6.28318, 60, 8)
     @Code
     application {
         configure {
@@ -147,7 +147,7 @@ fun main() {
                 // -- translate to center of screen
                 drawer.translate(width / 2.0, height / 2.0)
                 // -- scale around origin
-                drawer.scale(cos(seconds * Math.PI * 2.0) + 2.0)
+                drawer.scale(cos(seconds) + 2.0)
                 // -- rectangle around the origin
                 drawer.rectangle(-50.0, -50.0, 100.0, 100.00)
             }
@@ -162,7 +162,7 @@ fun main() {
     @Media.Video "media/transformations-005.mp4"
 
     @Application
-    @ProduceVideo("media/transformations-005.mp4", 7.7, 60, 8)
+    @ProduceVideo("media/transformations-005.mp4", 6.0, 60, 8)
     @Code
     application {
         configure {
@@ -177,7 +177,7 @@ fun main() {
                 // -- translate to center of screen
                 drawer.translate(width / 2.0, height / 2.0)
 
-                drawer.rotate(20.00 + seconds * 10.0)
+                drawer.rotate(20.00 + seconds * 60.0)
                 // -- rectangle around the origin
                 drawer.rectangle(-50.0, -50.0, 100.0, 100.0)
 
@@ -191,7 +191,7 @@ fun main() {
     @Media.Video "media/transformations-006.mp4"
 
     @Application
-    @ProduceVideo("media/transformations-006.mp4", 7.7, 60, 8)
+    @ProduceVideo("media/transformations-006.mp4", 6.0, 60, 8)
     @Code
     application {
         configure {
@@ -206,13 +206,13 @@ fun main() {
                 // -- translate to center of screen
                 drawer.translate(width / 2.0, height / 2.0)
 
-                drawer.rotate(seconds * 10.0)
+                drawer.rotate(seconds * 60.0)
                 // -- rectangle around the origin
                 drawer.rectangle(-50.0, -50.0, 100.0, 100.0)
 
                 // -- draw a second rectangle, sharing the rotation of the first rectangle but with an offset
                 drawer.translate(150.0, 0.0)
-                drawer.rotate(seconds * 20.0)
+                drawer.rotate(seconds * 15.0)
                 drawer.rectangle(-50.0, -50.0, 100.0, 100.00)
             }
         }

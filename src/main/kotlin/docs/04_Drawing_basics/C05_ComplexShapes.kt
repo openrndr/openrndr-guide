@@ -44,12 +44,13 @@ fun main() {
     * `cursor` a `Vector2` instance representing the current position
     * `anchor` a `Vector2` instance representing the current anchor
     
-    Let's create a simple `Contour` and draw it. The following program shows how to use the contour builder to create a triangular contour."""
+    Let's create a simple `Contour` and draw it. The following program shows how to use the contour builder to create a triangular contour.
+    """
 
-    @Media.Image "media/shapes-001.png"
+    @Media.Image "media/shapes-001.jpg"
 
     @Application
-    @ProduceScreenshot("media/shapes-001.png")
+    @ProduceScreenshot("media/shapes-001.jpg")
     @Code
     application {
         configure {
@@ -79,10 +80,10 @@ fun main() {
     _outline_ of the shape, and one for the _hole_ in the shape
     """
 
-    @Media.Image "media/shapes-002.png"
+    @Media.Image "media/shapes-002.jpg"
 
     @Application
-    @ProduceScreenshot("media/shapes-002.png")
+    @ProduceScreenshot("media/shapes-002.jpg")
     @Code
     application {
         configure {
@@ -122,21 +123,21 @@ fun main() {
     Some of the OPENRNDR primitives have `.shape` and
     `.contour` properties that help in creating shapes quickly.
 
-     * `LineSegment.contour` and `LineSegment.shape`
-     * `Rectangle.contour` and `Rectangle.shape`
-     * `Circle.contour` and `Circle.shape`
+    * `LineSegment.contour` and `LineSegment.shape`
+    * `Rectangle.contour` and `Rectangle.shape`
+    * `Circle.contour` and `Circle.shape`
     
     ## Shape Boolean-operations
     
-    Boolean-operations can be performed on shapes using the `compound {}` builder. There are three kinds
-of compounds: _union_, _difference_ and _intersection_, all three of them are shown in the example below.
-
+    Boolean-operations can be performed on shapes using the `compound {}` builder. 
+    There are three kinds of compounds: _union_, _difference_ and _intersection_, 
+    all three of them are shown in the example below.
     """
 
-    @Media.Image "media/shapes-003.png"
+    @Media.Image "media/shapes-003.jpg"
 
     @Application
-    @ProduceScreenshot("media/shapes-003.png")
+    @ProduceScreenshot("media/shapes-003.jpg")
     @Code
     application {
         configure {
@@ -185,10 +186,10 @@ of compounds: _union_, _difference_ and _intersection_, all three of them are sh
     two _intersections_.
     """
 
-    @Media.Image "media/shapes-004.png"
+    @Media.Image "media/shapes-004.jpg"
 
     @Application
-    @ProduceScreenshot("media/shapes-004.png")
+    @ProduceScreenshot("media/shapes-004.jpg")
     @Code
     application {
         configure {
@@ -299,7 +300,7 @@ of compounds: _union_, _difference_ and _intersection_, all three of them are sh
     @Media.Video "media/shapes-101.mp4"
 
     @Application
-    @ProduceVideo("media/shapes-101.mp4", 10.0)
+    @ProduceVideo("media/shapes-101.mp4", 6.28318)
     @Code
     application {
         configure {
@@ -315,7 +316,7 @@ of compounds: _union_, _difference_ and _intersection_, all three of them are sh
                 drawer.stroke = ColorRGBa.PINK
                 drawer.contour(c)
                 for (i in 1 until 10) {
-                    val o = c.offset(cos(seconds * 0.5 + 0.5) * i * 10.0, SegmentJoin.BEVEL)
+                    val o = c.offset(cos(seconds + 0.5) * i * 10.0, SegmentJoin.BEVEL)
                     drawer.contour(o)
                 }
             }
@@ -332,7 +333,7 @@ of compounds: _union_, _difference_ and _intersection_, all three of them are sh
     @Media.Video "media/shapes-100.mp4"
 
     @Application
-    @ProduceVideo("media/shapes-100.mp4", 10.00)
+    @ProduceVideo("media/shapes-100.mp4", 6.28318)
     @Code
     application {
         configure {
@@ -350,7 +351,7 @@ of compounds: _union_, _difference_ and _intersection_, all three of them are sh
                 drawer.lineJoin = LineJoin.ROUND
                 drawer.contour(c)
                 for (i in -8 .. 8) {
-                    val o = c.offset(i * 10.0 * cos(seconds * 0.5 + 0.5))
+                    val o = c.offset(i * 10.0 * cos(seconds + 0.5))
                     drawer.contour(o)
                 }
             }

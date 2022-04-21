@@ -17,7 +17,6 @@ import org.openrndr.extra.jumpfill.DistanceField
 import org.openrndr.extra.jumpfill.fx.InnerGlow
 import org.openrndr.extra.jumpfill.fx.OuterGlow
 
-import kotlin.math.PI
 import kotlin.math.cos
 
 
@@ -39,7 +38,7 @@ fun main() {
     @Media.Video "media/distance-fields-001.mp4"
 
     @Application
-    @ProduceVideo("media/distance-fields-001.mp4", 10.0)
+    @ProduceVideo("media/distance-fields-001.mp4", 6.28318)
     @Code
     application {
         program {
@@ -59,7 +58,7 @@ fun main() {
                         drawer.image(image)
                     }
                     post(DistanceField()) {
-                        threshold = cos(seconds * PI * 0.25) * 0.5 + 0.5
+                        threshold = cos(seconds) * 0.5 + 0.5
                         distanceScale = 0.008
                     }
                 }
@@ -79,7 +78,7 @@ fun main() {
     @Media.Video "media/distance-fields-101.mp4"
 
     @Application
-    @ProduceVideo("media/distance-fields-101.mp4")
+    @ProduceVideo("media/distance-fields-101.mp4", 6.28318)
     @Code
     application {
         program {
@@ -95,7 +94,7 @@ fun main() {
                         drawer.circle(width / 2.0, height / 2.0, 200.0)
                     }
                     post(OuterGlow()) {
-                        this.width = (cos(seconds * PI) * 0.5 + 0.5) * 100.0
+                        this.width = (cos(seconds) * 0.5 + 0.5) * 100.0
                     }
                 }
             }
@@ -115,7 +114,7 @@ fun main() {
     @Media.Video "media/distance-fields-102.mp4"
 
     @Application
-    @ProduceVideo("media/distance-fields-102.mp4")
+    @ProduceVideo("media/distance-fields-102.mp4", 6.28318)
     @Code
     application {
         program {
@@ -131,7 +130,7 @@ fun main() {
                         drawer.circle(width / 2.0, height / 2.0, 200.0)
                     }
                     post(InnerGlow()) {
-                        this.width = (cos(seconds * PI) * 0.5 + 0.5) * 100.0
+                        this.width = (cos(seconds) * 0.5 + 0.5) * 100.0
                     }
                 }
             }
@@ -148,7 +147,7 @@ fun main() {
     @Media.Video "media/distance-fields-002.mp4"
 
     @Application
-    @ProduceVideo("media/distance-fields-002.mp4")
+    @ProduceVideo("media/distance-fields-002.mp4", 6.28318)
     @Code
     application {
         program {
@@ -169,7 +168,7 @@ fun main() {
                         drawer.image(image)
                     }
                     post(DistanceField()) {
-                        threshold = cos(seconds * PI * 0.25) * 0.5 + 0.5
+                        threshold = cos(seconds) * 0.5 + 0.5
                         distanceScale = 1.0
                     }
                 }

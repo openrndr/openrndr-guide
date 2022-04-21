@@ -19,7 +19,6 @@ import org.openrndr.extra.fx.distort.VerticalWave
 import org.openrndr.extra.fx.shadow.DropShadow
 import org.openrndr.shape.Rectangle
 import org.openrndr.writer
-import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -119,7 +118,7 @@ fun main() {
     """
 
     @Application
-    @ProduceScreenshot("media/compositor-001.png")
+    @ProduceScreenshot("media/compositor-001.jpg")
     @Code
     application {
         program {
@@ -150,7 +149,7 @@ fun main() {
     This produces:
     """
 
-    @Media.Image "media/compositor-001.png"
+    @Media.Image "media/compositor-001.jpg"
 
 
     @Text
@@ -168,7 +167,7 @@ fun main() {
     """
 
     @Application
-    @ProduceScreenshot("media/compositor-002.png")
+    @ProduceScreenshot("media/compositor-002.jpg")
     @Code
     application {
         program {
@@ -205,7 +204,7 @@ fun main() {
     The output:
     """
 
-    @Media.Image "media/compositor-002.png"
+    @Media.Image "media/compositor-002.jpg"
 
     @Text
     """
@@ -220,7 +219,7 @@ fun main() {
     """
 
     @Application
-    @ProduceVideo("media/compositor-003.mp4")
+    @ProduceVideo("media/compositor-003.mp4", 6.28318)
     @Code
     application {
         program {
@@ -229,7 +228,7 @@ fun main() {
                     drawer.fill = ColorRGBa.PINK
                     drawer.stroke = null
                     drawer.circle(
-                        width / 2.0 + sin(seconds * PI * 0.5) * 100.0,
+                        width / 2.0 + sin(seconds * 2) * 100.0,
                         height / 2.0,
                         175.0
                     )
@@ -244,14 +243,14 @@ fun main() {
                         drawer.stroke = null
                         drawer.circle(
                             width / 2.0,
-                            height / 2.0 + cos(seconds * PI * 0.5) * 100.0,
+                            height / 2.0 + cos(seconds * 2) * 100.0,
                             100.0
                         )
                     }
                     post(ApproximateGaussianBlur()) {
                         // -- this is actually a function that is called for every draw
                         window = 25
-                        sigma = cos(seconds * Math.PI * 0.25) * 10.0 + 10.01
+                        sigma = cos(seconds) * 10.0 + 10.01
                     }
                 }
             }
@@ -276,7 +275,7 @@ fun main() {
     @Media.Video "media/compositor-004.mp4"
 
     @Application
-    @ProduceVideo("media/compositor-004.mp4")
+    @ProduceVideo("media/compositor-004.mp4", 6.28318)
     @Code
     application {
         program {
@@ -297,7 +296,7 @@ fun main() {
                             val message = "HELLO WORLD"
                             writer {
                                 val w = textWidth(message)
-                                cursor = Cursor((width - w) / 2.0, height / 2.0 + cos(seconds * PI * 0.2) * 200.0)
+                                cursor = Cursor((width - w) / 2.0, height / 2.0 + cos(seconds) * 200.0)
                                 text(message)
                             }
                         }
@@ -314,7 +313,7 @@ fun main() {
                         }
                         draw {
                             // -- we modify the image opacity as a demonstration
-                            drawer.drawStyle.colorMatrix = tint(ColorRGBa.WHITE.opacify(cos(seconds * PI)))
+                            drawer.drawStyle.colorMatrix = tint(ColorRGBa.WHITE.opacify(cos(seconds * 4)))
                             drawer.image(image)
                         }
                     }
@@ -337,7 +336,7 @@ fun main() {
     @Media.Video "media/compositor-005.mp4"
 
     @Application
-    @ProduceVideo("media/compositor-005.mp4")
+    @ProduceVideo("media/compositor-005.mp4", 6.28318)
     @Code
     application {
         program {
@@ -365,14 +364,14 @@ fun main() {
                         writer {
                             box = Rectangle(0.0, 0.0, width * 1.0, height * 1.0)
                             val w = textWidth(message)
-                            cursor = Cursor((width - w) / 2.0, height / 2.0 + cos(seconds * PI * 0.2) * 200.0)
+                            cursor = Cursor((width - w) / 2.0, height / 2.0 + cos(seconds) * 200.0)
                             text(message)
                         }
                     }
                     post(DropShadow()) {
                         window = 10
                         gain = 1.0
-                        yShift = -sin(seconds * PI * 0.2) * 8.0
+                        yShift = -sin(seconds) * 8.0
                     }
                 }
             }
@@ -396,7 +395,7 @@ fun main() {
     @Media.Video "media/compositor-006.mp4"
 
     @Application
-    @ProduceVideo("media/compositor-006.mp4")
+    @ProduceVideo("media/compositor-006.mp4", 6.28318)
     @Code
     application {
         program {
@@ -427,21 +426,21 @@ fun main() {
                     }
                     // -- this effect is processed first
                     post(HorizontalWave()) {
-                        amplitude = cos(seconds * PI) * 0.1
-                        frequency = sin(seconds * PI * 0.5) * 4
+                        amplitude = cos(seconds * 3) * 0.1
+                        frequency = sin(seconds * 2) * 4
                         segments = (1 + Math.random() * 20).toInt()
                         phase = seconds
                     }
                     // -- this is the second effect
                     post(VerticalWave()) {
-                        amplitude = sin(seconds * PI) * 0.1
-                        frequency = cos(seconds * PI * 0.5) * 4
+                        amplitude = sin(seconds * 3) * 0.1
+                        frequency = cos(seconds * 2) * 4
                         segments = (1 + Math.random() * 20).toInt()
                         phase = seconds
                     }
                     // -- and this effect is processed last
                     post(ApproximateGaussianBlur()) {
-                        sigma = cos(seconds * 0.5 * PI) * 5.0 + 5.01
+                        sigma = cos(seconds * 2) * 5.0 + 5.01
                         window = 25
                     }
                 }

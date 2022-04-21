@@ -52,7 +52,7 @@ fun main() {
     }
     ```"""
 
-    @Media.Image "media/compute-shaders-001.png"
+    @Media.Image "media/compute-shaders-001.jpg"
 
     @Text
     """
@@ -70,7 +70,7 @@ fun main() {
 
 
     @Application
-    @ProduceScreenshot("media/compute-shaders-001.png")
+    @ProduceScreenshot("media/compute-shaders-001.jpg")
     @Code
     application {
         program {

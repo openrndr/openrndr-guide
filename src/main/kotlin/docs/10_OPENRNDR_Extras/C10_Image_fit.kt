@@ -13,7 +13,6 @@ import org.openrndr.draw.loadImage
 import org.openrndr.extras.imageFit.FitMethod
 import org.openrndr.extras.imageFit.imageFit
 
-import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -39,13 +38,13 @@ fun main() {
     @Media.Video "media/image-fit-001.mp4"
 
     @Application
-    @ProduceVideo("media/image-fit-001.mp4")
+    @ProduceVideo("media/image-fit-001.mp4", 6.28318)
     @Code
     application {
         program {
             val image = loadImage("data/images/cheeta.jpg")
             extend {
-                val margin = cos(seconds * PI) * 50.0 + 50.0
+                val margin = cos(seconds) * 50.0 + 50.0
                 drawer.imageFit(image, 20.0, 20.0 + margin / 2, width - 40.0, height - 40.0 - margin, fitMethod = FitMethod.Contain)
                 // -- illustrate the placement rectangle
                 drawer.fill = null
@@ -63,7 +62,7 @@ fun main() {
     @Media.Video "media/image-fit-002.mp4"
 
     @Application
-    @ProduceVideo("media/image-fit-002.mp4")
+    @ProduceVideo("media/image-fit-002.mp4", 6.28318)
     @Code
     application {
         program {
@@ -87,15 +86,15 @@ fun main() {
     @Media.Video "media/image-fit-101.mp4"
 
     @Application
-    @ProduceVideo("media/image-fit-101.mp4")
+    @ProduceVideo("media/image-fit-101.mp4", 6.28318)
     @Code
     application {
         program {
             val image = loadImage("data/images/cheeta.jpg")
             extend {
                 // -- calculate dynamic margins
-                val xm = cos(seconds * PI) * 50.0 + 50.0
-                val ym = sin(seconds * PI) * 50.0 + 50.0
+                val xm = cos(seconds) * 50.0 + 50.0
+                val ym = sin(seconds) * 50.0 + 50.0
 
                 drawer.imageFit(image, 20.0 + xm / 2.0, 20.0 + ym / 2, width - 40.0 - xm, height - 40.0 - ym)
 
@@ -115,7 +114,7 @@ fun main() {
     """
 
     @Application
-    @ProduceVideo("media/image-fit-102.mp4")
+    @ProduceVideo("media/image-fit-102.mp4", 6.28318)
     @Code
     application {
         program {

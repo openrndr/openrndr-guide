@@ -42,7 +42,7 @@ fun main() {
     @Media.Video "media/poisson-fills-001.mp4"
 
     @Application
-    @ProduceVideo("media/poisson-fills-001.mp4")
+    @ProduceVideo("media/poisson-fills-001.mp4", 6.28318)
     @Code
     application {
         @Exclude
@@ -113,7 +113,7 @@ fun main() {
     @Media.Video "media/poisson-fills-002.mp4"
 
     @Application
-    @ProduceVideo("media/poisson-fills-002.mp4")
+    @ProduceVideo("media/poisson-fills-002.mp4", 6.28318)
     @Code
     application {
         @Exclude
@@ -160,7 +160,7 @@ fun main() {
     @Media.Video "media/poisson-fills-101.mp4"
 
     @Application
-    @ProduceVideo("media/poisson-fills-101.mp4")
+    @ProduceVideo("media/poisson-fills-101.mp4", 6.28318)
     @Code
     application {
         @Exclude
@@ -198,7 +198,7 @@ fun main() {
     @Media.Video "media/poisson-fills-102.mp4"
 
     @Application
-    @ProduceVideo("media/poisson-fills-102.mp4")
+    @ProduceVideo("media/poisson-fills-102.mp4", 6.28318)
     @Code
     application {
         @Exclude

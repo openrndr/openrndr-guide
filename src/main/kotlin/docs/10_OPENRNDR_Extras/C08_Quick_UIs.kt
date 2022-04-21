@@ -22,7 +22,6 @@ import org.openrndr.extra.parameters.DoubleParameter
 
 import org.openrndr.extra.compositor.draw
 import org.openrndr.extra.gui.addTo
-import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -63,7 +62,7 @@ fun main() {
     """
 
     @Application
-    @ProduceScreenshot("media/quick-ui-001.png")
+    @ProduceScreenshot("media/quick-ui-001.jpg")
     @Code
     application {
         @Exclude
@@ -78,7 +77,7 @@ fun main() {
         }
     }
 
-    @Media.Image "media/quick-ui-001.png"
+    @Media.Image "media/quick-ui-001.jpg"
 
     @Text 
     """
@@ -96,7 +95,7 @@ fun main() {
     """
 
     @Application
-    @ProduceVideo("media/quick-ui-003.mp4", 10.0, 60, 8)
+    @ProduceVideo("media/quick-ui-003.mp4", 6.28318, 60, 8)
     @Code
     application {
         @Exclude
@@ -136,8 +135,8 @@ fun main() {
             extend {
                 @Exclude
                 run {
-                    settings.x = cos(PI * seconds) * 100.0 + 385.0
-                    settings.y = sin(PI * seconds) * 100.0 + 250.0
+                    settings.x = cos(seconds) * 100.0 + 385.0
+                    settings.y = sin(seconds) * 100.0 + 250.0
                 }
 
                 // -- use our settings
@@ -170,7 +169,7 @@ fun main() {
     """
 
     @Application
-    @ProduceVideo("media/quick-ui-004.mp4", 10.0, 60, 8)
+    @ProduceVideo("media/quick-ui-004.mp4", 6.28318, 60, 8)
     @Code
     application {
         @Exclude
@@ -207,10 +206,10 @@ fun main() {
             extend {
                 @Exclude
                 run {
-                    settings.x = cos(PI * seconds) * 100.0 + 385.0
-                    settings.y = sin(PI * seconds) * 100.0 + 250.0
+                    settings.x = cos(seconds * 2) * 100.0 + 385.0
+                    settings.y = sin(seconds * 2) * 100.0 + 250.0
                     blur.window = 25
-                    blur.sigma = cos(PI * seconds * 0.5) * 10.0 + 10.1
+                    blur.sigma = cos(seconds * 0.5) * 10.0 + 10.1
                 }
                 drawer.isolatedWithTarget(rt) {
                     drawer.clear(ColorRGBa.BLACK)
@@ -241,7 +240,7 @@ fun main() {
     """
 
     @Application
-    @ProduceVideo("media/quick-ui-005.mp4")
+    @ProduceVideo("media/quick-ui-005.mp4", 6.28318)
     @Code
     application {
         @Exclude
@@ -304,7 +303,7 @@ fun main() {
                     }.addTo(gui, "Blue layer")
                     // -- add post to layer and sidebar
                     post(gui.add(ApproximateGaussianBlur())) {
-                        sigma = sin(seconds * PI) * 10.0 + 10.01
+                        sigma = sin(seconds) * 10.0 + 10.01
                         window = 25
                     }
                 }
@@ -313,7 +312,7 @@ fun main() {
             extend {
                 @Exclude
                 run {
-                    settings.separation = cos(seconds * PI) * 100.0
+                    settings.separation = cos(seconds) * 100.0
                 }
                 composite.draw(drawer)
             }
@@ -338,6 +337,7 @@ fun main() {
     changes by default, so nothing jumps around. 
 
     In the case of using `orx-gui` from an olive script (`live.kts`) it looks like this
+    
     ```kotlin
     @file:Suppress("UNUSED_LAMBDA_EXPRESSION")
     import org.openrndr.Program

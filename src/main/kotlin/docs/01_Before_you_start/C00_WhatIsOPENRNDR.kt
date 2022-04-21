@@ -35,7 +35,7 @@ fun main() {
     @Media.Video "media/what-is-001.mp4"
 
     @Application
-    @ProduceVideo("media/what-is-001.mp4",10.0)
+    @ProduceVideo("media/what-is-001.mp4",6.28318)
     @Code
     application {
         @Exclude

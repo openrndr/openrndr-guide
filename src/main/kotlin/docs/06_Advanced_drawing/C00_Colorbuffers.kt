@@ -68,7 +68,7 @@ fun main() {
 
     @Code.Block
     run {
-        val cb = loadImage("data/images/pm5544.png")
+        val cb = loadImage("data/images/pm5544.jpg")
     }
 
     @Text 
@@ -82,7 +82,7 @@ fun main() {
     @Code.Block
     run {
         val cb = colorBuffer(640, 480)
-        cb.saveToFile(File("output.png"))
+        cb.saveToFile(File("output.jpg"))
     }
 
     @Text 

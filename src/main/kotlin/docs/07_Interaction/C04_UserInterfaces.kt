@@ -40,10 +40,10 @@ fun main() {
     button one would do the following:
     """
 
-    @Media.Image "media/ui-001.png"
+    @Media.Image "media/ui-001.jpg"
 
     @Application
-    @ProduceScreenshot("media/ui-001.png")
+    @ProduceScreenshot("media/ui-001.jpg")
     @Code
     application {
         @Exclude
@@ -81,10 +81,10 @@ fun main() {
     style sheet is used to color a button pink.
     """
 
-    @Media.Image "media/ui-002.png"
+    @Media.Image "media/ui-002.jpg"
 
     @Application
-    @ProduceScreenshot("media/ui-002.png")
+    @ProduceScreenshot("media/ui-002.jpg")
     @Code
     application {
         @Exclude
@@ -181,10 +181,10 @@ fun main() {
     determined by the label contents.
     """
 
-    @Media.Image "media/ui-006.png"
+    @Media.Image "media/ui-006.jpg"
 
     @Application
-    @ProduceScreenshot("media/ui-006.png")
+    @ProduceScreenshot("media/ui-006.jpg")
     @Code
     application {
         @Exclude
@@ -227,10 +227,10 @@ fun main() {
     * `valueChanged` - emitted when the slider value has changed
     """
 
-    @Media.Image "media/ui-007.png"
+    @Media.Image "media/ui-007.jpg"
 
     @Application
-    @ProduceScreenshot("media/ui-007.png")
+    @ProduceScreenshot("media/ui-007.jpg")
     @Code
     application {
         @Exclude
@@ -271,10 +271,10 @@ fun main() {
     * `valueChanged` - emitted when a color is picked
     """
 
-    @Media.Image "media/ui-008.png"
+    @Media.Image "media/ui-008.jpg"
 
     @Application
-    @ProduceScreenshot("media/ui-008.png")
+    @ProduceScreenshot("media/ui-008.jpg")
     @Code
     application {
         @Exclude
@@ -314,10 +314,10 @@ fun main() {
     * `valueChanged` - emitted when an option is picked
     """
 
-    @Media.Image "media/ui-009.png"
+    @Media.Image "media/ui-009.jpg"
 
     @Application
-    @ProduceScreenshot("media/ui-009.png")
+    @ProduceScreenshot("media/ui-009.jpg")
     @Code
     application {
         @Exclude

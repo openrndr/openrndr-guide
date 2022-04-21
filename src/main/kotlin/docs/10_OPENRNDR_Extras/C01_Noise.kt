@@ -69,10 +69,10 @@ fun main() {
         val v4 = Vector4.uniformRing(0.0, 300.0)
     }
 
-    @Media.Image "media/orx-noise-001.png"
+    @Media.Image "media/orx-noise-001.jpg"
 
     @Application
-    @ProduceScreenshot("media/orx-noise-001.png")
+    @ProduceScreenshot("media/orx-noise-001.jpg")
     @Code
     application {
         @Exclude
@@ -96,10 +96,10 @@ fun main() {
     ## Perlin noise
     """
 
-    @Media.Image "media/orx-noise-002.png"
+    @Media.Image "media/orx-noise-002.jpg"
 
     @Application
-    @ProduceScreenshot("media/orx-noise-002.png")
+    @ProduceScreenshot("media/orx-noise-002.jpg")
     @Code
     application {
         @Exclude
@@ -126,10 +126,10 @@ fun main() {
     ## Value noise
     """
 
-    @Media.Image "media/orx-noise-003.png"
+    @Media.Image "media/orx-noise-003.jpg"
 
     @Application
-    @ProduceScreenshot("media/orx-noise-003.png")
+    @ProduceScreenshot("media/orx-noise-003.jpg")
     @Code
     application {
         @Exclude
@@ -156,10 +156,10 @@ fun main() {
     ## Simplex noise
     """
 
-    @Media.Image "media/orx-noise-004.png"
+    @Media.Image "media/orx-noise-004.jpg"
 
     @Application
-    @ProduceScreenshot("media/orx-noise-004.png")
+    @ProduceScreenshot("media/orx-noise-004.jpg")
     @Code
     application {
         @Exclude
@@ -318,10 +318,10 @@ fun main() {
     `premultipliedAlpha` | `true`                        | Outputs premultiplied alpha if true                
     """
 
-    @Media.Image "media/orx-noise-filter-001.png"
+    @Media.Image "media/orx-noise-filter-001.jpg"
 
     @Application
-    @ProduceScreenshot("media/orx-noise-filter-001.png")
+    @ProduceScreenshot("media/orx-noise-filter-001.jpg")
     @Code
     application {
         @Exclude
@@ -401,10 +401,10 @@ fun main() {
     `premultipliedAlpha` | `true`                        | Outputs premultiplied alpha if true                
     """
 
-    @Media.Image "media/orx-noise-filter-002.png"
+    @Media.Image "media/orx-noise-filter-002.jpg"
 
     @Application
-    @ProduceScreenshot("media/orx-noise-filter-002.png")
+    @ProduceScreenshot("media/orx-noise-filter-002.jpg")
     @Code
     application {
         @Exclude
@@ -437,10 +437,10 @@ fun main() {
     `premultipliedAlpha` | `true`                        | Outputs premultiplied alpha if true                
     """
 
-    @Media.Image "media/orx-noise-filter-003.png"
+    @Media.Image "media/orx-noise-filter-003.jpg"
 
     @Application
-    @ProduceScreenshot("media/orx-noise-filter-003.png")
+    @ProduceScreenshot("media/orx-noise-filter-003.jpg")
     @Code
     application {
         @Exclude
@@ -478,10 +478,10 @@ fun main() {
     `premultipliedAlpha` | `true`                        | Outputs premultiplied alpha if true                
     """
 
-    @Media.Image "media/orx-noise-filter-004.png"
+    @Media.Image "media/orx-noise-filter-004.jpg"
 
     @Application
-    @ProduceScreenshot("media/orx-noise-filter-004.png")
+    @ProduceScreenshot("media/orx-noise-filter-004.jpg")
     @Code
     application {
         @Exclude

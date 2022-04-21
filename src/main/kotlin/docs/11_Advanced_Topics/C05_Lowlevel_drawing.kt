@@ -62,10 +62,10 @@ fun main() {
     a single triangle.        
     """
 
-    @Media.Image "media/lowlevel-drawing-001.png"
+    @Media.Image "media/lowlevel-drawing-001.jpg"
 
     @Application
-    @ProduceScreenshot("media/lowlevel-drawing-001.png", 8)
+    @ProduceScreenshot("media/lowlevel-drawing-001.jpg", 8)
     @Code
     application {
         @Exclude

@@ -22,7 +22,7 @@ fun main() {
 
     ```
     dependencies {
-        compile 'org.slf4j:slf4j-simple:1.7.5'
+        compile 'org.slf4j:slf4j-simple:1.7.36'
     }
     ```
     

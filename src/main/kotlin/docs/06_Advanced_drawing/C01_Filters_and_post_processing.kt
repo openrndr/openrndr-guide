@@ -28,7 +28,7 @@ fun main() {
     @Media.Video "media/filters-001.mp4"
 
     @Application
-    @ProduceVideo("media/filters-001.mp4", 10.00, 60)
+    @ProduceVideo("media/filters-001.mp4", 6.28318, 60)
     @Code
     application {
         configure {
@@ -86,10 +86,10 @@ fun main() {
     noise filter.
     """
 
-    @Media.Image "media/filters-002.png"
+    @Media.Image "media/filters-002.jpg"
 
     @Application
-    @ProduceScreenshot("media/filters-002.png")
+    @ProduceScreenshot("media/filters-002.jpg")
     @Code
     application {
         val noiseShader = """

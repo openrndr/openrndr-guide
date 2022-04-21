@@ -65,7 +65,7 @@ fun main() {
     @Media.Video "media/filters-001.mp4"
 
     @Application
-    @ProduceVideo("media/filters-001.mp4", 5.00)
+    @ProduceVideo("media/filters-001.mp4", 3.14159)
     @Code
     application {
         @Exclude
@@ -78,7 +78,7 @@ fun main() {
             val blurred = colorBuffer(image.width, image.height)
             val blur = BoxBlur()
             extend {
-                blur.window = (cos(seconds * Math.PI) * 4.0 + 5.0).toInt()
+                blur.window = (cos(seconds * 2) * 4.0 + 5.0).toInt()
                 blur.apply(image, blurred)
                 drawer.image(blurred)
             }
@@ -92,7 +92,7 @@ fun main() {
     @Media.Video "media/filters-002.mp4"
 
     @Application
-    @ProduceVideo("media/filters-002.mp4", 5.0)
+    @ProduceVideo("media/filters-002.mp4", 3.14159)
     @Code
     application {
         @Exclude
@@ -106,7 +106,7 @@ fun main() {
             val blur = ApproximateGaussianBlur()
             extend {
                 blur.window = 25
-                blur.sigma = cos(seconds * Math.PI) * 10.0 + 10.1
+                blur.sigma = cos(seconds * 2) * 10.0 + 10.1
                 blur.apply(image, blurred)
                 drawer.image(blurred)
             }
@@ -120,7 +120,7 @@ fun main() {
     @Media.Video "media/filters-003.mp4"
 
     @Application
-    @ProduceVideo("media/filters-003.mp4", 5.00)
+    @ProduceVideo("media/filters-003.mp4", 3.14159)
     @Code
     application {
         @Exclude
@@ -135,7 +135,7 @@ fun main() {
             extend {
                 bloom.window = 5
                 bloom.sigma = 3.0
-                bloom.gain = cos(seconds * 0.5 * PI) * 2.0 + 2.0
+                bloom.gain = cos(seconds * 2) * 2.0 + 2.0
                 bloom.apply(image, blurred)
                 drawer.image(blurred)
             }
@@ -149,7 +149,7 @@ fun main() {
     @Media.Video "media/filters-004.mp4"
 
     @Application
-    @ProduceVideo("media/filters-004.mp4", 5.00)
+    @ProduceVideo("media/filters-004.mp4", 3.14159)
     @Code
     application {
         @Exclude
@@ -163,7 +163,7 @@ fun main() {
             val blur = HashBlur()
             extend {
                 blur.samples = 50
-                blur.radius = cos(seconds * 0.5 * Math.PI) * 25.0 + 25.0
+                blur.radius = cos(seconds * 2) * 25.0 + 25.0
                 blur.apply(image, blurred)
                 drawer.image(blurred)
             }
@@ -177,7 +177,7 @@ fun main() {
     @Media.Video "media/filters-005.mp4"
 
     @Application
-    @ProduceVideo("media/filters-005.mp4", 5.00)
+    @ProduceVideo("media/filters-005.mp4", 3.14159)
     @Code
     application {
         @Exclude
@@ -196,7 +196,7 @@ fun main() {
             extend {
                 drawer.isolatedWithTarget(rt) {
                     drawer.clear(ColorRGBa.BLACK)
-                    drawer.image(image, cos(seconds * PI) * 40.0, sin(seconds * PI) * 40.0)
+                    drawer.image(image, cos(seconds * 2) * 40.0, sin(seconds * 2) * 40.0)
                 }
 
                 blur.blend = 0.01
@@ -213,7 +213,7 @@ fun main() {
     @Media.Video "media/filters-006.mp4"
 
     @Application
-    @ProduceVideo("media/filters-006.mp4", 5.00)
+    @ProduceVideo("media/filters-006.mp4", 3.14159)
     @Code
     application {
         @Exclude
@@ -228,10 +228,10 @@ fun main() {
 
             extend {
                 blur.center = Vector2(
-                    cos(seconds * PI * 0.5) * 0.5 + 0.5,
-                    sin(seconds * PI) * 0.5 + 0.5
+                    cos(seconds) * 0.5 + 0.5,
+                    sin(seconds * 2) * 0.5 + 0.5
                 )
-                blur.strength = cos(seconds * PI) * 0.5 + 0.5
+                blur.strength = cos(seconds * 2) * 0.5 + 0.5
                 blur.apply(image, blurred)
                 drawer.image(blurred)
             }
@@ -248,7 +248,7 @@ fun main() {
     @Media.Video "media/filters-100.mp4"
 
     @Application
-    @ProduceVideo("media/filters-100.mp4", 5.0)
+    @ProduceVideo("media/filters-100.mp4", 3.14159)
     @Code
     application {
         @Exclude
@@ -262,7 +262,7 @@ fun main() {
             val filtered = colorBuffer(image.width, image.height)
 
             extend {
-                filter.aberrationFactor = cos(seconds * 0.5 * PI) * 10.0
+                filter.aberrationFactor = cos(seconds * 2) * 10.0
                 filter.apply(image, filtered)
                 drawer.image(filtered)
             }
@@ -276,7 +276,7 @@ fun main() {
     @Media.Video "media/filters-101.mp4"
 
     @Application
-    @ProduceVideo("media/filters-101.mp4", 5.00)
+    @ProduceVideo("media/filters-101.mp4", 6.28318)
     @Code
     application {
         @Exclude
@@ -290,9 +290,9 @@ fun main() {
             val filtered = colorBuffer(image.width, image.height)
 
             extend {
-                filter.hueShift = cos(seconds * 0.5 * PI) * 180.0
-                filter.saturation = cos(seconds * 1 * PI)
-                filter.brightness = sin(seconds * 0.25 * PI) * 0.1
+                filter.hueShift = cos(seconds * 1) * 180.0
+                filter.saturation = cos(seconds * 2)
+                filter.brightness = sin(seconds * 3) * 0.1
                 filter.apply(image, filtered)
                 drawer.image(filtered)
             }
@@ -306,7 +306,7 @@ fun main() {
     @Media.Video "media/filters-102.mp4"
 
     @Application
-    @ProduceVideo("media/filters-102.mp4", 5.00)
+    @ProduceVideo("media/filters-102.mp4", 3.14159)
     @Code
     application {
         @Exclude
@@ -320,7 +320,7 @@ fun main() {
             val filtered = colorBuffer(image.width, image.height)
 
             extend {
-                filter.amount = cos(seconds) * 0.5 + 0.5
+                filter.amount = cos(seconds * 2) * 0.5 + 0.5
                 filter.apply(image, filtered)
                 drawer.image(filtered)
             }
@@ -334,7 +334,7 @@ fun main() {
     @Media.Video "media/filters-103.mp4"
 
     @Application
-    @ProduceVideo("media/filters-103.mp4", 5.0)
+    @ProduceVideo("media/filters-103.mp4", 6.28318)
     @Code
     application {
         @Exclude
@@ -352,8 +352,8 @@ fun main() {
                 drawer.clear(ColorRGBa.PINK)
                 filter.backgroundOpacity = 0.0
                 filter.foregroundOpacity = 1.0
-                filter.backgroundLuma = cos(seconds * PI) * 0.25 + 0.25
-                filter.foregroundLuma = 1.0 - (cos(seconds * PI) * 0.25 + 0.25)
+                filter.backgroundLuma = cos(seconds) * 0.25 + 0.25
+                filter.foregroundLuma = 1.0 - (cos(seconds) * 0.25 + 0.25)
 
                 filter.apply(image, filtered)
                 drawer.image(filtered)
@@ -369,7 +369,7 @@ fun main() {
     @Media.Video "media/filters-200.mp4"
 
     @Application
-    @ProduceVideo("media/filters-200.mp4", 5.0)
+    @ProduceVideo("media/filters-200.mp4", 6.28318)
     @Code
     application {
         @Exclude
@@ -384,7 +384,7 @@ fun main() {
 
             extend {
                 filter.backgroundColor = ColorRGBa.PINK.toHSVa()
-                    .shiftHue(cos(seconds * 0.5 * PI) * 180).toRGBa()
+                    .shiftHue(cos(seconds) * 180).toRGBa()
                     .shade(0.25)
                 filter.edgeColor = ColorRGBa.PINK
                 filter.apply(image, filtered)
@@ -400,7 +400,7 @@ fun main() {
     @Media.Video "media/filters-201.mp4"
 
     @Application
-    @ProduceVideo("media/filters-201.mp4", 5.0)
+    @ProduceVideo("media/filters-201.mp4", 6.28318)
     @Code
     application {
         @Exclude
@@ -417,7 +417,7 @@ fun main() {
                 filter.backgroundOpacity = 1.0
                 filter.contourColor = ColorRGBa.BLACK
                 filter.contourWidth = 0.4
-                filter.levels = cos(seconds * PI) * 3.0 + 5.1
+                filter.levels = cos(seconds) * 3.0 + 5.1
                 filter.apply(image, filtered)
                 drawer.image(filtered)
             }
@@ -432,7 +432,7 @@ fun main() {
     @Media.Video "media/filters-202.mp4"
 
     @Application
-    @ProduceVideo("media/filters-202.mp4", 5.00)
+    @ProduceVideo("media/filters-202.mp4", 6.28318)
     @Code
     application {
         @Exclude
@@ -446,7 +446,7 @@ fun main() {
             val filtered = colorBuffer(image.width, image.height)
 
             extend {
-                filter.radius = (cos(seconds * PI) * 5 + 5).toInt()
+                filter.radius = (cos(seconds) * 5 + 5).toInt()
                 filter.apply(image, filtered)
                 drawer.image(filtered)
             }
@@ -462,7 +462,7 @@ fun main() {
     @Media.Video "media/filters-300.mp4"
 
     @Application
-    @ProduceVideo("media/filters-300.mp4", 5.0)
+    @ProduceVideo("media/filters-300.mp4", 6.28318)
     @Code
     application {
         @Exclude
@@ -477,8 +477,8 @@ fun main() {
 
             extend {
                 filter.sourceScale = seconds / 5.0
-                filter.blockWidth = cos(seconds * 0.5 * PI) * 0.3 + 0.4
-                filter.blockHeight = sin(seconds * 0.5 * PI) * 0.3 + 0.4
+                filter.blockWidth = cos(seconds) * 0.3 + 0.4
+                filter.blockHeight = sin(seconds) * 0.3 + 0.4
 
                 filter.apply(image, filtered)
                 drawer.image(filtered)
@@ -493,7 +493,7 @@ fun main() {
     @Media.Video "media/filters-301.mp4"
 
     @Application
-    @ProduceVideo("media/filters-301.mp4", 5.0)
+    @ProduceVideo("media/filters-301.mp4", 6.28318)
     @Code
     application {
         @Exclude
@@ -508,7 +508,7 @@ fun main() {
 
             extend {
                 filter.repeats = 4
-                filter.zoom = (cos(seconds * PI) * 0.1 + 0.11)
+                filter.zoom = (cos(seconds) * 0.1 + 0.11)
 
                 filter.apply(image, filtered)
                 drawer.image(filtered)
@@ -523,7 +523,7 @@ fun main() {
     @Media.Video "media/filters-302.mp4"
 
     @Application
-    @ProduceVideo("media/filters-302.mp4", 5.0)
+    @ProduceVideo("media/filters-302.mp4", 6.28318)
     @Code
     application {
         @Exclude
@@ -537,8 +537,8 @@ fun main() {
             val filtered = colorBuffer(image.width, image.height)
 
             extend {
-                filter.amplitude = cos(seconds * PI) * 0.1
-                filter.frequency = sin(seconds * PI) * 4.0
+                filter.amplitude = cos(seconds) * 0.1
+                filter.frequency = sin(seconds) * 4.0
                 if (seconds > 2.5) {
                     filter.segments = 10
                 }
@@ -556,7 +556,7 @@ fun main() {
     @Media.Video "media/filters-303.mp4"
 
     @Application
-    @ProduceVideo("media/filters-303.mp4", 5.0)
+    @ProduceVideo("media/filters-303.mp4", 6.28318)
     @Code
     application {
         @Exclude
@@ -570,8 +570,8 @@ fun main() {
             val filtered = colorBuffer(image.width, image.height)
 
             extend {
-                filter.amplitude = cos(seconds * PI) * 0.1
-                filter.frequency = sin(seconds * PI) * 4.0
+                filter.amplitude = cos(seconds) * 0.1
+                filter.frequency = sin(seconds) * 4.0
                 if (seconds > 2.5) {
                     filter.segments = 10
                 }
@@ -589,7 +589,7 @@ fun main() {
     @Media.Video "media/filters-304.mp4"
 
     @Application
-    @ProduceVideo("media/filters-304.mp4", 5.0)
+    @ProduceVideo("media/filters-304.mp4", 6.28318)
     @Code
     application {
         @Exclude
@@ -605,7 +605,7 @@ fun main() {
             extend {
                 filter.phase = seconds * 0.1
                 filter.decay = 0.168
-                filter.gain = cos(seconds * 0.25 * PI) * 0.5 + 0.5
+                filter.gain = cos(seconds) * 0.5 + 0.5
 
                 filter.apply(image, filtered)
                 drawer.image(filtered)
@@ -620,7 +620,7 @@ fun main() {
     @Media.Video "media/filters-305.mp4"
 
     @Application
-    @ProduceVideo("media/filters-305.mp4", 5.0)
+    @ProduceVideo("media/filters-305.mp4", 6.0)
     @Code
     application {
         @Exclude
@@ -634,8 +634,8 @@ fun main() {
             val filtered = colorBuffer(image.width, image.height)
 
             extend {
-                filter.rotation = seconds * 45.0
-                filter.xSegments = (10 + cos(seconds * PI) * 5.0).toInt()
+                filter.rotation = seconds * 60.0
+                filter.xSegments = (10 + cos(seconds * PI / 3) * 5.0).toInt()
                 filter.ySegments = 30
                 filter.apply(image, filtered)
                 drawer.image(filtered)
@@ -650,7 +650,7 @@ fun main() {
     @Media.Video "media/filters-306.mp4"
 
     @Application
-    @ProduceVideo("media/filters-306.mp4", 5.0)
+    @ProduceVideo("media/filters-306.mp4", 6.28318)
     @Code
     application {
         @Exclude
@@ -664,7 +664,7 @@ fun main() {
             val filtered = colorBuffer(image.width, image.height)
 
             extend {
-                filter.strength = cos(seconds * PI) * 0.125
+                filter.strength = cos(seconds) * 0.125
                 filter.scale = 1.1
                 filter.apply(image, filtered)
                 drawer.image(filtered)
@@ -679,7 +679,7 @@ fun main() {
     @Media.Video "media/filters-307.mp4"
 
     @Application
-    @ProduceVideo("media/filters-307.mp4", 5.0)
+    @ProduceVideo("media/filters-307.mp4", 6.0)
     @Code
     application {
         @Exclude
@@ -700,12 +700,12 @@ fun main() {
                     draw {
                         drawer.shadeStyle = linearGradient(ColorRGBa.BLACK, ColorRGBa.WHITE)
                         drawer.stroke = null
-                        val size = cos(seconds * PI * 0.5) * 100.0 + 200.0
+                        val size = cos(seconds * PI / 3) * 100.0 + 200.0
                         drawer.rectangle(width / 2.0 - size / 2, height / 2.0 - size / 2, size, size)
                     }
                     blend(DisplaceBlend()) {
-                        gain = cos(seconds * PI * 0.5) * 0.5 + 0.5
-                        rotation = seconds * 45.0
+                        gain = cos(seconds * PI / 3) * 0.5 + 0.5
+                        rotation = seconds * 60.0
                     }
                 }
             }
@@ -724,7 +724,7 @@ fun main() {
     @Media.Video "media/filters-308.mp4"
 
     @Application
-    @ProduceVideo("media/filters-308.mp4", 5.0)
+    @ProduceVideo("media/filters-308.mp4", 6.0)
     @Code
     application {
         @Exclude
@@ -742,7 +742,7 @@ fun main() {
                     }
                     post(StretchWaves()) {
                         distortion = 0.25
-                        rotation = seconds * 45.0
+                        rotation = seconds * 60.0
                         phase = seconds * 0.25
                         frequency = 5.0
                     }
@@ -761,7 +761,7 @@ fun main() {
     @Media.Video "media/filters-309.mp4"
 
     @Application
-    @ProduceVideo("media/filters-309.mp4", 5.00)
+    @ProduceVideo("media/filters-309.mp4", 6.28318)
     @Code
     application {
         @Exclude
@@ -781,8 +781,8 @@ fun main() {
                         drawer.imageFit(image, 0.0, 0.0, width * 1.0, height * 1.0)
                     }
                     post(PerspectivePlane()) {
-                        planePitch = cos(seconds * 0.5 * PI) * 22.5
-                        planeYaw = sin(seconds * 0.5 * PI) * 22.5
+                        planePitch = cos(seconds) * 22.5
+                        planeYaw = sin(seconds) * 22.5
                     }
                 }
             }
@@ -829,7 +829,7 @@ fun main() {
     @Media.Video "media/filters-401.mp4"
 
     @Application
-    @ProduceVideo("media/filters-401.mp4", 5.0)
+    @ProduceVideo("media/filters-401.mp4", 6.28318)
     @Code
     application {
         @Exclude
@@ -846,7 +846,7 @@ fun main() {
                 // -- need a white background because the filter introduces transparent areas
                 drawer.clear(ColorRGBa.WHITE)
                 filter.dotSize = 1.2
-                filter.scale = cos(seconds * 0.25 * PI) * 2.0 + 6.0
+                filter.scale = cos(seconds) * 2.0 + 6.0
                 filter.apply(image, filtered)
 
                 drawer.image(filtered)
@@ -861,7 +861,7 @@ fun main() {
     @Media.Video "media/filters-402.mp4"
 
     @Application
-    @ProduceVideo("media/filters-402.mp4", 5.00)
+    @ProduceVideo("media/filters-402.mp4", 6.28318)
     @Code
     application {
         @Exclude
@@ -878,9 +878,9 @@ fun main() {
                 // -- need a white background because the filter introduces transparent areas
                 drawer.clear(ColorRGBa.WHITE)
                 filter.t1 = cos(seconds * PI) * 0.25 + 0.25
-                filter.t2 = filter.t1 + cos(seconds * PI * 0.5) * 0.25 + 0.25
-                filter.t3 = filter.t2 + cos(seconds * PI * 0.25) * 0.25 + 0.25
-                filter.t4 = filter.t3 + cos(seconds * PI * 0.125) * 0.25 + 0.25
+                filter.t2 = filter.t1 + cos(seconds * 3) * 0.25 + 0.25
+                filter.t3 = filter.t2 + cos(seconds * 2) * 0.25 + 0.25
+                filter.t4 = filter.t3 + cos(seconds * 1) * 0.25 + 0.25
 
                 filter.apply(image, filtered)
 
@@ -897,7 +897,7 @@ fun main() {
     @Media.Video "media/filters-500.mp4"
 
     @Application
-    @ProduceVideo("media/filters-500.mp4", 5.0)
+    @ProduceVideo("media/filters-500.mp4", 6.28318)
     @Code
     application {
         @Exclude
@@ -921,9 +921,9 @@ fun main() {
                 }
                 // -- need a pink background because the filter introduces transparent areas
                 drawer.clear(ColorRGBa.PINK)
-                filter.window = (cos(seconds * 0.5 * PI) * 16 + 16).toInt()
-                filter.xShift = cos(seconds * PI) * 16.0
-                filter.yShift = sin(seconds * PI) * 16.0
+                filter.window = (cos(seconds) * 16 + 16).toInt()
+                filter.xShift = cos(seconds * 2) * 16.0
+                filter.yShift = sin(seconds * 2) * 16.0
                 filter.apply(rt.colorBuffer(0), filtered)
                 drawer.image(filtered)
             }
@@ -941,7 +941,7 @@ fun main() {
     @Media.Video "media/filters-600.mp4"
 
     @Application
-    @ProduceVideo("media/filters-600.mp4", 5.00)
+    @ProduceVideo("media/filters-600.mp4", 6.28318)
     @Code
     application {
         @Exclude
@@ -953,7 +953,7 @@ fun main() {
             val composite = compose {
                 layer {
                     post(Checkers()) {
-                        size = cos(seconds * 0.5 * PI) * 0.6 + 0.4
+                        size = cos(seconds) * 0.6 + 0.4
                     }
                 }
             }

@@ -28,10 +28,10 @@ fun main() {
     Images are loaded using the `loadImage` function and drawn using `Drawer.image`.
     """
 
-    @Media.Image "media/image-001.png"
+    @Media.Image "media/image-001.jpg"
 
     @Application
-    @ProduceScreenshot("media/image-001.png")
+    @ProduceScreenshot("media/image-001.jpg")
     @Code
     application {
         configure {}
@@ -90,10 +90,10 @@ fun main() {
     the area that should be taken from the image and presented in the target rectangle.
     """
 
-    @Media.Image "media/image-002.png"
+    @Media.Image "media/image-002.jpg"
 
     @Application
-    @ProduceScreenshot("media/image-002.png")
+    @ProduceScreenshot("media/image-002.jpg")
     @Code
     application {
         program {
@@ -113,10 +113,10 @@ fun main() {
     ## Drawing many parts of images
     """
 
-    @Media.Image "media/image-003.png"
+    @Media.Image "media/image-003.jpg"
 
     @Application
-    @ProduceScreenshot("media/image-003.png")
+    @ProduceScreenshot("media/image-003.jpg")
     @Code
     application {
         program {
@@ -156,10 +156,10 @@ fun main() {
     Tinting multiplies the image color with a _tint color_.
     """
 
-    @Media.Image "media/image-004.png"
+    @Media.Image "media/image-004.jpg"
 
     @Application
-    @ProduceScreenshot("media/image-004.png")
+    @ProduceScreenshot("media/image-004.jpg")
     @Code
     application {
         program {
@@ -179,10 +179,10 @@ fun main() {
     Drawing an image with inverted colors can be achieved by using the `invert` color matrix.
     """
 
-    @Media.Image "media/image-005.png"
+    @Media.Image "media/image-005.jpg"
 
     @Application
-    @ProduceScreenshot("media/image-005.png")
+    @ProduceScreenshot("media/image-005.jpg")
     @Code
     application {
         program {
@@ -202,10 +202,10 @@ fun main() {
     Drawing an image with inverted colors can be achieved by using the `grayscale` color matrix.
     """
 
-    @Media.Image "media/image-006.png"
+    @Media.Image "media/image-006.jpg"
 
     @Application
-    @ProduceScreenshot("media/image-006.png")
+    @ProduceScreenshot("media/image-006.jpg")
     @Code
     application {
         program {
@@ -229,10 +229,10 @@ fun main() {
     apply the `grayscale` transform and then the `tint` transform.
     """
 
-    @Media.Image "media/image-007.png"
+    @Media.Image "media/image-007.jpg"
 
     @Application
-    @ProduceScreenshot("media/image-007.png")
+    @ProduceScreenshot("media/image-007.jpg")
     @Code
     application {
         program {
