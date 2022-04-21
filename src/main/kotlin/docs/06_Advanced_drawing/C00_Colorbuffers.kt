@@ -71,6 +71,24 @@ fun main() {
         val cb = loadImage("data/images/pm5544.jpg")
     }
 
+    @Text
+    """
+    ## Freeing color buffers
+    
+    If a program creates new buffers while it runs
+    it is important to free those buffers when no longer needed 
+    to avoid running out of memory.
+    """
+
+    run {
+        val cb = colorBuffer(640, 480)
+        @Code.Block
+        run {
+            // -- When done using the buffer call destroy() to free its memory.
+            cb.destroy()
+        }
+    }
+
     @Text 
     """
     ## Saving color buffers
