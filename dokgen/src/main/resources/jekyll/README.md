@@ -3,7 +3,7 @@
 This repository contains the source files for the OPENRNDR guide.
 
 To contribute please take a look at
-[contributing.md](https://github.com/hamoid/openrndr-guide/blob/main/contributing.md).
+[contributing.md](https://github.com/openrndr/openrndr-guide/blob/main/contributing.md).
 
 Find a [readable version at guide.openrndr.org](https://guide.openrndr.org)
 

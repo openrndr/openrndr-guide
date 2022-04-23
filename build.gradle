@@ -132,7 +132,7 @@ task publishExamples { task ->
                 into "data/compute-shaders"
             }
         }
-        gitPublish.repoUri = "git@github.com:hamoid/openrndr-examples.git"
+        gitPublish.repoUri = "git@github.com:openrndr/openrndr-examples.git"
         gitPublish.branch = "master"
         gitPublish.commitMessage = "Update examples"
     }
