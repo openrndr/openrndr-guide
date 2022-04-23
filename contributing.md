@@ -18,29 +18,28 @@ Once the build is complete the guide will be found at
 
 ## Preview the guide in a web browser
 
-0. Install [Docker](https://www.docker.com/get-started/).
-1. Run the `dokgen/webServerStart` gradle task (it can take some time 
+1. Install [Docker](https://www.docker.com/get-started/).
+2. Run the `dokgen/webServerStart` gradle task (it can take some time 
    to download jekyll during the first run).
-2. Open [http://0.0.0.0:4000](http://0.0.0.0:4000) in a browser.
+3. Open [http://0.0.0.0:4000](http://0.0.0.0:4000) in a browser.
 
 ## Improve the guide
 
-0. Make changes to the markdown files under `src/main/kotlin/docs/`.
-1. Run the `dokgen` task (either in the command line `./gradlew dokgen` or in
+1. Make changes to the markdown files under `src/main/kotlin/docs/`.
+   Read about the [available annotations here](https://github.com/openrndr/openrndr-guide/tree/main/dokgen).
+2. Run the `dokgen` task (either in the command line `./gradlew dokgen` or in
    the Gradle pane on the right edge of the IDE).
-2. Reload the page in the browser to observe your changes.
-3. Go to point 3.
+3. Reload the page in the browser to observe your changes.
+4. Repeat.
 
-Gotcha: if using the search/replace features in your IDE, make sure you are 
-editing files inside the `src/` folder. If by accident you edit any files inside 
-the `build/` folder those changes will be overwritten the next time the dokgen task 
-is run. It's easy to make this mistake.
+Gotcha: running the `dokgen` task will produce a `build` folder. When using
+search and/or replace **make sure the results are inside the `src` folder**.
+It is easy to mistakenly spend time editing files inside the `build` folder.
+Such changes will be overwritten when running `dokgen` again.
 
-When done improving the guide you can push the changes to your fork of 
+After improving the guide you can push the changes to your fork of 
 `openrndr-guide` and send a pull request.
 
-To make it easier to review try to keep pull requests reasonably small.
+To make it easier to review please try to keep pull requests reasonably small.
 
 Thank you for improving the guide! :-)
-
-

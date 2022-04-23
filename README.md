@@ -1,5 +1,12 @@
-
-
 # Source files for the  [OPENRNDR guide](https://guide.openrndr.org/#/).
 
-The guide is generated using [DokGen](https://github.com/openrndr/dokgen).
+This repository contains the source files to generate the OPENRNDR guide.
+
+To contribute please take a look at
+[contributing.md](https://github.com/openrndr/openrndr-guide/blob/main/contributing.md).
+
+Find a [readable version at guide.openrndr.org](https://guide.openrndr.org)
+
+A separate repository with the OPENRNDR example programs
+automatically extracted from this guide can be found at
+[`openrndr-examples`](https://github.com/openrndr/openrndr-examples).

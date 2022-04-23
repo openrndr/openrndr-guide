@@ -1,12 +1,9 @@
 # OPENRNDR guide
 
-This repository contains the source files for the OPENRNDR guide.
+This branch contains markdown files, images and videos 
+**generated** by running the main branch of this repository.
+
+The result can be viewed at [guide.openrndr.org](https://guide.openrndr.org).
 
 To contribute please take a look at
 [contributing.md](https://github.com/openrndr/openrndr-guide/blob/main/contributing.md).
-
-Find a [readable version at guide.openrndr.org](https://guide.openrndr.org)
-
-A separate repository with the OPENRNDR example programs 
-automatically extracted from this guide can be found at 
-[`openrndr-examples`](https://github.com/openrndr/openrndr-examples).
