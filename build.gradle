@@ -109,17 +109,21 @@ task publishExamples { task ->
     description "Publish examples to github.com/openrndr/openrndr-examples"
     def openrndrVersion = getRepoLastVersion("https://github.com/openrndr/openrndr")
     def orxVersion = getRepoLastVersion("https://github.com/openrndr/orx")
+    def ormlVersion = getRepoLastVersion("https://github.com/openrndr/orml")
+    def repoTemplate = "$projectDir/src/main/resources/examples-repo-template"
     doLast {
         gitPublish.repoDir = file("$buildDir/gitrepo-examples")
         gitPublish.contents {
-            from("$projectDir/src/main/resources/examples-repo-template") {
-                exclude '**.*.kts'
+            from(repoTemplate) {
+                exclude 'settings.gradle.kts'
+                rename('_git(.*)', '.git$1') // skipped without this trick
             }
-            from("$projectDir/src/main/resources/examples-repo-template") {
-                include '**.*.kts'
+            from(repoTemplate) {
+                include 'settings.gradle.kts'
                 filter(ReplaceTokens, tokens: [
                         openrndrVersion: openrndrVersion,
-                        orxVersion: orxVersion
+                        orxVersion: orxVersion,
+                        ormlVersion: ormlVersion
                 ])
             }
             from("$projectDir/build/dokgen/generated/examples-export") {
@@ -127,6 +131,9 @@ task publishExamples { task ->
             }
             from("$projectDir/data/images") {
                 into "data/images"
+            }
+            from("$projectDir/data/fonts") {
+                into "data/fonts"
             }
             from("$projectDir/data/compute-shaders") {
                 into "data/compute-shaders"
