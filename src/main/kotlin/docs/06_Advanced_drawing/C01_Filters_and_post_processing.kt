@@ -175,6 +175,6 @@ fun main() {
     A repository of ready-to-use filters for OPENRNDR can be found in 
     the [ORX repository](https://github.com/openrndr/orx/tree/master/orx-fx),
     a partial index of the filters can be found in the 
-    [orx-fx chapter](10_OPENRNDR_Extras/C06_Filters)
+    [orx-fx chapter](https://guide.openrndr.org/OPENRNDRExtras/imageFilters.html)
     """
 }

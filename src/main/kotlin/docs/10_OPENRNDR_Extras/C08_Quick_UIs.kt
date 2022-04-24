@@ -30,10 +30,10 @@ fun main() {
     @Text """
     # Quick UIs
     
-    [orx-gui](https://github.com/openrndr/orx/tree/master/orx-gui) 
+    [orx-gui](https://github.com/openrndr/orx/tree/master/orx-jvm/orx-gui) 
     provides a simple mechanism to create near zero-effort user 
     interfaces. `orx-gui` is a tool written on top of 
-    [OPENRNDR's UI library](07_Interaction/C04UserInterfaces) with the intention
+    [OPENRNDR's UI library](https://guide.openrndr.org/interaction/userInterfaces.html) with the intention
     of taking away most mental and work overhead involved in creating 
     simple user interfaces intended for prototyping and hacking purposes. 
     The core principle of `orx-gui` is to generate user interfaces only 
@@ -42,9 +42,10 @@ fun main() {
     `orx-gui` relies on annotated classes and properties using the annotations 
     in [`orx-parameters`](https://github.com/openrndr/orx/tree/master/orx-parameters)
     
-    `orx-gui` is incredibly powerful in combination with the live coding 
-    environment [`orx-olive`](https://github.com/openrndr/orx/tree/master/orx-gui), 
-    the guide covers that in the [live coding section](C03_Live_coding). 
+    `orx-gui` is incredibly powerful in combination with the live coding environment 
+    [`orx-olive`](https://github.com/openrndr/orx/tree/master/orx-jvm/orx-olive), 
+    the guide covers that in the 
+    [live coding section](https://guide.openrndr.org/OPENRNDRExtras/liveCoding.html). 
     That said, it is not a required combination.
     
     ## Prerequisites
@@ -163,9 +164,9 @@ fun main() {
     `orx-fx` provides. 
 
     The guide covers filters in the 
-    [Filter and Post-processing chapter](06_Advanced_drawing/C01_Filters_and_post_processing.md) 
+    [Filter and Post-processing chapter](https://guide.openrndr.org/advancedDrawing/filtersAndPostProcessing.html) 
     and an index of provided filters can be found in 
-    [`orx-filter` index](10_OPENRNDR_Extras/C06_Filters.md)
+    [`orx-filter` index](https://guide.openrndr.org/OPENRNDRExtras/imageFilters.html)
     """
 
     @Application
@@ -236,7 +237,7 @@ fun main() {
     or more objects for our settings and 
     we can insert any of the blend and post filters in the sidebar as we please. 
     The guide covers `orx-compositor` in the 
-    [Compositor chapter](10_OPENRNDR_Extras/C07_Compositor)
+    [Compositor chapter](https://guide.openrndr.org/OPENRNDRExtras/compositor.html)
     """
 
     @Application

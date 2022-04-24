@@ -25,7 +25,7 @@ fun main() {
     # Shade style presets
 
     The `orx-shade-styles` library provides a number of preset 
-    [shade styles](06_Advanced_drawing/C04_Shade_styles)
+    [shade styles](https://guide.openrndr.org/advancedDrawing/shadeStyles.html)
     
     ## Prerequisites
     

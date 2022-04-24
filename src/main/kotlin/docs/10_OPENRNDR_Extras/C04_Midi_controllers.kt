@@ -16,7 +16,7 @@ fun main() {
     @Text """
     # Midi controllers with orx-midi
     
-    The [`orx-midi`](https://github.com/openrndr/orx/tree/master/orx-midi) 
+    The [`orx-midi`](https://github.com/openrndr/orx/blob/master/orx-jvm/orx-midi) 
     library provides a simple interface to interact with MIDI controllers. 
 
     ## Prerequisites

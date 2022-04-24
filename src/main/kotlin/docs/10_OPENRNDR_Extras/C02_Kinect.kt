@@ -30,7 +30,7 @@ fun main() {
 
     * `orx-kinect-common`
     * `orx-kinect-v1`
-    * [`orx-kinect-v1-demo`](https://github.com/openrndr/orx/tree/master/orx-kinect-v1-demo/src/main/kotlin)
+    * [`orx-kinect-v1-demo`](https://github.com/openrndr/orx/tree/master/orx-jvm/orx-kinect-v1-demo/src/main/kotlin)
     * `orx-kinect-v1-natives-linux-x64`
     * `orx-kinect-v1-natives-macos`
     * `orx-kinect-v1-natives-windows`

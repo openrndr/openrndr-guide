@@ -38,7 +38,7 @@ fun main() {
     
     The [orx-fx](https://github.com/openrndr/orx/tree/master/orx-fx) library 
     contains many filters that can be readily used. See the chapter 
-    [Filters and post-processing](../06_Advanced_drawing/C01_Filters_and_post_processing) 
+    [Filters and post-processing](https://guide.openrndr.org/advancedDrawing/filtersAndPostProcessing.html) 
     for instructions on using them.
 
     A (more-or-less) complete listing of the effects in orx-fx is maintained 

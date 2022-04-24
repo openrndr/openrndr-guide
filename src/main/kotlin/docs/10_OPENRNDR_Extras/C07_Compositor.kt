@@ -463,7 +463,7 @@ fun main() {
     
     Blending describes how the contents of two layers are combined in a composite. 
     The blend functionality `orx-compositor` can be used with any 
-    [filter](C01_Filters_and_post_processing) that performs a blend 
+    [filter](https://guide.openrndr.org/advancedDrawing/filtersAndPostProcessing.html) that performs a blend 
     operation. The `orx-fx` filter collection provides 
     [a selection of ready-made blend filters](https://github.com/openrndr/orx/tree/master/orx-fx#blends).
 
@@ -516,6 +516,6 @@ fun main() {
 
     @Text 
     """
-    [https://github.com/openrndr/orx/tree/master/orx-compositor](demo)
+    [demo](https://github.com/openrndr/orx/tree/master/orx-compositor)
     """
 }
