@@ -37,16 +37,16 @@ fun main() {
      * `Driver.drawIndexedInstances()`
      
     Classes that belong to the lowlevel drawing API:
-     * [`Shader`](https://api.openrndr.org/org.openrndr.draw/-shader/index.html)
-     * [`IndexBuffer`](https://api.openrndr.org/org.openrndr.draw/-index-buffer/index.html)
-     * [`VertexBuffer`](https://api.openrndr.org/org.openrndr.draw/-vertex-buffer/index.html)
-     * [`VertexFormat`](https://api.openrndr.org/org.openrndr.draw/-vertex-format/index.html)
-     * [`ColorBuffer`](https://api.openrndr.org/org.openrndr.draw/-color-buffer/index.html)
-     * [`DepthBuffer`](https://api.openrndr.org/org.openrndr.draw/-depth-buffer/index.html)
-     * [`ArrayTexture`](https://api.openrndr.org/org.openrndr.draw/-array-texture/index.html)
-     * [`CubeMap`](https://api.openrndr.org/org.openrndr.draw/-cubemap/index.html)
-     * [`DrawStyle`](https://api.openrndr.org/org.openrndr.draw/-draw-style/index.html)
-     * [`RenderTarget`](https://api.openrndr.org/org.openrndr.draw/-render-target/index.html)
+     * [`Shader`](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-draw/src/commonMain/kotlin/org/openrndr/draw/Shader.kt)
+     * [`IndexBuffer`](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-draw/src/commonMain/kotlin/org/openrndr/draw/IndexBuffer.kt)
+     * [`VertexBuffer`](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-draw/src/commonMain/kotlin/org/openrndr/draw/VertexBuffer.kt)
+     * [`VertexFormat`](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-draw/src/commonMain/kotlin/org/openrndr/draw/VertexFormat.kt)
+     * [`ColorBuffer`](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-draw/src/commonMain/kotlin/org/openrndr/draw/ColorBuffer.kt)
+     * [`DepthBuffer`](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-draw/src/commonMain/kotlin/org/openrndr/draw/DepthBuffer.kt)
+     * [`ArrayTexture`](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-draw/src/commonMain/kotlin/org/openrndr/draw/ArrayTexture.kt)
+     * [`CubeMap`](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-draw/src/commonMain/kotlin/org/openrndr/draw/Cubemap.kt)
+     * [`DrawStyle`](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-draw/src/commonMain/kotlin/org/openrndr/draw/DrawStyle.kt)
+     * [`RenderTarget`](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-draw/src/commonMain/kotlin/org/openrndr/draw/RenderTarget.kt)
     
     We discourage writing code that uses OpenGL directly; even though currently 
     only an OpenGL 3.3 implementation exists 

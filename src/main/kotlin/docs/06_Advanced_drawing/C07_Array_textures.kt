@@ -27,12 +27,12 @@ fun main() {
     access 2048 layers of texture data from a single texture sampler.
     
     Array textures are encapsulated by the 
-    [`ArrayTexture` interface](https://api.openrndr.org/org.openrndr.draw/-array-texture/index.html)
+    [`ArrayTexture` interface](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-draw/src/commonMain/kotlin/org/openrndr/draw/ArrayTexture.kt)
 
     ## Creation
     
     Array textures are created using the 
-    [`arrayTexture`](https://api.openrndr.org/org.openrndr.draw/array-texture.html) 
+    [`arrayTexture`](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-draw/src/commonMain/kotlin/org/openrndr/draw/ArrayTexture.kt#L67) 
     function.
     """
 

@@ -24,9 +24,9 @@ fun main() {
 
     ##### Relevant APIs
     
-    * [VideoPlayerFFMPEG.fromFile](https://api.openrndr.org/org.openrndr.ffmpeg/-video-player-f-f-m-p-e-g/from-file.html)
-    * [VideoPlayerFFMPEG.play](https://api.openrndr.org/org.openrndr.ffmpeg/-video-player-f-f-m-p-e-g/play.html)
-    * [VideoPlayerFFMPEG.draw](https://api.openrndr.org/org.openrndr.ffmpeg/-video-player-f-f-m-p-e-g/draw.html)
+    * [VideoPlayerFFMPEG.fromFile](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-jvm/openrndr-ffmpeg/src/main/kotlin/org/openrndr/ffmpeg/VideoPlayerFFMPEG.kt#L350)
+    * [VideoPlayerFFMPEG.play](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-jvm/openrndr-ffmpeg/src/main/kotlin/org/openrndr/ffmpeg/VideoPlayerFFMPEG.kt#L488)
+    * [VideoPlayerFFMPEG.draw](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-jvm/openrndr-ffmpeg/src/main/kotlin/org/openrndr/ffmpeg/VideoPlayerFFMPEG.kt#L735)
 
     """
 
@@ -78,12 +78,12 @@ fun main() {
 
     `VideoPlayerFFMPEG` has minimal device listing capabilities. The device 
     names of available input devices can be listed using 
-    [VideoPlayerFFMPEG.listDeviceNames](https://api.openrndr.org/org.openrndr.ffmpeg/-video-player-f-f-m-p-e-g/list-device-names.html).
+    [VideoPlayerFFMPEG.listDeviceNames](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-jvm/openrndr-ffmpeg/src/main/kotlin/org/openrndr/ffmpeg/VideoPlayerFFMPEG.kt#L241).
     
     ##### Relevant APIs
     
-    * [VideoPlayerFFMPEG.fromDevice](https://api.openrndr.org/org.openrndr.ffmpeg/-video-player-f-f-m-p-e-g/from-device.html)
-    * [VideoPlayerFFMPEG.defaultDevice](https://api.openrndr.org/org.openrndr.ffmpeg/-video-player-f-f-m-p-e-g/default-device.html)
+    * [VideoPlayerFFMPEG.fromDevice](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-jvm/openrndr-ffmpeg/src/main/kotlin/org/openrndr/ffmpeg/VideoPlayerFFMPEG.kt#L369)
+    * [VideoPlayerFFMPEG.defaultDevice](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-jvm/openrndr-ffmpeg/src/main/kotlin/org/openrndr/ffmpeg/VideoPlayerFFMPEG.kt#L390)
     
     ##### Examples
     """
