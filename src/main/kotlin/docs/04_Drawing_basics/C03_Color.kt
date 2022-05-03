@@ -86,7 +86,7 @@ fun main() {
     """
 
 
-    @Media.Image "media/color-001.jpg"
+    @Media.Image "../media/color-001.jpg"
 
     @Application
     @ProduceScreenshot("media/color-001.jpg")
@@ -120,7 +120,7 @@ fun main() {
     Using `ColorRGBa.opacify` colors can be made more or less opaque.
     """
 
-    @Media.Image "media/color-002.jpg"
+    @Media.Image "../media/color-002.jpg"
 
     @Application
     @ProduceScreenshot("media/color-002.jpg")
@@ -154,7 +154,7 @@ fun main() {
     """
 
 
-    @Media.Image "media/color-003.jpg"
+    @Media.Image "../media/color-003.jpg"
 
     @Application
     @ProduceScreenshot("media/color-003.jpg")
@@ -217,7 +217,7 @@ fun main() {
     XSV and XSL spaces is clearly visible.
     """
 
-    @Media.Image "media/color-004.jpg"
+    @Media.Image "../media/color-004.jpg"
 
     @Application
     @ProduceScreenshot("media/color-004.jpg")

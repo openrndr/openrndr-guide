@@ -35,7 +35,7 @@ fun main() {
     ## Distance field visualization
     """
 
-    @Media.Video "media/distance-fields-001.mp4"
+    @Media.Video "../media/distance-fields-001.mp4"
 
     @Application
     @ProduceVideo("media/distance-fields-001.mp4", 6.28318)
@@ -75,7 +75,7 @@ fun main() {
     orx-jumpflood comes with a filter that creates Photoshop-style outer glow effect.
     """
 
-    @Media.Video "media/distance-fields-101.mp4"
+    @Media.Video "../media/distance-fields-101.mp4"
 
     @Application
     @ProduceVideo("media/distance-fields-101.mp4", 6.28318)
@@ -111,7 +111,7 @@ fun main() {
     of the shape.
     """
 
-    @Media.Video "media/distance-fields-102.mp4"
+    @Media.Video "../media/distance-fields-102.mp4"
 
     @Application
     @ProduceVideo("media/distance-fields-102.mp4", 6.28318)
@@ -144,7 +144,7 @@ fun main() {
     ## Sampling distance
     """
 
-    @Media.Video "media/distance-fields-002.mp4"
+    @Media.Video "../media/distance-fields-002.mp4"
 
     @Application
     @ProduceVideo("media/distance-fields-002.mp4", 6.28318)

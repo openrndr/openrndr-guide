@@ -69,7 +69,7 @@ fun main() {
         val v4 = Vector4.uniformRing(0.0, 300.0)
     }
 
-    @Media.Image "media/orx-noise-001.jpg"
+    @Media.Image "../media/orx-noise-001.jpg"
 
     @Application
     @ProduceScreenshot("media/orx-noise-001.jpg")
@@ -96,7 +96,7 @@ fun main() {
     ## Perlin noise
     """
 
-    @Media.Image "media/orx-noise-002.jpg"
+    @Media.Image "../media/orx-noise-002.jpg"
 
     @Application
     @ProduceScreenshot("media/orx-noise-002.jpg")
@@ -126,7 +126,7 @@ fun main() {
     ## Value noise
     """
 
-    @Media.Image "media/orx-noise-003.jpg"
+    @Media.Image "../media/orx-noise-003.jpg"
 
     @Application
     @ProduceScreenshot("media/orx-noise-003.jpg")
@@ -156,7 +156,7 @@ fun main() {
     ## Simplex noise
     """
 
-    @Media.Image "media/orx-noise-004.jpg"
+    @Media.Image "../media/orx-noise-004.jpg"
 
     @Application
     @ProduceScreenshot("media/orx-noise-004.jpg")
@@ -186,7 +186,7 @@ fun main() {
     ## Fractal/FBM noise
     """
 
-    @Media.Video "media/orx-noise-005-fbm.mp4"
+    @Media.Video "../media/orx-noise-005-fbm.mp4"
 
     @Application
     @ProduceVideo("media/orx-noise-005-fbm.mp4", 9.0)
@@ -226,7 +226,7 @@ fun main() {
     to estimate gradients for noise functions.
     """
 
-    @Media.Video "media/orx-noise-300.mp4"
+    @Media.Video "../media/orx-noise-300.mp4"
 
     @Application
     @ProduceVideo("media/orx-noise-300.mp4", 9.0)
@@ -265,7 +265,7 @@ fun main() {
     [partial application](https://en.wikipedia.org/wiki/Partial_application)).
     """
 
-    @Media.Video "media/orx-noise-301.mp4"
+    @Media.Video "../media/orx-noise-301.mp4"
 
     @Application
     @ProduceVideo("media/orx-noise-301.mp4", 9.0)
@@ -318,7 +318,7 @@ fun main() {
     `premultipliedAlpha` | `true`                        | Outputs premultiplied alpha if true                
     """
 
-    @Media.Image "media/orx-noise-filter-001.jpg"
+    @Media.Image "../media/orx-noise-filter-001.jpg"
 
     @Application
     @ProduceScreenshot("media/orx-noise-filter-001.jpg")
@@ -359,7 +359,7 @@ fun main() {
     `premultipliedAlpha` | `true`                        | Outputs premultiplied alpha if true
     """
 
-    @Media.Video "media/orx-noise-filter-008.mp4"
+    @Media.Video "../media/orx-noise-filter-008.mp4"
 
     @Application
     @ProduceVideo("media/orx-noise-filter-008.mp4", 9.0)
@@ -401,7 +401,7 @@ fun main() {
     `premultipliedAlpha` | `true`                        | Outputs premultiplied alpha if true                
     """
 
-    @Media.Image "media/orx-noise-filter-002.jpg"
+    @Media.Image "../media/orx-noise-filter-002.jpg"
 
     @Application
     @ProduceScreenshot("media/orx-noise-filter-002.jpg")
@@ -437,7 +437,7 @@ fun main() {
     `premultipliedAlpha` | `true`                        | Outputs premultiplied alpha if true                
     """
 
-    @Media.Image "media/orx-noise-filter-003.jpg"
+    @Media.Image "../media/orx-noise-filter-003.jpg"
 
     @Application
     @ProduceScreenshot("media/orx-noise-filter-003.jpg")
@@ -478,7 +478,7 @@ fun main() {
     `premultipliedAlpha` | `true`                        | Outputs premultiplied alpha if true                
     """
 
-    @Media.Image "media/orx-noise-filter-004.jpg"
+    @Media.Image "../media/orx-noise-filter-004.jpg"
 
     @Application
     @ProduceScreenshot("media/orx-noise-filter-004.jpg")

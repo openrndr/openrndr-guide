@@ -45,7 +45,7 @@ fun main() {
     calling `drawer.circle()` multiple times.
     """
 
-    @Media.Image "media/batching-circles-001.jpg"
+    @Media.Image "../media/batching-circles-001.jpg"
 
     @Application
     @ProduceScreenshot("media/batching-circles-001.jpg")
@@ -95,7 +95,7 @@ fun main() {
     second argument:  
     """
 
-    @Media.Image "media/batching-circles-002.jpg"
+    @Media.Image "../media/batching-circles-002.jpg"
 
     @Application
     @ProduceScreenshot("media/batching-circles-002.jpg")
@@ -118,7 +118,7 @@ fun main() {
     both shown in the next example.          
     """
 
-    @Media.Image "media/batching-circles-003.jpg"
+    @Media.Image "../media/batching-circles-003.jpg"
 
     @Application
     @ProduceScreenshot("media/batching-circles-003.jpg")
@@ -176,7 +176,7 @@ fun main() {
     than calling `drawer.rectangle()` multiple times.
     """
 
-    @Media.Image "media/batching-rectangles-001.jpg"
+    @Media.Image "../media/batching-rectangles-001.jpg"
 
     @Application
     @ProduceScreenshot("media/batching-rectangles-001.jpg")
@@ -225,7 +225,7 @@ fun main() {
     using `.fill`.
     """
 
-    @Media.Image "media/batching-points-001.jpg"
+    @Media.Image "../media/batching-points-001.jpg"
 
     @Application
     @ProduceScreenshot("media/batching-points-001.jpg")

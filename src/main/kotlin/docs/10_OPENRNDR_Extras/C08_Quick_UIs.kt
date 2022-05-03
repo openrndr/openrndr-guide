@@ -78,7 +78,7 @@ fun main() {
         }
     }
 
-    @Media.Image "media/quick-ui-001.jpg"
+    @Media.Image "../media/quick-ui-001.jpg"
 
     @Text 
     """
@@ -147,7 +147,7 @@ fun main() {
         }
     }
 
-    @Media.Video "media/quick-ui-003.mp4"
+    @Media.Video "../media/quick-ui-003.mp4"
 
     @Text 
     """
@@ -223,7 +223,7 @@ fun main() {
         }
     }
 
-    @Media.Video "media/quick-ui-004.mp4"
+    @Media.Video "../media/quick-ui-004.mp4"
 
     @Text 
     """
@@ -320,7 +320,7 @@ fun main() {
         }
     }
 
-    @Media.Video "media/quick-ui-005.mp4"
+    @Media.Video "../media/quick-ui-005.mp4"
 
     @Text 
     """

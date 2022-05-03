@@ -202,7 +202,7 @@ fun main() {
     different layers of the same array texture.
     """
 
-    @Media.Video "media/array-texture-001.mp4"
+    @Media.Video "../media/array-texture-001.mp4"
 
     @Application
     @ProduceVideo("media/array-texture-001.mp4", 6.28318)

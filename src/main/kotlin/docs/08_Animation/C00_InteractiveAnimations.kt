@@ -32,7 +32,7 @@ fun main() {
     animating the `x` property of our animation object.
     """
 
-    @Media.Video "media/animations-001.mp4"
+    @Media.Video "../media/animations-001.mp4"
 
     @Application
     @ProduceVideo("media/animations-001.mp4", 5.0)
@@ -63,7 +63,7 @@ fun main() {
     By using `.complete()` we can create sequences of property animations.
     """
 
-    @Media.Video "media/animations-002.mp4"
+    @Media.Video "../media/animations-002.mp4"
 
     @Application
     @ProduceVideo("media/animations-002.mp4", 10.0)
@@ -96,7 +96,7 @@ fun main() {
     animations for `x` and `y` run simultaneously. 
     """
 
-    @Media.Video "media/animations-003.mp4"
+    @Media.Video "../media/animations-003.mp4"
 
     @Application
     @ProduceVideo("media/animations-003.mp4", 10.0)
@@ -136,7 +136,7 @@ fun main() {
     Available [Easings](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-animatable/src/commonMain/kotlin/org/openrndr/animatable/easing/Easer.kt#L10) 
     """
 
-    @Media.Video "media/animations-101.mp4"
+    @Media.Video "../media/animations-101.mp4"
 
     @Application
     @ProduceVideo("media/animations-101.mp4", 10.0)
@@ -167,7 +167,7 @@ fun main() {
     ## Behavioral animation
     """
 
-    @Media.Video "media/animations-301.mp4"
+    @Media.Video "../media/animations-301.mp4"
 
     @Application
     @ProduceVideo("media/animations-301.mp4", 10.0)
@@ -229,7 +229,7 @@ fun main() {
     They can be achieved through the following pattern:
     """
 
-    @Media.Video "media/animations-401.mp4"
+    @Media.Video "../media/animations-401.mp4"
 
     @Application
     @ProduceVideo("media/animations-401.mp4", 10.0)

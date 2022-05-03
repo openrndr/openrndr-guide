@@ -47,7 +47,7 @@ fun main() {
     As a quick first step we override the output to red in the following snippet
     """
 
-    @Media.Image "media/shadestyles-001.jpg"
+    @Media.Image "../media/shadestyles-001.jpg"
 
     @Application
     @ProduceScreenshot("media/shadestyles-001.jpg")
@@ -78,7 +78,7 @@ fun main() {
     a wavy pattern by using cosines and the screen position.
     """
 
-    @Media.Image "media/shadestyles-002.jpg"
+    @Media.Image "../media/shadestyles-002.jpg"
 
     @Application
     @ProduceScreenshot("media/shadestyles-002.jpg")
@@ -110,7 +110,7 @@ fun main() {
     to the shade style. Shade styles have _parameters_ that can be used for this.
     """
 
-    @Media.Video "media/shadestyles-003.mp4"
+    @Media.Video "../media/shadestyles-003.mp4"
 
     @Application
     @ProduceVideo("media/shadestyles-003.mp4", 6.28318, 60)
@@ -147,7 +147,7 @@ fun main() {
     ### Mapping images on shapes
     """
 
-    @Media.Video "media/shadestyles-example-001.mp4"
+    @Media.Video "../media/shadestyles-example-001.mp4"
 
     @Application
     @ProduceVideo("media/shadestyles-example-001.mp4", 6.28318, 60)

@@ -28,7 +28,7 @@ fun main() {
     In the following example we use `Drawer.translate` to move a single rectangle over the screen.
     """
 
-    @Media.Video "media/transformations-001.mp4"
+    @Media.Video "../media/transformations-001.mp4"
 
     @Application
     @ProduceVideo("media/transformations-001.mp4", 7.7, 60, 8)
@@ -56,7 +56,7 @@ fun main() {
     motion as two separate translations
     """
 
-    @Media.Video "media/transformations-002.mp4"
+    @Media.Video "../media/transformations-002.mp4"
 
     @Application
     @ProduceVideo("media/transformations-002.mp4", 7.7, 60, 8)
@@ -95,7 +95,7 @@ fun main() {
     from bottom to top: first `rotate` is applied and only then `translate`.
     """
 
-    @Media.Video "media/transformations-003.mp4"
+    @Media.Video "../media/transformations-003.mp4"
 
     @Application
     @ProduceVideo("media/transformations-003.mp4", 3.0, 60, 8)
@@ -129,7 +129,7 @@ fun main() {
     the coordinate system: (0, 0).
     """
 
-    @Media.Video "media/transformations-004.mp4"
+    @Media.Video "../media/transformations-004.mp4"
 
     @Application
     @ProduceVideo("media/transformations-004.mp4", 6.28318, 60, 8)
@@ -159,7 +159,7 @@ fun main() {
     ### Combining transformations
     """
 
-    @Media.Video "media/transformations-005.mp4"
+    @Media.Video "../media/transformations-005.mp4"
 
     @Application
     @ProduceVideo("media/transformations-005.mp4", 6.0, 60, 8)
@@ -188,7 +188,7 @@ fun main() {
         }
     }
 
-    @Media.Video "media/transformations-006.mp4"
+    @Media.Video "../media/transformations-006.mp4"
 
     @Application
     @ProduceVideo("media/transformations-006.mp4", 6.0, 60, 8)

@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Set up your first program")
-@file:ParentTitle("Getting started with OPENRNDR")
-@file:Order("100")
-@file:URL("gettingStartedWithOPENRNDR/setUpYourFirstProgram")
+@file:ParentTitle("What is OPENRNDR?")
+@file:Order("20")
+@file:URL("/setUpYourFirstProgram")
 
-package docs.`02_Getting_Started_with_OPENRNDR`
+package docs
 
 import org.openrndr.dokgen.annotations.*
 

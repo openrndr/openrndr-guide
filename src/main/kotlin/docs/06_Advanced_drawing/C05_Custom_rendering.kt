@@ -128,7 +128,7 @@ fun main() {
     ### Drawing vertex buffers
     """
 
-    @Media.Image "media/custom-rendering-001.jpg"
+    @Media.Image "../media/custom-rendering-001.jpg"
 
     @Application
     @ProduceScreenshot("media/custom-rendering-001.jpg", 8)
@@ -171,7 +171,7 @@ fun main() {
     geometry
     """
 
-    @Media.Image "media/custom-rendering-002.jpg"
+    @Media.Image "../media/custom-rendering-002.jpg"
 
     @Application
     @ProduceScreenshot("media/custom-rendering-002.jpg", 8)
@@ -216,7 +216,7 @@ fun main() {
     creating a second vertex buffer which will contain matrix attributes.
     """
 
-    @Media.Image "media/custom-rendering-003.jpg"
+    @Media.Image "../media/custom-rendering-003.jpg"
 
     @Application
     @ProduceScreenshot("media/custom-rendering-003.jpg", 8)

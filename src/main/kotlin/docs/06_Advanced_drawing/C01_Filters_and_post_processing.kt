@@ -25,7 +25,7 @@ fun main() {
     To demonstrate the ease of using filters we show an example of applying a blur filter to a drawing on a render target.
     """
 
-    @Media.Video "media/filters-001.mp4"
+    @Media.Video "../media/filters-001.mp4"
 
     @Application
     @ProduceVideo("media/filters-001.mp4", 6.28318, 60)
@@ -86,7 +86,7 @@ fun main() {
     noise filter.
     """
 
-    @Media.Image "media/filters-002.jpg"
+    @Media.Image "../media/filters-002.jpg"
 
     @Application
     @ProduceScreenshot("media/filters-002.jpg")

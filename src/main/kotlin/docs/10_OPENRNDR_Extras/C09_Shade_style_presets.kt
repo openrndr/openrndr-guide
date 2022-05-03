@@ -37,7 +37,7 @@ fun main() {
     ## linearGradient
     """
 
-    @Media.Video "media/shade-style-presets-001.mp4"
+    @Media.Video "../media/shade-style-presets-001.mp4"
 
     @Application
     @ProduceVideo("media/shade-style-presets-001.mp4", 6.0)
@@ -67,7 +67,7 @@ fun main() {
     ## radialGradient
     """
 
-    @Media.Video "media/shade-style-presets-002.mp4"
+    @Media.Video "../media/shade-style-presets-002.mp4"
 
     @Application
     @ProduceVideo("media/shade-style-presets-002.mp4", 6.28318)
@@ -97,7 +97,7 @@ fun main() {
     ## angularGradient
     """
 
-    @Media.Video "media/shade-style-presets-003.mp4"
+    @Media.Video "../media/shade-style-presets-003.mp4"
 
     @Application
     @ProduceVideo("media/shade-style-presets-003.mp4", 6.0)
@@ -127,7 +127,7 @@ fun main() {
     ## halfAngularGradient
     """
 
-    @Media.Video "media/shade-style-presets-004.mp4"
+    @Media.Video "../media/shade-style-presets-004.mp4"
 
     @Application
     @ProduceVideo("media/shade-style-presets-004.mp4", 6.0)

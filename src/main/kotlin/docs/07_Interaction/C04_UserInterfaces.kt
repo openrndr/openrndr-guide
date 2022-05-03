@@ -40,7 +40,7 @@ fun main() {
     button one would do the following:
     """
 
-    @Media.Image "media/ui-001.jpg"
+    @Media.Image "../media/ui-001.jpg"
 
     @Application
     @ProduceScreenshot("media/ui-001.jpg")
@@ -81,7 +81,7 @@ fun main() {
     style sheet is used to color a button pink.
     """
 
-    @Media.Image "media/ui-002.jpg"
+    @Media.Image "../media/ui-002.jpg"
 
     @Application
     @ProduceScreenshot("media/ui-002.jpg")
@@ -181,7 +181,7 @@ fun main() {
     determined by the label contents.
     """
 
-    @Media.Image "media/ui-006.jpg"
+    @Media.Image "../media/ui-006.jpg"
 
     @Application
     @ProduceScreenshot("media/ui-006.jpg")
@@ -227,7 +227,7 @@ fun main() {
     * `valueChanged` - emitted when the slider value has changed
     """
 
-    @Media.Image "media/ui-007.jpg"
+    @Media.Image "../media/ui-007.jpg"
 
     @Application
     @ProduceScreenshot("media/ui-007.jpg")
@@ -271,7 +271,7 @@ fun main() {
     * `valueChanged` - emitted when a color is picked
     """
 
-    @Media.Image "media/ui-008.jpg"
+    @Media.Image "../media/ui-008.jpg"
 
     @Application
     @ProduceScreenshot("media/ui-008.jpg")
@@ -314,7 +314,7 @@ fun main() {
     * `valueChanged` - emitted when an option is picked
     """
 
-    @Media.Image "media/ui-009.jpg"
+    @Media.Image "../media/ui-009.jpg"
 
     @Application
     @ProduceScreenshot("media/ui-009.jpg")

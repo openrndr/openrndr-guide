@@ -19,7 +19,7 @@ fun main() {
     OPENRNDR's drawer supports a single rectangular clip mask.
     """
 
-    @Media.Video "media/clipping-001.mp4"
+    @Media.Video "../media/clipping-001.mp4"
 
     @Application
     @ProduceVideo("media/clipping-001.mp4", 6.28318, 60)

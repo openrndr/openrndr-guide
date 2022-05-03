@@ -35,7 +35,7 @@ fun main() {
     draw the text.
     """
 
-    @Media.Image "media/text-001.jpg"
+    @Media.Image "../media/text-001.jpg"
 
     @Application
     @ProduceScreenshot("media/text-001.jpg")
@@ -68,7 +68,7 @@ fun main() {
     Its use is easiest demonstrated through an example:
     """
 
-    @Media.Image "media/text-002.jpg"
+    @Media.Image "../media/text-002.jpg"
 
     @Application
     @ProduceScreenshot("media/text-002.jpg")
@@ -107,7 +107,7 @@ fun main() {
     text is set on two rows.
     """
 
-    @Media.Image "media/text-003.jpg"
+    @Media.Image "../media/text-003.jpg"
 
     @Application
     @ProduceScreenshot("media/text-003.jpg")
@@ -143,7 +143,7 @@ fun main() {
     set using `Writer.style.leading` and `Writer.style.tracking`.
     """
 
-    @Media.Video "media/text-004.mp4"
+    @Media.Video "../media/text-004.mp4"
 
     @Application
     @ProduceVideo("media/text-004.mp4", 6.28318, 60)

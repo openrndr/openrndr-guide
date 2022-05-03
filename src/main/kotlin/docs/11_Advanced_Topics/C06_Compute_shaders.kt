@@ -52,7 +52,7 @@ fun main() {
     }
     ```"""
 
-    @Media.Image "media/compute-shaders-001.jpg"
+    @Media.Image "../media/compute-shaders-001.jpg"
 
     @Text
     """

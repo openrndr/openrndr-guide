@@ -62,7 +62,7 @@ fun main() {
     #### BoxBlur
     """
 
-    @Media.Video "media/filters-001.mp4"
+    @Media.Video "../media/filters-001.mp4"
 
     @Application
     @ProduceVideo("media/filters-001.mp4", 3.14159)
@@ -89,7 +89,7 @@ fun main() {
     #### ApproximateGaussianBlur
     """
 
-    @Media.Video "media/filters-002.mp4"
+    @Media.Video "../media/filters-002.mp4"
 
     @Application
     @ProduceVideo("media/filters-002.mp4", 3.14159)
@@ -117,7 +117,7 @@ fun main() {
     #### GaussianBloom
     """
 
-    @Media.Video "media/filters-003.mp4"
+    @Media.Video "../media/filters-003.mp4"
 
     @Application
     @ProduceVideo("media/filters-003.mp4", 3.14159)
@@ -146,7 +146,7 @@ fun main() {
     #### HashBlur
     """
 
-    @Media.Video "media/filters-004.mp4"
+    @Media.Video "../media/filters-004.mp4"
 
     @Application
     @ProduceVideo("media/filters-004.mp4", 3.14159)
@@ -174,7 +174,7 @@ fun main() {
     #### FrameBlur
     """
 
-    @Media.Video "media/filters-005.mp4"
+    @Media.Video "../media/filters-005.mp4"
 
     @Application
     @ProduceVideo("media/filters-005.mp4", 3.14159)
@@ -210,7 +210,7 @@ fun main() {
     #### ZoomBlur
     """
 
-    @Media.Video "media/filters-006.mp4"
+    @Media.Video "../media/filters-006.mp4"
 
     @Application
     @ProduceVideo("media/filters-006.mp4", 3.14159)
@@ -245,7 +245,7 @@ fun main() {
     #### ChromaticAberration
     """
 
-    @Media.Video "media/filters-100.mp4"
+    @Media.Video "../media/filters-100.mp4"
 
     @Application
     @ProduceVideo("media/filters-100.mp4", 3.14159)
@@ -273,7 +273,7 @@ fun main() {
     #### ColorCorrection
     """
 
-    @Media.Video "media/filters-101.mp4"
+    @Media.Video "../media/filters-101.mp4"
 
     @Application
     @ProduceVideo("media/filters-101.mp4", 6.28318)
@@ -303,7 +303,7 @@ fun main() {
     #### Sepia
     """
 
-    @Media.Video "media/filters-102.mp4"
+    @Media.Video "../media/filters-102.mp4"
 
     @Application
     @ProduceVideo("media/filters-102.mp4", 3.14159)
@@ -331,7 +331,7 @@ fun main() {
     #### LumaOpacity
     """
 
-    @Media.Video "media/filters-103.mp4"
+    @Media.Video "../media/filters-103.mp4"
 
     @Application
     @ProduceVideo("media/filters-103.mp4", 6.28318)
@@ -366,7 +366,7 @@ fun main() {
 
     #### LumaSobel
     """
-    @Media.Video "media/filters-200.mp4"
+    @Media.Video "../media/filters-200.mp4"
 
     @Application
     @ProduceVideo("media/filters-200.mp4", 6.28318)
@@ -397,7 +397,7 @@ fun main() {
     #### Contour
     """
 
-    @Media.Video "media/filters-201.mp4"
+    @Media.Video "../media/filters-201.mp4"
 
     @Application
     @ProduceVideo("media/filters-201.mp4", 6.28318)
@@ -429,7 +429,7 @@ fun main() {
     #### EdgesWork
     """
 
-    @Media.Video "media/filters-202.mp4"
+    @Media.Video "../media/filters-202.mp4"
 
     @Application
     @ProduceVideo("media/filters-202.mp4", 6.28318)
@@ -459,7 +459,7 @@ fun main() {
     #### BlockRepeat
     """
 
-    @Media.Video "media/filters-300.mp4"
+    @Media.Video "../media/filters-300.mp4"
 
     @Application
     @ProduceVideo("media/filters-300.mp4", 6.28318)
@@ -490,7 +490,7 @@ fun main() {
     #### StackRepeat
     """
 
-    @Media.Video "media/filters-301.mp4"
+    @Media.Video "../media/filters-301.mp4"
 
     @Application
     @ProduceVideo("media/filters-301.mp4", 6.28318)
@@ -520,7 +520,7 @@ fun main() {
     #### HorizontalWave
     """
 
-    @Media.Video "media/filters-302.mp4"
+    @Media.Video "../media/filters-302.mp4"
 
     @Application
     @ProduceVideo("media/filters-302.mp4", 6.28318)
@@ -553,7 +553,7 @@ fun main() {
     #### VerticalWave
     """
 
-    @Media.Video "media/filters-303.mp4"
+    @Media.Video "../media/filters-303.mp4"
 
     @Application
     @ProduceVideo("media/filters-303.mp4", 6.28318)
@@ -586,7 +586,7 @@ fun main() {
     #### Perturb
     """
 
-    @Media.Video "media/filters-304.mp4"
+    @Media.Video "../media/filters-304.mp4"
 
     @Application
     @ProduceVideo("media/filters-304.mp4", 6.28318)
@@ -617,7 +617,7 @@ fun main() {
     #### Tiles
     """
 
-    @Media.Video "media/filters-305.mp4"
+    @Media.Video "../media/filters-305.mp4"
 
     @Application
     @ProduceVideo("media/filters-305.mp4", 6.0)
@@ -647,7 +647,7 @@ fun main() {
     #### Fisheye
     """
 
-    @Media.Video "media/filters-306.mp4"
+    @Media.Video "../media/filters-306.mp4"
 
     @Application
     @ProduceVideo("media/filters-306.mp4", 6.28318)
@@ -676,7 +676,7 @@ fun main() {
     #### DisplaceBlend
     """
 
-    @Media.Video "media/filters-307.mp4"
+    @Media.Video "../media/filters-307.mp4"
 
     @Application
     @ProduceVideo("media/filters-307.mp4", 6.0)
@@ -721,7 +721,7 @@ fun main() {
     #### StretchWaves
     """
 
-    @Media.Video "media/filters-308.mp4"
+    @Media.Video "../media/filters-308.mp4"
 
     @Application
     @ProduceVideo("media/filters-308.mp4", 6.0)
@@ -758,7 +758,7 @@ fun main() {
     #### PerspectivePlane
     """
 
-    @Media.Video "media/filters-309.mp4"
+    @Media.Video "../media/filters-309.mp4"
 
     @Application
     @ProduceVideo("media/filters-309.mp4", 6.28318)
@@ -797,7 +797,7 @@ fun main() {
 
     #### ADither
     """
-    @Media.Video "media/filters-400.mp4"
+    @Media.Video "../media/filters-400.mp4"
 
     @Application
     @ProduceVideo("media/filters-400.mp4", 5.0)
@@ -826,7 +826,7 @@ fun main() {
     #### CMYKHalftone
     """
 
-    @Media.Video "media/filters-401.mp4"
+    @Media.Video "../media/filters-401.mp4"
 
     @Application
     @ProduceVideo("media/filters-401.mp4", 6.28318)
@@ -858,7 +858,7 @@ fun main() {
     #### Crosshatch
     """
 
-    @Media.Video "media/filters-402.mp4"
+    @Media.Video "../media/filters-402.mp4"
 
     @Application
     @ProduceVideo("media/filters-402.mp4", 6.28318)
@@ -894,7 +894,7 @@ fun main() {
 
     #### DropShadow
     """
-    @Media.Video "media/filters-500.mp4"
+    @Media.Video "../media/filters-500.mp4"
 
     @Application
     @ProduceVideo("media/filters-500.mp4", 6.28318)
@@ -938,7 +938,7 @@ fun main() {
     `Checkers` is a simple checker generator filter.
     """
 
-    @Media.Video "media/filters-600.mp4"
+    @Media.Video "../media/filters-600.mp4"
 
     @Application
     @ProduceVideo("media/filters-600.mp4", 6.28318)

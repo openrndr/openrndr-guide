@@ -149,7 +149,7 @@ fun main() {
     This produces:
     """
 
-    @Media.Image "media/compositor-001.jpg"
+    @Media.Image "../media/compositor-001.jpg"
 
 
     @Text
@@ -204,7 +204,7 @@ fun main() {
     The output:
     """
 
-    @Media.Image "media/compositor-002.jpg"
+    @Media.Image "../media/compositor-002.jpg"
 
     @Text
     """
@@ -260,7 +260,7 @@ fun main() {
         }
     }
 
-    @Media.Video "media/compositor-003.mp4"
+    @Media.Video "../media/compositor-003.mp4"
 
     @Text """
     ## Common use-cases
@@ -272,7 +272,7 @@ fun main() {
     by using nested layers and a `Normal` blend with `clip` enabled.
     """
 
-    @Media.Video "media/compositor-004.mp4"
+    @Media.Video "../media/compositor-004.mp4"
 
     @Application
     @ProduceVideo("media/compositor-004.mp4", 6.28318)
@@ -333,7 +333,7 @@ fun main() {
     the text with a bit of a shadow that sets the text apart from the image.  
     """
 
-    @Media.Video "media/compositor-005.mp4"
+    @Media.Video "../media/compositor-005.mp4"
 
     @Application
     @ProduceVideo("media/compositor-005.mp4", 6.28318)
@@ -392,7 +392,7 @@ fun main() {
     two distortion effects followed by a blur filter.  
     """
 
-    @Media.Video "media/compositor-006.mp4"
+    @Media.Video "../media/compositor-006.mp4"
 
     @Application
     @ProduceVideo("media/compositor-006.mp4", 6.28318)

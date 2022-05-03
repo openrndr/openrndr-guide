@@ -22,7 +22,10 @@ fun Path.escape() = joinToString(".") { part ->
     if (special) "`$str`" else str
 }
 
-fun examplesPackageDirective(path: Path) = "examples." + path.escape()
+fun examplesPackageDirective(path: Path): String {
+    val pathEscaped = path.escape()
+    return "examples" + if(pathEscaped.isNotEmpty()) ".$pathEscaped" else ""
+}
 
 object DokGen {
     /**
@@ -34,7 +37,8 @@ object DokGen {
         ktFileLocation: String,
         annotations: Map<String, String>
     ): String {
-        val isSectionIndex = ktFileLocation.endsWith("index.kt")
+        val isSectionIndex = ktFileLocation.endsWith("index.kt") ||
+                ktFileLocation.endsWith("home.kt")
         val parent = if (isSectionIndex) "~" else annotations["ParentTitle"]
 
         return """

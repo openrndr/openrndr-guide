@@ -35,7 +35,7 @@ fun main() {
     ## Contain mode
     """
 
-    @Media.Video "media/image-fit-001.mp4"
+    @Media.Video "../media/image-fit-001.mp4"
 
     @Application
     @ProduceVideo("media/image-fit-001.mp4", 6.28318)
@@ -59,7 +59,7 @@ fun main() {
     Additionally the placement of the image in the rectangle can be adjusted
     """
 
-    @Media.Video "media/image-fit-002.mp4"
+    @Media.Video "../media/image-fit-002.mp4"
 
     @Application
     @ProduceVideo("media/image-fit-002.mp4", 6.28318)
@@ -83,7 +83,7 @@ fun main() {
     ## Cover mode
     """
 
-    @Media.Video "media/image-fit-101.mp4"
+    @Media.Video "../media/image-fit-101.mp4"
 
     @Application
     @ProduceVideo("media/image-fit-101.mp4", 6.28318)
@@ -106,7 +106,7 @@ fun main() {
         }
     }
 
-    @Media.Video "media/image-fit-102.mp4"
+    @Media.Video "../media/image-fit-102.mp4"
 
     @Text 
     """

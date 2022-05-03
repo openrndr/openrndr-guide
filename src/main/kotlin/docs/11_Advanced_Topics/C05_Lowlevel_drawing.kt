@@ -62,7 +62,7 @@ fun main() {
     a single triangle.        
     """
 
-    @Media.Image "media/lowlevel-drawing-001.jpg"
+    @Media.Image "../media/lowlevel-drawing-001.jpg"
 
     @Application
     @ProduceScreenshot("media/lowlevel-drawing-001.jpg", 8)

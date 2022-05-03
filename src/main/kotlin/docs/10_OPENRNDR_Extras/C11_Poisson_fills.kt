@@ -39,7 +39,7 @@ fun main() {
     code a bit. The same results can be achieved using render targets.
     """
 
-    @Media.Video "media/poisson-fills-001.mp4"
+    @Media.Video "../media/poisson-fills-001.mp4"
 
     @Application
     @ProduceVideo("media/poisson-fills-001.mp4", 6.28318)
@@ -110,7 +110,7 @@ fun main() {
         }
     }
 
-    @Media.Video "media/poisson-fills-002.mp4"
+    @Media.Video "../media/poisson-fills-002.mp4"
 
     @Application
     @ProduceVideo("media/poisson-fills-002.mp4", 6.28318)
@@ -157,7 +157,7 @@ fun main() {
     # Blending
     """
 
-    @Media.Video "media/poisson-fills-101.mp4"
+    @Media.Video "../media/poisson-fills-101.mp4"
 
     @Application
     @ProduceVideo("media/poisson-fills-101.mp4", 6.28318)
@@ -195,7 +195,7 @@ fun main() {
         }
     }
 
-    @Media.Video "media/poisson-fills-102.mp4"
+    @Media.Video "../media/poisson-fills-102.mp4"
 
     @Application
     @ProduceVideo("media/poisson-fills-102.mp4", 6.28318)
