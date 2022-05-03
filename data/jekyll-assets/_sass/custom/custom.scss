@@ -77,3 +77,27 @@ div.highlighter-rouge,
 div.highlighter-rouge code {
   background-color: #F4F4F4;
 }
+
+a:not([class]) {
+	text-decoration-color: rgb(255, 192, 203);
+	text-decoration-thickness: 0.14em;
+	text-decoration-style: solid;
+	text-decoration-skip-ink: auto;
+	text-decoration-line: underline;
+	background-image: none;
+}
+.nav-list .nav-list-item .nav-list-link:hover, .nav-list .nav-list-item .nav-list-link.active {
+	background: rgba(255, 192, 203, 0.7);
+}
+.site-title {
+    flex-grow: unset;
+    margin: auto;
+    padding-left: 0;
+    padding-right: 0;
+}
+.site-title:hover {
+	background-image: none;
+}
+video {
+	max-width: 100%;
+}
