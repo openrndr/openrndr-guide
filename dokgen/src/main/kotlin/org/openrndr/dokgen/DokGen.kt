@@ -3,6 +3,8 @@ package org.openrndr.dokgen
 import org.openrndr.dokgen.sourceprocessor.SourceProcessor
 import java.io.File
 import java.nio.file.Path
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * Returns a relative [Path] between two [File] instances.
@@ -27,6 +29,8 @@ fun examplesPackageDirective(path: Path): String {
     return "examples" + if(pathEscaped.isNotEmpty()) ".$pathEscaped" else ""
 }
 
+private val dateFormat = SimpleDateFormat("yyyy.MM.dd HH:mm:ss Z")
+
 object DokGen {
     /**
      * @param ktFileLocation .kt source path relative to project root
@@ -40,6 +44,8 @@ object DokGen {
         val isSectionIndex = ktFileLocation.endsWith("index.kt") ||
                 ktFileLocation.endsWith("home.kt")
         val parent = if (isSectionIndex) "~" else annotations["ParentTitle"]
+        val date = Date(File(ktFileLocation).lastModified())
+        val lastModifiedAt = dateFormat.format(date)
 
         return """
             ---
@@ -48,6 +54,7 @@ object DokGen {
             layout: default
             title: ${annotations["Title"]}
             parent: $parent
+            last_modified_at: $lastModifiedAt
             nav_order: ${annotations["Order"]}
             has_children: $isSectionIndex
             ---
