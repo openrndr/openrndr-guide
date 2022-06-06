@@ -1,7 +1,7 @@
 <script>
   /* Redirect old guide.openrndr.org URLs to new ones in jekyll website */
   /* Use block comments only! Line comments break the site */
-  let urlParts = document.location.toString().match(/\/#\/(\d+)\D+(\d+)(?:\D+\?id=)?([0-9-_a-zA-Z]+)?/);
+  let urlParts = document.location.toString().match(/\/#\/(\d+)\D+(\d+)(?:\D+\?id=([0-9-_a-zA-Z]+))?/);
   if(urlParts && urlParts.length >= 3) {
       let urlId = urlParts[1] + urlParts[2];
       let urlNew = {
