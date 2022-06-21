@@ -4,7 +4,7 @@
 layout: default
 title: Application Flow
 parent: Advanced topics
-last_modified_at: 2022.03.26 13:27:29 +0100
+last_modified_at: 2022.06.21 14:46:36 +0200
 nav_order: 110
 has_children: false
 ---
@@ -52,7 +52,7 @@ fun main() {
         
         override fun draw() {}
     }
-    Application.run(Main(), configuration {// ...
+    application(Main(), configuration {// ...
     })
 }
 ``` 

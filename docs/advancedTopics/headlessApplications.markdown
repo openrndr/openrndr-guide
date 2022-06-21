@@ -4,7 +4,7 @@
 layout: default
 title: Headless applications
 parent: Advanced topics
-last_modified_at: 2022.04.25 00:39:19 +0200
+last_modified_at: 2022.06.21 14:46:36 +0200
 nav_order: 140
 has_children: false
 ---
@@ -14,19 +14,9 @@ has_children: false
 OPENRNDR can be ran in headless mode on machines that have EGL support. 
 Using the EGL backed headless mode Programs can be ran without active graphical environment. This makes it for example possible to use OPENRNDR to create command line utilities that can be run in a SSH session or as a background service.
 
-To enable headless mode all that needs to be done is setting the 
-`headless` value in the `Configuration` to true. 
- 
-```kotlin
-fun main() = application {
-    configure {
-        headless = true
-    }
-    program {// ....
-    }
-}
-``` 
- 
+The default backend on the JVM is GLFW, in order to use headless mode you will need to run OPENRNDR 
+with EGL by adding `-Dorg.openrndr.application=EGL` to the VM arguments in the launch configuration.
+
 ## Limitations
 
 #### Platforms
