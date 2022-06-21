@@ -6,7 +6,6 @@
 
 package docs.`11_Advanced_Topics`
 
-import org.openrndr.application
 import org.openrndr.dokgen.annotations.*
 
 
@@ -19,23 +18,9 @@ fun main() {
     OPENRNDR can be ran in headless mode on machines that have EGL support. 
     Using the EGL backed headless mode Programs can be ran without active graphical environment. This makes it for example possible to use OPENRNDR to create command line utilities that can be run in a SSH session or as a background service.
 
-    To enable headless mode all that needs to be done is setting the 
-    `headless` value in the `Configuration` to true.
-    """
+    The default backend on the JVM is GLFW, in order to use headless mode you will need to run OPENRNDR 
+    with EGL by adding `-Dorg.openrndr.application=EGL` to the VM arguments in the launch configuration.
 
-    @Code
-    application {
-        configure {
-            headless = true
-        }
-        program {
-            // ....
-        }
-    }
-
-
-    @Text
-    """
     ## Limitations
 
     #### Platforms
@@ -60,5 +45,4 @@ fun main() {
     Headless applications (currently) cannot create secondary/shared 
     contexts and as such ColorBufferLoader does not work.
     """
-
 }
