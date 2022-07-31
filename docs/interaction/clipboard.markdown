@@ -4,7 +4,7 @@
 layout: default
 title: Clipboard
 parent: Interaction
-last_modified_at: 2022.04.09 19:26:06 +0200
+last_modified_at: 2022.04.28 08:27:34 +0200
 nav_order: 130
 has_children: false
 ---

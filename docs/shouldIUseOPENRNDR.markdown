@@ -4,7 +4,7 @@
 layout: default
 title: Should I use OPENRNDR?
 parent: What is OPENRNDR?
-last_modified_at: 2022.04.28 11:45:41 +0200
+last_modified_at: 2022.05.26 10:37:28 +0200
 nav_order: 10
 has_children: false
 ---

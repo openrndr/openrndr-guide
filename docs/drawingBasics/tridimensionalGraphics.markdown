@@ -4,7 +4,7 @@
 layout: default
 title: Tridimensional graphics
 parent: Drawing basics
-last_modified_at: 2022.04.09 19:48:34 +0200
+last_modified_at: 2022.07.31 12:33:53 +0200
 nav_order: 170
 has_children: false
 ---

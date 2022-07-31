@@ -4,7 +4,7 @@
 layout: default
 title: Shade styles
 parent: Advanced drawing
-last_modified_at: 2022.05.24 15:30:33 +0200
+last_modified_at: 2022.05.26 10:37:28 +0200
 nav_order: 140
 has_children: false
 ---

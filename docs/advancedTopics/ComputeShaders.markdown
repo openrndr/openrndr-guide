@@ -4,7 +4,7 @@
 layout: default
 title: Compute shaders
 parent: Advanced topics
-last_modified_at: 2022.04.29 11:15:05 +0200
+last_modified_at: 2022.05.26 10:37:28 +0200
 nav_order: 160
 has_children: false
 ---

@@ -4,7 +4,7 @@
 layout: default
 title: Vectors
 parent: Drawing and transformations
-last_modified_at: 2022.04.25 00:34:59 +0200
+last_modified_at: 2022.04.28 08:27:34 +0200
 nav_order: 110
 has_children: false
 ---

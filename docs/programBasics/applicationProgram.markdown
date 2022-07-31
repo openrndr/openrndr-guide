@@ -4,7 +4,7 @@
 layout: default
 title: Application program
 parent: Program basics
-last_modified_at: 2022.04.27 20:23:46 +0200
+last_modified_at: 2022.04.28 08:27:34 +0200
 nav_order: 100
 has_children: false
 ---
