@@ -13,8 +13,8 @@ import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.DepthTestPass
 import org.openrndr.draw.DrawPrimitive
 import org.openrndr.draw.shadeStyle
-import org.openrndr.extras.camera.Orbital
-import org.openrndr.extras.meshgenerators.boxMesh
+import org.openrndr.extra.camera.Orbital
+import org.openrndr.extra.meshgenerators.boxMesh
 import org.openrndr.math.Vector2
 import org.openrndr.math.Vector3
 import org.openrndr.shape.*

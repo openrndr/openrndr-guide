@@ -13,7 +13,7 @@ import org.openrndr.draw.persistent
 import org.openrndr.extra.olive.Olive
 import org.openrndr.extra.olive.Once
 import org.openrndr.extra.olive.oliveProgram
-import org.openrndr.extras.camera.Orbital
+import org.openrndr.extra.camera.Orbital
 import org.openrndr.ffmpeg.VideoPlayerFFMPEG
 
 fun main() {

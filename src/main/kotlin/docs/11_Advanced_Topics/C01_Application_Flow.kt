@@ -8,7 +8,7 @@ package docs.`11_Advanced_Topics`
 
 import org.openrndr.Program
 import org.openrndr.application
-import org.openrndr.configuration
+import org.openrndr.buildConfiguration
 import org.openrndr.dokgen.annotations.*
 
 fun main() {
@@ -69,7 +69,7 @@ fun main() {
                     // -- draw here
                 }
             }
-            application(Main(), configuration {
+            application(Main(), buildConfiguration {
                 // ...
             })
         }

@@ -2,8 +2,8 @@ package org.openrndr
 
 import org.openrndr.draw.BufferMultisample
 import org.openrndr.extensions.SingleScreenshot
-import org.openrndr.ffmpeg.MP4Profile
 import org.openrndr.ffmpeg.ScreenRecorder
+import org.openrndr.ffmpeg.h264
 
 class Preload : ApplicationPreload() {
     private fun screenshots(
@@ -37,9 +37,9 @@ class Preload : ApplicationPreload() {
                     BufferMultisample.Disabled
                 }
                 frameRate = pFrameRate.toInt()
-                profile = MP4Profile().apply {
+                h264 {
                     // Lower quality for smaller files. Default is 23.
-                    constantRateFactor(30)
+                    constantRateFactor = 30
                 }
             }
             program.extend(screenRecorder)
