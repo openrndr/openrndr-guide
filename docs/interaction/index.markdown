@@ -10,3 +10,5 @@ has_children: true
 ---
  
 # Interaction 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/07_Interaction/index.kt){: .btn .btn-github }

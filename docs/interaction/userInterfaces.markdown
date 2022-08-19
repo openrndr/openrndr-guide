@@ -287,3 +287,5 @@ fun main() = application {
 ``` 
  
 [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/07_Interaction/C140_UserInterfaces005.kt) 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/07_Interaction/C140_UserInterfaces.kt){: .btn .btn-github }

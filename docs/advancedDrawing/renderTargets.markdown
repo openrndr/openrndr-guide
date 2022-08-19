@@ -218,3 +218,5 @@ val rt = renderTarget(640, 480) {
     colorBuffer("position", ColorFormat.RGBa, ColorType.FLOAT32)
 }
 ``` 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/06_Advanced_drawing/C105_Render_targets.kt){: .btn .btn-github }

@@ -155,3 +155,5 @@ fun main() = application {
 ``` 
  
 [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C120_Text003.kt) 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/04_Drawing_basics/C120_Text.kt){: .btn .btn-github }

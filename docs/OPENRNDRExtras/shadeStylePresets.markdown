@@ -128,3 +128,5 @@ fun main() = application {
 ``` 
  
 [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/10_OPENRNDR_Extras/C190_Shade_style_presets003.kt) 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/10_OPENRNDR_Extras/C190_Shade_style_presets.kt){: .btn .btn-github }

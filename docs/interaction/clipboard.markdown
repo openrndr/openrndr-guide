@@ -36,3 +36,5 @@ fun main() = application {
     }
 }
 ``` 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/07_Interaction/C130_Clipboard.kt){: .btn .btn-github }

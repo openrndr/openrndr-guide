@@ -78,3 +78,5 @@ for the examples in this guide in the
 If you are interested in more advanced examples we recommend checking out 
 the demo programs in the [`orx` repository](https://github.com/openrndr/orx), 
 most `orx` modules have demos in the `src/demo/kotlin` folder. 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/C20_SetupYourFirstProgram.kt){: .btn .btn-github }

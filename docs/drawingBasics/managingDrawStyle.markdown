@@ -67,3 +67,5 @@ extend {
     }
 }
 ``` 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/04_Drawing_basics/C140_ManagingDrawStyle.kt){: .btn .btn-github }

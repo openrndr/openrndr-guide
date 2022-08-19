@@ -10,3 +10,5 @@ has_children: true
 ---
  
 # Advanced drawing 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/06_Advanced_drawing/index.kt){: .btn .btn-github }

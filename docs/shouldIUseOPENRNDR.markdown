@@ -55,3 +55,5 @@ OPENRNDR is environment agnostic, however all our tutorial and reference materia
 We have not reached the point at which we can make promises regarding API stability. OPENRNDR is pre-1.0 software, which
 implies we try not to break things, but at times we have to. We break in cases in which it is better to break than to continue
 with inconsistencies in or incompleteness of the API. 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/C10_ShouldIUseOPENRNDR.kt){: .btn .btn-github }

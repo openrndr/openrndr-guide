@@ -10,3 +10,5 @@ has_children: true
 ---
  
 # Advanced topics 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/11_Advanced_Topics/index.kt){: .btn .btn-github }

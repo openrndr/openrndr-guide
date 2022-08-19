@@ -217,3 +217,5 @@ fun main() = application {
 ``` 
  
 [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C150_Custom_rendering002.kt) 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/06_Advanced_drawing/C150_Custom_rendering.kt){: .btn .btn-github }

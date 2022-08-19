@@ -111,3 +111,5 @@ fun main() = application {
     }
 }
 ``` 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/09_Videos/C100_Playing_Videos.kt){: .btn .btn-github }

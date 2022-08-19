@@ -86,3 +86,5 @@ fun main() = application {
     }
 }
 ``` 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/11_Advanced_Topics/C155_Integer_ColorBuffers.kt){: .btn .btn-github }

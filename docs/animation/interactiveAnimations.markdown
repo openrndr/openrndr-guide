@@ -281,3 +281,5 @@ fun main() = application {
     }
 }
 ``` 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/08_Animation/C100_InteractiveAnimations.kt){: .btn .btn-github }

@@ -161,3 +161,5 @@ fun main() = application {
     }
 }
 ``` 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/06_Advanced_drawing/C160_Concurrency_and_multithreading.kt){: .btn .btn-github }

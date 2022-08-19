@@ -153,3 +153,5 @@ for (y in 0 until cb.height) {
 // -- upload shadow to cb
 shadow.upload()
 ``` 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/06_Advanced_drawing/C100_Colorbuffers.kt){: .btn .btn-github }

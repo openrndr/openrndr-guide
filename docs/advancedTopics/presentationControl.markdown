@@ -50,3 +50,5 @@ fun main() = application {
 ``` 
  
 Note that in manual presentation mode `draw()` is still called when the window is resized. 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/11_Advanced_Topics/C120_Presentation_Control.kt){: .btn .btn-github }

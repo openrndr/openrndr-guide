@@ -153,3 +153,5 @@ A repository of ready-to-use filters for OPENRNDR can be found in
 the [ORX repository](https://github.com/openrndr/orx/tree/master/orx-fx),
 a partial index of the filters can be found in the 
 [orx-fx chapter](https://guide.openrndr.org/OPENRNDRExtras/imageFilters.html) 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/06_Advanced_drawing/C110_Filters_and_post_processing.kt){: .btn .btn-github }

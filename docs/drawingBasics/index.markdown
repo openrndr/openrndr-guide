@@ -10,3 +10,5 @@ has_children: true
 ---
  
 # Drawing basics 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/04_Drawing_basics/index.kt){: .btn .btn-github }

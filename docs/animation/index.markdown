@@ -10,3 +10,5 @@ has_children: true
 ---
  
 # Animation 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/08_Animation/index.kt){: .btn .btn-github }

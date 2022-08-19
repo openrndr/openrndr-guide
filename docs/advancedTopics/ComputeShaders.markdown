@@ -83,3 +83,5 @@ fun main() = application {
 ``` 
  
 [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/11_Advanced_Topics/C160_Compute_shaders000.kt) 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/11_Advanced_Topics/C160_Compute_shaders.kt){: .btn .btn-github }

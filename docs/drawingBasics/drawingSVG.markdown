@@ -146,3 +146,5 @@ Compositions can be saved to SVG using the `saveToFile` function.
 val composition = loadSVG("data/example.svg")
 composition.saveToFile(File("output.svg"))
 ``` 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/04_Drawing_basics/C160_DrawingSvg.kt){: .btn .btn-github }

@@ -479,3 +479,5 @@ fun main() = application {
 ``` 
  
 [demo](https://github.com/openrndr/orx/tree/master/orx-compositor) 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/10_OPENRNDR_Extras/C170_Compositor.kt){: .btn .btn-github }

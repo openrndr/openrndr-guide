@@ -92,3 +92,5 @@ fun main() = application {
     }
 }
 ``` 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/04_Drawing_basics/C170_TridimensionalGraphics.kt){: .btn .btn-github }

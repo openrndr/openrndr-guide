@@ -106,3 +106,5 @@ extensionA.afterDraw()
 
 As you can see, the afterDraw() calls are applied in reverse order, 
 this order was decided on to help with push/pop order of transforms and styles. 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/11_Advanced_Topics/C130_Writing_extensions.kt){: .btn .btn-github }

@@ -61,3 +61,5 @@ to be thrown.
 Cancelling an image which is queued (and is thus in `QUEUED` state) for 
 loading is done by calling `.cancel()` on the `ColorBufferProxy`. 
 This will set the proxy state back to `NOT_LOADED`. 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/06_Advanced_drawing/C130_Asynchronous_image_loading.kt){: .btn .btn-github }

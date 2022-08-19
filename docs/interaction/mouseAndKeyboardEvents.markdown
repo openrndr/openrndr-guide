@@ -189,3 +189,5 @@ constant             |  description
 
 Mouse and keyboard events are buffered and processed before `draw()` 
 is called. It is possible but not advised to perform drawing on event. 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/07_Interaction/C100_MouseAndKeyboardEvents.kt){: .btn .btn-github }

@@ -50,3 +50,5 @@ of the orientation represented by the Quaternion.
 val q0 = fromAngles(pitch, yaw, roll)
 drawer.model *= q0.matrix.matrix44
 ``` 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/05_Drawing_and_transformations/C120_Quaternions.kt){: .btn .btn-github }

@@ -120,3 +120,5 @@ val v4 = Random.vector4(-1.0, 1.0)
 To generate random distributions of vectors see 
 [orx-noise](https://guide.openrndr.org/OPENRNDRExtras/noise.html).
  
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/05_Drawing_and_transformations/C110_Vectors.kt){: .btn .btn-github }

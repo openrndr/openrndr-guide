@@ -10,3 +10,5 @@ has_children: true
 ---
  
 # Program basics 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/03_Program_basics/index.kt){: .btn .btn-github }

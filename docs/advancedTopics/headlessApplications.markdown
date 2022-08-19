@@ -40,3 +40,5 @@ Headless applications cannot handle mouse or keyboard input.
 
 Headless applications (currently) cannot create secondary/shared 
 contexts and as such ColorBufferLoader does not work. 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/11_Advanced_Topics/C140_Headless_applications.kt){: .btn .btn-github }

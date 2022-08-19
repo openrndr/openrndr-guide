@@ -435,3 +435,5 @@ val settings = object {
     }
 }
 ``` 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/10_OPENRNDR_Extras/C180_Quick_UIs.kt){: .btn .btn-github }

@@ -10,3 +10,5 @@ has_children: true
 ---
  
 # Videos 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/09_Videos/index.kt){: .btn .btn-github }

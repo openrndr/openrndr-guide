@@ -163,3 +163,5 @@ And in the scope of particular device:
 ```kotlin
 kinect.execute { ctx -> freenect_set_led(ctx.fnDev, LED_BLINK_RED_YELLOW) }
 ``` 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/10_OPENRNDR_Extras/C120_Kinect.kt){: .btn .btn-github }

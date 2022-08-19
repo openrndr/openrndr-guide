@@ -63,3 +63,5 @@ values like this:
 ```kotlin
 val osc = OSC(InetAddress.getByName("192.168.0.105"), portIn = 10000, portOut = 12000)
 ``` 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/10_OPENRNDR_Extras/C150_OSC.kt){: .btn .btn-github }

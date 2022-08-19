@@ -31,3 +31,5 @@ VM arguments in the launch configuration.
 
 If your graphics hardware and drivers support OpenGL debug contexts 
 you can use `-Dorg.openrndr.gl3.debug=TRUE` to enable the debug messages. 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/11_Advanced_Topics/C100_Logging.kt){: .btn .btn-github }

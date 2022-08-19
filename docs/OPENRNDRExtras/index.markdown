@@ -27,3 +27,5 @@ the repositories are already set up and one only has to
 2. Uncomment the desired module names under `orxFeatures`
 3. Save
 4. Reimport Gradle projects: if using Idea choose Reimport All Gradle Projects from the Gradle panel. 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/10_OPENRNDR_Extras/index.kt){: .btn .btn-github }

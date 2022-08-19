@@ -80,3 +80,5 @@ fun main() = application {
     }
 }
 ``` 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/03_Program_basics/C100_ApplicationProgram.kt){: .btn .btn-github }

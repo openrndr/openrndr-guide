@@ -68,3 +68,5 @@ to create screenshots of your programs. Another is `ScreenRecorder` which is use
 Next to the built-in extensions there is [ORX](https://github.com/openrndr/orx), an extensive repository of provided and
 contributed OPENRNDR extensions and add-ons. If you work from `openrndr-template` you can easily add and remove extensions 
 from your project by editing the `orxFeatures` property in `build.gradle.kts`. 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/03_Program_basics/C120_Extensions.kt){: .btn .btn-github }

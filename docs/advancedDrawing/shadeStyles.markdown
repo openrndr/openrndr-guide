@@ -272,3 +272,5 @@ One can explore the source code to find out how attributes and uniforms are used
 * [ShadeStyleGLSL.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-draw/src/jsMain/kotlin/org/openrndr/draw/ShadeStyleGLSL.kt) (webgl)
 * [ShaderGeneratorsGL3.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-jvm/openrndr-gl3/src/jvmMain/kotlin/org/openrndr/internal/gl3/ShaderGeneratorsGL3.kt) (JVM)
 * [ShaderGeneratorsWebGL.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-js/openrndr-webgl/src/jsMain/kotlin/org/openrndr/webgl/ShaderGeneratorsWebGL.kt) (webgl) 
+
+[edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/06_Advanced_drawing/C140_Shade_styles.kt){: .btn .btn-github }
