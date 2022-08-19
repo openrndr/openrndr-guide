@@ -47,7 +47,7 @@ fun main() {
     application {
         program {
             extend(Screenshots()) {
-                scale = 4.0
+                contentScale = 4.0
             }
         }
     }

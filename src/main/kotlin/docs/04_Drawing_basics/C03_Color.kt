@@ -57,7 +57,7 @@ fun main() {
 
         // -- using the rgb and rgba functions
         val magenta = rgb(1.0, 0.0, 1.0)
-        val magentaOpaque = rgba(1.0, 0.0, 1.0, 0.5)
+        val magentaOpaque = rgb(1.0, 0.0, 1.0, 0.5)
     }
 
     @Text 
