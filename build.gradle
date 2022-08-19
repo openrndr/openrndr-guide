@@ -24,10 +24,10 @@ apply plugin: 'org.openrndr.dokgen-gradle'
 apply plugin: 'org.ajoberstar.git-publish'
 
 compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = "11"
 }
 
-sourceCompatibility = 1.8
+sourceCompatibility = 11
 project.ext.openrndrVersion = libs.versions.openrndr.get()
 project.ext.orxVersion = libs.versions.orx.get()
 
@@ -148,14 +148,3 @@ task publishExamples { task ->
 }
 
 ext.mainClassName = mainClassName
-jar {
-    manifest {
-        attributes 'Main-Class': mainClassName
-    }
-    doFirst {
-        from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-        from { configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) } }
-    }
-    exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA', '**/module-info*'
-    archiveName 'myjar.jar'
-}
