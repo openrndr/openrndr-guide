@@ -1,7 +1,7 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Integer color buffers")
 @file:ParentTitle("Advanced topics")
-@file:Order("150")
+@file:Order("155")
 @file:URL("advancedTopics/integerColorBuffers")
 
 package docs.`11_Advanced_Topics`
