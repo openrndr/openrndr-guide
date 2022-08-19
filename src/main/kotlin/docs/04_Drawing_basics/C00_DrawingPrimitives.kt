@@ -36,6 +36,8 @@ fun main() {
         program {
             extend {
                 drawer.clear(ColorRGBa.PINK)
+
+                // -- draw circle with white fill and black stroke
                 drawer.fill = ColorRGBa.WHITE
                 drawer.stroke = ColorRGBa.BLACK
                 drawer.strokeWeight = 1.0
@@ -92,6 +94,8 @@ fun main() {
         program {
             extend {
                 drawer.clear(ColorRGBa.PINK)
+
+                // -- draw rectangle with white fill and black stroke
                 drawer.fill = ColorRGBa.WHITE
                 drawer.stroke = ColorRGBa.BLACK
                 drawer.strokeWeight = 1.0
