@@ -101,3 +101,11 @@ a:not([class]) {
 video {
 	max-width: 100%;
 }
+.btn.btn-github {
+  position: absolute;
+  right: 0px;
+  top: 16px;
+  font-size: 75%;
+  color: gray;
+  z-index: 1000;
+}

@@ -63,6 +63,19 @@ object DokGen {
     }
 
     /**
+     * Git hub edit link
+     *
+     * @param ktFileLocation
+     * @return
+     */
+    private fun gitHubEditLink(ktFileLocation: String): String {
+        return """
+            
+            [edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/$ktFileLocation){: .btn .btn-github }
+        """.trimIndent()
+    }
+
+    /**
      * Processes Guide source .kt files. It reads each file and produces
      * multiple files for each input:
      * - a markdown document visible in the online website.
@@ -136,7 +149,8 @@ object DokGen {
                     val mdTarget = File(docsOutDir, "$urlName.markdown")
                     val fileRelPath = DOCS_DIR + File.separator + filePath
                     val header = jekyllHeader(fileRelPath, result.annotations)
-                    mdTarget.writeText(header + result.doc)
+                    val footer = gitHubEditLink(fileRelPath)
+                    mdTarget.writeText(header + result.doc + footer)
 
                     // 2. Write .kt examples to generate media
                     val examplesOutDir = File(examplesOutputDir, urlDir)
