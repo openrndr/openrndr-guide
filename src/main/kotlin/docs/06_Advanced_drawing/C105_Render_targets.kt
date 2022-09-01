@@ -233,6 +233,37 @@ fun main() {
         }
     }
 
+    @Text
+    """
+    ## Depth Buffer
+        
+    A depth buffer is required to be able to draw `Shape` and `ShapeContour` 
+    elements on a render target. Without a depth buffer the program will
+    fail to run and an error message will remind you of this requirement.
+    
+    When drawing 3D graphics a depth buffer is required so elements near the
+    camera are drawn in front of elements farther away from it.
+    
+    ## Clearing buffers
+       
+    """
+
+    run {
+        val rt = renderTarget(640, 480) {
+            colorBuffer()
+            depthBuffer()
+        }
+
+        @Code.Block
+        run {
+            // clear the color buffer
+            rt.clearColor(0, ColorRGBa.TRANSPARENT)
+
+            // clear the depth buffer
+            rt.clearDepth()
+        }
+    }
+
     @Text 
     """
     ## Named attachments

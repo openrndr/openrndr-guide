@@ -517,5 +517,20 @@ fun main() {
     @Text 
     """
     [demo](https://github.com/openrndr/orx/tree/master/orx-compositor)
+    
+    ## Multisampling
+    
+    Edges on rotated or curved contours can look pixelated in some cases.
+    We can control the smoothness / anti-aliasing of each layer 
+    by specifying its multisampling level like this:
+    
+    ```
+    layer(BufferMultisample.SampleCount(8)) {
+    ```
+
+    where `8` is the desired level.
+    Values between 0 (the default) and 16 are typically used.
+
     """
+
 }

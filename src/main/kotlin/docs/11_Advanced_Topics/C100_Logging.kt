@@ -29,9 +29,24 @@ fun main() {
     Then add `-Dorg.slf4j.simpleLogger.defaultLogLevel=DEBUG` to the 
     VM arguments in the launch configuration.
     
-    ##### Enabling OpenGL debug messages
+    ### Enabling OpenGL debug messages
 
     If your graphics hardware and drivers support OpenGL debug contexts 
     you can use `-Dorg.openrndr.gl3.debug=TRUE` to enable the debug messages.
+    
+    Open the `Run > Edit Configurations...` menu in
+    IntelliJ and make sure the `VM Options` text field contains
+    `-Dorg.openrndr.gl3.debug=true`.
+    
+    ### Using RenderDoc
+    
+    [RenderDoc](https://renderdoc.org/) is 
+    a graphics debugger currently available for Vulkan, D3D11, D3D12, 
+    OpenGL, and OpenGL ES development on Windows, Linux, Android, Stadia, 
+    and Nintendo Switch™.
+    
+    [This post](https://openrndr.discourse.group/t/using-renderdoc-to-debug-low-level-graphics-advanced/118)
+    explains how to use renderdoc with OPENRNDR.
+    
     """.trimIndent()
 }

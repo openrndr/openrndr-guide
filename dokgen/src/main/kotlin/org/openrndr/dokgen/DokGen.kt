@@ -63,10 +63,7 @@ object DokGen {
     }
 
     /**
-     * Git hub edit link
-     *
-     * @param ktFileLocation
-     * @return
+     * Creates a "edit on GitHub" link
      */
     private fun gitHubEditLink(ktFileLocation: String): String {
         return """
