@@ -4,7 +4,7 @@
 layout: default
 title: Render targets
 parent: Advanced drawing
-last_modified_at: 2022.04.17 11:23:59 +0200
+last_modified_at: 2022.09.01 16:28:01 +0200
 nav_order: 105
 has_children: false
 ---
@@ -208,6 +208,26 @@ fun main() = application {
         }
     }
 }
+``` 
+ 
+## Depth Buffer
+    
+A depth buffer is required to be able to draw `Shape` and `ShapeContour` 
+elements on a render target. Without a depth buffer the program will
+fail to run and an error message will remind you of this requirement.
+
+When drawing 3D graphics a depth buffer is required so elements near the
+camera are drawn in front of elements farther away from it.
+
+## Clearing buffers
+    
+ 
+```kotlin
+// clear the color buffer
+rt.clearColor(0, ColorRGBa.TRANSPARENT)
+
+// clear the depth buffer
+rt.clearDepth()
 ``` 
  
 ## Named attachments 

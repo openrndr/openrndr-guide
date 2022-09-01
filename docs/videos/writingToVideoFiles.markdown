@@ -4,16 +4,15 @@
 layout: default
 title: Writing to video files
 parent: Videos
-last_modified_at: 2022.04.15 16:43:10 +0200
+last_modified_at: 2022.08.23 10:55:15 +0200
 nav_order: 110
 has_children: false
 ---
  
-# Writing to video files #
+# Writing to video files
 
 ## Prerequisites
 
-Add the `openrndr-ffmpeg` library to your project.
 Make sure ffmpeg is installed on your system.
 
 ## Writing to video using render targets 
@@ -48,24 +47,65 @@ fun main() = application {
 }
 ``` 
  
-## The ScreenRecorder extension
+## The `ScreenRecorder` extension
 
 A much simpler way of writing your program's output to video is
 offered by the `ScreenRecorder` extension. The extension creates video 
 files named after your Program class name plus the date. 
 For example: `MyProgram-2018-04-11-11.31.03.mp4`. The video files 
-are located in the current working directory.
+are located in the `video/` directory in your project.
 
-To setup the screen recorder you do the following: 
+To setup the screen recorder do the following: 
  
 ```kotlin
 fun main() = application {
     program {
         extend(ScreenRecorder())
-        extend {// -- whatever you do here ends up in the video
+        extend {// -- whatever you draw here ends up in the video
         }
     }
 }
 ``` 
+ 
+### Toggle the `ScreenRecorder` on and off
+
+By default the screen recorder extension adds video frames as long as the
+program runs. If you keep running the program again and again you will end
+up with a folder full of video files.
+
+We can make it more flexible by letting the user start and pause the
+recorder, for instance by pressing the `v` key on the keyboard. 
+ 
+```kotlin
+fun main() = application {
+    program {
+        // keep a reference to the recorder so we can start it and stop it.
+        val recorder = ScreenRecorder().apply {
+            outputToVideo = false
+        }
+        extend(recorder)
+        extend {// -- draw things here
+        }
+        keyboard.keyDown.listen {
+            when {
+                it.key == KEY_ESCAPE -> program.application.exit()
+                it.name == "v" -> {
+                    recorder.outputToVideo = !recorder.outputToVideo
+                    println(if (recorder.outputToVideo) "Recording" else "Paused")
+                }
+            }
+        }
+    }
+}
+``` 
+ 
+## Video formats
+
+By default videos are recorded in h264 format with a `.mp4` file extension,
+but animated `gif` or `webp`, `png` or `tif` sequences, `prores` and `h265` 
+are also available by enabling the 
+[orx-video-profiles](https://github.com/openrndr/orx/tree/master/orx-jvm/orx-video-profiles)
+extension.
+     
 
 [edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/09_Videos/C110_Writing_to_video_files.kt){: .btn .btn-github }

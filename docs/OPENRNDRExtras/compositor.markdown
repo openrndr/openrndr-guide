@@ -4,7 +4,7 @@
 layout: default
 title: Compositor
 parent: OPENRNDR Extras
-last_modified_at: 2022.04.29 11:15:06 +0200
+last_modified_at: 2022.09.01 16:43:49 +0200
 nav_order: 170
 has_children: false
 ---
@@ -478,6 +478,21 @@ fun main() = application {
 }
 ``` 
  
-[demo](https://github.com/openrndr/orx/tree/master/orx-compositor) 
+[demo](https://github.com/openrndr/orx/tree/master/orx-compositor)
+
+## Multisampling
+
+Edges on rotated or curved contours can look pixelated in some cases.
+We can control the smoothness / anti-aliasing of each layer 
+by specifying its multisampling level like this:
+
+```
+layer(BufferMultisample.SampleCount(8)) {
+```
+
+where `8` is the desired level.
+Values between 0 and 16 are typically used. 
+Multisampling is off by default. 
+ 
 
 [edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/10_OPENRNDR_Extras/C170_Compositor.kt){: .btn .btn-github }

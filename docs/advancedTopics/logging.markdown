@@ -4,7 +4,7 @@
 layout: default
 title: Logging
 parent: Advanced topics
-last_modified_at: 2022.04.20 23:39:34 +0200
+last_modified_at: 2022.09.01 16:25:09 +0200
 nav_order: 100
 has_children: false
 ---
@@ -27,9 +27,24 @@ dependencies {
 Then add `-Dorg.slf4j.simpleLogger.defaultLogLevel=DEBUG` to the 
 VM arguments in the launch configuration.
 
-##### Enabling OpenGL debug messages
+### Enabling OpenGL debug messages
 
 If your graphics hardware and drivers support OpenGL debug contexts 
-you can use `-Dorg.openrndr.gl3.debug=TRUE` to enable the debug messages. 
+you can use `-Dorg.openrndr.gl3.debug=TRUE` to enable the debug messages.
+
+Open the `Run > Edit Configurations...` menu in
+IntelliJ and make sure the `VM Options` text field contains
+`-Dorg.openrndr.gl3.debug=true`.
+
+### Using RenderDoc
+
+[RenderDoc](https://renderdoc.org/) is 
+a graphics debugger currently available for Vulkan, D3D11, D3D12, 
+OpenGL, and OpenGL ES development on Windows, Linux, Android, Stadia, 
+and Nintendo Switch™.
+
+[This post](https://openrndr.discourse.group/t/using-renderdoc-to-debug-low-level-graphics-advanced/118)
+explains how to use renderdoc with OPENRNDR.
+ 
 
 [edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/11_Advanced_Topics/C100_Logging.kt){: .btn .btn-github }

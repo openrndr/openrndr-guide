@@ -4,7 +4,7 @@
 layout: default
 title: Noise
 parent: OPENRNDR Extras
-last_modified_at: 2022.04.29 11:15:06 +0200
+last_modified_at: 2022.09.01 16:44:45 +0200
 nav_order: 110
 has_children: false
 ---
@@ -41,6 +41,47 @@ To create multiple samples of noise one uses the `uniforms` function.
 ```kotlin
 val v2 = Vector2.uniforms(100, Vector2(0.0, 0.0), Vector2(640.0, 640.0))
 val v3 = Vector3.uniforms(100, Vector3(0.0, 0.0, 0.0), Vector3(640.0, 640.0, 640.0))
+``` 
+ 
+The `Random` class can also be used to generate Double numbers and vector,
+but also booleans and integers. 
+ 
+```kotlin
+// Boolean
+val b = Random.bool(probability = 0.2)
+
+// Int
+val i1 = Random.int(0, 640)
+val i2 = Random.int0(640)
+
+// Double
+val d2 = Random.double(0.0, 640.0)
+val d3 = Random.double0(640.0)
+
+// Vectors
+val v2 = Random.vector2(0.0, 640.0)
+val v3 = Random.vector3(0.0, 640.0)
+val v4 = Random.vector4(0.0, 640.0)
+``` 
+ 
+## Perlin, Value and Simplex noise
+
+`Random.perlin()` and `Random.value()` 
+accept 2D and 3D arguments. 
+`Random.simplex()` up to 4D.
+They all return a `Double`.
+Some examples: 
+ 
+```kotlin
+// Test vectors to use
+val v2 = Vector2(0.1, 0.2)
+val v4 = Vector4(0.1, 0.2, 0.3, 0.4)
+
+// Now generate random values
+val d1 = Random.perlin(0.1, 0.2)
+val d2 = Random.perlin(v2)
+val d3 = Random.value(0.1, 0.2, 0.3)
+val d4 = Random.simplex(v4)
 ``` 
  
 ## Uniform ring noise 
