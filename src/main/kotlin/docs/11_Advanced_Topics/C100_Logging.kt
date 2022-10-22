@@ -46,7 +46,7 @@ fun main() {
     and Nintendo Switch™.
     
     [This post](https://openrndr.discourse.group/t/using-renderdoc-to-debug-low-level-graphics-advanced/118)
-    explains how to use renderdoc with OPENRNDR.
+    explains how to use RenderDoc with OPENRNDR.
     
     """.trimIndent()
 }

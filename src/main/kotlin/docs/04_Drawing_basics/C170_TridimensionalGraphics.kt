@@ -22,6 +22,9 @@ import org.openrndr.shape.*
 fun main() {
     @Text """
     # 3D graphics
+    
+    Draw a rotating 3D box with a minimal `shadeStyle` to simulate lighting.
+    Lower level approach.
     """
 
     @Code
@@ -34,6 +37,9 @@ fun main() {
 
             extend {
                 drawer.perspective(60.0, width * 1.0 / height, 0.01, 1000.0)
+                drawer.depthWrite = true
+                drawer.depthTestPass = DepthTestPass.LESS_OR_EQUAL
+
                 drawer.fill = ColorRGBa.PINK
                 drawer.shadeStyle = shadeStyle {
                     fragmentTransform = """
@@ -42,8 +48,6 @@ fun main() {
                         x_fill.rgb *= l; 
                     """.trimIndent()
                 }
-                drawer.depthWrite = true
-                drawer.depthTestPass = DepthTestPass.LESS_OR_EQUAL
                 drawer.translate(0.0, 0.0, -150.0)
                 drawer.rotate(Vector3.UNIT_X, seconds * 15 + 30)
                 drawer.rotate(Vector3.UNIT_Y, seconds * 5 + 60)
@@ -52,11 +56,10 @@ fun main() {
         }
     }
 
-    @Text 
-    """
-    Describe: orx-camera
-    Describe: orx-dnk3
-    Describe: orx-mesh-generators
+    @Text """    
+    Draw a rotating 3D box with a minimal `shadeStyle` to simulate lighting.
+    Uses `Orbital` to simplify creating a 3D camera which can be 
+    controlled with the mouse and the keyboard.
     """
 
     @Code
@@ -84,6 +87,10 @@ fun main() {
         }
     }
 
+    @Text """    
+    Draw ten 2D rectangles in 3D space. 
+    """
+
     @Code
     application {
         configure {
@@ -105,4 +112,17 @@ fun main() {
             }
         }
     }
+
+    @Text """    
+    2D drawing operations like `drawer.rectangle`, `drawer.contour`, etc. 
+    can have depth related occlusion issues, as they are not designed for 3D usage.
+    To avoid such issues you can create your own vertex buffers and meshes.
+
+    ## See also
+    
+    - [orx-camera](https://github.com/openrndr/orx/tree/master/orx-camera)
+    - [orx-dnk3](https://github.com/openrndr/orx/tree/master/orx-jvm/orx-dnk3)
+    - [orx-mesh-generators](https://github.com/openrndr/orx/tree/master/orx-mesh-generators)
+    """
+
 }
