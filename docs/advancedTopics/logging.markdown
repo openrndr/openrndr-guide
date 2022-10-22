@@ -4,7 +4,7 @@
 layout: default
 title: Logging
 parent: Advanced topics
-last_modified_at: 2022.09.01 16:25:09 +0200
+last_modified_at: 2022.09.01 16:55:57 +0200
 nav_order: 100
 has_children: false
 ---
@@ -44,7 +44,7 @@ OpenGL, and OpenGL ES development on Windows, Linux, Android, Stadia,
 and Nintendo Switch™.
 
 [This post](https://openrndr.discourse.group/t/using-renderdoc-to-debug-low-level-graphics-advanced/118)
-explains how to use renderdoc with OPENRNDR.
+explains how to use RenderDoc with OPENRNDR.
  
 
 [edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/11_Advanced_Topics/C100_Logging.kt){: .btn .btn-github }

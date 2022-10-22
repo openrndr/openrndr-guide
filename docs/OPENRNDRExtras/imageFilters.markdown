@@ -4,7 +4,7 @@
 layout: default
 title: Image post-processing with filters
 parent: OPENRNDR Extras
-last_modified_at: 2022.08.19 08:11:00 +0200
+last_modified_at: 2022.10.22 15:25:52 +0200
 nav_order: 160
 has_children: false
 ---
@@ -44,12 +44,23 @@ complete overview of what orx-fx offers.
 ```kotlin
 fun main() = application {
     program {
+        // -- load a source image
         val image = loadImage("data/images/cheeta.jpg")
-        val blurred = colorBuffer(image.width, image.height)
+        
+        // -- create a filter
         val blur = BoxBlur()
+        
+        // -- create a colorBuffer where to store the result
+        val blurred = colorBuffer(image.width, image.height)
+        
         extend {
+            // -- configure the filter
             blur.window = (cos(seconds * 2) * 4.0 + 5.0).toInt()
+            
+            // -- filter.apply(source, target)
             blur.apply(image, blurred)
+            
+            // -- draw the result
             drawer.image(blurred)
         }
     }

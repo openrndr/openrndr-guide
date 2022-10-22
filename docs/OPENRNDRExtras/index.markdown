@@ -4,7 +4,7 @@
 layout: default
 title: OPENRNDR Extras
 parent: ~
-last_modified_at: 2022.03.26 10:58:01 +0100
+last_modified_at: 2022.09.27 11:07:07 +0200
 nav_order: 1100
 has_children: true
 ---
@@ -26,6 +26,6 @@ the repositories are already set up and one only has to
 1. Open the `build.gradle.kts` file
 2. Uncomment the desired module names under `orxFeatures`
 3. Save
-4. Reimport Gradle projects: if using Idea choose Reimport All Gradle Projects from the Gradle panel. 
+4. Reimport Gradle projects: if using Idea choose 🔄 _Reimport All Gradle Projects_ from the Gradle panel. 
 
 [edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/10_OPENRNDR_Extras/index.kt){: .btn .btn-github }

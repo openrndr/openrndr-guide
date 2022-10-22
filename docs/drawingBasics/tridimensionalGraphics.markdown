@@ -4,12 +4,15 @@
 layout: default
 title: Tridimensional graphics
 parent: Drawing basics
-last_modified_at: 2022.08.19 08:11:00 +0200
+last_modified_at: 2022.10.22 13:38:43 +0200
 nav_order: 170
 has_children: false
 ---
  
-# 3D graphics 
+# 3D graphics
+
+Draw a rotating 3D box with a minimal `shadeStyle` to simulate lighting.
+Lower level approach. 
  
 ```kotlin
 fun main() = application {
@@ -21,6 +24,9 @@ fun main() = application {
         
         extend {
             drawer.perspective(60.0, width * 1.0 / height, 0.01, 1000.0)
+            drawer.depthWrite = true
+            drawer.depthTestPass = DepthTestPass.LESS_OR_EQUAL
+            
             drawer.fill = ColorRGBa.PINK
             drawer.shadeStyle = shadeStyle {
                 fragmentTransform = """
@@ -29,8 +35,6 @@ fun main() = application {
                         x_fill.rgb *= l; 
                     """.trimIndent()
             }
-            drawer.depthWrite = true
-            drawer.depthTestPass = DepthTestPass.LESS_OR_EQUAL
             drawer.translate(0.0, 0.0, -150.0)
             drawer.rotate(Vector3.UNIT_X, seconds * 15 + 30)
             drawer.rotate(Vector3.UNIT_Y, seconds * 5 + 60)
@@ -40,9 +44,9 @@ fun main() = application {
 }
 ``` 
  
-Describe: orx-camera
-Describe: orx-dnk3
-Describe: orx-mesh-generators 
+Draw a rotating 3D box with a minimal `shadeStyle` to simulate lighting.
+Uses `Orbital` to simplify creating a 3D camera which can be 
+controlled with the mouse and the keyboard. 
  
 ```kotlin
 fun main() = application {
@@ -70,6 +74,8 @@ fun main() = application {
 }
 ``` 
  
+Draw ten 2D rectangles in 3D space.  
+ 
 ```kotlin
 fun main() = application {
     configure {
@@ -92,5 +98,15 @@ fun main() = application {
     }
 }
 ``` 
+ 
+2D drawing operations like `drawer.rectangle`, `drawer.contour`, etc. 
+can have depth related occlusion issues, as they are not designed for 3D usage.
+To avoid such issues you can create your own vertex buffers and meshes.
+
+## See also
+
+- [orx-camera](https://github.com/openrndr/orx/tree/master/orx-camera)
+- [orx-dnk3](https://github.com/openrndr/orx/tree/master/orx-jvm/orx-dnk3)
+- [orx-mesh-generators](https://github.com/openrndr/orx/tree/master/orx-mesh-generators) 
 
 [edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/04_Drawing_basics/C170_TridimensionalGraphics.kt){: .btn .btn-github }
