@@ -51,6 +51,9 @@ switch (org.gradle.internal.os.OperatingSystem.current()) {
 }
 
 dependencies {
+    implementation libs.jsoup
+    implementation libs.gson
+    implementation libs.csv
     implementation libs.kotlin.stdlib
     implementation libs.kotlinx.coroutines
     testImplementation libs.junit
