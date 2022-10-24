@@ -103,9 +103,18 @@ video {
 }
 .btn.btn-github {
   position: absolute;
-  right: 0px;
-  top: 16px;
+  right: 10px;
   font-size: 75%;
   color: gray;
   z-index: 1000;
+}
+@media(max-width: 50rem) {
+  .btn.btn-github {
+    bottom: 16px;
+  }
+}
+@media(min-width: 50rem) {
+  .btn.btn-github {
+    top: 16px;
+  }
 }
