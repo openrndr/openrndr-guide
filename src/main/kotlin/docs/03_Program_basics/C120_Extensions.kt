@@ -69,6 +69,16 @@ fun main() {
         }
     }
 
+    @Text
+    """
+    ## Extension order
+        
+    The order in which calls to the `extend(...)` method appear in the code matters. 
+    `Screenshots` and `ScreenRecorder` should usually be placed before other extensions; 
+    otherwise, the content of the produced images or video files may be unexpected.
+
+    """
+
     @Text 
     """
     ## Built-in and contributed extensions
