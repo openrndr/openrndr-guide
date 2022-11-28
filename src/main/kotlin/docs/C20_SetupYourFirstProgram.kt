@@ -68,6 +68,15 @@ fun main() {
     
     *Lo' and behold!*
     
+    ## Tip for macOS users
+    
+    When running a program the console will display 
+    `Warning: Running on macOS without -XstartOnFirstThread JVM argument`.
+    To clear this warning (and enable debugging):
+    - Open the `Run > Edit Configurations...` menu.
+    - Add `-XstartOnFirstThread` in the `VM Options` [text field](https://stackoverflow.com/a/44184837).
+    - Click `Ok` to close the dialog.
+    
     ## What's next?
     
     At this point you are likely interested in how this program is structured. 
