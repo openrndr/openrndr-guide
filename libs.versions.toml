@@ -1,15 +1,15 @@
 [versions]
-kotlin = "1.6.20"
+kotlin = "1.7.20"
 openrndr = "0.4.1"
 orx = "0.4.1"
 spek = "2.0.18"
-coroutines = "1.6.1-native-mt"
+coroutines = "1.6.4"
 junit = "4.13.2"
 slf4j = "1.7.36"
 gitPublish = "3.0.1"
 jsoup = "1.15.2"
 gson = "2.9.1"
-csv = "1.5.1"
+csv = "1.6.0"
 
 
 [libraries]
