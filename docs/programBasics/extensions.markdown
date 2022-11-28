@@ -4,7 +4,7 @@
 layout: default
 title: Extensions
 parent: Program basics
-last_modified_at: 2022.08.19 08:32:35 +0200
+last_modified_at: 2022.11.02 12:04:17 +0100
 nav_order: 120
 has_children: false
 ---
@@ -59,6 +59,13 @@ fun main() = application {
     }
 }
 ``` 
+ 
+## Extension order
+    
+The order in which calls to the `extend(...)` method appear in the code matters. 
+`Screenshots` and `ScreenRecorder` should usually be placed before other extensions; 
+otherwise, the content of the produced images or video files may be unexpected.
+ 
  
 ## Built-in and contributed extensions
 

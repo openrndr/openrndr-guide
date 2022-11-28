@@ -4,7 +4,7 @@
 layout: default
 title: Set up your first program
 parent: What is OPENRNDR?
-last_modified_at: 2022.06.21 14:57:59 +0200
+last_modified_at: 2022.11.15 12:32:21 +0100
 nav_order: 20
 has_children: false
 ---
@@ -65,6 +65,15 @@ next to the line that starts with `fun main()`. Click on the triangle,
 the program should now run.
 
 *Lo' and behold!*
+
+## Tip for macOS users
+
+The console will display 
+`Warning: Running on macOS without -XstartOnFirstThread JVM argument.`
+when running a program. To clear this warning and be able to debug programs:
+- Open the `Run > Edit Configurations...` menu.
+- Add `-XstartOnFirstThread` in the `VM Options` [text field](https://stackoverflow.com/a/44184837).
+- Click `Ok` to close the dialog.
 
 ## What's next?
 
