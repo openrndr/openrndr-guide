@@ -309,9 +309,9 @@ class GradlePlugin : Plugin<Project> {
             val compileKotlinTask = project.tasks.getByPath("compileGeneratedExamplesKotlin")
 
             (compileKotlinTask as KotlinCompile).apply {
-                this.kotlinOptions.jvmTarget = "11"
-                this.sourceCompatibility = "11"
-                this.targetCompatibility = "11"
+                kotlinOptions {
+                    jvmTarget = "11"
+                }
             }
 
             val processSources =
