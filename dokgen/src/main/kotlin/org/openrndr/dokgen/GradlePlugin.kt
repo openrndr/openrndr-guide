@@ -7,7 +7,7 @@ import org.gradle.api.model.ObjectFactory
 import org.gradle.api.tasks.*
 import org.gradle.work.Incremental
 import org.gradle.work.InputChanges
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+//import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.io.File
 import java.io.Serializable
 import javax.inject.Inject
@@ -308,11 +308,11 @@ class GradlePlugin : Plugin<Project> {
             // More info at https://github.com/google/ksp/pull/693
             val compileKotlinTask = project.tasks.getByPath("compileGeneratedExamplesKotlin")
 
-            (compileKotlinTask as KotlinCompile).apply {
-                kotlinOptions {
-                    jvmTarget = "11"
-                }
-            }
+//            (compileKotlinTask as KotlinCompile).apply {
+//                kotlinOptions {
+//                    jvmTarget = "11"
+//                }
+//            }
 
             val processSources =
                 project.tasks.create("processSources", ProcessSourcesTask::class.java, conf.examplesConf)
