@@ -11,49 +11,49 @@ gson = "2.9.1"
 csv = "1.6.0"
 
 [libraries]
-kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
-kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
-kotlin-compiler-embeddable = { module = "org.jetbrains.kotlin:kotlin-compiler-embeddable", version.ref = "kotlin" }
-kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlin-reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin" }
+kotlin-compiler-embeddable = { group = "org.jetbrains.kotlin", name = "kotlin-compiler-embeddable", version.ref = "kotlin" }
+kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlin" }
 kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
-kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
-slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
-jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup" }
-gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
-csv = { module = "com.github.doyaaaaaken:kotlin-csv-jvm", version.ref = "csv" }
+kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+slf4j-simple = { group = "org.slf4j", name = "slf4j-simple", version.ref = "slf4j" }
+jsoup = { group = "org.jsoup", name = "jsoup", version.ref = "jsoup" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+csv = { group = "com.github.doyaaaaaken", name = "kotlin-csv-jvm", version.ref = "csv" }
 
-# openrndr
-openrndr-core = { module = "org.openrndr:openrndr-core", version.ref = "openrndr" }
-openrndr-extensions = { module = "org.openrndr:openrndr-extensions", version.ref = "openrndr" }
-openrndr-ffmpeg = { module = "org.openrndr:openrndr-ffmpeg", version.ref = "openrndr" }
-openrndr-gl3 = { module = "org.openrndr:openrndr-gl3", version.ref = "openrndr" }
-openrndr-svg = { module = "org.openrndr:openrndr-svg", version.ref = "openrndr" }
-openrndr-animatable = { module = "org.openrndr:openrndr-animatable", version.ref = "openrndr" }
-openrndr-filter = { module = "org.openrndr:openrndr-filter", version.ref = "openrndr" }
+dokgen = { group = "org.openrndr", name = "dokgen" }
 
-#orx
-orx-camera = { module = "org.openrndr.extra:orx-camera", version.ref = "orx" }
-orx-compositor = { module = "org.openrndr.extra:orx-compositor", version.ref = "orx" }
-orx-fx = { module = "org.openrndr.extra:orx-fx", version.ref = "orx" }
-orx-gui = { module = "org.openrndr.extra:orx-gui", version.ref = "orx" }
-orx-image-fit = { module = "org.openrndr.extra:orx-image-fit", version.ref = "orx" }
-orx-jumpflood = { module = "org.openrndr.extra:orx-jumpflood", version.ref = "orx" }
-orx-kinect-v1 = { module = "org.openrndr.extra:orx-kinect-v1", version.ref = "orx" }
-orx-mesh-generators = { module = "org.openrndr.extra:orx-mesh-generators", version.ref = "orx" }
-orx-midi = { module = "org.openrndr.extra:orx-midi", version.ref = "orx" }
-orx-noise = { module = "org.openrndr.extra:orx-noise", version.ref = "orx" }
-orx-olive = { module = "org.openrndr.extra:orx-olive", version.ref = "orx" }
-orx-osc = { module = "org.openrndr.extra:orx-osc", version.ref = "orx" }
-orx-panel = { module = "org.openrndr.extra:orx-panel", version.ref = "orx" }
-orx-poisson-fill = { module = "org.openrndr.extra:orx-poisson-fill", version.ref = "orx" }
-orx-shade-styles = { module = "org.openrndr.extra:orx-shade-styles", version.ref = "orx" }
+# OPENRNDR
+openrndr-animatable = { group = "org.openrndr", name = "openrndr-animatable", version.ref = "openrndr" }
+openrndr-core = { group = "org.openrndr", name = "openrndr-core", version.ref = "openrndr" }
+openrndr-extensions = { group = "org.openrndr", name = "openrndr-extensions", version.ref = "openrndr" }
+openrndr-ffmpeg = { group = "org.openrndr", name = "openrndr-ffmpeg", version.ref = "openrndr" }
+openrndr-filter = { group = "org.openrndr", name = "openrndr-filter", version.ref = "openrndr" }
+openrndr-gl3 = { group = "org.openrndr", name = "openrndr-gl3", version.ref = "openrndr" }
+openrndr-svg = { group = "org.openrndr", name = "openrndr-svg", version.ref = "openrndr" }
 
-dokgen = { module = "org.openrndr:dokgen" }
+# ORX
+orx-camera = { group = "org.openrndr.extra", name = "orx-camera", version.ref = "orx" }
+orx-compositor = { group = "org.openrndr.extra", name = "orx-compositor", version.ref = "orx" }
+orx-fx = { group = "org.openrndr.extra", name = "orx-fx", version.ref = "orx" }
+orx-gui = { group = "org.openrndr.extra", name = "orx-gui", version.ref = "orx" }
+orx-image-fit = { group = "org.openrndr.extra", name = "orx-image-fit", version.ref = "orx" }
+orx-jumpflood = { group = "org.openrndr.extra", name = "orx-jumpflood", version.ref = "orx" }
+orx-kinect-v1 = { group = "org.openrndr.extra", name = "orx-kinect-v1", version.ref = "orx" }
+orx-mesh-generators = { group = "org.openrndr.extra", name = "orx-mesh-generators", version.ref = "orx" }
+orx-midi = { group = "org.openrndr.extra", name = "orx-midi", version.ref = "orx" }
+orx-noise = { group = "org.openrndr.extra", name = "orx-noise", version.ref = "orx" }
+orx-olive = { group = "org.openrndr.extra", name = "orx-olive", version.ref = "orx" }
+orx-osc = { group = "org.openrndr.extra", name = "orx-osc", version.ref = "orx" }
+orx-panel = { group = "org.openrndr.extra", name = "orx-panel", version.ref = "orx" }
+orx-poisson-fill = { group = "org.openrndr.extra", name = "orx-poisson-fill", version.ref = "orx" }
+orx-shade-styles = { group = "org.openrndr.extra", name = "orx-shade-styles", version.ref = "orx" }
 
 [plugins]
-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-git-publish = { id = "org.ajoberstar.git-publish", version.ref = "gitPublish" }
 dokgen = { id = "org.openrndr.dokgen-gradle", version = { require = "latest.release" } }
+git-publish = { id = "org.ajoberstar.git-publish", version.ref = "gitPublish" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 
 [bundles]
 openrndr-core = [
@@ -62,10 +62,10 @@ openrndr-core = [
     "openrndr-ffmpeg"
 ]
 openrndr-rest = [
-    "openrndr-gl3",
-    "openrndr-svg",
     "openrndr-animatable",
-    "openrndr-filter"
+    "openrndr-filter",
+    "openrndr-gl3",
+    "openrndr-svg"
 ]
 orx = [
     "orx-camera",
