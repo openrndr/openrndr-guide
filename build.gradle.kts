@@ -66,7 +66,7 @@ fun getRepoLastVersion(repo: String): String {
     }
     return output.toString().lines().map { line ->
         line.substringAfter("refs/tags/v", "")
-    }.last()
+    }.last(String::isNotBlank)
 }
 
 val publishExamples by tasks.registering {
@@ -88,9 +88,9 @@ val publishExamples by tasks.registering {
                 include("settings.gradle.kts")
                 filter<ReplaceTokens>(
                     "tokens" to mapOf(
-                        openrndrVersion to openrndrVersion,
-                        orxVersion to orxVersion,
-                        ormlVersion to ormlVersion
+                        "openrndrVersion" to openrndrVersion,
+                        "orxVersion" to orxVersion,
+                        "ormlVersion" to ormlVersion
                     )
                 )
             }
