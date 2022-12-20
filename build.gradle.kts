@@ -1,39 +1,20 @@
 import org.apache.tools.ant.filters.ReplaceTokens
 import java.io.ByteArrayOutputStream
-import java.net.URI
 
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    java
-//    alias(libs.plugins.kotlin.jvm)
-    kotlin("jvm")
+    org.openrndr.guide.convention.`kotlin-jvm`
     alias(libs.plugins.git.publish)
-    id("org.openrndr.dokgen-gradle")
-    org.openrndr.guide.convention.`component-metadata-rule`
+    alias(libs.plugins.dokgen)
 }
 
-group = "org.openrndr.guide"
 version = "1.0-SNAPSHOT"
-
-repositories {
-    mavenCentral()
-    mavenLocal()
-    maven {
-        // This is needed to resolve `com.github.ricardomatias:delaunator`
-        url = URI("https://maven.openrndr.org")
-    }
-}
-kotlin {
-    jvmToolchain(17)
-}
 
 dependencies {
     implementation(libs.jsoup)
     implementation(libs.gson)
     implementation(libs.csv)
-    implementation(libs.kotlin.stdlib)
     implementation(libs.kotlinx.coroutines)
-    testImplementation(libs.junit)
     implementation(libs.slf4j.simple)
     implementation(libs.bundles.openrndr.core)
     implementation(libs.bundles.openrndr.rest)
@@ -61,7 +42,9 @@ dokgen {
 val gitPublishPush: Task by tasks.getting
 
 val publishDocs by tasks.registering {
+    group = org.openrndr.dokgen.PLUGIN_NAME
     description = "Publish website to github.com/openrndr/openrndr-guide"
+
     doLast {
         gitPublish.repoUri.set("git@github.com:openrndr/openrndr-guide.git")
         gitPublish.branch.set("generated")
@@ -71,8 +54,6 @@ val publishDocs by tasks.registering {
         }
         gitPublish.commitMessage.set("Update docs")
     }
-
-    group = "dokgen"
     finalizedBy(gitPublishPush)
 }
 
@@ -89,7 +70,9 @@ fun getRepoLastVersion(repo: String): String {
 }
 
 val publishExamples by tasks.registering {
-    description = "Publish examples to github.com/openrndr/openrndr-examples"
+    group = org.openrndr.dokgen.PLUGIN_NAME
+    description = "Publish examples to https://github.com/openrndr/openrndr-examples"
+
     val openrndrVersion = getRepoLastVersion("https://github.com/openrndr/openrndr")
     val orxVersion = getRepoLastVersion("https://github.com/openrndr/orx")
     val ormlVersion = getRepoLastVersion("https://github.com/openrndr/orml")
@@ -128,6 +111,5 @@ val publishExamples by tasks.registering {
         gitPublish.branch.set("master")
         gitPublish.commitMessage.set("Update examples")
     }
-    group = "dokgen"
     finalizedBy(gitPublishPush)
 }

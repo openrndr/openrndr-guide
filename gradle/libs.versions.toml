@@ -1,15 +1,14 @@
 [versions]
 kotlin = "1.7.21"
+jvmTarget = "17"
 openrndr = "0.4.1"
 orx = "0.4.1"
 coroutines = "1.6.4"
-junit = "4.13.2"
 slf4j = "1.7.36"
 gitPublish = "3.0.1"
 jsoup = "1.15.2"
 gson = "2.9.1"
 csv = "1.6.0"
-
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
@@ -18,7 +17,6 @@ kotlin-compiler-embeddable = { module = "org.jetbrains.kotlin:kotlin-compiler-em
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
-junit = { module = "junit:junit", version.ref = "junit" }
 slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
 jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
@@ -55,6 +53,7 @@ dokgen = { module = "org.openrndr:dokgen" }
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 git-publish = { id = "org.ajoberstar.git-publish", version.ref = "gitPublish" }
+dokgen = { id = "org.openrndr.dokgen-gradle", version = { require = "latest.release" } }
 
 [bundles]
 openrndr-core = [

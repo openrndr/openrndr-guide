@@ -3,9 +3,7 @@ plugins {
     java
     alias(libs.plugins.kotlin.jvm)
     `java-gradle-plugin`
-//    kotlin("jvm")
     `maven-publish`
-//    `kotlin-dsl`
 }
 
 group = "org.openrndr"
@@ -16,14 +14,13 @@ repositories {
     mavenLocal()
 }
 
+kotlin {
+    jvmToolchain(libs.versions.jvmTarget.get().toInt())
+}
+
 dependencies {
-//    implementation(libs.kotlin.stdlib)
     implementation(libs.kotlin.compiler.embeddable)
-
     compileOnly(libs.bundles.openrndr.core)
-
-    testImplementation(libs.kotlin.test)
-    testRuntimeOnly(libs.kotlin.reflect)
 }
 
 gradlePlugin {
