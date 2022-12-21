@@ -7,6 +7,8 @@ import org.gradle.api.model.ObjectFactory
 import org.gradle.api.tasks.*
 import org.gradle.work.Incremental
 import org.gradle.work.InputChanges
+import org.gradle.workers.WorkQueue
+import org.gradle.workers.WorkerExecutor
 import java.io.File
 import java.io.Serializable
 import javax.inject.Inject
@@ -44,26 +46,20 @@ open class DokGenPluginExtension @Inject constructor(objectFactory: ObjectFactor
         var media: List<File>? = null
     }
 
-    var examplesConf: ExamplesConf? = objectFactory.newInstance(ExamplesConf::class.java)
-    var runnerConf: RunnerConf? = objectFactory.newInstance(RunnerConf::class.java)
-    var jekyllConf: JekyllConf? = objectFactory.newInstance(JekyllConf::class.java)
+    var examplesConf: ExamplesConf = objectFactory.newInstance(ExamplesConf::class.java)
+    var runnerConf: RunnerConf = objectFactory.newInstance(RunnerConf::class.java)
+    var jekyllConf: JekyllConf = objectFactory.newInstance(JekyllConf::class.java)
 
     fun runner(action: Action<RunnerConf>) {
-        runnerConf?.let {
-            action.execute(it)
-        }
+        action.execute(runnerConf)
     }
 
     fun examples(action: Action<ExamplesConf>) {
-        examplesConf?.let {
-            action.execute(it)
-        }
+        action.execute(examplesConf)
     }
 
     fun jekyll(action: Action<JekyllConf>) {
-        jekyllConf?.let {
-            action.execute(it)
-        }
+        action.execute(jekyllConf)
     }
 }
 
@@ -116,7 +112,7 @@ abstract class ProcessSourcesTask @Inject constructor(
     }
 }
 
-open class RunExamplesTask @Inject constructor(
+abstract class RunExamplesTask @Inject constructor(
     @Input
     val runnerConf: DokGenPluginExtension.RunnerConf?
 ) : DefaultTask() {
@@ -125,6 +121,8 @@ open class RunExamplesTask @Inject constructor(
         description = "Run the exported example programs to produce media files"
     }
 
+    @get:Inject
+    abstract val workerExecutor: WorkerExecutor
 
     @get:Incremental
     @get:PathSensitive(PathSensitivity.NAME_ONLY)
@@ -132,7 +130,6 @@ open class RunExamplesTask @Inject constructor(
     val examplesDirectory: DirectoryProperty = project.objects.directoryProperty().also {
         it.set(generatedExamplesDirectory(project))
     }
-
 
     // TODO: Why this is needed?
     // Paths of exported media is specified in the .kt src files themselves
@@ -143,7 +140,7 @@ open class RunExamplesTask @Inject constructor(
     fun execute(inputChanges: InputChanges) {
         val skipMediaGeneration = System.getenv("skipMediaGeneration") == "true"
         println("`skipMediaGeneration` environment variable = $skipMediaGeneration")
-        if(skipMediaGeneration) {
+        if (skipMediaGeneration) {
             return
         }
 
@@ -160,18 +157,13 @@ open class RunExamplesTask @Inject constructor(
             toRun, examplesDirectory.get().asFile
         )
 
-        for ((index, klass) in execClasses.withIndex()) {
-            println("Running example [${index+1}/${execClasses.size}]: $klass")
-            try {
-                project.javaexec { spec ->
-                    spec.classpath = ss.runtimeClasspath
-                    runnerConf?.let {
-                        spec.jvmArgs = it.jvmArgs
-                    }
-                    spec.mainClass.set(klass)
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
+        val workQueue: WorkQueue = workerExecutor.noIsolation()
+
+        for (klass in execClasses) {
+            workQueue.submit(MediaRunnerWorkAction::class.java) {
+                it.classPath.set(ss.runtimeClasspath.asPath)
+                it.jvmArgs.set(runnerConf?.jvmArgs ?: emptyList())
+                it.klass.set(klass)
             }
         }
     }
