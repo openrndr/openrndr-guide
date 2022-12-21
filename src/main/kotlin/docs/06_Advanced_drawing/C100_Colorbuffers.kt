@@ -63,7 +63,7 @@ fun main() {
     ## Loading color buffers
     
     Color buffers can be loaded from an image stored on disk. 
-    Supported file types are png, jpg and exr (OpenEXR).
+    Supported file types are png, jpg, dds and exr (OpenEXR).
     """
 
     @Code.Block
@@ -94,7 +94,7 @@ fun main() {
     ## Saving color buffers
     
     Color buffers can be saved to disk using the `saveToFile` member function. 
-    Supported file types are png, jpg and exr (OpenEXR). 
+    Supported file types are png, jpg, dds and exr (OpenEXR). 
     """
 
     @Code.Block
@@ -105,6 +105,16 @@ fun main() {
 
     @Text 
     """
+    When repeteadly saving color buffers asynchronously (the default) it is possible to run out
+    of memory. This can happen if the software can not keep up saving files at the requested rate.
+    In such situations we can either set `async = false` in `saveToFile()` or avoid `saveToFile` and use the
+    [VideoWriter](https://guide.openrndr.org/videos/writingToVideoFiles.html#writing-to-video-using-render-targets)
+    together with [pngSequence](https://github.com/openrndr/orx/tree/master/orx-jvm/orx-video-profiles#png-sequence)
+    or [tiffSequence](https://github.com/openrndr/orx/tree/master/orx-jvm/orx-video-profiles#tiff-sequence)
+    instead.
+     
+    Note that some image file types take longer to save than others.
+
     ## Copying between color buffers
     
     Color buffer contents can be copied using the `copyTo` member function. 
