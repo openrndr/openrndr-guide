@@ -1,0 +1,86 @@
+[versions]
+kotlin = "1.7.21"
+jvmTarget = "17"
+openrndr = "0.4.1"
+orx = "0.4.1"
+coroutines = "1.6.4"
+slf4j = "1.7.36"
+gitPublish = "3.0.1"
+jsoup = "1.15.2"
+gson = "2.9.1"
+csv = "1.6.0"
+
+[libraries]
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlin-reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin" }
+kotlin-compiler-embeddable = { group = "org.jetbrains.kotlin", name = "kotlin-compiler-embeddable", version.ref = "kotlin" }
+kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlin" }
+kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+slf4j-simple = { group = "org.slf4j", name = "slf4j-simple", version.ref = "slf4j" }
+jsoup = { group = "org.jsoup", name = "jsoup", version.ref = "jsoup" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+csv = { group = "com.github.doyaaaaaken", name = "kotlin-csv-jvm", version.ref = "csv" }
+
+dokgen = { group = "org.openrndr", name = "dokgen" }
+
+# OPENRNDR
+openrndr-animatable = { group = "org.openrndr", name = "openrndr-animatable", version.ref = "openrndr" }
+openrndr-core = { group = "org.openrndr", name = "openrndr-core", version.ref = "openrndr" }
+openrndr-extensions = { group = "org.openrndr", name = "openrndr-extensions", version.ref = "openrndr" }
+openrndr-ffmpeg = { group = "org.openrndr", name = "openrndr-ffmpeg", version.ref = "openrndr" }
+openrndr-filter = { group = "org.openrndr", name = "openrndr-filter", version.ref = "openrndr" }
+openrndr-gl3 = { group = "org.openrndr", name = "openrndr-gl3", version.ref = "openrndr" }
+openrndr-svg = { group = "org.openrndr", name = "openrndr-svg", version.ref = "openrndr" }
+
+# ORX
+orx-camera = { group = "org.openrndr.extra", name = "orx-camera", version.ref = "orx" }
+orx-compositor = { group = "org.openrndr.extra", name = "orx-compositor", version.ref = "orx" }
+orx-fx = { group = "org.openrndr.extra", name = "orx-fx", version.ref = "orx" }
+orx-gui = { group = "org.openrndr.extra", name = "orx-gui", version.ref = "orx" }
+orx-image-fit = { group = "org.openrndr.extra", name = "orx-image-fit", version.ref = "orx" }
+orx-jumpflood = { group = "org.openrndr.extra", name = "orx-jumpflood", version.ref = "orx" }
+orx-kinect-v1 = { group = "org.openrndr.extra", name = "orx-kinect-v1", version.ref = "orx" }
+orx-mesh-generators = { group = "org.openrndr.extra", name = "orx-mesh-generators", version.ref = "orx" }
+orx-midi = { group = "org.openrndr.extra", name = "orx-midi", version.ref = "orx" }
+orx-noise = { group = "org.openrndr.extra", name = "orx-noise", version.ref = "orx" }
+orx-olive = { group = "org.openrndr.extra", name = "orx-olive", version.ref = "orx" }
+orx-osc = { group = "org.openrndr.extra", name = "orx-osc", version.ref = "orx" }
+orx-panel = { group = "org.openrndr.extra", name = "orx-panel", version.ref = "orx" }
+orx-poisson-fill = { group = "org.openrndr.extra", name = "orx-poisson-fill", version.ref = "orx" }
+orx-shade-styles = { group = "org.openrndr.extra", name = "orx-shade-styles", version.ref = "orx" }
+
+[plugins]
+dokgen = { id = "org.openrndr.dokgen-gradle", version = { require = "latest.release" } }
+git-publish = { id = "org.ajoberstar.git-publish", version.ref = "gitPublish" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+
+[bundles]
+openrndr-core = [
+    "openrndr-core",
+    "openrndr-extensions",
+    "openrndr-ffmpeg"
+]
+openrndr-rest = [
+    "openrndr-animatable",
+    "openrndr-filter",
+    "openrndr-gl3",
+    "openrndr-svg"
+]
+orx = [
+    "orx-camera",
+    "orx-compositor",
+    "orx-fx",
+    "orx-gui",
+    "orx-image-fit",
+    "orx-jumpflood",
+    "orx-kinect-v1",
+    "orx-mesh-generators",
+    "orx-midi",
+    "orx-noise",
+    "orx-olive",
+    "orx-osc",
+    "orx-panel",
+    "orx-poisson-fill",
+    "orx-shade-styles"
+]
