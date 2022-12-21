@@ -1,5 +1,4 @@
 import org.apache.tools.ant.filters.ReplaceTokens
-import java.io.ByteArrayOutputStream
 
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
@@ -60,25 +59,10 @@ val publishDocs by tasks.registering {
     finalizedBy(gitPublishPush)
 }
 
-
-fun getRepoLastVersion(repo: String): String {
-    val output = ByteArrayOutputStream()
-    exec {
-        commandLine("git", "ls-remote", "--refs", "--tags", repo)
-        standardOutput = output
-    }
-    return output.toString().lines().map { line ->
-        line.substringAfter("refs/tags/v", "")
-    }.last(String::isNotBlank)
-}
-
 val publishExamples by tasks.registering {
     group = org.openrndr.dokgen.PLUGIN_NAME
     description = "Publish examples to https://github.com/openrndr/openrndr-examples"
 
-    val openrndrVersion = getRepoLastVersion("https://github.com/openrndr/openrndr")
-    val orxVersion = getRepoLastVersion("https://github.com/openrndr/orx")
-    val ormlVersion = getRepoLastVersion("https://github.com/openrndr/orml")
     val repoTemplate = "$projectDir/src/main/resources/examples-repo-template"
     doLast {
         gitPublish.repoDir.set(file("$buildDir/gitrepo-examples"))
@@ -91,9 +75,9 @@ val publishExamples by tasks.registering {
                 include("settings.gradle.kts")
                 filter<ReplaceTokens>(
                     "tokens" to mapOf(
-                        "openrndrVersion" to openrndrVersion,
-                        "orxVersion" to orxVersion,
-                        "ormlVersion" to ormlVersion
+                        "openrndrVersion" to libs.versions.openrndr.get(),
+                        "orxVersion" to libs.versions.orx.get(),
+                        "ormlVersion" to libs.versions.orml.get()
                     )
                 )
             }
