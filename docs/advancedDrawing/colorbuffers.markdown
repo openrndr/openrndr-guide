@@ -4,7 +4,7 @@
 layout: default
 title: Color buffers
 parent: Advanced drawing
-last_modified_at: 2022.04.27 20:24:39 +0200
+last_modified_at: 2022.12.21 17:51:30 +0100
 nav_order: 100
 has_children: false
 ---
@@ -45,7 +45,7 @@ val cb = colorBuffer(640, 480, type = ColorType.FLOAT16)
 ## Loading color buffers
 
 Color buffers can be loaded from an image stored on disk. 
-Supported file types are png, jpg and exr (OpenEXR). 
+Supported file types are png, jpg, dds and exr (OpenEXR). 
  
 ```kotlin
 val cb = loadImage("data/images/pm5544.jpg")
@@ -65,13 +65,23 @@ cb.destroy()
 ## Saving color buffers
 
 Color buffers can be saved to disk using the `saveToFile` member function. 
-Supported file types are png, jpg and exr (OpenEXR).  
+Supported file types are png, jpg, dds and exr (OpenEXR).  
  
 ```kotlin
 val cb = colorBuffer(640, 480)
 cb.saveToFile(File("output.jpg"))
 ``` 
  
+When repeteadly saving color buffers asynchronously (the default) it is possible to run out
+of memory. This can happen if the software can not keep up saving files at the requested rate.
+In such situations we can either set `async = false` in `saveToFile()` or avoid `saveToFile` and use the
+[VideoWriter](https://guide.openrndr.org/videos/writingToVideoFiles.html#writing-to-video-using-render-targets)
+together with [pngSequence](https://github.com/openrndr/orx/tree/master/orx-jvm/orx-video-profiles#png-sequence)
+or [tiffSequence](https://github.com/openrndr/orx/tree/master/orx-jvm/orx-video-profiles#tiff-sequence)
+instead.
+ 
+Note that some image file types take longer to save than others.
+
 ## Copying between color buffers
 
 Color buffer contents can be copied using the `copyTo` member function. 
