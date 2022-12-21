@@ -7,8 +7,8 @@ package docs.`10_FileIO`
 
 import com.github.doyaaaaaken.kotlincsv.dsl.csvReader
 import com.github.doyaaaaaken.kotlincsv.dsl.csvWriter
-import org.gradle.internal.impldep.com.google.gson.Gson
-import org.gradle.internal.impldep.com.google.gson.reflect.TypeToken
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import org.jsoup.Jsoup
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*

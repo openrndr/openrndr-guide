@@ -15,11 +15,14 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.csv)
     implementation(libs.kotlinx.coroutines)
-    implementation(libs.slf4j.simple)
     implementation(libs.bundles.openrndr.core)
     implementation(libs.bundles.openrndr.rest)
     implementation(libs.bundles.orx)
-    implementation(libs.dokgen)
+    implementation(libs.dokgen) {
+        // Otherwise includes Gradle's slf4j implementation
+        isTransitive = false
+    }
+    runtimeOnly(libs.slf4j.simple)
 }
 
 dokgen {
@@ -43,7 +46,7 @@ val gitPublishPush: Task by tasks.getting
 
 val publishDocs by tasks.registering {
     group = org.openrndr.dokgen.PLUGIN_NAME
-    description = "Publish website to github.com/openrndr/openrndr-guide"
+    description = "Publish website to https://github.com/openrndr/openrndr-guide"
 
     doLast {
         gitPublish.repoUri.set("git@github.com:openrndr/openrndr-guide.git")

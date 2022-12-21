@@ -1,6 +1,5 @@
 package org.openrndr.dokgen
 
-
 import org.gradle.api.*
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.model.ObjectFactory
