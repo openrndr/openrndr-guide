@@ -158,11 +158,11 @@ abstract class RunExamplesTask @Inject constructor(
 
         val workQueue: WorkQueue = workerExecutor.noIsolation()
 
-        for (klass in execClasses) {
+        for (mainClass in execClasses) {
             workQueue.submit(MediaRunnerWorkAction::class.java) {
                 it.classPath.set(ss.runtimeClasspath.asPath)
                 it.jvmArgs.set(runnerConf?.jvmArgs ?: emptyList())
-                it.klass.set(klass)
+                it.mainClass.set(mainClass)
             }
         }
     }

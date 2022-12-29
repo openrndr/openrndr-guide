@@ -13,7 +13,7 @@ abstract class MediaRunnerWorkAction : WorkAction<MediaRunnerWorkParameters> {
             execOperations.javaexec {
                 it.classpath(parameters.classPath.get())
                 it.jvmArgs = parameters.jvmArgs.get()
-                it.mainClass.set(parameters.klass)
+                it.mainClass.set(parameters.mainClass)
             }
         } catch (e: Exception) {
             throw RuntimeException(e)

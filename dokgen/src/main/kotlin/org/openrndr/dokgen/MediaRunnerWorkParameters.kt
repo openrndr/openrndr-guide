@@ -6,6 +6,6 @@ import org.gradle.workers.WorkParameters
 
 interface MediaRunnerWorkParameters : WorkParameters {
     val classPath: Property<String>
-    val klass: Property<String>
+    val mainClass: Property<String>
     val jvmArgs: ListProperty<String>
 }
