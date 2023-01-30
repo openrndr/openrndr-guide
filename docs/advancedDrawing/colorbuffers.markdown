@@ -4,7 +4,7 @@
 layout: default
 title: Color buffers
 parent: Advanced drawing
-last_modified_at: 2022.12.21 17:51:30 +0100
+last_modified_at: 2023.01.30 18:50:47 +0100
 nav_order: 100
 has_children: false
 ---

@@ -4,7 +4,7 @@
 layout: default
 title: Text
 parent: Drawing basics
-last_modified_at: 2022.04.29 11:15:05 +0200
+last_modified_at: 2022.12.22 19:34:50 +0100
 nav_order: 120
 has_children: false
 ---
