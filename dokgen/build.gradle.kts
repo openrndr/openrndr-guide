@@ -25,7 +25,7 @@ dependencies {
 
 gradlePlugin {
     plugins {
-        create("simplePlugin") {
+        register("simplePlugin") {
             id = "org.openrndr.dokgen-gradle"
             implementationClass = "org.openrndr.dokgen.GradlePlugin"
         }

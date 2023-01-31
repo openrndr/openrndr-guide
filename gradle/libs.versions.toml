@@ -3,6 +3,7 @@ kotlin = "1.7.21"
 jvmTarget = "17"
 openrndr = "0.4.1"
 orx = "0.4.1"
+orml = "0.4.0-rc.1"
 coroutines = "1.6.4"
 slf4j = "1.7.36"
 gitPublish = "3.0.1"
@@ -11,8 +12,7 @@ gson = "2.9.1"
 csv = "1.6.0"
 
 [libraries]
-kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }
-kotlin-reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin" }
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
 kotlin-compiler-embeddable = { group = "org.jetbrains.kotlin", name = "kotlin-compiler-embeddable", version.ref = "kotlin" }
 kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlin" }
 kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }

@@ -1,9 +1,10 @@
 build
 out
 .idea
+.lwjgl
 .gradle
 src/main/kotlin/examples
 ffmpegOutput.txt
 media/
 src/generated
-gui-parameters/*.json
+gui-parameters/
