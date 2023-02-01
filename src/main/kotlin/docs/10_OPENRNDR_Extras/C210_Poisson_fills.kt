@@ -186,7 +186,7 @@ fun main() {
                             120.0
                         )
                     }
-                    blend(PoissonBlend())
+                    //blend(PoissonBlend())
                 }
             }
             extend {
@@ -230,7 +230,7 @@ fun main() {
                     post(LumaOpacity()) {
                         this.backgroundLuma = 0.25
                     }
-                    blend(PoissonBlend())
+                    //blend(PoissonBlend())
                 }
             }
             extend {

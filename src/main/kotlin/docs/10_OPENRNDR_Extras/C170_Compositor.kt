@@ -432,7 +432,8 @@ fun main() {
                         phase = seconds
                     }
                     // -- this is the second effect
-                    post(VerticalWave()) {
+                    post(HorizontalWave()) {
+                        //post(VerticalWave()) {
                         amplitude = sin(seconds * 3) * 0.1
                         frequency = cos(seconds * 2) * 4
                         segments = (1 + Math.random() * 20).toInt()

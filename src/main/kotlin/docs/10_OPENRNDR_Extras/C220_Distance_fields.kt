@@ -93,9 +93,9 @@ fun main() {
                         drawer.fill = ColorRGBa.PINK
                         drawer.circle(width / 2.0, height / 2.0, 200.0)
                     }
-                    post(OuterGlow()) {
-                        this.width = (cos(seconds) * 0.5 + 0.5) * 100.0
-                    }
+//                    post(OuterGlow()) {
+//                        this.width = (cos(seconds) * 0.5 + 0.5) * 100.0
+//                    }
                 }
             }
             extend {
