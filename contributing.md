@@ -1,66 +1,65 @@
-## Clone the guide
+## Contributing to the guide in 5 steps
 
-```
-$ git clone git@github.com:openrndr/openrndr-guide.git
-$ cd openrndr-guide
-```
+It's very easy!
 
-## Open the openrndr-guide project in IntelliJ Idea
+1. Clone this repository: `git@github.com:openrndr/openrndr-guide.git`.
+2. Open it in IntelliJ Idea.
+3. Edit or add markdown files under `src/main/kotlin/docs/`. The available
+   [annotations are described here](https://github.com/openrndr/openrndr-guide/tree/main/dokgen).
+4. Push the changes to your fork of `openrndr-guide`.
+5. Create a pull request.
 
-## Run the `dokgen` Gradle task
+----
 
-The first time it will take a while since it will run over 100 kotlin programs
-to produce the guide's screenshots and videos. If a program gets stuck running
-for over
-10 seconds it can be closed and the build will continue with the next program.
+If you are making quick contributions to the guide you can ignore the rest of this document.
 
-Once the build is complete the guide will be found at
-`build/dokgen/jekyll/docs/` in markdown format.
+## If you use search / replace...
 
-## Preview the guide in a web browser
+Make sure your search results are located under `src/`, NOT under `build/` because it contains
+automatically generated content, and it gets overwritten by the build process. It is easy
+to end up editing the wrong files when using search.
+
+## Preview the guide locally
+
+To preview the guide we need Jekyll in our system. We use a Docker container.
 
 1. Install [Docker](https://www.docker.com/get-started/).
-2. Run the `openrndr-guide/Tasks/dokgen/webServerStart` gradle task
-   (it can take some time to download jekyll during the first run).
+2. Start the web server
+    - Run the `openrndr-guide/Tasks/dokgen/webServerStart` Gradle task
+    - or
+    - Run `sudo build/dokgen/jekyll/docs/webServerStart.sh` script.
 3. Open [http://0.0.0.0:4000](http://0.0.0.0:4000) in a browser.
 
-## Improve the guide
+## Build the guide
 
-1. Make changes to the markdown files under `src/main/kotlin/docs/`.
-   Read about
-   the [available annotations here](https://github.com/openrndr/openrndr-guide/tree/main/dokgen)
-   .
-2. Run the `dokgen` task (either in the command line `./gradlew dokgen` or in
-   the Gradle pane on the right edge of the IDE).
-3. Reload the page in the browser to observe your changes.
-4. Repeat.
+Run the `Tasks/dokgen/dokgen` Gradle task to update the local Jekyll website.
 
-## Stop the web server before closing
+The first time can take a while since it will run over 100 kotlin programs
+to produce the guide's screenshots and videos. If one of the programs
+gets stuck running for over 10 seconds it can be closed and the build
+will continue with the next program.
 
-If you try closing Idea without running `openrndr-guide/Tasks/webServerStop`
-the IDE will get stuck waiting for the web server to shut down. If that
-happens, run `./data/jekyll-assets/webServerStop.sh` from the command line.
+Once the build process is complete the guide will be found at
+`build/dokgen/jekyll/docs/` in markdown format and viewable in your
+web browser if the Docker/Jekyll container is running.
 
-## Search and replace pitfall
+## Stop the web server before closing Idea
 
-If you use search and/or replace **make sure the results are inside the `src`
-folder** and not inside `build/`.
-It is easy to mistakenly spend time editing files inside `build/`. Those
-files will be overwritten when running `dokgen` again.
+If you try closing Idea without stopping the Jekyll web server the IDE will hang
+waiting for Jekyll to finish. To stop Jekyll:
 
-## Faster build
+- Run the `openrndr-guide/Tasks/dokgen/webServerStop` Gradle task
+- or
+- Run `sudo build/dokgen/jekyll/docs/webServerStop.sh` script.
 
-By default building the guide generates many videos and images which can take
-more than 15 minutes. Media generation can be disabled by setting
+## Fast builds
+
+By default, building the guide generates many videos and images which can take
+a while. Media generation can be disabled by setting
 `skipMediaGeneration=true` as an `Environment variable` in the `dokgen/dokgen`
 Gradle task. This can be useful to focus on editing and organizing
-texts. Generating the media files before submitting changes can still 
-be a good practice to make sure the programs still run successfully.
-
-## Submit your changes
-
-After improving the guide you can push the changes to your fork of
-`openrndr-guide` and send a pull request.
+texts. Generating the media files before submitting changes can still
+be a good practice to make sure the programs run successfully.
 
 Thank you for improving the guide! :-)
 
@@ -71,11 +70,12 @@ two nested projects: `DokGen` and the guide itself.
 
 You can read about DokGen in its [readme](dokgen/README.md).
 If you make changes to it, build it by running the `dokgen/Tasks/build/build`
-Gradle task first, then build the guide by running 
+Gradle task first, then build the guide by running
 `openrndr-guide/Tasks/dokgen/dokgen` to see the effects of your changes to DokGen
 
-To publish the guide:
+#### To publish the guide changes:
 
-- Make sure your SSH has been entered before opening IntelliJ Idea (`ssh-add`)
-- Run `openrndr-guide/Tasks/dokgen/publishDocs`
-- Run `openrndr-guide/Tasks/dokgen/publishExamples`
+- Make sure your SSH password has been entered before opening IntelliJ Idea (`ssh-add`). Otherwise, the IDE will ask
+  for the password two or three times when running the following actions.
+- Run `openrndr-guide/Tasks/dokgen/publishDocs` to update the guide at https://guide.openrndr.org.
+- Run `openrndr-guide/Tasks/dokgen/publishExamples` to update the [examples repo](https://github.com/openrndr/openrndr-examples).
