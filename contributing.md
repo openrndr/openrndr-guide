@@ -13,22 +13,21 @@ It's very easy!
 
 If you are making quick contributions to the guide you can ignore the rest of this document.
 
+## Concept
+
+The OPENRNDR guide is somewhat unique. The source code of the guide is made out of Kotlin programs arranged in various folders. Each Kotlin file contains blocks of text describing different aspects of the framework, but also containsblocks of code that serve two purposes: they are code examples for the learner, but they are actually executed by `dokgen` to produce screenshots and video files during the build process. The produced files are then embedded in the guide.
+
+A program called `dokgen` (found in this repo) parses the Kotlin files. It creates markdown files for [Jekyll](jekyllrb.com/) (used by GitHub pages), it extracts the source code of small programs embedded in the guide's source code and runs those programs to generate media files.
+
+Generating media files as part of the build process helps notice if the guide needs to be updated in some areas or if changes unexpectedly broke part of the framework.
+
+For Jekyll, we use the [Just-the-docs](https://just-the-docs.github.io/just-the-docs/) Jekyll theme.
+
 ## If you use search / replace...
 
-Make sure your search results are located under `src/`, NOT under `build/` because it contains
+When editing the guide with Idea, make sure your *search results* are located under `src/`, NOT under `build/` because it contains
 automatically generated content, and it gets overwritten by the build process. It is easy
 to end up editing the wrong files when using search.
-
-## Preview the guide locally
-
-To preview the guide we need Jekyll in our system. We use a Docker container.
-
-1. Install [Docker](https://www.docker.com/get-started/).
-2. Start the web server
-    - Run the `openrndr-guide/Tasks/dokgen/webServerStart` Gradle task
-    - or
-    - Run `sudo build/dokgen/jekyll/docs/webServerStart.sh` script.
-3. Open [http://0.0.0.0:4000](http://0.0.0.0:4000) in a browser.
 
 ## Build the guide
 
@@ -41,7 +40,18 @@ will continue with the next program.
 
 Once the build process is complete the guide will be found at
 `build/dokgen/jekyll/docs/` in markdown format and viewable in your
-web browser if the Docker/Jekyll container is running.
+web browser if the Docker/Jekyll container is running (next step).
+
+## Preview the guide locally
+
+To preview the guide we need Jekyll in our system. One way to install Jekyll is by using a Docker container.
+
+1. Install [Docker](https://www.docker.com/get-started/).
+2. Start the web server
+    - Run the `openrndr-guide/Tasks/dokgen/webServerStart` Gradle task
+    - or
+    - Run `sudo build/dokgen/jekyll/docs/webServerStart.sh` script.
+3. Open [http://0.0.0.0:4000](http://0.0.0.0:4000) in a browser.
 
 ## Stop the web server before closing Idea
 
