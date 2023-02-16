@@ -4,7 +4,7 @@ It's very easy!
 
 1. Clone this repository: `git@github.com:openrndr/openrndr-guide.git`.
 2. Open it in IntelliJ Idea.
-3. Edit or add markdown files under `src/main/kotlin/docs/`. The available
+3. Edit or add kotlin files under `src/main/kotlin/docs/`. The available
    [annotations are described here](https://github.com/openrndr/openrndr-guide/tree/main/dokgen).
 4. Push the changes to your fork of `openrndr-guide`.
 5. Create a pull request.
@@ -17,7 +17,7 @@ If you are making quick contributions to the guide you can ignore the rest of th
 
 The OPENRNDR guide is somewhat unique. The source code of the guide is made out of Kotlin programs arranged in various folders. Each Kotlin file contains blocks of text describing different aspects of the framework, but also containsblocks of code that serve two purposes: they are code examples for the learner, but they are actually executed by `dokgen` to produce screenshots and video files during the build process. The produced files are then embedded in the guide.
 
-A program called `dokgen` (found in this repo) parses the Kotlin files. It creates markdown files for [Jekyll](jekyllrb.com/) (used by GitHub pages), it extracts the source code of small programs embedded in the guide's source code and runs those programs to generate media files.
+A program called `dokgen` (found in this repo) parses the Kotlin files. It creates markdown files for [Jekyll](https://jekyllrb.com/) (used by GitHub pages), it extracts the source code of small programs embedded in the guide's source code and runs those programs to generate media files.
 
 Generating media files as part of the build process helps notice if the guide needs to be updated in some areas or if changes unexpectedly broke part of the framework.
 
