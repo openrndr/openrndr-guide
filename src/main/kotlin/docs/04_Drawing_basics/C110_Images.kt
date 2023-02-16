@@ -199,7 +199,7 @@ fun main() {
     """
     ### Grayscale
     
-    Drawing an image with inverted colors can be achieved by using the `grayscale` color matrix.
+    Drawing an image in grayscale can be achieved by using the `grayscale` color matrix.
     """
 
     @Media.Image "../media/image-006.jpg"
