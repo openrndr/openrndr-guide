@@ -10,7 +10,10 @@ import org.openrndr.Fullscreen
 import org.openrndr.UnfocusBehaviour
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*
+import org.openrndr.extra.noise.Random
+import org.openrndr.extra.noise.uniform
 import org.openrndr.math.IntVector2
+import org.openrndr.math.Vector2
 
 fun main() {
 
@@ -98,7 +101,7 @@ fun main() {
 
     @Text
     """
-    # Window Title
+    ## Window Title
     """
 
     @Code
@@ -110,7 +113,7 @@ fun main() {
 
     @Text 
     """
-    # Window unfocus behaviour
+    ## Window unfocus behaviour
     
     Two window unfocus behaviours are available. In `NORMAL` behaviour the 
     program continues running at full speed, in contrast the `THROTTLE` 
@@ -123,4 +126,41 @@ fun main() {
             unfocusBehaviour = UnfocusBehaviour.THROTTLE
         }
     }
+
+    @Text
+    """
+    ## Mouse visibility
+    
+    It is possible to hide the mouse cursor via `hideCursor`.
+    """
+
+    @Code
+    application {
+        configure {
+            hideCursor = true
+        }
+    }
+
+    @Text
+    """
+    ## Changing the configuration while the program runs
+    
+    To modify the configuration after the program has started we can set 
+    [various properties](https://github.com/openrndr/openrndr/blob/master/openrndr-application/src/commonMain/kotlin/org/openrndr/Application.kt) 
+    via `application`.
+    """
+
+    @Code
+    application {
+        program {
+            extend {
+                if(frameCount % 60 == 0) {
+                    application.cursorVisible = Random.bool()
+                    application.windowPosition = Vector2.uniform(0.0, 200.0)
+                }
+            }
+        }
+    }
+
+
 }
