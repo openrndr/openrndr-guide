@@ -4,7 +4,7 @@
 layout: default
 title: Images
 parent: Drawing basics
-last_modified_at: 2022.04.29 11:15:06 +0200
+last_modified_at: 2023.02.16 17:49:07 +0100
 nav_order: 110
 has_children: false
 ---
@@ -142,7 +142,7 @@ fun main() = application {
  
 ### Grayscale
 
-Drawing an image with inverted colors can be achieved by using the `grayscale` color matrix. 
+Drawing an image in grayscale can be achieved by using the `grayscale` color matrix. 
  
 <img alt="../media/image-006.jpg" src="../media/image-006.jpg" loading="lazy"> 
  

@@ -4,7 +4,7 @@
 layout: default
 title: Program configuration
 parent: Program basics
-last_modified_at: 2022.04.16 09:54:13 +0200
+last_modified_at: 2023.02.16 17:51:41 +0100
 nav_order: 110
 has_children: false
 ---
@@ -78,7 +78,7 @@ fun main() = application {
 }
 ``` 
  
-# Window Title 
+## Window Title 
  
 ```kotlin
 fun main() = application {
@@ -88,7 +88,7 @@ fun main() = application {
 }
 ``` 
  
-# Window unfocus behaviour
+## Window unfocus behaviour
 
 Two window unfocus behaviours are available. In `NORMAL` behaviour the 
 program continues running at full speed, in contrast the `THROTTLE` 
@@ -98,6 +98,37 @@ behaviour throttles the program to 10Hz.
 fun main() = application {
     configure {
         unfocusBehaviour = UnfocusBehaviour.THROTTLE
+    }
+}
+``` 
+ 
+## Mouse visibility
+
+It is possible to hide the mouse cursor via `hideCursor`. 
+ 
+```kotlin
+fun main() = application {
+    configure {
+        hideCursor = true
+    }
+}
+``` 
+ 
+## Changing the configuration while the program runs
+
+To modify the configuration after the program has started we can set 
+[various properties](https://github.com/openrndr/openrndr/blob/master/openrndr-application/src/commonMain/kotlin/org/openrndr/Application.kt) 
+via `application`. 
+ 
+```kotlin
+fun main() = application {
+    program {
+        extend {
+            if (frameCount % 60 == 0) {
+                application.cursorVisible = Random.bool()
+                application.windowPosition = Vector2.uniform(0.0, 200.0)
+            }
+        }
     }
 }
 ``` 
