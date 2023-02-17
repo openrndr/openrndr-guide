@@ -238,7 +238,6 @@ fun main() {
     `fun rotate(…)`      | `model`
     `fun translate(…)`   | `model`
     `fun scale(…)`       | `model`
-    `fun rotate(…)`      | `model`
     `fun lookAt(…)`      | `view`
     `fun ortho(…)`       | `projection`
     `fun perspective(…)` | `projection`
