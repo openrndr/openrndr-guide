@@ -272,7 +272,7 @@ fun main() {
     In the snippet below a `Matrix44` instance is constructed using the `transform {}` builder. Note that the application order is from bottom to top.
     
     ```kotlin
-    drawer.view *= transform {
+    drawer.model *= transform {
         rotate(32.0)
         rotate(Vector3(1.0, 1.0, 0.0).normalized, 43.0)
         translate(4.0, 2.0)
