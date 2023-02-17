@@ -291,7 +291,7 @@ fun main() {
     ## Applying transforms to vectors
     
     ```kotlin
-        val x = Vector3(1.0, 2.0, 3.0, 1.0)
+        val x = Vector4(1.0, 2.0, 3.0, 1.0)
         val m = transform {
             rotate(Vector3.UNIT_Y, 42.0)
         }
