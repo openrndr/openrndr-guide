@@ -4,7 +4,7 @@
 layout: default
 title: Drawing primitives
 parent: Drawing basics
-last_modified_at: 2022.12.22 19:34:04 +0100
+last_modified_at: 2023.02.03 15:58:32 +0100
 nav_order: 100
 has_children: false
 ---

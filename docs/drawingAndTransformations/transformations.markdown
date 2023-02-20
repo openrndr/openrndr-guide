@@ -4,7 +4,7 @@
 layout: default
 title: Transformations
 parent: Drawing and transformations
-last_modified_at: 2022.04.29 11:15:06 +0200
+last_modified_at: 2023.02.20 11:34:05 +0100
 nav_order: 100
 has_children: false
 ---
@@ -241,7 +241,6 @@ operation            | matrix property
 `fun rotate(…)`      | `model`
 `fun translate(…)`   | `model`
 `fun scale(…)`       | `model`
-`fun rotate(…)`      | `model`
 `fun lookAt(…)`      | `view`
 `fun ortho(…)`       | `projection`
 `fun perspective(…)` | `projection`
@@ -276,7 +275,7 @@ transform {}
 In the snippet below a `Matrix44` instance is constructed using the `transform {}` builder. Note that the application order is from bottom to top.
 
 ```kotlin
-drawer.view *= transform {
+drawer.model *= transform {
     rotate(32.0)
     rotate(Vector3(1.0, 1.0, 0.0).normalized, 43.0)
     translate(4.0, 2.0)
@@ -295,7 +294,7 @@ drawer.scale(2.0)
 ## Applying transforms to vectors
 
 ```kotlin
-    val x = Vector3(1.0, 2.0, 3.0, 1.0)
+    val x = Vector4(1.0, 2.0, 3.0, 1.0)
     val m = transform {
         rotate(Vector3.UNIT_Y, 42.0)
     }
