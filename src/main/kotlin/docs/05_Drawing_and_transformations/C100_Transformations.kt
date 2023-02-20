@@ -238,7 +238,6 @@ fun main() {
     `fun rotate(…)`      | `model`
     `fun translate(…)`   | `model`
     `fun scale(…)`       | `model`
-    `fun rotate(…)`      | `model`
     `fun lookAt(…)`      | `view`
     `fun ortho(…)`       | `projection`
     `fun perspective(…)` | `projection`
@@ -273,7 +272,7 @@ fun main() {
     In the snippet below a `Matrix44` instance is constructed using the `transform {}` builder. Note that the application order is from bottom to top.
     
     ```kotlin
-    drawer.view *= transform {
+    drawer.model *= transform {
         rotate(32.0)
         rotate(Vector3(1.0, 1.0, 0.0).normalized, 43.0)
         translate(4.0, 2.0)
@@ -292,7 +291,7 @@ fun main() {
     ## Applying transforms to vectors
     
     ```kotlin
-        val x = Vector3(1.0, 2.0, 3.0, 1.0)
+        val x = Vector4(1.0, 2.0, 3.0, 1.0)
         val m = transform {
             rotate(Vector3.UNIT_Y, 42.0)
         }
