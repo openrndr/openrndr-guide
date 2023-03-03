@@ -4,7 +4,7 @@
 layout: default
 title: Complex shapes
 parent: Drawing basics
-last_modified_at: 2023.03.03 19:06:40 +0100
+last_modified_at: 2023.03.03 19:12:33 +0100
 nav_order: 150
 has_children: false
 ---
@@ -146,6 +146,12 @@ fun main() = application {
 ``` 
  
 [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C150_ComplexShapes002.kt) 
+ 
+## Shape Boolean-operations
+
+Boolean-operations can be performed on shapes using the `compound {}` builder. 
+There are three kinds of compounds: _union_, _difference_ and _intersection_, 
+all three of them are shown in the example below. 
  
 <img alt="../media/shapes-003.jpg" src="../media/shapes-003.jpg" loading="lazy"> 
  
