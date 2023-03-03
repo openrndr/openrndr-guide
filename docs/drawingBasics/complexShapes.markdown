@@ -4,7 +4,7 @@
 layout: default
 title: Complex shapes
 parent: Drawing basics
-last_modified_at: 2022.04.29 11:15:05 +0200
+last_modified_at: 2023.03.03 19:06:40 +0100
 nav_order: 150
 has_children: false
 ---
@@ -114,11 +114,38 @@ Some of the OPENRNDR primitives have `.shape` and
 * `Rectangle.contour` and `Rectangle.shape`
 * `Circle.contour` and `Circle.shape`
 
-## Shape Boolean-operations
+## Contours from points
 
-Boolean-operations can be performed on shapes using the `compound {}` builder. 
-There are three kinds of compounds: _union_, _difference_ and _intersection_, 
-all three of them are shown in the example below. 
+Contours can be created from a list of points or from a list of consecutive segments. 
+ 
+<img alt="../media/shapes-002b.jpg" src="../media/shapes-002b.jpg" loading="lazy"> 
+ 
+```kotlin
+fun main() = application {
+    program {
+        val points = List(30) {
+            Vector2(20.0 + it * 20.0, 300.0 + sin(it * 0.8) * 100.0)
+        }
+        val wavyContour = ShapeContour.fromPoints(points, closed = true)
+        
+        val segments = listOf(Segment(Vector2(10.0, 100.0), Vector2(200.0, 80.0)), // Linear Segment
+        Segment(Vector2(200.0, 80.0), Vector2(250.0, 280.0), Vector2(400.0, 80.0)), // Quadratic Bézier segment
+        Segment(Vector2(400.0, 80.0), Vector2(450.0, 180.0), Vector2(500.0, 0.0), Vector2(630.0, 80.0))) // Cubic Bézier segment
+        val horizontalContour = ShapeContour.fromSegments(segments, closed = false)
+        
+        extend {
+            drawer.fill = ColorRGBa.PINK
+            drawer.contour(wavyContour)
+            
+            drawer.strokeWeight = 5.0
+            drawer.stroke = ColorRGBa.PINK
+            drawer.contour(horizontalContour)
+        }
+    }
+}
+``` 
+ 
+[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C150_ComplexShapes002.kt) 
  
 <img alt="../media/shapes-003.jpg" src="../media/shapes-003.jpg" loading="lazy"> 
  
@@ -163,7 +190,7 @@ fun main() = application {
 }
 ``` 
  
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C150_ComplexShapes002.kt) 
+[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C150_ComplexShapes003.kt) 
  
 The _compound builder_ is actually a bit more clever than what the 
 previous example demonstrated because it can actually work with an 
@@ -200,7 +227,7 @@ fun main() = application {
 }
 ``` 
  
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C150_ComplexShapes003.kt) 
+[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C150_ComplexShapes004.kt) 
  
 ## Cutting contours
 
@@ -236,7 +263,7 @@ fun main() = application {
 }
 ``` 
  
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C150_ComplexShapes004.kt) 
+[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C150_ComplexShapes005.kt) 
  
 ## Placing points on contours
 
@@ -274,7 +301,7 @@ fun main() = application {
 }
 ``` 
  
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C150_ComplexShapes005.kt) 
+[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C150_ComplexShapes006.kt) 
  
 ## Offsetting contours
 
@@ -309,7 +336,7 @@ fun main() = application {
 }
 ``` 
  
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C150_ComplexShapes006.kt) 
+[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C150_ComplexShapes007.kt) 
  
 `ShapeContour.offset` can also be used to offset curved contours. 
 The following demonstration shows a single cubic bezier offset at multiple 
@@ -345,6 +372,6 @@ fun main() = application {
 }
 ``` 
  
-[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C150_ComplexShapes007.kt) 
+[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/04_Drawing_basics/C150_ComplexShapes008.kt) 
 
 [edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/04_Drawing_basics/C150_ComplexShapes.kt){: .btn .btn-github }
