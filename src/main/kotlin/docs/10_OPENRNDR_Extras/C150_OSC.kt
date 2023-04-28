@@ -46,6 +46,12 @@ fun main() {
     }
 
     @Text """
+    Note that `.listen()` accepts wildcard characters like `*` and `?`.
+    For instance to listen to addresses containing two words we
+    can use `osc.listen("/*/*")`. Find out more about **Pattern Matching**
+    in the 
+    [OSC specification](https://opensoundcontrol.stanford.edu/spec-1_0.html).
+
     ## Sending OSC messages
     """
 

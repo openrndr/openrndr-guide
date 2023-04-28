@@ -105,8 +105,8 @@ fun main() {
 
     @Text 
     """
-    When repeteadly saving color buffers asynchronously (the default) it is possible to run out
-    of memory. This can happen if the software can not keep up saving files at the requested rate.
+    When repeatedly saving color buffers asynchronously (the default) it is possible to run out
+    of memory. This can happen if the software can not save images at the requested frame rate.
     In such situations we can either set `async = false` in `saveToFile()` or avoid `saveToFile` and use the
     [VideoWriter](https://guide.openrndr.org/videos/writingToVideoFiles.html#writing-to-video-using-render-targets)
     together with [pngSequence](https://github.com/openrndr/orx/tree/master/orx-jvm/orx-video-profiles#png-sequence)
