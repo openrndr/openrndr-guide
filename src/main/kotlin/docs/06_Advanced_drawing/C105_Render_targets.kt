@@ -88,10 +88,10 @@ fun main() {
     """
     ## Render targets and projection transformations
     
-    Keep in mind that projection transform has to be set to fit the render 
-    target, this becomes apparent specifically when the used render target 
-    has dimensions that differ from those of the window. In case of orthographic
-    (2D) projections one can use the following:
+    Note that the [projection matrix](/drawingAndTransformations/transformations.html#projection-matrix) 
+    has to fit the render target. 
+    This becomes obvious __if the dimensions of the window and the dimensions of the render target differ__. 
+    In case of orthographic (2D) projections one can use `ortho()`:
     """
 
     @Code
