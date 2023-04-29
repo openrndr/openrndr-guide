@@ -76,7 +76,7 @@ fun main() {
     write to graphics resources.
     
     In the below example we nest coroutines; the outer one is launched on the 
-    `Program` dispatcher, the inner  
+    `Program` dispatcher, the inner
     one is launched on the `GlobalScope` dispatcher. The `GlobalScope` 
     dispatcher executes the coroutine on a thread
     (from a thread pool) such that it does not block the primary draw thread. 

@@ -1,15 +1,15 @@
 [versions]
-kotlin = "1.7.21"
+kotlin = "1.8.21"
 jvmTarget = "17"
-openrndr = "0.4.1"
-orx = "0.4.1"
-orml = "0.4.0-rc.1"
+openrndr = "0.4.3-alpha7"
+orx = "0.4.3-alpha7"
+orml = "0.4.1"
 coroutines = "1.6.4"
-slf4j = "1.7.36"
+slf4j = "2.0.7"
 gitPublish = "3.0.1"
-jsoup = "1.15.2"
-gson = "2.9.1"
-csv = "1.6.0"
+jsoup = "1.16.1"
+gson = "2.10.1"
+csv = "1.9.0"
 
 [libraries]
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
