@@ -12,7 +12,11 @@ fun main() {
     """
     # Kotlin language and tools
     
+    OPENRNDR is written using the Kotlin programming language,
+    which is similar to Java but more modern and less verbose.
     
+    The Gradle build tool is used by the OPENRNDR projects 
+    to download dependencies, build and distribute projects.
     
     """.trimIndent()
 }
