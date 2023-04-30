@@ -31,7 +31,7 @@ fun main() {
     Gradle is a complex tool which supports multiple programming languages. It has many plugins providing 
     all kinds of functionality needed by people building and distributing applications.
     
-    Gradle is configured via Tasks written in text files. Tasks are similar to recipes that describing the steps 
+    Gradle is configured via Tasks written in text files. Tasks are similar to recipes that describe the steps 
     required to get something done. 
         
     ## Do we always need to use a build tool?
