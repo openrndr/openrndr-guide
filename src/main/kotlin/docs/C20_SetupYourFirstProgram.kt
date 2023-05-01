@@ -87,7 +87,7 @@ fun main() {
     for the examples in this guide in the 
     [`openrndr-examples` repository](https://github.com/openrndr/openrndr-examples). 
     If you are interested in more advanced examples we recommend checking out 
-    the demo programs in the [`orx` repository](https://github.com/openrndr/orx), 
+    the demo programs in the [`orx` repository](https://github.com/openrndr/orx); 
     most `orx` modules have demos in the `src/demo/kotlin` folder.
     """
 }
