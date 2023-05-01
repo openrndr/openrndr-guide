@@ -4,7 +4,7 @@
 layout: default
 title: Set up your first program
 parent: What is OPENRNDR?
-last_modified_at: 2022.11.28 12:23:08 +0100
+last_modified_at: 2023.05.01 13:51:03 +0200
 nav_order: 20
 has_children: false
 ---
@@ -85,7 +85,7 @@ If you are more interested in reading source code you can find the code
 for the examples in this guide in the 
 [`openrndr-examples` repository](https://github.com/openrndr/openrndr-examples). 
 If you are interested in more advanced examples we recommend checking out 
-the demo programs in the [`orx` repository](https://github.com/openrndr/orx), 
+the demo programs in the [`orx` repository](https://github.com/openrndr/orx); 
 most `orx` modules have demos in the `src/demo/kotlin` folder. 
 
 [edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/C20_SetupYourFirstProgram.kt){: .btn .btn-github }

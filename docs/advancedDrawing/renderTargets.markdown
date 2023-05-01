@@ -4,7 +4,7 @@
 layout: default
 title: Render targets
 parent: Advanced drawing
-last_modified_at: 2022.09.01 16:28:01 +0200
+last_modified_at: 2023.03.10 18:04:16 +0100
 nav_order: 105
 has_children: false
 ---
@@ -73,10 +73,10 @@ fun main() = application {
  
 ## Render targets and projection transformations
 
-Keep in mind that projection transform has to be set to fit the render 
-target, this becomes apparent specifically when the used render target 
-has dimensions that differ from those of the window. In case of orthographic
-(2D) projections one can use the following: 
+Note that the [projection matrix](/drawingAndTransformations/transformations.html#projection-matrix) 
+has to fit the render target. 
+This becomes obvious __if the dimensions of the window and the dimensions of the render target differ__. 
+In case of orthographic (2D) projections one can use `ortho()`: 
  
 ```kotlin
 fun main() = application {

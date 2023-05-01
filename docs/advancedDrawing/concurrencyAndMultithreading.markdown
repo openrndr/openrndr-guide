@@ -4,7 +4,7 @@
 layout: default
 title: Concurrency and multithreading
 parent: Advanced drawing
-last_modified_at: 2022.04.09 19:32:52 +0200
+last_modified_at: 2023.05.01 13:51:03 +0200
 nav_order: 160
 has_children: false
 ---
@@ -64,7 +64,7 @@ waiting for (off-thread) coroutines to complete and using the results to
 write to graphics resources.
 
 In the below example we nest coroutines; the outer one is launched on the 
-`Program` dispatcher, the inner  
+`Program` dispatcher, the inner
 one is launched on the `GlobalScope` dispatcher. The `GlobalScope` 
 dispatcher executes the coroutine on a thread
 (from a thread pool) such that it does not block the primary draw thread. 

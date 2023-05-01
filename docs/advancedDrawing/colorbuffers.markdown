@@ -4,7 +4,7 @@
 layout: default
 title: Color buffers
 parent: Advanced drawing
-last_modified_at: 2023.01.30 18:50:47 +0100
+last_modified_at: 2023.03.11 19:17:03 +0100
 nav_order: 100
 has_children: false
 ---
@@ -72,8 +72,8 @@ val cb = colorBuffer(640, 480)
 cb.saveToFile(File("output.jpg"))
 ``` 
  
-When repeteadly saving color buffers asynchronously (the default) it is possible to run out
-of memory. This can happen if the software can not keep up saving files at the requested rate.
+When repeatedly saving color buffers asynchronously (the default) it is possible to run out
+of memory. This can happen if the software can not save images at the requested frame rate.
 In such situations we can either set `async = false` in `saveToFile()` or avoid `saveToFile` and use the
 [VideoWriter](https://guide.openrndr.org/videos/writingToVideoFiles.html#writing-to-video-using-render-targets)
 together with [pngSequence](https://github.com/openrndr/orx/tree/master/orx-jvm/orx-video-profiles#png-sequence)

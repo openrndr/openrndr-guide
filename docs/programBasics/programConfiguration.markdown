@@ -4,7 +4,7 @@
 layout: default
 title: Program configuration
 parent: Program basics
-last_modified_at: 2023.02.16 17:51:41 +0100
+last_modified_at: 2023.05.01 13:51:03 +0200
 nav_order: 110
 has_children: false
 ---
@@ -40,10 +40,14 @@ fun main() = application {
 }
 ``` 
  
+To create a resizable window, set `windowResizable` to `true`. 
+ 
 ## Window position
 
-The default value for `position` is `null` for which the default behaviour 
-is to place the window at the center of the primary display 
+The `position` property represents the position of the top-left corner of the window. 
+Its default value is `null` for which the default behaviour 
+is to place the window at the center of the primary display.
+ 
  
 ```kotlin
 fun main() = application {
@@ -53,9 +57,21 @@ fun main() = application {
 }
 ``` 
  
+## Display
+
+All currently detected displays can be found in the `displays` list. 
+ 
+```kotlin
+fun main() = application {
+    configure {
+        display = displays[1]
+    }
+}
+``` 
+ 
 ## Fullscreen window
 
-Setting the window size is done through the `width` and `height` properties.
+By default, the window is not fullscreen. Fullscreen mode can be set using the `fullscreen` property.
  
  
 ```kotlin
@@ -68,7 +84,9 @@ fun main() = application {
 }
 ``` 
  
-or if no mode change is desired use `Fullscreen.CURRENT_DISPLAY_MODE` 
+If no mode change is desired use `Fullscreen.CURRENT_DISPLAY_MODE`.
+The effect of this setting is that the full width and height of the 
+current display mode are used, overwriting the `width` and `height` properties. 
  
 ```kotlin
 fun main() = application {
@@ -91,7 +109,7 @@ fun main() = application {
 ## Window unfocus behaviour
 
 Two window unfocus behaviours are available. In `NORMAL` behaviour the 
-program continues running at full speed, in contrast the `THROTTLE` 
+program continues running at full speed. In contrast, the `THROTTLE` 
 behaviour throttles the program to 10Hz. 
  
 ```kotlin
@@ -101,6 +119,9 @@ fun main() = application {
     }
 }
 ``` 
+ 
+To keep the window floating above other windows, even when it is unfocused,
+set `windowAlwaysOnTop` to `true`. 
  
 ## Mouse visibility
 

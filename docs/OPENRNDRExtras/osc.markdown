@@ -4,7 +4,7 @@
 layout: default
 title: OSC
 parent: OPENRNDR Extras
-last_modified_at: 2022.04.25 00:15:50 +0200
+last_modified_at: 2023.04.03 18:28:26 +0200
 nav_order: 150
 has_children: false
 ---
@@ -40,6 +40,12 @@ fun main() = application {
 }
 ``` 
  
+Note that `.listen()` accepts wildcard characters like `*` and `?`.
+For instance to listen to addresses containing two words we
+can use `osc.listen("/*/*")`. Find out more about **Pattern Matching**
+in the 
+[OSC specification](https://opensoundcontrol.stanford.edu/spec-1_0.html).
+
 ## Sending OSC messages 
  
 ```kotlin
