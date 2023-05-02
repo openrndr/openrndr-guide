@@ -41,135 +41,24 @@ fun main() {
 
     @Text
     """
-    ## Window size
+    The table below lists a selection of configuration options. See 
+    [the API](https://github.com/openrndr/openrndr/blob/master/openrndr-application/src/commonMain/kotlin/org/openrndr/Configuration.kt) 
+    for the complete list.
     
-    Setting the window size is done through the `width` and `height` properties.
+    Property                | Type               | Default value                          | Description
+    ------------------------|--------------------|----------------------------------------|---------------------------------
+    `width`                 | `Int`              | `640`                                  | initial window width
+    `height`                | `Int`              | `480`                                  | initial window height
+    `windowResizable`       | `Boolean`          | `false`                                | allow resizing of window?
+    `fullscreen`            | `Fullscreen`       | `Fullscreen.DISABLED`                  | When specified, either `Fullscreen.CURRENT_DISPLAY_MODE` to make the window match the current display resolution, or `Fullscreen.SET_DISPLAY_MODE` to change the display resolution to match `width` and `height`.
+    `position`              | `IntVector2?`      | `null` (center of the primary display) | initial window position (top-left corner)
+    `display`               | `Display?`         | `null` (primary display)               | The display on which to create the window. All detected displays are present in the `displays` list within the `application {}` block.
+    `windowAlwaysOnTop`     | `Boolean`          | `false`                                | keep the window floating above other windows?
+    `unfocusBehaviour`      | `UnfocusBehaviour` | `UnfocusBehaviour.NORMAL`              | The value `UnfocusBehaviour.THROTTLE` can be specified to throttle the program to 10Hz when unfocused.
+    `hideCursor`            | `Boolean`          | `false`                                | hide the cursor?
+    `title`                 | `String`           | `"OPENRNDR"`                           | window title
+    `hideWindowDecorations` | `Boolean`          | `false`                                | hide window decorations?
     """
-
-    @Code
-    application {
-        configure {
-            width = 640
-            height = 480
-        }
-    }
-
-    @Text
-    """
-    To create a resizable window, set `windowResizable` to `true`.
-    """
-
-    @Text
-    """
-    ## Window position
-    
-    The `position` property represents the position of the top-left corner of the window. 
-    Its default value is `null` for which the default behaviour 
-    is to place the window at the center of the primary display.
- 
-    """
-
-    @Code
-    application {
-        configure {
-            position = IntVector2(100, 400)
-        }
-    }
-
-    @Text
-    """
-    ## Display
-    
-    All currently detected displays can be found in the `displays` list.
-    """
-
-    @Code
-    application {
-        configure {
-            display = displays[1]
-        }
-    }
-
-
-    @Text
-    """
-    ## Fullscreen window
-
-    By default, the window is not fullscreen. Fullscreen mode can be set using the `fullscreen` property.
-
-    """
-
-    @Code
-    application {
-        configure {
-            width = 1920
-            height = 1080
-            fullscreen = Fullscreen.SET_DISPLAY_MODE
-        }
-    }
-
-    @Text
-    """
-    If no mode change is desired use `Fullscreen.CURRENT_DISPLAY_MODE`.
-    The effect of this setting is that the full width and height of the 
-    current display mode are used, overwriting the `width` and `height` properties.
-    """
-
-
-    @Code
-    application {
-        configure {
-            fullscreen = Fullscreen.CURRENT_DISPLAY_MODE
-        }
-    }
-
-    @Text
-    """
-    ## Window Title
-    """
-
-    @Code
-    application {
-        configure {
-            title = "Lo and behold!"
-        }
-    }
-
-    @Text 
-    """
-    ## Window unfocus behaviour
-    
-    Two window unfocus behaviours are available. In `NORMAL` behaviour the 
-    program continues running at full speed. In contrast, the `THROTTLE` 
-    behaviour throttles the program to 10Hz.
-    """
-
-    @Code
-    application {
-        configure {
-            unfocusBehaviour = UnfocusBehaviour.THROTTLE
-        }
-    }
-
-    @Text
-    """
-    To keep the window floating above other windows, even when it is unfocused,
-    set `windowAlwaysOnTop` to `true`.
-    """
-
-    @Text
-    """
-    ## Mouse visibility
-    
-    It is possible to hide the mouse cursor via `hideCursor`.
-    """
-
-    @Code
-    application {
-        configure {
-            hideCursor = true
-        }
-    }
 
     @Text
     """
@@ -191,6 +80,4 @@ fun main() {
             }
         }
     }
-
-
 }
