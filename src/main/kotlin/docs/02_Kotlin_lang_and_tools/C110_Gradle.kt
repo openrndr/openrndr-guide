@@ -53,13 +53,14 @@ fun main() {
     Thousands of JAVA libraries are available to our programs. We only need to add one line to the `build.gradle.kts`
     file to add a dependency. 
 
-    Three such dependencies (JSON, CSV, and XML) are predefined and must only be uncommented. See
-    [fileIO](https://guide.openrndr.org/fileIO/) in the guide.
+    Three such dependencies (JSON, CSV, and XML) are predefined and we only need to uncomment a line if we need them. 
+    See [fileIO](https://guide.openrndr.org/fileIO/) in the guide for details.
 
-    Any other dependency can be added inside the `dependencies { ... }` block in this format:
-    `implementation("org.jbox2d:jbox2d-library:2.2.1.1")`. Find such dependencies in
-    [www.mvnrepository.com](https://mvnrepository.com/). When you find the one you are looking for, choose the
-    `Gradle (Kotlin)` tab to copy a line you can paste into `build.gradle.kts`. Remember to reload Gradle!
+    Other dependencies can be easily added in this format:
+    `implementation("org.jbox2d:jbox2d-library:2.2.1.1")`. You can find such dependencies in
+    [www.mvnrepository.com](https://mvnrepository.com/). Once found, choose the
+    `Gradle (Kotlin)` tab in that website, copy the `implementation(...)` code and paste it 
+    into `build.gradle.kts` inside the `dependencies { ... }` block. Remember to reload Gradle!
         
     ## What else does Gradle do for OPENRNDR?
        
