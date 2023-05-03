@@ -89,3 +89,9 @@ Gradle task first, then build the guide by running
   for the password two or three times when running the following actions.
 - Run `openrndr-guide/Tasks/dokgen/publishDocs` to update the guide at https://guide.openrndr.org.
 - Run `openrndr-guide/Tasks/dokgen/publishExamples` to update the [examples repo](https://github.com/openrndr/openrndr-examples).
+
+## Troubleshooting
+- On some Linux distributions, the version of `ffmpeg` available via their respective package 
+  managers have not been compiled with the necessary encoders to generate videos for the 
+  guide - `libx264` in particular. One option to resolve this is to uninstall the package 
+  manager version and install a [Linux static build](https://ffmpeg.org/download.html#build-linux).
