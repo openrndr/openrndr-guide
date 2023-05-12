@@ -4,7 +4,7 @@
 layout: default
 title: Advanced drawing
 parent: ~
-last_modified_at: 2022.04.16 10:00:59 +0200
+last_modified_at: 2022.04.28 08:27:34 +0200
 nav_order: 1060
 has_children: true
 ---

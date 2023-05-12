@@ -4,7 +4,7 @@
 layout: default
 title: Shade styles
 parent: Advanced drawing
-last_modified_at: 2022.05.24 15:30:33 +0200
+last_modified_at: 2023.05.12 17:13:11 +0200
 nav_order: 140
 has_children: false
 ---
@@ -147,6 +147,54 @@ fun main() = application {
  
 [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C140_Shade_styles003.kt) 
  
+### 3D mesh distortion
+
+This example shows that one can also modify the vertex shader, 
+in this case to displace vertices using sine functions. 
+The current time in seconds is passed into the shader to produce
+a wavy effect. The fragment shader also uses sine functions to
+specify colors depending on the world position of each vertex.
+     
+ 
+<video controls preload="none" loop poster="../media/shadestyles-example-002-thumb.jpg">
+    <source src="../media/shadestyles-example-002.mp4" type="video/mp4"></source>
+</video>
+ 
+ 
+```kotlin
+fun main() = application {
+    program {
+        val sphere = sphereMesh(32, 32, 0.6)
+        val style = shadeStyle {
+            vertexTransform = """
+                    vec3 p = x_position * 8.0 + p_seconds;
+                    // displace the vertices
+                    x_position.x += sin(p.y) * 0.1;
+                    x_position.y += sin(p.z) * 0.1;
+                    x_position.z += sin(p.x) * 0.1;
+                """.trimIndent()
+            
+            fragmentTransform = """
+                    vec3 c = sin(v_worldPosition) * 0.5 + 0.5;
+                    x_fill = vec4(c, 1.0);
+                """.trimIndent()
+        }
+        
+        val camera = OrbitalCamera(Vector3.UNIT_Z, Vector3.ZERO)
+        
+        extend(camera)
+        extend {
+            camera.rotate(0.2, 0.0)
+            style.parameter("seconds", seconds)
+            drawer.shadeStyle = style
+            drawer.vertexBuffer(sphere, DrawPrimitive.LINES)
+        }
+    }
+}
+``` 
+ 
+[Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/06_Advanced_drawing/C140_Shade_styles004.kt) 
+ 
 ## The shade style language
 
 ### Prefix overview
@@ -158,6 +206,7 @@ prefix   | Scope              | Description
 `u_`     | all                | system uniforms passed in from Drawer
 `a_`     | vertex transform   | vertex attribute
 `va_`    | fragment transform | varying attribute, interpolation passed from vertex to fragment shader
+`v_`     | fragment transform | varying values, interpolation passed from vertex to fragment shader
 `i_`     | vertex transform   | instance attribute
 `vi_`    | fragment transform | varying instance attribute
 `x_`     | all                | transformable value
@@ -194,13 +243,27 @@ Attribute name | GLSL type | Description
 `a_normal`     | vec3      | the normal
 `a_color`      | vec3      | the color
 
-In this table we see the interpolated versions that are accessible in the fragment transform only.
+The interpolated versions that are only accessible in the fragment transform.
 
 Attribute name | GLSL type | Description
 ---------------|-----------|------------
-`va_position`  | vec3     | the interpolated position
-`va_normal`    | vec3     | the interpolated normal
-`va_color`     | vec3     | the interpolated color
+`va_position`  | vec3      | the interpolated position
+`va_normal`    | vec3      | the interpolated normal
+`va_color`     | vec3      | the interpolated color
+
+### Other interpolated values 
+
+These values are calculated in the vertex shader and
+only accessible in the fragment transform.
+
+Value name            | GLSL type | Description
+----------------------|-----------|------------
+`v_worldNormal`       | vec3      | interpolated normal in world coordinates
+`v_viewNormal`        | vec3      | interpolated normal in view coordinates
+`v_worldPosition`     | vec3      | interpolated position in world coordinates
+`v_viewPosition`      | vec3      | interpolated position in view coordinates
+`v_clipPosition`      | vec4      | interpolated position in clip coordinates    
+`v_modelNormalMatrix` | mat4      | non-interpolated (flat) model normal matrix
 
 ### Transformable values
 

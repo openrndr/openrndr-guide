@@ -4,7 +4,7 @@
 layout: default
 title: Managing draw style
 parent: Drawing basics
-last_modified_at: 2022.03.26 11:41:56 +0100
+last_modified_at: 2022.09.08 10:44:58 +0200
 nav_order: 140
 has_children: false
 ---

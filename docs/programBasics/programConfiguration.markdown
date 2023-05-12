@@ -4,7 +4,7 @@
 layout: default
 title: Program configuration
 parent: Program basics
-last_modified_at: 2023.05.02 17:01:48 +0200
+last_modified_at: 2023.05.02 15:19:31 +0200
 nav_order: 110
 has_children: false
 ---

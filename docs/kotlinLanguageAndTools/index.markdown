@@ -4,7 +4,7 @@
 layout: default
 title: Kotlin language and tools
 parent: ~
-last_modified_at: 2023.05.01 13:51:03 +0200
+last_modified_at: 2023.05.12 17:13:11 +0200
 nav_order: 1020
 has_children: true
 ---
@@ -12,7 +12,7 @@ has_children: true
 # Kotlin language and tools
 
 OPENRNDR is written using the Kotlin programming language,
-which is similar to Java but more modern and less verbose.
+which is similar to Java but less verbose and more modern.
 
 The Gradle build tool is used by the OPENRNDR projects 
 to download dependencies, build and distribute projects.

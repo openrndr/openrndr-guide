@@ -4,7 +4,7 @@
 layout: default
 title: Complex shapes
 parent: Drawing basics
-last_modified_at: 2023.03.03 19:12:33 +0100
+last_modified_at: 2023.04.27 09:52:47 +0200
 nav_order: 150
 has_children: false
 ---

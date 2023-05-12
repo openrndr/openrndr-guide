@@ -4,7 +4,7 @@
 layout: default
 title: Color
 parent: Drawing basics
-last_modified_at: 2022.08.19 08:32:35 +0200
+last_modified_at: 2022.09.08 10:44:58 +0200
 nav_order: 130
 has_children: false
 ---
