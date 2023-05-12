@@ -6,6 +6,7 @@
 
 package docs.`06_Advanced_drawing`
 
+import org.intellij.lang.annotations.Language
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
@@ -108,6 +109,10 @@ fun main() {
     """
     In the next step we introduce animation by adding an external clock signal 
     to the shade style. Shade styles have _parameters_ that can be used for this.
+    
+    Notice how parameters like `time` receive a `p_` prefix in the GLSL world.
+    This makes it easy to distinguish the uniforms we send into shaders from other
+    variables declared by the framework.
     """
 
     @Media.Video "../media/shadestyles-003.mp4"
@@ -187,7 +192,7 @@ fun main() {
     This example shows that one can also modify the vertex shader, 
     in this case to displace vertices using sine functions. 
     The current time in seconds is passed into the shader to produce
-    a wavy effect. The fragment shader also uses sine functions to
+    a wavy effect. The fragment shader uses sine functions to
     specify colors depending on the world position of each vertex.
         
     """.trimIndent()
@@ -369,5 +374,73 @@ fun main() {
     * [ShadeStyleGLSL.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-draw/src/jsMain/kotlin/org/openrndr/draw/ShadeStyleGLSL.kt) (webgl)
     * [ShaderGeneratorsGL3.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-jvm/openrndr-gl3/src/jvmMain/kotlin/org/openrndr/internal/gl3/ShaderGeneratorsGL3.kt) (JVM)
     * [ShaderGeneratorsWebGL.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-js/openrndr-webgl/src/jsMain/kotlin/org/openrndr/webgl/ShaderGeneratorsWebGL.kt) (webgl)
+    
+    ## Vertex and fragment preambles
+     
+    Since the code declared in `vertexTransform` and `fragmentTransform` end up inside the `main()` function of shader 
+    programs, you may be wondering how you could declare custom functions, for example, to calculate a noise value, 
+    a random value or to do matrix rotations (common functions used in shader programs).
+
+    To achieve this, we use two keywords: `vertexPreamble` and `fragmentPreamble`. 
+    The code found in these strings gets inserted into the shader programs _before_ the `main()` function, allowing us
+    to declare custom functions or even varyings (to pass values from the vertex shader into the fragment shader).
     """
+
+    @Media.Image "../media/shadestyles-010.jpg"
+
+    @Application
+    @ProduceScreenshot("media/shadestyles-010.jpg")
+    @Code
+    application {
+        program {
+            val style = shadeStyle {
+                // Define the `random` function and declare a `c`
+                // variable to pass to the fragment shader.
+                vertexPreamble = """
+                    float random(vec2 st) {
+                        return fract(sin(dot(st.xy,
+                            vec2(12.9898, 78.233))) * 43758.5453123);
+                    }
+                    out vec3 c;
+                """.trimIndent()
+
+                // Calculate the value of `c` per vertex.
+                // It will get interpolated by the GPU.
+                vertexTransform = """
+                    c.r = random(x_position.xy);
+                    c.g = random(x_position.yx);
+                    c.b = random(x_position.xy + 1.0);
+                """.trimIndent()
+
+                // Declare a `c` variable to receive from the vertex shader.
+                fragmentPreamble = "in vec3 c;"
+                // Use the value of `c` to set the color of a pixel.
+                fragmentTransform = "x_fill.rgb = c;"
+            }
+            extend {
+                drawer.shadeStyle = style
+                repeat(7) {
+                    // Notice how we do not set `drawer.fill`.
+                    drawer.rectangle(
+                        50.0 + it * 77, 50.0, 70.0, 390.0
+                    )
+                }
+            }
+        }
+    }
+
+    @Text
+    """
+    ## Debugging tip
+    
+    If you want to study the vertex or the fragment shader in their final form, a simple
+    technique is to provoke an error. Throw in some incorrect syntax: for example,
+    add an `x` character at the beginning of the vertex or the fragment shader.
+    
+    When you try to run the program, it will fail, and a file called `ShaderError.glsl`
+    will be written into the project's root. Study that file to understand what
+    attributes and uniforms are available and to figure out why your program fails
+    in case the syntax error was not intentional.
+    
+    """.trimIndent()
 }
