@@ -1,16 +1,15 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Complex shapes")
-@file:ParentTitle("Drawing basics")
+@file:ParentTitle("Drawing")
 @file:Order("150")
-@file:URL("drawingBasics/complexShapes")
+@file:URL("drawing/complexShapes")
 
-package docs.`04_Drawing_basics`
+package docs.`04_Drawing`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.draw.LineJoin
 import org.openrndr.dokgen.annotations.*
-import org.openrndr.extra.noise.uniform
 import org.openrndr.math.Vector2
 import org.openrndr.shape.*
 import kotlin.math.cos

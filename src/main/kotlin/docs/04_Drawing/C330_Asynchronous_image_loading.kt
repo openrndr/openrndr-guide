@@ -1,8 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Asynchronous image loading")
-@file:ParentTitle("Advanced drawing")
-@file:Order("130")
-@file:URL("advancedDrawing/asynchronousImageLoading")
+@file:ParentTitle("Drawing")
+@file:Order("330")
+@file:URL("drawing/asynchronousImageLoading")
+
+package docs.`04_Drawing`
 
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*

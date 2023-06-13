@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Text")
-@file:ParentTitle("Drawing basics")
+@file:ParentTitle("Drawing")
 @file:Order("120")
-@file:URL("drawingBasics/text")
+@file:URL("drawing/text")
 
-package docs.`04_Drawing_basics`
+package docs.`04_Drawing`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa

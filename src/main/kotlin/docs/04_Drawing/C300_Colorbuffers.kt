@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Color buffers")
-@file:ParentTitle("Advanced drawing")
-@file:Order("100")
-@file:URL("advancedDrawing/colorbuffers")
+@file:ParentTitle("Drawing")
+@file:Order("300")
+@file:URL("drawing/colorbuffers")
 
-package docs.`06_Advanced_drawing`
+package docs.`04_Drawing`
 
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*

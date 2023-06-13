@@ -1,8 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Concurrency and multithreading")
-@file:ParentTitle("Advanced drawing")
-@file:Order("160")
-@file:URL("advancedDrawing/concurrencyAndMultithreading")
+@file:ParentTitle("Drawing")
+@file:Order("360")
+@file:URL("drawing/concurrencyAndMultithreading")
+
+package docs.`04_Drawing`
 
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay

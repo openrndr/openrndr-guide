@@ -1,8 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Clipping")
-@file:ParentTitle("Advanced drawing")
-@file:Order("120")
-@file:URL("advancedDrawing/clipping")
+@file:ParentTitle("Drawing")
+@file:Order("320")
+@file:URL("drawing/clipping")
+
+package docs.`04_Drawing`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa

@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
-@file:Title("Drawing primitives")
-@file:ParentTitle("Drawing basics")
+@file:Title("Drawing circles, rectangles and lines")
+@file:ParentTitle("Drawing")
 @file:Order("100")
-@file:URL("drawingBasics/drawingPrimitives")
+@file:URL("drawing/circlesRectanglesLines")
 
-package docs.`04_Drawing_basics`
+package docs.`04_Drawing`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
@@ -15,10 +15,6 @@ import org.openrndr.math.Vector2
 fun main() {
     @Text 
     """
-    # Drawing Primitives
-    
-    In this topic we introduce OPENRNDR's basic drawing primitives. We show how to draw lines, rectangles and circles.
-
     ## Drawing circles
     
     A circle is drawn around coordinates `x`, `y`, i.e. `x` and `y` specify the center of the circle.

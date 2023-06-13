@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Drawing SVG")
-@file:ParentTitle("Drawing basics")
+@file:ParentTitle("Drawing")
 @file:Order("160")
-@file:URL("drawingBasics/drawingSVG")
+@file:URL("drawing/drawingSVG")
 
-package docs.`04_Drawing_basics`
+package docs.`04_Drawing`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa

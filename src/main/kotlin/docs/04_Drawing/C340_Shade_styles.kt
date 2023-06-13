@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Shade styles")
-@file:ParentTitle("Advanced drawing")
-@file:Order("140")
-@file:URL("advancedDrawing/shadeStyles")
+@file:ParentTitle("Drawing")
+@file:Order("340")
+@file:URL("drawing/shadeStyles")
 
-package docs.`06_Advanced_drawing`
+package docs.`04_Drawing`
 
 import org.intellij.lang.annotations.Language
 import org.openrndr.application

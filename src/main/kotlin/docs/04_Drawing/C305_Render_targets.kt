@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Render targets")
-@file:ParentTitle("Advanced drawing")
-@file:Order("105")
-@file:URL("advancedDrawing/renderTargets")
+@file:ParentTitle("Drawing")
+@file:Order("305")
+@file:URL("drawing/renderTargets")
 
-package docs.`06_Advanced_drawing`
+package docs.`04_Drawing`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa

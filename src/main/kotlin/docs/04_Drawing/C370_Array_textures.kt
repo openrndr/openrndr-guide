@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Array textures")
-@file:ParentTitle("Advanced drawing")
-@file:Order("170")
-@file:URL("advancedDrawing/arrayTextures")
+@file:ParentTitle("Drawing")
+@file:Order("370")
+@file:URL("drawing/arrayTextures")
 
-package docs.`06_Advanced_drawing`
+package docs.`04_Drawing`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa

@@ -1,8 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Custom rendering")
-@file:ParentTitle("Advanced drawing")
-@file:Order("150")
-@file:URL("advancedDrawing/customRendering")
+@file:ParentTitle("Drawing")
+@file:Order("350")
+@file:URL("drawing/customRendering")
+
+package docs.`04_Drawing`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
@@ -247,7 +249,7 @@ fun main() {
 
             // -- fill the transform buffer
             transforms.put {
-                for (i in 0 until 1000) {
+                repeat(transforms.vertexCount) {
                     write( transform {
                         translate(Math.random() * width, Math.random() * height)
                         rotate(Vector3.UNIT_Z,Math.random() * 360.0)

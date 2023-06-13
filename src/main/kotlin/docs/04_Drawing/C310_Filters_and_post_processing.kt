@@ -1,8 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Filters and post processing")
-@file:ParentTitle("Advanced drawing")
-@file:Order("110")
-@file:URL("advancedDrawing/filtersAndPostProcessing")
+@file:ParentTitle("Drawing")
+@file:Order("310")
+@file:URL("drawing/filtersAndPostProcessing")
+
+package docs.`04_Drawing`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa

@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Quaternions")
-@file:ParentTitle("Drawing and transformations")
-@file:Order("120")
-@file:URL("drawingAndTransformations/quaternions")
+@file:ParentTitle("Drawing")
+@file:Order("220")
+@file:URL("drawing/quaternions")
 
-package docs.`05_Drawing_and_transformations`
+package docs.`04_Drawing`
 
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*

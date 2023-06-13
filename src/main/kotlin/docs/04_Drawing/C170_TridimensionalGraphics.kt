@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Tridimensional graphics")
-@file:ParentTitle("Drawing basics")
+@file:ParentTitle("Drawing")
 @file:Order("170")
-@file:URL("drawingBasics/tridimensionalGraphics")
+@file:URL("drawing/tridimensionalGraphics")
 
-package docs.`04_Drawing_basics`
+package docs.`04_Drawing`
 
 import org.openrndr.WindowMultisample
 import org.openrndr.application
