@@ -49,6 +49,10 @@ fun main() {
         }
     }
 
+    /*
+
+    // Deprecated since 0.4.3, will be removed
+
     @Text
     """
     ## Applications without application{} builder
@@ -74,6 +78,7 @@ fun main() {
             })
         }
     }
+    */
 
     @Text
     """
