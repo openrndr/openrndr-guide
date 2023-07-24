@@ -11,107 +11,37 @@ import org.openrndr.dokgen.annotations.*
 fun main() {
     @Text
     """
-    # Introduction to Kotlin
+    # The Kotlin programming language
     
-    What follows is a simple introduction to the Kotlin programming language.
+    Kotlin is a modern, readable and fun language, perfect for
+    creative coding.
     
-    If you type these example in the Kotlin code editor found at 
-    [https://play.kotlinlang.org/](https://play.kotlinlang.org/) you don't need
-    to install anything to get started learning the language.
+    If you are not familiar with any programming languages
+    [w3schools](https://www.w3schools.com/kotlin/kotlin_intro.php)
+    might be a good place to start. 
     
-    You can click the ⏵ Run button found above the code to run the program.
-    
-    The following examples demonstrate basic Kotlin concepts and do not require OPENRNDR. 
-    
-    ## Hello world
-    
-    Lets start with a classic:
-    """.trimIndent()
+    The website includes a code editor, but you can also use
+    the official online editor found at
+    [play.kotlinlang.org](https://play.kotlinlang.org/). 
+    In this online editor we can type code, run text-based programs 
+    (no graphics) and study the output without installing anything 
+    on our computer.  
+        
+    Once we are familiar with the basics we are able 
+    to start having fun with OPENRNDR.            
 
-    @Code.Block
-    run {
-        fun main() {
-            println("Hello, world!!!")
-        }
-    }
-
-    @Text
-    """
-    ## Functions    
+    If you are already familiar with another programming language
+    take a quick look at the 
+    [basic syntax](https://kotlinlang.org/docs/basic-syntax.html#program-entry-point).
     
-    Notice how functions are declared with the keyword `fun` and followed by the name of the function, `main` in this case. 
-    The `main` function is the default entry point for programs: the place where the execution starts. 
-    By calling `println` we can display a line of text in the console.
+    From the [Official documentation](https://kotlinlang.org/docs/home.html)
+    we recommend exploring the *Basics*, *Concepts* and *Standard Library* sections.
+    Data structures like `List`, `Map` and `Set` are explained under the
+    *Standard Library* section and they are one of the aspects that make
+    working with Kotlin enjoyable. Check them out!
     
-    ### Declaring and calling functions
-    """.trimIndent()
-
-    @Code.Block
-    run {
-        fun sayHi() {
-            println("Hello, world!!!")
-        }
-
-        fun main() {
-            sayHi()
-        }
-    }
-
-    @Text
-    """
-    Here we've introduced a small change: we created a second function called `sayHi`, then call that function from
-    inside `main`. The result in the console should be the same.
+    An introduction to Kotlin focused on OPENRNDR will follow soon :-)
     
-    What if we wanted to modify the function so we could say hi to different people, not just to the world?
-    In that case we need to change the `sayHi` function so it can receive who we want to greet as an function argument.
-    
-    ### Function arguments    
-    
-    To declare a function that accept arguments we need to specify the argument name and the argument type.
-    """.trimIndent()
-
-    @Code.Block
-    run {
-        fun sayHi(who: String) {
-            println("Hello, $who!!!")
-        }
-
-        fun main() {
-            sayHi("human")
-            sayHi("friend")
-        }
-    }
-
-    @Text
-    """    
-    The most common types are `String` for text, `Int` for integer numbers like 0, 1, 2... and `Double` for numbers
-    with decimal point like `3.14159`. [More types](https://kotlinlang.org/docs/basic-types.html).
-    """.trimIndent()
-
-    @Code.Block
-    run {
-        fun addNumbers(a: Int, b: Int): Int {
-            return a + b
-        }
-        fun main() {
-            println()
-        }
-    }
-
-    @Text
-    """
-    (More coming soon!)    
-    """.trimIndent()
-
-    @Text
-    """
-    # Learning resources
-    
-    - [Basic Syntax](https://kotlinlang.org/docs/basic-syntax.html) in the Kotlin documentation page.
-    - Syntax examples in [Wikipedia](https://en.wikipedia.org/wiki/Kotlin_(programming_language)#Syntax).
-    - [Official documentation](https://kotlinlang.org/docs/home.html). We recommend checking out the *Basics*, 
-      *Concepts* and *Standard Library* sections.
-    - Other [Learning materials](https://kotlinlang.org/docs/learning-materials-overview.html).    
     """.trimIndent()
 
 }
