@@ -4,7 +4,7 @@
 layout: default
 title: Set up your first program
 parent: What is OPENRNDR?
-last_modified_at: 2023.05.01 21:29:30 +0200
+last_modified_at: 2023.06.13 22:47:00 +0200
 nav_order: 20
 has_children: false
 ---

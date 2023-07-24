@@ -4,7 +4,7 @@
 layout: default
 title: File Input / Output
 parent: ~
-last_modified_at: 2023.02.01 23:21:44 +0100
+last_modified_at: 2023.07.19 10:38:48 +0200
 nav_order: 1095
 has_children: true
 ---
@@ -67,7 +67,7 @@ and objects back to JSON files. To enable the library:
 data class Entry(var time: Double, var easing: String, var rotx: Double?, var roty: Double?, var x: Double?, var y: Double?, var scale: Double?, var jitter: Double?)
 
 // from disk
-// val json = File("/path/to/a/file.json").readFile()
+// val json = File("/path/to/a/file.json").readText()
 
 // from a string
 val json = """

@@ -4,7 +4,7 @@
 layout: default
 title: Writing to video files
 parent: Videos
-last_modified_at: 2022.09.08 10:44:58 +0200
+last_modified_at: 2023.07.23 00:29:03 +0200
 nav_order: 110
 has_children: false
 ---
@@ -20,7 +20,10 @@ Make sure ffmpeg is installed on your system.
 ```kotlin
 fun main() = application {
     program {
-        val videoWriter = VideoWriter.create().size(width, height).output("output.mp4").start()
+        val videoWriter = VideoWriter()
+        videoWriter.size(width, height)
+        videoWriter.output("output.mp4")
+        videoWriter.start()
         
         val videoTarget = renderTarget(width, height) {
             colorBuffer()

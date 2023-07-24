@@ -4,7 +4,7 @@
 layout: default
 title: Application Flow
 parent: Advanced topics
-last_modified_at: 2022.09.08 10:44:58 +0200
+last_modified_at: 2023.07.19 10:46:32 +0200
 nav_order: 110
 has_children: false
 ---
@@ -37,23 +37,6 @@ fun main() {
             extend {}
         }
     }
-}
-``` 
- 
-## Applications without application{} builder
-
-There may be scenarios in which a more traditional way of writing 
-applications is preferred.    
- 
-```kotlin
-fun main() {
-    class Main : Program() {
-        override suspend fun setup() {}
-        
-        override fun draw() {}
-    }
-    application(Main(), buildConfiguration {// ...
-    })
 }
 ``` 
  

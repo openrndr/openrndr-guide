@@ -1,7 +1,9 @@
 <script>
   /* Redirect old guide.openrndr.org URLs to new ones in jekyll website */
   /* Use block comments only! Line comments break the site */
+
   let urlParts = document.location.toString().match(/\/#\/(\d+)\D+(\d+)(?:\D+\?id=([0-9-_a-zA-Z]+))?/);
+
   if(urlParts && urlParts.length >= 3) {
       let urlId = urlParts[1] + urlParts[2];
       let urlNew = {
@@ -19,7 +21,7 @@
         '0402': '/drawingBasics/text.html',
         '0403': '/drawingBasics/color.html',
         '0404': '/drawingBasics/managingDrawStyle.html',
-        '0405': '/drawingBasics/complexShapes.html',
+        '0405': '/drawingBasics/curvesAndShapes.html',
         '0406': '/drawingBasics/drawingSVG.html',
         '0408': '/drawingBasics/drawingPrimitivesBatched.html',
 
@@ -48,19 +50,19 @@
         '0900': '/videos/playingVideos.html',
         '0901': '/videos/writingToVideoFiles.html',
           
-        '1000': '/OPENRNDRExtras/',
-        '1001': '/OPENRNDRExtras/noise.html',
-        '1002': '/OPENRNDRExtras/kinect.html',
-        '1003': '/OPENRNDRExtras/liveCoding.html',
-        '1004': '/OPENRNDRExtras/midiControllers.html',
-        '1005': '/OPENRNDRExtras/osc.html',
-        '1006': '/OPENRNDRExtras/imageFilters.html',
-        '1007': '/OPENRNDRExtras/compositor.html',
-        '1008': '/OPENRNDRExtras/quickUIs.html',
-        '1009': '/OPENRNDRExtras/shadeStylePresets.html',
-        '1010': '/OPENRNDRExtras/imageFit.html',
-        '1011': '/OPENRNDRExtras/poissonFills.html',
-        '1012': '/OPENRNDRExtras/distanceFields.html',
+        '1000': '/ORX/',
+        '1001': '/ORX/noise.html',
+        '1002': '/ORX/kinect.html',
+        '1003': '/ORX/liveCoding.html',
+        '1004': '/ORX/midiControllers.html',
+        '1005': '/ORX/osc.html',
+        '1006': '/ORX/imageFilters.html',
+        '1007': '/ORX/compositor.html',
+        '1008': '/ORX/quickUIs.html',
+        '1009': '/ORX/shadeStylePresets.html',
+        '1010': '/ORX/imageFit.html',
+        '1011': '/ORX/poissonFills.html',
+        '1012': '/ORX/distanceFields.html',
 
         '1100': '/advancedTopics/logging.html',
         '1101': '/advancedTopics/applicationFlow.html',

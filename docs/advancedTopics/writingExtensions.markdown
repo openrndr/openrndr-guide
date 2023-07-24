@@ -4,7 +4,7 @@
 layout: default
 title: Writing extensions
 parent: Advanced topics
-last_modified_at: 2022.09.08 10:44:58 +0200
+last_modified_at: 2023.06.13 22:47:00 +0200
 nav_order: 130
 has_children: false
 ---
