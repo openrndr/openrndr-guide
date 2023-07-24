@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Image fit")
-@file:ParentTitle("OPENRNDR Extras")
+@file:ParentTitle("ORX")
 @file:Order("200")
-@file:URL("OPENRNDRExtras/imageFit")
+@file:URL("ORX/imageFit")
 
-package docs.`10_OPENRNDR_Extras`
+package docs.`10_ORX`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa

@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Noise")
-@file:ParentTitle("OPENRNDR Extras")
+@file:ParentTitle("ORX")
 @file:Order("110")
-@file:URL("OPENRNDRExtras/noise")
+@file:URL("ORX/noise")
 
-package docs.`10_OPENRNDR_Extras`
+package docs.`10_ORX`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa

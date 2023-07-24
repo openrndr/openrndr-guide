@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Poisson fills")
-@file:ParentTitle("OPENRNDR Extras")
+@file:ParentTitle("ORX")
 @file:Order("210")
-@file:URL("OPENRNDRExtras/poissonFills")
+@file:URL("ORX/poissonFills")
 
-package docs.`10_OPENRNDR_Extras`
+package docs.`10_ORX`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa

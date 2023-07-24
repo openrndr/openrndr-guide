@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Live coding")
-@file:ParentTitle("OPENRNDR Extras")
+@file:ParentTitle("ORX")
 @file:Order("130")
-@file:URL("OPENRNDRExtras/liveCoding")
+@file:URL("ORX/liveCoding")
 
-package docs.`10_OPENRNDR_Extras`
+package docs.`10_ORX`
 
 import org.openrndr.Program
 import org.openrndr.application

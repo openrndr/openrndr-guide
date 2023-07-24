@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Quick UIs")
-@file:ParentTitle("OPENRNDR Extras")
+@file:ParentTitle("ORX")
 @file:Order("180")
-@file:URL("OPENRNDRExtras/quickUIs")
+@file:URL("ORX/quickUIs")
 
-package docs.`10_OPENRNDR_Extras`
+package docs.`10_ORX`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
@@ -45,7 +45,7 @@ fun main() {
     `orx-gui` is incredibly powerful in combination with the live coding environment 
     [`orx-olive`](https://github.com/openrndr/orx/tree/master/orx-jvm/orx-olive), 
     the guide covers that in the 
-    [live coding section](https://guide.openrndr.org/OPENRNDRExtras/liveCoding.html). 
+    [live coding section](https://guide.openrndr.org/ORX/liveCoding.html). 
     That said, it is not a required combination.
     
     ## Prerequisites
@@ -166,7 +166,7 @@ fun main() {
     The guide covers filters in the 
     [Filter and Post-processing chapter](https://guide.openrndr.org/advancedDrawing/filtersAndPostProcessing.html) 
     and an index of provided filters can be found in 
-    [`orx-filter` index](https://guide.openrndr.org/OPENRNDRExtras/imageFilters.html)
+    [`orx-filter` index](https://guide.openrndr.org/ORX/imageFilters.html)
     """
 
     @Application
@@ -237,7 +237,7 @@ fun main() {
     or more objects for our settings and 
     we can insert any of the blend and post filters in the sidebar as we please. 
     The guide covers `orx-compositor` in the 
-    [Compositor chapter](https://guide.openrndr.org/OPENRNDRExtras/compositor.html)
+    [Compositor chapter](https://guide.openrndr.org/ORX/compositor.html)
     """
 
     @Application

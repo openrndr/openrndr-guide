@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Distance fields")
-@file:ParentTitle("OPENRNDR Extras")
+@file:ParentTitle("ORX")
 @file:Order("220")
-@file:URL("OPENRNDRExtras/distanceFields")
+@file:URL("ORX/distanceFields")
 
-package docs.`10_OPENRNDR_Extras`
+package docs.`10_ORX`
 
 
 import org.openrndr.application

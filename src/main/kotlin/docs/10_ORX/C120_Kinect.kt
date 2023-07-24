@@ -1,21 +1,14 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Kinect")
-@file:ParentTitle("OPENRNDR Extras")
+@file:ParentTitle("ORX")
 @file:Order("120")
-@file:URL("OPENRNDRExtras/kinect")
+@file:URL("ORX/kinect")
 
-package docs.`10_OPENRNDR_Extras`
+package docs.`10_ORX`
 
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*
-import org.openrndr.draw.ColorBuffer
-import org.openrndr.draw.ColorFormat
-import org.openrndr.draw.colorBuffer
-import org.openrndr.extra.kinect.DepthToColorsTurboMapper
-import org.openrndr.extra.kinect.DepthToColorsZucconi6Mapper
-import org.openrndr.extra.kinect.DepthToGrayscaleMapper
-import org.openrndr.extra.kinect.KinectCamera
-import org.openrndr.extra.kinect.v1.getKinectsV1
+import org.openrndr.extra.kinect.v1.Kinect1
 
 fun main() {
     @Text """
@@ -53,11 +46,13 @@ fun main() {
             height = 480
         }
         program {
-            val kinects = getKinectsV1(this)
-            val kinect = kinects.startDevice()
-            kinect.depthCamera.enabled = true
+            val kinect = Kinect1()
+            val device = kinect.openDevice()
+            device.depthCamera.flipH = true // to make a mirror
+            device.depthCamera.enabled = true
+            extend(kinect)
             extend {
-                drawer.image(kinect.depthCamera.currentFrame)
+                drawer.image(device.depthCamera.currentFrame)
             }
         }
     }
@@ -86,14 +81,17 @@ fun main() {
             height = 480
         }
         program {
-            val kinects = getKinectsV1(this)
-            val depthCamera1 = kinects.startDevice(0).depthCamera
-            val depthCamera2 = kinects.startDevice(1).depthCamera
+            val kinect = Kinect1()
+            val depthCamera1 = kinect.openDevice(0).depthCamera
+            val depthCamera2 = kinect.openDevice(1).depthCamera
             depthCamera1.enabled = true
+            depthCamera1.flipH = true
             depthCamera2.enabled = true
+            depthCamera2.flipH = true
+            extend(kinect)
             extend {
                 drawer.image(depthCamera1.currentFrame)
-                drawer.image(depthCamera2.currentFrame, depthCamera1.width.toDouble(), 0.0)
+                drawer.image(depthCamera2.currentFrame, depthCamera1.resolution.x.toDouble(), 0.0)
             }
         }
     }
@@ -122,64 +120,14 @@ fun main() {
     * `DepthToColorsZucconi6Mapper` - [Colors of natural light dispersion](https://www.alanzucconi.com/2017/07/15/improving-the-rainbow/) by Alan Zucconi
     * `DepthToColorsTurboMapper` - [Turbo, An Improved Rainbow Colormap for Visualization](https://ai.googleblog.com/2019/08/turbo-improved-rainbow-colormap-for.html) by Google
 
-    An example presenting these filters side by side:
+    [Find a runnable example here](https://github.com/openrndr/orx/blob/master/orx-jvm/orx-kinect-v1-demo/src/main/kotlin/Kinect1Demo03DepthToColorMaps.kt). 
 
-    ![kinect-colormaps](media/kinect-colormaps.png)
-    """
-
-    @Code.Block
-    run {
-        fun kinectColorBuffer(camera: KinectCamera): ColorBuffer {
-            return colorBuffer(camera.width, camera.height, format = ColorFormat.RGB)
-        }
-        fun main() = application {
-            configure {
-                width =  2 * 640
-                height = 2 * 480
-            }
-            program {
-                val kinects = getKinectsV1(this)
-                val kinect = kinects.startDevice()
-                kinect.depthCamera.enabled = true
-                kinect.depthCamera.mirror = true
-                val camera = kinect.depthCamera
-                val grayscaleFilter = DepthToGrayscaleMapper()
-                val zucconiFilter = DepthToColorsZucconi6Mapper()
-                val turboFilter = DepthToColorsTurboMapper()
-                val grayscaleBuffer = kinectColorBuffer(camera)
-                val zucconiBuffer = kinectColorBuffer(camera)
-                val turboBuffer = kinectColorBuffer(camera)
-                extend {
-                    kinect.depthCamera.getLatestFrame()?.let { frame ->
-                        grayscaleFilter.apply(frame, grayscaleBuffer)
-                        zucconiFilter.apply(frame, zucconiBuffer)
-                        turboFilter.apply(frame, turboBuffer)
-                    }
-                    drawer.image(camera.currentFrame)
-                    drawer.image(grayscaleBuffer, camera.width.toDouble(), 0.0)
-                    drawer.image(turboBuffer, 0.0, camera.height.toDouble())
-                    drawer.image(zucconiBuffer, camera.width.toDouble(), camera.height.toDouble())
-                }
-            }
-        }
-    }
-
-    @Text 
-    """
     ## Executing native freenect commands
 
     This kinect support is built on top of the [freenect](https://github.com/OpenKinect/libfreenect)
     library. Even though the access to freenect is abstracted, it is still possible to execute
-    low level freenect commands in the native API:
+    [low level freenect commands](https://github.com/openrndr/orx/blob/master/orx-jvm/orx-kinect-v1-demo/src/main/kotlin/Kinect1Demo07NativeFreenectCommands.kt)
+    in the native API.
 
-    ```kotlin
-    kinects.execute { ctx -> freenect_set_log_level(ctx.fnCtx, freenect.FREENECT_LOG_FLOOD) }
-    ```
-
-    And in the scope of particular device:
-
-    ```kotlin
-    kinect.execute { ctx -> freenect_set_led(ctx.fnDev, LED_BLINK_RED_YELLOW) }
-    ```
     """
 }

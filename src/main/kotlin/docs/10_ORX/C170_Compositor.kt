@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Compositor")
-@file:ParentTitle("OPENRNDR Extras")
+@file:ParentTitle("ORX")
 @file:Order("170")
-@file:URL("OPENRNDRExtras/compositor")
+@file:URL("ORX/compositor")
 
-package docs.`10_OPENRNDR_Extras`
+package docs.`10_ORX`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
@@ -486,7 +486,7 @@ fun main() {
     ## Reusing a layer
     
     It is possible to use the color buffer of a previously declared
-    layer by calling `use()`.
+    layer by using `aside`.
     """
 
     @Code
@@ -495,7 +495,7 @@ fun main() {
 
             val composite = compose {
                 // -- keep a reference to the layer for later use
-                val first = layer {
+                val first = aside {
                     draw {
                         // -- draw something
                     }
@@ -503,7 +503,9 @@ fun main() {
                 }
 
                 layer {
-                    use(first) // <-- reuse a previous layer
+                    draw {
+                        drawer.image(first) // <-- reuse a previous layer
+                    }
                     post(ApproximateGaussianBlur())
                     blend(Add())
                 }

@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("MIDI controllers")
-@file:ParentTitle("OPENRNDR Extras")
+@file:ParentTitle("ORX")
 @file:Order("140")
-@file:URL("OPENRNDRExtras/midiControllers")
+@file:URL("ORX/midiControllers")
 
-package docs.`10_OPENRNDR_Extras`
+package docs.`10_ORX`
 
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*
@@ -44,7 +44,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     From what this program outputs you can pick a controller by copying its 
     name and vendor identifiers.
@@ -60,11 +60,12 @@ fun main() {
     @Code
     application {
         program {
-            val controller = MidiTransceiver.fromDeviceVendor("BCR2000 [hw:2,0,0]", "ALSA (http://www.alsa-project.org)")
+            val controller =
+                MidiTransceiver.fromDeviceVendor(this, "BCR2000 [hw:2,0,0]", "ALSA (http://www.alsa-project.org)")
         }
     }
 
-    @Text 
+    @Text
     """
     ## Listening to the controller
     
@@ -76,7 +77,8 @@ fun main() {
     @Code
     application {
         program {
-            val controller = MidiTransceiver.fromDeviceVendor("BCR2000 [hw:2,0,0]", "ALSA (http://www.alsa-project.org)")
+            val controller =
+                MidiTransceiver.fromDeviceVendor(this, "BCR2000 [hw:2,0,0]", "ALSA (http://www.alsa-project.org)")
 
             controller.controlChanged.listen {
                 println("control change: channel: ${it.channel}, control: ${it.control}, value: ${it.value}")
@@ -90,7 +92,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     ## Talking to the controller
     
@@ -104,7 +106,8 @@ fun main() {
     @Code
     application {
         program {
-            val controller = MidiTransceiver.fromDeviceVendor("BCR2000 [hw:2,0,0]", "ALSA (http://www.alsa-project.org)")
+            val controller =
+                MidiTransceiver.fromDeviceVendor(this, "BCR2000 [hw:2,0,0]", "ALSA (http://www.alsa-project.org)")
 
             // send a control change
             controller.controlChange(channel = 1, control = 3, value = 42)
