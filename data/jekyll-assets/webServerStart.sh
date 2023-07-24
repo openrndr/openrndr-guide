@@ -4,6 +4,8 @@
 # ipv6 and failing to download dependencies. I disabled ipv6 by creating
 # a /etc/sysctl.d/40-ipv6.conf file to disable ipv6 per interface.
 
+sudo systemctl start docker
+
 ./webServerStop.sh
 
 name=www-openrndr-guide
