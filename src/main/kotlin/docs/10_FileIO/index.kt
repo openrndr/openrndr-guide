@@ -89,7 +89,7 @@ fun main() {
         )
 
         // from disk
-        // val json = File("/path/to/a/file.json").readFile()
+        // val json = File("/path/to/a/file.json").readText()
 
         // from a string
         val json = """

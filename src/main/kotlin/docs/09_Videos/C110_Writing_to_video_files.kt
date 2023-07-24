@@ -31,9 +31,10 @@ fun main() {
     @Code
     application {
         program {
-            val videoWriter =
-                VideoWriter.create().size(width, height)
-                    .output("output.mp4").start()
+            val videoWriter = VideoWriter()
+            videoWriter.size(width, height)
+            videoWriter.output("output.mp4")
+            videoWriter.start()
 
             val videoTarget = renderTarget(width, height) {
                 colorBuffer()
