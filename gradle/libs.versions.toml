@@ -49,6 +49,7 @@ orx-osc = { group = "org.openrndr.extra", name = "orx-osc", version.ref = "orx" 
 orx-panel = { group = "org.openrndr.extra", name = "orx-panel", version.ref = "orx" }
 orx-poisson-fill = { group = "org.openrndr.extra", name = "orx-poisson-fill", version.ref = "orx" }
 orx-shade-styles = { group = "org.openrndr.extra", name = "orx-shade-styles", version.ref = "orx" }
+orx-shapes = { group = "org.openrndr.extra", name = "orx-shapes", version.ref = "orx" }
 
 [plugins]
 dokgen = { id = "org.openrndr.dokgen-gradle", version = { require = "latest.release" } }
@@ -82,5 +83,6 @@ orx = [
     "orx-osc",
     "orx-panel",
     "orx-poisson-fill",
-    "orx-shade-styles"
+    "orx-shade-styles",
+    "orx-shapes"
 ]
