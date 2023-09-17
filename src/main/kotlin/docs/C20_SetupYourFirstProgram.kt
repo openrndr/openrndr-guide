@@ -28,7 +28,8 @@ fun main() {
        default settings and continue, use the default settings.
 
      * Install the [OPENRNDR IntelliJ plugin](https://plugins.jetbrains.com/plugin/19736-openrndr)
-       for better integration with OPENRNDR.
+       for better integration with OPENRNDR. In IDEA, search for `OPENRNDR` 
+       in `Settings > Plugins > Marketplace` to install it. 
      
     ## Clone the template
     
