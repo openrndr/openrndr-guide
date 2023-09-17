@@ -41,7 +41,7 @@ fun main() {
     
     OPENRNDR is environment agnostic, however all our tutorial and reference material assumes 
     [Gradle](https://en.wikipedia.org/wiki/Gradle) and 
-    [IntelliJ Idea](https://www.jetbrains.com/idea/) (Community Edition) are used.
+    [IntelliJ IDEA](https://www.jetbrains.com/idea/) (Community Edition) are used.
     
     ### Long-term support
     

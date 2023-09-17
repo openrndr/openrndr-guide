@@ -24,8 +24,11 @@ fun main() {
        from the [Git website](https://git-scm.com/) 
     
      * Download [IntelliJ IDEA Community Edition](https://www.jetbrains.com/idea/download) 
-     and install it. On the first run it will offer the option to pick 
-     default settings and continue, use the default settings.
+       and install it. On the first run it will offer the option to pick 
+       default settings and continue, use the default settings.
+
+     * Install the [OPENRNDR IntelliJ plugin](https://plugins.jetbrains.com/plugin/19736-openrndr)
+       for better integration with OPENRNDR.
      
     ## Clone the template
     
