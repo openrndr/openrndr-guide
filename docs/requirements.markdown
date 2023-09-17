@@ -4,7 +4,7 @@
 layout: default
 title: Requirements
 parent: What is OPENRNDR?
-last_modified_at: 2023.06.13 22:47:00 +0200
+last_modified_at: 2023.09.17 17:17:54 +0200
 nav_order: 10
 has_children: false
 ---
@@ -39,7 +39,7 @@ that OPENRNDR provides are making extensive use of Kotlin-specific features that
 
 OPENRNDR is environment agnostic, however all our tutorial and reference material assumes 
 [Gradle](https://en.wikipedia.org/wiki/Gradle) and 
-[IntelliJ Idea](https://www.jetbrains.com/idea/) (Community Edition) are used.
+[IntelliJ IDEA](https://www.jetbrains.com/idea/) (Community Edition) are used.
 
 ### Long-term support
 
