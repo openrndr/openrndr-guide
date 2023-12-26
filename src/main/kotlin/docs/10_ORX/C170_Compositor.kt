@@ -527,7 +527,7 @@ fun main() {
     by specifying its multisampling level like this:
     
     ```
-    layer(BufferMultisample.SampleCount(8)) {
+    layer(multisample = BufferMultisample.SampleCount(8)) {
     ```
 
     where `8` is the desired level.

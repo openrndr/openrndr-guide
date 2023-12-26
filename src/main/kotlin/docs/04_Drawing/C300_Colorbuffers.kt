@@ -7,6 +7,7 @@
 package docs.`04_Drawing`
 
 import org.openrndr.color.ColorRGBa
+import org.openrndr.color.rgb
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.*
 import java.io.File
@@ -177,6 +178,13 @@ fun main() {
 
         // -- download data into buffer
         cb.read(buffer)
+
+        // -- read the first UINT8 pixel's color
+        val r = buffer[0].toUByte().toDouble() / 255.0
+        val g = buffer[1].toUByte().toDouble() / 255.0
+        val b = buffer[2].toUByte().toDouble() / 255.0
+        val a = buffer[3].toUByte().toDouble() / 255.0
+        val c = rgb(r, g, b, a)
     }
 
     @Text 
