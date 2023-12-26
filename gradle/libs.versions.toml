@@ -55,6 +55,7 @@ orx-shapes = { group = "org.openrndr.extra", name = "orx-shapes", version.ref = 
 dokgen = { id = "org.openrndr.dokgen-gradle", version = { require = "latest.release" } }
 git-publish = { id = "org.ajoberstar.git-publish", version.ref = "gitPublish" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+versions = { id = "com.github.ben-manes.versions", version = "0.50.0" }
 
 [bundles]
 openrndr-core = [

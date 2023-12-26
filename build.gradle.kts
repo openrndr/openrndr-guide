@@ -5,6 +5,7 @@ plugins {
     org.openrndr.guide.convention.`kotlin-jvm`
     alias(libs.plugins.git.publish)
     alias(libs.plugins.dokgen)
+    alias(libs.plugins.versions)
 }
 
 version = "1.0-SNAPSHOT"
@@ -23,6 +24,25 @@ dependencies {
     }
     runtimeOnly(libs.slf4j.simple)
 }
+
+tasks {
+    dependencyUpdates {
+        gradleReleaseChannel = "current"
+
+        val nonStableKeywords = listOf("alpha", "beta", "rc")
+
+        fun isNonStable(
+            version: String
+        ) = nonStableKeywords.any {
+            version.lowercase().contains(it)
+        }
+
+        rejectVersionIf {
+            isNonStable(candidate.version) && !isNonStable(currentVersion)
+        }
+    }
+}
+
 
 dokgen {
     runner {
