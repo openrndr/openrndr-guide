@@ -4,7 +4,7 @@
 layout: default
 title: Introduction to Kotlin
 parent: Kotlin language and tools
-last_modified_at: 2023.07.24 16:08:29 +0200
+last_modified_at: 2023.07.24 16:41:35 +0200
 nav_order: 100
 has_children: false
 ---

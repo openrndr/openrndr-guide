@@ -4,7 +4,7 @@
 layout: default
 title: Compositor
 parent: ORX
-last_modified_at: 2023.07.19 12:53:51 +0200
+last_modified_at: 2023.10.11 16:47:14 +0200
 nav_order: 170
 has_children: false
 ---
@@ -489,7 +489,7 @@ We can control the smoothness / anti-aliasing of each layer
 by specifying its multisampling level like this:
 
 ```
-layer(BufferMultisample.SampleCount(8)) {
+layer(multisample = BufferMultisample.SampleCount(8)) {
 ```
 
 where `8` is the desired level.
