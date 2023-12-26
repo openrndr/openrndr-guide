@@ -164,7 +164,7 @@ fun main() {
     `orx-fx` provides. 
 
     The guide covers filters in the 
-    [Filter and Post-processing chapter](https://guide.openrndr.org/advancedDrawing/filtersAndPostProcessing.html) 
+    [Filter and Post-processing chapter](https://guide.openrndr.org/drawing/filtersAndPostProcessing.html) 
     and an index of provided filters can be found in 
     [`orx-filter` index](https://guide.openrndr.org/ORX/imageFilters.html)
     """

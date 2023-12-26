@@ -24,7 +24,7 @@ fun main() {
     environment. The `orx-olive` library 
     simplifies the work to be done to set up a live coding environment. Code 
     and additional documentation for the library can be found in the 
-    [Github repository](https://github.com/openrndr/orx/tree/master/orx-olive).
+    [Github repository](https://github.com/openrndr/orx/tree/master/orx-jvm/orx-olive).
     
     ## Prerequisites
     

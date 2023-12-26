@@ -32,7 +32,7 @@ fun main() {
 
     Headless applications cannot draw on the backbuffer, because there 
     is no backbuffer. In order to draw you need to create a 
-    [RenderTarget](https://guide.openrndr.org/advancedDrawing/renderTargets.html) and draw on it. 
+    [RenderTarget](https://guide.openrndr.org/drawing/renderTargets.html) and draw on it. 
     Render target contents can easily be saved to file, or rendered to 
     [video](https://guide.openrndr.org/videos/writingToVideoFiles.html).
 

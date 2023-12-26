@@ -121,7 +121,7 @@ fun main() {
     ```
     
     To generate random distributions of vectors see 
-    [orx-noise](https://guide.openrndr.org/OPENRNDRExtras/noise.html).
+    [orx-noise](https://guide.openrndr.org/ORX/noise.html).
 
     """
 }

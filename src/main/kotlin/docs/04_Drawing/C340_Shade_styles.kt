@@ -35,7 +35,7 @@ fun main() {
     geometry. A shade style can affect vertices, fragments or both.
     
     A selection of preset ready-to-use shade styles is provided by 
-    [`orx-shade-styles`](https://guide.openrndr.org/OPENRNDRExtras/shadeStylePresets.html) 
+    [`orx-shade-styles`](https://guide.openrndr.org/ORX/shadeStylePresets.html) 
     
     For those interested in authoring shade styles it is helpful to have 
     some basic understanding of shaders and GLSL.
@@ -372,8 +372,7 @@ fun main() {
     
     * [ShadeStyleGLSL.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-draw/src/jvmMain/kotlin/org/openrndr/draw/ShadeStyleGLSL.kt) (JVM) 
     * [ShadeStyleGLSL.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-draw/src/jsMain/kotlin/org/openrndr/draw/ShadeStyleGLSL.kt) (webgl)
-    * [ShaderGeneratorsGL3.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-jvm/openrndr-gl3/src/jvmMain/kotlin/org/openrndr/internal/gl3/ShaderGeneratorsGL3.kt) (JVM)
-    * [ShaderGeneratorsWebGL.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-js/openrndr-webgl/src/jsMain/kotlin/org/openrndr/webgl/ShaderGeneratorsWebGL.kt) (webgl)
+    * [ShaderGeneratorsGLCommon.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-gl-common/src/commonMain/kotlin/ShaderGeneratorsGLCommon.kt)
     
     ## Vertex and fragment preambles
      
