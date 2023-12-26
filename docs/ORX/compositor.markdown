@@ -4,7 +4,7 @@
 layout: default
 title: Compositor
 parent: ORX
-last_modified_at: 2023.10.11 16:47:14 +0200
+last_modified_at: 2023.12.26 16:00:58 +0100
 nav_order: 170
 has_children: false
 ---
@@ -428,7 +428,7 @@ are using and preserving opacity.
 
 Blending describes how the contents of two layers are combined in a composite. 
 The blend functionality `orx-compositor` can be used with any 
-[filter](https://guide.openrndr.org/advancedDrawing/filtersAndPostProcessing.html) that performs a blend 
+[filter](https://guide.openrndr.org/drawing/filtersAndPostProcessing.html) that performs a blend 
 operation. The `orx-fx` filter collection provides 
 [a selection of ready-made blend filters](https://github.com/openrndr/orx/tree/master/orx-fx#blends).
 

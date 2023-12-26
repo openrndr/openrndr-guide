@@ -4,7 +4,7 @@
 layout: default
 title: Shade styles
 parent: Drawing
-last_modified_at: 2023.07.24 16:41:35 +0200
+last_modified_at: 2023.12.26 15:57:27 +0100
 nav_order: 340
 has_children: false
 ---
@@ -22,7 +22,7 @@ and in the fragment transform it is possible to change the appearance of that
 geometry. A shade style can affect vertices, fragments or both.
 
 A selection of preset ready-to-use shade styles is provided by 
-[`orx-shade-styles`](https://guide.openrndr.org/OPENRNDRExtras/shadeStylePresets.html) 
+[`orx-shade-styles`](https://guide.openrndr.org/ORX/shadeStylePresets.html) 
 
 For those interested in authoring shade styles it is helpful to have 
 some basic understanding of shaders and GLSL.
@@ -337,8 +337,7 @@ One can explore the source code to find out how attributes and uniforms are used
 
 * [ShadeStyleGLSL.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-draw/src/jvmMain/kotlin/org/openrndr/draw/ShadeStyleGLSL.kt) (JVM) 
 * [ShadeStyleGLSL.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-draw/src/jsMain/kotlin/org/openrndr/draw/ShadeStyleGLSL.kt) (webgl)
-* [ShaderGeneratorsGL3.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-jvm/openrndr-gl3/src/jvmMain/kotlin/org/openrndr/internal/gl3/ShaderGeneratorsGL3.kt) (JVM)
-* [ShaderGeneratorsWebGL.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-js/openrndr-webgl/src/jsMain/kotlin/org/openrndr/webgl/ShaderGeneratorsWebGL.kt) (webgl)
+* [ShaderGeneratorsGLCommon.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-gl-common/src/commonMain/kotlin/ShaderGeneratorsGLCommon.kt)
 
 ## Vertex and fragment preambles
  

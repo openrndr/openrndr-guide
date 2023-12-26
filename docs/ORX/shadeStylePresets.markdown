@@ -4,7 +4,7 @@
 layout: default
 title: Shade style presets
 parent: ORX
-last_modified_at: 2023.07.24 16:41:35 +0200
+last_modified_at: 2023.12.26 15:59:48 +0100
 nav_order: 190
 has_children: false
 ---
@@ -12,7 +12,7 @@ has_children: false
 # Shade style presets
 
 The `orx-shade-styles` library provides a number of preset 
-[shade styles](https://guide.openrndr.org/advancedDrawing/shadeStyles.html)
+[shade styles](https://guide.openrndr.org/drawing/shadeStyles.html)
 
 ## Prerequisites
 

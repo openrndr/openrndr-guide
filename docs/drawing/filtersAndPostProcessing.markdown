@@ -4,7 +4,7 @@
 layout: default
 title: Filters and post processing
 parent: Drawing
-last_modified_at: 2023.07.24 16:41:35 +0200
+last_modified_at: 2023.12.26 15:38:14 +0100
 nav_order: 310
 has_children: false
 ---
@@ -152,6 +152,6 @@ fun main() = application {
 A repository of ready-to-use filters for OPENRNDR can be found in 
 the [ORX repository](https://github.com/openrndr/orx/tree/master/orx-fx),
 a partial index of the filters can be found in the 
-[orx-fx chapter](https://guide.openrndr.org/OPENRNDRExtras/imageFilters.html) 
+[orx-fx chapter](https://guide.openrndr.org/ORX/imageFilters.html) 
 
 [edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/04_Drawing/C310_Filters_and_post_processing.kt){: .btn .btn-github }

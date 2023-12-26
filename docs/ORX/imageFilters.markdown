@@ -4,7 +4,7 @@
 layout: default
 title: Image post-processing with filters
 parent: ORX
-last_modified_at: 2023.07.24 16:41:35 +0200
+last_modified_at: 2023.12.26 15:40:22 +0100
 nav_order: 160
 has_children: false
 ---
@@ -13,7 +13,7 @@ has_children: false
 
 The [orx-fx](https://github.com/openrndr/orx/tree/master/orx-fx) library 
 contains many filters that can be readily used. See the chapter 
-[Filters and post-processing](https://guide.openrndr.org/advancedDrawing/filtersAndPostProcessing.html) 
+[Filters and post-processing](https://guide.openrndr.org/drawing/filtersAndPostProcessing.html) 
 for instructions on using them.
 
 A (more-or-less) complete listing of the effects in orx-fx is maintained 

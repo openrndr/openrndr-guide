@@ -4,7 +4,7 @@
 layout: default
 title: Live coding
 parent: ORX
-last_modified_at: 2023.07.24 16:41:35 +0200
+last_modified_at: 2023.12.26 15:35:10 +0100
 nav_order: 130
 has_children: false
 ---
@@ -15,7 +15,7 @@ By using Kotlin's ability to run script files we can build a live coding
 environment. The `orx-olive` library 
 simplifies the work to be done to set up a live coding environment. Code 
 and additional documentation for the library can be found in the 
-[Github repository](https://github.com/openrndr/orx/tree/master/orx-olive).
+[Github repository](https://github.com/openrndr/orx/tree/master/orx-jvm/orx-olive).
 
 ## Prerequisites
 

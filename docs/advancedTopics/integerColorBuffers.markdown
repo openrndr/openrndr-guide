@@ -4,7 +4,7 @@
 layout: default
 title: Integer color buffers
 parent: Advanced topics
-last_modified_at: 2023.06.13 22:47:00 +0200
+last_modified_at: 2023.12.26 15:35:50 +0100
 nav_order: 155
 has_children: false
 ---
@@ -21,7 +21,7 @@ Special types of `isampler2D` and `usampler2D` come to the rescue,
 but color buffers have to be configured correctly for such a use.
 
 Note: this mechanism is used internally in
-[`orx-kinect`](https://guide.openrndr.org/OPENRNDRExtras/kinect.html) 
+[`orx-kinect`](https://guide.openrndr.org/ORX/kinect.html) 
 to process raw kinect data directly on GPU, as the depth readings are 
 provided as integer numbers in the range
 of `0-2047` or `0-4096` depending on the kinect version.

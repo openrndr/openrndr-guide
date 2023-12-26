@@ -4,7 +4,7 @@
 layout: default
 title: Headless applications
 parent: Advanced topics
-last_modified_at: 2023.06.13 22:47:00 +0200
+last_modified_at: 2023.12.26 15:36:23 +0100
 nav_order: 140
 has_children: false
 ---
@@ -28,7 +28,7 @@ which is Linux.
 
 Headless applications cannot draw on the backbuffer, because there 
 is no backbuffer. In order to draw you need to create a 
-[RenderTarget](https://guide.openrndr.org/advancedDrawing/renderTargets.html) and draw on it. 
+[RenderTarget](https://guide.openrndr.org/drawing/renderTargets.html) and draw on it. 
 Render target contents can easily be saved to file, or rendered to 
 [video](https://guide.openrndr.org/videos/writingToVideoFiles.html).
 

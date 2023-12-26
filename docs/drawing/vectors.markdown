@@ -4,7 +4,7 @@
 layout: default
 title: Vectors
 parent: Drawing
-last_modified_at: 2023.07.24 16:41:35 +0200
+last_modified_at: 2023.12.26 15:57:56 +0100
 nav_order: 210
 has_children: false
 ---
@@ -118,7 +118,7 @@ val v4 = Random.vector4(-1.0, 1.0)
 ```
 
 To generate random distributions of vectors see 
-[orx-noise](https://guide.openrndr.org/OPENRNDRExtras/noise.html).
+[orx-noise](https://guide.openrndr.org/ORX/noise.html).
  
 
 [edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/04_Drawing/C210_Vectors.kt){: .btn .btn-github }

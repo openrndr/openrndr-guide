@@ -4,7 +4,7 @@
 layout: default
 title: Quick UIs
 parent: ORX
-last_modified_at: 2023.07.24 16:41:35 +0200
+last_modified_at: 2023.12.26 15:34:02 +0100
 nav_order: 180
 has_children: false
 ---
@@ -120,7 +120,7 @@ we can generate quick user interfaces for any of the filters that
 `orx-fx` provides. 
 
 The guide covers filters in the 
-[Filter and Post-processing chapter](https://guide.openrndr.org/advancedDrawing/filtersAndPostProcessing.html) 
+[Filter and Post-processing chapter](https://guide.openrndr.org/drawing/filtersAndPostProcessing.html) 
 and an index of provided filters can be found in 
 [`orx-filter` index](https://guide.openrndr.org/ORX/imageFilters.html) 
  

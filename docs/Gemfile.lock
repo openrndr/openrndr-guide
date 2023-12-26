@@ -33,8 +33,6 @@ GEM
       webrick (~> 1.7)
     jekyll-feed (0.17.0)
       jekyll (>= 3.7, < 5.0)
-    jekyll-include-cache (0.2.1)
-      jekyll (>= 3.7, < 5.0)
     jekyll-remote-theme (0.4.3)
       addressable (~> 2.0)
       jekyll (>= 3.5, < 5.0)
@@ -85,7 +83,6 @@ PLATFORMS
 DEPENDENCIES
   jekyll (~> 4.3.2)
   jekyll-feed (~> 0.12)
-  jekyll-include-cache
   jekyll-remote-theme
   jekyll-sitemap
   just-the-docs
