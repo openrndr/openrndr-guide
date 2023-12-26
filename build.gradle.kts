@@ -70,7 +70,7 @@ val publishDocs by tasks.registering {
     doLast {
         gitPublish.repoUri.set("git@github.com:openrndr/openrndr-guide.git")
         gitPublish.branch.set("generated")
-        gitPublish.repoDir.set(file("$buildDir/gitrepo-docs"))
+        gitPublish.repoDir.set(file("${layout.buildDirectory.get()}/gitrepo-docs"))
         gitPublish.contents.from("build/dokgen/jekyll") {
             exclude("docs/.jekyll*", "docs/_site", "docs/*-cache", "docs/*.sh")
         }
@@ -85,7 +85,7 @@ val publishExamples by tasks.registering {
 
     val repoTemplate = "$projectDir/src/main/resources/examples-repo-template"
     doLast {
-        gitPublish.repoDir.set(file("$buildDir/gitrepo-examples"))
+        gitPublish.repoDir.set(file("${layout.buildDirectory.get()}/gitrepo-examples"))
         gitPublish.contents {
             from(repoTemplate) {
                 exclude("settings.gradle.kts")
@@ -130,7 +130,7 @@ task("add IDE file scopes") {
         "Code" to "file:*.kt||file:*.frag||file:*.vert||file:*.glsl",
         "Text" to "file:*.txt||file:*.md||file:*.xml||file:*.json",
         "Gradle" to "file[*buildSrc*]:*/||file:*gradle.*||file:*.gradle||file:*/gradle-wrapper.properties||file:*.toml",
-        "Images" to "file:*.png||file:*.jpg||file:*.dds||file:*.exr"
+        "Media" to "file:*.png||file:*.jpg||file:*.dds||file:*.exr||file:*.mp3||file:*.wav||file:*.mp4||file:*.mov"
     )
     files.forEach { (name, pattern) ->
         val file = File(scopesFolder, "__$name.xml")
