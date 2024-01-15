@@ -1,10 +1,9 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Logging and debugging")
-@file:ParentTitle("Advanced topics")
-@file:Order("100")
-@file:URL("advancedTopics/logging")
+@file:Order("1105")
+@file:URL("debugging/logging")
 
-package docs.`11_Advanced_Topics`
+package docs.`85_Debugging`
 
 import org.openrndr.dokgen.annotations.*
 
