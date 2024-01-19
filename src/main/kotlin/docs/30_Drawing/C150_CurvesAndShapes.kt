@@ -11,7 +11,9 @@ import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.LineJoin
 import org.openrndr.draw.loadFont
+import org.openrndr.extra.shapes.Pulley
 import org.openrndr.extra.shapes.hobbyCurve
+import org.openrndr.extra.shapes.rectify.rectified
 import org.openrndr.math.Vector2
 import org.openrndr.math.transforms.transform
 import org.openrndr.shape.*
@@ -207,7 +209,7 @@ fun main() {
                 val subSegment = seg.sub(0.25, 0.75)
 
                 // Get the segment reversed (the start becomes the end)
-                val  revSegment = seg.reverse
+                val revSegment = seg.reverse
 
                 // Get the segment offset by the given distance
                 val offsetSegment = seg.offset(5.0)
@@ -258,7 +260,7 @@ fun main() {
                 drawer.stroke = null
                 drawer.fill = ColorRGBa.PINK
                 drawer.circles(contours.map { c ->
-                    c.segments.map { seg -> seg.start } + c.position(1.0 )
+                    c.segments.map { seg -> seg.start } + c.position(1.0)
                 }.flatten(), 5.0)
 
                 drawer.fill = null
@@ -319,7 +321,7 @@ fun main() {
                 drawer.contour(c)
             }
         }
-    }    
+    }
 
     @Text
     """
@@ -520,12 +522,67 @@ fun main() {
     }
 
     @Text
-    """ 
+    """
     The list of available methods can be found at the 
     [API website](https://api.openrndr.org/openrndr-shape/org.openrndr.shape/-shape-contour/index.html) 
     or in the 
     [source code](https://github.com/openrndr/openrndr/tree/master/openrndr-shape/src/commonMain/kotlin/org/openrndr/shape).
 
+    ### Rectified ShapeContour
+    
+    The `ut` argument in the `ShapeContour.position()` and `ShapeContour.normal()` methods
+    [does not specify a linear position](https://api.openrndr.org/openrndr-shape/org.openrndr.shape/-shape-contour/position.html) 
+    between the start and the end of the contour.
+    
+    By using rectified contours (defined in `orx-shapes`) we can
+    work with evenly spaced points on contours, or animate elements
+    traveling on a contour at the desired speed even if the
+    contour segments vary greatly in length.
+    """
+
+    @Media.Video "../media/shapes-contour-rectified-001.mp4"
+
+    @Application
+    @ProduceVideo("media/shapes-contour-rectified-001.mp4", 2.0, 60)
+    @Code
+    application {
+        @Exclude
+        configure {
+            width = 770
+            height = 300
+        }
+        program {
+            val c = Pulley(
+                Circle(Vector2.ZERO, 30.0),
+                Circle(Vector2.ONE * 120.0, 60.0)
+            ).contour
+            val cr = c.rectified()
+
+            extend {
+                drawer.clear(ColorRGBa.WHITE)
+                drawer.fill = null
+
+                // Go from 0.0 to 1.0 in two seconds
+                // slowing down at both ends
+                val t = cos(
+                    kotlin.math.PI * (seconds % 2.0) / 2.0
+                ) * 0.5 + 0.5
+
+                drawer.translate(150.0, 100.0)
+                drawer.contour(c)
+                // Note how segment length affects the speed
+                drawer.circle(c.position(t), 5.0)
+
+                drawer.translate(270.0, 0.0)
+                drawer.contour(c)
+                // The rectified contour provides a smooth animation
+                drawer.circle(cr.position(t), 5.0)
+            }
+        }
+    }
+
+    @Text
+    """ 
     ### Modifying a ShapeContour
     
     #### sub()
