@@ -6,15 +6,23 @@
 
 package docs.`04_Drawing`
 
+import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.color.rgb
 import org.openrndr.dokgen.annotations.*
-import org.openrndr.draw.*
+import org.openrndr.draw.ColorFormat
+import org.openrndr.draw.ColorType
+import org.openrndr.draw.colorBuffer
+import org.openrndr.draw.loadImage
+import org.openrndr.drawImage
+import org.openrndr.extra.shadestyles.RadialGradient
+import org.openrndr.shape.Rectangle
 import java.io.File
 import java.nio.ByteBuffer
+import kotlin.math.sin
 
 fun main() {
-    @Text 
+    @Text
     """
     # Color buffers
     
@@ -30,7 +38,7 @@ fun main() {
         val cb = colorBuffer(640, 480)
     }
 
-    @Text 
+    @Text
     """
     ### Specifying buffer format
     
@@ -45,7 +53,7 @@ fun main() {
         val cb = colorBuffer(640, 480, format = ColorFormat.R)
     }
 
-    @Text 
+    @Text
     """
     ### Specifying buffer type
     
@@ -59,7 +67,7 @@ fun main() {
         val cb = colorBuffer(640, 480, type = ColorType.FLOAT16)
     }
 
-    @Text 
+    @Text
     """
     ## Loading color buffers
     
@@ -74,6 +82,36 @@ fun main() {
 
     @Text
     """
+    ## Generating color buffers
+    
+    Use `drawImage` to create a color buffer and draw into it.
+    """
+
+    @Media.Image "../media/colorbuffer-001.jpg"
+
+    @Application
+    @ProduceScreenshot("media/colorbuffer-001.jpg")
+    @Code
+    application {
+        program {
+            val gradientBackground = drawImage(width, height) {
+                // Draw anything here, for example a radial gradient.
+                drawer.shadeStyle = RadialGradient(ColorRGBa.WHITE, ColorRGBa.PINK)
+                val r = Rectangle.fromCenter(drawer.bounds.center, 800.0, 800.0)
+                drawer.rectangle(r)
+            }
+            extend {
+                drawer.image(gradientBackground)
+                drawer.circle(drawer.bounds.center, sin(seconds) * 80 + 100)
+            }
+        }
+    }
+
+    @Text
+    """
+    `drawImage` is convenient for creating static images. If a program requires redrawing 
+    a color buffer use a [render target](/drawing/renderTargets.html) instead.
+        
     ## Freeing color buffers
     
     If a program creates new buffers while it runs
@@ -90,7 +128,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     ## Saving color buffers
     
@@ -104,7 +142,7 @@ fun main() {
         cb.saveToFile(File("output.jpg"))
     }
 
-    @Text 
+    @Text
     """
     When repeatedly saving color buffers asynchronously (the default) it is possible to run out
     of memory. This can happen if the software can not save images at the requested frame rate.
@@ -131,7 +169,7 @@ fun main() {
         cb0.copyTo(cb1)
     }
 
-    @Text 
+    @Text
     """
     ## Writing into color buffers 
     
@@ -161,7 +199,7 @@ fun main() {
         cb.write(buffer)
     }
 
-    @Text 
+    @Text
     """
     ## Reading from color buffers 
     
@@ -187,7 +225,7 @@ fun main() {
         val c = rgb(r, g, b, a)
     }
 
-    @Text 
+    @Text
     """
     ## Color buffer shadows
     
