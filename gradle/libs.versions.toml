@@ -1,15 +1,16 @@
 [versions]
-kotlin = "1.9.21"
+kotlin = "1.9.22"
 jvmTarget = "17"
-openrndr = "0.4.3"
-orx = "0.4.3"
+openrndr = "0.4.4"
+orx = "0.4.4"
 orml = "0.4.1"
 coroutines = "1.7.3"
-slf4j = "2.0.9"
+slf4j = "2.0.11"
 gitPublish = "4.2.1"
-jsoup = "1.17.1"
+jsoup = "1.17.2"
 gson = "2.10.1"
 csv = "1.9.2"
+versions = "0.50.0"
 
 [libraries]
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
@@ -55,7 +56,7 @@ orx-shapes = { group = "org.openrndr.extra", name = "orx-shapes", version.ref = 
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 dokgen = { id = "org.openrndr.dokgen-gradle", version = { require = "latest.release" } }
 git-publish = { id = "org.ajoberstar.git-publish", version.ref = "gitPublish" }
-versions = { id = "com.github.ben-manes.versions", version = "0.50.0" }
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
 
 [bundles]
 openrndr-core = [
