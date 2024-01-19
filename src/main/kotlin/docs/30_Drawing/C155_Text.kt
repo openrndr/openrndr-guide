@@ -224,7 +224,7 @@ fun main() {
 
     @Text
     """    
-    This more advanced example visualizes normal vectors around the contour of
+    This example visualizes normal vectors around the contour of
     the character '8', evenly spaced every 10 pixels.
     """
 
@@ -241,18 +241,14 @@ fun main() {
             // Map each contour in the shape to a list of LineSegment,
             // then combine the resulting lists by calling `.flatten()`.
             val normals = shape.contours.map { c ->
-                // By default, `c.sub(0.0, 0.1)` may be longer or shorter
-                // than `c.sub(0.9, 1.0)`. Calling `.rectified()` fixes that,
-                // helping us create evenly spaced positions
-                // independently of the control points defining a Bézier segment.
-                // Try not calling `.rectified()` and observe the difference.
+                // Work with rectified contours so `t` values are evenly spaced.
                 val rc = c.rectified()
                 val stepCount = (c.length / 10).toInt()
                 List(stepCount) {
                     val t = it / stepCount.toDouble()
                     LineSegment(
-                        rc.position(t) - rc.normal(t) * 5.0,
-                        rc.position(t) - rc.normal(t) * 20.0
+                        rc.position(t) + rc.normal(t) * 5.0,
+                        rc.position(t) + rc.normal(t) * 20.0
                     )
                 }
             }.flatten()

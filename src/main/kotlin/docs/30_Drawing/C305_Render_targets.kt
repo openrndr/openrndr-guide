@@ -57,9 +57,10 @@ fun main() {
     """
     ## Drawing on a render target
     
-    In the following code snippet you will find an example showing how to 
-    draw on an off-screen buffer followed by drawing that offscreen buffer 
-    on screen.
+    Use `drawer.isolatedWithTarget()` to draw into an off-screen buffer.
+     
+    Once updated, we can either draw it onto the screen (as this example shows) 
+    or process its color buffer further using [filters](/ORX/imageFilters.html) or custom shaders.
     """
 
     @Code
