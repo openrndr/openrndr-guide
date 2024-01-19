@@ -1,6 +1,9 @@
 package org.openrndr.dokgen
 
-import org.gradle.api.*
+import org.gradle.api.Action
+import org.gradle.api.DefaultTask
+import org.gradle.api.Plugin
+import org.gradle.api.Project
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.model.ObjectFactory
 import org.gradle.api.tasks.*
@@ -12,17 +15,16 @@ import java.io.File
 import java.io.Serializable
 import javax.inject.Inject
 
+private val Project.buildDirFile: File
+    get() = layout.buildDirectory.get().asFile
+
 const val PLUGIN_NAME = "dokgen"
 const val DOCS_DIR = "src/main/kotlin/docs"
 
 class DokGenException(message: String) : Exception("$PLUGIN_NAME exception: $message")
 
-fun generatedExamplesDirectory(project: Project): File {
-    return File(project.buildDir, "$PLUGIN_NAME/generated/examples")
-}
-
-fun generatedExamplesForExportDirectory(project: Project): File {
-    return File(project.buildDir, "$PLUGIN_NAME/generated/examples-export")
+fun generatedExamplesDirectory(buildDir: File): File {
+    return File(buildDir, "$PLUGIN_NAME/generated/examples")
 }
 
 fun DefaultTask.getResourcePath(name: String) =
@@ -79,13 +81,13 @@ abstract class ProcessSourcesTask @Inject constructor(
     }
 
     @OutputDirectory
-    var mdOutputDir: File = File(project.buildDir, "$PLUGIN_NAME/md")
+    var mdOutputDir: File = File(project.buildDirFile, "$PLUGIN_NAME/md")
 
     @OutputDirectory
-    var examplesOutputDir: File = generatedExamplesDirectory(project)
+    var examplesOutputDir: File = generatedExamplesDirectory(project.buildDirFile)
 
     @OutputDirectory
-    var examplesForExportOutputDir: File = generatedExamplesForExportDirectory(project)
+    var examplesForExportOutputDir: File = File(project.buildDirFile, "$PLUGIN_NAME/generated/examples-export")
 
 
     @TaskAction
@@ -127,7 +129,7 @@ abstract class RunExamplesTask @Inject constructor(
     @get:PathSensitive(PathSensitivity.NAME_ONLY)
     @get:InputDirectory
     val examplesDirectory: DirectoryProperty = project.objects.directoryProperty().also {
-        it.set(generatedExamplesDirectory(project))
+        it.set(generatedExamplesDirectory(project.buildDirFile))
     }
 
     // TODO: Why this is needed?
@@ -177,7 +179,7 @@ open class JekyllTask @Inject constructor(
     }
 
     @InputDirectory
-    val dokgenBuildDir = File(project.buildDir, PLUGIN_NAME)
+    val dokgenBuildDir = File(project.buildDirFile, PLUGIN_NAME)
 
     @InputDirectory
     val dokgenMdDir = File(dokgenBuildDir, "md")
@@ -229,7 +231,7 @@ open class JekyllTask @Inject constructor(
 open class WebServerStartTask @Inject constructor() : DefaultTask() {
 
     @InputDirectory
-    var docsDir: File = File(project.buildDir, "$PLUGIN_NAME/jekyll/docs")
+    var docsDir: File = File(project.buildDirFile, "$PLUGIN_NAME/jekyll/docs")
 
     init {
         group = PLUGIN_NAME
@@ -249,7 +251,7 @@ open class WebServerStartTask @Inject constructor() : DefaultTask() {
 open class WebServerStopTask @Inject constructor() : DefaultTask() {
 
     @InputDirectory
-    var docsDir: File = File(project.buildDir, "$PLUGIN_NAME/jekyll/docs")
+    var docsDir: File = File(project.buildDirFile, "$PLUGIN_NAME/jekyll/docs")
 
     init {
         group = PLUGIN_NAME
@@ -284,7 +286,7 @@ class GradlePlugin : Plugin<Project> {
             val gess = sourceSets.create("GeneratedExamples")
             gess.compileClasspath += mss.compileClasspath
             gess.runtimeClasspath += mss.runtimeClasspath
-            gess.java.srcDir(generatedExamplesDirectory(project))
+            gess.java.srcDir(generatedExamplesDirectory(project.buildDirFile))
 
             val dokGenTask = project.tasks.create(PLUGIN_NAME)
             dokGenTask.group = PLUGIN_NAME
