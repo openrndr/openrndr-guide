@@ -10,6 +10,8 @@ import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.*
+import org.openrndr.extra.noise.uniform
+import org.openrndr.shape.ShapeContour
 
 fun main() {
     @Text 
@@ -85,8 +87,43 @@ fun main() {
         }
     }
 
+    @Text
+    """
+    ## Drawing contours or shapes on a render target
+    
+    When drawing `ShapeContour` or `Shape` instances, both 
+    a color buffer and a depth buffer are required.
+    """
+
+    @Code
+    application {
+        program {
+            // -- build a render target with color and depth buffer attachments
+            val rt = renderTarget(width, height) {
+                colorBuffer()
+                depthBuffer() // <--
+            }
+
+            drawer.isolatedWithTarget(rt) {
+                drawer.clear(ColorRGBa.PINK)
+
+                // A closed contour with 12 random points defining 12 straight segments
+                drawer.contour(ShapeContour.fromPoints(List(12) {
+                    drawer.bounds.uniform(50.0)
+                }, true))
+            }
+
+            extend {
+                drawer.image(rt.colorBuffer(0))
+            }
+        }
+    }
+
     @Text 
     """
+    If we forget to add the depth buffer we will be reminded with the following error message:
+    `drawing org.openrndr.shape.contours requires a render target with a stencil attachment`
+        
     ## Render targets and projection transformations
     
     Note that the [projection matrix](/drawingAndTransformations/transformations.html#projection-matrix) 
@@ -204,7 +241,7 @@ fun main() {
     @Code
     application {
         program {
-            // -- build a render target with a single color buffer attachment
+            // -- build a render target with color and depth buffer attachments
             val rt = renderTarget(width, height, multisample = BufferMultisample.SampleCount(8)) {
                 colorBuffer()
                 depthBuffer()
