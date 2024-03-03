@@ -4,7 +4,7 @@
 layout: default
 title: What is Gradle?
 parent: Kotlin language and tools
-last_modified_at: 2024.01.15 12:27:05 +0100
+last_modified_at: 2024.01.16 18:11:44 +0100
 nav_order: 110
 has_children: false
 ---
