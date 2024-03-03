@@ -121,7 +121,7 @@ fun main() {
 
     @Text 
     """
-    If we forget to add the depth buffer we will be reminded with the following error message:
+    If we forget to include a depth buffer we will be reminded with the following error message:
     `drawing org.openrndr.shape.contours requires a render target with a stencil attachment`
         
     ## Render targets and projection transformations
