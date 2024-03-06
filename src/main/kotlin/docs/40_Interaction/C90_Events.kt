@@ -41,7 +41,7 @@ fun main() {
         private var frame = 0
 
         fun update() {
-            if(++frame % 60 == 0) {
+            if (++frame % 60 == 0) {
                 timeEvent.trigger(frame / 60)
             }
         }
@@ -123,7 +123,7 @@ fun main() {
         private var frame = 0
 
         fun update() {
-            if(++frame % 60 == 0) {
+            if (++frame % 60 == 0) {
                 timeEvent.trigger(frame / 60)
             }
         }
@@ -179,15 +179,27 @@ fun main() {
     a file from the Internet and waiting for its completion 
     or an event coming from a hardware input device).
     
-    This will become apparent when we fail to draw on our window:
-    
-    ```
-    blob.doneWaiting.listen {
-        drawer.clear(ColorRGBa.WHITE) // <-- will not work
-        println("done waiting")
+    This will become apparent when we fail to draw on our window:    
+    """
+
+    run {
+        application {
+            program {
+                val blob = Blob(this)
+                @Code.Block
+                run {
+                    blob.doneWaiting.listen {
+                        drawer.clear(ColorRGBa.WHITE) // <-- will not work
+                        println("done waiting")
+                    }
+                }
+            }
+        }
     }
-    ```
-    
+
+
+    @Text
+    """
     The solution is simple though: when constructing the `Event`, we
     set the `postpone` argument to true:
     """.trimIndent()
