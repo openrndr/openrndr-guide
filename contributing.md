@@ -44,6 +44,8 @@ web browser if the Docker/Jekyll container is running (next step).
 
 ## Preview the guide locally
 
+### With Docker
+
 To preview the guide we need Jekyll in our system. One way to install Jekyll is by using a Docker container.
 
 1. Install [Docker](https://www.docker.com/get-started/).
@@ -61,6 +63,18 @@ waiting for Jekyll to finish. To stop Jekyll:
 - Run the `openrndr-guide/Tasks/dokgen/webServerStop` Gradle task
 - or
 - Run `sudo build/dokgen/jekyll/docs/webServerStop.sh` script.
+
+### Directly with Ruby (without Docker)
+
+If you have Ruby configured in your system, you can follow these steps to regenerate
+the website when changes are saved and automatically reload your local guide in a web browser:
+
+1. In one terminal run `./gradlew dokgen --continuous`
+2. In another terminal
+  - `cd build/dokgen/jekyll/docs/`
+  - `bundle install`
+  - `bundle exec jekyll server --livereload`
+3. Open [http://0.0.0.0:4000](http://0.0.0.0:4000) in a browser.
 
 ## Fast builds
 
