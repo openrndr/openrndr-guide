@@ -199,7 +199,7 @@ fun main() {
 
     @Text
     """
-    Now triggering the event does no longer send it immediately, but queues it.
+    Now triggering the event no longer sends it immediately, but queues it.
     The second part of the solution is to actually deliver the queued events
     by calling `deliver()`.
     """.trimIndent()
