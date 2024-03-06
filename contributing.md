@@ -73,8 +73,10 @@ the website when changes are saved and automatically reload your local guide in 
 2. In another terminal
   - `cd build/dokgen/jekyll/docs/`
   - `bundle install`
-  - `bundle exec jekyll server --livereload`
+  - `bundle exec jekyll server -d /tmp/guide --livereload`
 3. Open [http://0.0.0.0:4000](http://0.0.0.0:4000) in a browser.
+
+The `-d /tmp/guide` argument makes sure the generated html is not created under the build folder, which would trigger dokgen in a loop. Adjust this path making it valid for your OS.
 
 ## Fast builds
 
