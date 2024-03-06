@@ -4,7 +4,7 @@
 layout: default
 title: Events
 parent: Interaction
-last_modified_at: 2024.03.06 14:54:12 +0100
+last_modified_at: 2024.03.06 16:20:27 +0100
 nav_order: 90
 has_children: false
 ---
@@ -174,7 +174,7 @@ set the `postpone` argument to true:
 val doneWaiting = Event<Unit>("done-waiting", postpone = true)
 ``` 
  
-Now triggering the event does no longer send it immediately, but queues it.
+Now triggering the event no longer sends it immediately, but queues it.
 The second part of the solution is to actually deliver the queued events
 by calling `deliver()`. 
  
