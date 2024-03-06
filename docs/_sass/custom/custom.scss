@@ -78,6 +78,12 @@ div.highlighter-rouge code {
   background-color: #F4F4F4;
 }
 
+/* Valid code highlighted as error. Disable */
+div.highlighter-rouge span.err {
+  color: black;
+  background-color: transparent;
+}
+
 a:not([class]) {
 	text-decoration-color: rgb(255, 192, 203);
 	text-decoration-thickness: 0.14em;

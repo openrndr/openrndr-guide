@@ -4,7 +4,7 @@
 layout: default
 title: Events
 parent: Interaction
-last_modified_at: 2024.03.06 16:20:27 +0100
+last_modified_at: 2024.03.06 22:01:40 +0100
 nav_order: 90
 has_children: false
 ---
@@ -158,15 +158,15 @@ triggered due to external causes (loading
 a file from the Internet and waiting for its completion 
 or an event coming from a hardware input device).
 
-This will become apparent when we fail to draw on our window:
-
-```
+This will become apparent when we fail to draw on our window:     
+ 
+```kotlin
 blob.doneWaiting.listen {
     drawer.clear(ColorRGBa.WHITE) // <-- will not work
     println("done waiting")
 }
-```
-
+``` 
+ 
 The solution is simple though: when constructing the `Event`, we
 set the `postpone` argument to true: 
  
