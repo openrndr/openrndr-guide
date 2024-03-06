@@ -6,10 +6,14 @@
 
 package docs.`07_Interaction`
 
+import kotlinx.coroutines.delay
+import org.openrndr.Program
 import org.openrndr.application
+import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.events.Event
 import org.openrndr.extra.noise.Random
+import org.openrndr.launch
 
 
 fun main() {
@@ -32,14 +36,13 @@ fun main() {
 
     @Code
     class Thing {
-        val timeEvent = Event<Boolean>()
+        val timeEvent = Event<Int>("time-event")
 
         private var frame = 0
 
         fun update() {
             if(++frame % 60 == 0) {
-                timeEvent.trigger(Random.bool())
-                timeEvent.deliver()
+                timeEvent.trigger(frame / 60)
             }
         }
     }
@@ -48,29 +51,29 @@ fun main() {
     """
     ### Sending an event        
     
-    Notice how events carry a payload, in this case `Boolean`. This is convenient
+    Notice how events carry a payload, in this case `Int`. This is convenient
     because it allows us to transmit information together with the event.
     Mouse and Keyboard events contain details about the mouse position or 
     the key pressed. In this program we are free to choose any type, so lets
-    just broadcasting a message containing a random boolean value.
+    just broadcasting a message containing the approximate time in seconds.
+    
+    Passing a name in the event constructor is not necessary, but can be
+    useful for logging and debugging.
      
     Another thing to observe is that `timeEvent` is a public variable. If it
     was private we couldn't listen to it from outside 
     by calling `thing.timeEvent.listen { ... }`.    
     
     At some point in our program execution we need to call `.trigger()` 
-    to queue an event. We can call it as many times as needed.
-    
-    Finally, we call `.deliver()` to deliver the queued events to those
-    listening to them.
-    
+    to broadcast the event. We can call it as many times as needed.
+      
     ### Listening to an event
     
     The following small program shows how to listen to an event emitted by a class.
     
-    First, let's create one instance of the class (`Thing` in this case).
+    First, let's create one instance of the class called `thing`.
      
-    Next, listen to an event this instance can emit (`timeEvent` here).
+    Next, listen to the event `thing` can emit (`timeEvent`).
     
     """.trimIndent()
 
@@ -82,17 +85,185 @@ fun main() {
                 thing.update()
             }
             thing.timeEvent.listen {
-                println("timeEvent triggered! It contains a: $it")
+                println("timeEvent triggered! $it")
             }
         }
     }
 
     @Text
     """
-    There are multiple approaches to including events in our class. For example, a
-    class could have separate `loadStart` and `loadComplete` events, or instead,
-    have just one `loadEvent` and have the payload describe if it was
-    a `start` or a `complete` event. Having two separate events arguably produces 
-    more readable code.
+    We see a line appear every second: 
+    ```
+    timeEvent triggered! 1
+    timeEvent triggered! 2
+    timeEvent triggered! 3
+    ...
+    ```
+    
+    ## Events in coroutines and threads
+    
+    By default our OPENRNDR programs run in a single thread, which happens
+    to be the "rendering thread". But what would happen if we sent
+    Events from different threads or coroutines? Lets find out.
+    
+    The `Blob` class is a copy of `Thing` with three changes:
+    
+    1. To be able to spawn coroutines, we pass a `Program` in the constructor.
+    2. We add a second event called `doneWaiting`. We use `Unit` as a type
+    when we don't want to pass any useful data.
+    3. When the class is constructed, we launch a coroutine to wait
+    for 3 seconds, then trigger the new `doneWaiting` event.
     """.trimIndent()
+
+    @Code
+    class Blob(program: Program) {
+        val timeEvent = Event<Int>("time-event")
+        val doneWaiting = Event<Unit>("done-waiting")
+
+        private var frame = 0
+
+        fun update() {
+            if(++frame % 60 == 0) {
+                timeEvent.trigger(frame / 60)
+            }
+        }
+
+        init {
+            program.launch {
+                delay(3000)
+                doneWaiting.trigger(Unit)
+            }
+        }
+    }
+
+    @Text
+    """
+    Now lets use our `Blob` class in a new program
+    that listens to its two events:
+    """.trimIndent()
+
+    @Code
+    application {
+        program {
+            val blob = Blob(this)
+            extend {
+                blob.update()
+            }
+            blob.timeEvent.listen {
+                println("timeEvent triggered! $it")
+            }
+            blob.doneWaiting.listen {
+                println("done waiting")
+            }
+        }
+    }
+
+    @Text
+    """
+    ```
+    timeEvent triggered! 1
+    timeEvent triggered! 2
+    timeEvent triggered! 3
+    done waiting
+    timeEvent triggered! 4
+    ...
+    ```
+    """.trimIndent()
+
+    @Text
+    """
+    Seems to work! right? There's one issue though:
+    the `doneWaiting.listen` function does not run on the
+    rendering thread. This would be the case for events
+    triggered due to external causes (loading
+    a file from the Internet and waiting for its completion 
+    or an event coming from a hardware input device).
+    
+    This will become apparent when we fail to draw on our window:
+    
+    ```
+    blob.doneWaiting.listen {
+        drawer.clear(ColorRGBa.WHITE) // <-- will not work
+        println("done waiting")
+    }
+    ```
+    
+    The solution is simple though: when constructing the `Event`, we
+    set the `postpone` argument to true:
+    """.trimIndent()
+
+    @Code.Block
+    run {
+        val doneWaiting = Event<Unit>("done-waiting", postpone = true)
+    }
+
+    @Text
+    """
+    Now triggering the event does no longer send it immediately, but queues it.
+    The second part of the solution is to actually deliver the queued events
+    by calling `deliver()`.
+    """.trimIndent()
+
+    run {
+        val doneWaiting = Event<Unit>("done-waiting", postpone = true)
+        @Code.Block
+        run {
+            doneWaiting.deliver()
+        }
+    }
+
+    @Text
+    """
+    It is essential to call `deliver()` from the rendering thread.
+    Since `extend { }` executes in the rendering thread, and 
+    `extend` calls `update()`, we can let `update()` call `deliver()`
+    and everything will work nicely.
+     
+    This is the full program:
+    """.trimIndent()
+
+    @Code.Block
+    run {
+        class Blob(program: Program) {
+            val timeEvent = Event<Int>("time-event")
+            val doneWaiting = Event<Unit>("done-waiting", postpone = true)
+
+            private var frame = 0
+
+            fun update() {
+                if (++frame % 60 == 0) {
+                    timeEvent.trigger(frame / 60)
+                }
+                // Deliver any queued events
+                doneWaiting.deliver()
+            }
+
+            init {
+                program.launch {
+                    delay(3000)
+                    // Queue event outside the rendering thread
+                    doneWaiting.trigger(Unit)
+                }
+            }
+        }
+    }
+
+    @Code
+    application {
+        program {
+            val blob = Blob(this)
+            extend {
+                blob.update()
+            }
+            blob.timeEvent.listen {
+                println("timeEvent triggered! $it")
+            }
+            blob.doneWaiting.listen {
+                // White flash when this event is received
+                drawer.clear(ColorRGBa.WHITE)
+                println("done waiting")
+            }
+        }
+    }
+
 }
