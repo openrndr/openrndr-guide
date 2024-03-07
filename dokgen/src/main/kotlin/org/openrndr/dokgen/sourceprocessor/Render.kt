@@ -51,7 +51,7 @@ fun renderDoc(doc: Doc, title: String? = null): String {
                 val still = video.replace(".mp4", "-thumb.jpg")
                 """
                 |<video controls preload="none" loop poster="$still">
-                |    <source src="$video" type="video/mp4"></source>
+                |    <source src="$video" type="video/mp4">
                 |</video>
                 |""".trimMargin()
             }
