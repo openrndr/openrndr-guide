@@ -1,16 +1,16 @@
 [versions]
-kotlin = "1.9.22"
+kotlin = "1.9.23"
 jvmTarget = "17"
 openrndr = "0.4.4"
 orx = "0.4.4"
 orml = "0.4.1"
-coroutines = "1.7.3"
-slf4j = "2.0.11"
-gitPublish = "4.2.1"
+coroutines = "1.8.0"
+slf4j = "2.0.12"
+gitPublish = "4.2.2"
 jsoup = "1.17.2"
 gson = "2.10.1"
-csv = "1.9.2"
-versions = "0.50.0"
+csv = "1.9.3"
+versions = "0.51.0"
 
 [libraries]
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
@@ -44,6 +44,7 @@ orx-jumpflood = { group = "org.openrndr.extra", name = "orx-jumpflood", version.
 orx-kinect-v1 = { group = "org.openrndr.extra", name = "orx-kinect-v1", version.ref = "orx" }
 orx-mesh-generators = { group = "org.openrndr.extra", name = "orx-mesh-generators", version.ref = "orx" }
 orx-midi = { group = "org.openrndr.extra", name = "orx-midi", version.ref = "orx" }
+orx-no-clear = { group = "org.openrndr.extra", name = "orx-no-clear", version.ref = "orx" }
 orx-noise = { group = "org.openrndr.extra", name = "orx-noise", version.ref = "orx" }
 orx-olive = { group = "org.openrndr.extra", name = "orx-olive", version.ref = "orx" }
 orx-osc = { group = "org.openrndr.extra", name = "orx-osc", version.ref = "orx" }
@@ -81,6 +82,7 @@ orx = [
     "orx-mesh-generators",
     "orx-midi",
     "orx-noise",
+    "orx-no-clear",
     "orx-olive",
     "orx-osc",
     "orx-panel",
