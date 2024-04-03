@@ -81,6 +81,16 @@ fun main() {
     - Add `-XstartOnFirstThread` in the `VM Options` [text field](https://stackoverflow.com/a/44184837).
     - Click `Ok` to close the dialog.
     
+    ## Tip for Windows multi-GPU users
+    
+    If your computer has multiple GPUs, you can choose which one OPENRNDR uses like this:
+    
+    - Run openrndr-template and note down the `java.exe` path being used. 
+      If you are using Idea it should be displayed at the bottom panel. 
+    - Open the Windows Graphics Settings.
+    - Click Browse and choose the same `java.exe` you noted down earlier.
+    - Click Options, choose your preferred GPU then click Save.
+    
     ## What's next?
     
     At this point you are likely interested in how this program is structured. 
