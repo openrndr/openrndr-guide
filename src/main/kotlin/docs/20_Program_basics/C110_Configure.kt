@@ -1,26 +1,44 @@
 @file:Suppress("UNUSED_EXPRESSION", "UNREACHABLE_CODE")
-@file:Title("Program configuration")
+@file:Title("Configure")
 @file:ParentTitle("Program basics")
 @file:Order("110")
-@file:URL("programBasics/programConfiguration")
+@file:URL("programBasics/configure")
 
 package docs.`03_Program_basics`
 
-import org.openrndr.Fullscreen
-import org.openrndr.UnfocusBehaviour
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.extra.noise.Random
 import org.openrndr.extra.noise.uniform
-import org.openrndr.math.IntVector2
 import org.openrndr.math.Vector2
 
 fun main() {
-
     @Text
     """
-    # Program Configuration
-    
+    ## Configure
+
+    The `configure` block is an optional block that is used to configure
+    the run-time environment. Most commonly it is used to configure the
+    size of the window.
+
+    An example configuration that sets the window size, window resizability
+    and title is as follows:
+    """
+
+    @Code
+    application {
+        configure {
+            width = 1280
+            height = 720
+            windowResizable = true
+            title = "OPENRNDR Example"
+        }
+        program {
+        }
+    }
+
+    @Text
+    """   
     Starting your program with a custom configuration looks roughly like this.
     """
 
