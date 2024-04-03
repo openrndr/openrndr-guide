@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Writing extensions")
-@file:ParentTitle("Advanced topics")
-@file:Order("130")
-@file:URL("advancedTopics/writingExtensions")
+@file:ParentTitle("Extensions")
+@file:Order("150")
+@file:URL("extensions/writingExtensions")
 
-package docs.`11_Advanced_Topics`
+package docs.`45_Extensions`
 
 import org.openrndr.Extension
 import org.openrndr.Program

@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
-@file:Title("Extensions")
-@file:ParentTitle("Program basics")
-@file:Order("120")
-@file:URL("programBasics/extensions")
+@file:Title("Extensions basics")
+@file:ParentTitle("Extensions")
+@file:Order("100")
+@file:URL("extensions/extensions")
 
-package docs.`03_Program_basics`
+package docs.`45_Extensions`
 
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*
@@ -48,23 +48,6 @@ fun main() {
         program {
             extend(Screenshots()) {
                 contentScale = 4.0
-            }
-        }
-    }
-
-    @Text 
-    """
-    ## Extension functions
-    
-    The functional `extend` function allows one to use a single function as an extension. This is commonly used to
-    create a "draw loop".
-    """
-
-    @Code
-    application {
-        program {
-            extend {
-                drawer.circle(width / 2.0, height / 2.0, 50.0)
             }
         }
     }

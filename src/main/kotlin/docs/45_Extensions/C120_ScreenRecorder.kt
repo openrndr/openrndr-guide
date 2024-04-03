@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
-@file:Title("Writing to video files")
-@file:ParentTitle("Videos")
-@file:Order("110")
-@file:URL("videos/writingToVideoFiles")
+@file:Title("ScreenRecorder")
+@file:ParentTitle("Extensions")
+@file:Order("120")
+@file:URL("extensions/writingToVideoFiles")
 
-package docs.`09_Videos`
+package docs.`45_Extensions`
 
 import org.openrndr.KEY_ESCAPE
 import org.openrndr.application
@@ -21,51 +21,17 @@ fun main() {
     """
     # Writing to video files
 
-    ## Prerequisites
-
-    Make sure ffmpeg is installed on your system.
-
-    ## Writing to video using render targets
+    The `ffmpeg` command-line program is used for video output.
+    
+    If `ffmpeg` is not installed in your system OPENRNDR
+    will attempt to use an embedded version of the program.
     """
-
-    @Code
-    application {
-        program {
-            val videoWriter = VideoWriter()
-            videoWriter.size(width, height)
-            videoWriter.output("output.mp4")
-            videoWriter.start()
-
-            val videoTarget = renderTarget(width, height) {
-                colorBuffer()
-                depthBuffer()
-            }
-
-
-            var frame = 0
-            extend {
-                drawer.isolatedWithTarget(videoTarget) {
-                    clear(ColorRGBa.BLACK)
-                    rectangle(40.0 + frame, 40.0, 100.0, 100.0)
-                }
-
-                videoWriter.frame(videoTarget.colorBuffer(0))
-                drawer.image(videoTarget.colorBuffer(0))
-                frame++
-                if (frame == 100) {
-                    videoWriter.stop()
-                    application.exit()
-                }
-            }
-        }
-    }
-
 
     @Text
     """
     ## The `ScreenRecorder` extension
 
-    A much simpler way of writing your program's output to video is
+    A simple way of writing your program's output to video is
     offered by the `ScreenRecorder` extension. The extension creates video 
     files named after your Program class name plus the date. 
     For example: `MyProgram-2018-04-11-11.31.03.mp4`. The video files 
@@ -129,5 +95,45 @@ fun main() {
     [orx-video-profiles](https://github.com/openrndr/orx/tree/master/orx-jvm/orx-video-profiles)
     extension.
         
+    ## Writing to video using render targets
+    
+    It is also possible to produce video files without using
+    the `ScreenRecorder` extension. This is needed for more advances
+    uses, for example when the content we want in the video file is
+    not visible but actually exists as a render target.
     """
+
+    @Code
+    application {
+        program {
+            val videoWriter = VideoWriter()
+            videoWriter.size(width, height)
+            videoWriter.output("output.mp4")
+            videoWriter.start()
+
+            val videoTarget = renderTarget(width, height) {
+                colorBuffer()
+                depthBuffer()
+            }
+
+
+            var frame = 0
+            extend {
+                drawer.isolatedWithTarget(videoTarget) {
+                    clear(ColorRGBa.BLACK)
+                    rectangle(40.0 + frame, 40.0, 100.0, 100.0)
+                }
+
+                videoWriter.frame(videoTarget.colorBuffer(0))
+                drawer.image(videoTarget.colorBuffer(0))
+                frame++
+                if (frame == 100) {
+                    videoWriter.stop()
+                    application.exit()
+                }
+            }
+        }
+    }
+
+
 }
