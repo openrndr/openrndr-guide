@@ -141,15 +141,6 @@ fun main() {
     SQUARE   | square cap
     """
 
-//    run {
-//        val a = LineCap.ROUND
-//        val b = when (a) {
-//            LineCap.ROUND -> TODO()
-//            LineCap.BUTT -> TODO()
-//            LineCap.SQUARE -> TODO()
-//        }
-//    }
-
     @Media.Image "../media/line-001.jpg"
 
     @Application
