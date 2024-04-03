@@ -219,8 +219,8 @@ fun main() {
     
      * `label : String` - the slider label
      * `precision : Int` - the number of digits behind the point, set to 0 for an integer slider
+     * `range: Range` - the slider range, default is `Range(0.0, 10.0)`
      * `value : Double` - the slider value
-     * `range: Range` - the slider range, default is `Range(0.0, 1.0)`
 
     ##### Events
     
@@ -243,8 +243,8 @@ fun main() {
                 layout {
                     slider {
                         label = "Slide me"
-                        value = 0.50
                         range = Range(0.0, 1.0)
+                        value = 0.50
                         precision = 2
                         events.valueChanged.listen {
                             println("the new value is ${it.newValue}")
@@ -257,6 +257,9 @@ fun main() {
 
     @Text
     """
+    Since the `value` is clamped to the current `range`, it is better to
+    set the `range` before the `value` to avoid unexpected results.
+    
     ### ColorPickerButton
     
     A button like control that slides out a HSV color picker when clicked
