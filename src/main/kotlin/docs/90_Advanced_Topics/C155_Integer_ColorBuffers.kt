@@ -4,7 +4,7 @@
 @file:Order("155")
 @file:URL("advancedTopics/integerColorBuffers")
 
-package docs.`11_Advanced_Topics`
+package docs.`90_Advanced_Topics`
 
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*

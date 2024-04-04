@@ -1,10 +1,10 @@
-@file:Suppress("UNUSED_EXPRESSION", "UNREACHABLE_CODE")
+@file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Configure")
 @file:ParentTitle("Program basics")
 @file:Order("110")
 @file:URL("programBasics/configure")
 
-package docs.`03_Program_basics`
+package docs.`20_Program_basics`
 
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*

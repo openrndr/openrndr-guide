@@ -4,7 +4,7 @@
 @file:Order("90")
 @file:URL("interaction/Events")
 
-package docs.`07_Interaction`
+package docs.`40_Interaction`
 
 import kotlinx.coroutines.delay
 import org.openrndr.Program
@@ -12,7 +12,6 @@ import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.events.Event
-import org.openrndr.extra.noise.Random
 import org.openrndr.launch
 
 

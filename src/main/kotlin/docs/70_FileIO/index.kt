@@ -3,7 +3,7 @@
 @file:Order("1095")
 @file:URL("fileIO/index")
 
-package docs.`10_FileIO`
+package docs.`70_FileIO`
 
 import com.github.doyaaaaaken.kotlincsv.dsl.csvReader
 import com.github.doyaaaaaken.kotlincsv.dsl.csvWriter

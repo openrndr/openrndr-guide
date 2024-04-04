@@ -4,7 +4,7 @@
 @file:Order("100")
 @file:URL("animation/interactiveAnimations")
 
-package docs.`08_Animation`
+package docs.`50_Animation`
 
 import org.openrndr.animatable.Animatable
 import org.openrndr.animatable.easing.Easing

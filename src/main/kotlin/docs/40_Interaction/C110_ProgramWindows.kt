@@ -4,7 +4,7 @@
 @file:Order("110")
 @file:URL("interaction/programWindows")
 
-package docs.`07_Interaction`
+package docs.`40_Interaction`
 
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*

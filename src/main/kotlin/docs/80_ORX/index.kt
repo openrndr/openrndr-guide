@@ -3,7 +3,7 @@
 @file:Order("1100")
 @file:URL("ORX/index")
 
-package docs.`10_ORX`
+package docs.`80_ORX`
 
 import org.openrndr.dokgen.annotations.*
 

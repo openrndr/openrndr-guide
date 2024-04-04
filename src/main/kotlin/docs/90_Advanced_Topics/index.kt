@@ -3,7 +3,7 @@
 @file:Order("1110")
 @file:URL("advancedTopics/index")
 
-package docs.`11_Advanced_Topics`
+package docs.`90_Advanced_Topics`
 
 import org.openrndr.dokgen.annotations.*
 

@@ -4,7 +4,7 @@
 @file:Order("210")
 @file:URL("drawing/vectors")
 
-package docs.`04_Drawing`
+package docs.`30_Drawing`
 
 import org.openrndr.dokgen.annotations.*
 

@@ -4,7 +4,7 @@
 @file:Order("330")
 @file:URL("drawing/asynchronousImageLoading")
 
-package docs.`04_Drawing`
+package docs.`30_Drawing`
 
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*

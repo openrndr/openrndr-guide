@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED_EXPRESSION", "UNREACHABLE_CODE")
+@file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Extend")
 @file:ParentTitle("Program basics")
 @file:Order("130")

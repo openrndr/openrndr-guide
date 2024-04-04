@@ -4,7 +4,7 @@
 @file:Order("150")
 @file:URL("ORX/osc")
 
-package docs.`10_ORX`
+package docs.`80_ORX`
 
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*

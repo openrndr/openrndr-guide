@@ -4,7 +4,7 @@
 @file:Order("370")
 @file:URL("drawing/arrayTextures")
 
-package docs.`04_Drawing`
+package docs.`30_Drawing`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa

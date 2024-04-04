@@ -4,7 +4,7 @@
 @file:Order("120")
 @file:URL("interaction/fileDrops")
 
-package docs.`07_Interaction`
+package docs.`40_Interaction`
 
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*

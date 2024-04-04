@@ -4,7 +4,7 @@
 @file:Order("170")
 @file:URL("drawing/tridimensionalGraphics")
 
-package docs.`04_Drawing`
+package docs.`30_Drawing`
 
 import org.openrndr.WindowMultisample
 import org.openrndr.application

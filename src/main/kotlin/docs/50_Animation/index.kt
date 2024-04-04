@@ -3,7 +3,7 @@
 @file:Order("1080")
 @file:URL("animation/index")
 
-package docs.`08_Animation`
+package docs.`50_Animation`
 
 import org.openrndr.dokgen.annotations.*
 

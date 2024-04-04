@@ -4,7 +4,7 @@
 @file:Order("140")
 @file:URL("interaction/userInterfaces")
 
-package docs.`07_Interaction`
+package docs.`40_Interaction`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa

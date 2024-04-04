@@ -4,7 +4,7 @@
 @file:Order("300")
 @file:URL("drawing/colorbuffers")
 
-package docs.`04_Drawing`
+package docs.`30_Drawing`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa

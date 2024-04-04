@@ -4,7 +4,7 @@
 @file:Order("360")
 @file:URL("drawing/concurrencyAndMultithreading")
 
-package docs.`04_Drawing`
+package docs.`30_Drawing`
 
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay

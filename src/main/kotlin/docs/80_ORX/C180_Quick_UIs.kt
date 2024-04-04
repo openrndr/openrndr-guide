@@ -4,7 +4,7 @@
 @file:Order("180")
 @file:URL("ORX/quickUIs")
 
-package docs.`10_ORX`
+package docs.`80_ORX`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa

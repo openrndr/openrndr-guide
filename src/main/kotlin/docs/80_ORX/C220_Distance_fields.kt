@@ -4,7 +4,7 @@
 @file:Order("220")
 @file:URL("ORX/distanceFields")
 
-package docs.`10_ORX`
+package docs.`80_ORX`
 
 
 import org.openrndr.application

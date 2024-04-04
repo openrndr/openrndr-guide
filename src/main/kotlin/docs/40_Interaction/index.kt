@@ -3,7 +3,7 @@
 @file:Order("1070")
 @file:URL("interaction/index")
 
-package docs.`07_Interaction`
+package docs.`40_Interaction`
 
 import org.openrndr.dokgen.annotations.*
 

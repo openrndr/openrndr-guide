@@ -4,7 +4,7 @@
 @file:Order("120")
 @file:URL("advancedTopics/presentationControl")
 
-package docs.`11_Advanced_Topics`
+package docs.`90_Advanced_Topics`
 
 import org.openrndr.PresentationMode
 import org.openrndr.application

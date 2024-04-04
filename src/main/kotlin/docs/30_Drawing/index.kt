@@ -3,7 +3,7 @@
 @file:Order("1040")
 @file:URL("drawing/index")
 
-package docs.`04_Drawing`
+package docs.`30_Drawing`
 
 import org.openrndr.dokgen.annotations.*
 

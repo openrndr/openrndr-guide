@@ -4,7 +4,7 @@
 @file:Order("340")
 @file:URL("drawing/shadeStyles")
 
-package docs.`04_Drawing`
+package docs.`30_Drawing`
 
 import org.intellij.lang.annotations.Language
 import org.openrndr.application

@@ -4,7 +4,7 @@
 @file:Order("305")
 @file:URL("drawing/renderTargets")
 
-package docs.`04_Drawing`
+package docs.`30_Drawing`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa

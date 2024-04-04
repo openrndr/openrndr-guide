@@ -4,7 +4,7 @@
 @file:Order("100")
 @file:URL("interaction/mouseAndKeyboardEvents")
 
-package docs.`07_Interaction`
+package docs.`40_Interaction`
 
 import org.openrndr.KEY_ARROW_LEFT
 import org.openrndr.KEY_BACKSPACE
