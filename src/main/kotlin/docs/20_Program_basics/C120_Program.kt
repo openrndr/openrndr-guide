@@ -21,9 +21,9 @@ fun main() {
     been created and a graphical context has been set up. This code is only 
     executed once.
     
-    From the code block one can install extensions using `extend`. Extensions 
-    are by default executed as often as possible. The most important type of 
-    extension is the one that holds user code.
+    In the `program` block one can install extensions using `extend`. Extensions 
+    are by default executed as often as possible. The most important type of
+    extension is the one holding the user code.
     
     A minimal application-program-extend setup would then look like this:
     """
@@ -31,9 +31,10 @@ fun main() {
     @Code
     application {
         program {
-            // This runs only once, and it's a good place to load assets.
+            // -- what is here is executed once
+            // -- It's a good place to load assets
             extend {
-                // This runs many times per second
+                // -- what is here is executed 'as often as possible'
                 drawer.circle(width / 2.0, height / 2.0, 100.0)
             }
         }

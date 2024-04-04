@@ -4,7 +4,7 @@
 @file:Order("130")
 @file:URL("programBasics/extend")
 
-package docs.`03_Program_basics`
+package docs.`20_Program_basics`
 
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*
