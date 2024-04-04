@@ -4,7 +4,7 @@
 layout: default
 title: Shade styles
 parent: Drawing
-last_modified_at: 2024.01.16 18:11:44 +0100
+last_modified_at: 2024.04.04 18:44:14 +0200
 nav_order: 340
 has_children: false
 ---
@@ -87,7 +87,7 @@ This makes it easy to distinguish the uniforms we send into shaders from other
 variables declared by the framework. 
  
 <video controls preload="none" loop poster="../media/shadestyles-003-thumb.jpg">
-    <source src="../media/shadestyles-003.mp4" type="video/mp4"></source>
+    <source src="../media/shadestyles-003.mp4" type="video/mp4">
 </video>
  
  
@@ -120,7 +120,7 @@ shade styles.
 ### Mapping images on shapes 
  
 <video controls preload="none" loop poster="../media/shadestyles-example-001-thumb.jpg">
-    <source src="../media/shadestyles-example-001.mp4" type="video/mp4"></source>
+    <source src="../media/shadestyles-example-001.mp4" type="video/mp4">
 </video>
  
  
@@ -161,7 +161,7 @@ specify colors depending on the world position of each vertex.
      
  
 <video controls preload="none" loop poster="../media/shadestyles-example-002-thumb.jpg">
-    <source src="../media/shadestyles-example-002.mp4" type="video/mp4"></source>
+    <source src="../media/shadestyles-example-002.mp4" type="video/mp4">
 </video>
  
  

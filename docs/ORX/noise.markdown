@@ -4,7 +4,7 @@
 layout: default
 title: Noise
 parent: ORX
-last_modified_at: 2024.01.16 18:11:44 +0100
+last_modified_at: 2024.04.04 18:44:14 +0200
 nav_order: 110
 has_children: false
 ---
@@ -186,7 +186,7 @@ fun main() = application {
 ## Fractal/FBM noise 
  
 <video controls preload="none" loop poster="../media/orx-noise-005-fbm-thumb.jpg">
-    <source src="../media/orx-noise-005-fbm.mp4" type="video/mp4"></source>
+    <source src="../media/orx-noise-005-fbm.mp4" type="video/mp4">
 </video>
  
  
@@ -223,7 +223,7 @@ value of the function increases the fastest. The `gradient1D`,
 to estimate gradients for noise functions. 
  
 <video controls preload="none" loop poster="../media/orx-noise-300-thumb.jpg">
-    <source src="../media/orx-noise-300.mp4" type="video/mp4"></source>
+    <source src="../media/orx-noise-300.mp4" type="video/mp4">
 </video>
  
  
@@ -257,7 +257,7 @@ estimator. For this `fbmFunc3D`, `billowFunc3D`, and
 [partial application](https://en.wikipedia.org/wiki/Partial_application)). 
  
 <video controls preload="none" loop poster="../media/orx-noise-301-thumb.jpg">
-    <source src="../media/orx-noise-301.mp4" type="video/mp4"></source>
+    <source src="../media/orx-noise-301.mp4" type="video/mp4">
 </video>
  
  

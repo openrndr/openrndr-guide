@@ -4,7 +4,7 @@
 layout: default
 title: Compositor
 parent: ORX
-last_modified_at: 2024.01.16 18:11:44 +0100
+last_modified_at: 2024.04.04 18:44:14 +0200
 nav_order: 170
 has_children: false
 ---
@@ -219,7 +219,7 @@ fun main() = application {
 [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/80_ORX/C170_Compositor002.kt) 
  
 <video controls preload="none" loop poster="../media/compositor-003-thumb.jpg">
-    <source src="../media/compositor-003.mp4" type="video/mp4"></source>
+    <source src="../media/compositor-003.mp4" type="video/mp4">
 </video>
  
  
@@ -232,7 +232,7 @@ where there is text. This can be achieved
 by using nested layers and a `Normal` blend with `clip` enabled. 
  
 <video controls preload="none" loop poster="../media/compositor-004-thumb.jpg">
-    <source src="../media/compositor-004.mp4" type="video/mp4"></source>
+    <source src="../media/compositor-004.mp4" type="video/mp4">
 </video>
  
  
@@ -295,7 +295,7 @@ the text is readable. You can use a drop shadow _post_ effect to draw
 the text with a bit of a shadow that sets the text apart from the image.   
  
 <video controls preload="none" loop poster="../media/compositor-005-thumb.jpg">
-    <source src="../media/compositor-005.mp4" type="video/mp4"></source>
+    <source src="../media/compositor-005.mp4" type="video/mp4">
 </video>
  
  
@@ -356,7 +356,7 @@ we create a text layer that uses 3 post effects:
 two distortion effects followed by a blur filter.   
  
 <video controls preload="none" loop poster="../media/compositor-006-thumb.jpg">
-    <source src="../media/compositor-006.mp4" type="video/mp4"></source>
+    <source src="../media/compositor-006.mp4" type="video/mp4">
 </video>
  
  

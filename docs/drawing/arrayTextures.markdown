@@ -4,7 +4,7 @@
 layout: default
 title: Array textures
 parent: Drawing
-last_modified_at: 2024.01.16 18:11:44 +0100
+last_modified_at: 2024.04.04 18:44:14 +0200
 nav_order: 370
 has_children: false
 ---
@@ -165,7 +165,7 @@ Here we use a single array texture and a list of render targets, all using
 different layers of the same array texture. 
  
 <video controls preload="none" loop poster="../media/array-texture-001-thumb.jpg">
-    <source src="../media/array-texture-001.mp4" type="video/mp4"></source>
+    <source src="../media/array-texture-001.mp4" type="video/mp4">
 </video>
  
  

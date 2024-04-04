@@ -4,7 +4,7 @@
 layout: default
 title: Set up your first program
 parent: What is OPENRNDR?
-last_modified_at: 2023.12.12 16:00:23 +0100
+last_modified_at: 2024.04.04 18:44:14 +0200
 nav_order: 20
 has_children: false
 ---
@@ -78,6 +78,16 @@ To clear this warning (and enable debugging):
 - Open the `Run > Edit Configurations...` menu.
 - Add `-XstartOnFirstThread` in the `VM Options` [text field](https://stackoverflow.com/a/44184837).
 - Click `Ok` to close the dialog.
+
+## Tip for Windows multi-GPU users
+
+If your computer has multiple GPUs, you can choose which one OPENRNDR uses like this:
+
+- Run openrndr-template and note down the `java.exe` path being used. 
+  If you are using Idea it should be displayed at the bottom panel. 
+- Open the Windows Graphics Settings.
+- Click Browse and choose the same `java.exe` you noted down earlier.
+- Click Options, choose your preferred GPU then click Save.
 
 ## What's next?
 

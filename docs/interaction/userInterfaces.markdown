@@ -4,7 +4,7 @@
 layout: default
 title: User Interfaces
 parent: Interaction
-last_modified_at: 2024.01.16 18:11:44 +0100
+last_modified_at: 2024.04.04 18:44:14 +0200
 nav_order: 140
 has_children: false
 ---
@@ -176,8 +176,8 @@ A horizontal labelled slider control.
 
  * `label : String` - the slider label
  * `precision : Int` - the number of digits behind the point, set to 0 for an integer slider
+ * `range: Range` - the slider range, default is `Range(0.0, 10.0)`
  * `value : Double` - the slider value
- * `range: Range` - the slider range, default is `Range(0.0, 1.0)`
 
 ##### Events
 
@@ -192,8 +192,8 @@ fun main() = application {
             layout {
                 slider {
                     label = "Slide me"
-                    value = 0.50
                     range = Range(0.0, 1.0)
+                    value = 0.50
                     precision = 2
                     events.valueChanged.listen {
                         println("the new value is ${it.newValue}")
@@ -207,6 +207,9 @@ fun main() = application {
  
 [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/40_Interaction/C140_UserInterfaces003.kt) 
  
+Since the `value` is clamped to the current `range`, it is better to
+set the `range` before the `value` to avoid unexpected results.
+
 ### ColorPickerButton
 
 A button like control that slides out a HSV color picker when clicked

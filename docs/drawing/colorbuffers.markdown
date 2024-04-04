@@ -4,7 +4,7 @@
 layout: default
 title: Color buffers
 parent: Drawing
-last_modified_at: 2024.03.03 09:13:22 +0100
+last_modified_at: 2024.04.04 18:44:14 +0200
 nav_order: 300
 has_children: false
 ---

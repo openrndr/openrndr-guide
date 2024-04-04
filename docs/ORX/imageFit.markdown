@@ -4,7 +4,7 @@
 layout: default
 title: Image fit
 parent: ORX
-last_modified_at: 2024.01.16 18:11:44 +0100
+last_modified_at: 2024.04.04 18:44:14 +0200
 nav_order: 200
 has_children: false
 ---
@@ -26,7 +26,7 @@ set in `build.gradle.kts` and reimport the gradle project.
 ## Contain mode 
  
 <video controls preload="none" loop poster="../media/image-fit-001-thumb.jpg">
-    <source src="../media/image-fit-001.mp4" type="video/mp4"></source>
+    <source src="../media/image-fit-001.mp4" type="video/mp4">
 </video>
  
  
@@ -51,7 +51,7 @@ fun main() = application {
 Additionally the placement of the image in the rectangle can be adjusted 
  
 <video controls preload="none" loop poster="../media/image-fit-002-thumb.jpg">
-    <source src="../media/image-fit-002.mp4" type="video/mp4"></source>
+    <source src="../media/image-fit-002.mp4" type="video/mp4">
 </video>
  
  
@@ -76,7 +76,7 @@ fun main() = application {
 ## Cover mode 
  
 <video controls preload="none" loop poster="../media/image-fit-101-thumb.jpg">
-    <source src="../media/image-fit-101.mp4" type="video/mp4"></source>
+    <source src="../media/image-fit-101.mp4" type="video/mp4">
 </video>
  
  
@@ -103,7 +103,7 @@ fun main() = application {
 [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/80_ORX/C200_Image_fit002.kt) 
  
 <video controls preload="none" loop poster="../media/image-fit-102-thumb.jpg">
-    <source src="../media/image-fit-102.mp4" type="video/mp4"></source>
+    <source src="../media/image-fit-102.mp4" type="video/mp4">
 </video>
  
  

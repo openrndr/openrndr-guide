@@ -4,7 +4,7 @@
 layout: default
 title: Filters and post processing
 parent: Drawing
-last_modified_at: 2024.01.16 18:11:44 +0100
+last_modified_at: 2024.04.04 18:44:14 +0200
 nav_order: 310
 has_children: false
 ---
@@ -19,7 +19,7 @@ to the off-screen buffers.
 To demonstrate the ease of using filters we show an example of applying a blur filter to a drawing on a render target. 
  
 <video controls preload="none" loop poster="../media/filters-001-thumb.jpg">
-    <source src="../media/filters-001.mp4" type="video/mp4"></source>
+    <source src="../media/filters-001.mp4" type="video/mp4">
 </video>
  
  

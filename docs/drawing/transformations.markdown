@@ -4,7 +4,7 @@
 layout: default
 title: Transformations
 parent: Drawing
-last_modified_at: 2024.01.16 18:11:44 +0100
+last_modified_at: 2024.04.04 18:44:14 +0200
 nav_order: 200
 has_children: false
 ---
@@ -22,7 +22,7 @@ Translation moves points in space with an offset.
 In the following example we use `Drawer.translate` to move a single rectangle over the screen. 
  
 <video controls preload="none" loop poster="../media/transformations-001-thumb.jpg">
-    <source src="../media/transformations-001.mp4" type="video/mp4"></source>
+    <source src="../media/transformations-001.mp4" type="video/mp4">
 </video>
  
  
@@ -51,7 +51,7 @@ on top of each-other. For example we can express a horizontal and a vertical
 motion as two separate translations 
  
 <video controls preload="none" loop poster="../media/transformations-002-thumb.jpg">
-    <source src="../media/transformations-002.mp4" type="video/mp4"></source>
+    <source src="../media/transformations-002.mp4" type="video/mp4">
 </video>
  
  
@@ -91,7 +91,7 @@ of the screen. Here we notice something that may be counter-intuitive at first: 
 from bottom to top: first `rotate` is applied and only then `translate`. 
  
 <video controls preload="none" loop poster="../media/transformations-003-thumb.jpg">
-    <source src="../media/transformations-003.mp4" type="video/mp4"></source>
+    <source src="../media/transformations-003.mp4" type="video/mp4">
 </video>
  
  
@@ -126,7 +126,7 @@ Also scaling is applied around the origin of
 the coordinate system: (0, 0). 
  
 <video controls preload="none" loop poster="../media/transformations-004-thumb.jpg">
-    <source src="../media/transformations-004.mp4" type="video/mp4"></source>
+    <source src="../media/transformations-004.mp4" type="video/mp4">
 </video>
  
  
@@ -157,7 +157,7 @@ fun main() = application {
 ### Combining transformations 
  
 <video controls preload="none" loop poster="../media/transformations-005-thumb.jpg">
-    <source src="../media/transformations-005.mp4" type="video/mp4"></source>
+    <source src="../media/transformations-005.mp4" type="video/mp4">
 </video>
  
  
@@ -190,7 +190,7 @@ fun main() = application {
 [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/30_Drawing/C200_Transformations004.kt) 
  
 <video controls preload="none" loop poster="../media/transformations-006-thumb.jpg">
-    <source src="../media/transformations-006.mp4" type="video/mp4"></source>
+    <source src="../media/transformations-006.mp4" type="video/mp4">
 </video>
  
  

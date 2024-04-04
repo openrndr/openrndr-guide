@@ -4,7 +4,7 @@
 layout: default
 title: Interactive animations
 parent: Animation
-last_modified_at: 2024.01.16 18:11:44 +0100
+last_modified_at: 2024.04.04 18:44:14 +0200
 nav_order: 100
 has_children: false
 ---
@@ -13,16 +13,16 @@ has_children: false
 
 ## Animatable
 
-Anything that should be animated inherits the 
+The OPENRNDR
 [`Animatable`](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-animatable/src/commonMain/kotlin/org/openrndr/animatable/Animatable.kt#L35) 
-class. The Animatable class provides animation logic.
+class provides animation logic.
 
 Displayed below is a very simple animation setup in which we animate a 
 circle from left to right. We do this by
 animating the `x` property of our animation object. 
  
 <video controls preload="none" loop poster="../media/animations-001-thumb.jpg">
-    <source src="../media/animations-001.mp4" type="video/mp4"></source>
+    <source src="../media/animations-001.mp4" type="video/mp4">
 </video>
  
  
@@ -54,7 +54,7 @@ fun main() = application {
 By using `.complete()` we can create sequences of property animations. 
  
 <video controls preload="none" loop poster="../media/animations-002-thumb.jpg">
-    <source src="../media/animations-002.mp4" type="video/mp4"></source>
+    <source src="../media/animations-002.mp4" type="video/mp4">
 </video>
  
  
@@ -88,7 +88,7 @@ If we leave out that `::x.complete()` line we will see that
 animations for `x` and `y` run simultaneously.  
  
 <video controls preload="none" loop poster="../media/animations-003-thumb.jpg">
-    <source src="../media/animations-003.mp4" type="video/mp4"></source>
+    <source src="../media/animations-003.mp4" type="video/mp4">
 </video>
  
  
@@ -129,7 +129,7 @@ To demonstrate we take one of the previously shown animations and add easings.
 Available [Easings](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-animatable/src/commonMain/kotlin/org/openrndr/animatable/easing/Easer.kt#L10)  
  
 <video controls preload="none" loop poster="../media/animations-101-thumb.jpg">
-    <source src="../media/animations-101.mp4" type="video/mp4"></source>
+    <source src="../media/animations-101.mp4" type="video/mp4">
 </video>
  
  
@@ -161,7 +161,7 @@ fun main() = application {
 ## Behavioral animation 
  
 <video controls preload="none" loop poster="../media/animations-301-thumb.jpg">
-    <source src="../media/animations-301.mp4" type="video/mp4"></source>
+    <source src="../media/animations-301.mp4" type="video/mp4">
 </video>
  
  
@@ -227,7 +227,7 @@ While `Animatable` doesn't provide explicit support for looping animations.
 They can be achieved through the following pattern: 
  
 <video controls preload="none" loop poster="../media/animations-401-thumb.jpg">
-    <source src="../media/animations-401.mp4" type="video/mp4"></source>
+    <source src="../media/animations-401.mp4" type="video/mp4">
 </video>
  
  

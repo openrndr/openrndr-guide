@@ -4,7 +4,7 @@
 layout: default
 title: Curves and shapes
 parent: Drawing
-last_modified_at: 2024.03.03 09:13:22 +0100
+last_modified_at: 2024.04.04 18:44:14 +0200
 nav_order: 150
 has_children: false
 ---
@@ -273,7 +273,7 @@ val points = contour.equidistantPositions(20)
 An example of using `.position()` and `.equidistantPositions()`: 
  
 <video controls preload="none" loop poster="../media/shapes-006-thumb.jpg">
-    <source src="../media/shapes-006.mp4" type="video/mp4"></source>
+    <source src="../media/shapes-006.mp4" type="video/mp4">
 </video>
  
  
@@ -317,7 +317,7 @@ traveling on a contour at the desired speed even if the
 contour segments vary greatly in length. 
  
 <video controls preload="none" loop poster="../media/shapes-contour-rectified-001-thumb.jpg">
-    <source src="../media/shapes-contour-rectified-001.mp4" type="video/mp4"></source>
+    <source src="../media/shapes-contour-rectified-001.mp4" type="video/mp4">
 </video>
  
  
@@ -358,7 +358,7 @@ fun main() = application {
 A contour can be cut into a shorter contour using `ShapeContour.sub()`. 
  
 <video controls preload="none" loop poster="../media/shapes-005-thumb.jpg">
-    <source src="../media/shapes-005.mp4" type="video/mp4"></source>
+    <source src="../media/shapes-005.mp4" type="video/mp4">
 </video>
  
  
@@ -392,7 +392,7 @@ The function `ShapeContour.offset` can be used to create an offset version
 of a contour.  
  
 <video controls preload="none" loop poster="../media/shapes-101-thumb.jpg">
-    <source src="../media/shapes-101.mp4" type="video/mp4"></source>
+    <source src="../media/shapes-101.mp4" type="video/mp4">
 </video>
  
  
@@ -422,7 +422,7 @@ The following demonstration shows a single cubic bezier offset at multiple
 distances. 
  
 <video controls preload="none" loop poster="../media/shapes-100-thumb.jpg">
-    <source src="../media/shapes-100.mp4" type="video/mp4"></source>
+    <source src="../media/shapes-100.mp4" type="video/mp4">
 </video>
  
  
@@ -599,7 +599,7 @@ Extension methods are provided to find intersections between
 `Shape`, `ShapeContour` and `Segment` instances.     
  
 <video controls preload="none" loop poster="../media/shapes-intersections-001-thumb.jpg">
-    <source src="../media/shapes-intersections-001.mp4" type="video/mp4"></source>
+    <source src="../media/shapes-intersections-001.mp4" type="video/mp4">
 </video>
  
  

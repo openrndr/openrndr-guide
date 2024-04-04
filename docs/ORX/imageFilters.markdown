@@ -4,7 +4,7 @@
 layout: default
 title: Image post-processing with filters
 parent: ORX
-last_modified_at: 2024.01.16 18:11:44 +0100
+last_modified_at: 2024.04.04 18:44:14 +0200
 nav_order: 160
 has_children: false
 ---
@@ -37,7 +37,7 @@ complete overview of what orx-fx offers.
 #### BoxBlur 
  
 <video controls preload="none" loop poster="../media/filters-001-thumb.jpg">
-    <source src="../media/filters-001.mp4" type="video/mp4"></source>
+    <source src="../media/filters-001.mp4" type="video/mp4">
 </video>
  
  
@@ -72,7 +72,7 @@ fun main() = application {
 #### ApproximateGaussianBlur 
  
 <video controls preload="none" loop poster="../media/filters-002-thumb.jpg">
-    <source src="../media/filters-002.mp4" type="video/mp4"></source>
+    <source src="../media/filters-002.mp4" type="video/mp4">
 </video>
  
  
@@ -97,7 +97,7 @@ fun main() = application {
 #### GaussianBloom 
  
 <video controls preload="none" loop poster="../media/filters-003-thumb.jpg">
-    <source src="../media/filters-003.mp4" type="video/mp4"></source>
+    <source src="../media/filters-003.mp4" type="video/mp4">
 </video>
  
  
@@ -123,7 +123,7 @@ fun main() = application {
 #### HashBlur 
  
 <video controls preload="none" loop poster="../media/filters-004-thumb.jpg">
-    <source src="../media/filters-004.mp4" type="video/mp4"></source>
+    <source src="../media/filters-004.mp4" type="video/mp4">
 </video>
  
  
@@ -148,7 +148,7 @@ fun main() = application {
 #### FrameBlur 
  
 <video controls preload="none" loop poster="../media/filters-005-thumb.jpg">
-    <source src="../media/filters-005.mp4" type="video/mp4"></source>
+    <source src="../media/filters-005.mp4" type="video/mp4">
 </video>
  
  
@@ -181,7 +181,7 @@ fun main() = application {
 #### ZoomBlur 
  
 <video controls preload="none" loop poster="../media/filters-006-thumb.jpg">
-    <source src="../media/filters-006.mp4" type="video/mp4"></source>
+    <source src="../media/filters-006.mp4" type="video/mp4">
 </video>
  
  
@@ -209,7 +209,7 @@ fun main() = application {
 #### ChromaticAberration 
  
 <video controls preload="none" loop poster="../media/filters-100-thumb.jpg">
-    <source src="../media/filters-100.mp4" type="video/mp4"></source>
+    <source src="../media/filters-100.mp4" type="video/mp4">
 </video>
  
  
@@ -234,7 +234,7 @@ fun main() = application {
 #### ColorCorrection 
  
 <video controls preload="none" loop poster="../media/filters-101-thumb.jpg">
-    <source src="../media/filters-101.mp4" type="video/mp4"></source>
+    <source src="../media/filters-101.mp4" type="video/mp4">
 </video>
  
  
@@ -261,7 +261,7 @@ fun main() = application {
 #### Sepia 
  
 <video controls preload="none" loop poster="../media/filters-102-thumb.jpg">
-    <source src="../media/filters-102.mp4" type="video/mp4"></source>
+    <source src="../media/filters-102.mp4" type="video/mp4">
 </video>
  
  
@@ -286,7 +286,7 @@ fun main() = application {
 #### LumaOpacity 
  
 <video controls preload="none" loop poster="../media/filters-103-thumb.jpg">
-    <source src="../media/filters-103.mp4" type="video/mp4"></source>
+    <source src="../media/filters-103.mp4" type="video/mp4">
 </video>
  
  
@@ -319,7 +319,7 @@ fun main() = application {
 #### LumaSobel 
  
 <video controls preload="none" loop poster="../media/filters-200-thumb.jpg">
-    <source src="../media/filters-200.mp4" type="video/mp4"></source>
+    <source src="../media/filters-200.mp4" type="video/mp4">
 </video>
  
  
@@ -345,7 +345,7 @@ fun main() = application {
 #### Contour 
  
 <video controls preload="none" loop poster="../media/filters-201-thumb.jpg">
-    <source src="../media/filters-201.mp4" type="video/mp4"></source>
+    <source src="../media/filters-201.mp4" type="video/mp4">
 </video>
  
  
@@ -373,7 +373,7 @@ fun main() = application {
 #### EdgesWork 
  
 <video controls preload="none" loop poster="../media/filters-202-thumb.jpg">
-    <source src="../media/filters-202.mp4" type="video/mp4"></source>
+    <source src="../media/filters-202.mp4" type="video/mp4">
 </video>
  
  
@@ -400,7 +400,7 @@ fun main() = application {
 #### BlockRepeat 
  
 <video controls preload="none" loop poster="../media/filters-300-thumb.jpg">
-    <source src="../media/filters-300.mp4" type="video/mp4"></source>
+    <source src="../media/filters-300.mp4" type="video/mp4">
 </video>
  
  
@@ -428,7 +428,7 @@ fun main() = application {
 #### StackRepeat 
  
 <video controls preload="none" loop poster="../media/filters-301-thumb.jpg">
-    <source src="../media/filters-301.mp4" type="video/mp4"></source>
+    <source src="../media/filters-301.mp4" type="video/mp4">
 </video>
  
  
@@ -455,7 +455,7 @@ fun main() = application {
 #### HorizontalWave 
  
 <video controls preload="none" loop poster="../media/filters-302-thumb.jpg">
-    <source src="../media/filters-302.mp4" type="video/mp4"></source>
+    <source src="../media/filters-302.mp4" type="video/mp4">
 </video>
  
  
@@ -485,7 +485,7 @@ fun main() = application {
 #### VerticalWave 
  
 <video controls preload="none" loop poster="../media/filters-303-thumb.jpg">
-    <source src="../media/filters-303.mp4" type="video/mp4"></source>
+    <source src="../media/filters-303.mp4" type="video/mp4">
 </video>
  
  
@@ -515,7 +515,7 @@ fun main() = application {
 #### Perturb 
  
 <video controls preload="none" loop poster="../media/filters-304-thumb.jpg">
-    <source src="../media/filters-304.mp4" type="video/mp4"></source>
+    <source src="../media/filters-304.mp4" type="video/mp4">
 </video>
  
  
@@ -543,7 +543,7 @@ fun main() = application {
 #### Tiles 
  
 <video controls preload="none" loop poster="../media/filters-305-thumb.jpg">
-    <source src="../media/filters-305.mp4" type="video/mp4"></source>
+    <source src="../media/filters-305.mp4" type="video/mp4">
 </video>
  
  
@@ -570,7 +570,7 @@ fun main() = application {
 #### Fisheye 
  
 <video controls preload="none" loop poster="../media/filters-306-thumb.jpg">
-    <source src="../media/filters-306.mp4" type="video/mp4"></source>
+    <source src="../media/filters-306.mp4" type="video/mp4">
 </video>
  
  
@@ -596,7 +596,7 @@ fun main() = application {
 #### DisplaceBlend 
  
 <video controls preload="none" loop poster="../media/filters-307-thumb.jpg">
-    <source src="../media/filters-307.mp4" type="video/mp4"></source>
+    <source src="../media/filters-307.mp4" type="video/mp4">
 </video>
  
  
@@ -637,7 +637,7 @@ fun main() = application {
 #### StretchWaves 
  
 <video controls preload="none" loop poster="../media/filters-308-thumb.jpg">
-    <source src="../media/filters-308.mp4" type="video/mp4"></source>
+    <source src="../media/filters-308.mp4" type="video/mp4">
 </video>
  
  
@@ -671,7 +671,7 @@ fun main() = application {
 #### PerspectivePlane 
  
 <video controls preload="none" loop poster="../media/filters-309-thumb.jpg">
-    <source src="../media/filters-309.mp4" type="video/mp4"></source>
+    <source src="../media/filters-309.mp4" type="video/mp4">
 </video>
  
  
@@ -708,7 +708,7 @@ fun main() = application {
 #### ADither 
  
 <video controls preload="none" loop poster="../media/filters-400-thumb.jpg">
-    <source src="../media/filters-400.mp4" type="video/mp4"></source>
+    <source src="../media/filters-400.mp4" type="video/mp4">
 </video>
  
  
@@ -734,7 +734,7 @@ fun main() = application {
 #### CMYKHalftone 
  
 <video controls preload="none" loop poster="../media/filters-401-thumb.jpg">
-    <source src="../media/filters-401.mp4" type="video/mp4"></source>
+    <source src="../media/filters-401.mp4" type="video/mp4">
 </video>
  
  
@@ -763,7 +763,7 @@ fun main() = application {
 #### Crosshatch 
  
 <video controls preload="none" loop poster="../media/filters-402-thumb.jpg">
-    <source src="../media/filters-402.mp4" type="video/mp4"></source>
+    <source src="../media/filters-402.mp4" type="video/mp4">
 </video>
  
  
@@ -797,7 +797,7 @@ fun main() = application {
 #### DropShadow 
  
 <video controls preload="none" loop poster="../media/filters-500-thumb.jpg">
-    <source src="../media/filters-500.mp4" type="video/mp4"></source>
+    <source src="../media/filters-500.mp4" type="video/mp4">
 </video>
  
  
@@ -838,7 +838,7 @@ fun main() = application {
 `Checkers` is a simple checker generator filter. 
  
 <video controls preload="none" loop poster="../media/filters-600-thumb.jpg">
-    <source src="../media/filters-600.mp4" type="video/mp4"></source>
+    <source src="../media/filters-600.mp4" type="video/mp4">
 </video>
  
  

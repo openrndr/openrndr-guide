@@ -4,7 +4,7 @@
 layout: default
 title: Distance fields
 parent: ORX
-last_modified_at: 2024.01.16 18:11:44 +0100
+last_modified_at: 2024.04.04 18:44:14 +0200
 nav_order: 220
 has_children: false
 ---
@@ -21,7 +21,7 @@ set in `build.gradle.kts` and reimport the gradle project.
 ## Distance field visualization 
  
 <video controls preload="none" loop poster="../media/distance-fields-001-thumb.jpg">
-    <source src="../media/distance-fields-001.mp4" type="video/mp4"></source>
+    <source src="../media/distance-fields-001.mp4" type="video/mp4">
 </video>
  
  
@@ -58,7 +58,7 @@ fun main() = application {
 orx-jumpflood comes with a filter that creates Photoshop-style outer glow effect. 
  
 <video controls preload="none" loop poster="../media/distance-fields-101-thumb.jpg">
-    <source src="../media/distance-fields-101.mp4" type="video/mp4"></source>
+    <source src="../media/distance-fields-101.mp4" type="video/mp4">
 </video>
  
  
@@ -91,7 +91,7 @@ Similar to the outer glow effect, but the glow is placed in the inside
 of the shape. 
  
 <video controls preload="none" loop poster="../media/distance-fields-102-thumb.jpg">
-    <source src="../media/distance-fields-102.mp4" type="video/mp4"></source>
+    <source src="../media/distance-fields-102.mp4" type="video/mp4">
 </video>
  
  
@@ -121,7 +121,7 @@ fun main() = application {
 ## Sampling distance 
  
 <video controls preload="none" loop poster="../media/distance-fields-002-thumb.jpg">
-    <source src="../media/distance-fields-002.mp4" type="video/mp4"></source>
+    <source src="../media/distance-fields-002.mp4" type="video/mp4">
 </video>
  
  

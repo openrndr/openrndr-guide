@@ -4,7 +4,7 @@
 layout: default
 title: Clipping
 parent: Drawing
-last_modified_at: 2024.01.16 18:11:44 +0100
+last_modified_at: 2024.04.04 18:44:14 +0200
 nav_order: 320
 has_children: false
 ---
@@ -14,7 +14,7 @@ has_children: false
 OPENRNDR's drawer supports a single rectangular clip mask. 
  
 <video controls preload="none" loop poster="../media/clipping-001-thumb.jpg">
-    <source src="../media/clipping-001.mp4" type="video/mp4"></source>
+    <source src="../media/clipping-001.mp4" type="video/mp4">
 </video>
  
  

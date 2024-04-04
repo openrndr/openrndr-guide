@@ -4,7 +4,7 @@
 layout: default
 title: Quick UIs
 parent: ORX
-last_modified_at: 2024.01.16 18:11:44 +0100
+last_modified_at: 2024.04.04 18:44:14 +0200
 nav_order: 180
 has_children: false
 ---
@@ -103,7 +103,7 @@ fun main() = application {
 [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/80_ORX/C180_Quick_UIs001.kt) 
  
 <video controls preload="none" loop poster="../media/quick-ui-003-thumb.jpg">
-    <source src="../media/quick-ui-003.mp4" type="video/mp4"></source>
+    <source src="../media/quick-ui-003.mp4" type="video/mp4">
 </video>
  
  
@@ -162,7 +162,7 @@ fun main() = application {
 [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/80_ORX/C180_Quick_UIs002.kt) 
  
 <video controls preload="none" loop poster="../media/quick-ui-004-thumb.jpg">
-    <source src="../media/quick-ui-004.mp4" type="video/mp4"></source>
+    <source src="../media/quick-ui-004.mp4" type="video/mp4">
 </video>
  
  
@@ -238,7 +238,7 @@ fun main() = application {
 [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/80_ORX/C180_Quick_UIs003.kt) 
  
 <video controls preload="none" loop poster="../media/quick-ui-005-thumb.jpg">
-    <source src="../media/quick-ui-005.mp4" type="video/mp4"></source>
+    <source src="../media/quick-ui-005.mp4" type="video/mp4">
 </video>
  
  

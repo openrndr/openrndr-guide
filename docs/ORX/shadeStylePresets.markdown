@@ -4,7 +4,7 @@
 layout: default
 title: Shade style presets
 parent: ORX
-last_modified_at: 2024.01.16 18:11:44 +0100
+last_modified_at: 2024.04.04 18:44:14 +0200
 nav_order: 190
 has_children: false
 ---
@@ -24,7 +24,7 @@ set in `build.gradle.kts` and reimport the gradle project.
 ## linearGradient 
  
 <video controls preload="none" loop poster="../media/shade-style-presets-001-thumb.jpg">
-    <source src="../media/shade-style-presets-001.mp4" type="video/mp4"></source>
+    <source src="../media/shade-style-presets-001.mp4" type="video/mp4">
 </video>
  
  
@@ -51,7 +51,7 @@ fun main() = application {
 ## radialGradient 
  
 <video controls preload="none" loop poster="../media/shade-style-presets-002-thumb.jpg">
-    <source src="../media/shade-style-presets-002.mp4" type="video/mp4"></source>
+    <source src="../media/shade-style-presets-002.mp4" type="video/mp4">
 </video>
  
  
@@ -78,7 +78,7 @@ fun main() = application {
 ## angularGradient 
  
 <video controls preload="none" loop poster="../media/shade-style-presets-003-thumb.jpg">
-    <source src="../media/shade-style-presets-003.mp4" type="video/mp4"></source>
+    <source src="../media/shade-style-presets-003.mp4" type="video/mp4">
 </video>
  
  
@@ -105,7 +105,7 @@ fun main() = application {
 ## halfAngularGradient 
  
 <video controls preload="none" loop poster="../media/shade-style-presets-004-thumb.jpg">
-    <source src="../media/shade-style-presets-004.mp4" type="video/mp4"></source>
+    <source src="../media/shade-style-presets-004.mp4" type="video/mp4">
 </video>
  
  

@@ -4,7 +4,7 @@
 layout: default
 title: Poisson fills
 parent: ORX
-last_modified_at: 2024.01.16 18:11:44 +0100
+last_modified_at: 2024.04.04 18:44:14 +0200
 nav_order: 210
 has_children: false
 ---
@@ -27,7 +27,7 @@ an image. In the following example we use `orx-compose` to simplify the
 code a bit. The same results can be achieved using render targets. 
  
 <video controls preload="none" loop poster="../media/poisson-fills-001-thumb.jpg">
-    <source src="../media/poisson-fills-001.mp4" type="video/mp4"></source>
+    <source src="../media/poisson-fills-001.mp4" type="video/mp4">
 </video>
  
  
@@ -73,7 +73,7 @@ fun main() = application {
 [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/80_ORX/C210_Poisson_fills000.kt) 
  
 <video controls preload="none" loop poster="../media/poisson-fills-002-thumb.jpg">
-    <source src="../media/poisson-fills-002.mp4" type="video/mp4"></source>
+    <source src="../media/poisson-fills-002.mp4" type="video/mp4">
 </video>
  
  
@@ -101,7 +101,7 @@ fun main() = application {
 # Blending 
  
 <video controls preload="none" loop poster="../media/poisson-fills-101-thumb.jpg">
-    <source src="../media/poisson-fills-101.mp4" type="video/mp4"></source>
+    <source src="../media/poisson-fills-101.mp4" type="video/mp4">
 </video>
  
  
@@ -134,7 +134,7 @@ fun main() = application {
 [Link to the full example](https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin/examples/80_ORX/C210_Poisson_fills002.kt) 
  
 <video controls preload="none" loop poster="../media/poisson-fills-102-thumb.jpg">
-    <source src="../media/poisson-fills-102.mp4" type="video/mp4"></source>
+    <source src="../media/poisson-fills-102.mp4" type="video/mp4">
 </video>
  
  

@@ -4,7 +4,7 @@
 layout: default
 title: Text
 parent: Drawing
-last_modified_at: 2024.03.03 09:13:22 +0100
+last_modified_at: 2024.04.04 18:44:14 +0200
 nav_order: 155
 has_children: false
 ---
@@ -123,7 +123,7 @@ Text tracking -the horizontal space between characters- and leading -the vertica
 set using `Writer.style.leading` and `Writer.style.tracking`. 
  
 <video controls preload="none" loop poster="../media/text-004-thumb.jpg">
-    <source src="../media/text-004.mp4" type="video/mp4"></source>
+    <source src="../media/text-004.mp4" type="video/mp4">
 </video>
  
  
