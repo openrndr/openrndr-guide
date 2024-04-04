@@ -19,12 +19,7 @@ fun main() {
 
     @Text
     """
-    # Writing to video files
-
-    The `ffmpeg` command-line program is used for video output.
-    
-    If `ffmpeg` is not installed in your system OPENRNDR
-    will attempt to use an embedded version of the program.
+    # Writing video files
     """
 
     @Text
@@ -52,6 +47,10 @@ fun main() {
 
     @Text
     """
+    Note: the `ffmpeg` command-line program is used for video output.
+    If `ffmpeg` is not found in your system OPENRNDR
+    will attempt to use an embedded version of it.
+        
     ### Toggle the `ScreenRecorder` on and off
     
     By default the screen recorder extension adds video frames as long as the
