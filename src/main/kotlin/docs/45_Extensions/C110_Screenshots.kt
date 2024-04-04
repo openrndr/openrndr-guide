@@ -14,11 +14,12 @@ fun main() {
 
     @Text
     """
-    ## The `ScreenShots` extension
+    ## The `Screenshots` extension
 
-    foo bar
+    The Screenshots extension saves the current window as an image file under the `screenshots` folder in your project.
+    The default key that triggers saving the image is the space bar key. 
 
-    To setup the screenshots do the following:
+    To setup the screenshots we only need to add one line to our program:
     """
 
     @Code
@@ -30,4 +31,29 @@ fun main() {
             }
         }
     }
+
+    @Text
+    """
+    The extension provides many configurable options. This example demonstrates how to adjust some of them:
+    """
+
+    @Code
+    application {
+        program {
+            extend(Screenshots()) {
+                key = "s"
+                folder = "work-in-progress"
+                async = false
+            }
+            extend {
+                // -- draw here
+            }
+        }
+    }
+
+    @Text
+    """
+    To discover other configurable options you can use the autocomplete feature (ctrl+space by default) in 
+    IntelliJ Idea or explore [its source code](https://github.com/openrndr/openrndr/blob/master/openrndr-extensions/src/jvmMain/kotlin/org/openrndr/extensions/Screenshots.kt).
+    """
 }
