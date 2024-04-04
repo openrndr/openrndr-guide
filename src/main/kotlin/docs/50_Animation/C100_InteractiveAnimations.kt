@@ -23,9 +23,9 @@ fun main() {
 
     ## Animatable
 
-    Anything that should be animated inherits the 
+    The OPENRNDR
     [`Animatable`](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-animatable/src/commonMain/kotlin/org/openrndr/animatable/Animatable.kt#L35) 
-    class. The Animatable class provides animation logic.
+    class provides animation logic.
 
     Displayed below is a very simple animation setup in which we animate a 
     circle from left to right. We do this by

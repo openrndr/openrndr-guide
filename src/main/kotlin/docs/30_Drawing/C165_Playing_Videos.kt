@@ -1,10 +1,10 @@
 @file:Suppress("UNUSED_EXPRESSION")
-@file:Title("Playing videos")
-@file:ParentTitle("Videos")
-@file:Order("100")
-@file:URL("videos/playingVideos")
+@file:Title("Video")
+@file:ParentTitle("Drawing")
+@file:Order("165")
+@file:URL("drawing/video")
 
-package docs.`09_Videos`
+package docs.`30_Drawing`
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
