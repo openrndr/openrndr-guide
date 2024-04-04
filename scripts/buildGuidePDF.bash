@@ -1,7 +1,7 @@
 #!/bin/bash
 
 mkdir -p /tmp/manual
-cd /tmp/manual
+cd /tmp/manual || exit
 
 # curl downloads the index page of the website
 # grep extracts the <nav> ... </nav> section
