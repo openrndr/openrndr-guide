@@ -20,7 +20,7 @@ fun main() {
     This extension allows the user to easily pan, rotate and scale
     the view using a mouse.
     
-    * For panning click and drag with the left mouse button.
+    * For panning, click and drag with the left mouse button.
     * For scaling, use the mouse wheel.
     * For rotating, click and drag with the right mouse button.
     
