@@ -328,52 +328,6 @@ fun main() {
     _Multiply blend_, _Blue layer_, and an _Approximate gaussian blur_ compartment. 
     This creates composites that are easy to tweak.
     
-    ## Live-coding workflow
-    
-    `orx-gui` is built with the `orx-olive` environment in mind. 
-    Its use is similar to the workflows described prior, however, in live 
-    mode the ui comes with some extra features to make live-coding more fun.
-    Compartments can be added and removed from the .kts script. The best 
-    part is that `orx-gui` can retain parameter settings between script 
-    changes by default, so nothing jumps around. 
-
-    In the case of using `orx-gui` from an olive script (`live.kts`) it looks like this
-    
-    ```kotlin
-    @file:Suppress("UNUSED_LAMBDA_EXPRESSION")
-    import org.openrndr.Program
-    import org.openrndr.color.ColorRGBa
-    import org.openrndr.draw.*
-    import org.openrndr.extra.compositor.compose
-    import org.openrndr.extra.compositor.draw
-    import org.openrndr.extra.compositor.layer
-    import org.openrndr.extra.compositor.post
-    import org.openrndr.extra.gui.GUI
-    import org.openrndr.extra.parameters.*
-    
-    { program: Program ->
-        program.apply {
-            val gui = GUI()
-            val settings = @Description("User settings") object : Reloadable() {
-                @DoubleParameter("x", 0.0, 1000.0)
-                var x = 0.0
-            }
-            val composite = compose {
-                draw {
-                    drawer.clear(ColorRGBa.PINK)
-                    drawer.circle(settings.x, height / 2.0, 100.0)
-                }
-            }
-            extend(gui) {
-                add(settings)
-            }
-            extend() {
-                composite.draw(drawer)
-            }
-        }
-    }    
-    ```    
-
     ## Parameter annotations
     
     We have seen some of the annotations in the workflow descriptions 

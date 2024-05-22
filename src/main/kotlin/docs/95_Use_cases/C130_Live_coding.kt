@@ -6,14 +6,12 @@
 
 package docs.`95_Use_cases`
 
-import org.openrndr.Program
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.persistent
-import org.openrndr.extra.olive.Olive
+import org.openrndr.extra.camera.Camera2D
 import org.openrndr.extra.olive.Once
 import org.openrndr.extra.olive.oliveProgram
-import org.openrndr.extra.camera.Orbital
 import org.openrndr.ffmpeg.VideoPlayerFFMPEG
 
 fun main() {
@@ -30,8 +28,7 @@ fun main() {
     
     Assuming you are working on an 
     [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-    project, all you have to do is enable `orx-olive` in the `orxFeatures`
-    set in `build.gradle.kts` and reimport the gradle project.
+    project, `orx-olive` is enabled by default.
     
     ## Basic example
     """
@@ -42,60 +39,47 @@ fun main() {
             width = 768
             height = 576
         }
-        program {
-            extend(Olive<Program>())
+        oliveProgram {
+            extend {
+                // drawer.fill = ColorRGBa.PINK
+                drawer.rectangle(0.0, 0.0, 100.0, 200.0)
+            }
         }
     }
 
     @Text 
     """
-    When running this script you will see a file called `live.kts` appear 
-    in `src/main/kotlin`. When you edit
-    this file you will see that changes are automatically detected 
-    (after save) and that the program reloads. 
+    Try editing the source code to change the fill color of the rectangle
+    (or any other property) and save your changes. 
+    The new color should appear instantly without having to re-run the 
+    program. 
     
     ## Interaction with extensions
     
-    The Olive extension works well together with other extensions, but only 
-    those which are installed before the Olive extension. In the following 
-    example we see the use of `Orbital` in combination with `Olive`.
+    The Olive extension works well together with other extensions. 
+    In the following example we see the use of `Camera2D` in 
+    combination with `Olive`.
     """
 
     @Code
     application {
-        program {
-            extend(Orbital())
-            extend(Olive<Program>())
-        }
-    }
-
-    @Text """
-    ## Adding script drag/drop support
-    
-    
-    A simple trick to turn your live coding host program into a versatile 
-    live coding environment is to add file drop support. With this enabled 
-    one can drag a .kts file onto the window and drop it to load the script file.
-    """
-
-    @Code
-    application {
-        program {
-            extend(Olive<Program>()) {
-                this@program.window.drop.listen {
-                    this.script = it.files.first()
-                }
+        oliveProgram {
+            extend(Camera2D())
+            extend {
+                drawer.rectangle(0.0, 0.0, 100.0, 200.0)
             }
         }
     }
 
-    @Text """
+    @Text
+    """
     ## Adding persistent state
     
     Sometimes you want to keep parts of your application persistent, that 
     means its state will survive a script reload.
-    In the following example we show how you can prepare the host program 
-    to contain a persistent camera device.
+    
+    This is how we can make the `Camera2D` from the previous example
+    persistent:
     """
 
     @Code
@@ -103,12 +87,34 @@ fun main() {
         oliveProgram {
             val camera by Once {
                 persistent {
+                    Camera2D()
+                }
+            }
+            extend(camera)
+            extend {
+                drawer.rectangle(0.0, 0.0, 100.0, 200.0)
+            }
+        }
+    }
+
+
+    @Text
+    """
+    The same approach can be used to maintain a persistent connection
+    to a webcam:
+    """
+
+    @Code
+    application {
+        oliveProgram {
+            val webcam by Once {
+                persistent {
                     VideoPlayerFFMPEG.fromDevice()
                 }
             }
-            camera.play()
+            webcam.play()
             extend {
-                camera.colorBuffer?.let {
+                webcam.colorBuffer?.let {
                     drawer.image(it,0.0, 0.0, 128.0, 96.0)
                 }
             }
@@ -116,25 +122,54 @@ fun main() {
     }
 
     @Text 
-    """
-    Note that when you create a custom host program you also have to adjust 
-    script files to include the program type. For example `live.kts` would 
-    become like this.
+    """            
+    ## GUI workflow
 
+    `orx-gui` is built with the `orx-olive` environment in mind. 
+    Its use is similar to the workflows described prior, however, in live 
+    mode the ui comes with some extra features to make live-coding more fun.
+    The best part is that `orx-gui` can retain parameter settings between script 
+    changes by default, so nothing jumps around. 
+    
+    Notice the use of `Reloadable()` in the `settings` object.
+    
     ```kotlin
     @file:Suppress("UNUSED_LAMBDA_EXPRESSION")
+    import org.openrndr.Program
     import org.openrndr.color.ColorRGBa
     import org.openrndr.draw.*
+    import org.openrndr.extra.compositor.compose
+    import org.openrndr.extra.compositor.draw
+    import org.openrndr.extra.compositor.layer
+    import org.openrndr.extra.compositor.post
+    import org.openrndr.extra.gui.GUI
+    import org.openrndr.extra.parameters.*
     
-    { program: PersistentProgram ->
-        program.apply {
+    fun main() = application {
+        configure {
+            width = 800
+            height = 800
+        }
+        oliveProgram {
+            val gui = GUI()
+            val settings = @Description("User settings") object : Reloadable() {
+                @DoubleParameter("x", 0.0, 1000.0)
+                var x = 0.0
+            }
+            val composite = compose {
+                draw {
+                    drawer.clear(ColorRGBa.PINK)
+                    drawer.circle(settings.x, height / 2.0, 100.0)
+                }
+            }
+            extend(gui) {
+                add(settings)
+            }
             extend {
-                camera.next()
-                drawer.drawStyle.colorMatrix = tint(ColorRGBa.GREEN) * grayscale(0.0, 0.0, 1.0)
-                camera.draw(drawer)
+                composite.draw(drawer)
             }
         }
-    }         
-    ```         
+    }
+    ```
     """
 }
