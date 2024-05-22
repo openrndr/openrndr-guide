@@ -531,7 +531,7 @@ fun main() {
     ### Rectified ShapeContour
     
     The `ut` argument in the `ShapeContour.position()` and `ShapeContour.normal()` methods
-    [does not specify a linear position](https://api.openrndr.org/openrndr-shape/org.openrndr.shape/-shape-contour/position.html) 
+    [does not specify a linear position](https://api.openrndr.org/openrndr-shape/org.openrndr.shape/-path/position.html) 
     between the start and the end of the contour.
     
     By using rectified contours (defined in `orx-shapes`) we can
@@ -703,7 +703,7 @@ fun main() {
     #### reversed, close(), transform(), ...
     
     For more properties and methods explore the 
-    [API website](https://api.openrndr.org/openrndr-shape/org.openrndr.shape/-path/position.html) 
+    [API website](https://api.openrndr.org/openrndr-shape/org.openrndr.shape/-shape-contour/index.html) 
     or the 
     [source code](https://github.com/openrndr/openrndr/tree/master/openrndr-shape/src/commonMain/kotlin/org/openrndr/shape).    
         
