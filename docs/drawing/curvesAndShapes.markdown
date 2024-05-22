@@ -4,7 +4,7 @@
 layout: default
 title: Curves and shapes
 parent: Drawing
-last_modified_at: 2024.04.04 18:44:14 +0200
+last_modified_at: 2024.05.22 14:20:54 +0200
 nav_order: 150
 has_children: false
 ---
@@ -77,7 +77,7 @@ val points = seg.equidistantPositions(20)
 ``` 
  
 The list of available methods can be found at the 
-[API website](https://api.openrndr.org/openrndr-shape/org.openrndr.shape/-segment/index.html) 
+[API website](https://api.openrndr.org/openrndr-shape/org.openrndr.shape/-segment2-d/index.html) 
 or in the 
 [source code](https://github.com/openrndr/openrndr/tree/master/openrndr-shape/src/commonMain/kotlin/org/openrndr/shape).
 
@@ -452,7 +452,7 @@ fun main() = application {
 #### reversed, close(), transform(), ...
 
 For more properties and methods explore the 
-[API website](https://api.openrndr.org/openrndr-shape/org.openrndr.shape/-shape-contour/index.html) 
+[API website](https://api.openrndr.org/openrndr-shape/org.openrndr.shape/-path/position.html) 
 or the 
 [source code](https://github.com/openrndr/openrndr/tree/master/openrndr-shape/src/commonMain/kotlin/org/openrndr/shape).    
     

@@ -4,7 +4,7 @@
 layout: default
 title: Quick UIs
 parent: ORX
-last_modified_at: 2024.04.04 18:44:14 +0200
+last_modified_at: 2024.05.22 14:14:10 +0200
 nav_order: 180
 has_children: false
 ---
@@ -26,7 +26,7 @@ in [`orx-parameters`](https://github.com/openrndr/orx/tree/master/orx-parameters
 `orx-gui` is incredibly powerful in combination with the live coding environment 
 [`orx-olive`](https://github.com/openrndr/orx/tree/master/orx-jvm/orx-olive), 
 the guide covers that in the 
-[live coding section](https://guide.openrndr.org/ORX/liveCoding.html). 
+[live coding section](https://guide.openrndr.org/useCases/liveCoding.html). 
 That said, it is not a required combination.
 
 ## Prerequisites
