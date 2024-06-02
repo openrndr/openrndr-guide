@@ -4,7 +4,7 @@
 layout: default
 title: Curves and shapes
 parent: Drawing
-last_modified_at: 2024.05.22 14:50:56 +0200
+last_modified_at: 2024.06.02 12:41:53 +0200
 nav_order: 150
 has_children: false
 ---
@@ -77,7 +77,7 @@ val points = seg.equidistantPositions(20)
 ``` 
  
 The list of available methods can be found at the 
-[API website](https://api.openrndr.org/openrndr-shape/org.openrndr.shape/-segment2-d/index.html) 
+[API website](https://api.openrndr.org/openrndr-shape/org.openrndr.shape/-segment/index.html) 
 or in the 
 [source code](https://github.com/openrndr/openrndr/tree/master/openrndr-shape/src/commonMain/kotlin/org/openrndr/shape).
 
@@ -308,7 +308,7 @@ or in the
 ### Rectified ShapeContour
 
 The `ut` argument in the `ShapeContour.position()` and `ShapeContour.normal()` methods
-[does not specify a linear position](https://api.openrndr.org/openrndr-shape/org.openrndr.shape/-path/position.html) 
+[does not specify a linear position](https://api.openrndr.org/openrndr-shape/org.openrndr.shape/-shape-contour/position.html) 
 between the start and the end of the contour.
 
 By using rectified contours (defined in `orx-shapes`) we can

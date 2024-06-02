@@ -4,12 +4,17 @@
 layout: default
 title: ScreenRecorder
 parent: Extensions
-last_modified_at: 2024.04.04 19:26:16 +0200
+last_modified_at: 2024.06.02 12:41:53 +0200
 nav_order: 120
 has_children: false
 ---
  
-# Writing video files 
+# Writing to video files
+
+The `ffmpeg` command-line program is used for video output.
+
+If `ffmpeg` is not installed in your system OPENRNDR
+will attempt to use an embedded version of the program. 
  
 ## The `ScreenRecorder` extension
 
@@ -31,10 +36,6 @@ fun main() = application {
 }
 ``` 
  
-Note: the `ffmpeg` command-line program is used for video output.
-If `ffmpeg` is not found in your system OPENRNDR
-will attempt to use an embedded version of it.
-    
 ### Toggle the `ScreenRecorder` on and off
 
 By default the screen recorder extension adds video frames as long as the

@@ -4,7 +4,7 @@
 layout: default
 title: Set up your first program
 parent: What is OPENRNDR?
-last_modified_at: 2024.05.22 14:24:03 +0200
+last_modified_at: 2024.03.16 13:31:26 +0100
 nav_order: 20
 has_children: false
 ---
@@ -93,7 +93,7 @@ If your computer has multiple GPUs, you can choose which one OPENRNDR uses like 
 
 At this point you are likely interested in how this program is structured. 
 The guide explains more in the 
-[Program basics](https://guide.openrndr.org/programBasics/application.html) chapter.  
+[Program basics](https://guide.openrndr.org/programBasics/applicationProgram.html) chapter.  
 
 If you are more interested in reading source code you can find the code 
 for the examples in this guide in the 

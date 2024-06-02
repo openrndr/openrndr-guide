@@ -4,7 +4,7 @@
 layout: default
 title: Live coding
 parent: Use cases
-last_modified_at: 2024.05.22 16:59:54 +0200
+last_modified_at: 2024.03.16 13:31:26 +0100
 nav_order: 130
 has_children: false
 ---
@@ -21,7 +21,8 @@ and additional documentation for the library can be found in the
 
 Assuming you are working on an 
 [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-project, `orx-olive` is enabled by default.
+project, all you have to do is enable `orx-olive` in the `orxFeatures`
+set in `build.gradle.kts` and reimport the gradle project.
 
 ## Basic example 
  
@@ -31,32 +32,46 @@ fun main() = application {
         width = 768
         height = 576
     }
-    oliveProgram {
-        extend {
-            // drawer.fill = ColorRGBa.PINK
-            drawer.rectangle(0.0, 0.0, 100.0, 200.0)
-        }
+    program {
+        extend(Olive<Program>())
     }
 }
 ``` 
  
-Try editing the source code to change the fill color of the rectangle
-(or any other property) and save your changes. 
-The new color should appear instantly without having to re-run the 
-program. 
+When running this script you will see a file called `live.kts` appear 
+in `src/main/kotlin`. When you edit
+this file you will see that changes are automatically detected 
+(after save) and that the program reloads. 
 
 ## Interaction with extensions
 
-The Olive extension works well together with other extensions. 
-In the following example we see the use of `Camera2D` in 
-combination with `Olive`. 
+The Olive extension works well together with other extensions, but only 
+those which are installed before the Olive extension. In the following 
+example we see the use of `Orbital` in combination with `Olive`. 
  
 ```kotlin
 fun main() = application {
-    oliveProgram {
-        extend(Camera2D())
-        extend {
-            drawer.rectangle(0.0, 0.0, 100.0, 200.0)
+    program {
+        extend(Orbital())
+        extend(Olive<Program>())
+    }
+}
+``` 
+ 
+## Adding script drag/drop support
+
+
+A simple trick to turn your live coding host program into a versatile 
+live coding environment is to add file drop support. With this enabled 
+one can drag a .kts file onto the window and drop it to load the script file. 
+ 
+```kotlin
+fun main() = application {
+    program {
+        extend(Olive<Program>()) {
+            this@program.window.drop.listen {
+                this.script = it.files.first()
+            }
         }
     }
 }
@@ -66,40 +81,20 @@ fun main() = application {
 
 Sometimes you want to keep parts of your application persistent, that 
 means its state will survive a script reload.
-
-This is how we can make the `Camera2D` from the previous example
-persistent: 
+In the following example we show how you can prepare the host program 
+to contain a persistent camera device. 
  
 ```kotlin
 fun main() = application {
     oliveProgram {
         val camera by Once {
             persistent {
-                Camera2D()
-            }
-        }
-        extend(camera)
-        extend {
-            drawer.rectangle(0.0, 0.0, 100.0, 200.0)
-        }
-    }
-}
-``` 
- 
-The same approach can be used to maintain a persistent connection
-to a webcam: 
- 
-```kotlin
-fun main() = application {
-    oliveProgram {
-        val webcam by Once {
-            persistent {
                 VideoPlayerFFMPEG.fromDevice()
             }
         }
-        webcam.play()
+        camera.play()
         extend {
-            webcam.colorBuffer?.let {
+            camera.colorBuffer?.let {
                 drawer.image(it, 0.0, 0.0, 128.0, 96.0)
             }
         }
@@ -107,53 +102,24 @@ fun main() = application {
 }
 ``` 
  
-## GUI workflow
-
-`orx-gui` is built with the `orx-olive` environment in mind. 
-Its use is similar to the workflows described prior, however, in live 
-mode the ui comes with some extra features to make live-coding more fun.
-The best part is that `orx-gui` can retain parameter settings between script 
-changes by default, so nothing jumps around. 
-
-Notice the use of `Reloadable()` in the `settings` object.
+Note that when you create a custom host program you also have to adjust 
+script files to include the program type. For example `live.kts` would 
+become like this.
 
 ```kotlin
 @file:Suppress("UNUSED_LAMBDA_EXPRESSION")
-import org.openrndr.Program
 import org.openrndr.color.ColorRGBa
 import org.openrndr.draw.*
-import org.openrndr.extra.compositor.compose
-import org.openrndr.extra.compositor.draw
-import org.openrndr.extra.compositor.layer
-import org.openrndr.extra.compositor.post
-import org.openrndr.extra.gui.GUI
-import org.openrndr.extra.parameters.*
 
-fun main() = application {
-    configure {
-        width = 800
-        height = 800
-    }
-    oliveProgram {
-        val gui = GUI()
-        val settings = @Description("User settings") object : Reloadable() {
-            @DoubleParameter("x", 0.0, 1000.0)
-            var x = 0.0
-        }
-        val composite = compose {
-            draw {
-                drawer.clear(ColorRGBa.PINK)
-                drawer.circle(settings.x, height / 2.0, 100.0)
-            }
-        }
-        extend(gui) {
-            add(settings)
-        }
+{ program: PersistentProgram ->
+    program.apply {
         extend {
-            composite.draw(drawer)
+            camera.next()
+            drawer.drawStyle.colorMatrix = tint(ColorRGBa.GREEN) * grayscale(0.0, 0.0, 1.0)
+            camera.draw(drawer)
         }
     }
-}
-``` 
+}         
+```          
 
 [edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/95_Use_cases/C130_Live_coding.kt){: .btn .btn-github }

@@ -4,7 +4,7 @@
 layout: default
 title: What is OPENRNDR?
 parent: ~
-last_modified_at: 2024.04.04 18:11:22 +0200
+last_modified_at: 2022.05.26 10:37:28 +0200
 nav_order: 0
 has_children: true
 ---
