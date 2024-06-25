@@ -4,7 +4,7 @@
 layout: default
 title: MIDI controllers
 parent: ORX
-last_modified_at: 2024.06.02 16:41:01 +0200
+last_modified_at: 2024.04.04 18:44:14 +0200
 nav_order: 140
 has_children: false
 ---
@@ -179,57 +179,5 @@ fun main() = application {
     }
 }
 ``` 
- 
-## Using MIDI with a GUI
-
-Implementing a GUI to act as a virtual MIDI controller is
-useful to keep the program in a usable state even when the
-actual hardware is not available.
-The GUI provides the added benefit of visualizing the current MIDI values.
-  
-The following example shows how to use parameters with a traditional `class` instead
-of an `object`. This class tries to connect to the requested device by name, 
-creates two parameters, binds them to MIDI control change messages and 
-updates a GUI based on received MIDI messages. 
-
-The program continues to work even if
-the hardware is not available, allowing to simulate the MIDI controller
-events by adjusting sliders in the GUI. 
- 
-```kotlin
-class MidiDevice(program: Program, deviceName: String, gui: GUI) {
-    private val controller = program.openMidiDeviceOrNull(deviceName)
-    
-    @DoubleParameter("radius", 0.0, 100.0)
-    var radius = 0.0
-    
-    @DoubleParameter("x", -100.0, 100.0)
-    var x = 0.0
-    
-    init {
-        // List the available MIDI devices. Useful to know what the OS detects
-        // and what names the devices are given.
-        listMidiDevices().forEach {
-            println(it.toString())
-        }
-        
-        // If `controller` is null don't do anything with it
-        controller?.let {
-            program.bindMidiControl(::radius, controller, 0, 1)
-            program.bindMidiControl(::x, controller, 0, 2)
-            
-            // The MidiConsole overlays the message channel and control number of received messages
-            program.extend(MidiConsole()) {
-                register(controller)
-            }
-        }
-        
-        gui.add(this)
-    }
-}
-``` 
- 
-Note that one can swap GUI for WindowedGUI on OPENRNDR 0.4.5 or newer
-to have the GUI on a separate window, typically on a secondary display. 
 
 [edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/80_ORX/C140_Midi_controllers.kt){: .btn .btn-github }

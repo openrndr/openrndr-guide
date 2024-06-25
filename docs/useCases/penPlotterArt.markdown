@@ -4,7 +4,7 @@
 layout: default
 title: Pen plotters
 parent: Use cases
-last_modified_at: 2024.06.02 12:41:53 +0200
+last_modified_at: 2024.06.05 13:05:40 +0200
 nav_order: 530
 has_children: false
 ---
@@ -25,9 +25,42 @@ data: lines and curves.
 
 OPENRNDR provides a rich toolset to generate and manipulate
 vector data.
+    
+## SVG vs g-code
 
-Take a look in the forum for tips on
-[using OPENRNDR with pen plotters](https://openrndr.discourse.group/t/openrndr-plotting-tricks-axidraw-etc/208).
+There are two main file formats used to send designs to pen plotters:
+ 
+- [SVG](https://en.wikipedia.org/wiki/SVG) (Scalable Vector Graphics), used with newer devices like the AxiDraw. 
+- [g-code](https://en.wikipedia.org/wiki/G-code), often supported by older plotters, CNC devices and laser cutters.
+
+OPENRNDR can easily load, manipulate, generate and save SVG files. There is a non-yet-merged contribution
+to add [g-code support](https://github.com/openrndr/orx/pull/285).
+
+The following sections focus on SVG.
+
+## Hello world
+
+This is one of the simplest programs we can write
+to produce an SVG file containing just a circle. 
+ 
+```kotlin
+fun main() = application {
+    program {
+        val design = drawComposition {
+            circle(drawer.bounds.center, 200.0)
+        }
+        design.saveToFile(File("data/design.svg"))
+    }
+}
+``` 
+ 
+The API in the composition drawer is almost identical
+to the one of the standard drawer: we can use methods like
+`segment`, `contour`, `shape`, `circle`, `rectangle`, etc.
+    
+Find more tips on
+[using OPENRNDR with pen plotters](https://openrndr.discourse.group/t/openrndr-plotting-tricks-axidraw-etc/208)
+in the forum.
  
 
 [edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/95_Use_cases/C530_Plotter_art.kt){: .btn .btn-github }

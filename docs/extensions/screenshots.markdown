@@ -4,16 +4,17 @@
 layout: default
 title: Screenshots
 parent: Extensions
-last_modified_at: 2024.06.02 12:41:53 +0200
+last_modified_at: 2024.04.04 19:12:24 +0200
 nav_order: 110
 has_children: false
 ---
  
-## The `ScreenShots` extension
+## The `Screenshots` extension
 
-foo bar
+The Screenshots extension saves the current window as an image file under the `screenshots` folder in your project.
+The default key that triggers saving the image is the space bar key. 
 
-To setup the screenshots do the following: 
+To setup the screenshots we only need to add one line to our program: 
  
 ```kotlin
 fun main() = application {
@@ -24,5 +25,24 @@ fun main() = application {
     }
 }
 ``` 
+ 
+The extension provides many configurable options. This example demonstrates how to adjust some of them: 
+ 
+```kotlin
+fun main() = application {
+    program {
+        extend(Screenshots()) {
+            key = "s"
+            folder = "work-in-progress"
+            async = false
+        }
+        extend {// -- draw here
+        }
+    }
+}
+``` 
+ 
+To discover other configurable options you can use the autocomplete feature (ctrl+space by default) in 
+IntelliJ Idea or explore [its source code](https://github.com/openrndr/openrndr/blob/master/openrndr-extensions/src/jvmMain/kotlin/org/openrndr/extensions/Screenshots.kt). 
 
 [edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/45_Extensions/C110_Screenshots.kt){: .btn .btn-github }

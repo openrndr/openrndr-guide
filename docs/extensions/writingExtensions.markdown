@@ -4,7 +4,7 @@
 layout: default
 title: Writing extensions
 parent: Extensions
-last_modified_at: 2024.03.16 13:31:26 +0100
+last_modified_at: 2024.04.04 18:44:14 +0200
 nav_order: 150
 has_children: false
 ---
