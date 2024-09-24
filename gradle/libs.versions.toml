@@ -1,15 +1,15 @@
 [versions]
-kotlin = "1.9.23"
+kotlin = "2.0.20"
 jvmTarget = "17"
 openrndr = "0.4.4"
 orx = "0.4.4"
 orml = "0.4.1"
-coroutines = "1.8.1"
-slf4j = "2.0.13"
+coroutines = "1.9.0"
+slf4j = "2.0.16"
 gitPublish = "4.2.2"
-jsoup = "1.17.2"
+jsoup = "1.18.1"
 gson = "2.11.0"
-csv = "1.9.3"
+csv = "1.10.0"
 versions = "0.51.0"
 
 [libraries]
@@ -33,6 +33,7 @@ openrndr-ffmpeg = { group = "org.openrndr", name = "openrndr-ffmpeg", version.re
 openrndr-filter = { group = "org.openrndr", name = "openrndr-filter", version.ref = "openrndr" }
 openrndr-gl3 = { group = "org.openrndr", name = "openrndr-gl3", version.ref = "openrndr" }
 openrndr-svg = { group = "org.openrndr", name = "openrndr-svg", version.ref = "openrndr" }
+openrndr-dialogs = { group = "org.openrndr", name = "openrndr-dialogs", version.ref = "openrndr" }
 
 # ORX
 orx-camera = { group = "org.openrndr.extra", name = "orx-camera", version.ref = "orx" }
@@ -69,7 +70,8 @@ openrndr-rest = [
     "openrndr-animatable",
     "openrndr-filter",
     "openrndr-gl3",
-    "openrndr-svg"
+    "openrndr-svg",
+    "openrndr-dialogs"
 ]
 orx = [
     "orx-camera",
