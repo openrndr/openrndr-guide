@@ -2,6 +2,9 @@ name: Build
 on:
   # Trigger the workflow on any pull request
   pull_request:
+  
+  # Allow manual trigger
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.ref }}
