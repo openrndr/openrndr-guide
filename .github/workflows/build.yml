@@ -16,21 +16,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout current repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Validate Gradle wrapper
-        uses: gradle/wrapper-validation-action@v1.0.5
+        uses: gradle/actions/wrapper-validation@v3
 
       - name: Test glxinfo
         run: |
+          sudo apt-get update
           sudo apt-get install -y mesa-utils xvfb
           xvfb-run glxinfo
 
-      - uses: actions/setup-java@v2
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
           cache: gradle
 
       - name: Build openrndr-guide
-        run: ./gradlew build
+        run: xvfb-run ./gradlew dokgen
