@@ -4,7 +4,7 @@
 layout: default
 title: Quaternions
 parent: Drawing
-last_modified_at: 2024.04.04 18:44:14 +0200
+last_modified_at: 2024.09.06 17:25:36 +0200
 nav_order: 220
 has_children: false
 ---

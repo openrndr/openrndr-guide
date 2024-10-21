@@ -4,7 +4,7 @@
 layout: default
 title: Logging and debugging
 parent: ~
-last_modified_at: 2024.01.15 13:08:17 +0100
+last_modified_at: 2024.10.15 10:27:51 +0200
 nav_order: 1105
 has_children: true
 ---
@@ -31,10 +31,10 @@ To make it verbose we can replace `level: info` with `level: all`.
 
 ##### Exception handling
 
-It is possible to change how exception errors are presented by adding
-`-Dorg.openrndr.exceptions=JVM` to the VM options under `Run > Edit 
-Configurations`. This can sometimes help figure out why a program is
-crashing.
+It is possible to change how exception errors are presented by IntelliJ Idea:
+Open the `Run > Edit Configurations` menu and make sure the `VM Options` text
+field contains `-Dorg.openrndr.exceptions=JVM`. 
+This can sometimes help figure out why a program is crashing.
 
 ##### Crashing shaders
 
@@ -53,11 +53,9 @@ with video exporting.
 ### Enabling OpenGL debug messages
 
 If your graphics hardware and drivers support OpenGL debug contexts 
-you can use `-Dorg.openrndr.gl3.debug=TRUE` to enable the debug messages.
-
-Open the `Run > Edit Configurations...` menu in
+you can open the `Run > Edit Configurations...` menu in
 IntelliJ and make sure the `VM Options` text field contains
-`-Dorg.openrndr.gl3.debug=true`.
+`-Dorg.openrndr.gl3.debug=true` to enable the debug messages.
 
 ### Using RenderDoc
 

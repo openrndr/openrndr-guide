@@ -4,7 +4,7 @@
 layout: default
 title: Requirements
 parent: What is OPENRNDR?
-last_modified_at: 2023.09.17 17:17:54 +0200
+last_modified_at: 2024.09.06 17:25:36 +0200
 nav_order: 10
 has_children: false
 ---

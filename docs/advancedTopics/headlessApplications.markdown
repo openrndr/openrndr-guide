@@ -4,7 +4,7 @@
 layout: default
 title: Headless applications
 parent: Advanced topics
-last_modified_at: 2024.05.22 14:22:38 +0200
+last_modified_at: 2024.09.06 17:25:36 +0200
 nav_order: 140
 has_children: false
 ---

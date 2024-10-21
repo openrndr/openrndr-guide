@@ -4,7 +4,7 @@
 layout: default
 title: Camera2D
 parent: Extensions
-last_modified_at: 2024.04.05 18:22:11 +0200
+last_modified_at: 2024.09.06 17:25:36 +0200
 nav_order: 130
 has_children: false
 ---

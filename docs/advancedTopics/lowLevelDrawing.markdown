@@ -4,7 +4,7 @@
 layout: default
 title: Low-level drawing
 parent: Advanced topics
-last_modified_at: 2024.01.15 12:27:05 +0100
+last_modified_at: 2024.09.06 17:25:36 +0200
 nav_order: 150
 has_children: false
 ---

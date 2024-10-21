@@ -4,7 +4,7 @@
 layout: default
 title: Render targets
 parent: Drawing
-last_modified_at: 2024.04.04 18:44:14 +0200
+last_modified_at: 2024.10.21 09:00:36 +0200
 nav_order: 305
 has_children: false
 ---
@@ -110,7 +110,7 @@ If we forget to include a depth buffer we will be reminded with the following er
 Note that the [projection matrix](/drawingAndTransformations/transformations.html#projection-matrix) 
 has to fit the render target. 
 This becomes obvious __if the dimensions of the window and the dimensions of the render target differ__. 
-In case of orthographic (2D) projections one can use `ortho()`: 
+In case of orthographic (2D) projections one can call `ortho(rt)`: 
  
 ```kotlin
 fun main() = application {
@@ -139,6 +139,8 @@ fun main() = application {
 }
 ``` 
  
+If we forget to do this the graphics rendered onto our render target may be displaced or have an unexpected scale.
+
 ## Compositing using render targets and alpha channels 
 
 OPENRNDR allows for compositing using `RenderTargets` through the use of 

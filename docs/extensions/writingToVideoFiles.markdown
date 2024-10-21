@@ -4,7 +4,7 @@
 layout: default
 title: ScreenRecorder
 parent: Extensions
-last_modified_at: 2024.04.04 19:26:16 +0200
+last_modified_at: 2024.09.06 17:25:36 +0200
 nav_order: 120
 has_children: false
 ---
