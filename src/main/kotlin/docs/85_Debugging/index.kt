@@ -32,10 +32,10 @@ fun main() {
     
     ##### Exception handling
     
-    It is possible to change how exception errors are presented by adding
-    `-Dorg.openrndr.exceptions=JVM` to the VM options under `Run > Edit 
-    Configurations`. This can sometimes help figure out why a program is
-    crashing.
+    It is possible to change how exception errors are presented by IntelliJ Idea:
+    Open the `Run > Edit Configurations` menu and make sure the `VM Options` text
+    field contains `-Dorg.openrndr.exceptions=JVM`. 
+    This can sometimes help figure out why a program is crashing.
     
     ##### Crashing shaders
 
@@ -54,11 +54,9 @@ fun main() {
     ### Enabling OpenGL debug messages
 
     If your graphics hardware and drivers support OpenGL debug contexts 
-    you can use `-Dorg.openrndr.gl3.debug=TRUE` to enable the debug messages.
-    
-    Open the `Run > Edit Configurations...` menu in
+    you can open the `Run > Edit Configurations...` menu in
     IntelliJ and make sure the `VM Options` text field contains
-    `-Dorg.openrndr.gl3.debug=true`.
+    `-Dorg.openrndr.gl3.debug=true` to enable the debug messages.
     
     ### Using RenderDoc
     
