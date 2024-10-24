@@ -4,7 +4,7 @@
 layout: default
 title: File Drops
 parent: Interaction
-last_modified_at: 2024.09.06 17:25:36 +0200
+last_modified_at: 2024.10.24 11:08:44 +0200
 nav_order: 120
 has_children: false
 ---
@@ -22,5 +22,38 @@ fun main() = application {
     }
 }
 ``` 
+ 
+The following program displays `PNG`, `JPG` or `TIF` images
+dropped onto its window. If several files are dropped at once,
+it displays the first of them that is an image. 
+ 
+```kotlin
+fun main() = application {
+    program {
+        // Create a dummy image
+        var img = drawImage(16, 16) {}
+        
+        window.drop.listen { dropped ->
+            val firstImage = dropped.files.firstOrNull {
+                File(it).extension.lowercase() in listOf("png", "jpg", "tif")
+            }
+            
+            if (firstImage != null) {
+                // Call .destroy() to avoid leaking memory
+                img.destroy()
+                
+                // Then load a new image into img
+                img = loadImage(firstImage)
+            }
+        }
+        extend {
+            drawer.imageFit(img, drawer.bounds, fitMethod = FitMethod.Contain)
+        }
+    }
+}
+``` 
+ 
+By using `drawer.imageFit` the image is centered
+and made to fit the available window size. 
 
 [edit on GitHub](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/40_Interaction/C120_FileDrops.kt){: .btn .btn-github }
