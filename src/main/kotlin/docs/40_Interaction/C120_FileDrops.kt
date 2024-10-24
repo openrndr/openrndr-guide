@@ -8,6 +8,11 @@ package docs.`40_Interaction`
 
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*
+import org.openrndr.draw.loadImage
+import org.openrndr.drawImage
+import org.openrndr.extra.imageFit.FitMethod
+import org.openrndr.extra.imageFit.imageFit
+import java.io.File
 
 fun main() {
 
@@ -26,4 +31,42 @@ fun main() {
             }
         }
     }
+
+    @Text
+    """
+    The following program displays `PNG`, `JPG` or `TIF` images
+    dropped onto its window. If several files are dropped at once,
+    it displays the first of them that is an image.
+    """
+
+    @Code
+    application {
+        program {
+            // Create a dummy image
+            var img = drawImage(16, 16) { }
+
+            window.drop.listen { dropped ->
+                val firstImage = dropped.files.firstOrNull {
+                    File(it).extension.lowercase() in listOf("png", "jpg", "tif")
+                }
+
+                if(firstImage != null) {
+                    // Call .destroy() to avoid leaking memory
+                    img.destroy()
+
+                    // Then load a new image into img
+                    img = loadImage(firstImage)
+                }
+            }
+            extend {
+                drawer.imageFit(img, drawer.bounds, fitMethod = FitMethod.Contain)
+            }
+        }
+    }
+
+    @Text
+    """  
+    By using `drawer.imageFit` the image is centered
+    and made to fit the available window size.
+    """
 }
