@@ -1,7 +1,12 @@
-name: Build
+# Builds the guide without producing screenshots or video files
+name: Quick build
 on:
   # Trigger the workflow on any pull request
   pull_request:
+
+  push:
+    branches:
+      - main
   
   # Allow manual trigger
   workflow_dispatch:
@@ -40,4 +45,5 @@ jobs:
         run: sudo apt-get install -y ffmpeg
 
       - name: Build openrndr-guide
-        run: xvfb-run ./gradlew dokgen
+        run: skipMediaGeneration=true xvfb-run ./gradlew dokgen
+
