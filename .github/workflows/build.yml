@@ -41,9 +41,6 @@ jobs:
           java-version: 17
           cache: gradle
 
-      - name: Install ffmpeg
-        run: sudo apt-get install -y ffmpeg
-
       - name: Build openrndr-guide
         run: skipMediaGeneration=true xvfb-run ./gradlew dokgen
 
