@@ -1,5 +1,3 @@
-import org.apache.tools.ant.filters.ReplaceTokens
-
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     org.openrndr.guide.convention.`kotlin-jvm`
@@ -59,66 +57,6 @@ dokgen {
         media = listOf(file("$projectDir/media"), file("$projectDir/static-media"))
         assets = listOf(file("$projectDir/data/jekyll-assets"))
     }
-}
-
-val gitPublishPush: Task by tasks.getting
-
-val publishDocs by tasks.registering {
-    group = org.openrndr.dokgen.PLUGIN_NAME
-    description = "Publish website to https://github.com/openrndr/openrndr-guide"
-
-    doLast {
-        gitPublish.repoUri.set("git@github.com:openrndr/openrndr-guide.git")
-        gitPublish.branch.set("generated")
-        gitPublish.repoDir.set(file("${layout.buildDirectory.get()}/gitrepo-docs"))
-        gitPublish.contents.from("build/dokgen/jekyll") {
-            exclude("docs/.jekyll*", "docs/_site", "docs/*-cache", "docs/*.sh")
-        }
-        gitPublish.commitMessage.set("Update docs")
-    }
-    finalizedBy(gitPublishPush)
-}
-
-val publishExamples by tasks.registering {
-    group = org.openrndr.dokgen.PLUGIN_NAME
-    description = "Publish examples to https://github.com/openrndr/openrndr-examples"
-
-    val repoTemplate = "$projectDir/src/main/resources/examples-repo-template"
-    doLast {
-        gitPublish.repoDir.set(file("${layout.buildDirectory.get()}/gitrepo-examples"))
-        gitPublish.contents {
-            from(repoTemplate) {
-                exclude("settings.gradle.kts")
-                rename("_git(.*)", ".git$1") // skipped without this trick
-            }
-            from(repoTemplate) {
-                include("settings.gradle.kts")
-                filter<ReplaceTokens>(
-                    "tokens" to mapOf(
-                        "openrndrVersion" to libs.versions.openrndr.get(),
-                        "orxVersion" to libs.versions.orx.get(),
-                        "ormlVersion" to libs.versions.orml.get()
-                    )
-                )
-            }
-            from("$projectDir/build/dokgen/generated/examples-export") {
-                into("src/main/kotlin/examples")
-            }
-            from("$projectDir/data/images") {
-                into("data/images")
-            }
-            from("$projectDir/data/fonts") {
-                into("data/fonts")
-            }
-            from("$projectDir/data/compute-shaders") {
-                into("data/compute-shaders")
-            }
-        }
-        gitPublish.repoUri.set("git@github.com:openrndr/openrndr-examples.git")
-        gitPublish.branch.set("master")
-        gitPublish.commitMessage.set("Update examples")
-    }
-    finalizedBy(gitPublishPush)
 }
 
 task("add IDE file scopes") {
