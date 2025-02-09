@@ -45,7 +45,6 @@ jobs:
         # TODO: set skipMediaGeneration=false
         run: skipMediaGeneration=true xvfb-run ./gradlew dokgen
 
-      # Replacement for ./gradlew publishDocs
       - name: Publish guide
         run: |
           git worktree add --detach docs-temp

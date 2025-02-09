@@ -1,0 +1,78 @@
+name: Publish examples to https://github.com/openrndr/openrndr-examples
+on:
+  push:
+    tags:
+      - v[0-9].[0-9]+.[0-9]+-[0-9]+
+  
+  # Allow manual trigger
+  workflow_dispatch:
+
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current repository
+        uses: actions/checkout@v4
+
+      - name: Validate Gradle wrapper
+        uses: gradle/actions/wrapper-validation@v3
+
+      - name: Test glxinfo
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mesa-utils xvfb
+          xvfb-run glxinfo
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+          cache: gradle
+
+      - name: Build openrndr-guide
+        run: skipMediaGeneration=true xvfb-run ./gradlew dokgen
+
+      - name: Setup ssh for git command
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          export GIT_SSH_COMMAND="ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no"
+
+      - name: Update examples
+        run: |
+          git clone git@github.com:openrndr/openrndr-examples.git
+          cd openrndr-examples
+          git rm -rf .
+          
+          # copy repo template
+          rsync -av ../src/main/resources/examples-repo-template/ ./
+          mv _gitignore .gitignore
+          mv _gitattributes .gitattributes
+          
+          # copy data folder
+          rsync -av --exclude='jekyll-assets' ../data/ ./data/
+          
+          # copy generated .kt examples
+          mkdir -p ./src/main/kotlin/examples/
+          rsync -av ../build/dokgen/generated/examples-export/ ./src/main/kotlin/examples/
+
+      - name: Commit and push examples
+        run: |
+          cd openrndr-examples
+          git status
+          git config --global user.email "actions@openrndr.org"
+          git config --global user.name "OPENRNDR Actions"
+          git add . 
+          git commit -m "Update examples"
+          git push
+          rm ~/.ssh/id_ed25519
