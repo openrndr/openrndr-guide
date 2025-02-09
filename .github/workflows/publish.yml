@@ -1,0 +1,70 @@
+name: Publish guide online
+on:
+  push:
+    tags:
+      - v[0-9].[0-9]+.[0-9]+-[0-9]+
+  
+  # Allow manual trigger
+  workflow_dispatch:
+
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current repository
+        uses: actions/checkout@v4
+
+      - name: Validate Gradle wrapper
+        uses: gradle/actions/wrapper-validation@v3
+
+      - name: Test glxinfo
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mesa-utils xvfb
+          xvfb-run glxinfo
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+          cache: gradle
+
+      - name: Install ffmpeg
+        run: sudo apt-get install -y ffmpeg
+
+      - name: Build openrndr-guide
+        # TODO: set skipMediaGeneration=false
+        run: skipMediaGeneration=true xvfb-run ./gradlew dokgen
+
+      # Replacement for ./gradlew publishDocs
+      - name: Publish guide
+        run: |
+          git worktree add --detach docs-temp
+          cd docs-temp
+          git checkout --orphan generated2
+          git reset HEAD -- .
+          git clean -df
+          rm -rf ../build/dokgen/jekyll/docs/_site
+          rm -rf ../build/dokgen/jekyll/docs/webServer*
+          rm -rf ../build/dokgen/jekyll/docs/.jekyll-cache
+          mv ../build/dokgen/jekyll/* .
+          git status
+          git config --global user.email "actions@openrndr.org"
+          git config --global user.name "OPENRNDR Actions"
+          git add . 
+          git commit -m "Add automatically generated guide"
+          git push origin generated2 --force          
+
+#      - name: Publish examples
+#        run: ./gradlew publishExamples
+
+
