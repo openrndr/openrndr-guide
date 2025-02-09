@@ -7,7 +7,6 @@ on:
   # Allow manual trigger
   workflow_dispatch:
 
-
 concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true
@@ -42,14 +41,13 @@ jobs:
         run: sudo apt-get install -y ffmpeg
 
       - name: Build openrndr-guide
-        # TODO: set skipMediaGeneration=false
-        run: skipMediaGeneration=true xvfb-run ./gradlew dokgen
+        run: skipMediaGeneration=false xvfb-run ./gradlew dokgen
 
       - name: Publish guide
         run: |
           git worktree add --detach docs-temp
           cd docs-temp
-          git checkout --orphan generated2
+          git checkout --orphan generated
           git reset HEAD -- .
           git clean -df
           rm -rf ../build/dokgen/jekyll/docs/_site
@@ -61,9 +59,4 @@ jobs:
           git config --global user.name "OPENRNDR Actions"
           git add . 
           git commit -m "Add automatically generated guide"
-          git push origin generated2 --force          
-
-#      - name: Publish examples
-#        run: ./gradlew publishExamples
-
-
+          git push origin generated --force          
