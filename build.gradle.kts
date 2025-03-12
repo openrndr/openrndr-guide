@@ -1,3 +1,7 @@
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.nio.file.StandardCopyOption
+
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     org.openrndr.guide.convention.`kotlin-jvm`
@@ -81,5 +85,174 @@ task("add IDE file scopes") {
                     """.trimIndent()
             )
         }
+    }
+}
+
+/**
+ * Helper class for reading and updating the annotations in
+ * openrndr-guide .kt files.
+ *
+ * The class reads the passed `ktFile` and puts all the
+ * `@file` annotations into a mutable map. The map can be
+ * updated using the update method, like this:
+ *
+ * ```
+ * val af = AnnotatedFile(File("95_Use_cases/index.kt"))
+ * af.update(indexFiles, dryRun = true) // saves if dryRun is false
+ * ```
+ *
+ * `indexFiles` is a Map<File, AnnotatedFile> containing all
+ * index.kt files. These are used to extract the Title annotation
+ * of index.kt files, which must be referred to as ParentTitle
+ * in other files in the same folder.
+ *
+ * Thanks to this helper class and Gradle task, one only needs to
+ * set the file names and Title annotations.
+ * Suppress, ParentTitle, Order and URL are set automatically.
+ *
+ * Tip: to customize the URL, change the file and folder name.
+ */
+class AnnotatedFile(val ktFile: File) {
+    private val folder = ktFile.parentFile
+    private val lines = ktFile.readLines()
+    private val contentStartIndex = lines.indexOfFirst {
+        !it.startsWith("@file:")
+    }
+    private val annotationsLines = lines.take(contentStartIndex)
+    private val content = lines.drop(contentStartIndex).joinToString("\n")
+
+    private val rxAnnotation = Regex("""@file:(\w+)\("(.+?)"\)""")
+    private val rxFolderName = Regex("""kotlin\/docs\/(.+?)\/""")
+
+    private val annotations = annotationsLines.associate { line ->
+        val (k, v) = rxAnnotation.find(line)!!.destructured
+        k to v
+    }.toMutableMap()
+
+    private fun getUpdatedFileContent(): String {
+        val updatedAnnotations = annotations.map {
+            """@file:${it.key}("${it.value}")"""
+        }.joinToString("\n", postfix = "\n")
+
+        return updatedAnnotations + content
+    }
+
+    fun getAnnotation(k: String) = annotations[k]
+
+    fun isIndexFile() = ktFile.name == "index.kt"
+
+    private fun File.createTempFile(suffix: String): File {
+        val temp = Files.createTempFile(
+            parentFile.toPath(),
+            "${nameWithoutExtension}_temp", suffix
+        ).toFile()
+        temp.deleteOnExit()
+        return temp
+    }
+
+    private fun List<String>.toCamelCase(): String {
+        val parts = this.toMutableList()
+        var nameCamel = parts.drop(1).joinToString(
+            "", transform = { s -> s.replaceFirstChar { c -> c.uppercaseChar() } }
+        )
+        // Make first character case match second character case
+        // For cases like OSC or SVG.
+        if (nameCamel.isNotEmpty() && nameCamel[1].isLowerCase()) {
+            nameCamel = nameCamel.replaceFirstChar { it.lowercaseChar() }
+        }
+        return nameCamel
+    }
+
+    fun update(indexFiles: Map<File, AnnotatedFile>, dryRun: Boolean) {
+        val originalAnnotations = annotations.toMap()
+
+        val result = rxFolderName.find(ktFile.absolutePath)?.groups
+        val folderName = result?.get(1)?.value ?: ""
+        val folderParts = folderName.split('_')
+        val folderNameCamel = folderParts.toCamelCase()
+
+        annotations["Suppress"] = "UNUSED_EXPRESSION"
+
+        if (ktFile.name == "index.kt") {
+            annotations["Order"] = if (folderParts.size == 1)
+                "0"
+            else
+                (folderParts.first().toInt() + 1000).toString()
+
+            annotations.remove("ParentTitle")
+
+            annotations["URL"] = "$folderNameCamel/index"
+        } else {
+            annotations["Order"] = ktFile.name.split("_")[0].substring(1)
+
+            indexFiles[folder]?.getAnnotation("Title")?.let {
+                annotations["ParentTitle"] = it
+            }
+            val fileNameParts = ktFile.nameWithoutExtension.split("_")
+            val fileNameCamel = fileNameParts.toCamelCase()
+            annotations["URL"] = "$folderNameCamel/$fileNameCamel"
+        }
+
+        if(annotations != originalAnnotations) {
+            if (dryRun) {
+                println("\nupdating ${ktFile.name}")
+                println(originalAnnotations)
+                println(annotations)
+            } else {
+                val tempFile = ktFile.createTempFile(".kt")
+                tempFile.writeText(getUpdatedFileContent())
+
+                // Atomic replacement of original file
+                Files.move(
+                    Paths.get(tempFile.absolutePath),
+                    Paths.get(ktFile.absolutePath),
+                    StandardCopyOption.REPLACE_EXISTING,
+                    StandardCopyOption.ATOMIC_MOVE
+                )
+            }
+        }
+    }
+}
+
+task("Update just-the-docs annotations") {
+    group = " ★ OPENRNDR"
+
+    // Source directory containing Kotlin files
+    val sourceDir = file("src/main/kotlin/docs")
+
+    doFirst {
+        // Collect all kotlin files and scan their annotations
+        val kotlinFiles = sourceDir.walkTopDown().filter { file ->
+            file.name.endsWith(".kt")
+        }.map { file ->
+            AnnotatedFile(file)
+        }
+
+        // Scan for repeated titles and throw an exception if found
+        val repeatedTitles = kotlinFiles.groupingBy {
+            it.getAnnotation("Title")
+        }.eachCount().filter {
+            it.value > 1
+        }.map { it.key }
+
+        if (repeatedTitles.isNotEmpty()) {
+            repeatedTitles.forEach { title ->
+                println("""The title "$title" is used repeatedly:""")
+                kotlinFiles.filter {
+                    it.getAnnotation("Title") == title
+                }.forEach {
+                    println("- ${it.ktFile.absolutePath}")
+                }
+            }
+            throw StopExecutionException()
+        }
+
+        // Make a map of all index files pointing at the folder where they are located
+        val indexFiles = kotlinFiles.filter {
+            it.isIndexFile()
+        }.associateBy { it.ktFile.parentFile }
+
+        // Update all Kotlin files
+        kotlinFiles.forEach { it.update(indexFiles, true) }
     }
 }
