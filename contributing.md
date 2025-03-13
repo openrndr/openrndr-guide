@@ -11,7 +11,7 @@ It's very easy!
 
 ----
 
-If you are making quick contributions to the guide you can ignore the rest of this document.
+If you are making quick contributions to existing pages in the guide you can ignore the rest of this document.
 
 ## Concept
 
@@ -22,6 +22,48 @@ A program called `dokgen` (found in this repo) parses the Kotlin files. It creat
 Generating media files as part of the build process helps notice if the guide needs to be updated in some areas or if changes unexpectedly broke part of the framework.
 
 For Jekyll, we use the [Just-the-docs](https://just-the-docs.github.io/just-the-docs/) Jekyll theme.
+
+## Annotations
+
+The annotations in each Kotlin file are now managed automatically by a Gradle Task called
+`Update just-the-docs annotations`. The only annotation that needs to
+be set manually is the Title. If you run the task, annotations will be
+added when missing, and updated based on the file / folder names.
+
+These annotations are passed to Jekyll to build the guide.
+
+Please follow these conventions:
+
+- Name folders with this pattern: `\d+_[a-zA-Z_-]+`. That's digits, an underscore
+  and one or more words using upper or lower case ASCII characters, underscores and dashes.
+  The digits define the order of the folders. It is suggested to not use sequential numbers
+  to allow inserting new folders between existing ones.
+- In the root and in each folder there should be an `index.kt` file.
+- Add sibling documents named with this pattern: `C\d+_[a-zA-Z_-]+.kt`. That's a `C`
+  followed by digits, an underscore, one or more words using upper or lower case ASCII
+  characters, underscores and dashes, ending with `.kt`. The digits define the order
+  of the documents. It is suggested to not use sequential numbers
+  to allow inserting new folders between existing ones.
+
+The `Order` annotation is generated from the number in file and folder names.
+The `ParentTitle` in sibling documents is made to match the `Title` in the `index.kt`
+file in the same folder.
+The `URL` annotation is generated from the folder and file names, by removing the
+numbers and converting to camel case, respecting sequences of upper case characters
+which are assumed to be acronyms (like `OSC` or `ORX`).
+
+Suggestions:
+
+- Always commit git changes before running the task to be able to undo what it does.
+- If creating new folders and files
+    - Run the Gradle Task to generate the annotations for the new files.
+    - Update manually the automatically generated `Title` annotations.
+- If changing the `Title` of an Index file
+    - Run the Gradle Task to update the siblings' `ParentTitle`.
+- If renaming files or folders,
+    - Run the Gradle Task to update the annotations.
+    - Delete the build folder before running `dokgen` to avoid duplicate documents.
+
 
 ## If you use search / replace...
 
@@ -101,12 +143,15 @@ Gradle task first, then build the guide by running
 
 #### To publish the guide changes:
 
-- Make sure your SSH password has been entered before opening IntelliJ Idea (`ssh-add`). Otherwise, the IDE will ask
-  for the password two or three times when running the following actions.
-- Run `openrndr-guide/Tasks/dokgen/publishDocs` to update the guide at https://guide.openrndr.org.
-- Run `openrndr-guide/Tasks/dokgen/publishExamples` to update the [examples repo](https://github.com/openrndr/openrndr-examples).
+Two GitHub actions that take care of publishing the guide and the examples:
+https://github.com/openrndr/openrndr-guide/tree/main/.github/workflows
+They can be triggered manually or automatically when a commit is tagged
+using this pattern: `v[0-9].[0-9]+.[0-9]+-[0-9]+`, for instance `v0.4.4-0`.
+The first three digits should match the openrndr/orx version, and the last
+digit is incremented each time the guide is updated.
 
 ## Troubleshooting
+
 - On some Linux distributions, the version of `ffmpeg` available via their respective package 
   managers have not been compiled with the necessary encoders to generate videos for the 
   guide - `libx264` in particular. One option to resolve this is to uninstall the package 
