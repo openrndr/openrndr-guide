@@ -1,7 +1,7 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Logging and debugging")
-@file:Order("1105")
-@file:URL("debugging/logging")
+@file:Order("1085")
+@file:URL("debugging/index")
 
 package docs.`85_Debugging`
 

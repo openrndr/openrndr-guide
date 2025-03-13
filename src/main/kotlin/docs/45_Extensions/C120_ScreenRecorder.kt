@@ -2,7 +2,7 @@
 @file:Title("ScreenRecorder")
 @file:ParentTitle("Extensions")
 @file:Order("120")
-@file:URL("extensions/writingToVideoFiles")
+@file:URL("extensions/screenRecorder")
 
 package docs.`45_Extensions`
 

@@ -1,9 +1,9 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Kotlin language and tools")
-@file:Order("1020")
+@file:Order("1010")
 @file:URL("kotlinLanguageAndTools/index")
 
-package docs.`10_Kotlin_lang_and_tools`
+package docs.`10_Kotlin_language_and_tools`
 
 import org.openrndr.dokgen.annotations.*
 

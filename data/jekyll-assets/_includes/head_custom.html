@@ -1,81 +1,20 @@
 <script>
-  /* Redirect old guide.openrndr.org URLs to new ones in jekyll website */
-  /* Use block comments only! Line comments break the site */
+    /* Redirect changed URLs */
+    /* Use block comments only! Line comments break the site */
 
-  let urlParts = document.location.toString().match(/\/#\/(\d+)\D+(\d+)(?:\D+\?id=([0-9-_a-zA-Z]+))?/);
+    let url = document.location.pathname
 
-  if(urlParts && urlParts.length >= 3) {
-      let urlId = urlParts[1] + urlParts[2];
-      let urlNew = {
-        '0100': '/',
-        '0102': '/shouldIUseOPENRNDR.html',
+    let urlMap = {
+      '/interaction/Events.html':               '/interaction/events.html',
+      '/extensions/writingToVideoFiles.html':   '/extensions/screenRecorder.html',
+      '/ORX/osc.html':                          '/ORX/OSC.html',
+      '/advancedTopics/ComputeShaders.html':    '/advancedTopics/computeShaders.html',
+      '/debugging/logging.html':                '/debugging/index.html',
+    };
 
-        '0200': '/setUpYourFirstProgram.html',
-
-        '0300': '/applicationProgram.html',
-        '0301': '/programConfiguration.html',
-        '0302': '/extensions.html',
-
-        '0400': '/drawingBasics/drawingPrimitives.html',
-        '0401': '/drawingBasics/images.html',
-        '0402': '/drawingBasics/text.html',
-        '0403': '/drawingBasics/color.html',
-        '0404': '/drawingBasics/managingDrawStyle.html',
-        '0405': '/drawingBasics/curvesAndShapes.html',
-        '0406': '/drawingBasics/drawingSVG.html',
-        '0408': '/drawingBasics/drawingPrimitivesBatched.html',
-
-        '0500': '/drawingAndTransformations/transformations.html',
-        '0501': '/drawingAndTransformations/vectors.html',
-        '0502': '/drawingAndTransformations/quaternions.html',
-
-        '0600': '/advancedDrawing/renderTargets.html',
-        '0601': '/advancedDrawing/filtersAndPostProcessing.html',
-        '0602': '/advancedDrawing/clipping.html',
-        '0603': '/advancedDrawing/asynchronousImageLoading.html',
-        '0604': '/advancedDrawing/shadeStyles.html',
-        '0605': '/advancedDrawing/customRendering.html',
-        '0606': '/advancedDrawing/concurrencyAndMultithreading.html',
-        '0607': '/advancedDrawing/arrayTextures.html',
-        '060':  '/advancedDrawing/colorbuffers.html',
-
-        '0700': '/interaction/mouseAndKeyboardEvents.html',
-        '0701': '/interaction/programWindows.html',
-        '0702': '/interaction/fileDrops.html',
-        '0703': '/interaction/clipboard.html',
-        '0704': '/interaction/userInterfaces.html',
-
-        '0800': '/animation/interactiveAnimations.html',
-
-        '0900': '/videos/playingVideos.html',
-        '0901': '/videos/writingToVideoFiles.html',
-          
-        '1000': '/ORX/',
-        '1001': '/ORX/noise.html',
-        '1002': '/ORX/kinect.html',
-        '1003': '/ORX/liveCoding.html',
-        '1004': '/ORX/midiControllers.html',
-        '1005': '/ORX/osc.html',
-        '1006': '/ORX/imageFilters.html',
-        '1007': '/ORX/compositor.html',
-        '1008': '/ORX/quickUIs.html',
-        '1009': '/ORX/shadeStylePresets.html',
-        '1010': '/ORX/imageFit.html',
-        '1011': '/ORX/poissonFills.html',
-        '1012': '/ORX/distanceFields.html',
-
-        '1100': '/advancedTopics/logging.html',
-        '1101': '/advancedTopics/applicationFlow.html',
-        '1102': '/advancedTopics/presentationControl.html',
-        '1103': '/advancedTopics/writingExtensions.html',
-        '1104': '/advancedTopics/headlessApplications.html',
-        '1105': '/advancedTopics/lowLevelDrawing.html',
-        '1106': '/advancedTopics/computeShaders.html'
-      };
-      if(urlNew[urlId]) {
-        window.location = urlNew[urlId] + (urlParts[3] ? '#' + urlParts[3] : '');
-      } else {
-        console.log('no known redirect for URL with urlId: ' + urlId);
-      }
+    if(urlMap[url]) {
+      window.location = urlMap[url];
+    } else {
+      console.log('no known redirect for URL with urlId: ' + urlId);
     }
 </script>

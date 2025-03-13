@@ -2,7 +2,7 @@
 @file:Title("OSC")
 @file:ParentTitle("ORX")
 @file:Order("150")
-@file:URL("ORX/osc")
+@file:URL("ORX/OSC")
 
 package docs.`80_ORX`
 
@@ -83,4 +83,3 @@ fun main() {
         )
     }
 }
-

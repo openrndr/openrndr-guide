@@ -1,6 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Interaction")
-@file:Order("1070")
+@file:Order("1040")
 @file:URL("interaction/index")
 
 package docs.`40_Interaction`
@@ -13,4 +13,3 @@ fun main() {
     # Interaction
     """.trimIndent()
 }
-

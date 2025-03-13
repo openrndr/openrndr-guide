@@ -2,7 +2,7 @@
 @file:Title("Events")
 @file:ParentTitle("Interaction")
 @file:Order("90")
-@file:URL("interaction/Events")
+@file:URL("interaction/events")
 
 package docs.`40_Interaction`
 

@@ -2,7 +2,7 @@
 @file:Title("Compute shaders")
 @file:ParentTitle("Advanced topics")
 @file:Order("160")
-@file:URL("advancedTopics/ComputeShaders")
+@file:URL("advancedTopics/computeShaders")
 
 package docs.`90_Advanced_Topics`
 

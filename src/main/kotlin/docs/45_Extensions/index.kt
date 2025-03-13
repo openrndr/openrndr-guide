@@ -1,6 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Extensions")
-@file:Order("1075")
+@file:Order("1045")
 @file:URL("extensions/index")
 
 package docs.`45_Extensions`
@@ -13,4 +13,3 @@ fun main() {
     # Extensions
     """.trimIndent()
 }
-
