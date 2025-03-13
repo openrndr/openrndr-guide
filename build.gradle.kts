@@ -117,9 +117,8 @@ class AnnotatedFile(val ktFile: File) {
     private val lines = ktFile.readLines()
     private val contentStartIndex = lines.indexOfFirst {
         !it.startsWith("@file:")
-    }
+    }.coerceAtLeast(0)
     private val annotationsLines = lines.take(contentStartIndex)
-    private val content = lines.drop(contentStartIndex).joinToString("\n")
 
     private val rxAnnotation = Regex("""@file:(\w+)\("(.+?)"\)""")
     private val rxFolderName = Regex("""kotlin\/docs\/(.+?)\/""")
@@ -134,7 +133,17 @@ class AnnotatedFile(val ktFile: File) {
             """@file:${it.key}("${it.value}")"""
         }.joinToString("\n", postfix = "\n")
 
-        return updatedAnnotations + content
+        // Add annotations import if missing. This allows creating a new empty .kt file
+        // and this Gradle task would add the generated annotations and the required import.
+        val mutableLines = lines.toMutableList()
+        if(lines.none { it.contains("import org.openrndr.dokgen.annotations") }) {
+            val packageLineNum = mutableLines.indexOfFirst { it.startsWith("package") }
+            if(packageLineNum >= 0) {
+                mutableLines.addAll(listOf("import org.openrndr.dokgen.annotations.*"))
+            }
+        }
+
+        return updatedAnnotations + mutableLines.drop(contentStartIndex).joinToString("\n")
     }
 
     fun getAnnotation(k: String) = annotations[k]
@@ -168,10 +177,14 @@ class AnnotatedFile(val ktFile: File) {
 
         val result = rxFolderName.find(ktFile.absolutePath)?.groups
         val folderName = result?.get(1)?.value ?: ""
-        val folderParts = folderName.split('_')
+        val folderParts = folderName.split('_', '-')
         val folderNameCamel = folderParts.toCamelCase()
 
         annotations["Suppress"] = "UNUSED_EXPRESSION"
+
+        if (!annotations.containsKey("Title")) {
+            annotations["Title"] = "Untitled ${System.currentTimeMillis()}"
+        }
 
         if (ktFile.name == "index.kt") {
             annotations["Order"] = if (folderParts.size == 1)
@@ -183,22 +196,21 @@ class AnnotatedFile(val ktFile: File) {
 
             annotations["URL"] = "$folderNameCamel/index"
         } else {
-            annotations["Order"] = ktFile.name.split("_")[0].substring(1)
+            annotations["Order"] = ktFile.name.split('_', '-')[0].substring(1)
 
             indexFiles[folder]?.getAnnotation("Title")?.let {
                 annotations["ParentTitle"] = it
             }
-            val fileNameParts = ktFile.nameWithoutExtension.split("_")
+            val fileNameParts = ktFile.nameWithoutExtension.split('_', '-')
             val fileNameCamel = fileNameParts.toCamelCase()
             annotations["URL"] = "$folderNameCamel/$fileNameCamel"
         }
 
-        if(annotations != originalAnnotations) {
-            if (dryRun) {
-                println("\nupdating ${ktFile.name}")
-                println(originalAnnotations)
-                println(annotations)
-            } else {
+        if (annotations != originalAnnotations) {
+            println("\nUpdating $folderName/${ktFile.name}. Annotations changed:")
+            println(originalAnnotations)
+            println(annotations)
+            if (!dryRun) {
                 val tempFile = ktFile.createTempFile(".kt")
                 tempFile.writeText(getUpdatedFileContent())
 
@@ -253,6 +265,6 @@ task("Update just-the-docs annotations") {
         }.associateBy { it.ktFile.parentFile }
 
         // Update all Kotlin files
-        kotlinFiles.forEach { it.update(indexFiles, true) }
+        kotlinFiles.forEach { it.update(indexFiles, dryRun = false) }
     }
 }
