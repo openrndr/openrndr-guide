@@ -25,7 +25,8 @@ For Jekyll, we use the [Just-the-docs](https://just-the-docs.github.io/just-the-
 
 ## Annotations
 
-The annotations in each Kotlin file are now managed automatically by a Gradle Task called
+The [front-matter annotations](https://github.com/openrndr/openrndr-guide/tree/main/dokgen#front-matter) 
+in each Kotlin file are now managed automatically by a Gradle Task called
 `Update just-the-docs annotations`. The only annotation that needs to
 be set manually is the Title. If you run the task, annotations will be
 added when missing, and updated based on the file / folder names.
