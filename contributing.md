@@ -3,7 +3,7 @@
 It's very easy!
 
 1. Clone this repository: `git@github.com:openrndr/openrndr-guide.git`.
-2. Open it in IntelliJ Idea.
+2. Open it in IntelliJ IDEA.
 3. Edit or add kotlin files under `src/main/kotlin/docs/`. The available
    [annotations are described here](https://github.com/openrndr/openrndr-guide/tree/main/dokgen).
 4. Push the changes to your fork of `openrndr-guide`.
@@ -78,18 +78,18 @@ Run the `Tasks/dokgen/dokgen` Gradle task to update the local Jekyll website.
 
 The first time can take a while since it will run over 100 kotlin programs
 to produce the guide's screenshots and videos. If one of the programs
-gets stuck running for over 10 seconds it can be closed and the build
+gets stuck running for over 10 seconds, it can be closed and the build
 will continue with the next program.
 
-Once the build process is complete the guide will be found at
-`build/dokgen/jekyll/docs/` in markdown format and viewable in your
+Once the build process is complete, the guide will be found at
+`build/dokgen/jekyll/docs/` in Markdown format and viewable in your
 web browser if the Docker/Jekyll container is running (next step).
 
 ## Preview the guide locally
 
 ### With Docker
 
-To preview the guide we need Jekyll in our system. One way to install Jekyll is by using a Docker container.
+To preview the guide, we need Jekyll in our system. One way to install Jekyll is by using a Docker container.
 
 1. Install [Docker](https://www.docker.com/get-started/).
 2. Start the web server
@@ -114,9 +114,9 @@ the website when changes are saved and automatically reload your local guide in 
 
 1. In one terminal run `./gradlew dokgen --continuous`
 2. In another terminal
-  - `cd build/dokgen/jekyll/docs/`
-  - `bundle install`
-  - `bundle exec jekyll server -d /tmp/guide --livereload`
+  * `cd build/dokgen/jekyll/docs/`
+  * `bundle install`
+  * `bundle exec jekyll server -d /tmp/guide --livereload`
 3. Open [http://0.0.0.0:4000](http://0.0.0.0:4000) in a browser.
 
 The `-d /tmp/guide` argument makes sure the generated html is not created under the build folder, which would trigger dokgen in a loop. Adjust this path making it valid for your OS.

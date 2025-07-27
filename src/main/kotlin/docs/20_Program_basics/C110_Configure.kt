@@ -6,6 +6,7 @@
 
 package docs.`20_Program_basics`
 
+import org.openrndr.Fullscreen
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.extra.noise.Random
@@ -36,6 +37,23 @@ fun main() {
         program {
         }
     }
+    
+    @Text
+    """
+    An example for a full screen window on your second monitor
+    with the mouse pointer hidden:
+    """
+
+    @Code
+    application {
+        configure {
+            fullscreen = Fullscreen.CURRENT_DISPLAY_MODE
+            display = displays[1]
+            hideCursor = true
+        }
+        program {
+        }
+    }
 
     @Text
     """   
@@ -60,7 +78,7 @@ fun main() {
     @Text
     """
     The table below lists a selection of configuration options. See 
-    [the API](https://github.com/openrndr/openrndr/blob/master/openrndr-application/src/commonMain/kotlin/org/openrndr/Configuration.kt) 
+    [the API](https://api.openrndr.org/openrndr-application/org.openrndr/-configuration/index.html) 
     for the complete list.
     
     Property                | Type               | Default value                          | Description

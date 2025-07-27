@@ -6,102 +6,63 @@
 
 package docs
 
+import org.intellij.lang.annotations.Language
 import org.openrndr.dokgen.annotations.*
 
 fun main() {
+    @Language("markdown") val a =
     @Text
     """
     # Getting Started with OPENRNDR
     
-    Let's get it started!
+    ## Download the code editor
     
-    ## Setting up software prerequisites
+    To edit and run OPENRNDR programs, we will install an IDE (Integrated Development Environment)
+    called IntelliJ IDEA. 
     
-    Now, to be able to edit and run OPENRNDR programs we have to install some 
-    software tools. 
-    
-     * Check if your computer has `git` installed. If it's missing, install it 
-       from the [Git website](https://git-scm.com/) 
-    
-     * Download [IntelliJ IDEA Community Edition](https://www.jetbrains.com/idea/download) 
-       and install it. On the first run it will offer the option to pick 
-       default settings and continue, use the default settings.
+     * Download and install [IntelliJ IDEA *Community Edition*](https://www.jetbrains.com/idea/download) 
+       (note: the paid version is called *Ultimate*). 
+     * Start IntelliJ. On the first run it will offer the option to pick 
+       your default settings and continue. Use the default settings.
 
-     * Install the [OPENRNDR IntelliJ plugin](https://plugins.jetbrains.com/plugin/19736-openrndr)
-       for better integration with OPENRNDR. In IDEA, search for `OPENRNDR` 
-       in `Settings > Plugins > Marketplace` to install it. 
-     
-    ## Clone the template
+    ## Download the template program
     
-    The advised and time-economic way to start any OPENRNDR-based project is to 
-    use the [`openrndr-template`](https://github.com/openrndr/openrndr-template).
-    This template contains a ready-to-go project from which you can quickly 
-    start running your first programs.
+    Instead of creating a project from scratch, the simplest way to start an OPENRNDR-based project is to 
+    use the [`openrndr-template`](https://github.com/openrndr/openrndr-template):
     
-     * If program menus are visible select "File > New > Project from version control...".
-       If you are running Idea for the first time or no project is open, the program menus
-        are not visible. In that case click "Get from VCS" at the top-right area instead. 
+     * If you are running IntelliJ IDEA for the first time, the program menus
+        are hidden. In that case click "Clone Repository" at the top-right area.
+       * If program menus are visible, select "File > New > Project from version control...".
      * In the dialog that appears:
        * Version Control: choose "Git".
        * URL: enter `https://github.com/openrndr/openrndr-template`
-       * Directory: validate that it looks OK. 
+       * Directory: ensure it looks OK. 
      * When asked where the project should be opened, click on "new window".
     
-    If cloning fails, check if you have Git installed and if the repository URL 
-    was typed correctly.
+    If downloading the template fails:
+
+      * Make sure [Git](https://git-scm.com/downloads) is installed.
+      * Did you enter the repository URL correctly?
     
-    ## Run your first program
+    ## Run the template program
     
-    After cloning the template you will likely see IntelliJ IDEA download 
-    dependencies and index your project, this may take some time on the 
-    first run. You can see its progress in the status bar at the bottom 
-    of the IntelliJ window.
+    After downloading the template, IntelliJ IDEA will download the necessary dependencies.
+    See the progress in the status bar at the bottom of the window.
     
-    You may have noticed that IntelliJ has opened the `README.md` in the 
-    `openrndr-template` project. Likely this file will
-    contain some hints to help you navigate the template project. 
+    When IntelliJ opens a project for the first time, 
+    its `README.md` file is presented automatically. 
+    This file contains hints to help you navigate the template project. 
      
-    Once IntelliJ has finished indexing 
-    click the `src/main/kotlin/TemplateProgram.kt` file in the Project view. 
-    On some versions of IntelliJ the Project view is collapsed by default, 
-    you can open it by clicking on the vertical tab on the left side of the screen. 
+    When the status bar in IntelliJ shows no more activity,
+    go to the Project view (left panel) and
+    click on `src/main/kotlin/TemplateProgram.kt` to open that file 
+
+    Note: the Project view can be shown and hidden by clicking the Project
+    button in the top-left area of the window.
      
-    Once the template program is opened a small green triangle should appear 
-    next to the line that starts with `fun main()`. Click on the triangle,
-    the program should now run.
+    Once the source code of TemplateProgram.kt is visible, a small green triangle will appear 
+    before the words `fun main()`. Click that triangle to run the program.
     
-    *Lo' and behold!*
-    
-    ## Tip for macOS users
-    
-    When running a program the console will display 
-    `Warning: Running on macOS without -XstartOnFirstThread JVM argument`.
-    To clear this warning (and enable debugging):
-    - Open the `Run > Edit Configurations...` menu.
-    - Add `-XstartOnFirstThread` in the `VM Options` [text field](https://stackoverflow.com/a/44184837).
-    - Click `Ok` to close the dialog.
-    
-    ## Tip for Windows multi-GPU users
-    
-    If your computer has multiple GPUs, you can choose which one OPENRNDR uses like this:
-    
-    - Run openrndr-template and note down the `java.exe` path being used. 
-      If you are using Idea it should be displayed at the bottom panel. 
-    - Open the Windows Graphics Settings.
-    - Click Browse and choose the same `java.exe` you noted down earlier.
-    - Click Options, choose your preferred GPU then click Save.
-    
-    ## What's next?
-    
-    At this point you are likely interested in how this program is structured. 
-    The guide explains more in the 
-    [Program basics](https://guide.openrndr.org/programBasics/application.html) chapter.  
-    
-    If you are more interested in reading source code you can find the code 
-    for the examples in this guide in the 
-    [`openrndr-examples` repository](https://github.com/openrndr/openrndr-examples). 
-    If you are interested in more advanced examples we recommend checking out 
-    the demo programs in the [`orx` repository](https://github.com/openrndr/orx); 
-    most `orx` modules have demos in the `src/demo/kotlin` folder.
+    *Ta-da!*
     """
 }
