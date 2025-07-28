@@ -9,11 +9,12 @@ package docs.`30_Drawing`
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
-import org.openrndr.draw.*
-
+import org.openrndr.draw.arrayTexture
+import org.openrndr.draw.colorBuffer
+import org.openrndr.draw.isolatedWithTarget
+import org.openrndr.draw.renderTarget
 import org.openrndr.math.mod
 import org.openrndr.shape.Rectangle
-
 import java.nio.ByteBuffer
 import kotlin.math.cos
 import kotlin.math.sin
@@ -89,7 +90,7 @@ fun main() {
             val at = arrayTexture(512, 512, 100)
             val buffer = ByteBuffer.allocateDirect(512 * 512 * 4)
 
-            // fill buffer with random data
+            // fill the buffer with random data
             for (y in 0 until 512) {
                 for (x in 0 until 512) {
                     for (c in 0 until 4) {

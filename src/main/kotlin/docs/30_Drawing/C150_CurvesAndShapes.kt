@@ -166,14 +166,14 @@ fun main() {
                 // Get a point on the curve near the start.
                 val pos = seg.position(ut = 0.1)
 
-                // Obtain the normal vector near the end.
+                // Get the normal vector near the end.
                 // This is a vector of length 1.0 perpendicular to the curve.
                 val normal = seg.normal(ut = 0.9)
 
                 // Get the bounding box of the curve as a Rectangle instance.
                 val rect = seg.bounds
 
-                // Obtain the length of the curve.
+                // Get the length of the curve.
                 val length = seg.length
 
                 // Get the point on the curve which is nearest to a given point.
@@ -466,14 +466,14 @@ fun main() {
                 // Get a point on the contour near the start.
                 val pos = contour.position(ut = 0.1)
 
-                // Obtain the normal vector near the end.
+                // Get the normal vector near the end.
                 // This is a vector of length 1.0 perpendicular to the curve.
                 val normal = contour.normal(ut = 0.9)
 
                 // Get the bounding box of the curve as a Rectangle instance.
                 val rect = contour.bounds
 
-                // Obtain the length of the curve.
+                // Get the length of the curve.
                 val length = contour.length
 
                 // Get the point on the curve which is nearest to a given point.
@@ -640,7 +640,7 @@ fun main() {
             height = 578
         }
         program {
-            // -- create a contour from Rectangle object
+            // -- create a contour from a Rectangle object
             val c = Rectangle(100.0, 100.0, width - 200.0, height - 200.0).contour.reversed
 
             extend {

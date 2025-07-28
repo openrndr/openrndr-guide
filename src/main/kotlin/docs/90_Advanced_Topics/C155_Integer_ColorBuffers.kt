@@ -57,7 +57,7 @@ fun main() {
             intColorBuffer.filter(MinifyingFilter.NEAREST, MagnifyingFilter.NEAREST)
 
             // standard color buffer to match the output window size, with ColorType.UINT8
-            // by default, which is still sampled as floating point number in shaders
+            // by default, which is still sampled as a floating point number in shaders
             val imageColorBuffer = colorBuffer(width, height)
 
             // fragment shader to transform integer data into something visible

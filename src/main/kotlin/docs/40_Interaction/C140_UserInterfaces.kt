@@ -74,7 +74,7 @@ fun main() {
     """
     ## Style sheets
 
-    The Panel library borrows a lot of ideas from HTML/CSS based layouting 
+    The Panel library borrows a lot of ideas from HTML/CSS based layout 
     systems, one of those ideas is style sheets.
 
     Style sheets can be used as shown in the following example in which a 

@@ -9,7 +9,10 @@ package docs.`80_ORX`
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
-import org.openrndr.extra.midi.*
+import org.openrndr.extra.midi.MidiConsole
+import org.openrndr.extra.midi.bindMidiControl
+import org.openrndr.extra.midi.listMidiDevices
+import org.openrndr.extra.midi.openMidiDevice
 import org.openrndr.extra.parameters.ColorParameter
 import org.openrndr.extra.parameters.DoubleParameter
 import org.openrndr.math.Vector2

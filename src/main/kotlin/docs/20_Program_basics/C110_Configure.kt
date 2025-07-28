@@ -67,7 +67,7 @@ fun main() {
             // settings go here
         }
         program {
-            // -- one time set up code goes here
+            // -- one time set-up code goes here
             extend {
 
                 // -- drawing code goes here

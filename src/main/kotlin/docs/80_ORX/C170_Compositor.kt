@@ -9,7 +9,10 @@ package docs.`80_ORX`
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
-import org.openrndr.draw.*
+import org.openrndr.draw.Cursor
+import org.openrndr.draw.loadFont
+import org.openrndr.draw.loadImage
+import org.openrndr.draw.tint
 import org.openrndr.extra.compositor.*
 import org.openrndr.extra.fx.blend.Add
 import org.openrndr.extra.fx.blend.Normal
@@ -248,7 +251,7 @@ fun main() {
                         )
                     }
                     post(ApproximateGaussianBlur()) {
-                        // -- this is actually a function that is called for every draw
+                        // -- this is actually a function called for every draw
                         window = 25
                         sigma = cos(seconds) * 10.0 + 10.01
                     }
@@ -284,8 +287,8 @@ fun main() {
                     drawer.clear(ColorRGBa.PINK)
                 }
                 layer {
-                    // -- we nest layers to prevent the text layer to be blend with the background
-                    // -- before it is blend with the image layer
+                    // -- we nest layers to prevent the text layer to be blended with the background
+                    // -- before it is blended with the image layer
                     layer {
                         // -- notice how we load the font inside the layer
                         // -- this only happens once
@@ -308,7 +311,7 @@ fun main() {
 
                         // -- we use a normal blend here
                         blend(Normal()) {
-                            // -- and we set clip to true
+                            // -- and we set `clip` to true
                             clip = true
                         }
                         draw {

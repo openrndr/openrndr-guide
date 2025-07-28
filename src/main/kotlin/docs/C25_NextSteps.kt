@@ -95,7 +95,7 @@ fun main() {
     When an import is missing, the unrecognized word will be highlighted in red.
     Let's try this. Delete any `Vector3` related imports from the top of the file.
     The `Vector3` word will be highlighted as an error. When this happens, we can
-    automatically import the right class by clicking the word (highilighted in red), 
+    automatically import the right class by clicking the word (highlighted in red), 
     then press `ALT+ENTER` (or `Command+ENTER` on Mac). A tool tip will show up 
     letting you choose the right import to add.
 

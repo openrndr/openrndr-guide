@@ -6,14 +6,17 @@
 
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*
-import org.openrndr.draw.*
+import org.openrndr.draw.DrawPrimitive
+import org.openrndr.draw.Shader
+import org.openrndr.draw.vertexBuffer
+import org.openrndr.draw.vertexFormat
 import org.openrndr.internal.Driver
 import org.openrndr.math.Vector3
 
 fun main() {
     @Text 
     """
-    # Lowlevel Drawing
+    # Low-level Drawing
     
     This text is intended for developers looking to provide drawing 
     functionality that is fully independent of 
@@ -21,13 +24,13 @@ fun main() {
     use the same building blocks that OPENRNDR
     uses internally.
         
-    A good reference for lowlevel drawing is the `Filter` class and it is 
+    A good reference for low-level drawing is the `Filter` class and it is 
     encouraged to look at its 
     [source code](https://github.com/openrndr/openrndr/blob/master/openrndr-draw/src/commonMain/kotlin/org/openrndr/draw/Filter.kt)
-    as it provides a good idea of how all the lowlevel components interact 
+    as it provides a good idea of how all the low-level components interact 
     and its implementation is fully independent from `Drawer`.
         
-    All lowlevel drawing is performed using OPENRNDR's `Driver` class. 
+    All low-level drawing is performed using OPENRNDR's `Driver` class. 
     This class provides a handful of functions for
     drawing. Below you will find a list of the essential ones.
      * `Driver.setState()`    
@@ -36,7 +39,7 @@ fun main() {
      * `Driver.drawInstances()`
      * `Driver.drawIndexedInstances()`
      
-    Classes that belong to the lowlevel drawing API:
+    Classes that belong to the low-level drawing API:
      * [`Shader`](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-draw/src/commonMain/kotlin/org/openrndr/draw/Shader.kt)
      * [`IndexBuffer`](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-draw/src/commonMain/kotlin/org/openrndr/draw/IndexBuffer.kt)
      * [`VertexBuffer`](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-draw/src/commonMain/kotlin/org/openrndr/draw/VertexBuffer.kt)

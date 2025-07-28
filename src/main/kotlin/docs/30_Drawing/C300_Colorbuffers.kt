@@ -95,7 +95,7 @@ fun main() {
     application {
         program {
             val gradientBackground = drawImage(width, height) {
-                // Draw anything here, for example a radial gradient.
+                // Draw anything here, for example, a radial gradient.
                 drawer.shadeStyle = RadialGradient(ColorRGBa.WHITE, ColorRGBa.PINK)
                 val r = Rectangle.fromCenter(drawer.bounds.center, 800.0, 800.0)
                 drawer.rectangle(r)
@@ -181,7 +181,7 @@ fun main() {
         // -- create a color buffer that uses 8 bits per channel (the default)
         val cb = colorBuffer(640, 480, type = ColorType.UINT8)
 
-        // -- create a buffer (on CPU) that matches size and layout of the color buffer
+        // -- create a buffer (on CPU) that matches the size and layout of the color buffer
         val buffer = ByteBuffer.allocateDirect(cb.width * cb.height * cb.format.componentCount * cb.type.componentSize)
 
         // -- fill buffer with random data
@@ -195,7 +195,7 @@ fun main() {
 
         // -- rewind the buffer, this is essential as upload will be from the position we left the buffer at
         buffer.rewind()
-        // -- write into color buffer
+        // -- write into the color buffer
         cb.write(buffer)
     }
 
@@ -211,7 +211,7 @@ fun main() {
         // -- create a color buffer that uses 8 bits per channel (the default)
         val cb = colorBuffer(640, 480, type = ColorType.UINT8)
 
-        // -- create a buffer (on CPU) that matches size and layout of the color buffer
+        // -- create a buffer (on CPU) that matches the size and layout of the color buffer
         val buffer = ByteBuffer.allocateDirect(cb.width * cb.height * cb.format.componentCount * cb.type.componentSize)
 
         // -- download data into buffer

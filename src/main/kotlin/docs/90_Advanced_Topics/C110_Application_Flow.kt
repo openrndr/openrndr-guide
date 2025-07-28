@@ -29,8 +29,8 @@ fun main() {
             // -- define an application
             application {
                 // -- at this point there is no window or graphical context
-                // -- attempting to work with graphics resources will lead to errors
-                // -- configure application window
+                // -- attempting to work with graphics resources will lead to errors.
+                // -- configure the application window
                 configure {
                     width = 770
                     height = 578
@@ -53,7 +53,7 @@ fun main() {
 
     @Text
     """
-    ## Applications without application{} builder
+    ## Applications without an application{} builder
     
     There may be scenarios in which a more traditional way of writing 
     applications is preferred.   
@@ -104,7 +104,7 @@ fun main() {
                 }
             }
 
-            // -- application blocks until window is closed
+            // -- application blocks until the window is closed
             application {
                 // -- configure using the settings object
                 configure {

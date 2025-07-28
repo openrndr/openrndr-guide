@@ -38,7 +38,7 @@ fun main() {
             height = 578
         }
         program {
-            // -- create offscreen render target
+            // -- create an offscreen render target
             val offscreen = renderTarget(width, height) {
                 colorBuffer()
                 depthBuffer()
@@ -46,7 +46,7 @@ fun main() {
             // -- create blur filter
             val blur = BoxBlur()
 
-            // -- create colorbuffer to hold blur results
+            // -- create a colorbuffer to hold the blur results
             val blurred = colorBuffer(width, height)
 
 
@@ -121,7 +121,7 @@ fun main() {
         """
 
         class Noise : Filter(filterShaderFromCode(noiseShader, "noise-shader")) {
-            // -- note the 'by parameters' here, this is what wires the fields up to the uniforms
+            // -- note the 'by parameters' here; this is what wires the fields up to the uniforms
             var gain: Double by parameters
             var time: Double by parameters
 

@@ -6,7 +6,6 @@
 
 package docs.`30_Drawing`
 
-import org.intellij.lang.annotations.Language
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
@@ -371,7 +370,7 @@ fun main() {
     One can explore the source code to find out how attributes and uniforms are used: 
     
     * [ShadeStyleGLSL.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-draw/src/jvmMain/kotlin/org/openrndr/draw/ShadeStyleGLSL.kt) (JVM) 
-    * [ShadeStyleGLSL.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-draw/src/jsMain/kotlin/org/openrndr/draw/ShadeStyleGLSL.kt) (webgl)
+    * [ShadeStyleGLSL.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-draw/src/jsMain/kotlin/org/openrndr/draw/ShadeStyleGLSL.kt) (WEBGL)
     * [ShaderGeneratorsGLCommon.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-gl-common/src/commonMain/kotlin/ShaderGeneratorsGLCommon.kt)
     
     ## Vertex and fragment preambles
@@ -382,7 +381,7 @@ fun main() {
 
     To achieve this, we use two keywords: `vertexPreamble` and `fragmentPreamble`. 
     The code found in these strings gets inserted into the shader programs _before_ the `main()` function, allowing us
-    to declare custom functions or even varyings (to pass values from the vertex shader into the fragment shader).
+    to declare custom functions or even `varying`s (to pass values from the vertex shader into the fragment shader).
     """
 
     @Media.Image "../media/shadestyles-010.jpg"

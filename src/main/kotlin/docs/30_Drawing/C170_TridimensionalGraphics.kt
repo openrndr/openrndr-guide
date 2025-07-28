@@ -17,7 +17,7 @@ import org.openrndr.extra.camera.Orbital
 import org.openrndr.extra.meshgenerators.boxMesh
 import org.openrndr.math.Vector2
 import org.openrndr.math.Vector3
-import org.openrndr.shape.*
+import org.openrndr.shape.Rectangle
 
 fun main() {
     @Text """
