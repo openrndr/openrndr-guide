@@ -11,11 +11,23 @@ jobs:
   linkChecker:
     runs-on: ubuntu-latest
     steps:
+
       - uses: actions/checkout@v4
         with:
           ref: generated
+
       - name: Link Checker
         id: lychee
-        uses: lycheeverse/lychee-action@v1
+        uses: lycheeverse/lychee-action@v2
         with:
           args: "'./**/*.md' './**/*.markdown'"
+          fail: false
+
+      - name: Create Issue From File
+        if: steps.lychee.outputs.exit_code != 0
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: Link Checker Report
+          content-filepath: ./lychee/out.md
+          labels: report, automated issue
+
