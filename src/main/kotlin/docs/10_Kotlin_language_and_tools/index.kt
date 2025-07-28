@@ -5,7 +5,10 @@
 
 package docs.`10_Kotlin_language_and_tools`
 
-import org.openrndr.dokgen.annotations.*
+import org.openrndr.dokgen.annotations.Order
+import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.Title
+import org.openrndr.dokgen.annotations.URL
 
 fun main() {
     @Text

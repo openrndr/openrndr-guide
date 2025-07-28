@@ -5,7 +5,10 @@
 
 package docs.`20_Program_basics`
 
-import org.openrndr.dokgen.annotations.*
+import org.openrndr.dokgen.annotations.Order
+import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.Title
+import org.openrndr.dokgen.annotations.URL
 
 fun main() {
     @Text
