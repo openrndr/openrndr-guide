@@ -18,7 +18,7 @@ fun main() {
     The Gradle build tool is used by the OPENRNDR projects 
     to download dependencies, build and distribute projects.
     
-    We recommend to have some fun with the [drawing](drawing/) 
+    We recommend to have some fun with the [drawing](/drawing/) 
     chapter first, then come back to this chapter when you 
     start wondering about the language, the syntax and the framework. 
     

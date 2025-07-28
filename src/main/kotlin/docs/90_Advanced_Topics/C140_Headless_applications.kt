@@ -34,7 +34,7 @@ fun main() {
     is no backbuffer. In order to draw you need to create a 
     [RenderTarget](https://guide.openrndr.org/drawing/renderTargets.html) and draw on it. 
     Render target contents can easily be saved to file, or rendered to 
-    [video](https://guide.openrndr.org/extensions/writingToVideoFiles.html#writing-to-video-using-render-targets).
+    [video](https://guide.openrndr.org/extensions/screenRecorder.html#writing-to-video-using-render-targets).
 
     #### Mouse and keyboard events
     
