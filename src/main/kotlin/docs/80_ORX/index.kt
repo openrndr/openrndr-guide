@@ -28,6 +28,6 @@ fun main() {
     1. Open the `build.gradle.kts` file
     2. Uncomment the desired module names under `orxFeatures`
     3. Save
-    4. Reimport Gradle projects: if using Idea choose 🔄 _Reimport All Gradle Projects_ from the Gradle panel.
+    4. Reimport Gradle projects: if using IDEA choose 🔄 _Reimport All Gradle Projects_ from the Gradle panel.
     """
 }

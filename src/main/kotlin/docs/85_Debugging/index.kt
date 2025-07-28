@@ -32,7 +32,7 @@ fun main() {
     
     ##### Exception handling
     
-    It is possible to change how exception errors are presented by IntelliJ Idea:
+    It is possible to change how exception errors are presented by IntelliJ IDEA:
     Open the `Run > Edit Configurations` menu and make sure the `VM Options` text
     field contains `-Dorg.openrndr.exceptions=JVM`. 
     This can sometimes help figure out why a program is crashing.

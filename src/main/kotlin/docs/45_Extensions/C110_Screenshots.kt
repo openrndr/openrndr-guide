@@ -54,6 +54,6 @@ fun main() {
     @Text
     """
     To discover other configurable options you can use the autocomplete feature (ctrl+space by default) in 
-    IntelliJ Idea or explore [its source code](https://github.com/openrndr/openrndr/blob/master/openrndr-extensions/src/jvmMain/kotlin/org/openrndr/extensions/Screenshots.kt).
+    IntelliJ IDEA or explore [its source code](https://github.com/openrndr/openrndr/blob/master/openrndr-extensions/src/jvmMain/kotlin/org/openrndr/extensions/Screenshots.kt).
     """
 }
