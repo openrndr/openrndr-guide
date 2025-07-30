@@ -45,7 +45,7 @@ fun main() {
     ### Enable or disable extensions
 
     Suppose a program requires access to a MIDI hardware controller. In that case, we need to edit the
-    `build.gradle.kts` file to uncomment a line to enable MIDI; then, we need to click "Reload All Gradle Projects"
+    `build.gradle.kts` file to uncomment a line to enable MIDI; then, we need to click "Sync All Gradle Projects"
     in the IDE to trigger the downloading of the MIDI libraries.
 
     ### Add or remove dependencies
