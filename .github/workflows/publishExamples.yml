@@ -36,8 +36,6 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
-        with:
-          cache-disabled: true
 
       - name: Build openrndr-guide
         run: skipMediaGeneration=true xvfb-run ./gradlew dokgen
@@ -74,6 +72,7 @@ jobs:
           git config --global user.email "actions@openrndr.org"
           git config --global user.name "OPENRNDR Actions"
           git add . 
-          git commit -m "Update examples"
+          git commit -m "Update examples" --allow-empty || echo "No changes to commit"
           git push
           rm ~/.ssh/id_ed25519
+
