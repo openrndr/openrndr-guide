@@ -1,4 +1,4 @@
-name: Publish examples to https://github.com/openrndr/openrndr-examples
+name: Publish examples to openrndr/openrndr-examples
 on:
   push:
     tags:
@@ -10,7 +10,7 @@ on:
 
 concurrency:
   group: ${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 defaults:
   run:
