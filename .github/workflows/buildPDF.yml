@@ -61,9 +61,8 @@ jobs:
           # finally join all the PDF files into one
           pdfunite *.pdf ~/$filename-$date.pdf
 
-        - name: Upload Artifact
-          uses: actions/upload-artifact@v2
-          with:
-            name: generated-pdf
-            path: ~/$filename-$date.pdf
-
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: generated-pdf
+          path: ~/$filename-$date.pdf
