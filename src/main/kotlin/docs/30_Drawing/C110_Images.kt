@@ -65,7 +65,7 @@ fun main() {
 
     @Text
     """
-    Extra `width` and `height` arguments can be provided to draw a scaled version of the image
+    Extra `width` and `height` arguments can be provided to draw a scaled version of the image.
     """
 
     run {
@@ -84,7 +84,9 @@ fun main() {
 
     @Text
     """
-    ## Drawing parts of images
+    To rotate an image (or any other element you draw) apply [transformations](/drawing/transformations.html).
+
+    ## Drawing  parts of images
     
     It is possible to draw parts of images by specifying _source_ and _target_ rectangles. The source rectangle describes
     the area that should be taken from the image and presented in the target rectangle.
