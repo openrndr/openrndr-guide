@@ -78,6 +78,6 @@ jobs:
           git config --global user.email "actions@openrndr.org"
           git config --global user.name "OPENRNDR Actions"
           git add .
-          git commit -m "Add automatically generated guide"
-          git push origin generated --force
+          git commit -m "Add automatically generated PDF guide"
+          git push origin pdf --force
 
