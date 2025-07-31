@@ -62,7 +62,8 @@ jobs:
           pdfunite *.pdf ~/$filename-$date.pdf
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: generated-pdf
           path: ~/$filename-$date.pdf
+          overwrite: true
