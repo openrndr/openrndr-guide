@@ -13,7 +13,7 @@ jobs:
       - name: Add dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y wkhtmltopdf curl sed pdfunite grep
+          sudo apt-get install -y wkhtmltopdf xvfb pdfunite
 
       - name: Verify installation
         run: |
