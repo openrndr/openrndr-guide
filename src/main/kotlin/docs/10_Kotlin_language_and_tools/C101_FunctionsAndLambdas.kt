@@ -45,7 +45,7 @@ fun main() {
     
     The framework provides several such `extend` blocks (called Extensions),
     for instance, [Screenshots](/extensions/screenshots.html), 
-    [ScreenRecorder](/extensions/writingToVideoFiles.html)
+    [ScreenRecorder](/extensions/screenRecorder.html)
     and [Camera2D](/extensions/camera2D.html), among others. This makes it possible to build programs
     by composing code blocks as if they were LEGO pieces and add powerful
     functionality with just one or two lines of code.

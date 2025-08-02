@@ -126,7 +126,7 @@ fun main() {
         
     ## Render targets and projection transformations
     
-    Note that the [projection matrix](/drawingAndTransformations/transformations.html#projection-matrix) 
+    Note that the [projection matrix](/drawing/transformations.html#projection-matrix) 
     has to fit the render target. 
     This becomes obvious __if the dimensions of the window and the dimensions of the render target differ__. 
     In case of orthographic (2D) projections one can call `ortho(rt)`:
