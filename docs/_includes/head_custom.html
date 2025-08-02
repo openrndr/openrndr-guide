@@ -1,0 +1,20 @@
+<script>
+    /* Redirect changed URLs */
+    /* Use block comments only! Line comments break the site */
+
+    let url = document.location.pathname
+
+    let urlMap = {
+      '/interaction/Events.html':               '/interaction/events.html',
+      '/extensions/writingToVideoFiles.html':   '/extensions/screenRecorder.html',
+      '/ORX/osc.html':                          '/ORX/OSC.html',
+      '/advancedTopics/ComputeShaders.html':    '/advancedTopics/computeShaders.html',
+      '/debugging/logging.html':                '/debugging/index.html',
+    };
+
+    if(urlMap[url]) {
+      window.location = urlMap[url];
+    } else {
+      console.log('no known redirect for URL with urlId: ' + urlId);
+    }
+</script>
