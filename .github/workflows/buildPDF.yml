@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  post-deploy:
+  build-guide-pdf:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout current repository
@@ -21,7 +21,7 @@ jobs:
         if: always()
         with:
           in: guide.openrndr.org/index.html
-          out: openrndr-guide.pdf
+          out: ${GITHUB_WORKSPACE}/target/openrndr-guide.pdf
           args: --paper-size a4 --pdf-default-font-size 12 --pdf-mono-font-size 12 --chapter / --page-breaks-before / --chapter-mark none --pdf-page-margin-bottom 36 --pdf-page-margin-top 36 --pdf-page-margin-left 36 --pdf-page-margin-right 36 --pretty-print
 
       - name: Update pdf branch
@@ -31,7 +31,7 @@ jobs:
           git checkout --orphan pdf
           git reset HEAD -- .
           git clean -df
-          mv /github/workspace/openrndr-guide.pdf .
+          mv ${GITHUB_WORKSPACE}/target/openrndr-guide.pdf .
           git status
           git config --global user.email "actions@openrndr.org"
           git config --global user.name "OPENRNDR Actions"
