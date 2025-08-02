@@ -31,7 +31,7 @@ jobs:
           git checkout --orphan pdf
           git reset HEAD -- .
           git clean -df
-          mv ~/openrndr-guide.pdf .
+          mv /github/workspace/openrndr-guide.pdf .
           git status
           git config --global user.email "actions@openrndr.org"
           git config --global user.name "OPENRNDR Actions"
