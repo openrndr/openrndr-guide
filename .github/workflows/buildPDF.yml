@@ -1,7 +1,11 @@
 name: Build Guide PDF
 
 on:
-  page_build: # Triggers after GitHub Pages finishes building / deploying
+  workflow_run:
+    workflows: ["pages-build-deployment"]
+    branches: [generated]
+    types:
+      - completed
 
   # Allow manual trigger
   workflow_dispatch:
