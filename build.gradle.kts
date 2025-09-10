@@ -33,9 +33,7 @@ tasks {
 
         val nonStableKeywords = listOf("alpha", "beta", "rc")
 
-        fun isNonStable(
-            version: String
-        ) = nonStableKeywords.any {
+        fun isNonStable(version: String) = nonStableKeywords.any {
             version.lowercase().contains(it)
         }
 
@@ -63,7 +61,7 @@ dokgen {
     }
 }
 
-task("add IDE file scopes") {
+tasks.register("add IDE file scopes") {
     group = " ★ OPENRNDR"
     val scopesFolder = File("${project.projectDir}/.idea/scopes")
     scopesFolder.mkdirs()
@@ -164,7 +162,7 @@ class AnnotatedFile(val ktFile: File) {
         var nameCamel = parts.drop(1).joinToString(
             "", transform = { s -> s.replaceFirstChar { c -> c.uppercaseChar() } }
         )
-        // Make first character case match second character case
+        // Make the case of the first character match the case of the second character
         // For cases like OSC or SVG.
         if (nameCamel.isNotEmpty() && nameCamel[1].isLowerCase()) {
             nameCamel = nameCamel.replaceFirstChar { it.lowercaseChar() }
@@ -214,7 +212,7 @@ class AnnotatedFile(val ktFile: File) {
                 val tempFile = ktFile.createTempFile(".kt")
                 tempFile.writeText(getUpdatedFileContent())
 
-                // Atomic replacement of original file
+                // Atomic replacement of the original file
                 Files.move(
                     Paths.get(tempFile.absolutePath),
                     Paths.get(ktFile.absolutePath),
@@ -226,7 +224,7 @@ class AnnotatedFile(val ktFile: File) {
     }
 }
 
-task("Update just-the-docs annotations") {
+tasks.register("Update just-the-docs annotations") {
     group = " ★ OPENRNDR"
 
     // Source directory containing Kotlin files

@@ -1,13 +1,13 @@
 [versions]
-kotlin = "2.2.0"
+kotlin = "2.2.20"
 jvmTarget = "17"
-openrndr = "0.4.4"
-orx = "0.4.4"
+openrndr = "0.4.5"
+orx = "0.4.5"
 orml = "0.4.1"
 coroutines = "1.10.2"
 slf4j = "2.0.17"
-gitPublish = "5.1.1"
-jsoup = "1.21.1"
+gitPublish = "5.1.3"
+jsoup = "1.21.2"
 gson = "2.13.1"
 csv = "1.10.0"
 versions = "0.52.0"
@@ -32,12 +32,13 @@ openrndr-extensions = { group = "org.openrndr", name = "openrndr-extensions", ve
 openrndr-ffmpeg = { group = "org.openrndr", name = "openrndr-ffmpeg", version.ref = "openrndr" }
 openrndr-filter = { group = "org.openrndr", name = "openrndr-filter", version.ref = "openrndr" }
 openrndr-gl3 = { group = "org.openrndr", name = "openrndr-gl3", version.ref = "openrndr" }
-openrndr-svg = { group = "org.openrndr", name = "openrndr-svg", version.ref = "openrndr" }
 openrndr-dialogs = { group = "org.openrndr", name = "openrndr-dialogs", version.ref = "openrndr" }
 
 # ORX
 orx-camera = { group = "org.openrndr.extra", name = "orx-camera", version.ref = "orx" }
+orx-color = { group = "org.openrndr.extra", name = "orx-color", version.ref = "orx" }
 orx-compositor = { group = "org.openrndr.extra", name = "orx-compositor", version.ref = "orx" }
+orx-composition = { group = "org.openrndr.extra", name = "orx-composition", version.ref = "orx" }
 orx-fx = { group = "org.openrndr.extra", name = "orx-fx", version.ref = "orx" }
 orx-gui = { group = "org.openrndr.extra", name = "orx-gui", version.ref = "orx" }
 orx-image-fit = { group = "org.openrndr.extra", name = "orx-image-fit", version.ref = "orx" }
@@ -53,6 +54,8 @@ orx-panel = { group = "org.openrndr.extra", name = "orx-panel", version.ref = "o
 orx-poisson-fill = { group = "org.openrndr.extra", name = "orx-poisson-fill", version.ref = "orx" }
 orx-shade-styles = { group = "org.openrndr.extra", name = "orx-shade-styles", version.ref = "orx" }
 orx-shapes = { group = "org.openrndr.extra", name = "orx-shapes", version.ref = "orx" }
+orx-svg = { group = "org.openrndr.extra", name = "orx-svg", version.ref = "orx" }
+orx-text-writer = { group = "org.openrndr.extra", name = "orx-text-writer", version.ref = "orx" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
@@ -62,7 +65,6 @@ versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
 
 [bundles]
 openrndr-core = [
-    "openrndr-core",
     "openrndr-extensions",
     "openrndr-ffmpeg"
 ]
@@ -70,11 +72,12 @@ openrndr-rest = [
     "openrndr-animatable",
     "openrndr-filter",
     "openrndr-gl3",
-    "openrndr-svg",
     "openrndr-dialogs"
 ]
 orx = [
     "orx-camera",
+    "orx-color",
+    "orx-composition",
     "orx-compositor",
     "orx-fx",
     "orx-gui",
@@ -90,5 +93,7 @@ orx = [
     "orx-panel",
     "orx-poisson-fill",
     "orx-shade-styles",
-    "orx-shapes"
+    "orx-shapes",
+    "orx-svg",
+    "orx-text-writer"
 ]
