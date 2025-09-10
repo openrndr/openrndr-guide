@@ -10,9 +10,10 @@ import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dialogs.saveFileDialog
 import org.openrndr.dokgen.annotations.*
-import org.openrndr.drawComposition
-import org.openrndr.shape.draw
-import org.openrndr.svg.saveToFile
+import org.openrndr.extra.composition.composition
+import org.openrndr.extra.composition.draw
+import org.openrndr.extra.composition.drawComposition
+import org.openrndr.extra.svg.saveToFile
 import java.io.File
 
 fun main() {

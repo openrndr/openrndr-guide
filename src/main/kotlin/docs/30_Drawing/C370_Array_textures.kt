@@ -13,7 +13,6 @@ import org.openrndr.draw.arrayTexture
 import org.openrndr.draw.colorBuffer
 import org.openrndr.draw.isolatedWithTarget
 import org.openrndr.draw.renderTarget
-import org.openrndr.math.mod
 import org.openrndr.shape.Rectangle
 import java.nio.ByteBuffer
 import kotlin.math.cos
@@ -238,7 +237,7 @@ fun main() {
                     }
                 }
 
-                val layers = (0 until at.layers).map { mod(index - it, at.layers) }
+                val layers = (0 until at.layers).map { (index - it).mod(at.layers) }
                 val rectangles = (0 until at.layers).map {
                     val span = Rectangle(0.0, it * 5.0, at.width * 1.0, 5.0)
                     span to span

@@ -10,7 +10,13 @@ import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.LineCap
+import org.openrndr.draw.colorBuffer
 import org.openrndr.extra.noise.*
+import org.openrndr.extra.noise.filters.CellNoise
+import org.openrndr.extra.noise.filters.HashNoise
+import org.openrndr.extra.noise.filters.SimplexNoise3D
+import org.openrndr.extra.noise.filters.SpeckleNoise
+import org.openrndr.extra.noise.filters.ValueNoise
 import org.openrndr.math.Vector2
 import org.openrndr.math.Vector3
 import org.openrndr.math.Vector4
@@ -331,8 +337,8 @@ fun main() {
     Gradients can also be calculated for the fbm, rigid and billow versions 
     of the noise functions. However, 
     we first have to create a function that can be used by the gradient 
-    estimator. For this `fbmFunc3D`, `billowFunc3D`, and 
-    `rigidFunc3D` can be used (which works through 
+    estimator. For this `.fbm()`, `.billow()`, and 
+    `.rigid()` can be used (which works through 
     [partial application](https://en.wikipedia.org/wiki/Partial_application)).
     """
 
@@ -348,7 +354,7 @@ fun main() {
             height = 578
         }
         program {
-            val noise = fbmFunc3D(::simplex, octaves = 3)
+            val noise = simplex3D.fbm(octaves = 3)
             extend {
                 drawer.fill = null
                 drawer.stroke = ColorRGBa.PINK
@@ -370,12 +376,8 @@ fun main() {
         }
     }
 
-    // The following are commented out until
-    // https://github.com/openrndr/orx/blob/master/orx-noise/src/commonMain/kotlin/filters/NoiseFilters.kt
-    // is available again.
-
-    /*
-    @Text """
+    @Text
+    """
     ## Noise filters
 
     The library contains a number of Filters with which noise image
@@ -577,5 +579,4 @@ fun main() {
             }
         }
     }
-    */
 }

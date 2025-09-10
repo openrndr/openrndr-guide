@@ -6,13 +6,14 @@
 
 package docs.`30_Drawing`
 
+import offset.offset
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.LineJoin
 import org.openrndr.draw.loadFont
-import org.openrndr.extra.shapes.Pulley
-import org.openrndr.extra.shapes.hobbyCurve
+import org.openrndr.extra.shapes.hobbycurve.hobbyCurve
+import org.openrndr.extra.shapes.primitives.Pulley
 import org.openrndr.extra.shapes.rectify.rectified
 import org.openrndr.math.Vector2
 import org.openrndr.math.transforms.transform
@@ -86,9 +87,9 @@ fun main() {
                 drawer.text("Cubic", pts[8] + off2)
 
                 drawer.stroke = ColorRGBa.BLACK
-                drawer.segment(Segment(pts[0], pts[1]))
-                drawer.segment(Segment(pts[2], pts[3], pts[4]))
-                drawer.segment(Segment(pts[5], pts[6], pts[7], pts[8]))
+                drawer.segment(Segment2D(pts[0], pts[1]))
+                drawer.segment(Segment2D(pts[2], pts[3], pts[4]))
+                drawer.segment(Segment2D(pts[5], pts[6], pts[7], pts[8]))
             }
         }
     }
@@ -101,20 +102,20 @@ fun main() {
     @Code.Block
     run {
         // Linear Segment: start point, end point
-        val seg1 = Segment(
+        val seg1 = Segment2D(
             Vector2(50.0, 55.0),
             Vector2(100.0, 160.0)
         )
 
         // Quadratic Segment: start point, control point, end point
-        val seg2 = Segment(
+        val seg2 = Segment2D(
             Vector2(200.0, 35.0),
             Vector2(280.0, 50.0),
             Vector2(250.0, 160.0)
         )
 
         // Cubic Segment: start point, control point, control point, end point
-        val seg3 = Segment(
+        val seg3 = Segment2D(
             Vector2(500.0, 35.0),
             Vector2(550.0, 100.0),
             Vector2(400.0, 120.0),
@@ -129,7 +130,7 @@ fun main() {
 
     application {
         program {
-            val seg1 = Segment(Vector2.ZERO, Vector2.ZERO)
+            val seg1 = Segment2D(Vector2.ZERO, Vector2.ZERO)
             val seg2 = seg1
             val seg3 = seg1
             @Code.Block
@@ -160,7 +161,7 @@ fun main() {
 
     application {
         program {
-            val seg = Segment(Vector2.ZERO, Vector2.ONE)
+            val seg = Segment2D(Vector2.ZERO, Vector2.ONE)
             @Code.Block
             run {
                 // Get a point on the curve near the start.
@@ -199,7 +200,7 @@ fun main() {
 
     application {
         program {
-            val seg = Segment(Vector2.ZERO, Vector2.ONE)
+            val seg = Segment2D(Vector2.ZERO, Vector2.ONE)
             @Code.Block
             run {
                 // Split a segment at the center returning two segments
@@ -385,9 +386,13 @@ fun main() {
         }
         program {
             val segments = listOf(
-                Segment(Vector2(10.0, 100.0), Vector2(200.0, 80.0)), // Linear Bézier Segment
-                Segment(Vector2(200.0, 80.0), Vector2(250.0, 280.0), Vector2(400.0, 80.0)), // Quadratic Bézier segment
-                Segment(
+                Segment2D(Vector2(10.0, 100.0), Vector2(200.0, 80.0)), // Linear Bézier Segment
+                Segment2D(
+                    Vector2(200.0, 80.0),
+                    Vector2(250.0, 280.0),
+                    Vector2(400.0, 80.0)
+                ), // Quadratic Bézier segment
+                Segment2D(
                     Vector2(400.0, 80.0),
                     Vector2(450.0, 180.0),
                     Vector2(500.0, 0.0),

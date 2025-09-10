@@ -10,6 +10,7 @@ import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.*
+import org.openrndr.draw.font.BufferAccess
 import java.io.File
 
 fun main() {
@@ -18,7 +19,8 @@ fun main() {
 
     Since version 0.3.36 OPENRNDR comes with compute shader functionality 
     for select platforms. Compute shader support only works on systems 
-    that support OpenGL 4.3 or higher. This excludes all versions of MacOS.
+    that support OpenGL 4.3 or higher. MacOS support is provided via 
+    [Angle](https://github.com/openrndr/angle).
     
     ## Example use
     
@@ -40,7 +42,7 @@ fun main() {
     uniform vec4 fillColor;
     uniform float seconds;
     layout(rgba8) uniform readonly image2D inputImg;
-    uniform writeonly image2D outputImg;
+    layout(rgba8) uniform writeonly image2D outputImg;
     
     void main() {
         ivec2 coords = ivec2(gl_GlobalInvocationID.xy);
@@ -68,7 +70,6 @@ fun main() {
     1. Finally, the result is displayed by calling `drawer.image()`.
     """
 
-
     @Application
     @ProduceScreenshot("media/compute-shaders-001.jpg")
     @Code
@@ -79,9 +80,9 @@ fun main() {
             )
 
             val tempBuffer = loadImage("data/images/cheeta.jpg")
-            val inputBuffer = colorBuffer(width, height)
+            val inputBuffer = colorBuffer(width, height, type = ColorType.UINT8)
             tempBuffer.copyTo(inputBuffer)
-            val outputBuffer = colorBuffer(width, height)
+            val outputBuffer = colorBuffer(width, height, type = ColorType.UINT8)
 
             extend {
                 cs.uniform("fillColor", ColorRGBa.PINK.shade(0.1))
@@ -93,4 +94,64 @@ fun main() {
             }
         }
     }
+
+    @Text
+    """
+    If we prefer to work with floating point buffers, we could set the `type`
+    of both `ColorBuffer` instances to `ColorType.FLOAT32` instead of `ColorType.UINT8`,
+    and use `layout(rgba32f)` instead of `layout(rgba8)` in the GLSL code.
+    
+    # ComputeStyle
+    
+    To simplify working with compute shaders, OPENRNDR provides the `computeStyle` builder,
+    which should feel familiar if you've used `shadeStyle`. The `computeStyle` builder
+    takes care of declaring the GLSL version, the layout and the uniforms, which helps
+    avoid typos and other errors in the code.
+    
+    The same program above written using `shadeStyle` looks like this:
+    """
+
+    @Application
+    @ProduceScreenshot("media/compute-shaders-002.jpg")
+    @Code
+    application {
+        program {
+            val cs = computeStyle {
+                computeTransform = """
+                    ivec2 coords = ivec2(gl_GlobalInvocationID.xy);
+                    float v = cos(coords.x * 0.01 + coords.y * 0.01 + p_seconds) * 0.5 + 0.5;
+                    vec4 wave = vec4(v, 0.0, 0.0, 1.0);
+                    vec4 inputImagePixel = imageLoad(p_inputImg, coords);
+                
+                    imageStore(p_outputImg, coords, wave + inputImagePixel + p_fillColor);
+                """.trimIndent()
+            }
+
+            val tempBuffer = loadImage("data/images/cheeta.jpg")
+            val inputBuffer = colorBuffer(width, height, type = ColorType.UINT8)
+            tempBuffer.copyTo(inputBuffer)
+            val outputBuffer = colorBuffer(width, height, type = ColorType.UINT8)
+
+            extend {
+                cs.parameter("fillColor", ColorRGBa.PINK.shade(0.1))
+                cs.parameter("seconds", seconds)
+                cs.image("inputImg", inputBuffer.imageBinding(0, BufferAccess.READ))
+                cs.image("outputImg", outputBuffer.imageBinding(0, ImageAccess.WRITE))
+                cs.execute(outputBuffer.width, outputBuffer.height, 1)
+                drawer.image(outputBuffer)
+            }
+        }
+    }
+
+    @Text
+    """
+    Notice how we used `cs.parameter()` instead of `cs.uniform()`, 
+    the `cs.image()` method lost one argument, and the GLSL code
+    got simplified by writing only the content of its `main()` function.
+    
+    The names of the parameters we passed to the compute shader received a `p_` prefix,
+    for instance `seconds` became `p_seconds` in the GLSL code. This makes
+    parameters easy to distinguish from other GLSL variables.
+    """.trimIndent()
+
 }
