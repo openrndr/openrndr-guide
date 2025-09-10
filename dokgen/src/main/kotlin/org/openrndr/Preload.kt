@@ -45,7 +45,7 @@ class Preload : ApplicationPreload() {
             program.extend(screenRecorder)
 
             val normScreenshotTime = 1 / 3.0
-            val skipFrames = (screenRecorder.frameRate *
+            val skipFrames = (screenRecorder.frameRate.toDouble() *
                     screenRecorder.maximumDuration * normScreenshotTime).toInt()
             val thumbPath = path.replace(".mp4", "-thumb.jpg")
             program.extend(screenshots(thumbPath, skipFrames, false))
