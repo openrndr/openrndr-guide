@@ -9,14 +9,22 @@ abstract class MediaRunnerWorkAction : WorkAction<MediaRunnerWorkParameters> {
     abstract val execOperations: ExecOperations
 
     override fun execute() {
-        try {
-            execOperations.javaexec {
-                it.classpath(parameters.classPath.get())
-                it.jvmArgs = parameters.jvmArgs.get()
-                it.mainClass.set(parameters.mainClass)
+        for (i in 0 until 10) {
+            try {
+                execOperations.javaexec {
+                    it.classpath(parameters.classPath.get())
+                    it.jvmArgs = parameters.jvmArgs.get()
+                    it.mainClass.set(parameters.mainClass)
+                }
+                break
+            } catch (e: Exception) {
+                if (i == 9) {
+                    throw RuntimeException(e)
+                } else {
+                    System.err.println("Failed to run media example, retrying in a second...")
+                    Thread.sleep(1000)
+                }
             }
-        } catch (e: Exception) {
-            throw RuntimeException(e)
         }
     }
 }
