@@ -5,10 +5,10 @@ openrndr = "0.4.5"
 orx = "0.4.5"
 orml = "0.4.1"
 coroutines = "1.10.2"
+kotlinxSerialization = "1.9.0"
 slf4j = "2.0.17"
 gitPublish = "5.1.3"
 jsoup = "1.21.2"
-gson = "2.13.1"
 csv = "1.10.0"
 versions = "0.52.0"
 
@@ -18,9 +18,10 @@ kotlin-compiler-embeddable = { group = "org.jetbrains.kotlin", name = "kotlin-co
 kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlin" }
 kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+kotlinx-serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "kotlinxSerialization" }
 slf4j-simple = { group = "org.slf4j", name = "slf4j-simple", version.ref = "slf4j" }
 jsoup = { group = "org.jsoup", name = "jsoup", version.ref = "jsoup" }
-gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 csv = { group = "com.github.doyaaaaaken", name = "kotlin-csv-jvm", version.ref = "csv" }
 
 dokgen = { group = "org.openrndr", name = "dokgen" }
@@ -59,6 +60,7 @@ orx-text-writer = { group = "org.openrndr.extra", name = "orx-text-writer", vers
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 dokgen = { id = "org.openrndr.dokgen-gradle", version = { require = "latest.release" } }
 git-publish = { id = "org.ajoberstar.git-publish", version.ref = "gitPublish" }
 versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }

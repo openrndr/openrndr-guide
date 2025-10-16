@@ -7,8 +7,8 @@ package docs.`70_FileIO`
 
 import com.github.doyaaaaaken.kotlincsv.dsl.csvReader
 import com.github.doyaaaaaken.kotlincsv.dsl.csvWriter
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 import org.jsoup.Jsoup
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*
@@ -64,11 +64,9 @@ fun main() {
     
     ## JSON
     
-    The GSON library makes it possible to convert JSON files to Kotlin objects 
-    and objects back to JSON files. To enable the library:
-    1. Find the `build.gradle.kts` file in your openrndr-template.
-    2. Uncomment the line `implementation(libs.gson)`.
-    3. Reload gradle.
+    The `kotlinx-serialization` library makes it possible to convert 
+    JSON files to Kotlin objects and back. The library is enabled
+    by default in recent versions of the openrndr-template.
     
     ### Loading / converting JSON to an object
     """
@@ -77,6 +75,7 @@ fun main() {
     run {
         // An object matching the JSON file.
         // Notice how optional properties are nullable.
+        @Serializable
         data class Entry(
             var time: Double,
             var easing: String,
@@ -121,10 +120,7 @@ fun main() {
 
         fun main() = application {
             program {
-                val gson = Gson()
-                // The TypeToken type must match the file's structure
-                val typeToken = object : TypeToken<List<Entry>>() {}
-                val entries: List<Entry> = gson.fromJson(json, typeToken.type)
+                val entries = Json.decodeFromString<List<Entry>>(json)
 
                 entries.forEachIndexed { i, entry ->
                     println(i)
@@ -141,9 +137,7 @@ fun main() {
     application {
         program {
             val points = List(20) { Vector2.uniform(drawer.bounds) }
-            //val gson = GsonBuilder().setPrettyPrinting().create()
-            val gson = Gson()
-            val json = gson.toJson(points)
+            val json = Json.encodeToString(points)
             File("data/points.json").writeText(json)
         }
     }

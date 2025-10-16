@@ -5,6 +5,7 @@ import java.nio.file.StandardCopyOption
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     org.openrndr.guide.convention.`kotlin-jvm`
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.git.publish)
     alias(libs.plugins.dokgen)
     alias(libs.plugins.versions)
@@ -14,9 +15,10 @@ version = "1.0-SNAPSHOT"
 
 dependencies {
     implementation(libs.jsoup)
-    implementation(libs.gson)
     implementation(libs.csv)
     implementation(libs.kotlinx.coroutines)
+    implementation(libs.kotlinx.serialization.core)
+    implementation(libs.kotlinx.serialization.json)
     implementation(libs.bundles.openrndr.core)
     implementation(libs.bundles.openrndr.rest)
     implementation(libs.bundles.orx)
