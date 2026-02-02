@@ -21,7 +21,7 @@ fun main() {
     called IntelliJ IDEA. 
     
      * Download and install [IntelliJ IDEA](https://www.jetbrains.com/idea/download). 
-     * Start IntelliJ. On the first run it will offer the option to pick 
+     * Start it. On the first run it will offer the option to pick 
        your default settings and continue. Use the default settings.
 
     ## Download the template program

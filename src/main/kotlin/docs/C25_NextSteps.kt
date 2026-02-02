@@ -101,7 +101,7 @@ fun main() {
 
     ## IntelliJ IDEA cleanup tips
 
-    In IntelliJ, you can double-tap the `SHIFT` key to open a global search tool
+    In IntelliJ IDEA, you can double-tap the `SHIFT` key to open a global search tool
     that will find whatever you type in your source code, but also in the program
     settings, menus and actions you can perform.
     

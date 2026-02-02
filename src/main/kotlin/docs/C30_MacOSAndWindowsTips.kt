@@ -28,7 +28,7 @@ fun main() {
     If your computer has multiple GPUs, you can choose which one OPENRNDR uses like this:
     
     * Run the openrndr-template program by clicking on the green triangle.
-      In IntelliJ, look at the console in the bottom area and 
+      In IntelliJ IDEA, look at the console in the bottom area and 
       note down the full path of the `java.exe` program being used. 
       It probably starts with something like `C:\Users\...`.
     * Open the Windows Graphics Settings.
