@@ -58,7 +58,7 @@ fun main() {
 
     If your graphics hardware and drivers support OpenGL debug contexts 
     you can open the `Run > Edit Configurations...` menu in
-    IntelliJ and make sure the `VM Options` text field contains
+    IntelliJ IDEA and make sure the `VM Options` text field contains
     `-Dorg.openrndr.gl3.debug=true` to enable the debug messages.
     
     ### Using RenderDoc

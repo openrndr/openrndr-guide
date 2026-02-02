@@ -49,7 +49,7 @@ fun main() {
     
     But you are not limited to two programs, of course. In the Project View on the
     left, you can copy and paste `.kt` files (using keyboard shortcuts or the mouse).
-    IntelliJ will ask you to name the new file (the name must start with a letter).
+    IntelliJ IDEA will ask you to name the new file (the name must start with a letter).
     It will also ask whether you want to add the new file to Git. 
     It's fine to click Cancel.
     
@@ -74,7 +74,7 @@ fun main() {
     if we want to create a `Circle` object, we need to add a line at the top of
     the program that imports the `Circle` class. After doing this, the compiler
     will understand what a `Circle` is. Fortunately, we do not need to
-    type such import lines by hand. Let's see how IntelliJ helps with this.
+    type such import lines by hand. Let's see how IntelliJ IDEA helps with this.
     
     Inside the `extend { ... }` block, go ahead and type `val v = Vector3`. 
     When you do this, a floating dialog should appear. What this dialog is doing 
@@ -99,7 +99,7 @@ fun main() {
     then press `ALT+ENTER` (or `Command+ENTER` on Mac). A tool tip will show up 
     letting you choose the right import to add.
 
-    ## IntelliJ cleanup tips
+    ## IntelliJ IDEA cleanup tips
 
     In IntelliJ, you can double-tap the `SHIFT` key to open a global search tool
     that will find whatever you type in your source code, but also in the program

@@ -144,6 +144,16 @@ fun main() {
 
     @Text
     """
+    If you want to make the resulting JSON more readable, use `prettyPrint`:
+    ```kotlin
+    val pretty = Json { prettyPrint = true }
+    val json = pretty.encodeToString(points)
+    ```
+    
+    """
+
+    @Text
+    """
     ## CSV
     
     The [kotlin-csv](https://github.com/doyaaaaaken/kotlin-csv) library

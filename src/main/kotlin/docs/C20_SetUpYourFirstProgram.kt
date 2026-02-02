@@ -20,8 +20,7 @@ fun main() {
     To edit and run OPENRNDR programs, we will install an IDE (Integrated Development Environment)
     called IntelliJ IDEA. 
     
-     * Download and install [IntelliJ IDEA *Community Edition*](https://www.jetbrains.com/idea/download) 
-       (note: the paid version is called *Ultimate*). 
+     * Download and install [IntelliJ IDEA](https://www.jetbrains.com/idea/download). 
      * Start IntelliJ. On the first run it will offer the option to pick 
        your default settings and continue. Use the default settings.
 
@@ -49,11 +48,11 @@ fun main() {
     After downloading the template, IntelliJ IDEA will download the necessary dependencies.
     See the progress in the status bar at the bottom of the window.
     
-    When IntelliJ opens a project for the first time, 
+    When IntelliJ IDEA opens a project for the first time, 
     its `README.md` file is presented automatically. 
     This file contains hints to help you navigate the template project. 
      
-    When the status bar in IntelliJ shows no more activity,
+    When the status bar shows no more activity,
     go to the Project view (left panel) and
     click on `src/main/kotlin/TemplateProgram.kt` to open that file 
 
