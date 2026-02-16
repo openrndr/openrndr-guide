@@ -1,0 +1,44 @@
+<script>
+    /* Redirect changed URLs */
+    /* Use block comments only! Line comments break the site */
+
+    let url = document.location.pathname;
+
+    let urlMap = {
+      '/OPENRNDRExtras/shadeStylePresets.html':             '/ORX/shadeStylePresets.html',
+      '/ORX/liveCoding.html':                               '/useCases/liveCoding.html',
+      '/ORX/osc.html':                                      '/ORX/OSC.html',
+      '/advancedDrawing/asynchronousImageLoading.html':     '/drawing/asynchronousImageLoading.html',
+      '/advancedDrawing/clipping.html':                     '/drawing/clipping.html',
+      '/advancedDrawing/colorbuffers.html':                 '/drawing/colorbuffers.html',
+      '/advancedDrawing/concurrencyAndMultithreading.html': '/drawing/concurrencyAndMultithreading.html',
+      '/advancedDrawing/customRendering.html':              '/drawing/customRendering.html',
+      '/advancedDrawing/filtersAndPostProcessing.html':     '/drawing/filtersAndPostProcessing.html',
+      '/advancedDrawing/renderTargets.html':                '/drawing/renderTargets.html',
+      '/advancedDrawing/shadeStyles.html':                  '/drawing/shadeStyles.html',
+      '/advancedTopics/ComputeShaders.html':                '/advancedTopics/computeShaders.html',
+      '/advancedTopics/logging.html':                       '/debugging/',
+      '/debugging/logging.html':                            '/debugging/index.html',
+      '/drawingAndTransformations/quaternions.html':        '/drawing/quaternions.html',
+      '/drawingAndTransformations/vectors.html':            '/drawing/vectors.html',
+      '/drawingBasics/color.html':                          '/drawing/color.html',
+      '/drawingBasics/complexShapes.html':                  '/drawing/curvesAndShapes.html',
+      '/drawingBasics/curvesAndShapes.html':                '/drawing/curvesAndShapes.html',
+      '/drawingBasics/drawingPrimitives.html':              '/drawing/circlesRectanglesLines.html',
+      '/drawingBasics/drawingPrimitivesBatched.html':       '/drawing/drawingPrimitivesBatched.html',
+      '/drawingBasics/drawingSVG.html':                     '/drawing/drawingSVG.html',
+      '/drawingBasics/images.html':                         '/drawing/images.html',
+      '/drawingBasics/managingDrawStyle.html':              '/drawing/managingDrawStyle.html',
+      '/drawingBasics/text.html':                           '/drawing/text.html',
+      '/extensions.html':                                   '/extensions/',
+      '/extensions/writingToVideoFiles.html':               '/extensions/screenRecorder.html',
+      '/interaction/Events.html':                           '/interaction/events.html',
+      '/programConfiguration.html':                         '/programBasics/configure.html',
+    };
+
+    if(urlMap[url]) {
+      window.location = urlMap[url];
+    } else {
+      console.log('no known redirect for URL with urlId: ' + urlId);
+    }
+</script>
