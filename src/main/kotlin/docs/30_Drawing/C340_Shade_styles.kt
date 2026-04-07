@@ -12,6 +12,8 @@ import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.*
 import org.openrndr.extra.camera.OrbitalCamera
 import org.openrndr.extra.meshgenerators.sphereMesh
+import org.openrndr.extra.shapes.hobbycurve.hobbyCurve
+import org.openrndr.math.Vector2
 import org.openrndr.math.Vector3
 import org.openrndr.shape.Circle
 import kotlin.math.cos
@@ -186,6 +188,44 @@ fun main() {
 
     @Text
     """
+    ### Mapping images on contours
+    """
+
+    @Media.Video "../media/shadestyles-example-003.mp4"
+
+    @Application
+    @ProduceVideo("media/shadestyles-example-003.mp4", 6.28318, 60)
+    @Code
+    application {
+        @Exclude
+        configure {
+            width = 770
+            height = 578
+        }
+        program {
+            val image = loadImage("data/images/cheeta.jpg")
+            backgroundColor = ColorRGBa.WHITE
+            extend {
+                val c = hobbyCurve(List(10) {
+                    Vector2(it * width / 9.0, height * 0.5 + sin(seconds + it) * 100.0)
+                }, false)
+                drawer.shadeStyle = shadeStyle {
+                    fragmentTransform = """
+                    x_stroke = texture( 
+                        p_image, vec2(c_contourPosition / p_len, 1.0 - va_texCoord0.x)
+                    );
+                """.trimIndent()
+                    parameter("image", image)
+                    parameter("len", c.length)
+                }
+                drawer.strokeWeight = 80.0
+                drawer.contour(c)
+            }
+        }
+    }
+
+    @Text
+    """
     ### 3D mesh distortion
     
     This example shows that one can also modify the vertex shader, 
@@ -288,6 +328,10 @@ fun main() {
     `va_position`  | vec3      | the interpolated position
     `va_normal`    | vec3      | the interpolated normal
     `va_color`     | vec3      | the interpolated color
+    `va_texCoord0` | vec2      | the uv coordinate of the first texture
+    
+    For contours `va_texCoord0.x` contains a normalized value that increases from
+    0.0 to 1.0 across its width.
 
     ### Other interpolated values 
 
