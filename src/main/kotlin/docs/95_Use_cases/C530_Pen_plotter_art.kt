@@ -43,10 +43,16 @@ fun main() {
     - [SVG](https://en.wikipedia.org/wiki/SVG) (Scalable Vector Graphics), used with newer devices like the AxiDraw. 
     - [g-code](https://en.wikipedia.org/wiki/G-code), often supported by older plotters, CNC devices and laser cutters.
     
-    OPENRNDR can easily load, manipulate, generate and save SVG files. There is a non-yet-merged contribution
-    to add [g-code support](https://github.com/openrndr/orx/pull/285).
+    OPENRNDR can easily load, manipulate, generate and save SVG files that could be plotted
+    with a device supporting SVG files.
     
-    The following sections focus on SVG.
+    When using `orx 0.5.0`, which is available in the `next-version` branch of the openrndr-template,
+    two new `orx` modules are available:
+    
+    - https://github.com/openrndr/orx/tree/master/orx-g-code
+    - https://github.com/openrndr/orx/tree/master/orx-jvm/orx-axidraw
+    
+    The following sections focus on working with plain SVG.
     
     ## Hello world
     
@@ -137,7 +143,6 @@ fun main() {
     Lets find out how to specify the SVG document dimensions, 
     and how to make what we see in the window match what gets exported
     as SVG. (Coming soon...)
-    
            
     Find more tips on
     [using OPENRNDR with pen plotters](https://openrndr.discourse.group/t/openrndr-plotting-tricks-axidraw-etc/208)
