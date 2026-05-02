@@ -32,9 +32,8 @@ fun main() {
     The `extend` block serves as a "draw loop", which is what we
     need for drawing smooth animations. To demonstrate that the
     result is not a still image, let's draw a circle located 
-    wherever the mouse cursor is:
-    
-    """.trimIndent()
+    wherever the mouse cursor is:    
+    """
 
     @Code
     application {
@@ -44,5 +43,4 @@ fun main() {
             }
         }
     }
-
 }

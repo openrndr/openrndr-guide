@@ -6,6 +6,7 @@
 
 package docs.`45_Extensions`
 
+import org.intellij.lang.annotations.Language
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.extensions.Screenshots
@@ -20,8 +21,10 @@ fun main() {
 
     ## Basic extension use
     
-    Here we demonstrate how to use an OPENRNDR extension. The extension that we use is the `Screenshots` extension, which, when 
-    the space bar is pressed will capture the application window's contents and save it to a timestamped file.
+    Here we demonstrate how to use an OPENRNDR extension. 
+    In the following example we use the `Screenshots` extension 
+    to capture the content of the application window and saves it to a timestamped file
+    whenever the space bar key is pressed.
     """
 
     @Code
@@ -54,16 +57,6 @@ fun main() {
 
     @Text
     """
-    ## Extension order
-        
-    The order in which calls to the `extend(...)` method appear in the code matters. 
-    `Screenshots` and `ScreenRecorder` should usually be placed before other extensions; 
-    otherwise, the content of the produced images or video files may be unexpected.
-
-    """
-
-    @Text 
-    """
     ## Built-in and contributed extensions
     
     OPENRNDR provides a few built-in extensions to simplify common tasks. One is `Screenshots`, which is used
@@ -72,5 +65,17 @@ fun main() {
     Next to the built-in extensions there is [ORX](https://github.com/openrndr/orx), an extensive repository of provided and
     contributed OPENRNDR extensions and add-ons. If you work from `openrndr-template` you can easily add and remove extensions 
     from your project by editing the `orxFeatures` property in `build.gradle.kts`.
+
+    ## Extension order
+        
+    The order of `extend(...)` calls in the code matters.
+    In the following code, the Screenshots extension is placed after the GUI extension,
+    and for that reason screenshots will not include the GUI.
+    ```
+    extend(GUI())
+    extend(Screenshots())
+    ```
+    If we change the order placing GUI *after* Screenshots, the GUI side bar
+    will be visible in saved screenshots.
     """
 }
