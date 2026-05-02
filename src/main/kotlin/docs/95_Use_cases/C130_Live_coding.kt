@@ -30,6 +30,8 @@ fun main() {
     [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
     project, `orx-olive` is enabled by default.
     
+    ⚠️ Make sure your `.kt` file name starts with an upper case letter.
+    
     ## Basic example
     """
 
