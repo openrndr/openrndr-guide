@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout current repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Download full guide website
         run: wget --mirror --reject "*.mp4" --page-requisites --convert-links -P ./ https://guide.openrndr.org/
