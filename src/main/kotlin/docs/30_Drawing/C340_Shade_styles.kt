@@ -413,8 +413,8 @@ fun main() {
     
     One can explore the source code to find out how attributes and uniforms are used: 
     
-    * [ShadeStyleGLSL.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-draw/src/jvmMain/kotlin/org/openrndr/draw/ShadeStyleGLSL.kt) (JVM) 
-    * [ShadeStyleGLSL.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-draw/src/jsMain/kotlin/org/openrndr/draw/ShadeStyleGLSL.kt) (WEBGL)
+    * [ShadeStyleGLSL.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-draw/src/commonJvmMain/kotlin/org/openrndr/draw/ShadeStyleGLSL.kt) (JVM) 
+    * [ShadeStyleGLSL.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-draw/src/webMain/kotlin/org/openrndr/draw/ShadeStyleGLSL.web.kt) (WEBGL)
     * [ShaderGeneratorsGLCommon.kt](https://github.com/openrndr/openrndr/blob/master/openrndr-gl-common/src/commonMain/kotlin/ShaderGeneratorsGLCommon.kt)
     
     ## Vertex and fragment preambles
