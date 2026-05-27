@@ -7,6 +7,8 @@ import org.gradle.api.Project
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.model.ObjectFactory
 import org.gradle.api.tasks.*
+import org.gradle.process.ExecOperations
+import org.gradle.work.DisableCachingByDefault
 import org.gradle.work.Incremental
 import org.gradle.work.InputChanges
 import org.gradle.workers.WorkQueue
@@ -64,6 +66,7 @@ open class DokGenPluginExtension @Inject constructor(objectFactory: ObjectFactor
     }
 }
 
+@CacheableTask
 abstract class ProcessSourcesTask @Inject constructor(
     @Input
     val examplesConf: DokGenPluginExtension.ExamplesConf?
@@ -113,6 +116,7 @@ abstract class ProcessSourcesTask @Inject constructor(
     }
 }
 
+@CacheableTask
 abstract class RunExamplesTask @Inject constructor(
     @Input
     val runnerConf: DokGenPluginExtension.RunnerConf?
@@ -170,6 +174,7 @@ abstract class RunExamplesTask @Inject constructor(
     }
 }
 
+@CacheableTask
 open class JekyllTask @Inject constructor(
     private val jekyllConf: DokGenPluginExtension.JekyllConf?
 ) : DefaultTask() {
@@ -178,9 +183,12 @@ open class JekyllTask @Inject constructor(
         description = "Copies files into Jekyll docs folder"
     }
 
+
+    @PathSensitive(PathSensitivity.NAME_ONLY)
     @InputDirectory
     val dokgenBuildDir = File(project.buildDirFile, PLUGIN_NAME)
 
+    @PathSensitive(PathSensitivity.NAME_ONLY)
     @InputDirectory
     val dokgenMdDir = File(dokgenBuildDir, "md")
 
@@ -228,8 +236,12 @@ open class JekyllTask @Inject constructor(
 
 }
 
-open class WebServerStartTask @Inject constructor() : DefaultTask() {
+@DisableCachingByDefault
+open class WebServerStartTask @Inject constructor(
+    private val execOperations: ExecOperations
+) : DefaultTask() {
 
+    @PathSensitive(PathSensitivity.NAME_ONLY)
     @InputDirectory
     var docsDir: File = File(project.buildDirFile, "$PLUGIN_NAME/jekyll/docs")
 
@@ -240,7 +252,7 @@ open class WebServerStartTask @Inject constructor() : DefaultTask() {
 
     @TaskAction
     fun run() {
-        project.exec { exec ->
+        execOperations.exec { exec ->
             println("Please wait, downloading and starting jekyll can take one minute")
             exec.workingDir = docsDir
             exec.executable = "./webServerStart.sh"
@@ -248,8 +260,12 @@ open class WebServerStartTask @Inject constructor() : DefaultTask() {
     }
 }
 
-open class WebServerStopTask @Inject constructor() : DefaultTask() {
+@DisableCachingByDefault
+open class WebServerStopTask @Inject constructor(
+    private val execOperations: ExecOperations
+) : DefaultTask() {
 
+    @PathSensitive(PathSensitivity.NAME_ONLY)
     @InputDirectory
     var docsDir: File = File(project.buildDirFile, "$PLUGIN_NAME/jekyll/docs")
 
@@ -260,13 +276,12 @@ open class WebServerStopTask @Inject constructor() : DefaultTask() {
 
     @TaskAction
     fun run() {
-        project.exec { exec ->
+        execOperations.exec { exec ->
             exec.workingDir = docsDir
             exec.executable = "./webServerStop.sh"
         }
     }
 }
-
 
 class GradlePlugin : Plugin<Project> {
     override fun apply(project: Project) {
@@ -288,9 +303,7 @@ class GradlePlugin : Plugin<Project> {
             gess.runtimeClasspath += mss.runtimeClasspath
             gess.java.srcDir(generatedExamplesDirectory(project.buildDirFile))
 
-            val dokGenTask = project.tasks.create(PLUGIN_NAME)
-            dokGenTask.group = PLUGIN_NAME
-            dokGenTask.description = "Main task which runs other tasks"
+            val dokGenTask = project.tasks.register(PLUGIN_NAME)
 
             // Next line produces this error:
             // kotlin scripting plugin: applied in the non-supported environment
@@ -301,25 +314,29 @@ class GradlePlugin : Plugin<Project> {
             val compileKotlinTask = project.tasks.getByPath("compileGeneratedExamplesKotlin")
 
             val processSources =
-                project.tasks.create("processSources", ProcessSourcesTask::class.java, conf.examplesConf)
+                project.tasks.register("processSources", ProcessSourcesTask::class.java, conf.examplesConf)
 
             val runExamples =
-                project.tasks.create("runExamples", RunExamplesTask::class.java, conf.runnerConf)
+                project.tasks.register("runExamples", RunExamplesTask::class.java, conf.runnerConf)
 
             compileKotlinTask.dependsOn(processSources)
-            runExamples.dependsOn(compileKotlinTask)
+            runExamples.configure { it.dependsOn(compileKotlinTask) }
 
-            dokGenTask.dependsOn(runExamples)
+            val jekyllTask = project.tasks.register("jekyll", JekyllTask::class.java, conf.jekyllConf)
 
-            val jekyllTask = project.tasks.create("jekyll", JekyllTask::class.java, conf.jekyllConf)
+            dokGenTask.configure {
+                it.group = PLUGIN_NAME
+                it.description = "Main task which runs other tasks"
+                it.dependsOn(runExamples)
+                it.finalizedBy(jekyllTask)
+            }
 
-            dokGenTask.finalizedBy(jekyllTask)
-            jekyllTask.dependsOn(dokGenTask)
+            jekyllTask.configure { it.dependsOn(dokGenTask) }
 
-            val webServerStartTask = project.tasks.create("webServerStart", WebServerStartTask::class.java)
-            webServerStartTask.dependsOn(jekyllTask)
+            val webServerStartTask = project.tasks.register("webServerStart", WebServerStartTask::class.java)
+            webServerStartTask.configure { it.dependsOn(jekyllTask) }
 
-            project.tasks.create("webServerStop", WebServerStopTask::class.java)
+            project.tasks.register("webServerStop", WebServerStopTask::class.java)
         }
     }
 }

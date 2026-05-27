@@ -1,18 +1,20 @@
 package kastree.ast.psi
 
-import org.jetbrains.kotlin.cli.common.CLIConfigurationKeys
+import org.jetbrains.kotlin.K1Deprecation
 import org.jetbrains.kotlin.cli.common.messages.CompilerMessageSeverity
 import org.jetbrains.kotlin.cli.common.messages.CompilerMessageSourceLocation
 import org.jetbrains.kotlin.cli.common.messages.MessageCollector
 import org.jetbrains.kotlin.cli.jvm.compiler.EnvironmentConfigFiles
 import org.jetbrains.kotlin.cli.jvm.compiler.KotlinCoreEnvironment
+import org.jetbrains.kotlin.com.intellij.core.JavaCoreApplicationEnvironment
 import org.jetbrains.kotlin.com.intellij.openapi.util.Disposer
 import org.jetbrains.kotlin.com.intellij.psi.PsiErrorElement
 import org.jetbrains.kotlin.com.intellij.psi.PsiManager
 import org.jetbrains.kotlin.com.intellij.testFramework.LightVirtualFile
+import org.jetbrains.kotlin.config.CommonConfigurationKeys
 import org.jetbrains.kotlin.config.CompilerConfiguration
 import org.jetbrains.kotlin.idea.KotlinFileType
-import org.jetbrains.kotlin.psi.*
+import org.jetbrains.kotlin.psi.KtFile
 import org.jetbrains.kotlin.psi.psiUtil.collectDescendantsOfType
 
 class DummyCollector: MessageCollector {
@@ -26,12 +28,13 @@ class DummyCollector: MessageCollector {
 }
 
 open class Parser(val converter: Converter = Converter) {
+    @OptIn(K1Deprecation::class)
     protected val proj by lazy {
         val disposer = Disposer.newDisposable()
         val compilerConfiguration = CompilerConfiguration()
         val messageCollector = DummyCollector()
 
-        compilerConfiguration.put(CLIConfigurationKeys.MESSAGE_COLLECTOR_KEY, messageCollector)
+        compilerConfiguration.put(CommonConfigurationKeys.MESSAGE_COLLECTOR_KEY, messageCollector)
         val kce =
                 try {
                     KotlinCoreEnvironment.createForProduction(
