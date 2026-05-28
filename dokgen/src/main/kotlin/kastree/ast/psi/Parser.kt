@@ -1,52 +1,62 @@
 package kastree.ast.psi
 
-import org.jetbrains.kotlin.K1Deprecation
 import org.jetbrains.kotlin.cli.common.messages.CompilerMessageSeverity
 import org.jetbrains.kotlin.cli.common.messages.CompilerMessageSourceLocation
 import org.jetbrains.kotlin.cli.common.messages.MessageCollector
-import org.jetbrains.kotlin.cli.jvm.compiler.EnvironmentConfigFiles
-import org.jetbrains.kotlin.cli.jvm.compiler.KotlinCoreEnvironment
-import org.jetbrains.kotlin.com.intellij.core.JavaCoreApplicationEnvironment
+import org.jetbrains.kotlin.cli.jvm.compiler.IdeaStandaloneExecutionSetup
+import org.jetbrains.kotlin.cli.jvm.compiler.KotlinCoreApplicationEnvironment
+import org.jetbrains.kotlin.cli.jvm.compiler.KotlinCoreApplicationEnvironmentMode
+import org.jetbrains.kotlin.cli.jvm.compiler.KotlinCoreProjectEnvironment
 import org.jetbrains.kotlin.com.intellij.openapi.util.Disposer
 import org.jetbrains.kotlin.com.intellij.psi.PsiErrorElement
 import org.jetbrains.kotlin.com.intellij.psi.PsiManager
 import org.jetbrains.kotlin.com.intellij.testFramework.LightVirtualFile
-import org.jetbrains.kotlin.config.CommonConfigurationKeys
-import org.jetbrains.kotlin.config.CompilerConfiguration
 import org.jetbrains.kotlin.idea.KotlinFileType
+import org.jetbrains.kotlin.parsing.KotlinParserDefinition
 import org.jetbrains.kotlin.psi.KtFile
 import org.jetbrains.kotlin.psi.psiUtil.collectDescendantsOfType
 
-class DummyCollector: MessageCollector {
+class DummyCollector : MessageCollector {
     override fun clear() {
     }
+
     override fun hasErrors(): Boolean {
         return false
     }
+
     override fun report(severity: CompilerMessageSeverity, message: String, location: CompilerMessageSourceLocation?) {
     }
 }
 
 open class Parser(val converter: Converter = Converter) {
-    @OptIn(K1Deprecation::class)
-    protected val proj by lazy {
-        val disposer = Disposer.newDisposable()
-        val compilerConfiguration = CompilerConfiguration()
-        val messageCollector = DummyCollector()
+    // From https://youtrack.jetbrains.com/issue/KT-76504/Find-and-deprecate-actively-used-parts-of-K1-API
+    val disposable = Disposer.newDisposable()
 
-        compilerConfiguration.put(CommonConfigurationKeys.MESSAGE_COLLECTOR_KEY, messageCollector)
-        val kce =
-                try {
-                    KotlinCoreEnvironment.createForProduction(
-                            disposer,
-                            compilerConfiguration,
-                            EnvironmentConfigFiles.JVM_CONFIG_FILES
-                    )
-                } catch(e:Throwable) {
-                    e.printStackTrace()
-                    error("kce init failed")
-                }
-        kce.project
+    init {
+        IdeaStandaloneExecutionSetup.doSetup()
+        println("good so far")
+    }
+
+    val applicationEnvironment = KotlinCoreApplicationEnvironment.create(
+        disposable,
+        KotlinCoreApplicationEnvironmentMode.Production,
+    ).also {
+        it.registerParserDefinition(KotlinParserDefinition())
+        // Needed this as well to parse the .kt files
+        it.registerFileType(KotlinFileType.INSTANCE, "kt")
+    }
+
+    init {
+        println("this doesn't run")
+    }
+
+    val project by lazy {
+        try {
+            KotlinCoreProjectEnvironment(disposable, applicationEnvironment)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            error("** KotlinCoreProjectEnvironment failed")
+        }.project
     }
 
     fun parseFile(code: String, throwOnError: Boolean = true) = converter.convertFile(parsePsiFile(code.let {
@@ -62,7 +72,7 @@ open class Parser(val converter: Converter = Converter) {
     })
 
     fun parsePsiFile(code: String) =
-        PsiManager.getInstance(proj).findFile(LightVirtualFile("temp.kt", KotlinFileType.INSTANCE, code)) as KtFile
+        PsiManager.getInstance(project).findFile(LightVirtualFile("temp.kt", KotlinFileType.INSTANCE, code)) as KtFile
 
     data class ParseError(
         val file: KtFile,
