@@ -12,6 +12,7 @@ import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.renderTarget
 import org.openrndr.extra.fx.blur.BoxBlur
 import org.openrndr.ffmpeg.VideoPlayerFFMPEG
+import org.openrndr.ffmpeg.loadVideo
 
 fun main() {
     @Text
@@ -33,7 +34,7 @@ fun main() {
     @Code
     application {
         program {
-            val videoPlayer = VideoPlayerFFMPEG.fromFile("data/video.mp4")
+            val videoPlayer = loadVideo("data/video.mp4")
             videoPlayer.play()
             extend {
                 drawer.clear(ColorRGBa.BLACK)
@@ -50,7 +51,7 @@ fun main() {
 
     application {
         program {
-            val videoPlayer = VideoPlayerFFMPEG.fromFile("data/video.mp4")
+            val videoPlayer = loadVideo("data/video.mp4")
             videoPlayer.play()
 
             @Code.Block
@@ -72,9 +73,9 @@ fun main() {
     ## Video from camera devices
 
     The `VideoPlayerFFMPEG` class can be used to get and display video data 
-    from camera devices. To open a camera device you use the `fromDevice()` 
-    method. When this method is called without any arguments it attempts to 
-    open the default camera device.
+    from camera devices. To open a camera device you use the `fromDevice(null)` 
+    method. The first argument specifies the audio device to use,
+    which we can set to `null` for video-only.
 
     `VideoPlayerFFMPEG` has minimal device listing capabilities. The device 
     names of available input devices can be listed using 
@@ -91,7 +92,7 @@ fun main() {
     @Code
     application {
         program {
-            val videoPlayer = VideoPlayerFFMPEG.fromDevice()
+            val videoPlayer = VideoPlayerFFMPEG.fromDevice(null)
             videoPlayer.play()
             extend {
                 drawer.clear(ColorRGBa.BLACK)
@@ -113,7 +114,7 @@ fun main() {
     @Code
     application {
         program {
-            val videoPlayer = VideoPlayerFFMPEG.fromFile("data/video.mp4")
+            val videoPlayer = loadVideo("data/video.mp4")
             val blur = BoxBlur()
             val renderTarget = renderTarget(width, height) {
                 colorBuffer()

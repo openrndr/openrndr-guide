@@ -50,7 +50,9 @@ open class Parser(val converter: Converter = Converter) {
     }
 
     fun parseFile(code: String, throwOnError: Boolean = true) = converter.convertFile(parsePsiFile(code.let {
-        it.replace("\\r\\n", "\\n" ).replace("\\r", "\\n").replace("\\t"," ")
+        it.replace("\\r\\n", "\\n")
+            .replace("\\r", "\\n")
+            .replace("\\t", " ")
     }).also { file ->
         if (throwOnError) file.collectDescendantsOfType<PsiErrorElement>().let {
             if (it.isNotEmpty()) {

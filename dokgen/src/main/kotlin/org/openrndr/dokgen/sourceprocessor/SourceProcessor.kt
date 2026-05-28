@@ -384,7 +384,7 @@ private class AstFolder(
         }
     override val post: ((State, Node) -> State) = { state, node ->
         // if we're inside a node annotated with @Application
-        // and the the node is the same as what we've saved in state, then we've exited the node
+        // and the node is the same as what we've saved in state, then we've exited the node
         if (state.inApplication != null && node == state.inApplication.node) {
             state.copy(inApplication = null)
         } else {
@@ -428,7 +428,7 @@ object SourceProcessor {
         // Make sure required @file annotations are found
         listOf("Title", "Order", "URL").forEach {
             val str = fileAnns[it]
-            require(str != null && str.isNotEmpty()) {
+            require(!str.isNullOrEmpty()) {
                 """Required @file:$it("...") annotation not found"""
             }
         }

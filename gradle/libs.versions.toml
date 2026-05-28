@@ -30,8 +30,10 @@ dokgen = { group = "org.openrndr", name = "dokgen" }
 # OPENRNDR
 openrndr-animatable = { group = "org.openrndr", name = "openrndr-animatable", version.ref = "openrndr" }
 openrndr-core = { group = "org.openrndr", name = "openrndr-core", version.ref = "openrndr" }
+openrndr-application-glfw = { group = "org.openrndr", name = "openrndr-application-glfw", version.ref = "openrndr" }
 openrndr-extensions = { group = "org.openrndr", name = "openrndr-extensions", version.ref = "openrndr" }
 openrndr-ffmpeg = { group = "org.openrndr", name = "openrndr-ffmpeg", version.ref = "openrndr" }
+openrndr-openal = { group = "org.openrndr", name = "openrndr-openal", version.ref = "openrndr" }
 openrndr-filter = { group = "org.openrndr", name = "openrndr-filter", version.ref = "openrndr" }
 openrndr-gl3 = { group = "org.openrndr", name = "openrndr-gl3", version.ref = "openrndr" }
 openrndr-dialogs = { group = "org.openrndr", name = "openrndr-dialogs", version.ref = "openrndr" }
@@ -68,14 +70,16 @@ versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
 
 [bundles]
 openrndr-core = [
+    "openrndr-application-glfw",
     "openrndr-extensions",
-    "openrndr-ffmpeg"
+    "openrndr-ffmpeg",
+    "openrndr-openal",
 ]
 openrndr-rest = [
     "openrndr-animatable",
     "openrndr-filter",
     "openrndr-gl3",
-    "openrndr-dialogs"
+    "openrndr-dialogs",
 ]
 orx = [
     "orx-camera",

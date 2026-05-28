@@ -9,14 +9,15 @@ package docs.`30_Drawing`
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
+import org.openrndr.extra.composition.*
+import org.openrndr.extra.svg.loadSVG
+import org.openrndr.extra.svg.saveToFile
 import org.openrndr.math.Vector2
-import org.openrndr.shape.*
-import org.openrndr.svg.loadSVG
-import org.openrndr.svg.saveToFile
+import org.openrndr.shape.Circle
 import java.io.File
 
 fun main() {
-    @Text 
+    @Text
     """
     # Drawing SVG
     
@@ -33,7 +34,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     Note that OPENRNDR's support for SVG files works best with SVG files that are saved in the Tiny SVG 1.x profile .
     
@@ -118,7 +119,7 @@ fun main() {
         root.children.add(shapeNode)
     }
 
-    @Text 
+    @Text
     """
        ## Composition Drawer
        
@@ -137,7 +138,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     ### Transforms
         
@@ -157,7 +158,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     Saving compositions to SVG
     
