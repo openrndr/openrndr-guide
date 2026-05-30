@@ -20,6 +20,7 @@ kotlin {
 
 dependencies {
     implementation(libs.kotlin.compiler.embeddable)
+    implementation(libs.orx.kotlin.parser)
     compileOnly(libs.bundles.openrndr.core)
 }
 

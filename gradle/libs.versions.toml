@@ -60,6 +60,7 @@ orx-shade-styles = { group = "org.openrndr.extra", name = "orx-shade-styles", ve
 orx-shapes = { group = "org.openrndr.extra", name = "orx-shapes", version.ref = "orx" }
 orx-svg = { group = "org.openrndr.extra", name = "orx-svg", version.ref = "orx" }
 orx-text-writer = { group = "org.openrndr.extra", name = "orx-text-writer", version.ref = "orx" }
+orx-kotlin-parser = { group = "org.openrndr.extra", name = "orx-kotlin-parser", version.ref = "orx" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
@@ -70,12 +71,12 @@ versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
 
 [bundles]
 openrndr-core = [
-    "openrndr-application-glfw",
     "openrndr-extensions",
     "openrndr-ffmpeg",
-    "openrndr-openal",
 ]
 openrndr-rest = [
+    "openrndr-application-glfw",
+    "openrndr-openal",
     "openrndr-animatable",
     "openrndr-filter",
     "openrndr-gl3",
