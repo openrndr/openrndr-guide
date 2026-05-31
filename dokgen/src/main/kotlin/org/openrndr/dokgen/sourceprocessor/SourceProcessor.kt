@@ -1,10 +1,16 @@
 package org.openrndr.dokgen.sourceprocessor
 
+import KotlinLexer
+import KotlinParser
+import KotlinParserBaseListener
 import kastree.ast.MutableVisitor
 import kastree.ast.Node
 import kastree.ast.Writer
 import kastree.ast.psi.Converter
 import kastree.ast.psi.Parser
+import org.antlr.v4.runtime.CharStreams
+import org.antlr.v4.runtime.CommonTokenStream
+import org.antlr.v4.runtime.tree.ParseTreeWalker
 import org.openrndr.dokgen.examplesPackageDirective
 import java.io.File
 
@@ -102,6 +108,7 @@ private fun stringExpr(expr: Node.Expr): String {
                 }
             }
         }
+
         else -> throw RuntimeException("cannot convert expression $expr to string")
     }
 }
@@ -244,9 +251,11 @@ private class ProcessAnnotatedNode(
                             val appCount = state.applications.size
                             val link = mkLink(appCount - 1)
                             doc.add(
-                                Doc.Element.Markdown("""
+                                Doc.Element.Markdown(
+                                    """
                                                 [Link to the full example]($link)
-                                            """.trimIndent())
+                                            """.trimIndent()
+                                )
                             )
                         } ?: doc
                     }
@@ -260,6 +269,7 @@ private class ProcessAnnotatedNode(
                         }
                         printNode(cleaned)
                     }
+
                     "Code.Block" -> {
                         val call = node.run { dropExcluded(this) }
                             .mapAnnotated {
@@ -273,8 +283,9 @@ private class ProcessAnnotatedNode(
                             throw RuntimeException("@Code.Block annotation can only be applied to `run {}` blocks.")
                         }
                     }
+
                     else -> {
-                        throw  IllegalStateException()
+                        throw IllegalStateException()
                     }
                 }
                 val newDoc = mkDoc(text)
@@ -296,6 +307,7 @@ private class ProcessAnnotatedNode(
                 )
                 state.updateDoc(newDoc)
             }
+
             else -> state
         }
     }
@@ -364,12 +376,14 @@ private class AstFolder(
                                 val newDoc = state.doc.add(Doc.Element.Code(codeText))
                                 state.updateDoc(newDoc)
                             }
+
                             else -> state
                         }
                     } else {
                         state
                     }
                 }
+
                 is Node.Import -> {
                     if (node.names.contains("dokgen")) {
                         state
@@ -377,6 +391,7 @@ private class AstFolder(
                         state.addImport(printNode(node))
                     }
                 }
+
                 else -> {
                     state
                 }
@@ -393,6 +408,19 @@ private class AstFolder(
     }
 }
 
+class FileAnnotationsExtractor : KotlinParserBaseListener() {
+    var fileAnnotations = mutableMapOf<String, String>()
+
+    override fun enterFileAnnotation(ctx: KotlinParser.FileAnnotationContext?) {
+        ctx?.text?.let { fileAnnotation ->
+            /** Split an annotation like this: `@file:ParentTitle("Program basics")` */
+            val parts = fileAnnotation.substringAfter("@file:")
+                .substringBefore("\")")
+                .split("(\"")
+            fileAnnotations[parts[0]] = parts[1]
+        }
+    }
+}
 
 object SourceProcessor {
     // what will be produced
@@ -410,28 +438,35 @@ object SourceProcessor {
         mkLink: ((Int) -> String)? = null
     ): Output {
 
+        //--- <<<
+        val parser = KotlinParser(
+            CommonTokenStream(
+                KotlinLexer(CharStreams.fromString(source))
+            )
+        )
+
+        val root = parser.kotlinFile()
+        val ruleNames = parser.ruleNames.toList()
+
+        // Parse @file annotations
+        val fileAnnotationsExtractor = FileAnnotationsExtractor()
+        ParseTreeWalker.DEFAULT.walk(fileAnnotationsExtractor, root)
+        val fileAnns = fileAnnotationsExtractor.fileAnnotations
+        println("[file annotations]")
+        println(fileAnns)
+        // Make sure required @file annotations are found
+        listOf("Title", "Order", "URL").forEach { requiredAnnotation ->
+            val str = fileAnns[requiredAnnotation]
+            require(!str.isNullOrEmpty()) {
+                """Required @file:$requiredAnnotation("...") annotation not found"""
+            }
+        }
+        //--- >>>
+
         val initialState = State()
 
         val extrasMap = Converter.WithExtras()
         val ast = Parser(extrasMap).parseFile(source)
-
-        // Parse @file annotations
-        val fileAnns = mutableMapOf<String, String>()
-        ast.anns.filter { it.target == Node.Modifier.AnnotationSet.Target.FILE }
-            .forEach {
-                it.anns.forEach { ann ->
-                    val expr = ann.args.first().expr
-                    fileAnns[ann.names.first()] = stringExpr(expr)
-                }
-            }
-
-        // Make sure required @file annotations are found
-        listOf("Title", "Order", "URL").forEach {
-            val str = fileAnns[it]
-            require(!str.isNullOrEmpty()) {
-                """Required @file:$it("...") annotation not found"""
-            }
-        }
 
         val printNode = { node: Node ->
             Writer.write(node, extrasMap)
@@ -468,12 +503,12 @@ object SourceProcessor {
         }
 
         val mediaLinks = result.doc.elements.filterIsInstance<Doc.Element.Media>().map { it }
-                .map {
-                    when (it) {
-                        is Doc.Element.Media.Image -> it.src
-                        is Doc.Element.Media.Video -> it.src
-                    }
+            .map {
+                when (it) {
+                    is Doc.Element.Media.Image -> it.src
+                    is Doc.Element.Media.Video -> it.src
                 }
+            }
 
         return Output(
             doc = renderedDoc,

@@ -35,7 +35,7 @@ object DokGen {
     /**
      * @param ktFileLocation .kt source path relative to project root
      * @param annotations data extracted from annotations found in the .kt file
-     * @return valid Jekyll header to inject in a markdown file
+     * @return valid Jekyll header to inject in a Markdown file
      */
     private fun jekyllHeader(
         ktFileLocation: String,
@@ -63,7 +63,7 @@ object DokGen {
     }
 
     /**
-     * Creates a "edit on GitHub" link
+     * Creates an "edit on GitHub" link
      */
     private fun gitHubEditLink(ktFileLocation: String): String {
         return """
@@ -75,7 +75,7 @@ object DokGen {
     /**
      * Processes Guide source .kt files. It reads each file and produces
      * multiple files for each input:
-     * - a markdown document visible in the online website.
+     * - a Markdown document visible in the online website.
      * - zero or more .kt files to run and produce media
      *   to include in the online website.
      * - zero or more .kt files to upload examples repository in GitHub
@@ -95,27 +95,27 @@ object DokGen {
         examplesForExportOutputDir: File,
         webRootUrl: String?
     ) {
-        sourceFiles.forEach { file ->
-            when (file.extension) {
+        sourceFiles.forEach { sourceFile ->
+            when (sourceFile.extension) {
                 "md" -> throw NotImplementedError(
                     "Latest DokGen supports only .kt files " +
-                            "but ${file.absolutePath} was found. " +
+                            "but ${sourceFile.absolutePath} was found. " +
                             "Please convert it to .kt."
                 )
 
                 "kt" -> {
-                    val fileContents = file.readText().replace("\r\n", "\n")
+                    val fileContents = sourceFile.readText().replace("\r\n", "\n")
 
                     val packageDirective = examplesPackageDirective(
-                        sourcesRoot.relativeDir(file)
+                        sourcesRoot.relativeDir(sourceFile)
                     )
 
-                    // A. actual dir, name and path (from path on disk)
-                    val fileDir = file.parentFile.toRelativeString(sourcesRoot)
-                    val fileName = file.nameWithoutExtension
-                    val filePath = file.toRelativeString(sourcesRoot)
+                    // A. actual dir, name and path (from a path on disk)
+                    val fileDir = sourceFile.parentFile.toRelativeString(sourcesRoot)
+                    val fileName = sourceFile.nameWithoutExtension
+                    val filePath = sourceFile.toRelativeString(sourcesRoot)
 
-                    val mkLink = webRootUrl?.let { it ->
+                    val mkLink = webRootUrl?.let {
                         { index: Int ->
                             val paddedIndex = "$index".padStart(3, '0')
                             "$it/examples/$fileDir/$fileName$paddedIndex.kt"
