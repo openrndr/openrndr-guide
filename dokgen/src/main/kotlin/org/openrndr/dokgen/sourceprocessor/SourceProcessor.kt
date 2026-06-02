@@ -12,6 +12,8 @@ import org.antlr.v4.runtime.CharStreams
 import org.antlr.v4.runtime.CommonTokenStream
 import org.antlr.v4.runtime.tree.ParseTreeWalker
 import org.openrndr.dokgen.examplesPackageDirective
+import org.openrndr.extra.kotlinparser.ImportsExtractor
+import org.openrndr.extra.kotlinparser.verbatimText
 import java.io.File
 
 
@@ -408,17 +410,60 @@ private class AstFolder(
     }
 }
 
-class FileAnnotationsExtractor : KotlinParserBaseListener() {
-    var fileAnnotations = mutableMapOf<String, String>()
+// TODO: look at SourceProcessor above.
+// Page: parse
+//   @Text """..."""
+//   @Media.Image "..."
+//   @Media.Video "..."
+//   @Code.Block
+//   @Code
+//   !avoid @Exclude
 
+// Source: @Application
+
+// Source: "@ProduceScreenshot(...)", "@ProduceVideo(...)"
+
+class DocumentationParser : KotlinParserBaseListener() {
+    var fileAnnotations = mutableMapOf<String, String>()
+    var mediaAnnotations = mutableListOf<String>()
+
+    var lookingForMedia = false
     override fun enterFileAnnotation(ctx: KotlinParser.FileAnnotationContext?) {
         ctx?.text?.let { fileAnnotation ->
-            /** Split an annotation like this: `@file:ParentTitle("Program basics")` */
+            /** Grab A and B from an annotation like this: `@file:A("B")` */
             val parts = fileAnnotation.substringAfter("@file:")
                 .substringBefore("\")")
                 .split("(\"")
             fileAnnotations[parts[0]] = parts[1]
         }
+    }
+
+    override fun enterAnnotation(ctx: KotlinParser.AnnotationContext?) {
+        ctx?.singleAnnotation()?.let { singleAnnotation ->
+            val ann = singleAnnotation.text.trim()
+            if (ann == "@Media.Image" || ann == "@Media.Video") {
+                lookingForMedia = true
+            }
+        }
+    }
+
+    override fun enterStringLiteral(ctx: KotlinParser.StringLiteralContext?) {
+        if(lookingForMedia) {
+            ctx?.text?.let { mediaAnnotation -> mediaAnnotations.add(mediaAnnotation) }
+            lookingForMedia = false
+        }
+
+    }
+
+    /*
+        this is promising. returns lots of lambdas.
+        I should watch for @Code, then the next function call (application { ... }) is good.
+    */
+    override fun enterLambdaLiteral(ctx: KotlinParser.LambdaLiteralContext?) {
+        println("""
+            enter lambda literal:
+              ${ctx?.verbatimText()}
+            """.trimIndent())
     }
 }
 
@@ -438,7 +483,7 @@ object SourceProcessor {
         mkLink: ((Int) -> String)? = null
     ): Output {
 
-        //--- <<<
+        //--- <<< New approach starts
         val parser = KotlinParser(
             CommonTokenStream(
                 KotlinLexer(CharStreams.fromString(source))
@@ -449,11 +494,17 @@ object SourceProcessor {
         val ruleNames = parser.ruleNames.toList()
 
         // Parse @file annotations
-        val fileAnnotationsExtractor = FileAnnotationsExtractor()
-        ParseTreeWalker.DEFAULT.walk(fileAnnotationsExtractor, root)
-        val fileAnns = fileAnnotationsExtractor.fileAnnotations
+        val documentationParser = DocumentationParser()
+        ParseTreeWalker.DEFAULT.walk(documentationParser, root)
+        val fileAnns = documentationParser.fileAnnotations
+        val mediaLinks = documentationParser.mediaAnnotations
+
         println("[file annotations]")
         println(fileAnns)
+
+        println("[media annotations]")
+        println(mediaLinks)
+
         // Make sure required @file annotations are found
         listOf("Title", "Order", "URL").forEach { requiredAnnotation ->
             val str = fileAnns[requiredAnnotation]
@@ -461,54 +512,47 @@ object SourceProcessor {
                 """Required @file:$requiredAnnotation("...") annotation not found"""
             }
         }
-        //--- >>>
 
-        val initialState = State()
+        // Parse imports
+        val importsExtractor = ImportsExtractor(ruleNames)
+        ParseTreeWalker.DEFAULT.walk(importsExtractor, root)
+        println("[imports]")
+        println(importsExtractor.result ?: "")
 
-        val extrasMap = Converter.WithExtras()
-        val ast = Parser(extrasMap).parseFile(source)
-
-        val printNode = { node: Node ->
-            Writer.write(node, extrasMap)
-        }
-
-        val folder = AstFolder(printNode, mkLink)
-
-        val result = ast.run {
-            fold(initialState, folder)
-        }
-
-        // `packageDirective` is received as an argument but
-        // `runnablePackageDirective` is calculated here
-        // because the @file:URL("") annotation is needed
-        // which is only parsed by `ast.run {}` above.
+        /**
+         * [packageDirective] is received as an argument but
+         * `runnablePackageDirective` is calculated here
+         * because the @file:URL("") annotation is needed
+         * which is only parsed by `ast.run {}` above.
+         */
         val runnablePackageDirective = examplesPackageDirective(
             File(fileAnns["URL"]!!).parentFile.toPath()
         )
-        val renderedDoc = renderDoc(result.doc).removeGarbage()
-        val appSourcesProducingMedia = result.applications.map {
-            appTemplate(
-                runnablePackageDirective,
-                result.imports,
-                it
-            ).removeGarbage()
+
+        val newResultState = State()  // TODO
+
+        //--- New approach ends >>>
+
+        val initialState = State()
+        val extrasMap = Converter.WithExtras()
+        val ast = Parser(extrasMap).parseFile(source)
+        val astFolder = AstFolder({ Writer.write(it, extrasMap) }, mkLink)
+        val resultState = ast.fold(initialState, astFolder)
+        val renderedDoc = renderDoc(resultState.doc).removeGarbage()
+        val appSourcesProducingMedia = resultState.applications.map {
+            appTemplate(runnablePackageDirective, resultState.imports, it).removeGarbage()
         }
 
-        val appSourcesForExport = result.applicationsForExport.map {
-            appTemplate(
-                packageDirective,
-                result.imports,
-                it
-            ).removeGarbage()
+        val appSourcesForExport = resultState.applicationsForExport.map {
+            appTemplate(packageDirective, resultState.imports, it).removeGarbage()
         }
 
-        val mediaLinks = result.doc.elements.filterIsInstance<Doc.Element.Media>().map { it }
-            .map {
-                when (it) {
-                    is Doc.Element.Media.Image -> it.src
-                    is Doc.Element.Media.Video -> it.src
-                }
-            }
+//        val mediaLinks = resultState.doc.elements.filterIsInstance<Doc.Element.Media>().map {
+//            when (it) {
+//                is Doc.Element.Media.Image -> it.src
+//                is Doc.Element.Media.Video -> it.src
+//            }
+//        }
 
         return Output(
             doc = renderedDoc,

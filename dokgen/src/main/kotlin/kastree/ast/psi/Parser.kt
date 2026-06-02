@@ -68,15 +68,6 @@ open class Parser(val converter: Converter = Converter) {
             )
         )
 
-        val root = parser.kotlinFile()
-        val ruleNames = parser.ruleNames.toList()
-
-        // imports (for testing)
-        val importsExtractor = ImportsExtractor(ruleNames)
-        ParseTreeWalker.DEFAULT.walk(importsExtractor, root)
-        println("[imports]")
-        println(importsExtractor.result ?: "")
-
 //        val parsed = (getInstance(project).findFile(
 //            LightVirtualFile("temp.kt", INSTANCE, cleanedCode)
 //        ) as KtFile).also { ktFile ->
