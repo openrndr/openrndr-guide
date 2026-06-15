@@ -177,7 +177,7 @@ private class ProcessAnnotatedNode(
 
             "Application" -> {
 
-                // 1. Generate runnable source to produce media.
+                // 1. Generate a runnable source to produce media.
                 val appSourceToRun = node.withMediaAnnotations().run {
                     filterAnnotated { node ->
                         val annotated = node.anns.firstOrNull()?.anns?.firstOrNull()?.names?.firstOrNull()
@@ -201,7 +201,7 @@ private class ProcessAnnotatedNode(
                         )
                     )
 
-                // 2. Generate source for export.
+                // 2. Generate source code for export.
                 // Similar to 1. but with @Exclude annotations dropped.
                 val appSourceForExport = node.withoutAnnotations().run {
                     filterAnnotated { node ->
@@ -413,13 +413,13 @@ private class AstFolder(
 // TODO: look at SourceProcessor above.
 // Page: parse
 //   @Text """..."""
-//   @Media.Image "..."
-//   @Media.Video "..."
+//   [x] @Media.Image "..."
+//   [x] @Media.Video "..."
 //   @Code.Block
-//   @Code
+//   @Code -> fun main() =
 //   !avoid @Exclude
 
-// Source: @Application
+// Source: @Application -> goes into examples
 
 // Source: "@ProduceScreenshot(...)", "@ProduceVideo(...)"
 
@@ -456,12 +456,18 @@ class DocumentationParser : KotlinParserBaseListener() {
     }
 
     /*
-        this is promising. returns lots of lambdas.
-        I should watch for @Code, then the next function call (application { ... }) is good.
+        This is promising. returns lots of lambdas.
+        Maybe I should watch for @Code annotations,
+        then the next function call (application { ... }) is good.
+
+        There are many other functions I can override.
+        Maybe there's more useful ones than `enterLambdaLiteral`.
     */
     override fun enterLambdaLiteral(ctx: KotlinParser.LambdaLiteralContext?) {
         println("""
-            enter lambda literal:
+            
+            # enter lambda literal:
+            
               ${ctx?.verbatimText()}
             """.trimIndent())
     }
@@ -483,7 +489,8 @@ object SourceProcessor {
         mkLink: ((Int) -> String)? = null
     ): Output {
 
-        //--- <<< New approach starts
+        //--- New approach starts here
+        println("-----------------------------------")
         val parser = KotlinParser(
             CommonTokenStream(
                 KotlinLexer(CharStreams.fromString(source))
@@ -495,14 +502,15 @@ object SourceProcessor {
 
         // Parse @file annotations
         val documentationParser = DocumentationParser()
+        // Recursively walk the document tree
         ParseTreeWalker.DEFAULT.walk(documentationParser, root)
         val fileAnns = documentationParser.fileAnnotations
         val mediaLinks = documentationParser.mediaAnnotations
 
-        println("[file annotations]")
+        println("\n[file annotations]")
         println(fileAnns)
 
-        println("[media annotations]")
+        println("\n[media annotations]")
         println(mediaLinks)
 
         // Make sure required @file annotations are found
@@ -515,8 +523,9 @@ object SourceProcessor {
 
         // Parse imports
         val importsExtractor = ImportsExtractor(ruleNames)
+        // Recursively walk the document tree
         ParseTreeWalker.DEFAULT.walk(importsExtractor, root)
-        println("[imports]")
+        println("\n[imports]")
         println(importsExtractor.result ?: "")
 
         /**
@@ -529,14 +538,16 @@ object SourceProcessor {
             File(fileAnns["URL"]!!).parentFile.toPath()
         )
 
-        val newResultState = State()  // TODO
+        //--- New approach ends here, old approach starts
 
-        //--- New approach ends >>>
+        // I still need to generate `renderedDoc`, `appSourcesProducingMedia`
+        // and `appSourcesForExport` using ParseTreeWalker instead of kastree.ast.
 
         val initialState = State()
         val extrasMap = Converter.WithExtras()
         val ast = Parser(extrasMap).parseFile(source)
         val astFolder = AstFolder({ Writer.write(it, extrasMap) }, mkLink)
+        // Recursively walk the data structure
         val resultState = ast.fold(initialState, astFolder)
         val renderedDoc = renderDoc(resultState.doc).removeGarbage()
         val appSourcesProducingMedia = resultState.applications.map {
@@ -547,6 +558,7 @@ object SourceProcessor {
             appTemplate(packageDirective, resultState.imports, it).removeGarbage()
         }
 
+//        DONE using the new approach:
 //        val mediaLinks = resultState.doc.elements.filterIsInstance<Doc.Element.Media>().map {
 //            when (it) {
 //                is Doc.Element.Media.Image -> it.src
