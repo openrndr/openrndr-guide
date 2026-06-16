@@ -22,6 +22,13 @@ dependencies {
     implementation(libs.kotlin.compiler.embeddable)
     implementation(libs.orx.kotlin.parser)
     compileOnly(libs.bundles.openrndr.core)
+    testImplementation(libs.kotlin.test)
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 gradlePlugin {

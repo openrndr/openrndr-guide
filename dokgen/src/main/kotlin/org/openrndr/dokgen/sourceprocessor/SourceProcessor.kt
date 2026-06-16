@@ -2,65 +2,26 @@ package org.openrndr.dokgen.sourceprocessor
 
 import KotlinLexer
 import KotlinParser
-import KotlinParserBaseListener
-import kastree.ast.MutableVisitor
-import kastree.ast.Node
-import kastree.ast.Writer
-import kastree.ast.psi.Converter
-import kastree.ast.psi.Parser
 import org.antlr.v4.runtime.CharStreams
 import org.antlr.v4.runtime.CommonTokenStream
-import org.antlr.v4.runtime.tree.ParseTreeWalker
+import org.antlr.v4.runtime.Token
+import org.antlr.v4.runtime.TokenStreamRewriter
+import org.antlr.v4.runtime.misc.Interval
+import org.antlr.v4.runtime.tree.ParseTree
 import org.openrndr.dokgen.examplesPackageDirective
-import org.openrndr.extra.kotlinparser.ImportsExtractor
 import org.openrndr.extra.kotlinparser.verbatimText
 import java.io.File
 
 
-// the state of folding the syntax tree
-private data class State(
-    val doc: Doc = Doc(),
-    val applications: List<String> = listOf(),
-    val applicationsForExport: List<String> = listOf(),
-    val imports: List<String> = listOf(),
-    val inApplication: InApplication? = null
-) {
-    data class InApplication(val node: Node)
+/** Fully qualified prefix the dokgen annotations may appear with. */
+private const val ANNOTATIONS_PACKAGE = "org.openrndr.dokgen.annotations."
 
-    fun addApplicationToRun(text: String): State {
-        return copy(applications = applications + text)
-    }
-
-    fun addApplicationForExport(text: String): State {
-        return copy(applicationsForExport = applicationsForExport + text)
-    }
-
-    fun addImport(import: String): State {
-        return copy(imports = imports + import)
-    }
-
-    fun updateDoc(newDoc: Doc): State {
-        return copy(doc = newDoc)
-    }
-}
-
-// Some nodes need to be removed from the document
-// but I couldn't find a way to do it.
-// As a workaround I replace them with a string node
-// representing garbage to remove at the end.
-val garbage = Node.Expr.StringTmpl(
-    elems = listOf(
-        Node.Expr.StringTmpl.Elem.Regular("GARBAGE")
-    ), raw = true
-)
-
-private fun String.removeGarbage(): String {
-    return this.split("\n").filter {
-        !it.contains("GARBAGE")
-    }.joinToString("\n")
-}
-
-
+/**
+ * A block of the generated documentation.
+ *
+ * The order of [elements] matches the order of the corresponding
+ * annotated statements in the source file.
+ */
 data class Doc(val elements: List<Element> = listOf()) {
     sealed class Element {
         class Code(val value: String) : Element()
@@ -71,249 +32,237 @@ data class Doc(val elements: List<Element> = listOf()) {
         }
     }
 
-    fun add(element: Element): Doc {
-        return copy(elements = elements + element)
-    }
-}
-
-fun <A, B, C> Pair<A?, B?>.map2(fn: (A, B) -> C): C? {
-    val maybeA = this.first
-    val maybeB = this.second
-    return maybeA?.let { a ->
-        maybeB?.let { b ->
-            fn(a, b)
-        }
-    }
-}
-
-// some helpers
-private fun Node.Modifier.AnnotationSet.Annotation.getName(): String {
-    return this.names.joinToString(".").normalizeAnnotationName()
-}
-
-private fun String.normalizeAnnotationName(): String {
-    return this.replace("org.openrndr.dokgen.annotations.", "")
+    fun add(element: Element): Doc = copy(elements = elements + element)
 }
 
 
-/**
- * Tries to convert an Annotation Node into a String
- */
-private fun stringExpr(expr: Node.Expr): String {
-    when (expr) {
-        is Node.Expr.StringTmpl -> {
-            return expr.elems.joinToString("") {
-                when (it) {
-                    is Node.Expr.StringTmpl.Elem.Regular -> it.str
-                    is Node.Expr.StringTmpl.Elem.ShortTmpl -> "$${it.str}"
-                    else -> throw RuntimeException("unexpected string type: $it")
-                }
+/* ----------------------------------------------------------------------- *
+ * Generic ANTLR parse-tree helpers
+ * ----------------------------------------------------------------------- */
+
+/** Collects all descendants of [type]. When [stopAtMatch] is true, a matched
+ *  node is collected but not descended into (yielding only the top-most matches). */
+private fun <T : ParseTree> ParseTree.descendantsOfType(
+    type: Class<T>,
+    stopAtMatch: Boolean = false
+): List<T> {
+    val out = ArrayList<T>()
+    fun rec(node: ParseTree) {
+        for (i in 0 until node.childCount) {
+            val c = node.getChild(i)
+            if (type.isInstance(c)) {
+                out.add(type.cast(c))
+                if (!stopAtMatch) rec(c)
+            } else {
+                rec(c)
             }
         }
-
-        else -> throw RuntimeException("cannot convert expression $expr to string")
     }
+    rec(this)
+    return out
+}
+
+/** The first descendant of [type] in pre-order, or null. */
+private fun <T : ParseTree> ParseTree.firstDescendantOfType(type: Class<T>): T? {
+    for (i in 0 until childCount) {
+        val c = getChild(i)
+        if (type.isInstance(c)) return type.cast(c)
+        c.firstDescendantOfType(type)?.let { return it }
+    }
+    return null
+}
+
+/** The closest enclosing [KotlinParser.StatementContext], or null. */
+private fun ParseTree.enclosingStatement(): KotlinParser.StatementContext? {
+    var p: ParseTree? = this.parent
+    while (p != null) {
+        if (p is KotlinParser.StatementContext) return p
+        p = p.parent
+    }
+    return null
+}
+
+
+/* ----------------------------------------------------------------------- *
+ * Annotation helpers
+ * ----------------------------------------------------------------------- */
+
+/** The (possibly dotted) annotation name, e.g. `Media.Image`, `Code.Block`,
+ *  with the dokgen package prefix stripped. Null when it can't be determined. */
+private fun KotlinParser.AnnotationContext.annotationName(): String? {
+    val unescaped = singleAnnotation()?.unescapedAnnotation()
+        ?: multiAnnotation()?.unescapedAnnotation()?.firstOrNull()
+        ?: return null
+    val userType = unescaped.userType() ?: unescaped.constructorInvocation()?.userType()
+    return userType?.text?.removePrefix(ANNOTATIONS_PACKAGE)
+}
+
+/** Names of the leading annotations of a statement, in source order. */
+private fun KotlinParser.StatementContext.annotationNames(): List<String> =
+    annotation().mapNotNull { it.annotationName() }
+
+/** The constructor invocation of an annotation like `@ProduceVideo(...)`, or null. */
+private fun KotlinParser.AnnotationContext.constructorInvocation(): KotlinParser.ConstructorInvocationContext? =
+    singleAnnotation()?.unescapedAnnotation()?.constructorInvocation()
+
+/**
+ * Returns the content of the first string literal found in this expression,
+ * with the surrounding quotes removed. Handles both line strings (`"..."`)
+ * and multiline strings (`"""..."""`), and ignores trailing calls such as
+ * `.trimIndent()`.
+ */
+private fun KotlinParser.ExpressionContext.stringContent(): String {
+    val literal = firstDescendantOfType(KotlinParser.StringLiteralContext::class.java) ?: return ""
+    literal.multiLineStringLiteral()?.let { return it.verbatimText().removeSurrounding("\"\"\"") }
+    literal.lineStringLiteral()?.let { return it.verbatimText().removeSurrounding("\"") }
+    return ""
+}
+
+
+/* ----------------------------------------------------------------------- *
+ * Source rendering (verbatim text + targeted surgery + dedent)
+ * ----------------------------------------------------------------------- */
+
+/**
+ * Renders a region of the source as a self-contained, de-indented snippet.
+ *
+ * The dokgen annotations found inside the region are removed:
+ * - `@Exclude` removes either just the annotation (keeping its target, used
+ *   for runnable sources) or the whole annotated statement (used for the
+ *   documentation and exported sources), depending on [dropExcludedBlocks].
+ * - `@Text` / `@Media.*` remove the whole annotated statement.
+ * - all other dokgen annotations are stripped, keeping their target.
+ *
+ * @param prependColumn spaces prepended to the first line before [String.trimIndent]
+ *        so that the common indentation can be detected (the verbatim text of a
+ *        rule starts at its first token and therefore has no leading indentation).
+ */
+private fun renderRegion(
+    tokens: CommonTokenStream,
+    fromTokenIndex: Int,
+    toTokenIndex: Int,
+    annotations: List<KotlinParser.AnnotationContext>,
+    dropExcludedBlocks: Boolean,
+    prependColumn: Int
+): String {
+    if (fromTokenIndex > toTokenIndex) return ""
+    val rewriter = TokenStreamRewriter(tokens)
+    annotations.forEach { ann ->
+        when (ann.annotationName()) {
+            "Exclude" ->
+                if (dropExcludedBlocks) deleteAnnotatedStatement(rewriter, tokens, ann)
+                else deleteAnnotation(rewriter, tokens, ann)
+
+            "Text", "Media.Image", "Media.Video" ->
+                deleteAnnotatedStatement(rewriter, tokens, ann)
+
+            "Code", "Code.Block", "Application", "ProduceScreenshot", "ProduceVideo" ->
+                deleteAnnotation(rewriter, tokens, ann)
+
+            else -> Unit // not a dokgen annotation: leave untouched
+        }
+    }
+    val text = rewriter.getText(Interval(fromTokenIndex, toTokenIndex))
+    return (" ".repeat(prependColumn) + text).trimIndent()
 }
 
 /**
- * Tries to convert a Const Expr Annotation Node into a string
+ * Index of the first token on the same line as [tokenIndex], i.e. [tokenIndex]
+ * extended left over the leading indentation. This matters because the lexer
+ * emits one whitespace token per character and the `@` token only captures the
+ * single space directly preceding it, so the remaining indentation would
+ * otherwise survive a deletion and corrupt the following line.
  */
-private fun constExpr(expr: Node.Expr) = if (expr is Node.Expr.Const)
-    expr.value
-else
-    throw RuntimeException("cannot convert expression $expr to string")
-
-/**
- * Get only annotations matching certain types, defined by [fn].
- */
-private fun Node.filterAnnotated(fn: (Node.Expr.Annotated) -> Boolean): Node {
-    return MutableVisitor.postVisit(this) { node, _ ->
-        when (node) {
-            is Node.Expr.Annotated -> if (fn(node)) node else garbage
-            else -> node
-        }
+private fun lineStartIndex(tokens: CommonTokenStream, tokenIndex: Int): Int {
+    var start = tokenIndex
+    while (start - 1 >= 0) {
+        val prev = tokens.get(start - 1)
+        if (prev.channel != Token.DEFAULT_CHANNEL && prev.text.isBlank()) start-- else break
     }
+    return start
 }
 
-private fun Node.mapAnnotated(fn: (Node.Expr.Annotated) -> Node): Node {
-    return MutableVisitor.postVisit(this) { node, _ ->
-        when (node) {
-            is Node.Expr.Annotated -> fn(node)
-            else -> node
-        }
-    }
-}
-
-@Suppress("UNCHECKED_CAST")
-fun <N : Node> dropExcluded(n: N): N {
-    return n.filterAnnotated { child ->
-        val annotated = child.anns.firstOrNull()?.anns?.firstOrNull()?.names?.firstOrNull()
-        annotated != "Exclude"
-    } as N
-}
-
-private class ProcessAnnotatedNode(
-    val printNode: (Node) -> String,
-    val maybeMkLink: ((Int) -> String)?
+/** Deletes only the annotation and its line's indentation, keeping its target. */
+private fun deleteAnnotation(
+    rewriter: TokenStreamRewriter,
+    tokens: CommonTokenStream,
+    ann: KotlinParser.AnnotationContext
 ) {
-
-    private fun Node.Expr.Annotated.withoutAnnotations(): Node.Expr.Annotated {
-        return copy(anns = listOf())
-    }
-
-    private fun Node.Expr.Annotated.withMediaAnnotations(): Node.Expr.Annotated {
-        val mediaAnnotations = this.anns.filter {
-            val annotated = it.anns.firstOrNull()?.names?.firstOrNull()
-            annotated in listOf("ProduceScreenshot", "ProduceVideo")
-        }
-        return copy(anns = mediaAnnotations)
-    }
-
-    operator fun invoke(node: Node.Expr.Annotated, state: State): State {
-        val doc = state.doc
-        val annotation = node.anns.firstOrNull()?.anns?.firstOrNull() ?: return state
-        val annotationName = annotation.getName()
-        return when (annotationName) {
-
-            "Application" -> {
-
-                // 1. Generate a runnable source to produce media.
-                val appSourceToRun = node.withMediaAnnotations().run {
-                    filterAnnotated { node ->
-                        val annotated = node.anns.firstOrNull()?.anns?.firstOrNull()?.names?.firstOrNull()
-                        annotated !in listOf("Text", "Media")
-                    }.mapAnnotated { node ->
-                        node.withMediaAnnotations()
-                    }
-                }.run(printNode)
-                    .replaceMediaAnnotations(
-                        "@ProduceVideo", listOf(
-                            "video_location",
-                            "video_duration",
-                            "video_frameRate",
-                            "video_multiSample"
-                        )
-                    )
-                    .replaceMediaAnnotations(
-                        "@ProduceScreenshot", listOf(
-                            "screenshot_location",
-                            "screenshot_multiSample"
-                        )
-                    )
-
-                // 2. Generate source code for export.
-                // Similar to 1. but with @Exclude annotations dropped.
-                val appSourceForExport = node.withoutAnnotations().run {
-                    filterAnnotated { node ->
-                        val annotated = node.anns.firstOrNull()?.anns?.firstOrNull()?.names?.firstOrNull()
-                        annotated !in listOf("Exclude", "Text", "Media")
-                    }.mapAnnotated { node ->
-                        node.withoutAnnotations()
-                    }
-                }.run(printNode)
-
-                val newState = state.copy(
-                    inApplication = State.InApplication(node)
-                ).addApplicationToRun(appSourceToRun)
-                    .addApplicationForExport(appSourceForExport)
-
-                val nextAnnotations = node.anns.drop(1)
-                if (nextAnnotations.isEmpty())
-                    newState
-                else
-                    this(node.copy(anns = nextAnnotations), newState)
-            }
-
-            // Ensure named arguments are not used because they
-            // allow the user to swap argument order breaking the logic.
-            "ProduceVideo", "ProduceScreenshot" -> {
-                annotation.args.forEach {
-                    check(it.name == null) {
-                        "Named arguments not allowed in @$annotationName. Please remove `${it.name} =`"
-                    }
-                }
-
-                val nextAnnotations = node.anns.drop(1)
-                if (nextAnnotations.isEmpty())
-                    state
-                else
-                    this(node.copy(anns = nextAnnotations), state)
-            }
-
-            "Text" -> {
-                val text = stringExpr(node.expr)
-                val newDoc = doc.add(Doc.Element.Markdown(text))
-                state.updateDoc(newDoc)
-            }
-
-            "Code", "Code.Block" -> {
-                val mkDoc = { text: String ->
-                    doc.add(Doc.Element.Code(text)).let { doc ->
-                        Pair(maybeMkLink, state.inApplication).map2 { mkLink, _ ->
-                            val appCount = state.applications.size
-                            val link = mkLink(appCount - 1)
-                            doc.add(
-                                Doc.Element.Markdown(
-                                    """
-                                                [Link to the full example]($link)
-                                            """.trimIndent()
-                                )
-                            )
-                        } ?: doc
-                    }
-                }
-                val text = when (annotationName) {
-                    "Code" -> {
-                        val cleaned = node.run {
-                            dropExcluded(this)
-                        }.mapAnnotated {
-                            it.withoutAnnotations()
-                        }
-                        printNode(cleaned)
-                    }
-
-                    "Code.Block" -> {
-                        val call = node.run { dropExcluded(this) }
-                            .mapAnnotated {
-                                it.withoutAnnotations()
-                            }.run { this as Node.Expr.Annotated }.expr
-                        if (call is Node.Expr.Call && (call.expr as Node.Expr.Name).name == "run") {
-                            call.lambda!!.func.block!!.stmts.joinToString("\n") { stmt ->
-                                printNode(stmt)
-                            }
-                        } else {
-                            throw RuntimeException("@Code.Block annotation can only be applied to `run {}` blocks.")
-                        }
-                    }
-
-                    else -> {
-                        throw IllegalStateException()
-                    }
-                }
-                val newDoc = mkDoc(text)
-                state.updateDoc(newDoc)
-            }
-
-            "Media.Image" -> {
-                val link = stringExpr(node.expr)
-                val newDoc = doc.add(
-                    Doc.Element.Media.Image(link.trim())
-                )
-                state.updateDoc(newDoc)
-            }
-
-            "Media.Video" -> {
-                val link = stringExpr(node.expr)
-                val newDoc = doc.add(
-                    Doc.Element.Media.Video(link.trim())
-                )
-                state.updateDoc(newDoc)
-            }
-
-            else -> state
-        }
-    }
+    rewriter.delete(lineStartIndex(tokens, ann.start.tokenIndex), ann.stop.tokenIndex)
 }
+
+/** Deletes the whole statement the annotation belongs to, including its leading
+ *  indentation and the following line separator, so no blank line is left. */
+private fun deleteAnnotatedStatement(
+    rewriter: TokenStreamRewriter,
+    tokens: CommonTokenStream,
+    ann: KotlinParser.AnnotationContext
+) {
+    val statement = ann.enclosingStatement() ?: run {
+        deleteAnnotation(rewriter, tokens, ann)
+        return
+    }
+    var endIndex = statement.stop.tokenIndex
+    var i = endIndex + 1
+    while (i < tokens.size()) {
+        val t = tokens.get(i)
+        when {
+            t.channel != Token.DEFAULT_CHANNEL -> i++ // include trailing whitespace/comments
+            t.type == KotlinParser.NL -> {
+                endIndex = i
+                break
+            }
+
+            else -> break
+        }
+    }
+    rewriter.delete(lineStartIndex(tokens, statement.start.tokenIndex), endIndex)
+}
+
+/** Renders the expression of an annotated statement (e.g. `application { ... }`). */
+private fun renderExpression(
+    tokens: CommonTokenStream,
+    expr: KotlinParser.ExpressionContext,
+    dropExcludedBlocks: Boolean
+): String = renderRegion(
+    tokens = tokens,
+    fromTokenIndex = expr.start.tokenIndex,
+    toTokenIndex = expr.stop.tokenIndex,
+    annotations = expr.descendantsOfType(KotlinParser.AnnotationContext::class.java),
+    dropExcludedBlocks = dropExcludedBlocks,
+    prependColumn = expr.start.charPositionInLine
+)
+
+/**
+ * Renders the statements inside the `run { ... }` lambda of a `@Code.Block`,
+ * unwrapping the `run {}` so only its body is shown.
+ */
+private fun renderCodeBlock(
+    tokens: CommonTokenStream,
+    expr: KotlinParser.ExpressionContext
+): String {
+    val callee = expr.firstDescendantOfType(KotlinParser.PrimaryExpressionContext::class.java)
+        ?.simpleIdentifier()?.text
+    require(callee == "run") {
+        "@Code.Block annotation can only be applied to `run {}` blocks."
+    }
+    val lambda = expr.firstDescendantOfType(KotlinParser.LambdaLiteralContext::class.java)
+        ?: error("@Code.Block `run {}` block has no lambda body.")
+    // The lambda's first and last tokens are `{` and `}`; skip them to get the body.
+    return renderRegion(
+        tokens = tokens,
+        fromTokenIndex = lambda.start.tokenIndex + 1,
+        toTokenIndex = lambda.stop.tokenIndex - 1,
+        annotations = lambda.descendantsOfType(KotlinParser.AnnotationContext::class.java),
+        dropExcludedBlocks = true,
+        prependColumn = 0
+    )
+}
+
+
+/* ----------------------------------------------------------------------- *
+ * Media-producing annotations
+ * ----------------------------------------------------------------------- */
 
 /**
  * In a source code String, finds the [annName] annotation using a Regex and
@@ -345,133 +294,142 @@ private fun String.replaceMediaAnnotations(
     }.joinToString("\n", postfix = "\n")
 }
 
-private class AstFolder(
-    val printNode: (Node) -> String,
-    maybeMkLink: ((Int) -> String)?
-) : Folder<State> {
-    val processAnnotatedNode = ProcessAnnotatedNode(
-        printNode,
-        maybeMkLink
-    )
-    override val pre: (State, Node) -> State =
-        { state, node ->
-            when (node) {
-                is Node.Expr.Annotated -> {
-                    processAnnotatedNode(node, state)
-                }
-                // some annotated nodes are not showing up as Node.Expr.Annotated but
-                // as Node.WithModifiers where the annotations are in node.mods
-                is Node.WithModifiers -> {
-                    if (node.anns.isNotEmpty()) {
-                        val annotation = node.anns.first().anns.first()
-                        when (annotation.getName()) {
-                            "Code" -> {
-                                // here node is not a data class so cannot just copy if with the annotations left out
-                                // couldn't find a better way of obtaining the same node without annotations,
-                                // so mutating it with reflection before writing it to a string
-                                val field = node.javaClass.getDeclaredField("mods")
-                                field.isAccessible = true
-                                val modsWithoutAnnotations = node.mods.filter { it !is Node.Modifier.AnnotationSet }
-                                field.set(node, modsWithoutAnnotations)
-                                field.isAccessible = false
-                                val codeText = printNode(node)
-                                val newDoc = state.doc.add(Doc.Element.Code(codeText))
-                                state.updateDoc(newDoc)
-                            }
-
-                            else -> state
-                        }
-                    } else {
-                        state
-                    }
-                }
-
-                is Node.Import -> {
-                    if (node.names.contains("dokgen")) {
-                        state
-                    } else {
-                        state.addImport(printNode(node))
-                    }
-                }
-
-                else -> {
-                    state
-                }
-            }
-        }
-    override val post: ((State, Node) -> State) = { state, node ->
-        // if we're inside a node annotated with @Application
-        // and the node is the same as what we've saved in state, then we've exited the node
-        if (state.inApplication != null && node == state.inApplication.node) {
-            state.copy(inApplication = null)
-        } else {
-            state
+/** Ensures named arguments aren't used in media annotations, because they
+ *  would let the user swap argument order and break the property mapping. */
+private fun KotlinParser.AnnotationContext.checkNoNamedArguments(name: String) {
+    constructorInvocation()?.valueArguments()?.valueArgument()?.forEach { arg ->
+        check(arg.simpleIdentifier() == null) {
+            "Named arguments not allowed in @$name. Please remove `${arg.simpleIdentifier()!!.text} =`"
         }
     }
 }
 
-// TODO: look at SourceProcessor above.
-// Page: parse
-//   @Text """..."""
-//   [x] @Media.Image "..."
-//   [x] @Media.Video "..."
-//   @Code.Block
-//   @Code -> fun main() =
-//   !avoid @Exclude
 
-// Source: @Application -> goes into examples
+/* ----------------------------------------------------------------------- *
+ * Guide builder: walks the statements of main() in source order
+ * ----------------------------------------------------------------------- */
 
-// Source: "@ProduceScreenshot(...)", "@ProduceVideo(...)"
+private class GuideBuilder(
+    private val tokens: CommonTokenStream,
+    private val imports: List<String>,
+    private val packageDirective: String,
+    private val runnablePackageDirective: String,
+    private val mkLink: ((Int) -> String)?
+) {
+    var doc = Doc()
+        private set
+    val appSources = mutableListOf<String>()
+    val appSourcesForExport = mutableListOf<String>()
+    private var applicationCount = 0
 
-class DocumentationParser : KotlinParserBaseListener() {
-    var fileAnnotations = mutableMapOf<String, String>()
-    var mediaAnnotations = mutableListOf<String>()
-
-    var lookingForMedia = false
-    override fun enterFileAnnotation(ctx: KotlinParser.FileAnnotationContext?) {
-        ctx?.text?.let { fileAnnotation ->
-            /** Grab A and B from an annotation like this: `@file:A("B")` */
-            val parts = fileAnnotation.substringAfter("@file:")
-                .substringBefore("\")")
-                .split("(\"")
-            fileAnnotations[parts[0]] = parts[1]
-        }
+    fun build(statements: List<KotlinParser.StatementContext>) {
+        statements.forEach { process(it, inApplication = false) }
     }
 
-    override fun enterAnnotation(ctx: KotlinParser.AnnotationContext?) {
-        ctx?.singleAnnotation()?.let { singleAnnotation ->
-            val ann = singleAnnotation.text.trim()
-            if (ann == "@Media.Image" || ann == "@Media.Video") {
-                lookingForMedia = true
+    private fun process(statement: KotlinParser.StatementContext, inApplication: Boolean) {
+        val names = statement.annotationNames()
+        val isApplication = "Application" in names
+        val expr = statement.expression()
+
+        // 1. Validate media annotations.
+        statement.annotation().forEach { ann ->
+            when (ann.annotationName()) {
+                "ProduceScreenshot", "ProduceVideo" ->
+                    ann.checkNoNamedArguments(ann.annotationName()!!)
+            }
+        }
+
+        // 2. Generate runnable / exportable sources for an @Application.
+        if (isApplication && expr != null) {
+            generateApplicationSources(statement, expr)
+            applicationCount++
+        }
+
+        // 3. Produce a documentation element (at most one per statement).
+        var rendered = true
+        when {
+            "Text" in names && expr != null ->
+                doc = doc.add(Doc.Element.Markdown(expr.stringContent()))
+
+            "Media.Image" in names && expr != null ->
+                doc = doc.add(Doc.Element.Media.Image(expr.stringContent().trim()))
+
+            "Media.Video" in names && expr != null ->
+                doc = doc.add(Doc.Element.Media.Video(expr.stringContent().trim()))
+
+            "Code.Block" in names && expr != null ->
+                addCode(renderCodeBlock(tokens, expr), inApplication || isApplication)
+
+            "Code" in names && expr != null ->
+                addCode(renderExpression(tokens, expr, dropExcludedBlocks = true), inApplication || isApplication)
+
+            else -> rendered = false
+        }
+
+        // 4. Recurse into nested statements unless this statement was shown as
+        //    code (in which case its contents are already rendered verbatim).
+        if (!rendered) {
+            childStatements(statement).forEach {
+                process(it, inApplication = inApplication || isApplication)
             }
         }
     }
 
-    override fun enterStringLiteral(ctx: KotlinParser.StringLiteralContext?) {
-        if(lookingForMedia) {
-            ctx?.text?.let { mediaAnnotation -> mediaAnnotations.add(mediaAnnotation) }
-            lookingForMedia = false
+    /** Adds a code block to the doc, optionally followed by a link to the full example. */
+    private fun addCode(code: String, inApplication: Boolean) {
+        doc = doc.add(Doc.Element.Code(code))
+        if (mkLink != null && inApplication) {
+            val link = mkLink.invoke(applicationCount - 1)
+            doc = doc.add(
+                Doc.Element.Markdown(
+                    """
+                        [Link to the full example]($link)
+                    """.trimIndent()
+                )
+            )
         }
-
     }
 
-    /*
-        This is promising. returns lots of lambdas.
-        Maybe I should watch for @Code annotations,
-        then the next function call (application { ... }) is good.
+    private fun generateApplicationSources(
+        statement: KotlinParser.StatementContext,
+        expr: KotlinParser.ExpressionContext
+    ) {
+        // Exported example: drop @Exclude blocks and all annotations.
+        val exportBody = renderExpression(tokens, expr, dropExcludedBlocks = true)
+        appSourcesForExport.add(appTemplate(packageDirective, imports, exportBody))
 
-        There are many other functions I can override.
-        Maybe there's more useful ones than `enterLambdaLiteral`.
-    */
-    override fun enterLambdaLiteral(ctx: KotlinParser.LambdaLiteralContext?) {
-        println("""
-            
-            # enter lambda literal:
-            
-              ${ctx?.verbatimText()}
-            """.trimIndent())
+        // Runnable example: keep @Exclude blocks, convert media annotations
+        // into System property setup so the Program preloader can act on them.
+        val runBody = renderExpression(tokens, expr, dropExcludedBlocks = false)
+        val mediaSetup = statement.annotation()
+            .filter { it.annotationName() in listOf("ProduceScreenshot", "ProduceVideo") }
+            .joinToString("\n") { it.verbatimText().trim() }
+        val runnable = listOf(mediaSetup, runBody)
+            .filter { it.isNotEmpty() }
+            .joinToString("\n")
+            .replaceMediaAnnotations(
+                "@ProduceVideo",
+                listOf("video_location", "video_duration", "video_frameRate", "video_multiSample")
+            )
+            .replaceMediaAnnotations(
+                "@ProduceScreenshot",
+                listOf("screenshot_location", "screenshot_multiSample")
+            )
+        appSources.add(appTemplate(runnablePackageDirective, imports, runnable))
     }
+
+    /** Direct child statements of [statement] (nested in its lambda bodies),
+     *  not descending into deeper statements. */
+    private fun childStatements(
+        statement: KotlinParser.StatementContext
+    ): List<KotlinParser.StatementContext> =
+        statement.descendantsOfType(KotlinParser.StatementContext::class.java, stopAtMatch = true)
 }
+
+
+/* ----------------------------------------------------------------------- *
+ * Entry point
+ * ----------------------------------------------------------------------- */
 
 object SourceProcessor {
     // what will be produced
@@ -488,90 +446,69 @@ object SourceProcessor {
         packageDirective: String,
         mkLink: ((Int) -> String)? = null
     ): Output {
-
-        //--- New approach starts here
-        println("-----------------------------------")
-        val parser = KotlinParser(
-            CommonTokenStream(
-                KotlinLexer(CharStreams.fromString(source))
-            )
-        )
-
+        val tokens = CommonTokenStream(KotlinLexer(CharStreams.fromString(source)))
+        val parser = KotlinParser(tokens)
         val root = parser.kotlinFile()
-        val ruleNames = parser.ruleNames.toList()
+        tokens.fill()
 
-        // Parse @file annotations
-        val documentationParser = DocumentationParser()
-        // Recursively walk the document tree
-        ParseTreeWalker.DEFAULT.walk(documentationParser, root)
-        val fileAnns = documentationParser.fileAnnotations
-        val mediaLinks = documentationParser.mediaAnnotations
-
-        println("\n[file annotations]")
-        println(fileAnns)
-
-        println("\n[media annotations]")
-        println(mediaLinks)
-
-        // Make sure required @file annotations are found
-        listOf("Title", "Order", "URL").forEach { requiredAnnotation ->
-            val str = fileAnns[requiredAnnotation]
-            require(!str.isNullOrEmpty()) {
-                """Required @file:$requiredAnnotation("...") annotation not found"""
+        // File annotations: @file:Title("..."), @file:Order("..."), etc.
+        val fileAnnotations = LinkedHashMap<String, String>()
+        root.fileAnnotation().forEach { fileAnnotation ->
+            fileAnnotation.unescapedAnnotation().forEach { unescaped ->
+                val ctor = unescaped.constructorInvocation() ?: return@forEach
+                val name = ctor.userType().text
+                val value = ctor.valueArguments()?.valueArgument()
+                    ?.firstOrNull()?.expression()?.stringContent()
+                if (value != null) fileAnnotations[name] = value
             }
         }
 
-        // Parse imports
-        val importsExtractor = ImportsExtractor(ruleNames)
-        // Recursively walk the document tree
-        ParseTreeWalker.DEFAULT.walk(importsExtractor, root)
-        println("\n[imports]")
-        println(importsExtractor.result ?: "")
+        listOf("Title", "Order", "URL").forEach { required ->
+            require(!fileAnnotations[required].isNullOrEmpty()) {
+                """Required @file:$required("...") annotation not found"""
+            }
+        }
 
-        /**
-         * [packageDirective] is received as an argument but
-         * `runnablePackageDirective` is calculated here
-         * because the @file:URL("") annotation is needed
-         * which is only parsed by `ast.run {}` above.
-         */
+        // Imports, excluding the dokgen annotation import which doesn't exist
+        // in the generated examples.
+        val imports = root.importList().importHeader()
+            .map { it.verbatimText().trim() }
+            .filter { !it.contains("dokgen") }
+
+        // The package directive of runnable examples is derived from @file:URL,
+        // which is parsed above, so it cannot be passed in as an argument.
         val runnablePackageDirective = examplesPackageDirective(
-            File(fileAnns["URL"]!!).parentFile.toPath()
+            File(fileAnnotations["URL"]!!).parentFile.toPath()
         )
 
-        //--- New approach ends here, old approach starts
+        // Walk the statements of every top-level function (i.e. main()) in
+        // source order, building the documentation and example sources.
+        val statements = root.topLevelObject()
+            .mapNotNull { it.declaration()?.functionDeclaration() }
+            .flatMap { it.functionBody()?.block()?.statements()?.statement() ?: emptyList() }
 
-        // I still need to generate `renderedDoc`, `appSourcesProducingMedia`
-        // and `appSourcesForExport` using ParseTreeWalker instead of kastree.ast.
+        val builder = GuideBuilder(
+            tokens = tokens,
+            imports = imports,
+            packageDirective = packageDirective,
+            runnablePackageDirective = runnablePackageDirective,
+            mkLink = mkLink
+        )
+        builder.build(statements)
 
-        val initialState = State()
-        val extrasMap = Converter.WithExtras()
-        val ast = Parser(extrasMap).parseFile(source)
-        val astFolder = AstFolder({ Writer.write(it, extrasMap) }, mkLink)
-        // Recursively walk the data structure
-        val resultState = ast.fold(initialState, astFolder)
-        val renderedDoc = renderDoc(resultState.doc).removeGarbage()
-        val appSourcesProducingMedia = resultState.applications.map {
-            appTemplate(runnablePackageDirective, resultState.imports, it).removeGarbage()
+        val media = builder.doc.elements.filterIsInstance<Doc.Element.Media>().map {
+            when (it) {
+                is Doc.Element.Media.Image -> it.src
+                is Doc.Element.Media.Video -> it.src
+            }
         }
-
-        val appSourcesForExport = resultState.applicationsForExport.map {
-            appTemplate(packageDirective, resultState.imports, it).removeGarbage()
-        }
-
-//        DONE using the new approach:
-//        val mediaLinks = resultState.doc.elements.filterIsInstance<Doc.Element.Media>().map {
-//            when (it) {
-//                is Doc.Element.Media.Image -> it.src
-//                is Doc.Element.Media.Video -> it.src
-//            }
-//        }
 
         return Output(
-            doc = renderedDoc,
-            appSources = appSourcesProducingMedia,
-            appSourcesForExport = appSourcesForExport,
-            media = mediaLinks,
-            annotations = fileAnns
+            doc = renderDoc(builder.doc),
+            appSources = builder.appSources,
+            appSourcesForExport = builder.appSourcesForExport,
+            media = media,
+            annotations = fileAnnotations
         )
     }
 }
