@@ -101,6 +101,14 @@ private fun KotlinParser.AnnotationContext.annotationName(): String? {
 private fun KotlinParser.StatementContext.annotationNames(): List<String> =
     annotation().mapNotNull { it.annotationName() }
 
+/** Names of the leading prefix annotations of an expression, e.g. the `Text` in
+ *  `@Text "..."`. Used to read the dokgen annotation off a property initializer
+ *  (see [GuideBuilder.process]). */
+private fun KotlinParser.ExpressionContext.prefixAnnotationNames(): List<String> =
+    firstDescendantOfType(KotlinParser.PrefixUnaryExpressionContext::class.java)
+        ?.unaryPrefix()?.mapNotNull { it.annotation()?.annotationName() }
+        ?: emptyList()
+
 /** The constructor invocation of an annotation like `@ProduceVideo(...)`, or null. */
 private fun KotlinParser.AnnotationContext.constructorInvocation(): KotlinParser.ConstructorInvocationContext? =
     singleAnnotation()?.unescapedAnnotation()?.constructorInvocation()
@@ -327,9 +335,15 @@ private class GuideBuilder(
     }
 
     private fun process(statement: KotlinParser.StatementContext, inApplication: Boolean) {
-        val names = statement.annotationNames()
+        // A `val` declaration such as `@Language("markdown") val a = @Text "..."` exists only
+        // to attach an @Language annotation, which makes the IDE syntax-highlight the string's
+        // content while the source is edited. The dokgen annotation (e.g. @Text) and its content
+        // live on the property initializer, so unwrap to it: the `val a =` scaffolding and the
+        // @Language annotation are dropped while the annotated content is kept.
+        val initializer = statement.declaration()?.propertyDeclaration()?.expression()
+        val names = statement.annotationNames() + (initializer?.prefixAnnotationNames() ?: emptyList())
         val isApplication = "Application" in names
-        val expr = statement.expression()
+        val expr = statement.expression() ?: initializer
 
         // 1. Validate media annotations.
         statement.annotation().forEach { ann ->

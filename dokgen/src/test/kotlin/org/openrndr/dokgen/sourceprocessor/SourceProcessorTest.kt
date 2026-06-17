@@ -78,6 +78,12 @@ class SourceProcessorTest {
 
         // Nested @Code extend (no @Application) is shown without a link
         assertContains(doc, "drawer.clear(ColorRGBa.BLACK)")
+
+        // `@Language("markdown") val x = @Text "..."` renders its @Text content as
+        // markdown; the @Language / val scaffolding is dropped, not the content.
+        assertContains(doc, "## IDE highlighted heading")
+        assertFalse(doc.contains("@Language"), "@Language scaffolding must be dropped")
+        assertFalse(doc.contains("ideHighlighted"), "the val binding must be dropped")
     }
 
     @Test
