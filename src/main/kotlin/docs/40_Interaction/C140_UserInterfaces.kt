@@ -97,6 +97,7 @@ fun main() {
                 styleSheet(has type "button") {
                     background = Color.RGBa(ColorRGBa.PINK)
                     color = Color.RGBa(ColorRGBa.BLACK)
+                    width = 120.px
                 }
 
                 layout {
@@ -288,7 +289,6 @@ fun main() {
         program {
             extend(ControlManager()) {
                 layout {
-
                     colorpickerButton {
                         label = "Pick a color"
                         color = ColorRGBa.PINK
@@ -330,8 +330,13 @@ fun main() {
         }
         program {
             extend(ControlManager()) {
+                styleSheet(has id "b1") {
+                    width = 150.px
+                }
+
                 layout {
                     dropdownButton {
+                        id = "b1"
                         label = "Option"
 
                         item {

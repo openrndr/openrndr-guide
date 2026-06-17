@@ -105,7 +105,6 @@ fun main() {
                 val source = Rectangle(0.0, 0.0, 320.0, 240.0)
                 val target = Rectangle(160.0, 120.0, 320.0, 240.0)
                 drawer.image(image, source, target)
-
             }
         }
     }
@@ -242,8 +241,7 @@ fun main() {
 
             extend {
                 // -- here we concatenate the transforms using the multiplication operator.
-                drawer.drawStyle.colorMatrix =
-                    tint(ColorRGBa.PINK) * grayscale()
+                drawer.drawStyle.colorMatrix = tint(ColorRGBa.PINK) * grayscale()
                 drawer.image(image)
             }
         }

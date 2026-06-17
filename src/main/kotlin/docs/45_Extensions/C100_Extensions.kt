@@ -33,7 +33,6 @@ fun main() {
             // -- one time setup code goes here
             extend(Screenshots())
             extend {
-
                 // -- drawing code goes here
             }
         }

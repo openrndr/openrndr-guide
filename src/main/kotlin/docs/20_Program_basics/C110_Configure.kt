@@ -9,7 +9,7 @@ package docs.`20_Program_basics`
 import org.openrndr.Fullscreen
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*
-import org.openrndr.extra.noise.Random
+import org.openrndr.extra.noise.primitives.random
 import org.openrndr.extra.noise.uniform
 import org.openrndr.math.Vector2
 
@@ -63,13 +63,11 @@ fun main() {
     @Code
     application {
         configure {
-
             // settings go here
         }
         program {
             // -- one time set-up code goes here
             extend {
-
                 // -- drawing code goes here
             }
         }
@@ -110,7 +108,7 @@ fun main() {
         program {
             extend {
                 if(frameCount % 60 == 0) {
-                    application.cursorVisible = Random.bool()
+                    application.cursorVisible = Boolean.random()
                     application.windowPosition = Vector2.uniform(0.0, 200.0)
                 }
             }

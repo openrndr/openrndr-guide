@@ -227,9 +227,9 @@ fun main() {
                         )
 
                     }
-                    post(LumaOpacity()) {
-                        this.backgroundLuma = 0.25
-                    }
+                    //post(LumaOpacity()) {
+                    //    this.backgroundLuma = 0.8
+                    //}
                     blend(PoissonBlend())
                 }
             }
