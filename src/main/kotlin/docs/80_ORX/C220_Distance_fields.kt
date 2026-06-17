@@ -66,7 +66,8 @@ fun main() {
                 }
             }
             extend {
-                c.draw(drawer)
+                // FIXME
+                //c.draw(drawer)
             }
         }
     }
@@ -101,7 +102,8 @@ fun main() {
                 }
             }
             extend {
-                c.draw(drawer)
+                // FIXME
+                //c.draw(drawer)
             }
         }
     }
@@ -137,7 +139,8 @@ fun main() {
                 }
             }
             extend {
-                c.draw(drawer)
+                // FIXME
+                //c.draw(drawer)
             }
         }
     }
@@ -195,7 +198,8 @@ fun main() {
                 }
             }
             extend {
-                c.draw(drawer)
+                // FIXME
+                //c.draw(drawer)
             }
         }
     }
