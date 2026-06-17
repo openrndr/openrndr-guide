@@ -10,7 +10,6 @@ import org.intellij.lang.annotations.Language
 import org.openrndr.dokgen.annotations.*
 
 fun main() {
-    val n = ""
     @Language("markdown") val a =
     @Text
     """
