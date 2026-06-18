@@ -33,10 +33,10 @@ fun main() {
     
     ## Prerequisites
     
-    Assuming you are working on an 
+    If you are working on an 
     [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-    project, all you have to do is enable `orx-noise` in the `orxFeatures`
-    set in `build.gradle.kts` and reimport the gradle project.
+    project, `orx-noise` should be ready to use because it is part of the basic
+    orx bundle, as described in [ORX](/ORX/).
     
     ## Uniformly distributed random values
 

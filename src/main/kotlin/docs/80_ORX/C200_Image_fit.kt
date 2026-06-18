@@ -27,10 +27,10 @@ fun main() {
     
     ## Prerequisites
     
-    Assuming you are working on an 
+    If you are working on an 
     [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-    project, all you have to do is enable `orx-image-fit` in the `orxFeatures`
-    set in `build.gradle.kts` and reimport the gradle project.
+    project, `orx-image-fit` should be ready to use because it is part of the basic
+    orx bundle, as described in [ORX](/ORX/).
     
     ## Contain mode
     """

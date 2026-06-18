@@ -19,12 +19,13 @@ fun main() {
     osc provides a simple interface to interact with OSC hosts and clients. 
 
     ## Prerequisites
-    
+
     Assuming you are working on an 
     [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-    project, all you have to do is enable `orx-osc` in the `orxFeatures`
-    set in `build.gradle.kts` and reimport the gradle project.
-    
+    project, all you have to do is to add `implementation(orx.osc)` 
+    to the `dependencies` block in `build.gradle.kts` and reload Gradle,
+    as described in [ORX](/ORX/).
+
     ## Listening to OSC messages
     
     To listen to OSC messages we need to start an OSC server and use `listen` 

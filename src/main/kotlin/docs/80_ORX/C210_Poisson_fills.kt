@@ -29,8 +29,9 @@ fun main() {
     
     Assuming you are working on an 
     [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-    project, all you have to do is enable `orx-poisson-fills` in the `orxFeatures`
-    set in `build.gradle.kts` and reimport the gradle project.
+    project, all you have to do is to add `implementation(orx.poisson.fill)` 
+    to the `dependencies` block in `build.gradle.kts` and reload Gradle,
+    as described in [ORX](/ORX/).
     
     # Filling
     
