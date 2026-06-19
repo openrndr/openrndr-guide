@@ -12,14 +12,16 @@ import org.openrndr.color.rgb
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.circleBatch
 import org.openrndr.draw.rectangleBatch
-import org.openrndr.extra.noise.Random
+import org.openrndr.extra.noise.shapes.uniform
+import org.openrndr.extra.noise.uniform
+import org.openrndr.extra.noise.uniformRing
 import org.openrndr.math.Polar
 import org.openrndr.math.Vector2
 import org.openrndr.shape.Circle
 import org.openrndr.shape.Rectangle
 
 fun main() {
-    @Text 
+    @Text
     """
     # Drawing primitives batched
 
@@ -60,9 +62,8 @@ fun main() {
 
                 val circles = List(50000) {
                     Circle(
-                        Math.random() * width,
-                        Math.random() * height,
-                        Math.random() * 10.0 + 10.0
+                        drawer.bounds.uniform(),
+                        Double.uniform(10.0, 20.0)
                     )
                 }
                 drawer.circles(circles)
@@ -70,7 +71,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     `drawer.circles` has several signatures. One of them accepts a list of 
     `Vector2` for the circle centers and a `Double` to specify the radius for 
@@ -83,13 +84,13 @@ fun main() {
             @Code.Block
             run {
                 val area = drawer.bounds.offsetEdges(-100.0)
-                val positions = List(5000) { Random.point(area) }
+                val positions = List(5000) { area.uniform() }
                 drawer.circles(positions, 20.0)
             }
         }
     }
 
-    @Text 
+    @Text
     """
     To have a unique radius per circle we can provide a list of Double as a
     second argument:  
@@ -104,14 +105,14 @@ fun main() {
         program {
             extend {
                 val area = drawer.bounds.offsetEdges(-100.0)
-                val positions = List(400) { Random.point(area) }
-                val radii = List(400) { Random.double(5.0, 50.0) }
+                val positions = List(400) { area.uniform() }
+                val radii = List(400) { Double.uniform(5.0, 50.0) }
                 drawer.circles(positions, radii)
             }
         }
     }
 
-    @Text 
+    @Text
     """
     What about unique colors and `strokeWeight`s per circle? 
     Creating static or dynamic batches makes it possible, 
@@ -127,13 +128,13 @@ fun main() {
         program {
             val staticBatch = drawer.circleBatch {
                 for (i in 0 until 2000) {
-                    fill = ColorRGBa.GRAY.shade(Math.random())
-                    stroke = ColorRGBa.WHITE.shade(Math.random())
-                    strokeWeight = 1 + Math.random() * 5
-                    val pos = Random.ring2d(100.0, 200.0) as Vector2
+                    fill = ColorRGBa.GRAY.shade(Double.uniform(0.0, 1.0))
+                    stroke = ColorRGBa.WHITE.shade(Double.uniform(0.0, 1.0))
+                    strokeWeight = Double.uniform(1.0, 6.0)
+                    val pos = Vector2.uniformRing(100.0, 200.0)
                     circle(
                         pos + drawer.bounds.center,
-                        5 + Math.random() * 20
+                        5 + Double.uniform(0.0, 1.0) * 20
                     )
                 }
             }
@@ -145,11 +146,10 @@ fun main() {
                 // dynamic batch
                 drawer.circles {
                     repeat(100) {
-                        fill = ColorRGBa.PINK.shade(Math.random())
+                        fill = ColorRGBa.PINK.shade(Double.uniform(0.0, 1.0))
                         stroke = null
-                        val pos =
-                            Vector2((it * 160.0) % width, height * 1.0)
-                        val radius = Random.double(2.5, 110.0 - it) * 2
+                        val pos = Vector2((it * 160.0) % width, height * 1.0)
+                        val radius = Double.uniform(2.5, 110.0 - it) * 2
                         circle(pos, radius)
                     }
                 }
@@ -157,7 +157,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     ## Batched rectangles
 
@@ -185,12 +185,12 @@ fun main() {
         program {
             val staticBatch = drawer.rectangleBatch {
                 for (i in 0 until 1000) {
-                    fill = ColorRGBa.GRAY.shade(Math.random())
-                    stroke = ColorRGBa.WHITE.shade(Math.random())
-                    strokeWeight = Random.double(1.0, 5.0)
-                    val angle = Random.int0(20) * 18.0
+                    fill = ColorRGBa.GRAY.shade(Double.uniform(0.0, 1.0))
+                    stroke = ColorRGBa.WHITE.shade(Double.uniform(0.0, 1.0))
+                    strokeWeight = Double.uniform(1.0, 5.0)
+                    val angle = Int.uniform(0, 20) * 18.0
                     val pos = drawer.bounds.center +
-                            Polar(angle, Random.double(100.0, 200.0)).cartesian
+                            Polar(angle, Double.uniform(100.0, 200.0)).cartesian
                     val rect = Rectangle.fromCenter(pos, width = 40.0, height = 20.0)
                     rectangle(rect, angle) // add rect to the batch
                 }
@@ -206,7 +206,7 @@ fun main() {
                         fill = ColorRGBa.PINK.opacify(0.05)
                         stroke = null
                         val pos = Vector2((it * 200.0) % width, 0.0)
-                        val size = 5 + Math.random() * Math.random() * height
+                        val size = 5 + Double.uniform(0.0, 1.0) * Double.uniform(0.0, 1.0) * height
                         rectangle(Rectangle(pos, size))
                     }
                 }
@@ -215,7 +215,7 @@ fun main() {
     }
 
 
-    @Text 
+    @Text
     """
     ## Batched points
     
