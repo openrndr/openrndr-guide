@@ -116,7 +116,10 @@ video {
 }
 @media(max-width: 50rem) {
   .btn.btn-github {
-    bottom: 16px;
+    display: block;
+    position: relative;
+    margin: 10px;
+    width: fit-content;
   }
 }
 @media(min-width: 50rem) {
