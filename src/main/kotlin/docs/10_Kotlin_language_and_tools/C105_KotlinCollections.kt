@@ -160,6 +160,8 @@ fun main() {
                 drawer.clear(ColorRGBa.WHITE)
                 drawer.fill = null
                 drawer.stroke = ColorRGBa.PINK
+                // Go over each radius in the list and use it
+                // for the stroke weight and the radius of a circle
                 radii.forEach { radius ->
                     drawer.strokeWeight = radius * 0.1
                     drawer.circle(drawer.bounds.center, radius)
@@ -185,26 +187,22 @@ fun main() {
             height = 300
         }
         program {
-            // Generate a list containing horizontal pixel positions
-            val x = List(width) { it.toDouble() }
+            // Generate a list containing values between 0.0 and 1.0
+            val x = List(width) { it.toDouble() / width }
 
-            // Drop list items with an increasing probability,
-            // so high `x` values are unlikely
-            val filtered = x.filter {
-                // `xNormalized` is 0.0 on the left edge and 1.0 on
-                // the right edge of the window
-                val xNormalized = it / width
-                // Math.random() returns values between 0.0 and 1.0
-                Math.random() > xNormalized
-            }
+            // Filter out high `x` values.
+            // The condition is likely to be false for high `it` values, making them fail the test.
+            val filtered = x.filter { Math.random() > it }
 
-            // Map the remaining items into drawable LineSegment instances
+            // Map the lucky Double values to LineSegment instances.
+            // `segs` is a `List<LineSegment>`
             val segs = filtered.map {
-                LineSegment(it, 0.0, it, height.toDouble())
+                LineSegment(it * width, 0.0, it * width, height.toDouble())
             }
             extend {
                 drawer.clear(ColorRGBa.WHITE)
                 drawer.stroke = ColorRGBa.PINK
+                // Draw the line segments in our list
                 drawer.lineSegments(segs)
             }
         }
