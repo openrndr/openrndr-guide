@@ -11,6 +11,7 @@ import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.LineCap
 import org.openrndr.math.Vector2
+import org.openrndr.shape.Circle
 
 fun main() {
     @Text 
@@ -18,7 +19,8 @@ fun main() {
     ## Drawing circles
     
     A circle is drawn around coordinates `x`, `y`, i.e. `x` and `y` specify the center of the circle.
-    Circles are filled with the color set in `Drawer.fill` and their stroke is set to `Drawer.stroke`. The width of the stroke follows `Drawer.strokeWeight`.
+    Circles are filled with the color set in `drawer.fill` and their stroke is set to `drawer.stroke`. 
+    The width of the stroke follows `drawer.strokeWeight`.
     """
 
     @Media.Image "../media/circle-001.jpg"
@@ -65,7 +67,15 @@ fun main() {
 
     @Text 
     """
-    You may have spotted the two other APIs for drawing circles; `Drawer.circle(center: Vector2, radius: Double)` and `Drawer.circle(circle: Circle)` and wonder what those are for. They are for drawing the exact same circle, but using arguments that may be more convenient in scenarios in which values are provided by `Vector2` or `Circle` types.
+    You may have spotted other APIs for drawing circles; 
+    `Drawer.circle(center: Vector2, radius: Double)` and 
+    `Drawer.circle(circle: Circle)` and wonder what those are for. 
+    
+    They are for drawing the exact same circle, but using arguments 
+    that may be more convenient in scenarios in which values are 
+    provided by `Vector2` or `Circle` types.
+    
+    For example, `mouse.position` is a `Vector2`, so we can do the following:
     """
 
     run {
@@ -80,7 +90,11 @@ fun main() {
     }
 
     @Text
-    """## Drawing rectangles"""
+    """            
+    ## Drawing rectangles
+
+    Rectangles can be drawn by specifying their top-left corner coordinates, width and height.
+    """.trimMargin()
 
     @Media.Image "../media/rectangle-001.jpg"
 
@@ -160,30 +174,15 @@ fun main() {
                 // -- setup line appearance
                 drawer.stroke = ColorRGBa.BLACK
                 drawer.strokeWeight = 5.0
-                drawer.lineCap = LineCap.ROUND
 
-                drawer.lineSegment(
-                    10.0,
-                    height / 2.0 - 20.0,
-                    width - 10.0,
-                    height / 2.0 - 20.0
-                )
+                drawer.lineCap = LineCap.ROUND
+                drawer.lineSegment(10.0, height / 2.0 - 20.0, width - 10.0, height / 2.0 - 20.0)
 
                 drawer.lineCap = LineCap.BUTT
-                drawer.lineSegment(
-                    10.0,
-                    height / 2.0,
-                    width - 10.0,
-                    height / 2.0
-                )
+                drawer.lineSegment(10.0, height / 2.0, width - 10.0, height / 2.0)
 
                 drawer.lineCap = LineCap.SQUARE
-                drawer.lineSegment(
-                    10.0,
-                    height / 2.0 + 20.0,
-                    width - 10.0,
-                    height / 2.0 + 20.0
-                )
+                drawer.lineSegment(10.0, height / 2.0 + 20.0, width - 10.0, height / 2.0 + 20.0)
             }
         }
     }
