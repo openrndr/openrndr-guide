@@ -1,7 +1,7 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("What is Gradle?")
 @file:ParentTitle("Kotlin language and tools")
-@file:Order("110")
+@file:Order("130")
 @file:URL("kotlinLanguageAndTools/gradle")
 
 package docs.`10_Kotlin_language_and_tools`

@@ -1,7 +1,7 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Functions and lambdas")
 @file:ParentTitle("Kotlin language and tools")
-@file:Order("101")
+@file:Order("110")
 @file:URL("kotlinLanguageAndTools/functionsAndLambdas")
 
 package docs.`10_Kotlin_language_and_tools`
