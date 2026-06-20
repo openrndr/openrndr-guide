@@ -25,9 +25,13 @@ fun main() {
     run to immediately see the result. 
                 
     From the [Official documentation](https://kotlinlang.org/docs/home.html)
-    we recommend exploring the *Basics*, *Concepts* and *Standard Library* sections.
+    we recommend exploring the 
+    [Basic syntax overview](https://kotlinlang.org/docs/basic-syntax.html), 
+    [Types](https://kotlinlang.org/docs/types-overview.html),
+    [Conditions and loops](https://kotlinlang.org/docs/control-flow.html) and 
+    the section about [collections](https://kotlinlang.org/docs/collections-overview.html).
     Data structures like `List`, `Map` and `Set` are explained under the
-    *Standard Library* section, and they are one of the aspects that make
+    *collections* section, and they are one of the aspects that make
     working with Kotlin enjoyable. Check them out!
     
     ## Kotlin in OPENRNDR
