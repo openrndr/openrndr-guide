@@ -24,6 +24,9 @@ fun main() {
     for computational design and creative purposes.
     It provides Lists, Maps and Sets with mutable and immutable variants.
     
+    Each of these data structures has many methods for querying and manipulating its elements,
+    which can then be made visible using OPENRNDR's drawing capabilities.
+    
     ## List
     
     A list is a collection of elements of the same type.
@@ -308,7 +311,7 @@ fun main() {
 
     @Text
     """
-    There are endless possibilities with Lists, Sets, and Maps,
-    but lets first learn a bit about drawing and then come back to them.    
+    There are endless possibilities with Lists, Sets, and Maps.
+    Learn more about them in the [Kotlin standard library documentation](https://kotlinlang.org/docs/collections-overview.html).
     """
 }
