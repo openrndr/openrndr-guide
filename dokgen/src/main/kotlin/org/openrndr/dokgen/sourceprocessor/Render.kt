@@ -26,7 +26,7 @@ ${body.prependIndent(" ".repeat(4))}
  * @param doc A document composed on multiple blocks of text, code and
  * links to video and image files.
  * @param title A header to inject at the top of the document
- * @return A markdown document
+ * @return A Markdown document
  */
 fun renderDoc(doc: Doc, title: String? = null): String {
     val strDoc = doc.elements.fold("") { acc, el ->
