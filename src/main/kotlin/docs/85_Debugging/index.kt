@@ -21,11 +21,11 @@ fun main() {
 
     ##### Configure logging
 
-    In [`build.gradle.kts`](https://github.com/openrndr/openrndr-template/blob/ff1942d2a821c540d7b7d804e201c6462890f7e2/build.gradle.kts#L84) 
-    we can modify the `applicationLogging` variable.
-    - `Logging.NONE` to disable logging.
-    - `Logging.SIMPLE` to display monochrome log messages in the console.
-    - `Logging.FULL` to display coloured log messages in the console to 
+    In [`build.gradle.kts`](https://github.com/openrndr/openrndr-template/blob/master/build.gradle.kts) 
+    we can modify the logging level.
+    - `runtimeOnly(libs.bundles.logging.none)` to disable logging.
+    - `runtimeOnly(libs.bundles.logging.simple)` to display monochrome log messages in the console.
+    - `runtimeOnly(libs.bundles.logging.full)` to display coloured log messages in the console to 
     distinguish their types.
     
     In [`src/main/resources/log4j2.yaml`](https://github.com/openrndr/openrndr-template/blob/ff1942d2a821c540d7b7d804e201c6462890f7e2/src/main/resources/log4j2.yaml#L18) 
