@@ -15,7 +15,6 @@ import org.openrndr.draw.ColorType
 import org.openrndr.draw.colorBuffer
 import org.openrndr.draw.loadImage
 import org.openrndr.drawImage
-import org.openrndr.extra.shadestyles.RadialGradient
 import org.openrndr.extra.shadestyles.fills.gradients.gradient
 import org.openrndr.shape.Rectangle
 import java.io.File

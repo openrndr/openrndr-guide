@@ -11,8 +11,6 @@ import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.loadImage
 import org.openrndr.extra.compositor.*
-import org.openrndr.extra.fx.color.LumaOpacity
-
 import org.openrndr.poissonfill.PoissonBlend
 import org.openrndr.poissonfill.PoissonFill
 import org.openrndr.shape.Rectangle

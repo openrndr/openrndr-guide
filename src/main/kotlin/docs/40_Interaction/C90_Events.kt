@@ -13,6 +13,7 @@ import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.events.Event
 import org.openrndr.launch
+import kotlin.time.Duration.Companion.milliseconds
 
 
 fun main() {
@@ -129,7 +130,7 @@ fun main() {
 
         init {
             program.launch {
-                delay(3000)
+                delay(3000.milliseconds)
                 doneWaiting.trigger(Unit)
             }
         }
@@ -251,7 +252,7 @@ fun main() {
 
             init {
                 program.launch {
-                    delay(3000)
+                    delay(3000.milliseconds)
                     // Queue event outside the rendering thread
                     doneWaiting.trigger(Unit)
                 }

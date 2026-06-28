@@ -6,13 +6,12 @@
 
 package docs.`45_Extensions`
 
-import org.intellij.lang.annotations.Language
 import org.openrndr.application
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.extensions.Screenshots
 
 fun main() {
-    @Text 
+    @Text
     """
     # Extensions
 
@@ -38,7 +37,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     ## Extension configuration
     

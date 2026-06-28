@@ -11,7 +11,6 @@ import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.LineCap
 import org.openrndr.math.Vector2
-import org.openrndr.shape.Circle
 
 fun main() {
     @Text 
