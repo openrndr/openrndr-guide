@@ -13,7 +13,7 @@ fun main() {
     @Language("markdown") val a =
     @Text
     """
-    ## Tip for macOS users
+    ## macOS
     
     When running a program, the console will display 
     `Warning: Running on macOS without -XstartOnFirstThread JVM argument`.
@@ -23,7 +23,7 @@ fun main() {
     * Add `-XstartOnFirstThread` in the `VM Options` [text field](https://stackoverflow.com/a/44184837).
     * Click `Ok` to close the dialog.
     
-    ## Tip for Windows multi-GPU users
+    ## Windows with multiple GPUs
     
     If your computer has multiple GPUs, you can choose which one OPENRNDR uses like this:
     

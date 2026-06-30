@@ -139,8 +139,7 @@ fun main() {
     These examples are just to give you a taste of how
     lists can be used to create visual output.
     
-    Here a visual example with a list containing the
-    radii of a 20 circles:
+    Here's how to create and use a list with 20 double value:
     """
 
     @Media.Image "../media/collections-001.jpg"
@@ -195,7 +194,7 @@ fun main() {
             val filtered = x.filter { Math.random() > it }
 
             // Map the lucky Double values to LineSegment instances.
-            // `segs` is a `List<LineSegment>`
+            // `segs` is a `List<LineSegment>` and `it` is the current list element being processed (a double).
             val segs = filtered.map {
                 LineSegment(it * width, 0.0, it * width, height.toDouble())
             }
@@ -260,7 +259,7 @@ fun main() {
             }
             extend {
                 drawer.clear(ColorRGBa.WHITE)
-                // Read the map using the positions and colors
+                // Iterate over all the map items using the position and color of each
                 data.forEach { (pos, c) ->
                     drawer.fill = c
                     drawer.circle(pos, 50.0)
@@ -274,6 +273,7 @@ fun main() {
     ## Set
     
     A set is a collection of *unique* elements.
+    
     There are two main constructors for sets:
     `setOf()` and `mutableSetOf()`.
     """
@@ -287,8 +287,10 @@ fun main() {
 
         // Mutable set
         val mutableS = mutableSetOf(1, 2, 3, 4, 5)
-        mutableS.add(6) // [1, 2, 3, 4, 5, 6]
-        mutableS.remove(3) // [1, 2, 4, 5, 6]
+        println(mutableS.add(6)) // true (added successfully)
+        println(mutableS.add(6)) // false (not added, already there)
+        println(mutableS.remove(3)) // true (removed successfully)
+        println(mutableS.remove(3)) // false (item does not exist)
     }
 
     @Text

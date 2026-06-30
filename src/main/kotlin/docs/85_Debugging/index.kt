@@ -22,7 +22,7 @@ fun main() {
     ##### Configure logging
 
     In [`build.gradle.kts`](https://github.com/openrndr/openrndr-template/blob/master/build.gradle.kts) 
-    we can modify the logging level.
+    we can choose between `none`, `simple` and `full` logging. Use one of these options:  
     - `runtimeOnly(libs.bundles.logging.none)` to disable logging.
     - `runtimeOnly(libs.bundles.logging.simple)` to display monochrome log messages in the console.
     - `runtimeOnly(libs.bundles.logging.full)` to display coloured log messages in the console to 
