@@ -14,8 +14,7 @@ fun main() {
     """
     ## Program
         
-    The program block houses the actual programming logic. Note that `program {}` has a 
-    [`Program`](https://github.com/openrndr/openrndr/blob/v0.4.0-rc.7/openrndr-application/src/commonMain/kotlin/org/openrndr/Program.kt#L63) receiver.
+    The program block houses the actual programming logic.
     
     The code inside the `program` block is only executed after a window has 
     been created and a graphical context has been set up. This code is only 

@@ -160,8 +160,8 @@ fun main() {
     enables loading and saving [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) 
     files. To enable the library:
     1. Find the `build.gradle.kts` file in your openrndr-template.
-    2. Uncomment the line `implementation(libs.csv)`.
-    3. Reload gradle.
+    2. Add the line `implementation(libs.csv)` to your `dependencies { ... }` block.
+    3. Reload Gradle.
     
     ### Load a CSV file
     """
@@ -198,8 +198,8 @@ fun main() {
     To enable the library:
     
     1. Find the `build.gradle.kts` file in your openrndr-template.
-    2. Uncomment the line `implementation(libs.jsoup)`.
-    3. Reload gradle.
+    2. Add the line `implementation(libs.jsoup)` to your `dependencies { ... }` block.
+    3. Reload Gradle.
     
     ### Get Wikipedia home page and parse news headlines
     
