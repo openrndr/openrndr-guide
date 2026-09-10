@@ -44,23 +44,33 @@ fun main() {
 
     ### Enable or disable extensions
 
-    Suppose a program requires access to a MIDI hardware controller. In that case, we need to edit the
-    `build.gradle.kts` file to uncomment a line to enable MIDI; then, we need to click "Sync All Gradle Projects"
-    in the IDE to trigger the downloading of the MIDI libraries.
+    Suppose a program requires access to a MIDI hardware controller. 
+    In that case we are lucky, because someone already wrote an OPENRNDR extension for this specific
+    use case. OPENRNDR extensions are called ORX. The only thing we need to do is
+    to edit the `build.gradle.kts` file and add a dependency to the MIDI ORX.
+    
+    1. Explore the list of [available extensions](https://github.com/openrdr/orx). We can see one called `orx-midi`.
+    2. Open `build.gradle.kts` in your `openrndr-template` based project.
+    3. Inside the `dependencies { ... }` block, add `implementation(orx.midi)` (converting any `-` characters in the name into `.`). 
+    4. Click "Sync All Gradle Projects" in the IDE to trigger the downloading of the MIDI libraries.
+    5. Now the extension can be used in your code. 
 
     ### Add or remove dependencies
 
-    Thousands of JAVA libraries are available to our programs. We only need to add one line to the `build.gradle.kts`
-    file to add a dependency. 
+    In some cases we want to use algorithms or services not implemented by an ORX.
+    Luckily there are thousands of JAVA libraries available to us, just one line away.
 
-    Three such dependencies (JSON, CSV, and XML) are predefined and we only need to uncomment a line if we need them. 
-    See [fileIO](https://guide.openrndr.org/fileIO/) in the guide for details.
+    Three such dependencies (JSON, CSV, and XML) are predefined and can be easily added 
+    as explained under [fileIO](https://guide.openrndr.org/fileIO/).
 
-    Other dependencies can be easily added in this format:
-    `implementation("org.jbox2d:jbox2d-library:2.2.1.1")`. You can find such dependencies in
-    [www.mvnrepository.com](https://mvnrepository.com/). Once found, choose the
-    `Gradle (Kotlin)` tab in that website, copy the `implementation(...)` code and paste it 
-    into `build.gradle.kts` inside the `dependencies { ... }` block. Remember to reload Gradle!
+    Other dependencies (for instance a 2D physics library) can be easily added in this format:
+    `implementation("org.jbox2d:jbox2d-library:2.2.1.1")`. 
+    
+    1. Find such dependencies in [maven central](https://central.sonatype.com/). 
+    2. Choose the `Gradle` snippet and copy it to the clipboard.
+    3. Paste it into `build.gradle.kts` inside the `dependencies { ... }` block. 
+    4. Click "Sync All Gradle Projects" in the IDE to trigger the downloading of the dependency.
+    5. Now the library can be imported in your code. 
         
     ## What else does Gradle do for OPENRNDR?
        
