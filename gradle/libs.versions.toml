@@ -55,6 +55,7 @@ orx-noise = { group = "org.openrndr.extra", name = "orx-noise", version.ref = "o
 orx-olive = { group = "org.openrndr.extra", name = "orx-olive", version.ref = "orx" }
 orx-osc = { group = "org.openrndr.extra", name = "orx-osc", version.ref = "orx" }
 orx-panel = { group = "org.openrndr.extra", name = "orx-panel", version.ref = "orx" }
+orx-parameters = { group = "org.openrndr.extra", name = "orx-parameters", version.ref = "orx" }
 orx-poisson-fill = { group = "org.openrndr.extra", name = "orx-poisson-fill", version.ref = "orx" }
 orx-shade-styles = { group = "org.openrndr.extra", name = "orx-shade-styles", version.ref = "orx" }
 orx-shapes = { group = "org.openrndr.extra", name = "orx-shapes", version.ref = "orx" }
@@ -99,6 +100,7 @@ orx = [
     "orx-olive",
     "orx-osc",
     "orx-panel",
+    "orx-parameters",
     "orx-poisson-fill",
     "orx-shade-styles",
     "orx-shapes",
