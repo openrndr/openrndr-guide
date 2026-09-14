@@ -32,8 +32,7 @@ kotlin {
     jvmToolchain(libs.versions.jvmTarget.get().toInt())
 }
 
-@Suppress("UNUSED_VARIABLE")
-val test by tasks.getting(Test::class) {
+tasks.getByName<Test>("test") {
     useJUnitPlatform()
     testLogging.exceptionFormat = TestExceptionFormat.FULL
 }
