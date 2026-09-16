@@ -4,6 +4,7 @@ version = property("project.version") ?: error("project.version not set")
 plugins {
     alias(libs.plugins.kotlin.serialization)
     id("conventions.kotlin-jvm")
+    id("conventions.template-tasks")
     id("conventions.openrndr-tasks")
     id("conventions.distribute-application")
 }
@@ -26,6 +27,8 @@ dependencies {
     implementation(orx.jumpflood)
     implementation(orx.poisson.fill)
     implementation(orx.view.box)
+    implementation(orx.axidraw)
+    implementation(orx.g-code)
 
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.serialization.core)
