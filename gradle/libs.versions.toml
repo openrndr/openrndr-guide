@@ -70,7 +70,7 @@ kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 dokgen = { id = "org.openrndr.dokgen-gradle", version = { require = "latest.release" } }
 git-publish = { id = "org.ajoberstar.git-publish", version.ref = "gitPublish" }
-versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
+versions = { id = "io.github.ben-manes.versions", version.ref = "versions" }
 
 [bundles]
 openrndr-core = [
