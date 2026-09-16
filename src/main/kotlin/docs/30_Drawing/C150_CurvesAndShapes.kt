@@ -24,13 +24,13 @@ import kotlin.math.sin
 fun main() {
     @Text
     """
-    # Segment, ShapeContour and Shape
+    # Segment2D, ShapeContour and Shape
     
-    OPENRNDR offers a lot of tools for creating and drawing two dimensional shapes.
+    OPENRNDR offers numerous tools for creating AND drawing two dimensional shapes.
      
-    ## Segment
+    ## Segment2D
     
-    The basic element for constructing shapes is the `Segment`:
+    The basic element for constructing 2D shapes is the `Segment2D`:
     a Bézier curve with a start point, an end point and zero, one or two control points.
     """
 
@@ -146,15 +146,15 @@ fun main() {
 
     @Text
     """        
-    Note that `Segment`, like `Circle`, `Rectangle` and other geometric entities
-    in OPENRNDR, are mathematical representations which can be rendered
-    to the screen, but this is not necessary. A reason to create such geometries
-    without displaying them is to serve as building blocks for constructing
-    more complex designs. We can achieve this by querying curve properties.
+    Note the difference between `drawer.segment()`, which is used to *draw* a segment,
+    and `Segment2D()`, which is used to *construct* a segment. These are two separate
+    steps and it's perfectly valid to construct a segment without ever drawing it.
+    
+    A reason to construct a segment can be to query its properties, as we will see next.
     
     ### Segment properties
     
-    The `Segment` class provides multiple methods to query its properties.
+    The `Segment2D` class provides multiple methods to query its properties.
     In the following examples, the `ut` argument is a normalized value that indicates
     a position in the segment between 0.0 (at the start) and 1.0 (at the end).
     """

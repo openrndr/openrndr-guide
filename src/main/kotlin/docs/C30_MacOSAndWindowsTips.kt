@@ -10,20 +10,18 @@ import org.intellij.lang.annotations.Language
 import org.openrndr.dokgen.annotations.*
 
 fun main() {
-    @Language("markdown") val a =
     @Text
     """
-    ## Tip for macOS users
+    ## macOS: debugging and profiling
     
-    When running a program, the console will display 
-    `Warning: Running on macOS without -XstartOnFirstThread JVM argument`.
-    To clear this warning (and enable debugging):
+    Trying to *debug* or *profile* in macOS may display a warning or error message mentioning `-XstartOnFirstThread`.
+    The solution is simple:
     
     * Open the `Run > Edit Configurations...` menu.
     * Add `-XstartOnFirstThread` in the `VM Options` [text field](https://stackoverflow.com/a/44184837).
     * Click `Ok` to close the dialog.
     
-    ## Tip for Windows multi-GPU users
+    ## Windows: multiple GPUs
     
     If your computer has multiple GPUs, you can choose which one OPENRNDR uses like this:
     

@@ -32,8 +32,9 @@ fun main() {
     
     Assuming you are working on an 
     [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-    project, all you have to do is enable `orx-kinect-v1` in the `orxFeatures`
-    set in `build.gradle.kts` and reimport the gradle project.
+    project, all you have to do is to add `implementation(orx.kinect.v1)` 
+    to the `dependencies` block in `build.gradle.kts` and reload Gradle,
+    as described in [ORX](/ORX/).
     
     ## Using the Kinect depth camera
     """

@@ -49,7 +49,7 @@ fun main() {
     
     But you are not limited to two programs, of course. In the Project View on the
     left, you can copy and paste `.kt` files (using keyboard shortcuts or the mouse).
-    IntelliJ IDEA will ask you to name the new file (the name must start with a letter).
+    IntelliJ IDEA will ask you to name the new file (the name must start with an Upper-Case letter).
     It will also ask whether you want to add the new file to Git. 
     It's fine to click Cancel.
     

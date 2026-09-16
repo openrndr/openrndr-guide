@@ -108,10 +108,10 @@ fun main() {
     ### Specifying the text area
     
     The `box` field of `Writer` is used to specify where text should be written. Let's set the text area
-    to a 300 by 300 pixel rectangle starting at (40, 40).
+    40 pixels smaller than the drawer bounds.
 
-    We see that the text is now drawn with margins above and left of the text, and that the second line of
-    text is set on two rows.
+    We see that the text is drawn with margins around it. A second copy of the text uses `horizontalAlign`
+    and `verticalAlign` for bottom-right alignment. Use a value of 0.5 for centered text.
     """
 
     @Media.Image "../media/text-003.jpg"
@@ -132,11 +132,25 @@ fun main() {
                 drawer.fill = ColorRGBa.BLACK
 
                 writer {
-                    box = Rectangle(40.0, 40.0, 300.0, 300.0)
-                    newLine()
-                    text("Here is a line of text..")
-                    newLine()
-                    text("Here is another line of text..")
+                    box = drawer.bounds.offsetEdges(-40.0)
+                    text(
+                        listOf(
+                            "Here is a line of text..",
+                            "Here is another line of text.."
+                        )
+                    )
+                }
+
+                writer {
+                    box = drawer.bounds.offsetEdges(-40.0)
+                    horizontalAlign = 1.0
+                    verticalAlign = 1.0
+                    text(
+                        listOf(
+                            "Here is a line of text..",
+                            "Here is another line of text.."
+                        )
+                    )
                 }
             }
         }

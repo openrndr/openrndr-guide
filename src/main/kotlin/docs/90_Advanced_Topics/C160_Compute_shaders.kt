@@ -17,10 +17,8 @@ fun main() {
     @Text """
     # Compute shaders
 
-    Since version 0.3.36 OPENRNDR comes with compute shader functionality 
-    for select platforms. Compute shader support only works on systems 
-    that support OpenGL 4.3 or higher. MacOS support is provided via 
-    [Angle](https://github.com/openrndr/angle).
+    Compute shader functionality is supported on systems with OpenGL 4.3 or higher. 
+    MacOS support is provided via [Angle](https://github.com/openrndr/angle).
     
     ## Example use
     

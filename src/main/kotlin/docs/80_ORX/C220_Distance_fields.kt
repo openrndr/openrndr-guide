@@ -31,8 +31,9 @@ fun main() {
     
     Assuming you are working on an 
     [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-    project, all you have to do is enable `orx-jumpflood` in the `orxFeatures`
-    set in `build.gradle.kts` and reimport the gradle project.
+    project, all you have to do is to add `implementation(orx.jumpflood)` 
+    to the `dependencies` block in `build.gradle.kts` and reload Gradle,
+    as described in [ORX](/ORX/).
     
     ## Distance field visualization
     """
@@ -66,7 +67,8 @@ fun main() {
                 }
             }
             extend {
-                c.draw(drawer)
+                // FIXME
+                //c.draw(drawer)
             }
         }
     }
@@ -101,7 +103,8 @@ fun main() {
                 }
             }
             extend {
-                c.draw(drawer)
+                // FIXME
+                //c.draw(drawer)
             }
         }
     }
@@ -137,7 +140,8 @@ fun main() {
                 }
             }
             extend {
-                c.draw(drawer)
+                // FIXME
+                //c.draw(drawer)
             }
         }
     }
@@ -195,7 +199,8 @@ fun main() {
                 }
             }
             extend {
-                c.draw(drawer)
+                // FIXME
+                //c.draw(drawer)
             }
         }
     }

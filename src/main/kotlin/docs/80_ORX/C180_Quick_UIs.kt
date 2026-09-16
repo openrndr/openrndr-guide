@@ -6,19 +6,31 @@
 
 package docs.`80_ORX`
 
+import jdk.jfr.Description
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
+import org.openrndr.draw.BlendMode
 import org.openrndr.draw.colorBuffer
 import org.openrndr.draw.isolatedWithTarget
 import org.openrndr.draw.renderTarget
+import org.openrndr.extra.color.presets.DARK_BLUE
+import org.openrndr.extra.color.presets.DARK_ORCHID
 import org.openrndr.extra.compositor.*
 import org.openrndr.extra.fx.blend.Multiply
 import org.openrndr.extra.fx.blur.ApproximateGaussianBlur
 import org.openrndr.extra.gui.GUI
+import org.openrndr.extra.gui.GUIAppearance
+import org.openrndr.extra.gui.WindowedGUI
 import org.openrndr.extra.gui.addTo
-import org.openrndr.extra.parameters.ColorParameter
-import org.openrndr.extra.parameters.DoubleParameter
+import org.openrndr.extra.parameters.*
+import org.openrndr.math.Vector2
+import org.openrndr.math.Vector3
+import org.openrndr.math.Vector4
+import org.openrndr.panel.collections.SelectableList
+import org.openrndr.panel.collections.SelectableMutableList
+import org.openrndr.panel.style.Color
+import org.openrndr.panel.style.defaultStyles
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -49,8 +61,9 @@ fun main() {
     
     Assuming you are working on an 
     [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
-    project, all you have to do is enable `orx-gui` in the `orxFeatures`
-    set in `build.gradle.kts` and reimport the gradle project.
+    project, all you have to do is to add `implementation(orx.gui)` 
+    to the `dependencies` block in `build.gradle.kts` and reload Gradle,
+    as described in [ORX](/ORX/).
     
     ## Basic workflow
     
@@ -77,7 +90,7 @@ fun main() {
 
     @Media.Image "../media/quick-ui-001.jpg"
 
-    @Text 
+    @Text
     """
     This shows a side panel with 3 buttons: The randomize button can be 
     pressed to randomize the parameters in the sidebar. The load and save 
@@ -146,7 +159,7 @@ fun main() {
 
     @Media.Video "../media/quick-ui-003.mp4"
 
-    @Text 
+    @Text
     """
     We now see that the sidebar is populated with a _settings_ compartment 
     that contains the _x_ and _y_ parameters. Now whenever we move one of 
@@ -222,7 +235,7 @@ fun main() {
 
     @Media.Video "../media/quick-ui-004.mp4"
 
-    @Text 
+    @Text
     """
     We now see that the sidebar is populated with a _settings_ and 
     an _Approximate Gaussian blur_ compartment, 
@@ -319,7 +332,7 @@ fun main() {
 
     @Media.Video "../media/quick-ui-005.mp4"
 
-    @Text 
+    @Text
     """
     We now see that the sidebar is populated with a _settings_, 
     _Multiply blend_, _Blue layer_, and an _Approximate gaussian blur_ compartment. 
@@ -341,134 +354,388 @@ fun main() {
   
     Currently `orx-parameters` has a small set of parameter annotations:
    
-    ##### DoubleParameter
+    ##### @DoubleParameter
     
-    `DoubleParameter` is used in combination with `Double` types. It takes a label, minimum-value, maximum value, and optional precision and order arguments. `orx-gui` will generate a slider control for annotated properties.
-    ```kotlin
-    val settings = object {
-        @DoubleParameter("x", 0.0, 100.0, precision = 3, order = 0)
-        var x = 0.0                   
-    }
-    ```              
-  
-    ##### IntParameter
-    
-    `IntParameter` is used in combination with `Int` types. It takes a label, minimum-value, maximum value, and an optional order argument. `orx-gui` will generate a slider control for annotated properties.
-    ```kotlin
-    val settings = object {
-        @IntParameter("x", 0, 100, order = 0)
-        var x = 0                   
-    }
-    ```              
-    
-    ##### ColorParameter
-    
-    `ColorParameter` is used in combination with `Color` types. It takes an optional order argument. `orx-gui` will generate a color picker control for annotated properties.
-    ```kotlin
-    val settings = object {
-        @ColorParameter("color", order = 0)
-        var color = ColorRGBa.PINK                   
-    }
-    ```
+    `@DoubleParameter` is used in combination with `Double` types. It takes a label, minimum-value, maximum value, 
+    and optional precision and order arguments. `orx-gui` will generate a slider control for annotated properties.
+    """
 
-    ##### TextParameter
-    
-    `TextParameter` is used in combination with `String` types. It takes an optional order argument. `orx-gui` will generate a text field control for annotated properties.
-    ```kotlin
-    val settings = object {
-        @TextParameter("text", order = 0)
-        var text = "default text value"                   
-    }
-    ```
-    
-    ##### BooleanParameter
-    
-    `BooleanParameter` is used in combination with `Boolean` types. It takes an optional order argument. `orx-gui` will generate a checkbox or toggle control for annotated properties.
-    
-    ```kotlin
-    val settings = object {
-        @BooleanParameter("option", order = 0)
-        var b = false                   
-    }
-    ```
-    
-    ##### XYParameter
-    
-    `XYParameter` is used in combination with `Vector2` types. It takes an optional order argument. `orx-gui` will generate a two dimensional pad control for annotated properties.
-    
-    ```kotlin
-    val settings = object {
-        @XYParameter("xy", order = 0)
-        var xy = Vector2.ZERO                   
-    }
-    ```
-    
-    ##### Vector2Parameter
-
-    `Vector2Parameter` is used in combination with `Vector2` types. It takes an optional order argument. `orx-gui` will generate a vertical slider for annotated properties.
-    
-    ```kotlin
-    val settings = object {
-        @Vector2Parameter("vector2", order = 0)
-        var v2 = Vector2.ZERO                   
-    }
-    ```
-
-    ##### Vector3Parameter
-    
-    `Vector3Parameter` is used in combination with `Vector3` types. It takes an optional order argument. `orx-gui` will generate a vertical slider for annotated properties.
-    
-    ```kotlin
-    val settings = object {
-        @Vector3Parameter("vector3", order = 0)
-        var v3 = Vector3.ZERO                   
-    }
-    ```
-    
-    ##### Vector4Parameter
-    
-    `Vector4Parameter` is used in combination with `Vector4` types. It takes an optional order argument. `orx-gui` will generate a vertical slider for annotated properties.
-    
-    ```kotlin
-    val settings = object {
-        @Vector4Parameter("vector4", order = 0)
-        var v4 = Vector4.ZERO                   
-    }
-    ```
-
-    ##### DoubleListParameter
-    
-    `DoubleListParameter` is used in combination with a list of `Double`. It takes an optional order argument. `orx-gui` will generate a set of vertical sliders.
-    
-    ```kotlin
-    @DoubleListParameter("Mixer", order = 0)
-    var mixer = MutableList(5) { 0.5 }
-    ```
-    
-    ##### OptionParameter
-    
-    `OptionParameter` is used in combination with an `enum`. It takes an optional order argument. `orx-gui` will generate a dropdown including all options in the enum.
-    
-    ```kotlin
-    enum class Parity { Odd, Even }
-    
-    @OptionParameter("Parity", order = 0)
-    var parity = Parity.Odd
-    ```
-
-    ##### ActionParameter
-    
-    `ActionParameter` is a bit of an odd-one-out, it is not used to annotate properties but to annotate 0-argument functions. `orx-gui` will generate a button control that will call the function when clicked.
-    
-    ```kotlin
-    val settings = object {
-        @ActionParameter("save", order = 0)
-        fun doSave() {
-            println("file saved!")    
+    application {
+        program {
+            @Code.Block
+            run {
+                val settings = object {
+                    @DoubleParameter("x", 0.0, 100.0, precision = 3, order = 0)
+                    var x = 0.0
+                }
+            }
         }
     }
-    ```
+
+    @Text
+    """              
+    ##### @IntParameter
+    
+    `@IntParameter` is used in combination with `Int` types. It takes a label, minimum-value, maximum value, 
+    and an optional order argument. `orx-gui` will generate a slider control for annotated properties.
     """
+
+    application {
+        program {
+            @Code.Block
+            run {
+                val settings = object {
+                    @IntParameter("x", 0, 100, order = 0)
+                    var x = 0
+                }
+            }
+        }
+    }
+
+    @Text
+    """              
+    ##### @ColorParameter
+    
+    `@ColorParameter` is used in combination with `Color` types. It takes an optional order argument. 
+    `orx-gui` will generate a color picker control for annotated properties.
+    """
+
+    application {
+        program {
+            @Code.Block
+            run {
+                val settings = object {
+                    @ColorParameter("color", order = 0)
+                    var color = ColorRGBa.PINK
+                }
+            }
+        }
+    }
+
+    @Text
+    """              
+    ##### @TextParameter
+    
+    `@TextParameter` is used in combination with `String` types. It takes an optional order argument. 
+    `orx-gui` will generate a text field control for annotated properties.
+    """
+
+    application {
+        program {
+            @Code.Block
+            run {
+                val settings = object {
+                    @TextParameter("text", order = 0)
+                    var text = "default text value"
+                }
+            }
+        }
+    }
+
+    @Text
+    """                  
+    ##### @BooleanParameter
+    
+    `@BooleanParameter` is used in combination with `Boolean` types. It takes an optional order argument. 
+    `orx-gui` will generate a checkbox or toggle control for annotated properties.
+    """
+
+    application {
+        program {
+            @Code.Block
+            run {
+                val settings = object {
+                    @BooleanParameter("option", order = 0)
+                    var b = false
+                }
+            }
+        }
+    }
+
+    @Text
+    """                  
+    ##### @XYParameter
+    
+    `@XYParameter` is used in combination with `Vector2` types. It takes an optional order argument. 
+    `orx-gui` will generate a two dimensional pad control for annotated properties.
+    """
+
+    application {
+        program {
+            @Code.Block
+            run {
+                val settings = object {
+                    @XYParameter("xy", order = 0)
+                    var xy = Vector2.ZERO
+                }
+            }
+        }
+    }
+
+    @Text
+    """              
+    ##### @Vector2Parameter
+
+    `@Vector2Parameter` is used in combination with `Vector2` types. It takes an optional order argument. 
+    `orx-gui` will generate a vertical slider for annotated properties.
+    """
+
+    application {
+        program {
+            @Code.Block
+            run {
+                val settings = object {
+                    @Vector2Parameter("vector2", order = 0)
+                    var v2 = Vector2.ZERO
+                }
+            }
+        }
+    }
+
+    @Text
+    """              
+    ##### @Vector3Parameter
+    
+    `@Vector3Parameter` is used in combination with `Vector3` types. It takes an optional order argument. 
+    `orx-gui` will generate a vertical slider for annotated properties.
+    """
+
+    application {
+        program {
+            @Code.Block
+            run {
+                val settings = object {
+                    @Vector3Parameter("vector3", order = 0)
+                    var v3 = Vector3.ZERO
+                }
+            }
+        }
+    }
+
+    @Text
+    """                  
+    ##### @Vector4Parameter
+    
+    `@Vector4Parameter` is used in combination with `Vector4` types. It takes an optional order argument. 
+    `orx-gui` will generate a vertical slider for annotated properties.
+    """
+
+    application {
+        program {
+            @Code.Block
+            run {
+                val settings = object {
+                    @Vector4Parameter("vector4", order = 0)
+                    var v4 = Vector4.ZERO
+                }
+            }
+        }
+    }
+
+    @Text
+    """              
+    ##### @DoubleListParameter
+    
+    `@DoubleListParameter` is used in combination with a list of `Double`. It takes an optional order argument. 
+    `orx-gui` will generate a set of vertical sliders.    
+    """
+
+    application {
+        program {
+            @Code.Block
+            run {
+                val settings = object {
+                    @DoubleListParameter("Mixer", order = 0)
+                    var mixer = MutableList(5) { 0.5 }
+                }
+            }
+        }
+    }
+
+    @Text
+    """                  
+    ##### @OptionParameter
+    
+    `@OptionParameter` is used in combination with an `enum`. It takes an optional order argument. 
+    `orx-gui` will generate a dropdown including all options in the enum.
+    """
+
+    application {
+        program {
+            @Code.Block
+            run {
+                val settings = object {
+                    @OptionParameter("Blend mode", order = 0)
+                    var blendMode = BlendMode.ADD
+                }
+            }
+        }
+    }
+
+    @Text
+    """              
+    ##### @ListParameter
+    
+    `@ListParameter` is used in combination with a `SelectableList` instance: an immutable List that 
+    keeps track of a selected item. In the following example, we could access `settings.fruits.selected` to
+    get the selected element, or update `settings.fruits.selectedIndex` to change the selected element. 
+    All `List` methods are available, for instance `settings.fruits.size` or `settings.fruits.first()`.
+    """
+
+    application {
+        program {
+            @Code.Block
+            run {
+                val settings = object {
+                    @ListParameter("Fruit", order = 0)
+                    var fruits = SelectableList(listOf("apple", "orange"), selectedIndex = 0)
+                }
+            }
+        }
+    }
+
+    @Text
+    """          
+    ##### @MutableListParameter
+    
+    `@MutableListParameter` is used in combination with a `SelectableMutableList` instance: a MutableList
+    that keeps track of a selected item. In the following example, we could access `settings.amounts.selected` to
+    get the selected element, or update `settings.amounts.selectedIndex` to change its the selected element. 
+    All `MutableList` methods can be used, for instance `settings.amounts.add(40)` or `settings.amounts.clear()`. 
+    """
+
+    application {
+        program {
+            @Code.Block
+            run {
+                val settings = object {
+                    @MutableListParameter("Amount", order = 0)
+                    var amounts = SelectableMutableList(listOf(10, 20, 30), selectedIndex = 1)
+                }
+            }
+        }
+    }
+
+    @Text
+    """        
+    ##### @ActionParameter
+    
+    `@ActionParameter` is a bit of an odd-one-out, it is not used to annotate properties but to annotate 
+    0-argument functions. `orx-gui` will generate a button control that will call the function when clicked.   
+    """
+
+    application {
+        program {
+            @Code.Block
+            run {
+                val settings = object {
+                    @ActionParameter("Save", order = 0)
+                    fun doSave() {
+                        println("file saved!")
+                    }
+                }
+            }
+        }
+    }
+
+    @Text
+    """        
+    ## Appearance
+    
+    The following example demonstrates how to set the base color of a GUI, its width, its colors and the font size.
+    All the arguments are optional.
+    """
+
+    @Application
+    @ProduceScreenshot("media/quick-ui-006.png")
+    @Code
+    application {
+        program {
+            val gui = GUI(
+                GUIAppearance(
+                    baseColor = ColorRGBa.DARK_BLUE.opacify(0.7),
+                    barWidth = 250
+                ),
+                defaultStyles(
+                    controlBackground = ColorRGBa.DARK_ORCHID.shade(0.7),
+                    controlHoverBackground = ColorRGBa.DARK_ORCHID,
+                    controlTextColor = Color.RGBa(ColorRGBa.YELLOW),
+                    controlActiveColor = Color.RGBa(ColorRGBa.CYAN),
+                    controlFontSize = 20.0
+                )
+            )
+            val settings = @Description("Compartment 1") object {
+                @DoubleParameter("x", 0.0, 200.0)
+                var x: Double = 100.0
+            }
+
+            gui.compartmentsCollapsedByDefault = false
+            gui.add(settings, "Settings")
+
+            extend(gui)
+            extend {
+                drawer.clear(ColorRGBa.PINK)
+                drawer.circle(drawer.bounds.center, 200.0)
+            }
+        }
+    }
+
+    @Media.Image "../media/quick-ui-006.png"
+
+    @Text
+    """
+    ## WindowedGUI
+    
+    If you prefer the GUI to be displayed in a separate window independent
+    from your main rendering window, replace `GUI()` by `WindowedGUI()`. 
+    """
+
+    @Code
+    application {
+        program {
+            val gui = WindowedGUI()
+            extend(gui)
+        }
+    }
+
+    @Text
+    """        
+    ## GUI defaults and events
+    
+    ### Collapsed compartments
+    
+    By default, GUI compartments are collapsed by default. To invert the default
+    and expand all compartments, call `gui.compartmentsCollapsedByDefault = false` 
+    after constructing the GUI.
+    
+    ### Persistent state
+    
+    Another default GUI behavior is to save a JSON file with the state of the GUI
+    when closing the program, and loading that saved state when the program starts.
+    This behavior can be switched off via `gui.persistState = false`.
+    
+    ### Change events
+    
+    To be notified of GUI changes, maybe to update
+    graphics or perform calculations based on the data kept by the GUI,
+    add a listener like this: 
+    """
+
+    application {
+        program {
+            val gui = GUI()
+            @Code
+            gui.onChange { name, value -> println("$name: $value") }
+            extend(gui)
+        }
+    }
+
+    @Text
+    """        
+    Note: `WindowedGUI` is a wrapper around GUI. To adjust its defaults,
+    use `gui.gui` instead of `gui`. For instance
+    `gui.gui.compartmentsCollapsedByDefault = false`.
+    """.trimIndent()
 }
 
 

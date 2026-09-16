@@ -111,7 +111,7 @@ fun main() {
         oliveProgram {
             val webcam by Once {
                 persistent {
-                    VideoPlayerFFMPEG.fromDevice()
+                    VideoPlayerFFMPEG.fromDevice(null)
                 }
             }
             webcam.play()

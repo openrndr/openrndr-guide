@@ -16,10 +16,11 @@ import org.openrndr.draw.colorBuffer
 import org.openrndr.draw.drawThread
 import org.openrndr.draw.launch
 import org.openrndr.draw.renderTarget
-import org.openrndr.internal.finish
+import org.openrndr.internal.Driver
 import org.openrndr.launch
 import java.nio.ByteBuffer
 import kotlin.random.Random
+import kotlin.time.Duration.Companion.milliseconds
 
 fun main() {
     @Text 
@@ -63,7 +64,7 @@ fun main() {
                     launch {
                         for (i in 0 until 100) {
                             println("Hello from coroutine world ($i)")
-                            delay(100)
+                            delay(100.milliseconds)
                         }
                     }
                 }
@@ -168,7 +169,7 @@ fun main() {
 
                         // -- destroy the render target
                         rt.destroy()
-                        finish()
+                        Driver.instance.finish()
                         // -- tell the main thread the work is done
                         done = true
                     }

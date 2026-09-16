@@ -10,11 +10,11 @@ import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.dokgen.annotations.*
 import org.openrndr.draw.*
-import org.openrndr.extra.noise.uniform
+import org.openrndr.extra.noise.shapes.uniform
 import org.openrndr.shape.ShapeContour
 
 fun main() {
-    @Text 
+    @Text
     """
     # Render targets and color buffers
     
@@ -40,7 +40,7 @@ fun main() {
         val rt = renderTarget(640, 480) { }
     }
 
-    @Text 
+    @Text
     """
     This creates a render target, but the render target does not have 
     attachments that can hold the actual
@@ -55,7 +55,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     ## Drawing on a render target
     
@@ -109,7 +109,7 @@ fun main() {
 
                 // A closed contour with 12 random points defining 12 straight segments
                 drawer.contour(ShapeContour.fromPoints(List(12) {
-                    drawer.bounds.uniform(50.0)
+                    drawer.bounds.offsetEdges(-50.0).uniform()
                 }, true))
             }
 
@@ -119,7 +119,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     If we forget to include a depth buffer we will be reminded with the following error message:
     `drawing org.openrndr.shape.contours requires a render target with a stencil attachment`
@@ -158,7 +158,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     If we forget to do this the graphics rendered onto our render target may be displaced or have an unexpected scale.
 
@@ -198,7 +198,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     ## Creating high precision floating point render targets
     
@@ -214,7 +214,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     ## Multi-sample anti-aliasing
     
@@ -233,7 +233,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     The color buffers that are attached to a multi-sampled render target 
     cannot be drawn directly. In order to use the color buffer it has 
@@ -304,7 +304,7 @@ fun main() {
         }
     }
 
-    @Text 
+    @Text
     """
     ## Named attachments
     """

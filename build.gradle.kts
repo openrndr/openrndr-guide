@@ -64,6 +64,7 @@ dokgen {
 }
 
 tasks.register("add IDE file scopes") {
+    description = "Adds scopes for showing only specific file types the file browser"
     group = " ★ OPENRNDR"
     val scopesFolder = File("${project.projectDir}/.idea/scopes")
     scopesFolder.mkdirs()
@@ -227,6 +228,7 @@ class AnnotatedFile(val ktFile: File) {
 }
 
 tasks.register("Update just-the-docs annotations") {
+    description = "Updates just-the-docs annotations based on folder and file names"
     group = " ★ OPENRNDR"
 
     // Source directory containing Kotlin files
