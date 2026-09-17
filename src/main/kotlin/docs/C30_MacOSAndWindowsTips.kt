@@ -6,7 +6,6 @@
 
 package docs
 
-import org.intellij.lang.annotations.Language
 import org.openrndr.dokgen.annotations.*
 
 fun main() {
