@@ -11,7 +11,7 @@ slf4j = "2.0.19"
 gitPublish = "6.0.0"
 jsoup = "1.23.2"
 csv = "1.10.0"
-versions = "0.63.1"
+versions = "0.64.0"
 
 [libraries]
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
