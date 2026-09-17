@@ -250,7 +250,7 @@ fun main() {
     Let's take a look at how we can output G-code files using `orx-g-code`.
     
     The first step is to add orx-g-code as a dependency to our project's `build.gradle.kts` file.
-    To do so, add `implementation(orx.gcode)` inside the `dependencies { }` block and reload Gradle.
+    To do so, add `implementation(orx.g.code)` inside the `dependencies { }` block and reload Gradle.
 
     Here is a third version of the earlier interactive program, this time outputting G-code when
     the `g` key is pressed:  
