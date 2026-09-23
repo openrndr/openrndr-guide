@@ -345,7 +345,7 @@ fun main() {
     If you stream commands directly to a machine, ensure all coordinates stay within physical limits.
 
     To learn more about orx-g-code, study the
-    [demos](https://github.com/openrndr/orx/tree/master/orx-g-code/src/jvmDemo/kotlin/) it provides. 
+    [demos](https://github.com/openrndr/orx/tree/master/orx-g-code/) it provides. 
 
     ## Tips
     
