@@ -13,4 +13,4 @@
 # Install Ruby which comes with gem, then use gem to install bundler.
 
 cd build/dokgen/jekyll/docs/ || exit
-bundle exec jekyll serve -d /tmp/guide --livereload --watch --disable-disk-cache
+bundle exec jekyll serve -d /tmp/guide --livereload --watch --disable-disk-cache --open-url
