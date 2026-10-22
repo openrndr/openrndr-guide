@@ -136,7 +136,6 @@ fun main() {
     Notice the use of `Reloadable()` in the `settings` object.
     
     ```kotlin
-    @file:Suppress("UNUSED_LAMBDA_EXPRESSION")
     import org.openrndr.Program
     import org.openrndr.color.ColorRGBa
     import org.openrndr.draw.*
