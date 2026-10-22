@@ -1,14 +1,14 @@
 # DokGen
 
-DokGen is a gradle plugin that takes kotlin source files such as
+DokGen is a Gradle plugin that takes Kotlin source files such as
 [this](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/04_Drawing_basics/C00_DrawingPrimitives.kt)
 and turns it into documentation like
 [this](https://guide.openrndr.org/drawingBasics/drawingPrimitives.html).
-The kotlin sources are turned into markdown which are then used to generate 
+The Kotlin sources are turned into Markdown, which is then used to generate 
 a static website using [jekyll](https://jekyllrb.com/).
 Using DokGen, you can take advantage of IDE features like auto-completion and 
 refactoring while writing documentation. Moreover, your docs will always be 
-up-to-date with your API, because invalid docs will just not compile.
+up to date with your API, because invalid docs will just not compile.
 
 Read [this medium article](https://medium.com/openrndr/improving-the-openrndr-guide-f98fba29c393) 
 on how we've improved the
@@ -28,7 +28,7 @@ development and contributions to the guide.
 # Some Arbitrary Markdown
 """
 ```
-Strings annotated with `@Text` may contain arbitrary markdown. The annotated strings are copied unmodified to the target file.
+Strings annotated with `@Text` may contain arbitrary Markdown. The annotated strings are copied unmodified to the target file.
 
 ### Application
 
