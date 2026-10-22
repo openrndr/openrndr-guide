@@ -52,7 +52,10 @@ class SourceProcessorTest {
         assertContains(doc, """<img alt="media/image-001.png" src="media/image-001.png" loading="lazy">""")
         assertContains(doc, """<source src="media/video-001.mp4" type="video/mp4">""")
 
-        // @Application + @Code renders the application as a runnable `main`
+        // @Application + @Code renders the application as a runnable `main` with imports
+        assertContains(doc, "import org.openrndr.application")
+        assertContains(doc, "import org.openrndr.shape.Rectangle")
+        assertFalse(doc.contains("org.openrndr.dokgen"), "dokgen imports must be excluded from doc")
         assertContains(doc, "fun main() = application {")
 
         // The full-example link is added once, for the first (index 0) application.

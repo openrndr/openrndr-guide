@@ -391,7 +391,13 @@ private class GuideBuilder(
 
     /** Adds a code block to the doc, optionally followed by a link to the full example. */
     private fun addCode(code: String, inApplication: Boolean) {
-        doc = doc.add(Doc.Element.Code(code))
+        val formattedCode = if (inApplication && imports.isNotEmpty()) {
+            val appCode = if (code.startsWith("application")) "fun main() = $code" else code
+            "${imports.joinToString("\n")}\n\n$appCode"
+        } else {
+            code
+        }
+        doc = doc.add(Doc.Element.Code(formattedCode))
         if (mkLink != null && inApplication) {
             val link = mkLink.invoke(applicationCount - 1)
             doc = doc.add(

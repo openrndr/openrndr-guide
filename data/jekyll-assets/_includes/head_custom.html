@@ -39,6 +39,54 @@
     if(urlMap[url]) {
       window.location = urlMap[url];
     } else {
-      console.log('no known redirect for URL with urlId: ' + urlId);
+      console.log('no known redirect for URL with urlId: ' + url);
     }
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll("div.language-kotlin.highlighter-rouge code").forEach((codeBlock) => {
+            codeBlock.setAttribute("data-raw-code", codeBlock.textContent);
+
+            const lines = codeBlock.innerHTML.split("\n");
+            let hasImports = false;
+
+            const remainingLines = lines.filter((line) => {
+                if (line.includes('<span class="k">import</span>')) {
+                    hasImports = true;
+                    return false;
+                }
+                return true;
+            });
+
+            if (hasImports) {
+                while (remainingLines.length > 0 && remainingLines[0].trim() === "") {
+                    remainingLines.shift();
+                }
+                codeBlock.innerHTML = remainingLines.join("\n");
+            }
+        });
+
+        document.addEventListener("click", async (e) => {
+            const copyButton = e.target.closest("div.language-kotlin.highlighter-rouge button");
+            if (!copyButton) return;
+
+            const codeContainer = copyButton.closest(".highlighter-rouge") || copyButton.parentElement;
+            const codeEl = codeContainer ? codeContainer.querySelector("code") : null;
+
+            if (codeEl && codeEl.getAttribute("data-raw-code")) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+
+                const rawCode = codeEl.getAttribute("data-raw-code");
+                try {
+                    await navigator.clipboard.writeText(rawCode);
+                    copyButton.classList.add("copied");
+                    setTimeout(() => copyButton.classList.remove("copied"), 2000);
+                } catch (err) {
+                    console.error("Failed to copy code:", err);
+                }
+            }
+        }, true);
+    });
 </script>
