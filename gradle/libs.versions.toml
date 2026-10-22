@@ -1,17 +1,17 @@
 [versions]
-kotlin = "2.4.20"
+kotlin = "2.4.21"
 jvmTarget = "17"
 
 openrndr = "0.5.0"
 orx = "0.5.0"
 
 coroutines = "1.11.0"
-kotlinxSerialization = "1.11.0"
+kotlinxSerialization = "1.12.0"
 slf4j = "2.0.20"
 gitPublish = "6.0.0"
 jsoup = "1.23.2"
 csv = "1.10.0"
-versions = "0.64.0"
+versions = "0.66.0"
 
 [libraries]
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
