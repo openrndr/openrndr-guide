@@ -82,6 +82,15 @@ fun main() {
         }
     }
 
+    @Code
+    application {
+        program {
+            extend {
+                drawer.clear(ColorRGBa.WHITE)
+            }
+        }
+    }
+
     // The @Language("markdown") val ... = scaffolding only exists so the IDE
     // syntax-highlights the string while editing; dokgen must drop it and keep
     // the @Text content.

@@ -389,10 +389,13 @@ private class GuideBuilder(
         }
     }
 
-    /** Adds a code block to the doc, optionally followed by a link to the full example. */
+    /** Adds a code block to the doc, optionally followed by a link to the full example.
+     *  Imports are prepended to code inside an @Application and to any code that is
+     *  a complete `application {}`, so copied examples can run as they are. */
     private fun addCode(code: String, inApplication: Boolean) {
-        val formattedCode = if (inApplication && imports.isNotEmpty()) {
-            val appCode = if (code.startsWith("application")) "fun main() = $code" else code
+        val isCompleteApplication = code.startsWith("application")
+        val formattedCode = if ((inApplication || isCompleteApplication) && imports.isNotEmpty()) {
+            val appCode = if (isCompleteApplication) "fun main() = $code" else code
             "${imports.joinToString("\n")}\n\n$appCode"
         } else {
             code

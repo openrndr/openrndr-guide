@@ -79,8 +79,15 @@ class SourceProcessorTest {
         assertContains(doc, "val r = Rectangle(\n    0.0,")
         assertFalse(doc.contains("run {"), "@Code.Block must unwrap the run block")
 
-        // Nested @Code extend (no @Application) is shown without a link
-        assertContains(doc, "drawer.clear(ColorRGBa.BLACK)")
+        // Nested @Code extend (no @Application) is shown without a link or imports
+        assertContains(doc, "```kotlin\nextend {\n    drawer.clear(ColorRGBa.BLACK)")
+
+        // @Code application (no @Application) is shown as a runnable `main` with imports
+        assertContains(
+            doc,
+            "import org.openrndr.shape.Rectangle\n\nfun main() = application {\n" +
+                "    program {\n        extend {\n            drawer.clear(ColorRGBa.WHITE)"
+        )
 
         // `@Language("markdown") val x = @Text "..."` renders its @Text content as
         // markdown; the @Language / val scaffolding is dropped, not the content.
