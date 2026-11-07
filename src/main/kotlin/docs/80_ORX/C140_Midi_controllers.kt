@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("MIDI controllers")
-@file:ParentTitle("ORX")
-@file:Order("140")
-@file:URL("ORX/midiControllers")
 
 package docs.`80_ORX`
 
@@ -31,7 +28,7 @@ fun main() {
     [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
     project, all you have to do is to add `implementation(orx.midi)` 
     to the `dependencies` block in `build.gradle.kts` and reload Gradle,
-    as described in [ORX](/ORX/).
+    as described in [ORX](@/ORX/_index.md).
 
     ## Listing MIDI controllers
     
@@ -168,7 +165,7 @@ fun main() {
     
     Note that `ColorParameter` binds four consecutive inputs (red, green, blue and alpha).
     
-    [More about Parameter Annotations](/ORX/quickUIs.html#parameter-annotations). 
+    [More about Parameter Annotations](@/ORX/quickUIs.md#parameter-annotations). 
     """
 
     @Code

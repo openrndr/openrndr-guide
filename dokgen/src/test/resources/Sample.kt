@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Sample Page")
-@file:ParentTitle("Samples")
-@file:Order("100")
-@file:URL("samples/samplePage")
+@file:Aliases("old/samplePage.html", "older/samplePage.html")
 
 package docs.`99_Samples`
 

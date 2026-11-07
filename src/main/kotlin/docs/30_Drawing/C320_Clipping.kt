@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Clipping")
-@file:ParentTitle("Drawing")
-@file:Order("320")
-@file:URL("drawing/clipping")
+@file:Aliases("advancedDrawing/clipping.html")
 
 package docs.`30_Drawing`
 

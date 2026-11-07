@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Presentation Control")
-@file:ParentTitle("Advanced topics")
-@file:Order("120")
-@file:URL("advancedTopics/presentationControl")
 
 package docs.`90_Advanced_Topics`
 

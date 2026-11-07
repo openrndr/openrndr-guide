@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Compositor")
-@file:ParentTitle("ORX")
-@file:Order("170")
-@file:URL("ORX/compositor")
 
 package docs.`80_ORX`
 
@@ -41,7 +38,7 @@ fun main() {
     If you are working on an 
     [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
     project, `orx-compositor` should be ready to use because it is part of the basic
-    orx bundle, as described in [ORX](/ORX/).
+    orx bundle, as described in [ORX](@/ORX/_index.md).
     
     ## Workflow
     
@@ -466,7 +463,7 @@ fun main() {
     
     Blending describes how the contents of two layers are combined in a composite. 
     The blend functionality `orx-compositor` can be used with any 
-    [filter](https://guide.openrndr.org/drawing/filtersAndPostProcessing.html) that performs a blend 
+    [filter](@/drawing/filtersAndPostProcessing.md) that performs a blend 
     operation. The `orx-fx` filter collection provides 
     [a selection of ready-made blend filters](https://github.com/openrndr/orx/tree/master/orx-fx#blends).
 

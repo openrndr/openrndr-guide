@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Images")
-@file:ParentTitle("Drawing")
-@file:Order("110")
-@file:URL("drawing/images")
+@file:Aliases("drawingBasics/images.html")
 
 package docs.`30_Drawing`
 
@@ -84,7 +82,7 @@ fun main() {
 
     @Text
     """
-    To rotate an image (or any other element you draw) apply [transformations](/drawing/transformations.html).
+    To rotate an image (or any other element you draw) apply [transformations](@/drawing/transformations.md).
 
     ## Drawing  parts of images
     

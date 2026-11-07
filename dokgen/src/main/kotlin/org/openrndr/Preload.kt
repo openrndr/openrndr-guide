@@ -22,6 +22,10 @@ class Preload : ApplicationPreload() {
         delayFrames = skipFrames
     }
 
+    override fun onConfiguration(configuration: Configuration) {
+        configuration.vsync = false
+    }
+
     override fun onProgramSetup(program: Program) {
         System.getProperty("video_location")?.let { path ->
             val pDuration = System.getProperty("video_duration", "10.0")

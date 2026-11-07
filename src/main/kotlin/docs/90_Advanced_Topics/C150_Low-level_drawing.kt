@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Low-level drawing")
-@file:ParentTitle("Advanced topics")
-@file:Order("150")
-@file:URL("advancedTopics/lowLevelDrawing")
 
 package docs.`90_Advanced_Topics`
 

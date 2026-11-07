@@ -1,11 +1,11 @@
 # DokGen
 
 DokGen is a Gradle plugin that takes Kotlin source files such as
-[this](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/04_Drawing_basics/C00_DrawingPrimitives.kt)
+[this](https://github.com/openrndr/openrndr-guide/blob/main/src/main/kotlin/docs/30_Drawing/C100_CirclesRectanglesLines.kt)
 and turns it into documentation like
-[this](https://guide.openrndr.org/drawingBasics/drawingPrimitives.html).
+[this](https://guide.openrndr.org/drawing/circlesRectanglesLines/).
 The Kotlin sources are turned into Markdown, which is then used to generate 
-a static website using [jekyll](https://jekyllrb.com/).
+a static website using [Zola](https://www.getzola.org/).
 Using DokGen, you can take advantage of IDE features like auto-completion and 
 refactoring while writing documentation. Moreover, your docs will always be 
 up to date with your API, because invalid docs will just not compile.
@@ -146,64 +146,56 @@ Display a video in the documentation.
 
 ## Folder structure and file names
 
-The Kotlin documents processed by DokGen should be organized into 
-non-nested folders representing sections.
-Folder names start with a number to be able to control the sorting in file
-system managers, otherwise folders would be sorted alphabetically. 
-Similarly, file names start with a number as well, 
-but are prefixed with the letter `C` because Kotlin program 
-names must not start with a digit. 
+The Kotlin documents processed by DokGen are organized into folders
+representing sections. Folders can be nested.
+Folder names start with a number to control the order of the sections,
+which would otherwise be alphabetical. Similarly, file names start with
+a number as well, but are prefixed with the letter `C` because Kotlin program
+names must not start with a digit.
 
 Each folder contains:
-- an `index.kt` program specifying the title, order and url for a section.
-- one or more `.kt` files, one for each document in that section.
+- an `index.kt` program: the page of the section.
+- one or more `C<number>_<Words>.kt` files, one for each document in that section.
+- optionally, sub-folders.
 
-## Front-matter
+The order, the URL and the place of each page in the navigation
+are derived from the folder and file names:
 
-[Just-the-Docs](https://just-the-docs.github.io/just-the-docs/),
-the Jekyll theme we are using for the OPENRNDR guide, expects
-[front-matter](https://jekyllrb.com/docs/front-matter/) at the beginning of each markdown file to configure various properties. 
-DokGen uses file-wide annotations at the beginning of each
-Kotlin file to generate such front-matter.
+| Source file                          | Zola content file          | URL                       | Weight |
+|--------------------------------------|----------------------------|---------------------------|--------|
+| `index.kt`                           | `_index.md`                | `/`                       | 0      |
+| `C10_Requirements.kt`                | `requirements.md`          | `/requirements/`          | 10     |
+| `30_Drawing/index.kt`                | `drawing/_index.md`        | `/drawing/`               | 30     |
+| `30_Drawing/C305_Render_targets.kt`  | `drawing/renderTargets.md` | `/drawing/renderTargets/` | 305    |
 
-### Example `index.kt` front-matter annotations
+Words separated by `_` or `-` are converted to camel case. The first letter is
+lower case unless the second one is upper case (acronyms like `OSC` or `ORX`).
 
-```
+## File annotations
+
+```kotlin
 @file:Suppress("UNUSED_EXPRESSION")
-@file:Title("Getting started with OPENRNDR")
-@file:Order("1020")
-@file:URL("gettingStartedWithOPENRNDR/index")
+@file:Title("Render targets")
+@file:Aliases("advancedDrawing/renderTargets.html")
 ```
 
 The first annotation is used to ignore unused expression warnings in the IDE.
 Those warnings would otherwise be common in documentation programs because
 they contain isolated code that is seen as "unused".
 
-The `Title` will be visible in the left navigation pane. It is also displayed by web browsers and search engines.
+`Title` is required. It is visible in the navigation and in the browser tab.
 
-The `Order` is used by Jekyll to sort the pages. We recommend using 
-non-consecutive integers, so it's possible to insert new documents between 
-existing ones.
+`Aliases` is optional. It lists former URLs of the page, relative to the site root.
+Zola generates pages at those URLs which redirect to the page.
+The URLs the pages had when the guide was built with Jekyll (`drawing/renderTargets.html`)
+are added automatically.
 
-The `URL` controls the file path and the URL that will be visible
-in the browser and by search engines. The reason URL generation is not
-automated is so that we can control when to use upper/lower case, 
-dashes and underscores for readability.
+`URL` is optional. It overrides the URL derived from the file name, for example
+`@file:URL("drawing/renderTargets")`, or `@file:URL("drawing/index")` for a section.
 
-### Example `CXX_document.kt` front-matter annotation
-
-```
-@file:Suppress("UNUSED_EXPRESSION")
-@file:Title("Set up your first program")
-@file:ParentTitle("Getting started with OPENRNDR")
-@file:Order("100")
-@file:URL("gettingStartedWithOPENRNDR/setUpYourFirstProgram")
-```
-
-Document programs have one additional annotation called
-`ParentTitle`. The value should exactly match the title found in
-the `index.kt` file in the same folder. It is used to organize
-documents in sections.
+DokGen converts these annotations into the
+[front matter](https://www.getzola.org/documentation/content/page/#front-matter)
+of the generated Markdown files.
 
 ## Gradle tasks
 
@@ -211,25 +203,23 @@ DokGen provides the following gradle tasks under the group `dokgen`:
 
 #### dokgen
 
-Runs the build process.
+Runs the build process: generates Markdown and example programs, runs the
+programs to produce media files, and assembles the Zola site in `build/dokgen/zola`.
 
-#### webServerStart
+#### zolaServe
 
-Starts a development server and makes the docs available at `http://0.0.0.0:4000`. You need docker installed for this to work.
-
-#### webServerStop
-
-Stops the web server.
-
+Runs `zola serve` to preview the guide at `http://127.0.0.1:1111`.
+Needs [Zola](https://www.getzola.org/documentation/getting-started/installation/)
+in the PATH, or its location passed with `-Pzola=/path/to/zola`.
 
 ## Configuration example
 
-```
+```kotlin
 dokgen {
     runner {
-        if (System.properties['os.name'] == "Mac OS X") {
+        if (System.getProperty("os.name") == "Mac OS X") {
             // pass jvm arguments to the process that will run the exported examples
-            jvmArgs = ["-XstartOnFirstThread"]
+            jvmArgs = mutableListOf("-XstartOnFirstThread")
         }
     }
 
@@ -238,25 +228,17 @@ dokgen {
         webRootUrl = "https://github.com/openrndr/openrndr-examples/blob/master/src/main/kotlin"
     }
 
-    jekyll {
-        // media files to copy
-        media = [file("$projectDir/media"), file("$projectDir/static-media")]
-
-        // assets to copy
-        assets = [file("$projectDir/data/jekyll-assets")]
+    zola {
+        // folders with media files, copied into static/media
+        media = listOf(file("$projectDir/media"), file("$projectDir/static-media"))
+        // Zola site: config.toml, templates and static files
+        assets = listOf(file("$projectDir/data/zola-site"))
     }
 }
 ```
-[Example](https://github.com/openrndr/openrndr-guide/tree/main/data/jekyll-assets)
-
-## Jekyll assets
-
-A `CNAME` file can be included for setting up a [custom subdomain](https://help.github.com/articles/setting-up-a-custom-subdomain/) on GitHub.
-
-[Example](https://github.com/openrndr/openrndr-guide/tree/main/data/jekyll-assets)
 
 ## Publishing
 
-DokGen doesn't come with a built-in publishing solution.
-[gradle-git-publish](https://github.com/ajoberstar/gradle-git-publish) 
-is an easy to use gradle plugin for this purpose.
+The `.github/workflows/publishGuide.yml` workflow builds `build/dokgen/zola` with
+[getzola/github-pages](https://github.com/getzola/github-pages) and deploys it to GitHub Pages.
+The custom domain is configured in the repository's Pages settings.

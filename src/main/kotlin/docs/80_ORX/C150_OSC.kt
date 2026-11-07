@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("OSC")
-@file:ParentTitle("ORX")
-@file:Order("150")
-@file:URL("ORX/OSC")
+@file:Aliases("ORX/osc.html")
 
 package docs.`80_ORX`
 
@@ -24,7 +22,7 @@ fun main() {
     [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
     project, all you have to do is to add `implementation(orx.osc)` 
     to the `dependencies` block in `build.gradle.kts` and reload Gradle,
-    as described in [ORX](/ORX/).
+    as described in [ORX](@/ORX/_index.md).
 
     ## Listening to OSC messages
     

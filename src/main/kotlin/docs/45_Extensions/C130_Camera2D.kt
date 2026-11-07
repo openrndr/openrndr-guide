@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Camera2D")
-@file:ParentTitle("Extensions")
-@file:Order("130")
-@file:URL("extensions/camera2D")
 
 package docs.`45_Extensions`
 

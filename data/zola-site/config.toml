@@ -1,0 +1,44 @@
+# Zola configuration for https://guide.openrndr.org
+# Docs: https://www.getzola.org/documentation/getting-started/configuration/
+#
+# This folder (data/zola-site) is copied into build/dokgen/zola by the
+# dokgen Gradle plugin, next to the `content` folder generated from
+# src/main/kotlin/docs. Edit files here, not in build/.
+
+base_url = "https://guide.openrndr.org"
+title = "OPENRNDR GUIDE"
+description = "Guide for OPENRNDR"
+default_language = "en"
+
+compile_sass = false
+
+# The content is generated from Kotlin sources and contains code with
+# `{{`, `{%` etc. Never treat it as Tera templates.
+skip_content_templating = ["**/*.md"]
+generate_sitemap = true
+build_search_index = true
+
+[slugify]
+# Keep camelCase paths like ORX/OSC or drawing/renderTargets
+paths = "off"
+anchors = "on"
+
+[markdown]
+smart_punctuation = true
+# Hover links on headings, rendered by templates/anchor-link.html
+insert_anchor_links = "left"
+external_links_target_blank = false
+
+[markdown.highlighting]
+theme = "github-light"
+style = "class"
+error_on_missing_language = true
+
+[search]
+index_format = "elasticlunr_javascript"
+include_title = true
+include_content = true
+include_path = false
+
+[extra]
+repository = "https://github.com/openrndr/openrndr-guide"

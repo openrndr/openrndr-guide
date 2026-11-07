@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("ScreenRecorder")
-@file:ParentTitle("Extensions")
-@file:Order("120")
-@file:URL("extensions/screenRecorder")
+@file:Aliases("extensions/writingToVideoFiles.html")
 
 package docs.`45_Extensions`
 

@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Kinect")
-@file:ParentTitle("ORX")
-@file:Order("120")
-@file:URL("ORX/kinect")
 
 package docs.`80_ORX`
 
@@ -34,7 +31,7 @@ fun main() {
     [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
     project, all you have to do is to add `implementation(orx.kinect.v1)` 
     to the `dependencies` block in `build.gradle.kts` and reload Gradle,
-    as described in [ORX](/ORX/).
+    as described in [ORX](@/ORX/_index.md).
     
     ## Using the Kinect depth camera
     """

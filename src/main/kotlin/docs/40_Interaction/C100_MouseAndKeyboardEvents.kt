@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Mouse And Keyboard Events")
-@file:ParentTitle("Interaction")
-@file:Order("100")
-@file:URL("interaction/mouseAndKeyboardEvents")
 
 package docs.`40_Interaction`
 

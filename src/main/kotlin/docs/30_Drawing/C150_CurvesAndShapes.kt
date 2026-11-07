@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Curves and shapes")
-@file:ParentTitle("Drawing")
-@file:Order("150")
-@file:URL("drawing/curvesAndShapes")
+@file:Aliases("drawingBasics/complexShapes.html", "drawingBasics/curvesAndShapes.html")
 
 package docs.`30_Drawing`
 

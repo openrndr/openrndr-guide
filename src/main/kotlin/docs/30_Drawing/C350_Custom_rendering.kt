@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Custom rendering")
-@file:ParentTitle("Drawing")
-@file:Order("350")
-@file:URL("drawing/customRendering")
+@file:Aliases("advancedDrawing/customRendering.html")
 
 package docs.`30_Drawing`
 

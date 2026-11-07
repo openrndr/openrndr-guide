@@ -1,7 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("File Input / Output")
-@file:Order("1070")
-@file:URL("fileIO/index")
 
 package docs.`70_FileIO`
 

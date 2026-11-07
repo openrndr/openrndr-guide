@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Integer color buffers")
-@file:ParentTitle("Advanced topics")
-@file:Order("155")
-@file:URL("advancedTopics/integerColorBuffers")
 
 package docs.`90_Advanced_Topics`
 
@@ -28,7 +25,7 @@ fun main() {
     but color buffers have to be configured correctly for such a use.
     
     Note: this mechanism is used internally in
-    [`orx-kinect`](https://guide.openrndr.org/ORX/kinect.html) 
+    [`orx-kinect`](@/ORX/kinect.md) 
     to process raw kinect data directly on GPU, as the depth readings are 
     provided as integer numbers in the range
     of `0-2047` or `0-4096` depending on the kinect version.

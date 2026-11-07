@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Clipboard")
-@file:ParentTitle("Interaction")
-@file:Order("130")
-@file:URL("interaction/clipboard")
 
 package docs.`40_Interaction`
 

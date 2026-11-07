@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Filters and post processing")
-@file:ParentTitle("Drawing")
-@file:Order("310")
-@file:URL("drawing/filtersAndPostProcessing")
+@file:Aliases("advancedDrawing/filtersAndPostProcessing.html")
 
 package docs.`30_Drawing`
 
@@ -177,6 +175,6 @@ fun main() {
     A repository of ready-to-use filters for OPENRNDR can be found in 
     the [ORX repository](https://github.com/openrndr/orx/tree/master/orx-fx),
     a partial index of the filters can be found in the 
-    [orx-fx chapter](https://guide.openrndr.org/ORX/imageFilters.html)
+    [orx-fx chapter](@/ORX/imageFilters.md)
     """
 }

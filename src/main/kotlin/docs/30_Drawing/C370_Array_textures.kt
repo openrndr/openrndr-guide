@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Array textures")
-@file:ParentTitle("Drawing")
-@file:Order("370")
-@file:URL("drawing/arrayTextures")
 
 package docs.`30_Drawing`
 

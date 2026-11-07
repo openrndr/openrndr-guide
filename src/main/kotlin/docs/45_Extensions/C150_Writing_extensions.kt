@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Writing extensions")
-@file:ParentTitle("Extensions")
-@file:Order("150")
-@file:URL("extensions/writingExtensions")
 
 package docs.`45_Extensions`
 

@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
+{{ section.content | safe }}
+{{<nav.toc path={section.relative_path} pages_only={section.relative_path == "_index.md"} />}}
+{% endblock content %}

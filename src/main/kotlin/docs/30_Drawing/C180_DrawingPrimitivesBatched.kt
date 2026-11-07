@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Drawing primitives batched")
-@file:ParentTitle("Drawing")
-@file:Order("180")
-@file:URL("drawing/drawingPrimitivesBatched")
+@file:Aliases("drawingBasics/drawingPrimitivesBatched.html")
 
 package docs.`30_Drawing`
 

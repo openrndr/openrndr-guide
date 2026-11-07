@@ -6,11 +6,12 @@
 
 # 2. Run this script from the guide root directory:
 # scripts/webServerStart.sh
-# The script will server the website in http://localhost:4000,
+# The script will serve the website in http://127.0.0.1:1111,
 # it will rebuild and reload the website on changes.
 
-# It requires Ruby and Bundler:
-# Install Ruby which comes with gem, then use gem to install bundler.
+# It requires Zola 0.23 or newer:
+# https://www.getzola.org/documentation/getting-started/installation/
+# Set the ZOLA environment variable if `zola` is not in your PATH.
 
-cd build/dokgen/jekyll/docs/ || exit
-bundle exec jekyll serve -d /tmp/guide --livereload --watch --disable-disk-cache --open-url
+cd build/dokgen/zola/ || exit
+"${ZOLA:-zola}" serve --open

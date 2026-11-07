@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Vectors")
-@file:ParentTitle("Drawing")
-@file:Order("210")
-@file:URL("drawing/vectors")
+@file:Aliases("drawingAndTransformations/vectors.html")
 
 package docs.`30_Drawing`
 
@@ -198,7 +196,7 @@ fun main() {
     @Text
     """
     To generate other random distributions of vectors see 
-    [orx-noise](https://guide.openrndr.org/ORX/noise.html).
+    [orx-noise](@/ORX/noise.md).
     
     # Polar coordinates
     

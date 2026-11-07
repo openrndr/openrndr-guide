@@ -17,54 +17,61 @@ If you are making quick contributions to existing pages in the guide, you can ig
 
 The OPENRNDR guide is somewhat unique. The source code of the guide is made out of Kotlin programs arranged in various folders. Each Kotlin file contains blocks of text describing different aspects of the framework but also contains blocks of code that serve two purposes: they are code examples for the learner, but they are actually executed by `dokgen` to produce screenshots and video files during the build process. The produced files are then embedded in the guide.
 
-A program called `dokgen` (found in this repo) parses the Kotlin files. It creates Markdown files for [Jekyll](https://jekyllrb.com/) (used by GitHub pages), it extracts the source code of small programs embedded in the guide's source code and runs those programs to generate media files.
+A program called `dokgen` (found in this repo) parses the Kotlin files. It creates Markdown files for [Zola](https://www.getzola.org/), the static site generator that builds the website, it extracts the source code of small programs embedded in the guide's source code and runs those programs to generate media files.
 
 Generating media files as part of the build process helps notice if the guide needs to be updated in some areas or if changes unexpectedly broke part of the framework.
 
-For Jekyll, we use the [Just-the-docs](https://just-the-docs.github.io/just-the-docs/) Jekyll theme.
+The templates, styles and configuration of the website are found in `data/zola-site`. Its design is based on the [Just the Docs](https://just-the-docs.com/) theme.
 
-## Annotations
+## Folders, file names and annotations
 
-The [front-matter annotations](https://github.com/openrndr/openrndr-guide/tree/main/dokgen#front-matter) 
-in each Kotlin file are now managed automatically by a Gradle Task called
-`Update just-the-docs annotations`. The only annotation that needs to
-be set manually is the Title. If you run the task, annotations will be
-added when missing and updated based on the file / folder names.
-
-These annotations are passed to Jekyll to build the guide.
-
-Please follow these conventions:
+The structure of the guide comes from the folders and file names under `src/main/kotlin/docs`:
 
 - Name folders with this pattern: `\d+_[a-zA-Z_-]+`. That's digits, an underscore
   and one or more words using upper or lower case ASCII characters, underscores and dashes.
-  The digits define the order of the folders. It is suggested to not use sequential numbers
-  to allow inserting new folders between existing ones.
-- In the root and in each folder there should be an `index.kt` file.
+  The digits define the order of the folders. Folders can be nested to create sub-sections.
+- In the root and in each folder there should be an `index.kt` file. It is the
+  page of that section.
 - Add sibling documents named with this pattern: `C\d+_[a-zA-Z_-]+.kt`. That's a `C`
   followed by digits, an underscore, one or more words using upper or lower case ASCII
   characters, underscores and dashes, ending with `.kt`. The digits define the order
-  of the documents. It is suggested to not use sequential numbers
-  to allow inserting new folders between existing ones.
+  of the documents.
+- Pages and sub-folders of a folder are sorted together by their number.
+- It is suggested to not use sequential numbers to allow inserting new files or
+  folders between existing ones. Use the same amount of digits for all the files
+  in a folder (`C090`, `C100`, not `C90`, `C100`) so the IDE and GitHub list
+  them in the same order as the guide.
 
-The `Order` annotation is generated from the number in file and folder names.
-The `ParentTitle` in sibling documents is made to match the `Title` in the `index.kt`
-file in the same folder.
-The `URL` annotation is generated from the folder and file names by removing the
+The URL of a page is generated from the folder and file names by removing the
 numbers and converting to camel case, respecting sequences of upper case characters
-which are assumed to be acronyms (like `OSC` or `ORX`).
+which are assumed to be acronyms (like `OSC` or `ORX`). For example
+`30_Drawing/C305_Render_targets.kt` is published at `/drawing/renderTargets/`.
 
-Suggestions:
+The only annotation each file needs is the title, shown in the navigation,
+in the browser tab and by search engines:
 
-- Always commit git changes before running the task to be able to undo what it does.
-- If creating new folders and files
-    - Run the Gradle Task to generate the annotations for the new files.
-    - Update manually the automatically generated `Title` annotations.
-- If changing the `Title` of an Index file
-    - Run the Gradle Task to update the siblings' `ParentTitle`.
-- If renaming files or folders,
-    - Run the Gradle Task to update the annotations.
-    - Delete the build folder before running `dokgen` to avoid duplicate documents.
+```kotlin
+@file:Title("Render targets")
+```
 
+Optional annotations:
+
+- `@file:Aliases("drawing/oldName", "advancedDrawing/renderTargets.html")`: former
+  URLs of the page, relative to the root of the site. Visiting them redirects to the page.
+  Add one when renaming or moving a file so existing links keep working.
+- `@file:URL("drawing/renderTargets")`: overrides the URL generated from the file name.
+
+### Links between pages
+
+Link to other pages of the guide using the path of their Markdown file, starting with `@/`:
+
+```markdown
+See [render targets](@/drawing/renderTargets.md#creating-a-render-target)
+and the [ORX section](@/ORX/_index.md).
+```
+
+`index.kt` files become `_index.md`. These links are checked when the website is built:
+a link to a page or a heading that doesn't exist makes the build fail.
 
 ## If you use search / replace...
 
@@ -74,52 +81,33 @@ to end up editing the wrong files when using search.
 
 ## Build the guide
 
-Run the `Tasks/dokgen/dokgen` Gradle task to update the local Jekyll website.
+Run the `Tasks/dokgen/dokgen` Gradle task to update the local website.
 
 The first time can take a while since it will run over 100 Kotlin programs
 to produce the guide's screenshots and videos. If one of the programs
 gets stuck running for over 10 seconds, it can be closed and the build
 will continue with the next program.
 
-Once the build process is complete, the guide will be found at
-`build/dokgen/jekyll/docs/` in Markdown format and viewable in your
-web browser if the Docker/Jekyll container is running (next step).
+Once the build process is complete, the website sources will be found at
+`build/dokgen/zola/`: the generated Markdown in `content/`, the media files
+in `static/media/` and a copy of `data/zola-site`.
 
 ## Preview the guide locally
 
-### With Docker
-
-To preview the guide, we need Jekyll in our system. One way to install Jekyll is by using a Docker container.
-
-1. Install [Docker](https://www.docker.com/get-started/).
+1. [Install Zola](https://www.getzola.org/documentation/getting-started/installation/),
+   version 0.23 or newer. It is a single executable without dependencies.
 2. Start the web server
-    - Run the `openrndr-guide/Tasks/dokgen/webServerStart` Gradle task
+    - Run `zola serve` in the `build/dokgen/zola/` folder
     - or
-    - Run `sudo build/dokgen/jekyll/docs/webServerStart.sh` script.
-3. Open [http://0.0.0.0:4000](http://0.0.0.0:4000) in a browser.
+    - Run the `openrndr-guide/Tasks/dokgen/zolaServe` Gradle task. If `zola` is
+      not in your PATH, pass its location: `./gradlew zolaServe -Pzola=/path/to/zola`.
+3. Open [http://127.0.0.1:1111](http://127.0.0.1:1111) in a browser.
 
-## Stop the web server before closing Idea
+To update the website automatically while editing, run `./gradlew dokgen --continuous`
+in another terminal. `zola serve` reloads the browser when the files change.
 
-If you try closing Idea without stopping the Jekyll web server, the IDE will hang
-waiting for Jekyll to finish. To stop Jekyll:
-
-- Run the `openrndr-guide/Tasks/dokgen/webServerStop` Gradle task
-- or
-- Run `sudo build/dokgen/jekyll/docs/webServerStop.sh` script.
-
-### Directly with Ruby (without Docker)
-
-If you have Ruby configured in your system, you can follow these steps to regenerate
-the website when changes are saved and automatically reload your local guide in a web browser:
-
-1. In one terminal run `./gradlew dokgen --continuous`
-2. In another terminal
-  * `cd build/dokgen/jekyll/docs/`
-  * `bundle install`
-  * `bundle exec jekyll serve -d /tmp/guide --livereload --open-url`
-3. Open [http://0.0.0.0:4000](http://0.0.0.0:4000) in a browser.
-
-The `-d /tmp/guide` argument makes sure the generated HTML is not created under the build folder, which would trigger dokgen in a loop. Adjust this path making it valid for your OS.
+To check that all the links between pages are valid, run `zola check --skip-external-links`
+in `build/dokgen/zola/`.
 
 ## Fast builds
 
@@ -150,6 +138,10 @@ They can be triggered manually or automatically when a commit is tagged
 using this pattern: `v[0-9].[0-9]+.[0-9]+-[0-9]+`, for instance `v0.4.4-0`.
 The first three digits should match the openrndr/orx version, and the last
 digit is incremented each time the guide is updated.
+
+The guide is built with [getzola/github-pages](https://github.com/getzola/github-pages)
+and deployed to GitHub Pages by GitHub Actions (Settings > Pages > Source: GitHub Actions).
+After it is published, other workflows check the external links and build the PDF version.
 
 ## Troubleshooting
 

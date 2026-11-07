@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Headless applications")
-@file:ParentTitle("Advanced topics")
-@file:Order("140")
-@file:URL("advancedTopics/headlessApplications")
 
 package docs.`90_Advanced_Topics`
 
@@ -32,9 +29,9 @@ fun main() {
 
     Headless applications cannot draw on the backbuffer, because there 
     is no backbuffer. In order to draw you need to create a 
-    [RenderTarget](https://guide.openrndr.org/drawing/renderTargets.html) and draw on it. 
+    [RenderTarget](@/drawing/renderTargets.md) and draw on it. 
     Render target contents can easily be saved to file, or rendered to 
-    [video](https://guide.openrndr.org/extensions/screenRecorder.html#writing-to-video-using-render-targets).
+    [video](@/extensions/screenRecorder.md#writing-to-video-using-render-targets).
 
     #### Mouse and keyboard events
     

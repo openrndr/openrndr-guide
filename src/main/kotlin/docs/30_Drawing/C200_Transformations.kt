@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Transformations")
-@file:ParentTitle("Drawing")
-@file:Order("200")
-@file:URL("drawing/transformations")
 
 package docs.`30_Drawing`
 

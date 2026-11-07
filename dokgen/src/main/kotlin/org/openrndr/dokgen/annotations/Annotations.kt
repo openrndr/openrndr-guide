@@ -4,17 +4,21 @@ package org.openrndr.dokgen.annotations
 @Retention(AnnotationRetention.SOURCE)
 annotation class Title(val title: String)
 
-@Target(AnnotationTarget.FILE)
-@Retention(AnnotationRetention.SOURCE)
-annotation class ParentTitle(val title: String)
-
-@Target(AnnotationTarget.FILE)
-@Retention(AnnotationRetention.SOURCE)
-annotation class Order(val order: String)
-
+/**
+ * Optional. Overrides the URL derived from the folder and file names,
+ * e.g. `drawing/renderTargets`, or `drawing/index` for a section.
+ */
 @Target(AnnotationTarget.FILE)
 @Retention(AnnotationRetention.SOURCE)
 annotation class URL(val url: String)
+
+/**
+ * Former URLs of this page, relative to the site root, like
+ * `advancedDrawing/clipping.html`. Visiting them redirects to this page.
+ */
+@Target(AnnotationTarget.FILE)
+@Retention(AnnotationRetention.SOURCE)
+annotation class Aliases(vararg val urls: String)
 
 
 @Target(

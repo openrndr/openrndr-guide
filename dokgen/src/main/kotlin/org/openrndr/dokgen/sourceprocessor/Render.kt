@@ -21,6 +21,20 @@ ${body.prependIndent(" ".repeat(4))}
 }
 
 /**
+ * Media paths in the sources are relative (`media/x.png` or `../media/x.png`).
+ * Pages can be nested at any depth, so link media from the site root instead.
+ */
+fun mediaUrl(src: String): String {
+    val s = src.trim()
+    if (s.startsWith("/") || s.contains("://")) return s
+    var p = s
+    while (p.startsWith("../") || p.startsWith("./")) {
+        p = p.substringAfter('/')
+    }
+    return "/$p"
+}
+
+/**
  * Produces markdown page of the guide page
  *
  * @param doc A document composed on multiple blocks of text, code and
@@ -44,10 +58,11 @@ fun renderDoc(doc: Doc, title: String? = null): String {
                 el.text.trimIndent()
             }
             is Doc.Element.Media.Image -> {
-                """<img alt="${el.src.trim()}" src="${el.src.trim()}" loading="lazy">"""
+                val src = mediaUrl(el.src)
+                """<img alt="$src" src="$src" loading="lazy">"""
             }
             is Doc.Element.Media.Video -> {
-                val video = el.src.trim()
+                val video = mediaUrl(el.src)
                 val still = video.replace(".mp4", "-thumb.jpg")
                 """
                 |<video controls preload="none" loop poster="$still">

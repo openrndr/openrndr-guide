@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Managing draw style")
-@file:ParentTitle("Drawing")
-@file:Order("140")
-@file:URL("drawing/managingDrawStyle")
+@file:Aliases("drawingBasics/managingDrawStyle.html")
 
 package docs.`30_Drawing`
 

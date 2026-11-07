@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Poisson fills")
-@file:ParentTitle("ORX")
-@file:Order("210")
-@file:URL("ORX/poissonFills")
 
 package docs.`80_ORX`
 
@@ -29,7 +26,7 @@ fun main() {
     [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
     project, all you have to do is to add `implementation(orx.poisson.fill)` 
     to the `dependencies` block in `build.gradle.kts` and reload Gradle,
-    as described in [ORX](/ORX/).
+    as described in [ORX](@/ORX/_index.md).
     
     # Filling
     

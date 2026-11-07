@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Next steps")
-@file:ParentTitle("What is OPENRNDR?")
-@file:Order("25")
-@file:URL("/nextSteps")
 
 package docs
 
@@ -117,7 +114,7 @@ fun main() {
     
     At this point you are likely interested in how this program is structured. 
     The guide explains more in the 
-    [Program basics](https://guide.openrndr.org/programBasics/application.html) chapter.  
+    [Program basics](@/programBasics/application.md) chapter.  
     
     If you are more interested in reading source code, you can find the code 
     for the examples in this guide in the 

@@ -3,12 +3,19 @@ on:
   push:
     tags:
       - v[0-9].[0-9]+.[0-9]+-[0-9]+
-  
+
   # Allow manual trigger
   workflow_dispatch:
 
+# Deploying to GitHub Pages requires the repository setting
+# Settings > Pages > Build and deployment > Source = "GitHub Actions"
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 concurrency:
-  group: ${{ github.ref }}
+  group: pages
   cancel-in-progress: false
 
 defaults:
@@ -26,7 +33,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 25
-      
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v6
 
@@ -36,20 +43,23 @@ jobs:
       - name: Build openrndr-guide
         run: skipMediaGeneration=false xvfb-run ./gradlew dokgen --rerun-tasks --no-build-cache
 
-      - name: Publish guide
-        run: |
-          git worktree add --detach docs-temp
-          cd docs-temp
-          git checkout --orphan generated
-          git reset HEAD -- .
-          git clean -df
-          rm -rf ../build/dokgen/jekyll/docs/_site
-          rm -rf ../build/dokgen/jekyll/docs/webServer*
-          rm -rf ../build/dokgen/jekyll/docs/.jekyll-cache
-          mv ../build/dokgen/jekyll/* .
-          git status
-          git config --global user.email "actions@openrndr.org"
-          git config --global user.name "OPENRNDR Actions"
-          git add . 
-          git commit -m "Add automatically generated guide"
-          git push origin generated --force          
+      # Checks internal links and anchors, builds build/dokgen/zola
+      # and uploads it as a GitHub Pages artifact
+      - name: Build website
+        uses: getzola/github-pages@v1
+        with:
+          zola_version: v0.23.6
+          working_directory: build/dokgen/zola
+          check_links: true
+          check_flags: --skip-external-links
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

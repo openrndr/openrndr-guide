@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Drawing circles, rectangles and lines")
-@file:ParentTitle("Drawing")
-@file:Order("100")
-@file:URL("drawing/circlesRectanglesLines")
+@file:Aliases("drawingBasics/drawingPrimitives.html")
 
 package docs.`30_Drawing`
 

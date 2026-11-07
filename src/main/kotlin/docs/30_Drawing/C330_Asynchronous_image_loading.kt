@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Asynchronous image loading")
-@file:ParentTitle("Drawing")
-@file:Order("330")
-@file:URL("drawing/asynchronousImageLoading")
+@file:Aliases("advancedDrawing/asynchronousImageLoading.html")
 
 package docs.`30_Drawing`
 

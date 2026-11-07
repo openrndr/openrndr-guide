@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Quaternions")
-@file:ParentTitle("Drawing")
-@file:Order("220")
-@file:URL("drawing/quaternions")
+@file:Aliases("drawingAndTransformations/quaternions.html")
 
 package docs.`30_Drawing`
 

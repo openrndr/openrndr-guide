@@ -8,9 +8,7 @@ import org.antlr.v4.runtime.Token
 import org.antlr.v4.runtime.TokenStreamRewriter
 import org.antlr.v4.runtime.misc.Interval
 import org.antlr.v4.runtime.tree.ParseTree
-import org.openrndr.dokgen.examplesPackageDirective
 import org.openrndr.extra.kotlinparser.verbatimText
-import java.io.File
 
 
 /** Fully qualified prefix the dokgen annotations may appear with. */
@@ -461,12 +459,19 @@ object SourceProcessor {
         val appSources: List<String>,
         val appSourcesForExport: List<String>,
         val media: List<String>,
-        val annotations: Map<String, String>
+        val annotations: Map<String, String>,
+        /** Old URLs that should redirect to this page, from `@file:Aliases(...)` */
+        val aliases: List<String> = emptyList()
     )
 
+    /**
+     * @param packageDirective package of the examples exported to the examples repository
+     * @param runnablePackageDirective package of the examples run to produce media files
+     */
     fun process(
         source: String,
         packageDirective: String,
+        runnablePackageDirective: String = packageDirective,
         mkLink: ((Int) -> String)? = null
     ): Output {
         val tokens = CommonTokenStream(KotlinLexer(CharStreams.fromString(source)))
@@ -474,22 +479,25 @@ object SourceProcessor {
         val root = parser.kotlinFile()
         tokens.fill()
 
-        // File annotations: @file:Title("..."), @file:Order("..."), etc.
+        // File annotations: @file:Title("..."), @file:Aliases("...", "..."), etc.
         val fileAnnotations = LinkedHashMap<String, String>()
+        val aliases = mutableListOf<String>()
         root.fileAnnotation().forEach { fileAnnotation ->
             fileAnnotation.unescapedAnnotation().forEach { unescaped ->
                 val ctor = unescaped.constructorInvocation() ?: return@forEach
                 val name = ctor.userType().text
-                val value = ctor.valueArguments()?.valueArgument()
-                    ?.firstOrNull()?.expression()?.stringContent()
-                if (value != null) fileAnnotations[name] = value
+                val values = ctor.valueArguments()?.valueArgument()
+                    ?.mapNotNull { it.expression()?.stringContent() } ?: emptyList()
+                if (name == "Aliases") {
+                    aliases.addAll(values)
+                } else if (values.isNotEmpty()) {
+                    fileAnnotations[name] = values.first()
+                }
             }
         }
 
-        listOf("Title", "Order", "URL").forEach { required ->
-            require(!fileAnnotations[required].isNullOrEmpty()) {
-                """Required @file:$required("...") annotation not found"""
-            }
+        require(!fileAnnotations["Title"].isNullOrEmpty()) {
+            """Required @file:Title("...") annotation not found"""
         }
 
         // Imports, excluding the dokgen annotation import which doesn't exist
@@ -497,12 +505,6 @@ object SourceProcessor {
         val imports = root.importList().importHeader()
             .map { it.verbatimText().trim() }
             .filter { !it.contains("dokgen") }
-
-        // The package directive of runnable examples is derived from @file:URL,
-        // which is parsed above, so it cannot be passed in as an argument.
-        val runnablePackageDirective = examplesPackageDirective(
-            File(fileAnnotations["URL"]!!).parentFile.toPath()
-        )
 
         // Walk the statements of every top-level function (i.e. main()) in
         // source order, building the documentation and example sources.
@@ -531,7 +533,8 @@ object SourceProcessor {
             appSources = builder.appSources,
             appSourcesForExport = builder.appSourcesForExport,
             media = media,
-            annotations = fileAnnotations
+            annotations = fileAnnotations,
+            aliases = aliases
         )
     }
 }

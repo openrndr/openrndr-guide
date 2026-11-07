@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Application Flow")
-@file:ParentTitle("Advanced topics")
-@file:Order("110")
-@file:URL("advancedTopics/applicationFlow")
 
 package docs.`90_Advanced_Topics`
 

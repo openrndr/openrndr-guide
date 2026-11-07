@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Text")
-@file:ParentTitle("Drawing")
-@file:Order("155")
-@file:URL("drawing/text")
+@file:Aliases("drawingBasics/text.html")
 
 package docs.`30_Drawing`
 
@@ -204,7 +202,7 @@ fun main() {
     
     To load the vector data of a font file use the `loadFace()` method,
     then call the `.glyphForCharacter()` method to obtain a 
-    [Shape](https://guide.openrndr.org/drawing/curvesAndShapes.html#shape) representing
+    [Shape](@/drawing/curvesAndShapes.md#shape) representing
     a character.
     """
 

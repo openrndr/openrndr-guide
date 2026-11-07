@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Live coding")
-@file:ParentTitle("Use cases")
-@file:Order("130")
-@file:URL("useCases/liveCoding")
+@file:Aliases("ORX/liveCoding.html")
 
 package docs.`95_Use_cases`
 

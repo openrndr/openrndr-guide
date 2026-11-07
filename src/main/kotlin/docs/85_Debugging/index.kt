@@ -1,14 +1,12 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Logging and debugging")
-@file:Order("1085")
-@file:URL("debugging/index")
+@file:Aliases("advancedTopics/logging.html", "debugging/logging.html")
 
 package docs.`85_Debugging`
 
-import org.openrndr.dokgen.annotations.Order
+import org.openrndr.dokgen.annotations.Aliases
 import org.openrndr.dokgen.annotations.Text
 import org.openrndr.dokgen.annotations.Title
-import org.openrndr.dokgen.annotations.URL
 
 fun main() {
     @Text

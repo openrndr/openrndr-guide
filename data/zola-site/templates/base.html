@@ -1,0 +1,99 @@
+{%- if page -%}
+  {%- set item = page -%}
+{%- elif section -%}
+  {%- set item = section -%}
+{%- endif -%}
+{%- set current = current_path | default(value="/") -%}
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% if item and item.title and current != "/" %}{{ item.title }} | {% endif %}{{ config.title }}{% endblock title %}</title>
+  <meta name="description" content="{% if item and item.description %}{{ item.description }}{% else %}{{ config.description }}{% endif %}">
+  {%- if item %}
+  <link rel="canonical" href="{{ item.permalink | safe }}">
+  {%- endif %}
+  <link rel="icon" href="{{ get_url(path='favicon.ico') }}" type="image/x-icon">
+  <link rel="stylesheet" href="{{ get_url(path='css/guide.css', cachebust=true) }}">
+  <link rel="stylesheet" href="{{ get_url(path='giallo.css') }}">
+  <link rel="stylesheet" href="{{ get_url(path='css/code.css', cachebust=true) }}">
+  <script src="{{ get_url(path='js/nav.js', cachebust=true) }}" defer></script>
+  <script src="{{ get_url(path='js/search.js', cachebust=true) }}" defer
+          data-index="{{ get_url(path='search_index.en.js') }}"
+          data-lib="{{ get_url(path='elasticlunr.min.js') }}"></script>
+  <script src="{{ get_url(path='js/content.js', cachebust=true) }}" defer></script>
+</head>
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  {% include "partials/icons.html" %}
+
+  <header class="side-bar">
+    <div class="site-header">
+      <a href="/" class="site-title lh-tight">{{ config.title }}</a>
+      <button id="menu-button" class="site-button btn-reset" aria-label="Menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+      </button>
+    </div>
+    <nav aria-label="Main" id="site-nav" class="site-nav">
+      {{<nav.tree current={current} />}}
+    </nav>
+    <div class="d-md-block d-none site-footer">
+      Built with <a href="https://www.getzola.org">Zola</a>.
+      Design based on <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>.
+    </div>
+  </header>
+
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+      <div class="search" role="search">
+        <div class="search-input-wrap">
+          <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search {{ config.title }}" autocomplete="off">
+          <label for="search-input" class="search-label">
+            <span class="sr-only">Search {{ config.title }}</span>
+            <svg viewBox="0 0 24 24" class="search-icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+          </label>
+        </div>
+        <div id="search-results" class="search-results"></div>
+      </div>
+    </div>
+
+    <div class="main-content-wrap">
+      {%- if item %}
+      {#- Breadcrumbs: skip the home section, except for pages that live directly in it -#}
+      {%- set crumbs = item.ancestors if (page and item.ancestors | length == 1) else item.ancestors[1:] -%}
+      {%- if crumbs | length > 0 %}
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+        <ol class="breadcrumb-nav-list">
+          {%- for a in crumbs %}
+          {%- set s = get_section(path=a, metadata_only=true) %}
+          <li class="breadcrumb-nav-list-item"><a href="{{ s.path | safe }}">{{ s.title }}</a></li>
+          {%- endfor %}
+          <li class="breadcrumb-nav-list-item"><span>{{ item.title }}</span></li>
+        </ol>
+      </nav>
+      {%- endif %}
+      {%- endif %}
+
+      <div id="main-content" class="main-content">
+        <main>
+          {% block content %}{% endblock content %}
+          {%- if item and item.extra.source %}
+          <p><a href="{{ config.extra.repository }}/blob/main/{{ item.extra.source }}" class="btn btn-github">edit on GitHub</a></p>
+          {%- endif %}
+        </main>
+        <hr>
+        <footer>
+          <div class="d-md-none mt-4 fs-2">
+            Built with <a href="https://www.getzola.org">Zola</a>.
+            Design based on <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>.
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <div class="search-overlay"></div>
+  </div>
+</body>
+</html>

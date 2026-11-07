@@ -1,14 +1,12 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Extensions")
-@file:Order("1045")
-@file:URL("extensions/index")
+@file:Aliases("extensions.html")
 
 package docs.`45_Extensions`
 
-import org.openrndr.dokgen.annotations.Order
+import org.openrndr.dokgen.annotations.Aliases
 import org.openrndr.dokgen.annotations.Text
 import org.openrndr.dokgen.annotations.Title
-import org.openrndr.dokgen.annotations.URL
 
 fun main() {
     @Text

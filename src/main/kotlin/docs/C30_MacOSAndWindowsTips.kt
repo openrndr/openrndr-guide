@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("MacOS and Windows tips")
-@file:ParentTitle("What is OPENRNDR?")
-@file:Order("30")
-@file:URL("/macOSAndWindowsTips")
 
 package docs
 

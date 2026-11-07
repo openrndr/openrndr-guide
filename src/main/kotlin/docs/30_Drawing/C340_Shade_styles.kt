@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Shade styles")
-@file:ParentTitle("Drawing")
-@file:Order("340")
-@file:URL("drawing/shadeStyles")
+@file:Aliases("advancedDrawing/shadeStyles.html")
 
 package docs.`30_Drawing`
 
@@ -36,7 +34,7 @@ fun main() {
     geometry. A shade style can affect vertices, fragments or both.
     
     A selection of preset ready-to-use shade styles is provided by 
-    [`orx-shade-styles`](https://guide.openrndr.org/ORX/shadeStylePresets.html) 
+    [`orx-shade-styles`](@/ORX/shadeStylePresets.md) 
     
     For those interested in authoring shade styles it is helpful to have 
     some basic understanding of shaders and GLSL.

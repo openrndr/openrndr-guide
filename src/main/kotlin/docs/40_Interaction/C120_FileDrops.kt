@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("File Drops")
-@file:ParentTitle("Interaction")
-@file:Order("120")
-@file:URL("interaction/fileDrops")
 
 package docs.`40_Interaction`
 

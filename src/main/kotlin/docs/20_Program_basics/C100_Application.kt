@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Application")
-@file:ParentTitle("Program basics")
-@file:Order("100")
-@file:URL("programBasics/application")
 
 package docs.`20_Program_basics`
 

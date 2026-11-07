@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Drawing SVG")
-@file:ParentTitle("Drawing")
-@file:Order("160")
-@file:URL("drawing/drawingSVG")
+@file:Aliases("drawingBasics/drawingSVG.html")
 
 package docs.`30_Drawing`
 

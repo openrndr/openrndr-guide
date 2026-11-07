@@ -3,6 +3,7 @@ package org.openrndr.dokgen.sourceprocessor
 import org.junit.jupiter.api.Test
 import kotlin.test.assertContains
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -14,6 +15,7 @@ class SourceProcessorTest {
     private fun process() = SourceProcessor.process(
         source = source,
         packageDirective = "exported.pkg",
+        runnablePackageDirective = "examples.samples",
         mkLink = { index -> "https://example.com/Sample$index.kt" }
     )
 
@@ -21,9 +23,14 @@ class SourceProcessorTest {
     fun `extracts file annotations`() {
         val output = process()
         assertEquals("Sample Page", output.annotations["Title"])
-        assertEquals("Samples", output.annotations["ParentTitle"])
-        assertEquals("100", output.annotations["Order"])
-        assertEquals("samples/samplePage", output.annotations["URL"])
+        assertEquals(listOf("old/samplePage.html", "older/samplePage.html"), output.aliases)
+    }
+
+    @Test
+    fun `requires a title`() {
+        assertFailsWith<IllegalArgumentException> {
+            SourceProcessor.process(source.replace("@file:Title(\"Sample Page\")\n", ""), "pkg")
+        }
     }
 
     @Test
@@ -49,8 +56,10 @@ class SourceProcessorTest {
         assertContains(doc, "## Code block")
 
         // @Media renders image and video tags
-        assertContains(doc, """<img alt="media/image-001.png" src="media/image-001.png" loading="lazy">""")
-        assertContains(doc, """<source src="media/video-001.mp4" type="video/mp4">""")
+        // with media paths relative to the site root
+        assertContains(doc, """<img alt="/media/image-001.png" src="/media/image-001.png" loading="lazy">""")
+        assertContains(doc, """<source src="/media/video-001.mp4" type="video/mp4">""")
+        assertContains(doc, """poster="/media/video-001-thumb.jpg"""")
 
         // @Application + @Code renders the application as a runnable `main` with imports
         assertContains(doc, "import org.openrndr.application")

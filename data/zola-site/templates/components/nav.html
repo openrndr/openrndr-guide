@@ -1,0 +1,91 @@
+{#
+  Navigation components. They use just-the-docs class names so its CSS applies.
+
+  Pages and subsections of a section are merged and sorted by `weight`
+  (taken from the number prefix of the .kt file / folder names), so a
+  subsection can appear anywhere between pages. Works at any depth.
+
+  Items on the path to the current page get the `active` class, which
+  expands them (see `.nav-list-item.active > .nav-list` in guide.css).
+#}
+
+{# Pages (and optionally subsections) of a section, sorted by weight #}
+{% component nav.children(path: string, current: string, pages_only: bool = false) %}
+  {%- set s = get_section(path=path) -%}
+  {%- set subs = [] if pages_only else [get_section(path=p, metadata_only=true) for p in s.subsections] -%}
+  {%- set items = [...s.pages, ...subs] | sort(attribute="extra.weight") -%}
+  {%- if items | length > 0 -%}
+  <ul class="nav-list">
+    {%- for item in items -%}
+      {%- if item.relative_path is ending_with(pat="_index.md") -%}
+        {{<nav.section path={item.relative_path} current={current} />}}
+      {%- else -%}
+        <li class="nav-list-item{% if item.path == current %} active{% endif %}">
+          <a href="{{ item.path | safe }}" class="nav-list-link{% if item.path == current %} active{% endif %}">{{ item.title }}</a>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+  {%- endif -%}
+{% endcomponent nav.children %}
+
+{# A section with an expander button and its children #}
+{% component nav.section(path: string, current: string) %}
+  {%- set s = get_section(path=path, metadata_only=true) -%}
+  {%- set has_children = s.pages | length > 0 or s.subsections | length > 0 -%}
+  {%- set open = current is starting_with(pat=s.path) -%}
+  <li class="nav-list-item{% if open %} active{% endif %}">
+    {%- if has_children -%}
+    <button class="nav-list-expander btn-reset" aria-label="{{ s.title }} submenu" aria-expanded="{{ open }}">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+    </button>
+    {%- endif -%}
+    <a href="{{ s.path | safe }}" class="nav-list-link{% if s.path == current %} active{% endif %}">{{ s.title }}</a>
+    {%- if has_children -%}
+      {{<nav.children path={path} current={current} />}}
+    {%- endif -%}
+  </li>
+{% endcomponent nav.section %}
+
+{#
+  The whole tree. The home section ("What is OPENRNDR?") lists the root
+  pages as its children; root subsections are shown as top-level items.
+#}
+{% component nav.tree(current: string) %}
+  {%- set root = get_section(path="_index.md") -%}
+  {%- set home_active = current == "/" or current in [p.path for p in root.pages] -%}
+  {%- set subs = [get_section(path=p, metadata_only=true) for p in root.subsections] | sort(attribute="extra.weight") -%}
+  <ul class="nav-list">
+    <li class="nav-list-item{% if home_active %} active{% endif %}">
+      {%- if root.pages | length > 0 -%}
+      <button class="nav-list-expander btn-reset" aria-label="{{ root.title }} submenu" aria-expanded="{{ home_active }}">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button>
+      {%- endif -%}
+      <a href="/" class="nav-list-link{% if current == '/' %} active{% endif %}">{{ root.title }}</a>
+      {{<nav.children path="_index.md" current={current} pages_only={true} />}}
+    </li>
+    {%- for s in subs -%}
+      {{<nav.section path={s.relative_path} current={current} />}}
+    {%- endfor -%}
+  </ul>
+{% endcomponent nav.tree %}
+
+{#
+  "Table of contents" listing the direct children of a section,
+  like just-the-docs shows at the bottom of parent pages.
+#}
+{% component nav.toc(path: string, pages_only: bool = false) %}
+  {%- set s = get_section(path=path) -%}
+  {%- set subs = [] if pages_only else [get_section(path=p, metadata_only=true) for p in s.subsections] -%}
+  {%- set items = [...s.pages, ...subs] | sort(attribute="extra.weight") -%}
+  {%- if items | length > 0 -%}
+  <hr>
+  <h2 class="text-delta">Table of contents</h2>
+  <ul>
+    {%- for item in items -%}
+    <li><a href="{{ item.path | safe }}">{{ item.title }}</a></li>
+    {%- endfor -%}
+  </ul>
+  {%- endif -%}
+{% endcomponent nav.toc %}

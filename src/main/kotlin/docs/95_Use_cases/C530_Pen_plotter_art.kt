@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Pen plotters")
-@file:ParentTitle("Use cases")
-@file:Order("530")
-@file:URL("useCases/penPlotterArt")
 
 package docs.`95_Use_cases`
 
@@ -310,7 +307,7 @@ fun main() {
     """
     The beginning of the resulting text file looks like this:
     
-    ```gcode
+    ```txt
     G21
     G90
     ;begin layer: layer_0

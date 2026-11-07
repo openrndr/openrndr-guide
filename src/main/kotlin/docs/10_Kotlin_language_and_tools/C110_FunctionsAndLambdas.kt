@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Functions and lambdas")
-@file:ParentTitle("Kotlin language and tools")
-@file:Order("110")
-@file:URL("kotlinLanguageAndTools/functionsAndLambdas")
 
 package docs.`10_Kotlin_language_and_tools`
 
@@ -43,9 +40,9 @@ fun main() {
     in the same program. 
     
     The framework provides several such `extend` blocks (called Extensions),
-    for instance, [Screenshots](/extensions/screenshots.html), 
-    [ScreenRecorder](/extensions/screenRecorder.html)
-    and [Camera2D](/extensions/camera2D.html), among others. This makes it possible to build programs
+    for instance, [Screenshots](@/extensions/screenshots.md), 
+    [ScreenRecorder](@/extensions/screenRecorder.md)
+    and [Camera2D](@/extensions/camera2D.md), among others. This makes it possible to build programs
     by composing code blocks as if they were LEGO pieces and add powerful
     functionality with just one or two lines of code.
     

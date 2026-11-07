@@ -37,3 +37,13 @@ jobs:
       - name: Build openrndr-guide
         run: skipMediaGeneration=true xvfb-run ./gradlew dokgen
 
+      # Checks internal links and anchors, then builds the website.
+      # The Pages artifact it uploads is not deployed from this workflow.
+      - name: Check and build website
+        uses: getzola/github-pages@v1
+        with:
+          zola_version: v0.23.6
+          working_directory: build/dokgen/zola
+          check_links: true
+          check_flags: --skip-external-links
+

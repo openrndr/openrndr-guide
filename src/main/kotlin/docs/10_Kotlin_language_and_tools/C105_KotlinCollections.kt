@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Kotlin collections")
-@file:Order("105")
-@file:ParentTitle("Kotlin language and tools")
-@file:URL("kotlinLanguageAndTools/kotlinCollections")
 
 package docs.`10_Kotlin_language_and_tools`
 

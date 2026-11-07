@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Immutability")
-@file:ParentTitle("Kotlin language and tools")
-@file:Order("120")
-@file:URL("kotlinLanguageAndTools/immutability")
 
 package docs.`10_Kotlin_language_and_tools`
 
@@ -85,7 +82,7 @@ fun main() {
     
     ## Mutating other OPENRNDR objects
     
-    A [`ShapeContour`](https://guide.openrndr.org/drawing/curvesAndShapes.html#shapecontour) is a core OPENRNDR class that holds an open or closed 
+    A [`ShapeContour`](@/drawing/curvesAndShapes.md#shapecontour) is a core OPENRNDR class that holds an open or closed 
     contour made out of straight or curved segments.
     
     Let's imagine we have a circular contour made out of four curved segments. 

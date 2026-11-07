@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Color buffers")
-@file:ParentTitle("Drawing")
-@file:Order("300")
-@file:URL("drawing/colorbuffers")
+@file:Aliases("advancedDrawing/colorbuffers.html")
 
 package docs.`30_Drawing`
 
@@ -114,7 +112,7 @@ fun main() {
     @Text
     """
     `drawImage` is convenient for creating static images. If a program requires redrawing 
-    a color buffer use a [render target](/drawing/renderTargets.html) instead.
+    a color buffer use a [render target](@/drawing/renderTargets.md) instead.
         
     ## Freeing color buffers
     
@@ -151,7 +149,7 @@ fun main() {
     When repeatedly saving color buffers asynchronously (the default) it is possible to run out
     of memory. This can happen if the software can not save images at the requested frame rate.
     In such situations we can either set `async = false` in `saveToFile()` or avoid `saveToFile` and use the
-    [VideoWriter](https://guide.openrndr.org/extensions/screenRecorder.html#writing-to-video-using-render-targets)
+    [VideoWriter](@/extensions/screenRecorder.md#writing-to-video-using-render-targets)
     together with [pngSequence](https://github.com/openrndr/orx/tree/master/orx-jvm/orx-video-profiles#png-sequence)
     or [tiffSequence](https://github.com/openrndr/orx/tree/master/orx-jvm/orx-video-profiles#tiff-sequence)
     instead.

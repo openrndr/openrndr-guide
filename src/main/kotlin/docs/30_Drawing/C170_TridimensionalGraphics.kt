@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Tridimensional graphics")
-@file:ParentTitle("Drawing")
-@file:Order("170")
-@file:URL("drawing/tridimensionalGraphics")
 
 package docs.`30_Drawing`
 

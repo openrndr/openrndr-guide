@@ -1,7 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("What is OPENRNDR?")
-@file:Order("0")
-@file:URL("/index")
 
 package docs
 

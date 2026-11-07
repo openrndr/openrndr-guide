@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Image fit")
-@file:ParentTitle("ORX")
-@file:Order("200")
-@file:URL("ORX/imageFit")
 
 package docs.`80_ORX`
 
@@ -30,7 +27,7 @@ fun main() {
     If you are working on an 
     [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
     project, `orx-image-fit` should be ready to use because it is part of the basic
-    orx bundle, as described in [ORX](/ORX/).
+    orx bundle, as described in [ORX](@/ORX/_index.md).
     
     ## Contain mode
     """

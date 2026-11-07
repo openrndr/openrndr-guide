@@ -16,6 +16,7 @@ abstract class MediaRunnerWorkAction : WorkAction<MediaRunnerWorkParameters> {
                     it.jvmArgs = parameters.jvmArgs.get()
                     it.mainClass.set(parameters.mainClass)
                 }
+                parameters.stampFile.get().asFile.writeText(parameters.sourceHash.get())
                 break
             } catch (e: Exception) {
                 if (i == 9) {

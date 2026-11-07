@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Program Windows")
-@file:ParentTitle("Interaction")
-@file:Order("110")
-@file:URL("interaction/programWindows")
 
 package docs.`40_Interaction`
 

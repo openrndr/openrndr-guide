@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Render targets")
-@file:ParentTitle("Drawing")
-@file:Order("305")
-@file:URL("drawing/renderTargets")
+@file:Aliases("advancedDrawing/renderTargets.html")
 
 package docs.`30_Drawing`
 
@@ -62,7 +60,7 @@ fun main() {
     Use `drawer.isolatedWithTarget()` to draw into an off-screen buffer.
      
     Once updated, we can either draw it onto the screen (as this example shows) 
-    or process its color buffer further using [filters](/ORX/imageFilters.html) or custom shaders.
+    or process its color buffer further using [filters](@/ORX/imageFilters.md) or custom shaders.
     """
 
     @Code
@@ -126,7 +124,7 @@ fun main() {
         
     ## Render targets and projection transformations
     
-    Note that the [projection matrix](/drawing/transformations.html#projection-matrix) 
+    Note that the [projection matrix](@/drawing/transformations.md#projection-matrix) 
     has to fit the render target. 
     This becomes obvious __if the dimensions of the window and the dimensions of the render target differ__. 
     In case of orthographic (2D) projections one can call `ortho(rt)`:

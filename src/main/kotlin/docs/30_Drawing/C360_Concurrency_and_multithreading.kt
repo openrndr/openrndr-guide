@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Concurrency and multithreading")
-@file:ParentTitle("Drawing")
-@file:Order("360")
-@file:URL("drawing/concurrencyAndMultithreading")
+@file:Aliases("advancedDrawing/concurrencyAndMultithreading.html")
 
 package docs.`30_Drawing`
 

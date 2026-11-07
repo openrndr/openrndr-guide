@@ -1,15 +1,10 @@
-@file:Suppress("UNUSED_EXPRESSION")
 @file:Title("ORX")
-@file:Order("1080")
-@file:URL("ORX/index")
 
 package docs.`80_ORX`
 
 import org.intellij.lang.annotations.Language
-import org.openrndr.dokgen.annotations.Order
 import org.openrndr.dokgen.annotations.Text
 import org.openrndr.dokgen.annotations.Title
-import org.openrndr.dokgen.annotations.URL
 
 fun main() {
 

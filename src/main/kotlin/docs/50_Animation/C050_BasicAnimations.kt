@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Basic animation")
-@file:ParentTitle("Animation")
-@file:Order("50")
-@file:URL("animation/basicAnimations")
 
 package docs.`50_Animation`
 

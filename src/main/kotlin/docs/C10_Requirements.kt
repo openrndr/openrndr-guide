@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Requirements")
-@file:ParentTitle("What is OPENRNDR?")
-@file:Order("10")
-@file:URL("/requirements")
 
 package docs
 
@@ -17,7 +14,9 @@ fun main() {
     
     ### Operating systems known to work
     
-    | macOS | 10.10 up to 13, both Intel and ARM | 
+    | Operating system | Versions |
+    |------------------|----------|
+    | macOS | 10.10 up to 13, both Intel and ARM |
     | Window | 10 and 11 | 
     | Linux | Ubuntu LTS version 18.04, 20.04, 22.04, ArchLinux, Manjaro |
 

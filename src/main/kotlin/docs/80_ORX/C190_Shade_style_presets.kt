@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Shade style presets")
-@file:ParentTitle("ORX")
-@file:Order("190")
-@file:URL("ORX/shadeStylePresets")
+@file:Aliases("OPENRNDRExtras/shadeStylePresets.html")
 
 package docs.`80_ORX`
 
@@ -28,14 +26,14 @@ fun main() {
     # Shade style presets
 
     The `orx-shade-styles` library provides a number of preset 
-    [shade styles](https://guide.openrndr.org/drawing/shadeStyles.html)
+    [shade styles](@/drawing/shadeStyles.md)
     
     ## Prerequisites
     
     If you are working on an 
     [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
     project, `orx-shade-styles` should be ready to use because it is part of the basic
-    orx bundle, as described in [ORX](/ORX/).
+    orx bundle, as described in [ORX](@/ORX/_index.md).
     
     ## Linear gradient
     

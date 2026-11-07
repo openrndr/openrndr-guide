@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Image post-processing with filters")
-@file:ParentTitle("ORX")
-@file:Order("160")
-@file:URL("ORX/imageFilters")
 
 package docs.`80_ORX`
 
@@ -40,7 +37,7 @@ fun main() {
     
     The [orx-fx](https://github.com/openrndr/orx/tree/master/orx-fx) library 
     contains many filters that can be readily used. See the chapter 
-    [Filters and post-processing](https://guide.openrndr.org/drawing/filtersAndPostProcessing.html) 
+    [Filters and post-processing](@/drawing/filtersAndPostProcessing.md) 
     for instructions on using them.
 
     A (more-or-less) complete listing of the effects in orx-fx is maintained 
@@ -52,7 +49,7 @@ fun main() {
     If you are working on an 
     [`openrndr-template`](https://github.com/openrndr/openrndr-template) based
     project, `orx-fx` should be ready to use because it is part of the basic
-    orx bundle, as described in [ORX](/ORX/).
+    orx bundle, as described in [ORX](@/ORX/_index.md).
     
     ## Effect Index
     

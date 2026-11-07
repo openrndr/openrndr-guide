@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Compute shaders")
-@file:ParentTitle("Advanced topics")
-@file:Order("160")
-@file:URL("advancedTopics/computeShaders")
+@file:Aliases("advancedTopics/ComputeShaders.html")
 
 package docs.`90_Advanced_Topics`
 

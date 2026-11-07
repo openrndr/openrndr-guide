@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Configure")
-@file:ParentTitle("Program basics")
-@file:Order("110")
-@file:URL("programBasics/configure")
+@file:Aliases("programConfiguration.html")
 
 package docs.`20_Program_basics`
 

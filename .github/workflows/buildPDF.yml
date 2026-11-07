@@ -1,9 +1,9 @@
 name: Build Guide PDF
 
 on:
+  # After the guide is published
   workflow_run:
-    workflows: ["pages-build-deployment"]
-    branches: [generated]
+    workflows: ["Publish guide online"]
     types:
       - completed
 
@@ -12,6 +12,7 @@ on:
 
 jobs:
   build-guide-pdf:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout current repository

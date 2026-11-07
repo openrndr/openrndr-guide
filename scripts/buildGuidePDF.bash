@@ -8,12 +8,13 @@ mkdir -p /tmp/manual
 cd /tmp/manual || exit
 
 # curl downloads the index page of the website
+# tr puts the whole page in one line
 # grep extracts the <nav> ... </nav> section
 # sed(1) injects a line break in front of every URL and adds the full domain
 # sed(2) deletes from each line the " character and everything that follows, leaving the clean URL
 # tail deletes the first line, which contains a lonely <nav> tag
 
-urlstr=$(curl -s "https://$domain$path" | grep -o -E '<nav .*</nav>' | sed "s/href=\"\//href=\"\nhttps:\/\/$domain\//g" | sed "s/\".*//g" | tail +2)
+urlstr=$(curl -s "https://$domain$path" | tr -d '\n' | grep -o -E '<nav .*</nav>' | sed "s/href=\"\//href=\"\nhttps:\/\/$domain\//g" | sed "s/\".*//g" | tail +2)
 
 # convert a long string into an array
 urls=($urlstr)

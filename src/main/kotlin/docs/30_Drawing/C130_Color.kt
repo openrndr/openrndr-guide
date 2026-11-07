@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Color")
-@file:ParentTitle("Drawing")
-@file:Order("130")
-@file:URL("drawing/color")
+@file:Aliases("drawingBasics/color.html")
 
 package docs.`30_Drawing`
 

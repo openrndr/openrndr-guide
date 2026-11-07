@@ -1,8 +1,5 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("What is Gradle?")
-@file:ParentTitle("Kotlin language and tools")
-@file:Order("130")
-@file:URL("kotlinLanguageAndTools/gradle")
 
 package docs.`10_Kotlin_language_and_tools`
 
@@ -61,7 +58,7 @@ fun main() {
     Luckily there are thousands of JAVA libraries available to us, just one line away.
 
     Three such dependencies (JSON, CSV, and XML) are predefined and can be easily added 
-    as explained under [fileIO](https://guide.openrndr.org/fileIO/).
+    as explained under [fileIO](@/fileIO/_index.md).
 
     Other dependencies (for instance a 2D physics library) can be easily added in this format:
     `implementation("org.jbox2d:jbox2d-library:2.2.1.1")`. 

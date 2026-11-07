@@ -53,7 +53,7 @@ jobs:
           mv _gitattributes .gitattributes
           
           # copy data folder
-          rsync -av --exclude='jekyll-assets' ../data/ ./data/
+          rsync -av --exclude='zola-site' ../data/ ./data/
           
           # copy generated .kt examples
           mkdir -p ./src/main/kotlin/examples/

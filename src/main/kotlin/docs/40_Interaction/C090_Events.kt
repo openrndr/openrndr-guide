@@ -1,8 +1,6 @@
 @file:Suppress("UNUSED_EXPRESSION")
 @file:Title("Events")
-@file:ParentTitle("Interaction")
-@file:Order("90")
-@file:URL("interaction/events")
+@file:Aliases("interaction/Events.html")
 
 package docs.`40_Interaction`
 
