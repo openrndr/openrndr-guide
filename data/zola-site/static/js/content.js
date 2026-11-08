@@ -6,7 +6,8 @@
  * - Kotlin programs include their import statements so they can be copied
  *   and run. The imports are hidden on the page to keep examples short.
  * - Every code block gets a copy button which copies the full code,
- *   including the hidden imports.
+ *   including the hidden imports. The full code is also kept in the
+ *   code element's data-raw-code attribute.
  */
 (function () {
   "use strict";
@@ -79,6 +80,9 @@
       var code = pre.querySelector("code");
       if (!code) return;
       var rawCode = code.textContent;
+      // The full code, imports included, for tools that read the page
+      // (the OPENRNDR IntelliJ plugin's run buttons).
+      code.setAttribute("data-raw-code", rawCode);
       pre.setAttribute("tabindex", "0");
       if (code.getAttribute("data-lang") === "kotlin") hideImports(code);
       addCopyButton(pre, rawCode);
