@@ -77,8 +77,9 @@ jobs:
       - name: Save media cache
         if: ${{ !cancelled() && (steps.build.outcome == 'success' || steps.build.outcome == 'failure') }}
         run: |
-          if [ ! -d media ]; then
-            echo "No media folder, keeping the previous media cache"
+          # runExamples creates media/ even when no program ran successfully
+          if [ -z "$(ls -A media/.dokgen-stamps 2>/dev/null)" ]; then
+            echo "No program ran successfully, keeping the previous media cache"
             exit 0
           fi
           echo "$LIBS_HASH" > media/.libs-hash
