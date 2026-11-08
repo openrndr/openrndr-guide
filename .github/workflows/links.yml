@@ -2,14 +2,9 @@ name: Links
 
 # Checks the external links of the guide and opens an issue if some are broken.
 # Internal links are checked by `zola check` when building the website.
+# Manual trigger only, to keep its traffic towards external sites low
 on:
-  repository_dispatch:
   workflow_dispatch:
-  # After the guide is published
-  workflow_run:
-    workflows: ["Publish guide online"]
-    types:
-      - completed
 
 jobs:
   linkChecker:

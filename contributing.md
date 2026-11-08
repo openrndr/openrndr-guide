@@ -156,6 +156,9 @@ digit is incremented each time the guide is updated.
 
 The guide is built with [getzola/github-pages](https://github.com/getzola/github-pages)
 and deployed to GitHub Pages by GitHub Actions (Settings > Pages > Source: GitHub Actions).
+The same workflow builds the PDF version and publishes it with the website.
+The external links are checked by the `Links` workflow, which only runs when
+triggered manually from the Actions tab.
 
 #### Media cache
 
@@ -178,8 +181,6 @@ A program also runs only when its own source changes, not when a file it reads
 (an image, a font, a shader) does. Use one of the options above to regenerate
 the media in that case, or to drop the media of deleted programs, which
 stays in the cache otherwise.
-The same workflow builds the PDF version and publishes it with the website.
-After it is published, another workflow checks the external links.
 
 ## Troubleshooting
 
