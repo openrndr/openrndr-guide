@@ -6,8 +6,9 @@
  * - Kotlin programs include their import statements so they can be copied
  *   and run. The imports are hidden on the page to keep examples short.
  * - Every code block gets a copy button which copies the full code,
- *   including the hidden imports. The full code is also kept in the
- *   code element's data-raw-code attribute.
+ *   including the hidden imports.
+ * - In the OPENRNDR IntelliJ plugin's guide tab, Kotlin programs (with a
+ *   fun main) also get a run button, which runs them in the IDE.
  */
 (function () {
   "use strict";
@@ -38,6 +39,7 @@
     }
   }
 
+  // Wraps pre in a div.code-block with a copy button; returns the wrapper.
   function addCopyButton(pre, rawCode) {
     var wrapper = document.createElement("div");
     wrapper.className = "code-block";
@@ -62,7 +64,48 @@
         console.error("Failed to copy code:", err);
       });
     });
+    return wrapper;
   }
+
+  /*
+   * Run buttons for the OPENRNDR IntelliJ plugin, which shows the guide in
+   * an IDE tab and gives its pages window.openrndrIde (see run-buttons.js in
+   * https://github.com/openrndr/openrndr-intellij). The plugin's side is only
+   *   window.openrndrIde.runProgram(index, title, code)
+   *     index: the block's position among the page's Kotlin blocks, from 1
+   *     title: document.title
+   *     code:  the full code, imports included
+   * and an "openrndr-ide-ready" event on window once openrndrIde is there.
+   * The plugin adds it after the page has loaded, but either order works.
+   * Outside the IDE there is no openrndrIde and no run buttons.
+   *
+   * Keep this contract when the guide's markup or site generator changes,
+   * and the plugin needs no update.
+   */
+  var kotlinBlocks = []; // { wrapper, code, index }
+  var contentReady = false;
+  var runButtonsAdded = false;
+
+  function addRunButtons() {
+    var ide = window.openrndrIde;
+    if (!contentReady || runButtonsAdded || !ide || typeof ide.runProgram !== "function") return;
+    runButtonsAdded = true;
+    kotlinBlocks.forEach(function (block) {
+      if (!/\bfun\s+main\s*\(/.test(block.code)) return;
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = "run-button";
+      button.setAttribute("aria-label", "Run this program in the IDE");
+      button.title = "Run this program in the IDE";
+      button.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 3.5v17l14-8.5z"></path></svg>';
+      button.addEventListener("click", function () {
+        window.openrndrIde.runProgram(block.index, document.title, block.code);
+      });
+      block.wrapper.appendChild(button);
+    });
+  }
+
+  window.addEventListener("openrndr-ide-ready", addRunButtons);
 
   function wrapTables() {
     document.querySelectorAll(".main-content table").forEach(function (table) {
@@ -80,13 +123,14 @@
       var code = pre.querySelector("code");
       if (!code) return;
       var rawCode = code.textContent;
-      // The full code, imports included, for tools that read the page
-      // (the OPENRNDR IntelliJ plugin's run buttons).
-      code.setAttribute("data-raw-code", rawCode);
+      var kotlin = code.getAttribute("data-lang") === "kotlin";
       pre.setAttribute("tabindex", "0");
-      if (code.getAttribute("data-lang") === "kotlin") hideImports(code);
-      addCopyButton(pre, rawCode);
+      if (kotlin) hideImports(code);
+      var wrapper = addCopyButton(pre, rawCode);
+      if (kotlin) kotlinBlocks.push({ wrapper: wrapper, code: rawCode, index: kotlinBlocks.length + 1 });
     });
+    contentReady = true;
+    addRunButtons();
   }
 
   if (document.readyState === "loading") {

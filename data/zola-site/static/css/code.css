@@ -64,3 +64,16 @@
   cursor: copy;
   opacity: 1;
 }
+
+/* Run button, left of the copy button: only in the OPENRNDR IntelliJ plugin's guide tab (see content.js) */
+.code-block > button.run-button {
+  right: 2.25rem;
+}
+
+.code-block > button.run-button svg {
+  fill: #2ea043;
+}
+
+.code-block:hover > button.run-button {
+  cursor: pointer;
+}
