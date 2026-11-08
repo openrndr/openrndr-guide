@@ -299,7 +299,8 @@ open class ZolaServeTask @Inject constructor(
     val siteDir: File = zolaSiteDirectory(project.buildDirFile)
 
     @Internal
-    val zolaExecutable: String = (project.findProperty("zola") as String?) ?: "zola"
+    // Not project.findProperty("zola"): that would also resolve the "zola" task
+    val zolaExecutable: String = project.providers.gradleProperty("zola").getOrElse("zola")
 
     init {
         group = PLUGIN_NAME
