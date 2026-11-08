@@ -156,6 +156,28 @@ digit is incremented each time the guide is updated.
 
 The guide is built with [getzola/github-pages](https://github.com/getzola/github-pages)
 and deployed to GitHub Pages by GitHub Actions (Settings > Pages > Source: GitHub Actions).
+
+#### Media cache
+
+Running all the example programs takes about 20 minutes. To avoid that on
+every publish, the `publishGuide` workflow keeps the `media/` folder of the
+previous run as the `media.tar` asset of the
+[`media-cache` release](https://github.com/openrndr/openrndr-guide/releases/tag/media-cache).
+Each run downloads it, runs only the programs whose source changed (just like
+local builds, thanks to the stamps in `media/.dokgen-stamps`) and uploads the
+updated folder, replacing the previous asset. The release and its tag are created
+by the workflow if missing; they are not a release of the guide.
+
+All programs run again when:
+
+- the library versions in `gradle/libs.versions.toml` change,
+- the workflow is triggered manually with *Run all example programs* checked, or
+- the `media.tar` asset is deleted.
+
+A program also runs only when its own source changes, not when a file it reads
+(an image, a font, a shader) does. Use one of the options above to regenerate
+the media in that case, or to drop the media of deleted programs, which
+stays in the cache otherwise.
 After it is published, other workflows check the external links and build the PDF version.
 
 ## Troubleshooting
