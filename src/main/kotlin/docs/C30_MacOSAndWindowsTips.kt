@@ -11,10 +11,15 @@ fun main() {
     ## macOS: debugging and profiling
     
     Trying to *debug* or *profile* in macOS may display a warning or error message mentioning `-XstartOnFirstThread`.
-    The solution is simple:
-    
+    To solve this:
+    """
+
+    @Media.Image "../media/screenshot_startOnFirstThread.webp"
+
+    @Text
+    """
     * Open the `Run > Edit Configurations...` menu.
-    * Add `-XstartOnFirstThread` in the `VM Options` [text field](https://stackoverflow.com/questions/37978702/glfw-engine-and-the-main-thread-issue-intellij/44184837#44184837).
+    * Add `-XstartOnFirstThread` in the `VM Options` text field.
     * Click `Ok` to close the dialog.
     
     ## Windows: multiple GPUs
