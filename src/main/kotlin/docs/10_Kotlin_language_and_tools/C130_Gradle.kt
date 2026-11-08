@@ -46,7 +46,7 @@ fun main() {
     use case. OPENRNDR extensions are called ORX. The only thing we need to do is
     to edit the `build.gradle.kts` file and add a dependency to the MIDI ORX.
     
-    1. Explore the list of [available extensions](https://github.com/openrdr/orx). We can see one called `orx-midi`.
+    1. Explore the list of [available extensions](https://github.com/openrndr/orx). We can see one called `orx-midi`.
     2. Open `build.gradle.kts` in your `openrndr-template` based project.
     3. Inside the `dependencies { ... }` block, add `implementation(orx.midi)` (converting any `-` characters in the name into `.`). 
     4. Click "Sync All Gradle Projects" in the IDE to trigger the downloading of the MIDI libraries.
@@ -72,7 +72,7 @@ fun main() {
     ## What else does Gradle do for OPENRNDR?
        
     - It converts the OPENRNDR source code into multiple distributable libraries.
-    - It helps publish those libraries to an [online database](https://mvnrepository.com/artifact/org.openrndr),
+    - It helps publish those libraries to an [online database](https://central.sonatype.com/search?q=org.openrndr),
       making them accessible to everyone.
     - Similarly, it builds all the ORX extensions (called add-ons or plugins in other frameworks) and helps publish
       them to the same database.

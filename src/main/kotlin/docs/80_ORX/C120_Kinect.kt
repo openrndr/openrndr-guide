@@ -116,7 +116,7 @@ fun main() {
 
     * `DepthToGrayscaleMapper`
     * `DepthToColorsZucconi6Mapper` - [Colors of natural light dispersion](https://www.alanzucconi.com/2017/07/15/improving-the-rainbow/) by Alan Zucconi
-    * `DepthToColorsTurboMapper` - [Turbo, An Improved Rainbow Colormap for Visualization](https://ai.googleblog.com/2019/08/turbo-improved-rainbow-colormap-for.html) by Google
+    * `DepthToColorsTurboMapper` - [Turbo, An Improved Rainbow Colormap for Visualization](https://research.google/blog/turbo-an-improved-rainbow-colormap-for-visualization/) by Google
 
     [Find a runnable example here](https://github.com/openrndr/orx/blob/master/orx-jvm/orx-kinect-v1-demo/src/main/kotlin/Kinect1Demo03DepthToColorMaps.kt). 
 

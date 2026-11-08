@@ -14,7 +14,7 @@ fun main() {
     The solution is simple:
     
     * Open the `Run > Edit Configurations...` menu.
-    * Add `-XstartOnFirstThread` in the `VM Options` [text field](https://stackoverflow.com/a/44184837).
+    * Add `-XstartOnFirstThread` in the `VM Options` [text field](https://stackoverflow.com/questions/37978702/glfw-engine-and-the-main-thread-issue-intellij/44184837#44184837).
     * Click `Ok` to close the dialog.
     
     ## Windows: multiple GPUs
