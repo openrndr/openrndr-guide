@@ -40,6 +40,8 @@
       {{<nav.tree current={current} />}}
     </nav>
     <div class="d-md-block d-none site-footer">
+      {#- The PDF is built and copied to static/ by .github/workflows/publishGuide.yml #}
+      <p class="mb-2"><a href="{{ get_url(path='openrndr-guide.pdf') }}">Download PDF</a></p>
       Built with <a href="https://www.getzola.org">Zola</a>.
       Design based on <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>.
     </div>
@@ -86,6 +88,7 @@
         <hr>
         <footer>
           <div class="d-md-none mt-4 fs-2">
+            <p class="mb-2"><a href="{{ get_url(path='openrndr-guide.pdf') }}">Download PDF</a></p>
             Built with <a href="https://www.getzola.org">Zola</a>.
             Design based on <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>.
           </div>

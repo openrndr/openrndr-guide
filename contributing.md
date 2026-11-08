@@ -109,6 +109,21 @@ in another terminal. `zola serve` reloads the browser when the files change.
 To check that all the links between pages are valid, run `zola check --skip-external-links`
 in `build/dokgen/zola/`.
 
+## Build the PDF
+
+The PDF is made from the same Markdown and media files as the website,
+using [pandoc](https://pandoc.org/) and [Typst](https://typst.app/).
+With both installed and the guide built, run
+
+```
+python3 scripts/pdf/build_pdf.py
+```
+
+to produce `build/dokgen/pdf/openrndr-guide.pdf` (needs Python 3.11+;
+pass `--pandoc` and `--typst` if they are not in your PATH).
+The layout is defined in `scripts/pdf/template.typ`. When publishing,
+the PDF is copied to the website at https://guide.openrndr.org/openrndr-guide.pdf.
+
 ## Fast builds
 
 By default, building the guide generates many videos and images that can take

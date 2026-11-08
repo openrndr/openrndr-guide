@@ -43,6 +43,24 @@ jobs:
       - name: Build openrndr-guide
         run: skipMediaGeneration=false xvfb-run ./gradlew dokgen --rerun-tasks --no-build-cache
 
+      - name: Install pandoc and typst
+        run: |
+          mkdir -p "$RUNNER_TEMP/bin"
+          curl -sSfL "https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-linux-amd64.tar.gz" \
+            | tar xz -C "$RUNNER_TEMP/bin" --strip-components=2 "pandoc-${PANDOC_VERSION}/bin/pandoc"
+          curl -sSfL "https://github.com/typst/typst/releases/download/v${TYPST_VERSION}/typst-x86_64-unknown-linux-musl.tar.xz" \
+            | tar xJ -C "$RUNNER_TEMP/bin" --strip-components=1 typst-x86_64-unknown-linux-musl/typst
+          echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
+        env:
+          PANDOC_VERSION: "3.13"
+          TYPST_VERSION: "0.15.1"
+
+      # Published with the website at https://guide.openrndr.org/openrndr-guide.pdf
+      - name: Build PDF
+        run: |
+          python3 scripts/pdf/build_pdf.py
+          cp build/dokgen/pdf/openrndr-guide.pdf build/dokgen/zola/static/
+
       # Checks internal links and anchors, builds build/dokgen/zola
       # and uploads it as a GitHub Pages artifact
       - name: Build website
