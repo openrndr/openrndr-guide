@@ -32,7 +32,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v6
 
       - name: Build openrndr-guide
-        run: skipMediaGeneration=true xvfb-run ./gradlew dokgen
+        run: skipMediaGeneration=true xvfb-run ./gradlew dokgen examplesRepoDependencies
 
       - name: Setup ssh for git command
         run: |
@@ -44,14 +44,17 @@ jobs:
       - name: Update examples
         run: |
           git clone git@github.com:openrndr/openrndr-examples.git
+          git clone --depth 1 https://github.com/openrndr/openrndr-template.git
           cd openrndr-examples
           git rm -rf .
-          
-          # copy repo template
-          rsync -av ../src/main/resources/examples-repo-template/ ./
-          mv _gitignore .gitignore
-          mv _gitattributes .gitattributes
-          
+
+          # copy the latest openrndr-template, without its example programs
+          rsync -av --exclude='/.git/' --exclude='/src/' ../openrndr-template/ ./
+
+          # add the examples README and the ORX modules used by the guide
+          cp ../src/main/resources/examples-repo/README.md ./
+          cat ../build/examples-repo/build.gradle.kts.append >> build.gradle.kts
+
           # copy data folder
           rsync -av --exclude='zola-site' ../data/ ./data/
           
