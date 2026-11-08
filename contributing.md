@@ -178,7 +178,8 @@ A program also runs only when its own source changes, not when a file it reads
 (an image, a font, a shader) does. Use one of the options above to regenerate
 the media in that case, or to drop the media of deleted programs, which
 stays in the cache otherwise.
-After it is published, other workflows check the external links and build the PDF version.
+The same workflow builds the PDF version and publishes it with the website.
+After it is published, another workflow checks the external links.
 
 ## Troubleshooting
 
