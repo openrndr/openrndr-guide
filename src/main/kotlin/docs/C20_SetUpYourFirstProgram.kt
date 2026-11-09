@@ -3,11 +3,10 @@
 
 package docs
 
-import org.intellij.lang.annotations.Language
-import org.openrndr.dokgen.annotations.*
+import org.openrndr.dokgen.annotations.Text
+import org.openrndr.dokgen.annotations.Title
 
 fun main() {
-    @Language("markdown") val a =
     @Text
     """
     # Getting Started with OPENRNDR
@@ -23,17 +22,17 @@ fun main() {
 
     ## Download the template program
     
-    Instead of creating a project from scratch, the simplest way to start an OPENRNDR-based project is to 
+    The simplest way to start an OPENRNDR-based project is to 
     use the [`openrndr-template`](https://github.com/openrndr/openrndr-template):
     
      * If you are running IntelliJ IDEA for the first time, the program menus
-        are hidden. In that case click "Clone Repository" at the top-right area.
-       * If program menus are visible, select "File > New > Project from version control...".
+        may be hidden. In that case click `Clone Repository` in the top-right area.
+       * If program menus are visible, select `File > New > Project from version control...`.
      * In the dialog that appears:
-       * Version Control: choose "Git".
+       * Version Control: choose `Git`.
        * URL: enter `https://github.com/openrndr/openrndr-template`
-       * Directory: ensure it looks OK. 
-     * When asked where the project should be opened, click on "new window".
+       * Directory: leave it as is or choose your preferred location. 
+     * When asked where the project should be opened, choose `new window`.
     
     If downloading the template fails:
 
@@ -49,14 +48,13 @@ fun main() {
     its `README.md` file is presented automatically. 
     This file contains hints to help you navigate the template project. 
      
-    When the status bar shows no more activity,
-    go to the Project view (left panel) and
+    When the status bar shows no more activity, go to the `Project` view (left panel) and
     click on `src/main/kotlin/TemplateProgram.kt` to open that file 
 
-    Note: the Project view can be shown and hidden by clicking the Project
+    Note: the `Project` view can be shown and hidden by clicking the `Project`
     button in the top-left area of the window.
      
-    Once the source code of TemplateProgram.kt is visible, a small green triangle will appear 
+    Once the source code of `TemplateProgram.kt` is visible, a small green triangle will appear 
     before the words `fun main()`. Click that triangle to run the program.
     
     *Ta-da!*
