@@ -112,6 +112,18 @@ local function resolve_image(img)
   return img
 end
 
+-- Identifiers like `Fullscreen.CURRENT_DISPLAY_MODE` have no spaces to break
+-- at, so in a narrow table column they overflow into the neighboring cells.
+-- A zero-width space after dots and opening parentheses lets them wrap.
+local function breakable_code(table)
+  return table:walk({
+    Code = function(code)
+      code.text = code.text:gsub("([%.%(])", "%1\u{200B}")
+      return code
+    end,
+  })
+end
+
 local function report_raw(raw)
   if raw.format == "html" then
     warn("raw HTML is dropped from the PDF: " .. raw.text:sub(1, 60))
@@ -136,6 +148,7 @@ function Pandoc(doc)
   blocks = blocks:walk({
     Link = resolve_link,
     Image = resolve_image,
+    Table = breakable_code,
     RawBlock = report_raw,
     RawInline = report_raw,
   })

@@ -67,6 +67,8 @@ $endif$
            inset: 6pt)
 #show table.cell.where(y: 0): strong
 
+#show table: set par(justify: false)
+
 // Headings: chapters (level 1) and guide pages (level 2) are numbered.
 #set heading(numbering: "1.1")
 #show selector.or(..range(3, 7).map(l => heading.where(level: l))): set heading(numbering: none)
